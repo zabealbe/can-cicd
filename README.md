@@ -12,6 +12,7 @@ This subproject manages the id generation for all the messages on the CANbus
 + :open_file_folder: id-generator
 ## Message structure
 ![](https://canlogger1000.csselectronics.com/img/CAN-Frame-Message-Parameters-Bit-Start-Length_2.png)
+
 As you can see, the section ID is 11 bits long and this is the only part we are interested of.\
 The id plays a role not only in identifying the message but will also describe the message's priority. A **lower** ID will mean **higher priority** in case of collision.
 ## Generation
