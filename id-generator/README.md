@@ -29,7 +29,7 @@ This file contains the description of all the network's messages in the followin
 <pre>
 "name": string
 </pre>
-This field **must be unique** for each message, and should be contain only UPPERCASE letters and "_"
+This field **must be unique** for each message, and should contain only UPPERCASE letters and "_"
 
 
 <pre>
