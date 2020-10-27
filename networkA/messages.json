@@ -1,7 +1,8 @@
  [
     {
         "name": "ENC_L_FROM_ACU",
-        "priority": 20,
+        "topic": "A",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "speed/256",
         "byte1": "speed%256",
@@ -13,7 +14,8 @@
         "byte7": ""
     },{
         "name": "ENC_R_FROM_ACU",
-        "priority": 20,
+        "topic": "A",
+        "priority": 7,
         "to_mod": 0,
         "byte0": "speed/256",
         "byte1": "speed%256",
@@ -25,7 +27,8 @@
         "byte7": ""
     },{
         "name": "ENC_C_FROM_ACU",
-        "priority": 20,
+        "topic": "A",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "angle/256",
         "byte1": "angle%256",
@@ -37,7 +40,8 @@
         "byte7": ""
     },{
         "name": "PEDALS_FROM_ATC",
-        "priority": 65,
+        "topic": "A",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "APPS1/256",
         "byte1": "APPS1%256",
@@ -49,7 +53,8 @@
         "byte7": "BRK%256"
     },{
         "name": "PEDALS_FROM_ACU",
-        "priority": 65,
+        "topic": "A",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "APPS1",
         "byte1": "APPS2",
@@ -61,7 +66,8 @@
         "byte7": ""
     },{
         "name": "HV_VOLT",
-        "priority": 60,
+        "topic": "B",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "DATA_V0",
         "byte1": "DATA_V1",
@@ -73,7 +79,8 @@
         "byte7": "DATA_VMIN"
     },{
         "name": "HV_TEMP",
-        "priority": 45,
+        "topic": "B",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "DATA_TAVG0",
         "byte1": "DATA_TAVG1",
@@ -85,7 +92,8 @@
         "byte7": ""
     },{
         "name": "HV_CURR_ERR_WARN",
-        "priority": 60,
+        "topic": "B",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "SIGN",
         "byte1": "CURR_0",
@@ -97,7 +105,8 @@
         "byte7": "ERR_DATA1"
     },{
         "name": "LV_STATUS",
-        "priority": 30,
+        "topic": "B",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "LV_VOLT",
         "byte1": "LV_TEMPAVG",
@@ -109,7 +118,8 @@
         "byte7": ""
     },{
         "name": "LV_STATUS_JUDGE",
-        "priority": 40,
+        "topic": "B",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "LV_VOLT",
         "byte1": "LV_TEMPAVG",
@@ -121,7 +131,8 @@
         "byte7": "ERR"
     },{
         "name": "INV_R_TEMP",
-        "priority": 45,
+        "topic": "AB",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "INV_R_TEMP",
         "byte1": "INV_R_TEMP0",
@@ -133,7 +144,8 @@
         "byte7": ""
     },{
         "name": "INV_L_TEMP",
-        "priority": 45,
+        "topic": "AB",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "INV_L_TEMP",
         "byte1": "INV_L_TEMP0",
@@ -145,7 +157,8 @@
         "byte7": ""
     },{
         "name": "MOT_R_TEMP",
-        "priority": 35,
+        "topic": "AB",
+        "priority": 0,
         "to_mod": 1,
         "byte0": "MOT_R_TEMP",
         "byte1": "MOT_R_TEMP0",
@@ -157,7 +170,8 @@
         "byte7": ""
     },{
         "name": "MOT_L_TEMP",
-        "priority": 35,
+        "topic": "AB",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "MOT_L_TEMP",
         "byte1": "MOT_L_TEMP0",
@@ -169,7 +183,8 @@
         "byte7": ""
     },{
         "name": "CAL_SET_MIN_MAX",
-        "priority": 15,
+        "topic": "AB",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "SET_CALIB_MAX/MIN[STEER,PEDALS]",
         "byte1": "",
@@ -181,7 +196,8 @@
         "byte7": ""
     },{
         "name": "CAL_RESP",
-        "priority": 15,
+        "topic": "C",
+        "priority": 7,
         "to_mod": 1,
         "byte0": "MIN/MAX",
         "byte1": "CALIB_OK/NOT_OK",
