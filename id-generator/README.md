@@ -1,7 +1,50 @@
 # Message IDs generation
 This subproject manages the id generation for all the messages on the CANbus
 # How to use
-## TODO
+## Create your network(s)
+
+Each network should have a network folder\
+:open_file_folder: project root\
+└:open_file_folder: [network name]
+
+
+And the following file\
+:open_file_folder: project root\
+└:open_file_folder: [network name]\
+&nbsp;&nbsp;&nbsp;└:page_with_curl: messages.json
+
+## Configure messages.json
+This file contains the description of all the network's messages in the following format:
+<pre>
+[{
+    "name": string,
+    "topic": string,
+    "priority": int
+}
+, ...]
+</pre>
+**Constraints you have to follow:**
+
+
+<pre>
+"name": string
+</pre>
+This field **must be unique** for each message, and should be contain only UPPERCASE letters and "_"
+
+
+<pre>
+"topic": string
+</pre>
+This field can be the same across **at most 64 messages**, meaning a topic can contain at most 64 messages.
+The characters you should use are all UPPERCASE letters and "_".
+Messages should be subdivided in topics keeping in mind that the topic will be used by CAN devices to discriminate wether a message is interesting or not.
+
+
+<pre>
+"priority": int
+</pre>
+This field can can be an **integer from 0 to 7**, the higher the value the more important the message.
+You can have **at most 8 messages** with the same combination of **priority and topic**, if you have more you must create a new topic or assign a different priority to some of them.
 
 # How it works
 ## Message structure
