@@ -1,5 +1,9 @@
 # Message IDs generation
 This subproject manages the id generation for all the messages on the CANbus
+# How to use
+## TODO
+
+# How it works
 ## Message structure
 ![](https://canlogger1000.csselectronics.com/img/CAN-Frame-Message-Parameters-Bit-Start-Length_2.png)
 
