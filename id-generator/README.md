@@ -1,8 +1,5 @@
 # Message IDs generation
 This subproject manages the id generation for all the messages on the CANbus
-## Location
-:open_file_folder: project root
-+ :open_file_folder: id-generator
 ## Message structure
 ![](https://canlogger1000.csselectronics.com/img/CAN-Frame-Message-Parameters-Bit-Start-Length_2.png)
 

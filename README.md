@@ -8,5 +8,7 @@ The purpose of this project is to manage the CANbus, the data flowing throught i
 # Message IDs generation
 This subproject manages the id generation for all the messages on the CANbus
 ## Location
+<pre>
 :open_file_folder: project root
-+ :open_file_folder: id-generator
+  └:open_file_folder: id-generator
+</pre>
