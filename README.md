@@ -1,7 +1,7 @@
 # CAN CI-CD (Fenice)
 The purpose of this project is to manage the CANbus, the data flowing throught it and how the bus itself is accessed
 
-## Index
+## Subprojects
 - [ID generation](#message-ids-generation)
 - [Flatbuf](#setup)
 
