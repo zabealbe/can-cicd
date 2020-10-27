@@ -17,12 +17,13 @@ As you can see, the section ID is 11 bits long and this is the only part we are 
 The id plays a role not only in identifying the message but will also describe the message's priority. A **lower** ID will mean **higher priority** in case of collision.
 ## Generation
 the generated id must contain 3 very important pieces of information, each with a specific purpose:
-+ [The macrocategory to which it belongs](#the-macrocategory-(topic))
++ [The macrocategory to which it belongs](#the-macrocategory)
 + [A way to uniquely identify the message type](#how-to-uniquely-identify-a-message-type)
 + [The message priority](#message-priority)
 
 
-### The macrocategory (topic)
+### The macrocategory
+### AKA Topic
 The CAN bus is a busy medium where the message you transmit is broadcasted to everyone else, for that reason it's important that every device connected to it has a fast way to discriminate interesting messages.\
 Fortunately each CAN device has the possibility to filter messages by applying a mask to the id, this operation is done via hardware so it's very fast.
 
