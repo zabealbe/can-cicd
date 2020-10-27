@@ -26,12 +26,13 @@ def generate_message_ids(topic, messages):
 
     global_msg_ids = [(msg, (id << TOPIC_BITS) + topic) for msg, id in scoped_msg_ids]
 
-    for g, s in zip(global_msg_ids,  scoped_msg_ids):
-        print("{0:<16}\tbin  int\n\t"
-              "topic:  {1:>011b}  {1}\n\t"
-              "scoped: {2:>011b}  {2}\n\t"
-              "global: {3:>011b}  {3}"
-              .format(s[0], topic, s[1], g[1]))
+    if __debug__:
+        for g, s in zip(global_msg_ids,  scoped_msg_ids):
+            print("{0:<16}\tbin  int\n\t"
+                  "topic:  {1:>011b}  {1}\n\t"
+                  "scoped: {2:>011b}  {2}\n\t"
+                  "global: {3:>011b}  {3}"
+                  .format(s[0], topic, s[1], g[1]))
 
     return global_msg_ids
 
@@ -76,6 +77,14 @@ def priority_to_id(names, priorities):
         items_ids.append((item_name, item_id + messages_per_level * (MAX_PRIORITY - item_priority)))
 
     return items_ids
+
+
+def get_all_messages(network):
+    messages = {}
+    for topic in network.keys():
+        for message in network[topic]:
+            messages[message['name']] = message
+    return messages
 
 
 def merge_networks(n1, n2):
@@ -149,10 +158,21 @@ def main():
 
     print("====== Id generation ======")
     topic_ids = generate_topic_ids(network)
+    msg_ids = []
     for topic in network.keys():
         if __debug__:
             print("\nTOPIC {0}".format(topic))
-        msg_ids = generate_message_ids(topic_ids[topic], network[topic])
+        msg_ids += generate_message_ids(topic_ids[topic], network[topic])
+    print("")
+
+    if __debug__:
+        msgs = get_all_messages(network)
+        msg_with_p = [[] for i in range(0, MAX_PRIORITY+1)]
+        for m in msg_ids:
+            message = msgs[m[0]]
+            msg_with_p[message['priority']].append(m)
+        for p, mp in enumerate(msg_with_p):
+            print("PRIORITY", p, mp)
     print("")
 
     print("====== C header generation ======")

@@ -15,7 +15,7 @@
     },{
         "name": "ENC_R_FROM_ACU",
         "topic": "A",
-        "priority": 7,
+        "priority":3,
         "to_mod": 0,
         "byte0": "speed/256",
         "byte1": "speed%256",
@@ -54,7 +54,7 @@
     },{
         "name": "PEDALS_FROM_ACU",
         "topic": "A",
-        "priority": 7,
+        "priority": 3,
         "to_mod": 1,
         "byte0": "APPS1",
         "byte1": "APPS2",
@@ -119,7 +119,7 @@
     },{
         "name": "LV_STATUS_JUDGE",
         "topic": "B",
-        "priority": 7,
+        "priority": 6,
         "to_mod": 1,
         "byte0": "LV_VOLT",
         "byte1": "LV_TEMPAVG",
@@ -132,7 +132,7 @@
     },{
         "name": "INV_R_TEMP",
         "topic": "AB",
-        "priority": 7,
+        "priority": 6,
         "to_mod": 1,
         "byte0": "INV_R_TEMP",
         "byte1": "INV_R_TEMP0",
