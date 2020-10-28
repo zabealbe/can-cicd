@@ -9,9 +9,8 @@ TOPIC_BITS = 5
 
 MAX_PRIORITY = 7
 
-DEVICES_FILE = "devices.json"
 MESSAGES_FILE = "messages.json"
-TOPICS_FILE = "topics.json"
+OUTPUT_FILE = "message_ids.json"
 
 
 def generate_message_ids(topic, messages):
@@ -24,15 +23,17 @@ def generate_message_ids(topic, messages):
             "Oops, you can't have more than {0} messages per topic!, maybe its time to rework the software?"
                 .format(MESSAGE_BITS))
 
-    global_msg_ids = [(msg, (id << TOPIC_BITS) + topic) for msg, id in scoped_msg_ids]
+    global_msg_ids = {}
+    for msg, id in scoped_msg_ids:
+        global_msg_ids[msg] = (id << TOPIC_BITS) + topic
 
     if __debug__:
-        for g, s in zip(global_msg_ids,  scoped_msg_ids):
+        for g, s in zip(global_msg_ids.keys(),  scoped_msg_ids):
             print("{0:<16}\tbin  int\n\t"
                   "topic:  {1:>011b}  {1}\n\t"
                   "scoped: {2:>011b}  {2}\n\t"
                   "global: {3:>011b}  {3}"
-                  .format(s[0], topic, s[1], g[1]))
+                  .format(s[0], topic, s[1], global_msg_ids[g]))
 
     return global_msg_ids
 
@@ -113,19 +114,11 @@ def load_json(path):
 
 
 def load_network(path):
-    devices_path = path + "/" + DEVICES_FILE
-    devices = load_json(devices_path)
-
     messages_path = path + "/" + MESSAGES_FILE
     messages = load_json(messages_path)
 
-    '''
-    topics_path = path + "/" + TOPICS_FILE
-    topics = load_json(topics_path)
-    '''
-
     network = {}
-    if devices == {} or messages == {}:
+    if messages == {}:
         print("There was en error loading {0}, skipping".format(path))
         return network
 
@@ -158,27 +151,26 @@ def main():
 
     print("====== Id generation ======")
     topic_ids = generate_topic_ids(network)
-    msg_ids = []
+    msg_ids = {}
     for topic in network.keys():
         if __debug__:
             print("\nTOPIC {0}".format(topic))
-        msg_ids += generate_message_ids(topic_ids[topic], network[topic])
+        msg_ids.update(generate_message_ids(topic_ids[topic], network[topic]))
     print("")
 
     if __debug__:
         msgs = get_all_messages(network)
         msg_with_p = [[] for i in range(0, MAX_PRIORITY+1)]
-        for m in msg_ids:
-            message = msgs[m[0]]
-            msg_with_p[message['priority']].append(m)
+        for m, id in zip(msg_ids.keys(), msg_ids.values()):
+            message = msgs[m]
+            msg_with_p[message['priority']].append("{0}: {1}".format(m, id))
         for p, mp in enumerate(msg_with_p):
             print("PRIORITY", p, mp)
     print("")
-
-    print("====== C header generation ======")
-
-    print("")
-    print("Done!")
+    print("Saving IDs to {0}".format(OUTPUT_FILE))
+    with open(OUTPUT_FILE, "w+") as f:
+        json.dump(msg_ids, f, indent=4)
+    print("====== Done! ======")
 
 
 if __name__ == "__main__":
