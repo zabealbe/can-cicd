@@ -8,11 +8,18 @@ import sys
 
 def get_message_schema(message):
     schema = "struct {0} {{\n".format(message['name'])
+    enum = ""
     for item, value in message['contents'].items():
+        item = item.lower()
+        if isinstance(value, list):
+            enum += "\nenum {0} : byte {{ {1} }}\n".format(item.title(), ", ".join(value))
+            value = item.title()
         schema += "\t{0}: {1};\n".format(item, value)
     schema += "}"
+    schema = enum + schema
     print(schema)
     return schema
+
 
 def main():
     if len(sys.argv) < 2:
