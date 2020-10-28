@@ -56,7 +56,7 @@ ___
 This field indicates the receiving device(s), can be more than one.\
 The characters you should use are all UPPERCASE letters and "_".
 If there is more than one receiving device insert each one as a different array element.\
-If there is only one receiving device use an array with a single element.\
+If there is only one receiving device use an array with a single element.
 
 
 # How it works
