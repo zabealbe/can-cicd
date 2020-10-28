@@ -1,3 +1,6 @@
+from lib.network import Network
+import config
+
 import json
 import sys
 
@@ -8,9 +11,6 @@ MESSAGE_BITS = 6
 TOPIC_BITS = 5
 
 MAX_PRIORITY = 7
-
-MESSAGES_FILE = "messages.json"
-OUTPUT_FILE = "message_ids.json"
 
 
 def generate_message_ids(topic, messages):
@@ -38,9 +38,9 @@ def generate_message_ids(topic, messages):
     return global_msg_ids
 
 
-def generate_topic_ids(topics):
+def generate_topic_ids(network):
     ids = {}
-    for i, t in enumerate(topics):
+    for i, t in enumerate(network.get_topics()):
         ids[t] = i
     if len(ids) >= 2 ** TOPIC_BITS:
         raise Exception(
@@ -80,57 +80,6 @@ def priority_to_id(names, priorities):
     return items_ids
 
 
-def get_all_messages(network):
-    messages = {}
-    for topic in network.keys():
-        for message in network[topic]:
-            messages[message['name']] = message
-    return messages
-
-
-def merge_networks(n1, n2):
-    n3 = {}
-    for topic in n1.keys():
-        n3[topic] = n1[topic]
-    for topic in n2.keys():
-        if topic in n3:
-            n3[topic].append(n2[topic])
-        else:
-            n3[topic] = n2[topic]
-    return n3
-
-
-def load_json(path):
-    try:
-        with open(path, 'r') as d:
-            json_data = json.load(d)
-            if __debug__:
-                print("Loaded", path)
-    except (OSError, IOError) as e:
-        print("{0}: {1}".format(e.strerror, path))
-        return {}
-
-    return json_data
-
-
-def load_network(path):
-    messages_path = path + "/" + MESSAGES_FILE
-    messages = load_json(messages_path)
-
-    network = {}
-    if messages == {}:
-        print("There was en error loading {0}, skipping".format(path))
-        return network
-
-    for m in messages:
-        topic = m['topic']
-        if topic not in network:
-            network[topic] = []
-        network[m['topic']].append(m)
-
-    return network
-
-
 def main():
     if len(sys.argv) < 2:
         print("Please specify one or more network directories")
@@ -144,31 +93,35 @@ def main():
     print("")
 
     print("====== Networks loading ======")
-    network = {}
+    network = Network("")
     for a in sys.argv[1:]:
-        network = merge_networks(network, load_network(a))
+        network.merge_with(Network(a))
     print("")
 
     print("====== Id generation ======")
     topic_ids = generate_topic_ids(network)
     msg_ids = {}
-    for topic in network.keys():
+    for topic, topic_id in topic_ids.items():
         if __debug__:
             print("\nTOPIC {0}".format(topic))
-        msg_ids.update(generate_message_ids(topic_ids[topic], network[topic]))
+        msg_ids.update(
+            generate_message_ids(
+                topic_ids[topic], network.get_messages_by_topic(topic)
+            )
+        )
     print("")
 
     if __debug__:
-        msgs = get_all_messages(network)
-        msg_with_p = [[] for i in range(0, MAX_PRIORITY+1)]
-        for m, id in zip(msg_ids.keys(), msg_ids.values()):
-            message = msgs[m]
-            msg_with_p[message['priority']].append("{0}: {1}".format(m, id))
+        msg_with_p = [[] for i in range(0, MAX_PRIORITY+1)] #  populate array
+
+        for m, m_id in msg_ids.items():
+            message = network.get_message_by_name(m)
+            msg_with_p[message['priority']].append("{0}: {1}".format(m, m_id))
         for p, mp in enumerate(msg_with_p):
             print("PRIORITY", p, mp)
     print("")
-    print("Saving IDs to {0}".format(OUTPUT_FILE))
-    with open(OUTPUT_FILE, "w+") as f:
+    print("Saving IDs to {0}".format(config.OUTPUT_FILE))
+    with open(config.OUTPUT_FILE, "w+") as f:
         json.dump(msg_ids, f, indent=4)
     print("====== Done! ======")
 

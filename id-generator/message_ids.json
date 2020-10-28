@@ -4,15 +4,15 @@
     "ENC_C_FROM_ACU": 32,
     "PEDALS_FROM_ATC": 64,
     "PEDALS_FROM_ACU": 1056,
-    "HV_VOLT": 1,
-    "HV_TEMP": 33,
-    "HV_CURR_ERR_WARN": 65,
-    "LV_STATUS": 97,
-    "LV_STATUS_JUDGE": 257,
+    "CAL_RESP": 1,
     "INV_R_TEMP": 258,
     "INV_L_TEMP": 2,
     "MOT_R_TEMP": 1794,
     "MOT_L_TEMP": 34,
     "CAL_SET_MIN_MAX": 66,
-    "CAL_RESP": 3
+    "HV_VOLT": 3,
+    "HV_TEMP": 35,
+    "HV_CURR_ERR_WARN": 67,
+    "LV_STATUS": 99,
+    "LV_STATUS_JUDGE": 259
 }
