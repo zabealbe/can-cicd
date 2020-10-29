@@ -27,6 +27,7 @@ This file contains the description of all the network's messages in the followin
 "name": string
 </pre>
 This field **must be unique** for each message, and should contain only UPPERCASE letters and "_"
+If you plan to use the networks merge function there can't be **different** messages with the same name across the merged networks, exept if the messages are **identical**, this means that the same message may travel two different networks.
 ___
 
 
