@@ -3,7 +3,7 @@ This subproject manages the id generation for all the messages on the CANbus
 # How to use
 ## Create your network(s)
 
-Each network should have it's own folder and files as shown below:\
+Each network should have its own folder and files as shown below:\
 :open_file_folder: project root\
 └:open_file_folder: [network name]\
 &nbsp;&nbsp;&nbsp;└:page_with_curl: messages.json
@@ -21,8 +21,16 @@ This file contains the description of all the network's messages in the followin
 , ...]
 </pre>
 
+
 **Constraints you have to follow:**
----
+<details><summary>SHOW</summary>
+
+**Avoid message name conflicts across different networks**\
+If you plan to have two different messages in two separate networks having the same name you **can't** use the merge function on those two networks.
+On the other hand if the two messages are **identical**, meaning that they are actually the same message but used on multiple networks you may merge them.
+___
+    
+    
 <pre>
 "name": string
 </pre>
@@ -59,6 +67,17 @@ This field indicates the receiving device(s), **can be more than one**.\
 The characters you should use are all UPPERCASE letters and "_".
 If there is more than one receiving device insert each one as a different array element.\
 If there is only one receiving device use an array with a single element.
+</details>
+
+## Run it!
+Requirements
++  Python >=3.6
+
+
+```console
+python main.py network_folder [second_network_folder] [third] [...]
+```
+if you specify more than one network folder the networks will be merged
 
 
 # How it works
@@ -100,6 +119,4 @@ As described in the [message structure](#message-structure) the priority of a me
 Everything you need to know is that the priority you can assign to each message ranges **from 0 to 7** and that you can have **at most 8 messages** with the same combination of topic and priority.
 
 
-Why? It's a bit tricky, and you, the end user, could just ignore the rest of this section, but keep in mind that constraint.
-
-TODO
+Why? Hard to explain, just know that if many messages with the same topic had the same priority we would have to shift every other topic's messages in order to guarantee their priority. For that reason we had to divide the 64 avaible messages per topic in 8 fixed intervals, each one for a priority level, leading to 8 messages per priority per topic.
