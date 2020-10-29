@@ -14,7 +14,8 @@ python main.py network_folder [second_network_folder] [third] [...]
 if you specify more than one network folder the networks will be merged\
 Generated files:\
 :open_file_folder: [flatbuf-schema-generator](flatbuf-schema-generator)\
-  └ :page_with_curl: [message_ids.json](message_ids.json)
+└ :open_file_folder: [out](out)\
+&nbsp;&nbsp;&nbsp;└ :page_with_curl: [ids.json](out/ids.json)
 
 # How it works
 ## Message structure

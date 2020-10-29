@@ -1,9 +1,8 @@
-import json
-
 from lib.network import Network
 import config
 
 import sys
+import os
 
 
 def get_message_schema(message):
@@ -21,6 +20,9 @@ def get_message_schema(message):
 
 
 def main():
+    if not os.path.exists(config.OUTPUT_DIR):
+        os.makedirs(config.OUTPUT_DIR)
+
     if len(sys.argv) < 2:
         print("Please specify one or more network directories")
         exit(1)
@@ -38,7 +40,7 @@ def main():
     print("====== Schema generating ======")
     print("Schema generated successfully!")
     print("Saving schema to {0}".format(config.OUTPUT_FILE))
-    with open(config.OUTPUT_FILE, "w+") as f:
+    with open("{0}/{1}".format(config.OUTPUT_DIR, config.OUTPUT_FILE), "w+") as f:
         print(schema, file=f)
     print("====== Done! ======")
 

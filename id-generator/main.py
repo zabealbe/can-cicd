@@ -3,6 +3,7 @@ import config
 
 import json
 import sys
+import os
 
 # xxxxxx xxxxx => can id has 11 bits
 # ^^^^^^       => bits for message id
@@ -28,7 +29,7 @@ def generate_message_ids(topic, messages):
         global_msg_ids[msg] = (id << TOPIC_BITS) + topic
 
     if __debug__:
-        for g, s in zip(global_msg_ids.keys(),  scoped_msg_ids):
+        for g, s in zip(global_msg_ids.keys(), scoped_msg_ids):
             print("{0:<16}\tbin  int\n\t"
                   "topic:  {1:>011b}  {1}\n\t"
                   "scoped: {2:>011b}  {2}\n\t"
@@ -81,6 +82,9 @@ def priority_to_id(names, priorities):
 
 
 def main():
+    if not os.path.exists(config.OUTPUT_DIR):
+        os.makedirs(config.OUTPUT_DIR)
+
     if len(sys.argv) < 2:
         print("Please specify one or more network directories")
         exit(1)
@@ -100,29 +104,33 @@ def main():
 
     print("====== Id generation ======")
     topic_ids = generate_topic_ids(network)
-    msg_ids = {}
+    ids = []
     for topic, topic_id in topic_ids.items():
         if __debug__:
             print("\nTOPIC {0}".format(topic))
-        msg_ids.update(
-            generate_message_ids(
+        ids.append({
+            "topic": topic,
+            "id": topic_id,
+            "messages": generate_message_ids(
                 topic_ids[topic], network.get_messages_by_topic(topic)
             )
-        )
+        })
     print("")
-
+    '''
     if __debug__:
         msg_with_p = [[] for i in range(0, MAX_PRIORITY+1)] #  populate array
 
-        for m, m_id in msg_ids.items():
-            message = network.get_message_by_name(m)
-            msg_with_p[message['priority']].append("{0}: {1}".format(m, m_id))
-        for p, mp in enumerate(msg_with_p):
-            print("PRIORITY", p, mp)
+        for t in ids:
+            for m, m_id in t['messages'].items():
+                message = network.get_message_by_name(m)
+                msg_with_p[message['priority']].append("{0}: {1}".format(m, m_id))
+            for p, mp in enumerate(msg_with_p):
+                print("PRIORITY", p, mp)
+    '''
     print("")
     print("Saving IDs to {0}".format(config.OUTPUT_FILE))
-    with open(config.OUTPUT_FILE, "w+") as f:
-        json.dump(msg_ids, f, indent=4)
+    with open("{0}/{1}".format(config.OUTPUT_DIR, config.OUTPUT_FILE), "w+") as f:
+        json.dump(ids, f, indent=4)
     print("====== Done! ======")
 
 
