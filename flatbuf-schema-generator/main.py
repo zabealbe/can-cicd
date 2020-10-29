@@ -17,7 +17,6 @@ def get_message_schema(message):
         schema += "\t{0}: {1};\n".format(item, value)
     schema += "}"
     schema = enum + schema
-    print(schema)
     return schema
 
 
@@ -30,18 +29,18 @@ def main():
     network = Network("")
     for a in sys.argv[1:]:
         network.merge_with(Network(a))
+    print("")
 
-    print("====== Schema generation ======")
     schema = ""
     for m in network.get_all_messages():
         schema += "{0}\n".format(get_message_schema(m))
-    print("")
 
+    print("====== Schema generating ======")
+    print("Schema generated successfully!")
     print("Saving schema to {0}".format(config.OUTPUT_FILE))
     with open(config.OUTPUT_FILE, "w+") as f:
         print(schema, file=f)
     print("====== Done! ======")
-
 
 
 if __name__ == "__main__":

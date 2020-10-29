@@ -3,8 +3,8 @@
         "name": "ENC_L_FROM_ACU",
         "topic": "A",
         "priority": 7,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -13,8 +13,8 @@
         "name": "ENC_R_FROM_ACU",
         "topic": "A",
         "priority":3,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -23,8 +23,8 @@
         "name": "ENC_C_FROM_ACU",
         "topic": "A",
         "priority": 7,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -33,8 +33,8 @@
         "name": "PEDALS_FROM_ATC",
         "topic": "A",
         "priority": 7,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -43,8 +43,8 @@
         "name": "PEDALS_FROM_ACU",
         "topic": "A",
         "priority": 3,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -53,8 +53,8 @@
         "name": "HV_VOLT",
         "topic": "B",
         "priority": 7,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -63,8 +63,8 @@
         "name": "HV_TEMP",
         "topic": "B",
         "priority": 7,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -73,8 +73,8 @@
         "name": "HV_CURR_ERR_WARN",
         "topic": "B",
         "priority": 7,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -83,8 +83,8 @@
         "name": "LV_STATUS",
         "topic": "B",
         "priority": 7,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -93,8 +93,8 @@
         "name": "LV_STATUS_JUDGE",
         "topic": "B",
         "priority": 6,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -103,8 +103,8 @@
         "name": "INV_R_TEMP",
         "topic": "AB",
         "priority": 6,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -113,8 +113,8 @@
         "name": "INV_L_TEMP",
         "topic": "AB",
         "priority": 7,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -123,8 +123,8 @@
         "name": "MOT_R_TEMP",
         "topic": "AB",
         "priority": 0,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -133,8 +133,8 @@
         "name": "MOT_L_TEMP",
         "topic": "AB",
         "priority": 7,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -143,8 +143,8 @@
         "name": "CAL_SET_MIN_MAX",
         "topic": "AB",
         "priority": 7,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
@@ -153,8 +153,8 @@
         "name": "CAL_RESP",
         "topic": "C",
         "priority": 7,
-        "sender": "ECU",
-        "receiver": ["STEER", "BMS_HV"],
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
             "status": ["OFF", "PRECHARGE", "ON", "FATAL"]

@@ -15,7 +15,7 @@ This file contains the description of all the network's messages in the followin
     "name": string,
     "topic": string,
     "priority": int,
-    "sending": string,
+    "sending": [string],
     "receiving": [string]
 }
 , ...]
@@ -45,15 +45,17 @@ This field can can be an **integer from 0 to 7**, the higher the value the more 
 You can have **at most 8 messages** with the same combination of **priority and topic**, if you have more you must create a new topic or assign a different priority to some of them.
 ___
 <pre>
-"sending": string
+"sending": [string]
 </pre>
-This field indicates the sending device, must be **exactly one**.\
+This field indicates the receiving device(s), **can be more than one**.\
 The characters you should use are all UPPERCASE letters and "_".
+If there is more than one sending device insert each one as a different array element.\
+If there is only one sending device use an array with a single element.
 ___
 <pre>
 "receiving": [string]
 </pre>
-This field indicates the receiving device(s), can be more than one.\
+This field indicates the receiving device(s), **can be more than one**.\
 The characters you should use are all UPPERCASE letters and "_".
 If there is more than one receiving device insert each one as a different array element.\
 If there is only one receiving device use an array with a single element.
