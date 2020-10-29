@@ -20,8 +20,8 @@ def generate_flatbuf_includes(flatbuf_schema):
 
 
 def main():
-    if not os.path.exists(config.OUT_DIR):
-        os.makedirs(config.OUT_DIR)
+    if not os.path.exists(config.OUTPUT_DIR):
+        os.makedirs(config.OUTPUT_DIR)
 
     ids = load_json(config.IDS_FILE)
     print("Loaded message ids from {0}".format(config.IDS_FILE))
