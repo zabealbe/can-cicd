@@ -3,7 +3,7 @@ This subproject manages the id generation for all the messages on the CANbus
 # How to use
 ## Create your network(s)
 
-Each network should have it's own folder and files as shown below:\
+Each network should have its own folder and files as shown below:\
 :open_file_folder: project root\
 └:open_file_folder: [network name]\
 &nbsp;&nbsp;&nbsp;└:page_with_curl: messages.json
