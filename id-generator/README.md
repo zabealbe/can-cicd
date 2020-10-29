@@ -119,6 +119,4 @@ As described in the [message structure](#message-structure) the priority of a me
 Everything you need to know is that the priority you can assign to each message ranges **from 0 to 7** and that you can have **at most 8 messages** with the same combination of topic and priority.
 
 
-Why? It's a bit tricky, and you, the end user, could just ignore the rest of this section, but keep in mind that constraint.
-
-TODO
+Why? Hard to explain, just know that if many messages with the same topic had the same priority we would have to shift every other topic's messages in order to guarantee their priority. For that reason we had to divide the 64 avaible messages per topic in 8 fixed intervals, each one for a priority level, leading to 8 messages per priority per topic.
