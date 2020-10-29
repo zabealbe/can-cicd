@@ -11,8 +11,9 @@ The purpose of this project is to manage the CANbus, the data flowing throught i
 **Build the file tree**\
 Each network should have its own folder and files as shown below:\
 :open_file_folder: project root\
-└:open_file_folder: [network name]\
-&nbsp;&nbsp;&nbsp;└:page_with_curl: messages.json
+└:open_file_folder: config\
+&nbsp;&nbsp;&nbsp;└:open_file_folder: [network name]\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: messages.json
 
 **Configure messages.json**\
 This file contains the description of all the network's messages in the following format:
