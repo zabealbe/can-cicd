@@ -11,5 +11,5 @@ python main.py network_folder [second_network_folder] [third] [...]
 if you specify more than one network folder the networks will be \
 Generated files:\
 :open_file_folder: [flatbuf-schema-generator](flatbuf-schema-generator)\
-  └ :page_with_curl: [schema.fbs](schema.fbs)\
+  └ :page_with_curl: [schema.fbs](schema.fbs)
   
