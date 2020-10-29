@@ -21,12 +21,16 @@ This file contains the description of all the network's messages in the followin
 , ...]
 </pre>
 
+
 **Constraints you have to follow:**
----
-### Avoid message conflicts across different networks
+<details><summary>SHOW</summary>
+
+**Avoid message name conflicts across different networks**\
 If you plan to have two different messages in two separate networks having the same name you **can't** use the merge function on those two networks.
 On the other hand if the two messages are **identical**, meaning that they are actually the same message but used on multiple networks you may merge them.
 ___
+    
+    
 <pre>
 "name": string
 </pre>
@@ -63,7 +67,7 @@ This field indicates the receiving device(s), **can be more than one**.\
 The characters you should use are all UPPERCASE letters and "_".
 If there is more than one receiving device insert each one as a different array element.\
 If there is only one receiving device use an array with a single element.
-
+</details>
 
 # How it works
 ## Message structure
