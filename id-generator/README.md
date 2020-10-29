@@ -1,9 +1,9 @@
 # Message IDs generation
 This subproject manages the id generation for all the messages on the CANbus
 # How to use
-[Configure your networks](../README.md#how-to-use)
+### [Configure your networks](../README.md#how-to-use)
 
-## Run it!
+### Run it!
 Requirements
 +  Python >=3.6
 
