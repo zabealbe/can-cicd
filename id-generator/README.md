@@ -69,6 +69,17 @@ If there is more than one receiving device insert each one as a different array 
 If there is only one receiving device use an array with a single element.
 </details>
 
+## Run it!
+Requirements
++  Python >=3.6
+
+
+```console
+python main.py network_folder [second_network_folder] [third] [...]
+```
+if you specify more than one network folder the networks will be merged
+
+
 # How it works
 ## Message structure
 ![](https://canlogger1000.csselectronics.com/img/CAN-Frame-Message-Parameters-Bit-Start-Length_2.png)
