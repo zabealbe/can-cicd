@@ -82,13 +82,6 @@ def priority_to_id(names, priorities):
 
 
 def main():
-    if not os.path.exists(config.OUTPUT_DIR):
-        os.makedirs(config.OUTPUT_DIR)
-
-    if len(sys.argv) < 2:
-        print("Please specify one or more network directories")
-        exit(1)
-
     print("====== Configuration ======")
     print("Max topics: {0}".format(2 ** TOPIC_BITS))
     print("Max messages per topic: {0}".format(2 ** MESSAGE_BITS))
@@ -135,7 +128,7 @@ def main():
                     print("PRIORITY", p, mp)
         '''
         print("")
-        output_path = "{0}/{1}/{2}".format(config.OUTPUT_DIR, n.name,config.OUTPUT_FILE)
+        output_path = "{0}/{1}/{2}".format(config.OUTPUT_DIR, n.name, config.OUTPUT_FILE)
         print("Saving IDs to {0}".format(output_path))
         create_file_subtree(output_path)
         with open(output_path, "w+") as f:

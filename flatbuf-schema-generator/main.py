@@ -21,13 +21,6 @@ def get_message_schema(message):
 
 
 def main():
-    if not os.path.exists(config.OUTPUT_DIR):
-        os.makedirs(config.OUTPUT_DIR)
-
-    if len(sys.argv) < 2:
-        print("Please specify one or more network directories")
-        exit(1)
-
     merge_mode = False
 
     print("====== Networks loading ======")
