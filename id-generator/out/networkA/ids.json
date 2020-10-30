@@ -11,32 +11,32 @@
         }
     },
     {
-        "topic": "B",
+        "topic": "A",
         "id": 1,
         "messages": {
-            "HV_VOLT": 1,
-            "HV_TEMP": 33,
-            "HV_CURR_ERR_WARN": 65,
-            "LV_STATUS": 97,
-            "LV_STATUS_JUDGE": 257
-        }
-    },
-    {
-        "topic": "A",
-        "id": 2,
-        "messages": {
-            "ENC_L_FROM_ACU": 2,
-            "ENC_R_FROM_ACU": 1026,
-            "ENC_C_FROM_ACU": 34,
-            "PEDALS_FROM_ATC": 66,
-            "PEDALS_FROM_ACU": 1058
+            "ENC_L_FROM_ACU": 1,
+            "ENC_R_FROM_ACU": 1025,
+            "ENC_C_FROM_ACU": 33,
+            "PEDALS_FROM_ATC": 65,
+            "PEDALS_FROM_ACU": 1057
         }
     },
     {
         "topic": "BC",
+        "id": 2,
+        "messages": {
+            "CAL_RESP": 2
+        }
+    },
+    {
+        "topic": "B",
         "id": 3,
         "messages": {
-            "CAL_RESP": 3
+            "HV_VOLT": 3,
+            "HV_TEMP": 35,
+            "HV_CURR_ERR_WARN": 67,
+            "LV_STATUS": 99,
+            "LV_STATUS_JUDGE": 259
         }
     }
 ]

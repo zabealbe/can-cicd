@@ -2,6 +2,23 @@
 This subproject manages the id generation for all the messages on the CANbus
 # How to use
 ### [Configure your networks](../README.md#how-to-use)
+### Configure config.py
+:open_file_folder: [id-generator](id-generator)\
+└ :page_with_curl: [config.py](config.py)
+
+
+Here's a breakdown of what you will find:
+```python
+MESSAGES_FILE = "../config/[network]/messages.json"
+```
+This is the messages description file, the syntax is as any other path, exept for ```[network]``` tag.\
+This tag means that inside  **:open_file_folder:config** the software must look for **all folders** with a seach depth of 1, this will be the **:open_file_folder:network folder** of the homonym network. Inside each network folder there should be a file named **:page_with_curl:messages.json**
+```python
+OUTPUT_FILE = "out/[network]/ids.json"
+```
+This is the messages description file, the syntax is as any other path, exept for ```[network]``` tag.\
+This tag means that inside  **:open_file_folder:out** the software should create a folder for **each network** and fill each folder with the network's\
+relative **:page_with_curl:ids.json**
 
 ### Run it!
 Requirements
@@ -13,7 +30,7 @@ python main.py network_folder [second_network_folder] [third] [...]
 ```
 if you specify more than one network folder the networks will be merged\
 Generated files:\
-:open_file_folder: [flatbuf-schema-generator](flatbuf-schema-generator)\
+:open_file_folder: [id-generator](id-generator)\
 └ :open_file_folder: [out](out)\
 &nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [ExampleNetwork](out/ExampleNetwork)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: [ids.json](out/ExampleNetwork/ids.json)
