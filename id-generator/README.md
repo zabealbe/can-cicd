@@ -26,9 +26,8 @@ Requirements
 
 
 ```console
-python main.py network_folder [second_network_folder] [third] [...]
+python main.py
 ```
-if you specify more than one network folder the networks will be merged\
 Generated files:\
 :open_file_folder: [id-generator](id-generator)\
 └ :open_file_folder: [out](out)\
