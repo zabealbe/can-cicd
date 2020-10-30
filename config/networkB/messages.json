@@ -1,7 +1,7 @@
  [
     {
         "name": "ENC_L_FROM_ACU",
-        "topic": "A",
+        "topic": "TEST",
         "priority": 7,
         "sending": ["ECU"],
         "receiving": ["STEER", "BMS_HV"],
