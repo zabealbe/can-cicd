@@ -1,6 +1,6 @@
 # INPUT FILES
-IDS_FILE = "../id-generator/out/ids.json"
-FLATBUF_SCHEMA_FILE = "../flatbuf-schema-generator/out/schema.fbs"
+IDS_FILE = "../id-generator/out/[network]/ids.json"
+FLATBUF_SCHEMA_FILE = "../flatbuf-schema-generator/out/[network]/schema.fbs"
 
 # OUTPUT FILES
 OUTPUT_DIR = "./out"

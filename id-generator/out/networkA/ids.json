@@ -1,0 +1,42 @@
+[
+    {
+        "topic": "B",
+        "id": 0,
+        "messages": {
+            "HV_VOLT": 0,
+            "HV_TEMP": 32,
+            "HV_CURR_ERR_WARN": 64,
+            "LV_STATUS": 96,
+            "LV_STATUS_JUDGE": 256
+        }
+    },
+    {
+        "topic": "A",
+        "id": 1,
+        "messages": {
+            "ENC_L_FROM_ACU": 1,
+            "ENC_R_FROM_ACU": 1025,
+            "ENC_C_FROM_ACU": 33,
+            "PEDALS_FROM_ATC": 65,
+            "PEDALS_FROM_ACU": 1057
+        }
+    },
+    {
+        "topic": "AB",
+        "id": 2,
+        "messages": {
+            "INV_R_TEMP": 258,
+            "INV_L_TEMP": 2,
+            "MOT_R_TEMP": 1794,
+            "MOT_L_TEMP": 34,
+            "CAL_SET_MIN_MAX": 66
+        }
+    },
+    {
+        "topic": "C",
+        "id": 3,
+        "messages": {
+            "CAL_RESP": 3
+        }
+    }
+]

@@ -19,4 +19,4 @@ def generate_ids_include(ids):
 
 def generate_flatbuf_include(flatbuf_schema):
     output = ""
-    return  output
+    return output

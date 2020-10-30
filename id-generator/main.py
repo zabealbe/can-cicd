@@ -1,6 +1,6 @@
 from lib.network import Network
 import config
-
+from lib.utils import *
 import json
 import sys
 import os
@@ -96,42 +96,51 @@ def main():
     print("Max messages per priority per topic: {0}".format(int(2 ** MESSAGE_BITS / (MAX_PRIORITY + 1))))
     print("")
 
+    merge_mode = False
+
     print("====== Networks loading ======")
-    network = Network("")
-    for a in sys.argv[1:]:
-        network.merge_with(Network(a))
+    paths = parse_network_multipath(config.MESSAGES_FILE)
+    networks = []
+    for n, path in paths.items():
+        if merge_mode and networks:
+            networks[0].merge_with(Network(path, n))
+        else:
+            networks.append(Network(path, n))
+        print("Loaded {0}".format(n))
     print("")
-
-    print("====== Id generation ======")
-    topic_ids = generate_topic_ids(network)
-    ids = []
-    for topic, topic_id in topic_ids.items():
+    for n in networks:
+        print("====== Id generation for network {0} ======".format(n.name))
+        topic_ids = generate_topic_ids(n)
+        ids = []
+        for topic, topic_id in topic_ids.items():
+            if __debug__:
+                print("\nTOPIC {0}".format(topic))
+            ids.append({
+                "topic": topic,
+                "id": topic_id,
+                "messages": generate_message_ids(
+                    topic_ids[topic], n.get_messages_by_topic(topic)
+                )
+            })
+        print("")
+        '''
         if __debug__:
-            print("\nTOPIC {0}".format(topic))
-        ids.append({
-            "topic": topic,
-            "id": topic_id,
-            "messages": generate_message_ids(
-                topic_ids[topic], network.get_messages_by_topic(topic)
-            )
-        })
-    print("")
-    '''
-    if __debug__:
-        msg_with_p = [[] for i in range(0, MAX_PRIORITY+1)] #  populate array
-
-        for t in ids:
-            for m, m_id in t['messages'].items():
-                message = network.get_message_by_name(m)
-                msg_with_p[message['priority']].append("{0}: {1}".format(m, m_id))
-            for p, mp in enumerate(msg_with_p):
-                print("PRIORITY", p, mp)
-    '''
-    print("")
-    print("Saving IDs to {0}".format(config.OUTPUT_FILE))
-    with open("{0}/{1}".format(config.OUTPUT_DIR, config.OUTPUT_FILE), "w+") as f:
-        json.dump(ids, f, indent=4)
-    print("====== Done! ======")
+            msg_with_p = [[] for i in range(0, MAX_PRIORITY+1)] #  populate array
+    
+            for t in ids:
+                for m, m_id in t['messages'].items():
+                    message = network.get_message_by_name(m)
+                    msg_with_p[message['priority']].append("{0}: {1}".format(m, m_id))
+                for p, mp in enumerate(msg_with_p):
+                    print("PRIORITY", p, mp)
+        '''
+        print("")
+        output_path = "{0}/{1}/{2}".format(config.OUTPUT_DIR, n.name,config.OUTPUT_FILE)
+        print("Saving IDs to {0}".format(output_path))
+        create_file_subtree(output_path)
+        with open(output_path, "w+") as f:
+            json.dump(ids, f, indent=4)
+        print("====== Done! ======")
 
 
 if __name__ == "__main__":

@@ -4,16 +4,15 @@ MESSAGES_FILE = "messages.json"
 
 
 class Network:
-    def __init__(self, path):
+    def __init__(self, path, name):
         self.path = path
-        self.name = path.split('/')[-1]
+        self.name = name
         self.contents = []
         if path:
             self.load()
 
     def load(self):
-        messages_path = self.path + "/" + MESSAGES_FILE
-        messages = load_json(messages_path)
+        messages = load_json(self.path)
 
         network = {}
         if messages == {}:
@@ -38,7 +37,7 @@ class Network:
             self.contents += network.contents
         else:
             raise Exception("Parameter network isn't a Network instance")
-        self.name = self.name + network.name
+        self.name = self.name + "_" + network.name
 
     def get_all_messages(self):
         return self.contents

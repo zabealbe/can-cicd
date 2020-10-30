@@ -1,5 +1,6 @@
 from lib.network import Network
 import config
+from lib.utils import *
 
 import sys
 import os
@@ -27,22 +28,32 @@ def main():
         print("Please specify one or more network directories")
         exit(1)
 
+    merge_mode = False
+
     print("====== Networks loading ======")
-    network = Network("")
-    for a in sys.argv[1:]:
-        network.merge_with(Network(a))
+    paths = parse_network_multipath(config.MESSAGES_FILE)
+    networks = []
+    for n, path in paths.items():
+        if merge_mode and networks:
+            networks[0].merge_with(Network(path, n))
+        else:
+            networks.append(Network(path, n))
+        print("Loaded {0}".format(n))
     print("")
 
-    schema = ""
-    for m in network.get_all_messages():
-        schema += "{0}\n".format(get_message_schema(m))
+    for n in networks:
+        schema = ""
+        for m in n.get_all_messages():
+            schema += "{0}\n".format(get_message_schema(m))
 
-    print("====== Schema generating ======")
-    print("Schema generated successfully!")
-    print("Saving schema to {0}".format(config.OUTPUT_FILE))
-    with open("{0}/{1}".format(config.OUTPUT_DIR, config.OUTPUT_FILE), "w+") as f:
-        print(schema, file=f)
-    print("====== Done! ======")
+        print("====== Schema generating ======")
+        print("Schema generated successfully!")
+        output_path = "{0}/{1}/{2}".format(config.OUTPUT_DIR, n.name, config.OUTPUT_FILE)
+        print("Saving schema to {0}".format(output_path))
+        create_file_subtree(output_path)
+        with open(output_path, "w+") as f:
+            print(schema, file=f)
+        print("====== Done! ======")
 
 
 if __name__ == "__main__":
