@@ -8,6 +8,8 @@ The purpose of this project is to manage the CANbus, the data flowing throught i
   └ :open_file_folder: [includes-generator](includes-generator)
 
 # How to use
+Any subproject is a standalone module. However some subprojects may have the specific job to generate configuration files for other subprojects, of course those files could be manually created but if you want to use all the CICD facilitations you must run the projects in the order [shown above](#subprojects)
+Before using any of the subprojects you will have to do the following:
 ## Create your network(s)
 **Build the file tree**\
 Each network should have its own folder and files as shown below:\
@@ -80,9 +82,3 @@ The characters you should use are all UPPERCASE letters and "_".
 If there is more than one receiving device insert each one as a different array element.\
 If there is only one receiving device use an array with a single element.
 </details>
-
-## Configure and run the subprojects following this order
-:open_file_folder: project root\
-  ├ :open_file_folder: [id-generator](id-generator#)\
-  ├ :open_file_folder: [flatbuf-schema-generator](flatbuf-schema-generator)\
-  └ :open_file_folder: [includes-generator](includes-generator)
