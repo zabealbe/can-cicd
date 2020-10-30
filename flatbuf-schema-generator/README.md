@@ -12,5 +12,6 @@ if you specify more than one network folder the networks will be merged\
 Generated files:\
 :open_file_folder: [flatbuf-schema-generator](flatbuf-schema-generator)\
  └ :open_file_folder: [out](out)\
-&nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: [schema.fbs](out/schema.fbs)
+&nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [ExampleNetwork](out/ExampleNetwork)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: [schema.fbs](out/schema.fbs)
   
