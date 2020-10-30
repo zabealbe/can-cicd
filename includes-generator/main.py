@@ -7,6 +7,7 @@ import config
 
 import os
 
+#test
 
 def generate_id_includes(message_ids, output_file):
     plaintext_file = cgen.generate_ids_include(message_ids)
