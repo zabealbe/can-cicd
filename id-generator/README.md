@@ -15,11 +15,11 @@ This is a special tag that can be used in any folder path, it identifies the net
 ```python
 MESSAGES_FILE = "../config/[network]/messages.json"
 ```
-This is the messages description file, the syntax is as any other path, exept for ```[network]``` tag.
+This is the input messages description file, the syntax is as any other path, exept for ```[network]``` tag.
 ```python
 OUTPUT_FILE = "out/[network]/ids.json"
 ```
-This is the generated messages description file, the syntax is as any other path, exept for ```[network]``` tag.
+This is the generated messages ids file, the syntax is as any other path, exept for ```[network]``` tag.
 
 ### Run it!
 Requirements
