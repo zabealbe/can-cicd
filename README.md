@@ -80,3 +80,9 @@ The characters you should use are all UPPERCASE letters and "_".
 If there is more than one receiving device insert each one as a different array element.\
 If there is only one receiving device use an array with a single element.
 </details>
+
+## Configure and run the subprojects with this order
+:open_file_folder: project root\
+  ├ :open_file_folder: [id-generator](id-generator#)\
+  ├ :open_file_folder: [flatbuf-schema-generator](flatbuf-schema-generator)\
+  └ :open_file_folder: [includes-generator](includes-generator)
