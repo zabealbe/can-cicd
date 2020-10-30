@@ -5,10 +5,10 @@ import config
 
 import os
 
+
 def generate_id_includes(message_ids):
     coutput = cgen.generate_ids_include(message_ids)
-    print("OUT ",coutput)
-    with open(config.C_INCLUDE, "w+") as f:
+    with open("{0}/{1}".format(config.OUTPUT_DIR, config.C_INCLUDE), "w+") as f:
         print(coutput, file=f)
     print("Generated C Header {0}".format(config.C_INCLUDE))
 
