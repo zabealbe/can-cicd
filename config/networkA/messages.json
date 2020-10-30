@@ -151,7 +151,7 @@
         }
     },{
         "name": "CAL_RESP",
-        "topic": "B",
+        "topic": "T",
         "priority": 7,
         "sending": ["ECU"],
         "receiving": ["STEER", "BMS_HV"],
