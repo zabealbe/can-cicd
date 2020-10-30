@@ -10,7 +10,7 @@ Here's a breakdown of what you will find:
 ```console
 [network]
 ```
-This is a special tag that can be used in any folder path, it identifies the network folder, meaning that **for each network** there will be an equivalent path with the "[network]" string replaced by the network's name
+This is a special tag that can be used in any folder path, it identifies the network folder, meaning that **for each network** there will be an equivalent path with the ```[network]``` string replaced by the network's name
 ```python
 IDS_FILE = "../id-generator/out/[network]/ids.json"
 ```
