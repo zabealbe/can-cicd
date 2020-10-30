@@ -13,9 +13,8 @@ This subproject generates all the files that will be useful for can interactions
 ```console
 python main.py
 ```
-if you specify more than one network folder the networks will be merged\
 Generated files:\
-:open_file_folder: [flatbuf-schema-generator](includes-generator)\
+:open_file_folder: [includes-generator](includes-generator)\
  └ :open_file_folder: [out](out)\
 &nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: [ids.h](out/ids.h)
   
