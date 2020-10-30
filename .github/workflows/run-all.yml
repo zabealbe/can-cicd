@@ -10,16 +10,16 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    env:
+      INCLUDES_VERSION: 0
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v2
+    - uses: actions/setup-python@v2
+      name: Set up Python 3.8
       with:
         python-version: 3.8
-    - name: Run id generation
+    - uses: actions/checkout@v2
+    - name: Run includes generation
       run: |
         cd id-generator
         python main.py
@@ -27,3 +27,8 @@ jobs:
         python main.py
         cd ../includes-generator
         python main.py
+    - name: Push generated includes
+      run: |
+          git config --global user.name 'Automated CICD'
+          git commit -am "Automatically generated files"
+          git push
