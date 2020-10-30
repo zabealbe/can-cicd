@@ -1,9 +1,13 @@
 [
     {
-        "topic": "C",
+        "topic": "A",
         "id": 0,
         "messages": {
-            "CAL_RESP": 0
+            "ENC_L_FROM_ACU": 0,
+            "ENC_R_FROM_ACU": 1024,
+            "ENC_C_FROM_ACU": 32,
+            "PEDALS_FROM_ATC": 64,
+            "PEDALS_FROM_ACU": 1056
         }
     },
     {
@@ -18,14 +22,10 @@
         }
     },
     {
-        "topic": "A",
+        "topic": "BC",
         "id": 2,
         "messages": {
-            "ENC_L_FROM_ACU": 2,
-            "ENC_R_FROM_ACU": 1026,
-            "ENC_C_FROM_ACU": 34,
-            "PEDALS_FROM_ATC": 66,
-            "PEDALS_FROM_ACU": 1058
+            "CAL_RESP": 2
         }
     },
     {
