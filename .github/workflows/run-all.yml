@@ -9,7 +9,7 @@ on:
     - 'config/**'
 
 jobs:
-  build:
+  run-all:
     runs-on: ubuntu-latest
     env:
       INCLUDES_VERSION: 0
@@ -30,5 +30,6 @@ jobs:
     - name: Push generated includes
       run: |
           git config --global user.name 'Automated CICD'
+          git config --global user.email noreply@noone.com
           git commit -am "Automatically generated files"
           git push
