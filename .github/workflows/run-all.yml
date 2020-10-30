@@ -24,5 +24,7 @@ jobs:
       run: |
         cd id-generator
         python main.py
-        cd ../schema-generator
+        cd ../flatbuf-schema-generator
+        python main.py
+        cd ../includes-generator
         python main.py
