@@ -22,4 +22,7 @@ jobs:
         python-version: 3.8
     - name: Run id generation
       run: |
-        python id-generator/main.py
+        cd id-generator
+        python main.py
+        cd ../schema-generator
+        python main.py
