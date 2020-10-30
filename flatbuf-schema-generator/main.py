@@ -1,9 +1,9 @@
+import sys
+import os
+
 from lib.network import Network
 import config
 from lib.utils import *
-
-import sys
-import os
 
 
 def get_message_schema(message):
@@ -41,7 +41,7 @@ def main():
 
         print("====== Schema generating ======")
         print("Schema generated successfully!")
-        output_path = "{0}/{1}/{2}".format(config.OUTPUT_DIR, n.name, config.OUTPUT_FILE)
+        output_path = config.OUTPUT_FILE.replace("[network]", n.name)
         print("Saving schema to {0}".format(output_path))
         create_file_subtree(output_path)
         with open(output_path, "w+") as f:

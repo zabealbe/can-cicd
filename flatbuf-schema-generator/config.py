@@ -1,3 +1,2 @@
 MESSAGES_FILE = "../config/[network]/messages.json"
-OUTPUT_DIR = "out"
-OUTPUT_FILE = "schema.fbs"
+OUTPUT_FILE = "out/[network]/schema.fbs"

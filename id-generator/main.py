@@ -1,9 +1,10 @@
-from lib.network import Network
-import config
-from lib.utils import *
 import json
 import sys
 import os
+
+from lib.network import Network
+import config
+from lib.utils import *
 
 # xxxxxx xxxxx => can id has 11 bits
 # ^^^^^^       => bits for message id
@@ -128,7 +129,7 @@ def main():
                     print("PRIORITY", p, mp)
         '''
         print("")
-        output_path = "{0}/{1}/{2}".format(config.OUTPUT_DIR, n.name, config.OUTPUT_FILE)
+        output_path = config.OUTPUT_FILE.replace("[network]", n.name)
         print("Saving IDs to {0}".format(output_path))
         create_file_subtree(output_path)
         with open(output_path, "w+") as f:
