@@ -8,7 +8,7 @@ The purpose of this project is to manage the CANbus, the data flowing throught i
   └ :open_file_folder: [includes-generator](includes-generator)
 
 # How to use
-Any subproject is a standalone module. However some subprojects may have the specific job to generate configuration files for other subprojects, of course those files could be manually created but if you want to use all the CICD facilitations you must run the projects in the order [shown above](#subprojects)
+Any subproject is a standalone module. However some subprojects may have the specific job to generate configuration files for other subprojects, of course those files could be manually created but if you want to use all the CICD facilitations you must run the projects in the order [shown above](#subprojects).
 
 
 Before using any of the subprojects you will have to do the following:
