@@ -6,9 +6,8 @@ This subproject generates flatbuffer's schema based on message contents descript
 
 
 ```console
-python main.py network_folder [second_network_folder] [third] [...]
+python main.py
 ```
-if you specify more than one network folder the networks will be merged\
 Generated files:\
 :open_file_folder: [flatbuf-schema-generator](flatbuf-schema-generator)\
  └ :open_file_folder: [out](out)\
