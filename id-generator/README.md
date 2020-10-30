@@ -8,17 +8,18 @@ This subproject manages the id generation for all the messages on the CANbus
 
 
 Here's a breakdown of what you will find:
+```console
+[network]
+```
+This is a special tag that can be used in any folder path, it identifies the network folder, meaning that **for each network** there will be an equivalent path with the "[network]" string replaced by the network's name
 ```python
 MESSAGES_FILE = "../config/[network]/messages.json"
 ```
-This is the messages description file, the syntax is as any other path, exept for ```[network]``` tag.\
-This tag means that inside  **:open_file_folder:config/** the software must look for **all folders** with a seach depth of 1, this will be the **:open_file_folder:network folder** of the homonym network. Inside each network folder there should be a file named **:page_with_curl:messages.json**
+This is the messages description file, the syntax is as any other path, exept for ```[network]``` tag.
 ```python
 OUTPUT_FILE = "out/[network]/ids.json"
 ```
-This is the generated messages description file, the syntax is as any other path, exept for ```[network]``` tag.\
-This tag means that inside  **:open_file_folder:out/** the software should create a folder for **each network** and fill each folder with the network's\
-relative **:page_with_curl:ids.json**
+This is the generated messages description file, the syntax is as any other path, exept for ```[network]``` tag.
 
 ### Run it!
 Requirements
