@@ -1,0 +1,13 @@
+ [
+    {
+        "name": "MESSAGE_FROM_TEST1",
+        "topic": "TESTBENCH_1",
+        "priority": 7,
+        "sending": ["ECU"],
+        "receiving": ["STEER", "BMS_HV"],
+        "contents": {
+            "current": "uint16",
+            "status": ["TEST_OK", "TEST_FAIL", "FATAL"]
+        }
+    }
+ ]
