@@ -1,6 +1,8 @@
 # Includes generator
 This subproject generates all the files that will be useful for can interactions
 # How to use
+### [Run id-generator](../id-generator/README.md#how-to-use)
+### [Run flatbuf-schema-generator](../flatbuf-schema-generator/README.md#how-to-use)
 ### Configure your config.py
 :open_file_folder: [includes-generator](includes-generator)\
 └ :page_with_curl: [config.py](config.py)
@@ -24,8 +26,6 @@ OUTPUT_DIR = "./out/[network]"
 ```
 This is the output folder for the generated files, the syntax is as any other path, exept for ```[network]``` tag.
 
-### [Run id-generator](../id-generator/README.md#how-to-use)
-### [Run flatbuf-schema-generator](../flatbuf-schema-generator/README.md#how-to-use)
 ### Run it!
 
 
