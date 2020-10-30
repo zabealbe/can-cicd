@@ -6,7 +6,7 @@ name: Run all
 on:
   push:
     paths:
-    - 'config/*'
+    - 'config/**'
 
 jobs:
   build:
