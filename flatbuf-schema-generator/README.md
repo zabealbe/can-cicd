@@ -22,7 +22,8 @@ OUTPUT_FILE = "out/[network]/schema.fbs"
 This is the generated flatbuffer schema file, the syntax is as any other path, exept for ```[network]``` tag.
 
 ### Run it!
-
+Requirements
++  Python >=3.6
 
 ```console
 python main.py
