@@ -15,7 +15,8 @@ if you specify more than one network folder the networks will be merged\
 Generated files:\
 :open_file_folder: [flatbuf-schema-generator](flatbuf-schema-generator)\
 └ :open_file_folder: [out](out)\
-&nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: [ids.json](out/ids.json)
+&nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [networkExample](out/networkExample)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: [ids.json](out/networkExample/ids.json)
 
 # How it works
 ## Message structure
