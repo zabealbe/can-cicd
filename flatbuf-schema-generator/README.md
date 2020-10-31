@@ -26,7 +26,7 @@ Requirements:
 +  Python >=3.6
 
 ```console
-python main.py
+$ python main.py
 ```
 Generated files:\
 :open_file_folder: [flatbuf-schema-generator](flatbuf-schema-generator)\
