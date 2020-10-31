@@ -86,7 +86,7 @@ If there is only one receiving device use an array with a single element.
 </details>
 
 
-# How to use
+# How to run
 This project can be used in a couple of ways, the first one being the coolest:
 ## The automated way
 :open_file_folder: project root\
