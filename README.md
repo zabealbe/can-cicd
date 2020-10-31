@@ -8,7 +8,7 @@ The purpose of this project is to manage the CANbus, the data flowing throught i
   └ :open_file_folder: [includes-generator](includes-generator)
 
 # How to configure
-The project-wide configuration files can be found here:
+The project-wide configuration files can be found here:\
 :open_file_folder: project root\
   └ :open_file_folder: [config](config)
 
