@@ -36,6 +36,6 @@ python main.py
 Generated files:\
 :open_file_folder: [includes-generator](includes-generator)\
  └ :open_file_folder: [out](out)\
-&nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [ExampleNetwork](out/ExampleNetwork)\
+&nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [[network-folder]](out/ExampleNetwork)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: [ids.h](out/ids.h)
   
