@@ -7,11 +7,11 @@ The purpose of this project is to manage the CANbus, the data flowing throught i
   ├ :open_file_folder: [flatbuf-schema-generator](flatbuf-schema-generator)\
   └ :open_file_folder: [includes-generator](includes-generator)
 
-# How to use
-Any subproject is a standalone module. However some subprojects may have the specific job to generate configuration files for other subprojects, of course those files could be manually created but if you want to use all the CICD facilitations you must run the projects in the order [shown above](#subprojects).
+# How to configure
+The project-wide configuration files can be found here:
+:open_file_folder: project root\
+  └ :open_file_folder: [config](config)
 
-
-Before using any of the subprojects you will have to do the following:
 ## Create your network(s)
 **Build the file tree**\
 Each network should have its own folder and files as shown below:\
@@ -84,3 +84,17 @@ The characters you should use are all UPPERCASE letters and "_".
 If there is more than one receiving device insert each one as a different array element.\
 If there is only one receiving device use an array with a single element.
 </details>
+
+
+# How to use
+This project can be used in a couple of ways, the first one being the coolest:
+## The automated way
+:open_file_folder: project root\
+  └ :open_file_folder: [config](config)
+  
+
+Any commit to this directory will trigger GitHub's actions workflow as described in [this file](.github/workflows/run-all.yml),\
+you will find the generated files under the :open_file_folder:out folder of each each module.
+
+## The manual way
+Any subproject is a standalone module. However some subprojects may have the specific job to generate configuration files for other subprojects, of course those files could be manually created but if you want to run the full CICD stack you must use the projects in the order [shown above](#subprojects).
