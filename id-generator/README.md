@@ -27,7 +27,7 @@ Requirements
 
 
 ```console
-python main.py
+$ python main.py
 ```
 Generated files:\
 :open_file_folder: [id-generator](id-generator)\
