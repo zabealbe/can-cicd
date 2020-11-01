@@ -1,7 +1,0 @@
-
-enum Status : byte { TEST_OK, TEST_FAIL, FATAL }
-struct MESSAGE_FROM_TEST1 {
-	current: uint16;
-	status: Status;
-}
-
