@@ -23,8 +23,9 @@ jobs:
       run: |
         cd id-generator
         python main.py
-        cd ../flatbuf-schema-generator
-        python main.py
+        cd ../flatbuf-generator
+        python generate_schema.py
+        python compile_schema.py
         cd ../includes-generator
         python main.py
     - name: Push generated includes
