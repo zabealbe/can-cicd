@@ -17,7 +17,7 @@ MESSAGES_FILE = "../config/[network]/messages.json"
 ```
 This is the input messages description file, the syntax is as any other path, exept for ```[network]``` tag.
 ```python
-OUTPUT_FILE = "out/[network]/schema.fbs"
+SCHEMA_FILE = "out/[network]/schema.fbs"
 ```
 This is the generated flatbuffer schema file, the syntax is as any other path, exept for ```[network]``` tag.
 
