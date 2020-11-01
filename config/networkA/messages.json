@@ -7,7 +7,7 @@
         "receiving": ["STEER", "BMS_HV"],
         "contents": {
             "current": "uint16",
-            "status": ["OFFd", "PRECHARGE", "ON", "FATAL"]
+            "status": ["OFF", "PRECHARGE", "ON", "FATAL"]
         }
     },{
         "name": "ENC_R_FROM_ACU",
