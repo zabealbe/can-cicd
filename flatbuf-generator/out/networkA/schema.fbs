@@ -54,3 +54,29 @@ struct INV_R_TEMP {
 	current: uint16;
 	status: Status;
 }
+
+struct INV_L_TEMP {
+	current: uint16;
+	status: Status;
+}
+
+struct MOT_R_TEMP {
+	current: uint16;
+	status: Status;
+}
+
+struct MOT_L_TEMP {
+	current: uint16;
+	status: Status;
+}
+
+struct CAL_SET_MIN_MAX {
+	current: uint16;
+	status: Status;
+}
+
+struct CAL_RESP {
+	current: uint16;
+	status: Status;
+}
+
