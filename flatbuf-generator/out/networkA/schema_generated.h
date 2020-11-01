@@ -28,6 +28,16 @@ struct LV_STATUS_JUDGE;
 
 struct INV_R_TEMP;
 
+struct INV_L_TEMP;
+
+struct MOT_R_TEMP;
+
+struct MOT_L_TEMP;
+
+struct CAL_SET_MIN_MAX;
+
+struct CAL_RESP;
+
 enum Status {
   Status_OFF = 0,
   Status_PRECHARGE = 1,
@@ -371,5 +381,145 @@ FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(2) INV_R_TEMP FLATBUFFERS_FINAL_CLASS {
   }
 };
 FLATBUFFERS_STRUCT_END(INV_R_TEMP, 4);
+
+FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(2) INV_L_TEMP FLATBUFFERS_FINAL_CLASS {
+ private:
+  uint16_t current_;
+  int8_t status_;
+  int8_t padding0__;
+
+ public:
+  INV_L_TEMP()
+      : current_(0),
+        status_(0),
+        padding0__(0) {
+    (void)padding0__;
+  }
+  INV_L_TEMP(uint16_t _current, Status _status)
+      : current_(flatbuffers::EndianScalar(_current)),
+        status_(flatbuffers::EndianScalar(static_cast<int8_t>(_status))),
+        padding0__(0) {
+    (void)padding0__;
+  }
+  uint16_t current() const {
+    return flatbuffers::EndianScalar(current_);
+  }
+  Status status() const {
+    return static_cast<Status>(flatbuffers::EndianScalar(status_));
+  }
+};
+FLATBUFFERS_STRUCT_END(INV_L_TEMP, 4);
+
+FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(2) MOT_R_TEMP FLATBUFFERS_FINAL_CLASS {
+ private:
+  uint16_t current_;
+  int8_t status_;
+  int8_t padding0__;
+
+ public:
+  MOT_R_TEMP()
+      : current_(0),
+        status_(0),
+        padding0__(0) {
+    (void)padding0__;
+  }
+  MOT_R_TEMP(uint16_t _current, Status _status)
+      : current_(flatbuffers::EndianScalar(_current)),
+        status_(flatbuffers::EndianScalar(static_cast<int8_t>(_status))),
+        padding0__(0) {
+    (void)padding0__;
+  }
+  uint16_t current() const {
+    return flatbuffers::EndianScalar(current_);
+  }
+  Status status() const {
+    return static_cast<Status>(flatbuffers::EndianScalar(status_));
+  }
+};
+FLATBUFFERS_STRUCT_END(MOT_R_TEMP, 4);
+
+FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(2) MOT_L_TEMP FLATBUFFERS_FINAL_CLASS {
+ private:
+  uint16_t current_;
+  int8_t status_;
+  int8_t padding0__;
+
+ public:
+  MOT_L_TEMP()
+      : current_(0),
+        status_(0),
+        padding0__(0) {
+    (void)padding0__;
+  }
+  MOT_L_TEMP(uint16_t _current, Status _status)
+      : current_(flatbuffers::EndianScalar(_current)),
+        status_(flatbuffers::EndianScalar(static_cast<int8_t>(_status))),
+        padding0__(0) {
+    (void)padding0__;
+  }
+  uint16_t current() const {
+    return flatbuffers::EndianScalar(current_);
+  }
+  Status status() const {
+    return static_cast<Status>(flatbuffers::EndianScalar(status_));
+  }
+};
+FLATBUFFERS_STRUCT_END(MOT_L_TEMP, 4);
+
+FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(2) CAL_SET_MIN_MAX FLATBUFFERS_FINAL_CLASS {
+ private:
+  uint16_t current_;
+  int8_t status_;
+  int8_t padding0__;
+
+ public:
+  CAL_SET_MIN_MAX()
+      : current_(0),
+        status_(0),
+        padding0__(0) {
+    (void)padding0__;
+  }
+  CAL_SET_MIN_MAX(uint16_t _current, Status _status)
+      : current_(flatbuffers::EndianScalar(_current)),
+        status_(flatbuffers::EndianScalar(static_cast<int8_t>(_status))),
+        padding0__(0) {
+    (void)padding0__;
+  }
+  uint16_t current() const {
+    return flatbuffers::EndianScalar(current_);
+  }
+  Status status() const {
+    return static_cast<Status>(flatbuffers::EndianScalar(status_));
+  }
+};
+FLATBUFFERS_STRUCT_END(CAL_SET_MIN_MAX, 4);
+
+FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(2) CAL_RESP FLATBUFFERS_FINAL_CLASS {
+ private:
+  uint16_t current_;
+  int8_t status_;
+  int8_t padding0__;
+
+ public:
+  CAL_RESP()
+      : current_(0),
+        status_(0),
+        padding0__(0) {
+    (void)padding0__;
+  }
+  CAL_RESP(uint16_t _current, Status _status)
+      : current_(flatbuffers::EndianScalar(_current)),
+        status_(flatbuffers::EndianScalar(static_cast<int8_t>(_status))),
+        padding0__(0) {
+    (void)padding0__;
+  }
+  uint16_t current() const {
+    return flatbuffers::EndianScalar(current_);
+  }
+  Status status() const {
+    return static_cast<Status>(flatbuffers::EndianScalar(status_));
+  }
+};
+FLATBUFFERS_STRUCT_END(CAL_RESP, 4);
 
 #endif  // FLATBUFFERS_GENERATED_SCHEMA_H_
