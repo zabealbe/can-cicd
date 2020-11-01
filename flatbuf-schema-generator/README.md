@@ -1,5 +1,5 @@
-# Flatbuffer schema generation
-This subproject generates flatbuffer's schema based on message contents description
+# Flatbuffer schema generation and compilation
+This subproject generates flatbuffer's schema and compiles it based on message contents description
 # How to use
 ### [Configure your networks](../README.md#how-to-use)
 ### Configure config.py
