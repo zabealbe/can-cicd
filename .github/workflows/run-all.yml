@@ -28,8 +28,8 @@ jobs:
     - name: Run Flatbuf generator
       run: |
         cd flatbuf-generator
-        python generate_schema.py --flatc bin/flatc
-        python compile_schema.py
+        python generate_schema.py
+        python compile_schema.py --flatc bin/flatc
         git add -f out
     - name: Run Includes generator
       run: |
