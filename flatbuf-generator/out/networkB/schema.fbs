@@ -1,7 +1,0 @@
-
-enum Status : byte { OFF, PRECHARGE, ON, FATAL }
-struct ENC_L_FROM_ACU {
-	current: uint16;
-	status: Status;
-}
-

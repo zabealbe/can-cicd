@@ -4,7 +4,7 @@ This subproject generates flatbuffer's schema and compiles it based on message c
 ### [Configure your networks](../README.md#how-to-use)
 ### Configure config.py
 :open_file_folder: [flatbuf-generator](flatbuf-generator)\
-└ :page_with_curl: [config.py](config.py)
+└ :page_with_curl: [config.py](config/config.py)
 
 
 Here's a breakdown of what you will find:
@@ -23,9 +23,14 @@ This is the generated flatbuffer schema file, the syntax is as any other path, e
 
 ### Run it!
 Requirements:
++  Linux or MacOs
 +  Python >=3.6
++  FlatC
+    + https://github.com/zabealbe/flatc-musl
+    + https://github.com/google/flatbuffers
 
 ```console
+$ cd flatbuf-generator
 $ python main.py
 ```
 Generated files:\

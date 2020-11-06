@@ -1,6 +1,6 @@
 from lib.network import Network
-import config
 from lib.utils import *
+from config import config as c
 
 
 def get_message_schema(message):
@@ -48,29 +48,33 @@ def get_schema(messages):
 
 
 def main():
-    merge_mode = False
+    merge_networks = c.MERGE_NETWORKS
 
     print("====== Networks loading ======")
-    paths = parse_network_multipath(config.MESSAGES_FILE)
+    paths = parse_network_multipath(c.NETWORK_FILE)
     networks = []
     for network_name, path in paths.items():
-        if merge_mode and networks:
+        if merge_networks and networks:
             networks[0].merge_with(Network(path, network_name))
         else:
             networks.append(Network(path, network_name))
         print("Loaded {0}".format(network_name))
 
+    print("{0} network(s) loaded".format(len(networks)))
+
+    print("")
+    print("====== Schema generation ======")
     for n in networks:
         schema = get_schema(n.get_all_messages())
-        print("")
-        print("====== Schema for generating ======")
-        print("Schema generated successfully!")
-        output_path = config.SCHEMA_FILE.replace("[network]", n.name)
+        print("Schema for {0} generated successfully!".format(n.name))
+        output_path = c.FLATBUF_SCHEMA_FILE.replace("[network]", n.name)
         print("Saving schema to {0}".format(output_path))
         create_file_subtree(output_path)
         with open(output_path, "w+") as f:
             print(schema, file=f)
-        print("done.")
+        print("")
+
+    print("done.")
 
 
 if __name__ == "__main__":

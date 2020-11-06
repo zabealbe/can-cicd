@@ -1,0 +1,32 @@
+{
+	"type": "object",
+	"properties": {
+		"messages": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string",
+						"pattern": "^[A-Z][A-Z0-9_]*$"
+					},
+					"contents": {
+						"type": "object",
+						"patternProperties": {
+							"^[A-Za-z][A-Za-z0-9_]*$": {
+								"type": ["string", "array"],
+								"pattern": "^[A-Za-z][A-Za-z0-9_]*$",
+								"items": {
+									"type": "string",
+									"pattern": "^[A-Z][A-Z0-9_]*$"
+								}
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"required": ["name", "contents"]
+			}
+		}
+	}
+}
