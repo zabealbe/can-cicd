@@ -27,13 +27,13 @@ jobs:
         git add -f out
     - name: Run Flatbuf generator
       run: |
-        cd ../flatbuf-generator
+        cd flatbuf-generator
         python generate_schema.py --flatc bin/flatc
         python compile_schema.py
         git add -f out
     - name: Run Includes generator
       run: |
-        cd ../includes-generator
+        cd includes-generator
         python main.py
         git add -f out
     - name: Push generated includes
