@@ -24,7 +24,7 @@ jobs:
         cd id-generator
         python main.py
         cd ../flatbuf-generator
-        python generate_schema.py
+        python generate_schema.py --flatc bin/flatc
         python compile_schema.py
         cd ../includes-generator
         python main.py
