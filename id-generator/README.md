@@ -4,7 +4,8 @@ This subproject manages the id generation for all the messages on the CANbus
 ### [Configure your networks](../README.md#how-to-use)
 ### Configure config.py
 :open_file_folder: [id-generator](id-generator)\
-└ :page_with_curl: [config.py](config/config.py)
+└ :open_file_folder: [config](id-generator/config)\
+&nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: [config.py](id-generator/config/config.py)
 
 
 Here's a breakdown of what you will find:
@@ -13,13 +14,17 @@ Here's a breakdown of what you will find:
 ```
 This is a special tag that can be used in any folder path, it identifies the network folder, meaning that **for each network** there will be an equivalent path with the ```[network]``` string replaced by the network's name
 ```python
-MESSAGES_FILE = "../config/[network]/messages.json"
+MERGE_NETWORKS = False
 ```
-This is the input messages description file, the syntax is as any other path, exept for ```[network]``` tag.
+MERGE_NETWORKS enables/disables the networks merging function. If enabled all the networks found will be internally merged and the outputs will be produced accordingly.
+```python
+NETWORK_FILE = "../config/[network]/network.json"
+```
+NETWORK_FILE is the input messages description file, the syntax is as any other path, exept for ```[network]``` tag.
 ```python
 OUTPUT_FILE = "out/[network]/ids.json"
 ```
-This is the generated messages ids file, the syntax is as any other path, exept for ```[network]``` tag.
+OUTPUT_FILE is the generated messages ids file, the syntax is as any other path, exept for ```[network]``` tag.
 
 ### Run it!
 Requirements
@@ -32,7 +37,7 @@ $ python main.py
 Generated files:\
 :open_file_folder: [id-generator](id-generator)\
 └ :open_file_folder: [out](out)\
-&nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [[network folder]](out/ExampleNetwork)\
+&nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [[network name]](out/ExampleNetwork)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: [ids.json](out/ExampleNetwork/ids.json)
 
 # How it works
