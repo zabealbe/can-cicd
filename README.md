@@ -40,7 +40,7 @@ This file contains the description of all the network's messages in the followin
 <details><summary>SHOW</summary>
 
 **Avoid message name conflicts across different networks**\
-If you plan to have two different messages in two separate networks having the same name you **can't** use the merge function on those two networks.
+If you plan to have two different messages in two separate networks with the same name you **can't** use the merge function on those two networks.
 On the other hand if the two messages are **identical**, meaning that they are actually the same message but used on multiple networks you may merge them.
 ___
     
