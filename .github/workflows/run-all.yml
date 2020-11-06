@@ -4,6 +4,7 @@
 name: Run all
 
 on:
+  workflow_dispatch:
   push:
     paths:
     - 'config/**'
