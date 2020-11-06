@@ -5,8 +5,8 @@ This subproject generates all the files that will be useful for can interactions
 ### [Run flatbuf-schema-generator](../flatbuf-schema-generator/README.md#how-to-use)
 ### Configure your config.py
 :open_file_folder: [includes-generator](includes-generator)\
-└ :page_with_curl: [config.py](config/config.py)
-
+└ :open_file_folder: [config](includes-generator/config)\
+&nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: [config.py](includes-generator/config/config.py)
 
 Here's a breakdown of what you will find:
 ```console
@@ -30,7 +30,8 @@ This is the output folder for the generated files, the syntax is as any other pa
 Requirements
 +  Python >=3.6
 
-```console
+```
+$ cd includes-generator
 $ python main.py
 ```
 Generated files:\
