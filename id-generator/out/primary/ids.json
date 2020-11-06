@@ -1,0 +1,20 @@
+[
+    {
+        "topic": "B",
+        "id": 0,
+        "messages": {
+            "HV_STATUS": 0
+        }
+    },
+    {
+        "topic": "A",
+        "id": 1,
+        "messages": {
+            "TLM_STATUS_CHANGED": 513,
+            "HV_VOLTAGE": 769,
+            "HV_CURRENT": 801,
+            "HV_TEMP": 833,
+            "HV_ERROR": 257
+        }
+    }
+]

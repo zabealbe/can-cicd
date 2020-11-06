@@ -1,0 +1,32 @@
+struct TLM_STATUS_CHANGED {
+	enabled: uint8;
+	selected_pilot: uint8;
+	selected_rage: uint8;
+	timestamp: uint32;
+}
+struct HV_VOLTAGE {
+	pack_voltage: uint32;
+	bus_voltage: uint32;
+	max_cell_voltage: uint16;
+	min_cell_voltage: uint16;
+}
+struct HV_CURRENT {
+	current: uint16;
+	power: int8;
+}
+struct HV_TEMP {
+	average_temp: uint16;
+	max_temp: uint16;
+	min_temp: uint16;
+}
+struct HV_ERROR {
+	error_code: uint8;
+	error_index: uint8;
+	active: uint8;
+}
+
+enum Status : byte { TS_OFF, PRECHARGE, TS_ON, FATAL }
+struct HV_STATUS {
+	status: Status;
+}
+
