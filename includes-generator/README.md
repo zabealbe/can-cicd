@@ -30,7 +30,7 @@ This is the output folder for the generated files, the syntax is as any other pa
 Requirements
 +  Python >=3.6
 
-```
+```console
 $ cd includes-generator
 $ python main.py
 ```
