@@ -32,6 +32,7 @@ Requirements
 
 
 ```console
+$ cd id-generator
 $ python main.py
 ```
 Generated files:\
