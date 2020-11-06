@@ -1,42 +1,42 @@
 [
     {
-        "topic": "AB",
+        "topic": "A",
         "id": 0,
         "messages": {
-            "INV_R_TEMP": 256,
-            "INV_L_TEMP": 0,
-            "MOT_R_TEMP": 1792,
-            "MOT_L_TEMP": 32,
-            "CAL_SET_MIN_MAX": 64
+            "ENC_L_FROM_ACU": 0,
+            "ENC_R_FROM_ACU": 1024,
+            "ENC_C_FROM_ACU": 32,
+            "PEDALS_FROM_ATC": 64,
+            "PEDALS_FROM_ACU": 1056
         }
     },
     {
-        "topic": "B",
+        "topic": "AB",
         "id": 1,
         "messages": {
-            "HV_VOLT": 1,
-            "HV_TEMP": 33,
-            "HV_CURR_ERR_WARN": 65,
-            "LV_STATUS": 97,
-            "LV_STATUS_JUDGE": 257
-        }
-    },
-    {
-        "topic": "A",
-        "id": 2,
-        "messages": {
-            "ENC_L_FROM_ACU": 2,
-            "ENC_R_FROM_ACU": 1026,
-            "ENC_C_FROM_ACU": 34,
-            "PEDALS_FROM_ATC": 66,
-            "PEDALS_FROM_ACU": 1058
+            "INV_R_TEMP": 257,
+            "INV_L_TEMP": 1,
+            "MOT_R_TEMP": 1793,
+            "MOT_L_TEMP": 33,
+            "CAL_SET_MIN_MAX": 65
         }
     },
     {
         "topic": "BC",
+        "id": 2,
+        "messages": {
+            "CAL_RESP": 2
+        }
+    },
+    {
+        "topic": "B",
         "id": 3,
         "messages": {
-            "CAL_RESP": 3
+            "HV_VOLT": 3,
+            "HV_TEMP": 35,
+            "HV_CURR_ERR_WARN": 67,
+            "LV_STATUS": 99,
+            "LV_STATUS_JUDGE": 259
         }
     }
 ]
