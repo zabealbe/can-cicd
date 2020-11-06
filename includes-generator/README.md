@@ -4,9 +4,9 @@ This subproject generates all the files that will be useful for can interactions
 ### [Run id-generator](../id-generator/README.md#how-to-use)
 ### [Run flatbuf-schema-generator](../flatbuf-schema-generator/README.md#how-to-use)
 ### Configure your config.py
-:open_file_folder: [includes-generator](includes-generator)\
-└ :page_with_curl: [config.py](config/config.py)
-
+:open_file_folder: [includes-generator](/includes-generator)\
+└ :open_file_folder: [config](config)\
+&nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: [config.py](config/config.py)
 
 Here's a breakdown of what you will find:
 ```console
@@ -31,6 +31,7 @@ Requirements
 +  Python >=3.6
 
 ```console
+$ cd includes-generator
 $ python main.py
 ```
 Generated files:\

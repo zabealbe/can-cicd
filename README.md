@@ -16,9 +16,9 @@ Each network should have its own folder and files as shown below:\
 :open_file_folder: project root\
 └:open_file_folder: config\
 &nbsp;&nbsp;&nbsp;└:open_file_folder: [network name]\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: messages.json
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: network.json
 
-**Configure messages.json**\
+**Configure network.json**\
 This file contains the description of all the network's messages in the following format:
 <pre>
 [{
@@ -95,4 +95,4 @@ Any **commit** to this directory will trigger GitHub's actions workflow as descr
 you will find the generated files under the **:open_file_folder:out/** folder of each each module.
 
 ### The manual way
-Any subproject is a standalone module. However some subprojects may have the specific job to generate configuration files for other subprojects, of course those files could be manually created but if you want to run the full CICD stack you must use the projects in the order [shown above](#subprojects).
+Any subproject is a standalone module. However some subprojects may have the specific job to generate configurations for other subprojects. Of course those files could be manually created but if you want to run the full CICD stack you must use the projects in the order [shown above](#subprojects).
