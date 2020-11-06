@@ -29,7 +29,8 @@ jobs:
       run: |
         cd flatbuf-generator
         python generate_schema.py
-        python compile_schema.py --flatc bin/flatc
+        wget -O flatc https://raw.githubusercontent.com/zabealbe/flatc-musl/main/versions/flatc_v1.12.0
+        python compile_schema.py --flatc flatc
         git add -f out
     - name: Run Includes generator
       run: |
