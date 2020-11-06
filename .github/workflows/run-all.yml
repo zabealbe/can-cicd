@@ -20,15 +20,22 @@ jobs:
       with:
         python-version: 3.8
     - uses: actions/checkout@v2
-    - name: Run includes generation
+    - name: Run ID generator
       run: |
         cd id-generator
         python main.py
+        git add -f out
+    - name: Run Flatbuf generator
+      run: |
         cd ../flatbuf-generator
         python generate_schema.py --flatc bin/flatc
         python compile_schema.py
+        git add -f out
+    - name: Run Includes generator
+      run: |
         cd ../includes-generator
         python main.py
+        git add -f out
     - name: Push generated includes
       run: |
           git config --global user.name 'Automated CICD'
