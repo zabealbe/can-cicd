@@ -4,7 +4,7 @@ This subproject manages the id generation for all the messages on the CANbus
 ### [Configure your networks](../README.md#how-to-use)
 ### Configure config.py
 :open_file_folder: [id-generator](id-generator)\
-└ :page_with_curl: [config.py](config.py)
+└ :page_with_curl: [config.py](config/config.py)
 
 
 Here's a breakdown of what you will find:

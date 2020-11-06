@@ -1,10 +1,6 @@
-import json
-import sys
-import os
-
 from lib.network import Network
-import config
 from lib.utils import *
+from config import config as c
 
 # xxxxxx xxxxx => can id has 11 bits
 # ^^^^^^       => bits for message id
@@ -90,17 +86,20 @@ def main():
     print("Max messages per priority per topic: {0}".format(int(2 ** MESSAGE_BITS / (MAX_PRIORITY + 1))))
     print("")
 
-    merge_mode = False
+    merge_networks = False
 
     print("====== Networks loading ======")
-    paths = parse_network_multipath(config.MESSAGES_FILE)
+    paths = parse_network_multipath(c.NETWORK_FILE)
     networks = []
-    for n, path in paths.items():
-        if merge_mode and networks:
-            networks[0].merge_with(Network(path, n))
+    for network_name, path in paths.items():
+        if merge_networks and networks:
+            networks[0].merge_with(Network(path, network_name))
         else:
-            networks.append(Network(path, n))
-        print("Loaded {0}".format(n))
+            networks.append(Network(path, network_name))
+        print("Loaded {0}".format(network_name))
+
+    print("{0} network(s) loaded".format(len(networks)))
+
     print("")
     for n in networks:
         print("====== Id generation for network {0} ======".format(n.name))
@@ -117,19 +116,7 @@ def main():
                 )
             })
         print("")
-        '''
-        if __debug__:
-            msg_with_p = [[] for i in range(0, MAX_PRIORITY+1)] #  populate array
-    
-            for t in ids:
-                for m, m_id in t['messages'].items():
-                    message = network.get_message_by_name(m)
-                    msg_with_p[message['priority']].append("{0}: {1}".format(m, m_id))
-                for p, mp in enumerate(msg_with_p):
-                    print("PRIORITY", p, mp)
-        '''
-        print("")
-        output_path = config.OUTPUT_FILE.replace("[network]", n.name)
+        output_path = c.OUTPUT_FILE.replace("[network]", n.name)
         print("Saving IDs to {0}".format(output_path))
         create_file_subtree(output_path)
         with open(output_path, "w+") as f:

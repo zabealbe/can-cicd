@@ -1,10 +1,10 @@
-import config
+from config import config as c
 
 
 def generate_ids_include(ids):
     header = ""
-    header += "#ifndef {0}_H\n".format(config.C_INCLUDE.split("/")[-1].split(".")[0].upper())
-    header += "#define {0}_H\n\n".format(config.C_INCLUDE.split("/")[-1].split(".")[0].upper())
+    header += "#ifndef {0}_H\n".format(c.C_INCLUDE.split("/")[-1].split(".")[0].upper())
+    header += "#define {0}_H\n\n".format(c.C_INCLUDE.split("/")[-1].split(".")[0].upper())
     for t in ids:
         header += "/* TOPIC {0} */\n".format(t['topic'])
         header += "#define TOPIC_{0}_MASK {1:>011b}\n".format(t['topic'], 0b00000011111)

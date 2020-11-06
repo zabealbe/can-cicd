@@ -5,7 +5,7 @@ This subproject generates all the files that will be useful for can interactions
 ### [Run flatbuf-schema-generator](../flatbuf-schema-generator/README.md#how-to-use)
 ### Configure your config.py
 :open_file_folder: [includes-generator](includes-generator)\
-└ :page_with_curl: [config.py](config.py)
+└ :page_with_curl: [config.py](config/config.py)
 
 
 Here's a breakdown of what you will find:
