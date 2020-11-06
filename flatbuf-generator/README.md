@@ -3,8 +3,9 @@ This subproject generates flatbuffer's schema and compiles it based on message c
 # How to use
 ### [Configure your networks](../README.md#how-to-use)
 ### Configure config.py
-:open_file_folder: [flatbuf-generator](flatbuf-generator)\
-└ :page_with_curl: [config.py](config/config.py)
+:open_file_folder: [flatbuf-generator](/flatbuf-generator)\
+└ :open_file_folder: [config](config)\
+&nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: [config.py](config/config.py)
 
 
 Here's a breakdown of what you will find:
