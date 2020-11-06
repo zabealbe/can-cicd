@@ -62,7 +62,6 @@ def main():
 
     print("{0} network(s) loaded".format(len(networks)))
 
-    print("")
     print("====== Schema generation ======")
     for n in networks:
         schema = get_schema(n.get_all_messages())
@@ -72,7 +71,6 @@ def main():
         create_file_subtree(output_path)
         with open(output_path, "w+") as f:
             print(schema, file=f)
-        print("")
 
     print("done.")
 

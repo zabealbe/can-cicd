@@ -121,7 +121,7 @@ def main():
         create_file_subtree(output_path)
         with open(output_path, "w+") as f:
             json.dump(ids, f, indent=4)
-        print("====== Done! ======")
+    print("done.")
 
 
 if __name__ == "__main__":
