@@ -18,7 +18,7 @@ Each network should have its own folder and files as shown below:\
 &nbsp;&nbsp;&nbsp;└:open_file_folder: [network name]\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: network.json
 
-**Configure messages.json**\
+**Configure network.json**\
 This file contains the description of all the network's messages in the following format:
 <pre>
 [{
