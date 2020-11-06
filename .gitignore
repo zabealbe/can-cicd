@@ -132,3 +132,6 @@ dmypy.json
 
 # Intellij
 .idea/
+
+# Project specific
+**/out/
