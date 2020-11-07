@@ -6,7 +6,9 @@
 
 #include "flatbuffers/flatbuffers.h"
 
-struct TLM_STATUS_CHANGED;
+struct TLM_STATUS_UPDATE;
+
+struct SET_TLM_STATUS;
 
 struct HV_VOLTAGE;
 
@@ -16,28 +18,96 @@ struct HV_TEMP;
 
 struct HV_ERROR;
 
-struct HV_STATUS;
+struct TS_STATUS_UPDATE;
 
-enum Status {
-  Status_TS_OFF = 0,
-  Status_PRECHARGE = 1,
-  Status_TS_ON = 2,
-  Status_FATAL = 3,
-  Status_MIN = Status_TS_OFF,
-  Status_MAX = Status_FATAL
+struct SET_TS_STATUS;
+
+enum Tlm_Status {
+  Tlm_Status_ON = 0,
+  Tlm_Status_OFF = 1,
+  Tlm_Status_MIN = Tlm_Status_ON,
+  Tlm_Status_MAX = Tlm_Status_OFF
 };
 
-inline const Status (&EnumValuesStatus())[4] {
-  static const Status values[] = {
-    Status_TS_OFF,
-    Status_PRECHARGE,
-    Status_TS_ON,
-    Status_FATAL
+inline const Tlm_Status (&EnumValuesTlm_Status())[2] {
+  static const Tlm_Status values[] = {
+    Tlm_Status_ON,
+    Tlm_Status_OFF
   };
   return values;
 }
 
-inline const char * const *EnumNamesStatus() {
+inline const char * const *EnumNamesTlm_Status() {
+  static const char * const names[3] = {
+    "ON",
+    "OFF",
+    nullptr
+  };
+  return names;
+}
+
+inline const char *EnumNameTlm_Status(Tlm_Status e) {
+  if (flatbuffers::IsOutRange(e, Tlm_Status_ON, Tlm_Status_OFF)) return "";
+  const size_t index = static_cast<size_t>(e);
+  return EnumNamesTlm_Status()[index];
+}
+
+enum Test {
+  Test_ACCELERATION = 0,
+  Test_SKIDPAD = 1,
+  Test_AUTOCROSS = 2,
+  Test_ENDURANCE = 3,
+  Test_MIN = Test_ACCELERATION,
+  Test_MAX = Test_ENDURANCE
+};
+
+inline const Test (&EnumValuesTest())[4] {
+  static const Test values[] = {
+    Test_ACCELERATION,
+    Test_SKIDPAD,
+    Test_AUTOCROSS,
+    Test_ENDURANCE
+  };
+  return values;
+}
+
+inline const char * const *EnumNamesTest() {
+  static const char * const names[5] = {
+    "ACCELERATION",
+    "SKIDPAD",
+    "AUTOCROSS",
+    "ENDURANCE",
+    nullptr
+  };
+  return names;
+}
+
+inline const char *EnumNameTest(Test e) {
+  if (flatbuffers::IsOutRange(e, Test_ACCELERATION, Test_ENDURANCE)) return "";
+  const size_t index = static_cast<size_t>(e);
+  return EnumNamesTest()[index];
+}
+
+enum Ts_Status {
+  Ts_Status_TS_OFF = 0,
+  Ts_Status_PRECHARGE = 1,
+  Ts_Status_TS_ON = 2,
+  Ts_Status_FATAL = 3,
+  Ts_Status_MIN = Ts_Status_TS_OFF,
+  Ts_Status_MAX = Ts_Status_FATAL
+};
+
+inline const Ts_Status (&EnumValuesTs_Status())[4] {
+  static const Ts_Status values[] = {
+    Ts_Status_TS_OFF,
+    Ts_Status_PRECHARGE,
+    Ts_Status_TS_ON,
+    Ts_Status_FATAL
+  };
+  return values;
+}
+
+inline const char * const *EnumNamesTs_Status() {
   static const char * const names[5] = {
     "TS_OFF",
     "PRECHARGE",
@@ -48,51 +118,81 @@ inline const char * const *EnumNamesStatus() {
   return names;
 }
 
-inline const char *EnumNameStatus(Status e) {
-  if (flatbuffers::IsOutRange(e, Status_TS_OFF, Status_FATAL)) return "";
+inline const char *EnumNameTs_Status(Ts_Status e) {
+  if (flatbuffers::IsOutRange(e, Ts_Status_TS_OFF, Ts_Status_FATAL)) return "";
   const size_t index = static_cast<size_t>(e);
-  return EnumNamesStatus()[index];
+  return EnumNamesTs_Status()[index];
 }
 
-FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(4) TLM_STATUS_CHANGED FLATBUFFERS_FINAL_CLASS {
+FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(1) TLM_STATUS_UPDATE FLATBUFFERS_FINAL_CLASS {
  private:
-  uint8_t enabled_;
-  uint8_t selected_pilot_;
-  uint8_t selected_rage_;
-  int8_t padding0__;
-  uint32_t timestamp_;
+  int8_t tlm_status_;
+  int8_t test_;
+  uint8_t driver_;
+  uint8_t map_;
 
  public:
-  TLM_STATUS_CHANGED()
-      : enabled_(0),
-        selected_pilot_(0),
-        selected_rage_(0),
-        padding0__(0),
-        timestamp_(0) {
-    (void)padding0__;
+  TLM_STATUS_UPDATE()
+      : tlm_status_(0),
+        test_(0),
+        driver_(0),
+        map_(0) {
   }
-  TLM_STATUS_CHANGED(uint8_t _enabled, uint8_t _selected_pilot, uint8_t _selected_rage, uint32_t _timestamp)
-      : enabled_(flatbuffers::EndianScalar(_enabled)),
-        selected_pilot_(flatbuffers::EndianScalar(_selected_pilot)),
-        selected_rage_(flatbuffers::EndianScalar(_selected_rage)),
-        padding0__(0),
-        timestamp_(flatbuffers::EndianScalar(_timestamp)) {
-    (void)padding0__;
+  TLM_STATUS_UPDATE(Tlm_Status _tlm_status, Test _test, uint8_t _driver, uint8_t _map)
+      : tlm_status_(flatbuffers::EndianScalar(static_cast<int8_t>(_tlm_status))),
+        test_(flatbuffers::EndianScalar(static_cast<int8_t>(_test))),
+        driver_(flatbuffers::EndianScalar(_driver)),
+        map_(flatbuffers::EndianScalar(_map)) {
   }
-  uint8_t enabled() const {
-    return flatbuffers::EndianScalar(enabled_);
+  Tlm_Status tlm_status() const {
+    return static_cast<Tlm_Status>(flatbuffers::EndianScalar(tlm_status_));
   }
-  uint8_t selected_pilot() const {
-    return flatbuffers::EndianScalar(selected_pilot_);
+  Test test() const {
+    return static_cast<Test>(flatbuffers::EndianScalar(test_));
   }
-  uint8_t selected_rage() const {
-    return flatbuffers::EndianScalar(selected_rage_);
+  uint8_t driver() const {
+    return flatbuffers::EndianScalar(driver_);
   }
-  uint32_t timestamp() const {
-    return flatbuffers::EndianScalar(timestamp_);
+  uint8_t map() const {
+    return flatbuffers::EndianScalar(map_);
   }
 };
-FLATBUFFERS_STRUCT_END(TLM_STATUS_CHANGED, 8);
+FLATBUFFERS_STRUCT_END(TLM_STATUS_UPDATE, 4);
+
+FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(1) SET_TLM_STATUS FLATBUFFERS_FINAL_CLASS {
+ private:
+  int8_t tlm_status_;
+  int8_t test_;
+  uint8_t driver_;
+  uint8_t map_;
+
+ public:
+  SET_TLM_STATUS()
+      : tlm_status_(0),
+        test_(0),
+        driver_(0),
+        map_(0) {
+  }
+  SET_TLM_STATUS(Tlm_Status _tlm_status, Test _test, uint8_t _driver, uint8_t _map)
+      : tlm_status_(flatbuffers::EndianScalar(static_cast<int8_t>(_tlm_status))),
+        test_(flatbuffers::EndianScalar(static_cast<int8_t>(_test))),
+        driver_(flatbuffers::EndianScalar(_driver)),
+        map_(flatbuffers::EndianScalar(_map)) {
+  }
+  Tlm_Status tlm_status() const {
+    return static_cast<Tlm_Status>(flatbuffers::EndianScalar(tlm_status_));
+  }
+  Test test() const {
+    return static_cast<Test>(flatbuffers::EndianScalar(test_));
+  }
+  uint8_t driver() const {
+    return flatbuffers::EndianScalar(driver_);
+  }
+  uint8_t map() const {
+    return flatbuffers::EndianScalar(map_);
+  }
+};
+FLATBUFFERS_STRUCT_END(SET_TLM_STATUS, 4);
 
 FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(4) HV_VOLTAGE FLATBUFFERS_FINAL_CLASS {
  private:
@@ -215,21 +315,38 @@ FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(1) HV_ERROR FLATBUFFERS_FINAL_CLASS {
 };
 FLATBUFFERS_STRUCT_END(HV_ERROR, 3);
 
-FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(1) HV_STATUS FLATBUFFERS_FINAL_CLASS {
+FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(1) TS_STATUS_UPDATE FLATBUFFERS_FINAL_CLASS {
  private:
-  int8_t status_;
+  int8_t ts_status_;
 
  public:
-  HV_STATUS()
-      : status_(0) {
+  TS_STATUS_UPDATE()
+      : ts_status_(0) {
   }
-  HV_STATUS(Status _status)
-      : status_(flatbuffers::EndianScalar(static_cast<int8_t>(_status))) {
+  TS_STATUS_UPDATE(Ts_Status _ts_status)
+      : ts_status_(flatbuffers::EndianScalar(static_cast<int8_t>(_ts_status))) {
   }
-  Status status() const {
-    return static_cast<Status>(flatbuffers::EndianScalar(status_));
+  Ts_Status ts_status() const {
+    return static_cast<Ts_Status>(flatbuffers::EndianScalar(ts_status_));
   }
 };
-FLATBUFFERS_STRUCT_END(HV_STATUS, 1);
+FLATBUFFERS_STRUCT_END(TS_STATUS_UPDATE, 1);
+
+FLATBUFFERS_MANUALLY_ALIGNED_STRUCT(1) SET_TS_STATUS FLATBUFFERS_FINAL_CLASS {
+ private:
+  int8_t ts_status_;
+
+ public:
+  SET_TS_STATUS()
+      : ts_status_(0) {
+  }
+  SET_TS_STATUS(Ts_Status _ts_status)
+      : ts_status_(flatbuffers::EndianScalar(static_cast<int8_t>(_ts_status))) {
+  }
+  Ts_Status ts_status() const {
+    return static_cast<Ts_Status>(flatbuffers::EndianScalar(ts_status_));
+  }
+};
+FLATBUFFERS_STRUCT_END(SET_TS_STATUS, 1);
 
 #endif  // FLATBUFFERS_GENERATED_SCHEMA_H_

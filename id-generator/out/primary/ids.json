@@ -2,18 +2,18 @@
     "network_version": 1,
     "ids": [
         {
-            "topic": "ECU_STEER",
+            "topic": "STEER",
             "id": 0,
             "messages": {
-                "HV_VOLTAGE": 768,
-                "HV_CURRENT": 800
+                "TLM_STATUS_UPDATE": 512
             }
         },
         {
-            "topic": "STEER",
+            "topic": "ECU_STEER",
             "id": 1,
             "messages": {
-                "TLM_STATUS_UPDATE": 513
+                "HV_VOLTAGE": 769,
+                "HV_CURRENT": 801
             }
         },
         {
