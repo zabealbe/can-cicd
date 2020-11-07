@@ -2,10 +2,13 @@
     "network_version": 1,
     "ids": [
         {
-            "topic": "STEER",
+            "topic": "ECU",
             "id": 0,
             "messages": {
-                "TLM_STATUS_UPDATE": 512
+                "TS_STATUS_UPDATE": 0,
+                "STEER_STATUS_UPDATE": 32,
+                "SET_CAR_STATUS": 64,
+                "ASK_CAR_STATUS": 96
             }
         },
         {
@@ -13,24 +16,38 @@
             "id": 1,
             "messages": {
                 "HV_VOLTAGE": 769,
-                "HV_CURRENT": 801
+                "HV_CURRENT": 801,
+                "HV_TEMP": 833,
+                "HV_ERROR": 257
             }
         },
         {
             "topic": "BMS_HV",
             "id": 2,
             "messages": {
-                "HV_TEMP": 770,
-                "HV_ERROR": 258,
-                "TS_STATUS_UPDATE": 2,
-                "SET_TS_STATUS": 34
+                "SET_TS_STATUS": 2
+            }
+        },
+        {
+            "topic": "PEDALS",
+            "id": 3,
+            "messages": {
+                "SET_PEDALS_RANGE": 3
             }
         },
         {
             "topic": "TLM",
-            "id": 3,
+            "id": 4,
             "messages": {
-                "SET_TLM_STATUS": 515
+                "SET_TLM_STATUS": 516
+            }
+        },
+        {
+            "topic": "STEER",
+            "id": 5,
+            "messages": {
+                "TLM_STATUS_UPDATE": 517,
+                "CAR_STATUS_UPDATE": 5
             }
         }
     ]
