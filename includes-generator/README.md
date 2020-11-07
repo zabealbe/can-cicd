@@ -26,10 +26,10 @@ OUTPUT_DIR = "./out/[network]"
 ```
 This is the output folder for the generated files, the syntax is as any other path, exept for ```[network]``` tag.
 
-### Run it!
-Requirements
+### Requirements
 +  Python >=3.6
 
+### Run it!
 ```console
 $ cd includes-generator
 $ python main.py

@@ -23,6 +23,7 @@ jobs:
     - name: Run ID generator
       run: |
         cd id-generator
+        pip install -r requirements.txt
         python main.py
         git add -f out
     - name: Run Flatbuf generator

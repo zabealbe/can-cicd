@@ -26,15 +26,23 @@ OUTPUT_FILE = "out/[network]/ids.json"
 ```
 OUTPUT_FILE is the generated messages ids file, the syntax is as any other path, exept for ```[network]``` tag.
 
+### Requirements
++  Python >= 3.6
++  jsonschema (pip package) >= 3.2.0
+
+Installing pip packages
+```console
+$ cd id-generator
+$ pip install -r requirements.txt
+```
+
 ### Run it!
-Requirements
-+  Python >=3.6
-
-
+Running id-generator
 ```console
 $ cd id-generator
 $ python main.py
 ```
+
 Generated files:\
 :open_file_folder: [id-generator](id-generator)\
 └ :open_file_folder: [out](out)\

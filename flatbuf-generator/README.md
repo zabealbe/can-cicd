@@ -26,14 +26,14 @@ FLATBUF_SCHEMA_FILE = "out/[network]/schema.fbs"
 ```
 FLATBUF_SCHEMA_FILE is the generated flatbuffer schema file, the syntax is as any other path, exept for ```[network]``` tag.
 
-### Run it!
-Requirements:
+### Requirements
 +  Linux or MacOs
 +  Python >=3.6
 +  FlatC
     + https://github.com/zabealbe/flatc-musl
     + https://github.com/google/flatbuffers
 
+### Run it!
 ```console
 $ cd flatbuf-generator
 $ python main.py
