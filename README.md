@@ -81,6 +81,22 @@ This field indicates the receiving device(s), **can be more than one**.\
 The characters you should use are all UPPERCASE letters and "_".
 If there is more than one receiving device insert each one as a different array element.\
 If there is only one receiving device use an array with a single element.
+___
+<pre>
+"contents": {
+    "field_name_1": "type",
+    "field_name_2": "type"
+}
+</pre>
+This field describes the message's payload, the size can be **at most 8 bytes**.\
+Each value contained in the payload must be indicated with its name and its type.\
+The name must satisfy this regex: `^[A-Za-z][A-Za-z0-9_]*$`.\
+The type can be one of the following:
++ 1 byte: `bool, int8, uint8, enum`
++ 2 bytes: `int16, uint16`
++ 4 bytes: `int32, uint32, float32`
++ 8 bytes: `int64, uint64, float64`
+
 </details>
 
 

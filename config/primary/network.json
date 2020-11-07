@@ -27,7 +27,7 @@
             }
         },{
             "name": "HV_VOLTAGE",
-            "topic": "ECU_STEER",
+            "topic": "ECUnSTEER",
             "priority": 4,
             "sending": ["BMS_HV"],
             "receiving": ["ECU", "STEER"],
@@ -39,7 +39,7 @@
             }
         },{
             "name": "HV_CURRENT",
-            "topic": "ECU_STEER",
+            "topic": "ECUnSTEER",
             "priority": 4,
             "sending": ["BMS_HV"],
             "receiving": ["ECU", "STEER"],
@@ -49,7 +49,7 @@
             }
         },{
             "name": "HV_TEMP",
-            "topic": "ECU_STEER",
+            "topic": "ECUnSTEER",
             "priority": 4,
             "sending": ["BMS_HV"],
             "receiving": ["ECU", "STEER"],
@@ -60,7 +60,7 @@
             }
         },{
             "name": "HV_ERROR",
-            "topic": "ECU_STEER",
+            "topic": "ECUnSTEER",
             "priority": 6,
             "sending": ["BMS_HV"],
             "receiving": ["ECU", "STEER"],

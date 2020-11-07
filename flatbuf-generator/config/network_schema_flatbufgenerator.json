@@ -24,7 +24,8 @@
 								"items": {
 									"type": "string",
 									"pattern": "^[A-Z][A-Z0-9_]*$"
-								}
+								},
+								"maxItems": 256
 							}
 						},
 						"additionalProperties": false

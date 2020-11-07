@@ -17,7 +17,7 @@
 					},
 					"topic": {
 						"type": "string",
-						"pattern": "^[A-Z][A-Z0-9_]*$"
+						"pattern": "^[A-Za-z][A-Za-z0-9_]*$"
 					},
 					"priority": {
 						"type": "integer",

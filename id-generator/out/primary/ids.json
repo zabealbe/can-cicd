@@ -2,52 +2,52 @@
     "network_version": 1,
     "ids": [
         {
-            "topic": "ECU",
+            "topic": "TLM",
             "id": 0,
             "messages": {
-                "TS_STATUS_UPDATE": 0,
-                "STEER_STATUS_UPDATE": 32,
-                "SET_CAR_STATUS": 64,
-                "ASK_CAR_STATUS": 96
-            }
-        },
-        {
-            "topic": "ECU_STEER",
-            "id": 1,
-            "messages": {
-                "HV_VOLTAGE": 769,
-                "HV_CURRENT": 801,
-                "HV_TEMP": 833,
-                "HV_ERROR": 257
-            }
-        },
-        {
-            "topic": "BMS_HV",
-            "id": 2,
-            "messages": {
-                "SET_TS_STATUS": 2
-            }
-        },
-        {
-            "topic": "PEDALS",
-            "id": 3,
-            "messages": {
-                "SET_PEDALS_RANGE": 3
-            }
-        },
-        {
-            "topic": "TLM",
-            "id": 4,
-            "messages": {
-                "SET_TLM_STATUS": 516
+                "SET_TLM_STATUS": 512
             }
         },
         {
             "topic": "STEER",
+            "id": 1,
+            "messages": {
+                "TLM_STATUS_UPDATE": 513,
+                "CAR_STATUS_UPDATE": 1
+            }
+        },
+        {
+            "topic": "PEDALS",
+            "id": 2,
+            "messages": {
+                "SET_PEDALS_RANGE": 2
+            }
+        },
+        {
+            "topic": "BMS_HV",
+            "id": 3,
+            "messages": {
+                "SET_TS_STATUS": 3
+            }
+        },
+        {
+            "topic": "ECU",
+            "id": 4,
+            "messages": {
+                "TS_STATUS_UPDATE": 4,
+                "STEER_STATUS_UPDATE": 36,
+                "SET_CAR_STATUS": 68,
+                "ASK_CAR_STATUS": 100
+            }
+        },
+        {
+            "topic": "ECUnSTEER",
             "id": 5,
             "messages": {
-                "TLM_STATUS_UPDATE": 517,
-                "CAR_STATUS_UPDATE": 5
+                "HV_VOLTAGE": 773,
+                "HV_CURRENT": 805,
+                "HV_TEMP": 837,
+                "HV_ERROR": 261
             }
         }
     ]
