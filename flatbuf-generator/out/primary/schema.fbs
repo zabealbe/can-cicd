@@ -1,8 +1,20 @@
-struct TLM_STATUS_CHANGED {
-	enabled: uint8;
-	selected_pilot: uint8;
-	selected_rage: uint8;
-	timestamp: uint32;
+
+enum Tlm_Status : byte { ON, OFF }
+
+enum Test : byte { ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE }
+struct TLM_STATUS_UPDATE {
+	tlm_status: Tlm_Status;
+	test: Test;
+	driver: uint8;
+	map: uint8;
+}
+
+
+struct SET_TLM_STATUS {
+	tlm_status: Tlm_Status;
+	test: Test;
+	driver: uint8;
+	map: uint8;
 }
 struct HV_VOLTAGE {
 	pack_voltage: uint32;
@@ -25,8 +37,12 @@ struct HV_ERROR {
 	active: uint8;
 }
 
-enum Status : byte { TS_OFF, PRECHARGE, TS_ON, FATAL }
-struct HV_STATUS {
-	status: Status;
+enum Ts_Status : byte { TS_OFF, PRECHARGE, TS_ON, FATAL }
+struct TS_STATUS_UPDATE {
+	ts_status: Ts_Status;
+}
+
+struct SET_TS_STATUS {
+	ts_status: Ts_Status;
 }
 

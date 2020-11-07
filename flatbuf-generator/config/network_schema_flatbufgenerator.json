@@ -1,0 +1,39 @@
+{
+	"type": "object",
+	"properties": {
+	    "network_version": {
+	        "type": "integer",
+	        "minimum": 0,
+	        "maximum": 255
+	    },
+		"messages": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string",
+						"pattern": "^[A-Z][A-Z0-9_]*$"
+					},
+					"contents": {
+						"type": "object",
+						"patternProperties": {
+							"^[A-Za-z][A-Za-z0-9_]*$": {
+								"type": ["string", "array"],
+								"pattern": "^[A-Za-z][A-Za-z0-9_]*$",
+								"items": {
+									"type": "string",
+									"pattern": "^[A-Z][A-Z0-9_]*$"
+								}
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"required": ["name", "topic", "priority"],
+                "additionalProperties": true
+			}
+		}
+	},
+    "additionalProperties": false
+}

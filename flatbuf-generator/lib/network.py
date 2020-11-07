@@ -1,6 +1,14 @@
-from lib.utils import *
+from jsonschema import validate
 
-MESSAGES_FILE = "messages.json"
+import config.config as c
+from lib.utils import *
+import os
+
+
+def load_network(path):
+    if not os.path.exists(path):
+        return {}
+    return Network(path, path.split("/")[-2])
 
 
 class Network:
@@ -8,17 +16,21 @@ class Network:
         self.path = path
         self.name = name
         self.contents = []
+        self.name_index = {}
+        self.version = None
         if path:
             self.load()
 
     def load(self):
-        messages = load_json(self.path)
+        network = load_json(self.path)
+        network_schema = load_json(c.NETWORK_FILE_VALIDATION_SCHEMA)
 
-        network = {}
-        if messages == {}:
-            print("There was en error loading {0}, skipping".format(self.path))
-            return network
-        self.contents = messages
+        validate(network, network_schema)
+
+        self.contents = network["messages"]
+        self.version = network["network_version"]
+        for i, m in enumerate(self.contents):
+            self.name_index[m["name"]] = i
 
     def merge_with(self, network):
         if isinstance(network, Network):
@@ -45,7 +57,8 @@ class Network:
     def get_topics(self):
         topics = set()
         for m in self.contents:
-            topics.add(m['topic'])
+            if "topic" in m:
+                topics.add(m["topic"])
         return list(topics)
 
     def get_messages_by_topic(self, topic):
@@ -54,16 +67,14 @@ class Network:
         """
         messages = []
         for m in self.contents:
-            if m['topic'] == topic:
+            if "topic" in m and m["topic"] == topic:
                 messages.append(m)
 
         return messages
 
     def get_message_by_name(self, name):
-        """
-            Very resource-heavy, can be optimized with index
-        """
-        for m in self.contents:
-            if m['name'] == name:
-                return m
-        return {}
+        try:
+            message = self.contents[self.name_index[name]]
+        except KeyError:
+            return {}
+        return message
