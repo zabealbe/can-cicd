@@ -1,68 +1,92 @@
- [
-    {
-        "name": "TLM_STATUS_CHANGED",
-        "topic": "A",
-        "priority": 5,
-        "sending": ["TLM"],
-        "receiving": ["STEER"],
-        "contents": {
-            "enabled": "uint8",
-            "selected_pilot": "uint8",
-            "selected_rage": "uint8",
-            "timestamp": "uint32"
+{
+    "network_version": 1,
+    "messages": [
+        {
+            "name": "TLM_STATUS_UPDATE",
+            "topic": "STEER",
+            "priority": 5,
+            "sending": ["TLM"],
+            "receiving": ["STEER"],
+            "contents": {
+                "tlm_status": ["ON", "OFF"],
+                "test": ["ACCELERATION", "SKIDPAD", "AUTOCROSS", "ENDURANCE"],
+                "driver": "uint8",
+                "map": "uint8"
+            }
+        },{
+            "name": "SET_TLM_STATUS",
+            "topic": "TLM",
+            "priority": 5,
+            "sending": ["STEER"],
+            "receiving": ["TLM"],
+            "contents": {
+                "tlm_status": ["ON", "OFF"],
+                "test": ["ACCELERATION", "SKIDPAD", "AUTOCROSS", "ENDURANCE"],
+                "driver": "uint8",
+                "map": "uint8"
+            }
+        },{
+            "name": "HV_VOLTAGE",
+            "topic": "ECU_STEER",
+            "priority": 4,
+            "sending": ["BMS_HV"],
+            "receiving": ["ECU", "STEER"],
+            "contents": {
+                "pack_voltage": "uint32",
+                "bus_voltage": "uint32",
+                "max_cell_voltage": "uint16",
+                "min_cell_voltage": "uint16"
+            }
+        },{
+            "name": "HV_CURRENT",
+            "topic": "ECU_STEER",
+            "priority": 4,
+            "sending": ["BMS_HV"],
+            "receiving": ["ECU", "STEER"],
+            "contents": {
+                "current": "uint16",
+                "power": "int8"
+            }
+        },{
+            "name": "HV_TEMP",
+            "topic": "BMS_HV",
+            "priority": 4,
+            "sending": ["BMS_HV"],
+            "receiving": ["ECU", "STEER"],
+            "contents": {
+                "average_temp": "uint16",
+                "max_temp": "uint16",
+                "min_temp": "uint16"
+            }
+        },{
+            "name": "HV_ERROR",
+            "topic": "BMS_HV",
+            "priority": 6,
+            "sending": ["BMS_HV"],
+            "receiving": ["ECU", "STEER"],
+            "contents": {
+                "error_code": "uint8",
+                "error_index": "uint8",
+                "active": "uint8"
+            }
+        },{
+            "name": "TS_STATUS_UPDATE",
+            "topic": "BMS_HV",
+            "priority": 7,
+            "sending": ["BMS_HV"],
+            "receiving": ["ECU"],
+            "contents": {
+                "ts_status": ["TS_OFF", "PRECHARGE", "TS_ON", "FATAL"]
+            }
+        },{
+            "name": "SET_TS_STATUS",
+            "topic": "BMS_HV",
+            "priority": 7,
+            "sending": ["ECU"],
+            "receiving": ["BMS_HV"],
+            "contents": {
+                "ts_status": ["TS_OFF", "PRECHARGE", "TS_ON", "FATAL"]
+            }
         }
-    },{
-        "name": "HV_VOLTAGE",
-        "topic": "A",
-        "priority": 4,
-        "sending": ["BMS_HV"],
-        "receiving": ["ECU", "STEER"],
-        "contents": {
-            "pack_voltage": "uint32",
-            "bus_voltage": "uint32",
-            "max_cell_voltage": "uint16",
-            "min_cell_voltage": "uint16"
-        }
-    },{
-        "name": "HV_CURRENT",
-        "topic": "A",
-        "priority": 4,
-        "sending": ["BMS_HV"],
-        "receiving": ["ECU", "STEER"],
-        "contents": {
-            "current": "uint16",
-            "power": "int8"
-        }
-    },{
-        "name": "HV_TEMP",
-        "topic": "A",
-        "priority": 4,
-        "sending": ["BMS_HV"],
-        "receiving": ["ECU", "STEER"],
-        "contents": {
-            "average_temp": "uint16",
-            "max_temp": "uint16",
-            "min_temp": "uint16"
-        }
-    },{
-        "name": "HV_ERROR",
-        "topic": "A",
-        "priority": 6,
-        "sending": ["BMS_HV"],
-        "receiving": ["ECU", "STEER"],
-        "contents": {
-            "error_code": "uint8",
-            "error_index": "uint8",
-            "active": "uint8"
-        }
-    },{
-        "name": "HV_STATUS",
-        "topic": "B",
-        "priority": 7,
-        "sending": ["BMS_HV"],
-        "receiving": ["ECU"],
-        "contents": {
-            "status": ["TS_OFF", "PRECHARGE", "TS_ON", "FATAL"]
-        }
-    }
- ]
+    ]
+}

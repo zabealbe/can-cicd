@@ -119,8 +119,13 @@ def main():
         output_path = c.OUTPUT_FILE.replace("[network]", n.name)
         print("Saving IDs to {0}".format(output_path))
         create_file_subtree(output_path)
+
+        output = {
+            "network_version": n.version,
+            "ids": ids
+        }
         with open(output_path, "w+") as f:
-            json.dump(ids, f, indent=4)
+            json.dump(output, f, indent=4)
     print("done.")
 
 

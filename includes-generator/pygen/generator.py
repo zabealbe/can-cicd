@@ -1,4 +1,4 @@
-def generate_ids_include(message_ids):
+def generate_ids_include(message_ids, network_version):
     output = ""
     return  output
 

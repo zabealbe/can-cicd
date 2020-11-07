@@ -1,20 +1,37 @@
-[
-    {
-        "topic": "B",
-        "id": 0,
-        "messages": {
-            "HV_STATUS": 0
+{
+    "network_version": 1,
+    "ids": [
+        {
+            "topic": "ECU_STEER",
+            "id": 0,
+            "messages": {
+                "HV_VOLTAGE": 768,
+                "HV_CURRENT": 800
+            }
+        },
+        {
+            "topic": "STEER",
+            "id": 1,
+            "messages": {
+                "TLM_STATUS_UPDATE": 513
+            }
+        },
+        {
+            "topic": "BMS_HV",
+            "id": 2,
+            "messages": {
+                "HV_TEMP": 770,
+                "HV_ERROR": 258,
+                "TS_STATUS_UPDATE": 2,
+                "SET_TS_STATUS": 34
+            }
+        },
+        {
+            "topic": "TLM",
+            "id": 3,
+            "messages": {
+                "SET_TLM_STATUS": 515
+            }
         }
-    },
-    {
-        "topic": "A",
-        "id": 1,
-        "messages": {
-            "TLM_STATUS_CHANGED": 513,
-            "HV_VOLTAGE": 769,
-            "HV_CURRENT": 801,
-            "HV_TEMP": 833,
-            "HV_ERROR": 257
-        }
-    }
-]
+    ]
+}
