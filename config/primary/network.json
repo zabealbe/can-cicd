@@ -8,7 +8,7 @@
             "sending": ["TLM"],
             "receiving": ["STEER"],
             "contents": {
-                "tlm_status": ["ON", "OFF"],
+                "tlm_status": ["ON", "SETUP", "OFF"],
                 "test": ["ACCELERATION", "SKIDPAD", "AUTOCROSS", "ENDURANCE"],
                 "driver": "uint8",
                 "map": "uint8"
@@ -20,7 +20,7 @@
             "sending": ["STEER"],
             "receiving": ["TLM"],
             "contents": {
-                "tlm_status": ["ON", "OFF"],
+                "tlm_status_set": ["ON", "OFF"],
                 "test": ["ACCELERATION", "SKIDPAD", "AUTOCROSS", "ENDURANCE"],
                 "driver": "uint8",
                 "map": "uint8"
@@ -49,7 +49,7 @@
             }
         },{
             "name": "HV_TEMP",
-            "topic": "BMS_HV",
+            "topic": "ECU_STEER",
             "priority": 4,
             "sending": ["BMS_HV"],
             "receiving": ["ECU", "STEER"],
@@ -60,7 +60,7 @@
             }
         },{
             "name": "HV_ERROR",
-            "topic": "BMS_HV",
+            "topic": "ECU_STEER",
             "priority": 6,
             "sending": ["BMS_HV"],
             "receiving": ["ECU", "STEER"],
@@ -71,12 +71,12 @@
             }
         },{
             "name": "TS_STATUS_UPDATE",
-            "topic": "BMS_HV",
+            "topic": "ECU",
             "priority": 7,
             "sending": ["BMS_HV"],
             "receiving": ["ECU"],
             "contents": {
-                "ts_status": ["TS_OFF", "PRECHARGE", "TS_ON", "FATAL"]
+                "ts_status": ["OFF", "PRECHARGE", "ON", "FATAL"]
             }
         },{
             "name": "SET_TS_STATUS",
@@ -85,7 +85,55 @@
             "sending": ["ECU"],
             "receiving": ["BMS_HV"],
             "contents": {
-                "ts_status": ["TS_OFF", "PRECHARGE", "TS_ON", "FATAL"]
+                "ts_status_set": ["OFF", "ON"]
+            }
+        },{
+            "name": "STEER_STATUS_UPDATE",
+            "topic": "ECU",
+            "priority": 7,
+            "sending": ["STEER"],
+            "receiving": ["ECU"],
+            "contents": {
+                "traction_control": ["OFF", "SLIP_CONTROL", "TORQUE_VECTORING", "COMPLETE"],
+                "map": ["R", "D20", "D40", "D60", "D80", "D100"],
+                "radio_on": "bool"
+            }
+        },{
+            "name": "SET_CAR_STATUS",
+            "topic": "ECU",
+            "priority": 7,
+            "sending": ["STEER"],
+            "receiving": ["ECU"],
+            "contents": {
+                "car_status_set": ["IDLE", "RUN"];
+            }
+        },{
+            "name": "ASK_CAR_STATUS",
+            "topic": "ECU",
+            "priority": 7,
+            "sending": ["STEER"],
+            "receiving": ["ECU"],
+            "contents": {
+            }
+        },{
+            "name": "CAR_STATUS_UPDATE",
+            "topic": "STEER",
+            "priority": 7,
+            "sending": ["ECU"],
+            "receiving": ["STEER"],
+            "contents": {
+                "car_status": ["IDLE", "SETUP", "RUN"],
+                "inverter_l": ["OFF", "IDLE", "ON"],
+                "inverter_r": ["OFF", "IDLE", "ON"]
+            }
+        },{
+            "name": "SET_PEDALS_RANGE",
+            "topic": "PEDALS",
+            "priority": 7,
+            "sending": ["STEER"],
+            "receiving": ["PEDALS"],
+            "contents": {
+                "bound": ["MAX", "MIN"]
             }
         }
     ]
