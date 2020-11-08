@@ -145,7 +145,7 @@ This project can be used in a couple of ways, the first one being the coolest:
   
 
 Any **commit** to this directory will trigger GitHub's actions workflow as described in [this file](.github/workflows/run-all.yml),\
-you will find the generated files under the **:open_file_folder:out/** folder of each each module.
+you will find the generated files under the **:open_file_folder:out/** folder of each subproject.
 
 ### The manual way
 Any subproject is a standalone module. However some subprojects may have the specific job to generate configurations for other subprojects. Of course those files could be manually created but if you want to run the full CICD stack you must use the projects in the order [shown above](#subprojects).
