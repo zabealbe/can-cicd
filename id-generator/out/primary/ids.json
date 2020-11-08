@@ -2,52 +2,52 @@
     "network_version": 1,
     "ids": [
         {
-            "topic": "TLM",
+            "topic": "STEER",
             "id": 0,
             "messages": {
-                "SET_TLM_STATUS": 512
-            }
-        },
-        {
-            "topic": "ECU",
-            "id": 1,
-            "messages": {
-                "TS_STATUS_UPDATE": 1,
-                "STEER_STATUS_UPDATE": 33,
-                "SET_CAR_STATUS": 65,
-                "ASK_CAR_STATUS": 97
-            }
-        },
-        {
-            "topic": "BMS_HV",
-            "id": 2,
-            "messages": {
-                "SET_TS_STATUS": 2
-            }
-        },
-        {
-            "topic": "STEER",
-            "id": 3,
-            "messages": {
-                "TLM_STATUS_UPDATE": 515,
-                "CAR_STATUS_UPDATE": 3
-            }
-        },
-        {
-            "topic": "PEDALS",
-            "id": 4,
-            "messages": {
-                "SET_PEDALS_RANGE": 4
+                "TLM_STATUS_UPDATE": 256,
+                "CAR_STATUS_UPDATE": 0
             }
         },
         {
             "topic": "ECUnSTEER",
+            "id": 1,
+            "messages": {
+                "HV_VOLTAGE": 769,
+                "HV_CURRENT": 801,
+                "HV_TEMP": 833,
+                "HV_ERROR": 257
+            }
+        },
+        {
+            "topic": "TLM",
+            "id": 2,
+            "messages": {
+                "SET_TLM_STATUS": 258
+            }
+        },
+        {
+            "topic": "PEDALS",
+            "id": 3,
+            "messages": {
+                "SET_PEDALS_RANGE": 3
+            }
+        },
+        {
+            "topic": "BMS_HV",
+            "id": 4,
+            "messages": {
+                "SET_TS_STATUS": 4
+            }
+        },
+        {
+            "topic": "ECU",
             "id": 5,
             "messages": {
-                "HV_VOLTAGE": 773,
-                "HV_CURRENT": 805,
-                "HV_TEMP": 837,
-                "HV_ERROR": 261
+                "TS_STATUS_UPDATE": 5,
+                "STEER_STATUS_UPDATE": 37,
+                "SET_CAR_STATUS": 69,
+                "ASK_CAR_STATUS": 101
             }
         }
     ]

@@ -1,21 +1,22 @@
 
-enum Tlm_Status : byte { ON, SETUP, OFF }
+enum Tlm_Status : byte { ON, OFF }
 
-enum Test : byte { ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE }
+enum Race_Type : byte { ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE }
 struct TLM_STATUS_UPDATE {
 	tlm_status: Tlm_Status;
-	test: Test;
+	race_type: Race_Type;
 	driver: uint8;
-	map: uint8;
+	circuit: uint8;
 }
 
 enum Tlm_Status_Set : byte { ON, OFF }
 
+enum Race_Type_Set : byte { ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE }
 struct SET_TLM_STATUS {
 	tlm_status_set: Tlm_Status_Set;
-	test: Test;
+	race_type_set: Race_Type_Set;
 	driver: uint8;
-	map: uint8;
+	circuit: uint8;
 }
 struct HV_VOLTAGE {
 	pack_voltage: uint32;
