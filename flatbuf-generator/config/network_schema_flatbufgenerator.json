@@ -6,6 +6,20 @@
 	        "minimum": 0,
 	        "maximum": 255
 	    },
+		"shared_enums": {
+			"type": "object",
+			"patternProperties": {
+				"^[A-Z][a-z0-9_]*$": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"pattern": "^[A-Z][A-Z0-9_]*$"
+					},
+					"maxItems": 256
+				}
+			},
+			"additionalProperties": false
+		},
 		"messages": {
 			"type": "array",
 			"items": {
@@ -20,7 +34,7 @@
 						"patternProperties": {
 							"^[A-Za-z][A-Za-z0-9_]*$": {
 								"type": ["string", "array"],
-								"pattern": "^[A-Za-z][A-Za-z0-9_]*$",
+								"pattern": "^[A-Z][a-z0-9_]|bool|int8|int16|int32|int64|uint8|uint16|uint32|uint64|float32|float64*$",
 								"items": {
 									"type": "string",
 									"pattern": "^[A-Z][A-Z0-9_]*$"
@@ -34,7 +48,8 @@
 				"required": ["name", "topic", "priority"],
                 "additionalProperties": true
 			}
-		}
+		},
+		"maxItems": 2048
 	},
-    "additionalProperties": false
+	"required": ["messages", "network_version"]
 }

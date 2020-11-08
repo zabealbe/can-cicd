@@ -19,25 +19,68 @@ Each network should have its own folder and files as shown below:\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: network.json
 
 **Configure network.json**\
-This file contains the description of all the network's messages in the following format:
+This file contains the description of the network and the network's messages in the following format:
 <pre>
-[{
-    "name": string,
-    "topic": string,
-    "priority": int,
-    "sending": [string],
-    "receiving": [string],
-    "contents": {
-        "field_name": "type",
-        "field2_name": "type"
+{
+    "network_version": int,
+    "enums": {
+        "enum_name_1": [VALUE1, VALUE2, ...],
+        "enum_name_2": [VALUE1, VALUE2, ...],
+        ...
     }
+    "messages": [{
+        "name": string,
+        "topic": string,
+        "priority": int,
+        "sending": [string],
+        "receiving": [string],
+        "contents": {
+            "field_name_1": "type",
+            "field_name_2": "type2",
+            ...
+        }
+    }
+    , ...]
 }
-, ...]
 </pre>
 
 
-**Constraints you have to follow:**
+**Constraints you have to follow and description:**
 <details><summary>SHOW</summary>
+
+<pre>
+"network_version": int
+</pre>
+The network version is used by the [includes-generator](includes-generator) module to ensure that
+version mismatches between CAN devices can be identified.
+___
+    
+    
+<pre>
+"shared_enums": object
+</pre>
+This is an optional field, can be used to reuse the same enum across different messages or use it
+multiple times in the same message's payload.
+To create a new shared enum insert the enum's name as the key and the enum values as a
+strings array as shown below:
+<pre>
+"shared_enums": {
+    "Shared_enum_1": ["ITEM1", "ITEM2", ...],
+    ...
+}
+</pre>
+The enum name must match the following regex: `^[A-Z][a-z0-9_]*$` and **its items** must match
+`^[A-Z][A-Z0-9_]*$`.
+___
+    
+
+<pre>
+"messages": array
+</pre>
+This is the field where all the network messages are described, it is an array of objects and can have 
+**at most 2048 items**
+___
+
 
 **Avoid message name conflicts across different networks**\
 If you plan to have two different messages in two separate networks having the same name you **can't** use the merge function on those two networks.
@@ -85,17 +128,33 @@ ___
 <pre>
 "contents": {
     "field_name_1": "type",
-    "field_name_2": "type"
+    "field_name_2": "type2",
+    ...
 }
 </pre>
-This field describes the message's payload, the size can be **at most 8 bytes**.\
+This field describes the message's payload, the overall size can be **at most 8 bytes**.\
 Each value contained in the payload must be indicated with its name and its type.\
 The name must satisfy this regex: `^[A-Za-z][A-Za-z0-9_]*$`.\
 The type can be one of the following:
-+ 1 byte: `bool, int8, uint8, enum`
-+ 2 bytes: `int16, uint16`
-+ 4 bytes: `int32, uint32, float32`
-+ 8 bytes: `int64, uint64, float64`
++ 1 byte: `bool`, `int8`, `uint8`
++ 2 bytes: `int16`, `uint16`
++ 4 bytes: `int32`, `uint32`, `float32`
++ 8 bytes: `int64`, `uint64`, `float64`
+
+You can also use the `enum` type which has a size of 1 byte. to use it simply specify the field
+name and the enum values with an array of strings as shown below:
+<pre>
+"contents": {
+    "field_name": ["ITEM1", "ITEM2", ...]
+}
+</pre>
+You can have **at most 255 items** per enum. If you wish to use a shared enum you can simply 
+by using its name as the right hand side value:
+<pre>
+"contents": {
+    "field_name": "Shared_enum_name"
+}
+</pre>
 
 </details>
 

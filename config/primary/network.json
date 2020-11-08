@@ -1,5 +1,8 @@
 {
     "network_version": 1,
+    "shared_enums": {
+        "Inverter_status": ["OFF", "IDLE", "ON"]
+    },
     "messages": [
         {
             "name": "TLM_STATUS_UPDATE",
@@ -123,8 +126,8 @@
             "receiving": ["STEER"],
             "contents": {
                 "car_status": ["IDLE", "SETUP", "RUN"],
-                "inverter_l": ["OFF", "IDLE", "ON"],
-                "inverter_r": ["OFF", "IDLE", "ON"]
+                "inverter_l": "Inverter_status",
+                "inverter_r": "Inverter_status"
             }
         },{
             "name": "SET_PEDALS_RANGE",

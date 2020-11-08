@@ -4,7 +4,6 @@
 	    "network_version": {
 	        "type": "integer",
 	        "minimum": 0,
-	        "maximum": 255
 	    },
 		"messages": {
 			"type": "array",
@@ -28,7 +27,8 @@
 				"required": ["name", "topic", "priority"],
                 "additionalProperties": true
 			}
-		}
+		},
+        "maxItems": 2048
 	},
-    "additionalProperties": false
+    "required": ["messages", "network_version"]
 }

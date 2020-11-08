@@ -1,6 +1,4 @@
-
 enum Tlm_Status : byte { ON, SETUP, OFF }
-
 enum Test : byte { ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE }
 struct TLM_STATUS_UPDATE {
 	tlm_status: Tlm_Status;
@@ -10,28 +8,31 @@ struct TLM_STATUS_UPDATE {
 }
 
 enum Tlm_Status_Set : byte { ON, OFF }
-
 struct SET_TLM_STATUS {
 	tlm_status_set: Tlm_Status_Set;
 	test: Test;
 	driver: uint8;
 	map: uint8;
 }
+
 struct HV_VOLTAGE {
 	pack_voltage: uint32;
 	bus_voltage: uint32;
 	max_cell_voltage: uint16;
 	min_cell_voltage: uint16;
 }
+
 struct HV_CURRENT {
 	current: uint16;
 	power: int8;
 }
+
 struct HV_TEMP {
 	average_temp: uint16;
 	max_temp: uint16;
 	min_temp: uint16;
 }
+
 struct HV_ERROR {
 	error_code: uint8;
 	error_index: uint8;
@@ -49,7 +50,6 @@ struct SET_TS_STATUS {
 }
 
 enum Traction_Control : byte { OFF, SLIP_CONTROL, TORQUE_VECTORING, COMPLETE }
-
 enum Map : byte { R, D20, D40, D60, D80, D100 }
 struct STEER_STATUS_UPDATE {
 	traction_control: Traction_Control;
@@ -61,22 +61,20 @@ enum Car_Status_Set : byte { IDLE, RUN }
 struct SET_CAR_STATUS {
 	car_status_set: Car_Status_Set;
 }
+
 struct ASK_CAR_STATUS {
 }
 
 enum Car_Status : byte { IDLE, SETUP, RUN }
-
-enum Inverter_L : byte { OFF, IDLE, ON }
-
-enum Inverter_R : byte { OFF, IDLE, ON }
 struct CAR_STATUS_UPDATE {
 	car_status: Car_Status;
-	inverter_l: Inverter_L;
-	inverter_r: Inverter_R;
+	inverter_l: Inverter_status;
+	inverter_r: Inverter_status;
 }
 
 enum Bound : byte { MAX, MIN }
 struct SET_PEDALS_RANGE {
 	bound: Bound;
 }
+
 

@@ -9,7 +9,7 @@ def get_message_schema(message):
     for item, value in message['contents'].items():
         item = item.lower()
         if isinstance(value, list):
-            enum += "\nenum {0} : byte {{ {1} }}\n".format(item.title(), ", ".join(value))
+            enum += "enum {0} : byte {{ {1} }}\n".format(item.title(), ", ".join(value))
             value = item.title()
         schema += "\t{0}: {1};\n".format(item, value)
     schema += "}"
@@ -20,7 +20,7 @@ def get_message_schema(message):
 def get_schema(messages):
     schema = ""
     for m in messages:
-        schema += "{0}\n".format(get_message_schema(m))
+        schema += "{0}\n\n".format(get_message_schema(m))
 
     stripped_schema = ""
     enums = {}
