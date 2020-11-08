@@ -29,14 +29,15 @@ This file contains the description of all the network's messages in the followin
     "receiving": [string],
     "contents": {
         "field_name": "type",
-        "field2_name": "type"
+        "field2_name": "type",
+        ...
     }
 }
 , ...]
 ```
 
 
-**Constraints you have to follow and description:**
+**Description and constraints you have to follow:**
 <details><summary>SHOW</summary>
 
 **Avoid message name conflicts across different networks**\
@@ -96,7 +97,9 @@ ___
 ```yaml
 "contents": {
     "field_name_1": "type",
-    "field_name_2": "type"
+    "field_name_2": "type",
+    ...
+}
 ```
 
 Required by: [flatbuf-generator](flatbuf-generator)
@@ -112,12 +115,13 @@ The type can be one of the following:
 + 8 bytes: `int64, uint64, float64`
 
 In addition you may also use an `enum` which has a size of 1 byte:
-<pre>
+```yaml
 "contents": {
     "field1_name": ["ITEM1", "ITEM2", ...]             // Concise syntax
     "Enum_name: field2_name": ["ITEM1", "ITEM2", ...]  // Complete syntax
 }
-</pre>
+```
+
 The complete syntax describes the flatbuffers enum type name and the actual field name.
 Enum name must start with an Uppercase letter and may contain lowercase letters, 
 numbers and "_".
