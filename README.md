@@ -20,7 +20,7 @@ Each network should have its own folder and files as shown below:\
 
 **Configure network.json**\
 This file contains the description of all the network's messages in the following format:
-<pre>
+```yaml
 [{
     "name": string,
     "topic": string,
@@ -33,10 +33,10 @@ This file contains the description of all the network's messages in the followin
     }
 }
 , ...]
-</pre>
+```
 
 
-**Constraints you have to follow:**
+**Constraints you have to follow and description:**
 <details><summary>SHOW</summary>
 
 **Avoid message name conflicts across different networks**\
@@ -44,19 +44,17 @@ If you plan to have two different messages in two separate networks having the s
 On the other hand if the two messages are **identical**, meaning that they are actually the same message but used on multiple networks you may merge them.
 ___
     
-    
-<pre>
+```yaml
 "name": string
-</pre>
+```
 Required.
 
 This field **must be unique** for each message, and should contain only UPPERCASE letters and "_"
 ___
 
-
-<pre>
+```yaml
 "topic": string
-</pre>
+```
 Required by: [id-generator](id-generator)
 
 This field can be the same across **at most 64 messages**, meaning a topic can contain at most 64 messages.
@@ -64,17 +62,18 @@ The characters you should use are all UPPERCASE letters and "_".
 Messages should be subdivided in topics keeping in mind that the topic will be used by CAN devices to discriminate wether a message is interesting or not.
 ___
 
-<pre>
+```yaml
 "priority": int
-</pre>
+```
 Required by: [id-generator](id-generator)
 
 This field can can be an **integer from 0 to 7**, the higher the value the more important the message.
 You can have **at most 8 messages** with the same combination of **priority and topic**, if you have more you must create a new topic or assign a different priority to some of them.
 ___
-<pre>
+
+```yaml
 "sending": [string]
-</pre>
+```
 Not required.
 
 This field indicates the receiving device(s), **can be more than one**.\
@@ -82,9 +81,10 @@ The characters you should use are all UPPERCASE letters and "_".
 If there is more than one sending device insert each one as a different array element.\
 If there is only one sending device use an array with a single element.
 ___
-<pre>
+
+```yaml
 "receiving": [string]
-</pre>
+```
 Not required.
 
 This field indicates the receiving device(s), **can be more than one**.\
@@ -92,16 +92,17 @@ The characters you should use are all UPPERCASE letters and "_".
 If there is more than one receiving device insert each one as a different array element.\
 If there is only one receiving device use an array with a single element.
 ___
-<pre>
+
+```yaml
 "contents": {
     "field_name_1": "type",
     "field_name_2": "type"
-}
-</pre>
+```
+
 Required by: [flatbuf-generator](flatbuf-generator)
 
 
-This field describes the message's payload, the size can be **at most 8 bytes**.\
+This field describes the message's payload, the overall size can be **at most 8 bytes**.\
 Each value contained in the payload must be indicated with its name and its type.\
 The field name must satisfy this regex: `^[a-z][a-z0-9_]*$`.\
 The type can be one of the following:
@@ -127,8 +128,8 @@ by capitalizing the field name's first letter.
 `field1_name: [...]` will result in an enum called `Field1_name`.
 
 If the same enum (same name, same items) is used multiple times within the same message or across 
-different messages it will be represented by flatbuffers with a single enum type,\
-however items differences will result in an error.
+different messages it will be represented by flatbuffers with a single enum type, however items differences will 
+result in an error.
 </details>
 
 
