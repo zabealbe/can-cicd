@@ -48,6 +48,8 @@ ___
 <pre>
 "name": string
 </pre>
+Required.
+
 This field **must be unique** for each message, and should contain only UPPERCASE letters and "_"
 ___
 
@@ -55,6 +57,8 @@ ___
 <pre>
 "topic": string
 </pre>
+Required by: [id-generator](id-generator)
+
 This field can be the same across **at most 64 messages**, meaning a topic can contain at most 64 messages.
 The characters you should use are all UPPERCASE letters and "_".
 Messages should be subdivided in topics keeping in mind that the topic will be used by CAN devices to discriminate wether a message is interesting or not.
@@ -63,12 +67,16 @@ ___
 <pre>
 "priority": int
 </pre>
+Required by: [id-generator](id-generator)
+
 This field can can be an **integer from 0 to 7**, the higher the value the more important the message.
 You can have **at most 8 messages** with the same combination of **priority and topic**, if you have more you must create a new topic or assign a different priority to some of them.
 ___
 <pre>
 "sending": [string]
 </pre>
+Not required.
+
 This field indicates the receiving device(s), **can be more than one**.\
 The characters you should use are all UPPERCASE letters and "_".
 If there is more than one sending device insert each one as a different array element.\
@@ -77,6 +85,8 @@ ___
 <pre>
 "receiving": [string]
 </pre>
+Not required.
+
 This field indicates the receiving device(s), **can be more than one**.\
 The characters you should use are all UPPERCASE letters and "_".
 If there is more than one receiving device insert each one as a different array element.\
@@ -88,15 +98,37 @@ ___
     "field_name_2": "type"
 }
 </pre>
+Required by: [flatbuf-generator](flatbuf-generator)
+
+
 This field describes the message's payload, the size can be **at most 8 bytes**.\
 Each value contained in the payload must be indicated with its name and its type.\
-The name must satisfy this regex: `^[A-Za-z][A-Za-z0-9_]*$`.\
+The field name must satisfy this regex: `^[a-z][a-z0-9_]*$`.\
 The type can be one of the following:
-+ 1 byte: `bool, int8, uint8, enum`
++ 1 byte: `bool, int8, uint8`
 + 2 bytes: `int16, uint16`
 + 4 bytes: `int32, uint32, float32`
 + 8 bytes: `int64, uint64, float64`
 
+In addition you may also use an `enum` which has a size of 1 byte:
+<pre>
+"contents": {
+    "field1_name": ["ITEM1", "ITEM2", ...]             // Concise syntax
+    "Enum_name: field2_name": ["ITEM1", "ITEM2", ...]  // Complete syntax
+}
+</pre>
+The complete syntax describes the flatbuffers enum type name and the actual field name.
+Enum name must start with an Uppercase letter and may contain lowercase letters, 
+numbers and "_".
+Enum type name and field name must be separated by ": ".\
+In the concise version you don't need to specify the enum's name as it will be created internally
+by capitalizing the field name's first letter.
+
+`field1_name: [...]` will result in an enum called `Field1_name`.
+
+If the same enum (same name, same items) is used multiple times within the same message or across 
+different messages it will be represented by flatbuffers with a single enum type,\
+however items differences will result in an error.
 </details>
 
 
