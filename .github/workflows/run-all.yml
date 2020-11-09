@@ -8,6 +8,8 @@ on:
   push:
     paths:
     - 'config/**'
+    branches:
+      - master
 
 jobs:
   run-all:
