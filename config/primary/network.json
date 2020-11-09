@@ -20,8 +20,8 @@
             "sending": ["STEER"],
             "receiving": ["TLM"],
             "contents": {
-                "tlm_status_set": ["ON", "OFF"],
-                "race_type_set": ["ACCELERATION", "SKIDPAD", "AUTOCROSS", "ENDURANCE"],
+                "tlm_status": ["ON", "OFF"],
+                "race_type": ["ACCELERATION", "SKIDPAD", "AUTOCROSS", "ENDURANCE"],
                 "driver": "uint8",
                 "circuit": "uint8"
             }
@@ -123,8 +123,8 @@
             "receiving": ["STEER"],
             "contents": {
                 "car_status": ["IDLE", "SETUP", "RUN"],
-                "inverter_l": ["OFF", "IDLE", "ON"],
-                "inverter_r": ["OFF", "IDLE", "ON"]
+                "Inverter_status: inverter_l": ["OFF", "IDLE", "ON"],
+                "Inverter_status: inverter_r": ["OFF", "IDLE", "ON"]
             }
         },{
             "name": "SET_PEDALS_RANGE",

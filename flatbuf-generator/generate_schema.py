@@ -7,11 +7,17 @@ def get_message_schema(message):
     schema = "struct {0} {{\n".format(message['name'])
     enum = ""
     for item, value in message['contents'].items():
-        item = item.lower()
+        field_name = item.lower()
+        field_value = value
         if isinstance(value, list):
-            enum += "\nenum {0} : byte {{ {1} }}\n".format(item.title(), ", ".join(value))
-            value = item.title()
-        schema += "\t{0}: {1};\n".format(item, value)
+            if ":" in field_name:
+                enum_name = field_name.split(":")[0].strip().title()
+                field_name = field_name.split(":")[1].strip()
+            else:
+                enum_name = field_name.title()
+            field_value = enum_name
+            enum += "enum {0} : byte {{ {1} }}\n".format(enum_name, ", ".join(value))
+        schema += "\t{0}: {1};\n".format(field_name, field_value)
     schema += "}"
     schema = enum + schema
     return schema
@@ -20,7 +26,7 @@ def get_message_schema(message):
 def get_schema(messages):
     schema = ""
     for m in messages:
-        schema += "{0}\n".format(get_message_schema(m))
+        schema += "{0}\n\n".format(get_message_schema(m))
 
     stripped_schema = ""
     enums = {}
