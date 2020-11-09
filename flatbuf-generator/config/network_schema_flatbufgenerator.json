@@ -18,9 +18,17 @@
 					"contents": {
 						"type": "object",
 						"patternProperties": {
-							"^[A-Za-z][A-Za-z0-9_]*$": {
+							"^[a-z][a-z0-9_]*$": {
 								"type": ["string", "array"],
-								"pattern": "^[A-Za-z][A-Za-z0-9_]*$",
+								"pattern": "^bool|int8|int16|int32|int64|uint8|uint16|uint32|uint64|float32|float64*$",
+								"items": {
+									"type": "string",
+									"pattern": "^[A-Z][A-Z0-9_]*$"
+								},
+								"maxItems": 256
+							},
+							"^[A-Z][a-z0-9_]*: [a-z0-9_]+$": {
+								"type": ["array"],
 								"items": {
 									"type": "string",
 									"pattern": "^[A-Z][A-Z0-9_]*$"
@@ -31,7 +39,7 @@
 						"additionalProperties": false
 					}
 				},
-				"required": ["name", "topic", "priority"],
+				"required": ["name", "contents"],
                 "additionalProperties": true
 			}
 		}
