@@ -5,7 +5,20 @@ NETWORK_FILE_VALIDATION_SCHEMA = "config/network_schema_flatbufgenerator.json"
 
 FLATBUF_SCHEMA_FILE = "out/[network]/schema.fbs"
 
-COMPILE_LANGUAGES = {
-    "c": True,
-    "python": False
+# LANGUAGES
+CONFIG_LANGUAGES = [
+        "c",
+#        "python"
+    ]
+
+# FLATC
+FLATC_ENABLE = False
+FLATC_CONFIG_LANGUAGES = [
+        "c",
+        "python"
+    ]
+
+# FLATCC (for c only)
+FLATCC_ENABLE = True
+FLATCC_CONFIG = {
 }
