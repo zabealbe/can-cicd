@@ -33,8 +33,10 @@ jobs:
         cd flatbuf-generator
         python generate_schema.py
         wget -O flatc https://raw.githubusercontent.com/zabealbe/flatc-musl/main/versions/flatc_v1.12.0
+        wget -O flatcc https://raw.githubusercontent.com/zabealbe/flatc-musl/main/versions/flatcc_v0.6.0
         chmod +x flatc
-        python compile_schema.py --flatc ./flatc
+        chmod +x flatcc
+        python compile_schema.py --flatc ./flatc --flatcc ./flatcc
         git add -f out
     - name: Run Includes generator
       run: |
