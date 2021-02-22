@@ -58,12 +58,14 @@ def main():
                         help="FlatCC executable", default="flatcc")
     args = parser.parse_args()
 
+    flatcc = False
     if "c" in get_languages():  # flatcc
-        process = subprocess.Popen("{0} --version".format(args.flatcc_path), stdout=subprocess.PIPE, shell=True)
-        out, _ = process.communicate()
+        process = subprocess.Popen("{0} --version".format(args.flatcc_path), stdout=subprocess.PIPE,
+                                   stderr=subprocess.PIPE, shell=True)
+        out, out_err = process.communicate()
         err = process.returncode
 
-        if err or "flatcc" not in str(out):
+        if err or "flatcc" not in str(out+out_err):
             if args.flatcc_path == "flatcc":
                 print("Couldn't find flatcc executable in $PATH")
             else:
@@ -71,7 +73,9 @@ def main():
             exit(1)
 
         flatcc = True
-    if not ("c" in get_languages() and len(get_languages() == 1)):  # flatc
+
+    flatc = False
+    if not ("c" in get_languages() and len(get_languages()) == 1):  # flatc
         process = subprocess.Popen("{0} --version".format(args.flatc_path), stdout=subprocess.PIPE, shell=True)
         out, _ = process.communicate()
         err = process.returncode
