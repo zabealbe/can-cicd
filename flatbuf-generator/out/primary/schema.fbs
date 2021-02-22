@@ -61,8 +61,6 @@ struct SET_CAR_STATUS {
 	car_status_set: Car_Status_Set;
 }
 
-struct ASK_CAR_STATUS {
-}
 
 enum Car_Status : byte { IDLE, SETUP, RUN }
 enum Inverter_Status : byte { OFF, IDLE, ON }

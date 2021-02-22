@@ -4,9 +4,12 @@ from config import config as c
 
 
 def get_message_schema(message):
-    schema = "struct {0} {{\n".format(message['name'])
+    if len(message["contents"]) == 0:
+        return ""
+
+    schema = "struct {0} {{\n".format(message["name"])
     enum = ""
-    for item, value in message['contents'].items():
+    for item, value in message["contents"].items():
         field_name = item.lower()
         field_value = value
         if isinstance(value, list):
@@ -19,14 +22,14 @@ def get_message_schema(message):
             enum += "enum {0} : byte {{ {1} }}\n".format(enum_name, ", ".join(value))
         schema += "\t{0}: {1};\n".format(field_name, field_value)
     schema += "}"
-    schema = enum + schema
+    schema = enum + schema + "\n"
     return schema
 
 
 def get_schema(messages):
     schema = ""
     for m in messages:
-        schema += "{0}\n\n".format(get_message_schema(m))
+        schema += "{0}\n".format(get_message_schema(m))
 
     stripped_schema = ""
     enums = {}
