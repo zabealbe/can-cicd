@@ -21,6 +21,7 @@ jobs:
       name: Set up Python 3.8
       with:
         python-version: 3.8
+    - uses: actions/checkout@v2
     - name: Run ID generator
       run: |
         cd id-generator
@@ -45,7 +46,6 @@ jobs:
         python main.py
         mkdir -p /tmp/workspace/includes-generator/ && cp -R out/* /tmp/workspace/includes-generator/
 #        git add -f out
-    - uses: actions/checkout@v2
     - name: Push generated includes
       run: |
           git config --global user.name 'Automated CICD'
