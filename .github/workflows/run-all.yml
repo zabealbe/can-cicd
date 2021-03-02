@@ -54,6 +54,7 @@ jobs:
             git checkout build
           else
             git checkout --orphan build
+            git branch --set-upstream-to origin/build
           fi
           cp -r /tmp/workspace/* .
           git add .
