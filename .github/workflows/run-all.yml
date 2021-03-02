@@ -52,6 +52,7 @@ jobs:
           git config --global user.email noreply@noone.com
           if [[ $( git branch -r | grep build ) ]]; then
             git checkout build
+            git pull
           else
             git checkout --orphan build
           fi
