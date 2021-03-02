@@ -55,7 +55,7 @@ jobs:
           else
             git checkout --orphan build
           fi
-          cp /tmp/workspace/* .
+          cp -r /tmp/workspace/* .
           git add .
           git commit -am "Automatically generated files"
           git push
