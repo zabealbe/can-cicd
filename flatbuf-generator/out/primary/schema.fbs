@@ -39,7 +39,7 @@ struct HV_TEMP {
 	max_temp: uint16;
 	min_temp: uint16;
 }
-
+#test
 ('struct HV_ERROR {\n\terror_code: uint8;\n\terror_index: uint8;\n\tactive: uint8;\n}', 3)
 
 struct HV_ERROR {

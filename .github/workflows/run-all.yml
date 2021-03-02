@@ -21,13 +21,13 @@ jobs:
       name: Set up Python 3.8
       with:
         python-version: 3.8
-    - uses: actions/checkout@v2
     - name: Run ID generator
       run: |
         cd id-generator
         pip install -r requirements.txt
         python main.py
-        git add -f out
+        mkdir -p /tmp/workspace/id-generator/ && cp -R out/* /tmp/workspace/id-generator/
+#        git add -f out
     - name: Run Flatbuf generator
       run: |
         cd flatbuf-generator
@@ -37,15 +37,25 @@ jobs:
         chmod +x flatc
         chmod +x flatcc
         python compile_schema.py --flatc ./flatc --flatcc ./flatcc
-        git add -f out
+        mkdir -p /tmp/workspace/flatbuf-generator/ && cp -R out/* /tmp/workspace/flatbuf-generator/
+#        git add -f out
     - name: Run Includes generator
       run: |
         cd includes-generator
         python main.py
-        git add -f out
+        mkdir -p /tmp/workspace/includes-generator/ && cp -R out/* /tmp/workspace/includes-generator/
+#        git add -f out
+    - uses: actions/checkout@v2
     - name: Push generated includes
       run: |
           git config --global user.name 'Automated CICD'
           git config --global user.email noreply@noone.com
+          if [[ $( git branch -r | grep build ) ]]; then
+            git checkout build
+          else
+            git checkout --orphan build
+          fi
+          cp /tmp/workspace/* .
+          git add .
           git commit -am "Automatically generated files"
           git push
