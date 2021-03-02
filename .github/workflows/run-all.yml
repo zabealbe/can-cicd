@@ -59,4 +59,8 @@ jobs:
           cp -r /tmp/workspace/* .
           git add .
           git commit -am "Automatically generated files"
-          git push --set-upstream origin build
+          if [[ $( git branch -r | grep build ) ]]; then
+            git push
+          else
+            git push --set-upstream origin build
+          fi
