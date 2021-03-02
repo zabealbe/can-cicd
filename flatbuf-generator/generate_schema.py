@@ -6,10 +6,11 @@ from config import config as c
 def get_message_schema(message):
     schema = "struct {0} {{\n".format(message["name"])
     enum = ""
+    payload_size = 0  # in bytes
     for item, value in message["contents"].items():
         field_name = item.lower()
         field_value = value
-        if isinstance(value, list):
+        if isinstance(value, list):  # is enum
             if ":" in field_name:
                 enum_name = field_name.split(":")[0].strip().title()
                 field_name = field_name.split(":")[1].strip()
@@ -17,10 +18,17 @@ def get_message_schema(message):
                 enum_name = field_name.title()
             field_value = enum_name
             enum += "enum {0} : byte {{ {1} }}\n".format(enum_name, ", ".join(value))
+
+        #  Calculating payload size
+        if field_value in c.TYPES_SIZE:
+            payload_size += c.TYPES_SIZE[field_value]
+        elif isinstance(value, list):  # is enum
+            payload_size += c.TYPES_SIZE["enum"]
+
         schema += "\t{0}: {1};\n".format(field_name, field_value)
     schema += "}"
     schema = enum + schema
-    return schema
+    return schema, payload_size
 
 
 def get_schema(messages):
@@ -29,6 +37,10 @@ def get_schema(messages):
         if len(m["contents"]) == 0:  # skip empty messages
             continue
         schema += "{0}\n\n".format(get_message_schema(m))
+        message_schema, payload_size = get_message_schema(m)
+        assert payload_size <= c.MAX_PAYLOAD_SIZE_BYTES, "Payload configured max size of {0} bytes is exceeded by {1}"\
+            .format(c.MAX_PAYLOAD_SIZE_BYTES, m["name"])
+        schema += "{0}\n\n".format(message_schema)
 
     stripped_schema = ""
     enums = {}

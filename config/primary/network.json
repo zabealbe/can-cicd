@@ -32,8 +32,8 @@
             "sending": ["BMS_HV"],
             "receiving": ["ECU", "STEER"],
             "contents": {
-                "pack_voltage": "uint32",
-                "bus_voltage": "uint32",
+                "pack_voltage": "uint16",
+                "bus_voltage": "uint16",
                 "max_cell_voltage": "uint16",
                 "min_cell_voltage": "uint16"
             }

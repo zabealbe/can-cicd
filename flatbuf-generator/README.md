@@ -29,10 +29,13 @@ FLATBUF_SCHEMA_FILE is the generated flatbuffer schema file, the syntax is as an
 ### Requirements
 +  Linux or MacOs
 +  Python >=3.6
-+  FlatC
++  FlatC (for any language except C)
     + https://github.com/zabealbe/flatc-musl
     + https://github.com/google/flatbuffers
-
++  FlatCC (for C specifically)
+    + https://github.com/zabealbe/flatc-musl
+    + https://github.com/dvidelabs/flatcc
+    
 ### Run it!
 ```console
 $ cd flatbuf-generator
