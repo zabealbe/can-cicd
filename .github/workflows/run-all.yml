@@ -51,6 +51,7 @@ jobs:
           git config --global user.name 'Automated CICD'
           git config --global user.email noreply@noone.com
           if [[ $( git branch -r | grep build ) ]]; then
+            git fetch origin build
             git checkout build
           else
             git checkout --orphan build
