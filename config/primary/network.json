@@ -2,7 +2,7 @@
     "network_version": 1,
     "messages": [
         {
-            "name": "TLM_STATUS_UPDATE",
+            "name": "TEST_TLM_STATUS_UPDATE",
             "topic": "STEER",
             "priority": 6,
             "sending": ["TLM"],
