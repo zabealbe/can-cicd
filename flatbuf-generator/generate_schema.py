@@ -37,7 +37,6 @@ def get_schema(messages):
         if len(m["contents"]) == 0:  # skip empty messages
             continue
         message_schema, payload_size = get_message_schema(m)
-        schema += "{0}\n\n".format(message_schema)
         assert payload_size <= c.MAX_PAYLOAD_SIZE_BYTES, "Payload configured max size of {0} bytes is exceeded by {1}"\
             .format(c.MAX_PAYLOAD_SIZE_BYTES, m["name"])
         schema += "{0}\n\n".format(message_schema)

@@ -1,8 +1,22 @@
+import sys
 import argparse
 import subprocess
 
 from lib.utils import *
 from config import config as c
+
+
+def run_command(command):
+    print(f"running \"{command}\"")
+    process = subprocess.Popen(command,
+                               stdout=subprocess.PIPE,
+                               stderr=subprocess.PIPE, shell=True)
+    process.wait()
+
+    code = process.returncode
+
+    out, out_err = process.communicate()
+    return out.decode("utf-8"), out_err.decode("utf-8"), code
 
 
 def get_languages():
@@ -60,12 +74,9 @@ def main():
 
     flatcc = False
     if "c" in get_languages():  # flatcc
-        process = subprocess.Popen("{0} --version".format(args.flatcc_path), stdout=subprocess.PIPE,
-                                   stderr=subprocess.PIPE, shell=True)
-        out, out_err = process.communicate()
-        err = process.returncode
+        out, err_out, err_code = run_command("{0} --version".format(args.flatcc_path))
 
-        if err or "flatcc" not in str(out+out_err):
+        if err_code or "flatcc" not in str(out+err_out):
             if args.flatcc_path == "flatcc":
                 print("Couldn't find flatcc executable in $PATH")
             else:
@@ -76,11 +87,9 @@ def main():
 
     flatc = False
     if not ("c" in get_languages() and len(get_languages()) == 1):  # flatc
-        process = subprocess.Popen("{0} --version".format(args.flatc_path), stdout=subprocess.PIPE, shell=True)
-        out, _ = process.communicate()
-        err = process.returncode
+        out, err_out, err_code = run_command("{0} --version".format(args.flatc_path))
 
-        if err or "flatc" not in str(out):
+        if err_code or "flatc" not in str(out):
             if args.flatc_path == "flatc":
                 print("Couldn't find flatc executable in $PATH")
             else:
@@ -93,11 +102,19 @@ def main():
     paths = parse_network_multipath(c.FLATBUF_SCHEMA_FILE)
     for network_name, path in paths.items():
         if flatc:
-            print("{0} {1} -o {2} {3}".format(args.flatc_path, flatc_options, os.path.dirname(path), path))
-            os.system("{0} {1} -o {2} {3}".format(args.flatc_path, flatc_options, os.path.dirname(path), path))
+            command = "{0} {1} -o {2} {3}".format(args.flatc_path, flatc_options, os.path.dirname(path), path)
+            out, err_out, err_code = run_command(command)
+            if err_code != 0:
+                print(err_out, file=sys.stderr)
+                sys.exit(f"The command returned error code {err_code}")
+
         if flatcc:
-            print("{0} {1} -o {2} {3}".format(args.flatcc_path, flatcc_options, os.path.dirname(path), path))
-            os.system("{0} {1} -o {2} {3}".format(args.flatcc_path, flatcc_options, os.path.dirname(path), path))
+            command = "{0} {1} -o {2} {3}".format(args.flatcc_path, flatcc_options, os.path.dirname(path), path)
+            out, err_out, err_code = run_command(command)
+            if err_code != 0:
+                print(err_out, file=sys.stderr)
+                sys.exit(f"The command returned error code {err_code}")
+
         print("Compiled schema for {0}".format(network_name))
     print("done.")
 
