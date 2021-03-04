@@ -27,7 +27,7 @@ TYPES_SIZE = {
 # LANGUAGES
 CONFIG_LANGUAGES = [
         "c",
-#        "python"
+        "python"
     ]
 
 # FLATC
