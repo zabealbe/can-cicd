@@ -81,7 +81,7 @@
             ],
             "contents": {
                 "voltage16": "uint16",
-                "voltage17": "uint16",,
+                "voltage17": "uint16",
                 "max_voltage": "uint16",
                 "min_voltage": "uint16"
             }
@@ -224,7 +224,7 @@
             ],
             "contents": {
                 "voltage16": "uint16",
-                "voltage17": "uint16",,
+                "voltage17": "uint16",
                 "max_voltage": "uint16",
                 "min_voltage": "uint16"
             }
