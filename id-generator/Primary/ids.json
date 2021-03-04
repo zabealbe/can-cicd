@@ -1,0 +1,54 @@
+{
+    "network_version": 1,
+    "ids": [
+        {
+            "topic": "PEDALS",
+            "id": 0,
+            "messages": {
+                "SET_PEDALS_RANGE": 0
+            }
+        },
+        {
+            "topic": "ECU",
+            "id": 1,
+            "messages": {
+                "TS_STATUS_UPDATE": 1,
+                "STEER_STATUS_UPDATE": 33,
+                "SET_CAR_STATUS": 65,
+                "ASK_CAR_STATUS": 97
+            }
+        },
+        {
+            "topic": "ECUnSTEER",
+            "id": 2,
+            "messages": {
+                "HV_VOLTAGE": 770,
+                "HV_CURRENT": 802,
+                "HV_TEMP": 834,
+                "HV_ERROR": 258
+            }
+        },
+        {
+            "topic": "STEER",
+            "id": 3,
+            "messages": {
+                "TEST_TLM_STATUS_UPDATE": 259,
+                "CAR_STATUS_UPDATE": 3
+            }
+        },
+        {
+            "topic": "BMS_HV",
+            "id": 4,
+            "messages": {
+                "SET_TS_STATUS": 4
+            }
+        },
+        {
+            "topic": "TLM",
+            "id": 5,
+            "messages": {
+                "SET_TLM_STATUS": 261
+            }
+        }
+    ]
+}
