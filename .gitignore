@@ -135,3 +135,5 @@ dmypy.json
 
 # Project specific
 **/out/
+**/flatcc
+**/flatc

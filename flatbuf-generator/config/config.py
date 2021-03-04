@@ -29,15 +29,3 @@ CONFIG_LANGUAGES = [
         "c",
         "python"
     ]
-
-# FLATC
-FLATC_ENABLE = False
-FLATC_CONFIG_LANGUAGES = [
-        "c",
-        "python"
-    ]
-
-# FLATCC (for c only)
-FLATCC_ENABLE = True
-FLATCC_CONFIG = {
-}

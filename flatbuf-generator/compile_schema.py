@@ -24,27 +24,20 @@ def get_languages():
 
 
 def get_flatc_options():
-    if not c.FLATC_ENABLE:
-        return False
-
     options = ""
 
-    compile_languages = c.FLATC_CONFIG_LANGUAGES
+    compile_languages = c.CONFIG_LANGUAGES
     lang_args = {
         "python": "--python",
-        "c": "",
+        "c": "",  # supported only by FlatCC
         "cpp": "--cpp"
     }
-    for lang, value in compile_languages.items():
-        if value:
-            options += "{0}".format(lang_args[lang])
+    for lang in compile_languages:
+        options += "{0}".format(lang_args[lang])
     return options
 
 
 def get_flatcc_options():
-    if not c.FLATCC_ENABLE:
-        return False
-
     options = ""
 
     compile_args = [
@@ -97,7 +90,6 @@ def main():
             exit(1)
 
         flatc = True
-
     print("====== Schema compilation ======")
     paths = parse_network_multipath(c.FLATBUF_SCHEMA_FILE)
     for network_name, path in paths.items():
