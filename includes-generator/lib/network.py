@@ -1,8 +1,5 @@
 from lib.utils import *
 
-MESSAGES_FILE = "messages.json"
-
-
 class Network:
     def __init__(self, path, name):
         self.path = path
