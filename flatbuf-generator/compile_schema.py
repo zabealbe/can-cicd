@@ -94,14 +94,20 @@ def main():
     paths = parse_network_multipath(c.FLATBUF_SCHEMA_FILE)
     for network_name, path in paths.items():
         if flatc:
-            command = "{0} {1} -o {2} {3}".format(args.flatc_path, flatc_options, os.path.dirname(path), path)
+            outpath = f"{os.path.dirname(path)}/flatc"
+            if not os.path.exists(outpath):
+                os.mkdir(outpath)
+            command = f"{args.flatc_path} {flatc_options} -o {outpath} {path}"
             out, err_out, err_code = run_command(command)
             if err_code != 0:
                 print(err_out, file=sys.stderr)
                 sys.exit(f"The command returned error code {err_code}")
 
         if flatcc:
-            command = "{0} {1} -o {2} {3}".format(args.flatcc_path, flatcc_options, os.path.dirname(path), path)
+            outpath = f"{os.path.dirname(path)}/flatcc"
+            if not os.path.exists(outpath):
+                os.mkdir(outpath)
+            command = f"{args.flatcc_path} {flatcc_options} -o {outpath} {path}"
             out, err_out, err_code = run_command(command)
             if err_code != 0:
                 print(err_out, file=sys.stderr)
