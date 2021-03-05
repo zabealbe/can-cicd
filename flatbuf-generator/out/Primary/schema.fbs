@@ -1,0 +1,77 @@
+enum Tlm_Status : byte { ON, OFF }
+enum Race_Type : byte { ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE }
+struct TEST_TLM_STATUS_UPDATE {
+	tlm_status: Tlm_Status;
+	race_type: Race_Type;
+	driver: uint8;
+	circuit: uint8;
+}
+
+struct SET_TLM_STATUS {
+	tlm_status: Tlm_Status;
+	race_type: Race_Type;
+	driver: uint8;
+	circuit: uint8;
+}
+
+struct HV_VOLTAGE {
+	pack_voltage: uint16;
+	bus_voltage: uint16;
+	max_cell_voltage: uint16;
+	min_cell_voltage: uint16;
+}
+
+struct HV_CURRENT {
+	current: uint16;
+	power: int8;
+}
+
+struct HV_TEMP {
+	average_temp: uint16;
+	max_temp: uint16;
+	min_temp: uint16;
+}
+
+struct HV_ERROR {
+	error_code: uint8;
+	error_index: uint8;
+	active: uint8;
+}
+
+enum Ts_Status : byte { OFF, PRECHARGE, ON, FATAL }
+struct TS_STATUS_UPDATE {
+	ts_status: Ts_Status;
+}
+
+enum Ts_Status_Set : byte { OFF, ON }
+struct SET_TS_STATUS {
+	ts_status_set: Ts_Status_Set;
+}
+
+enum Traction_Control : byte { OFF, SLIP_CONTROL, TORQUE_VECTORING, COMPLETE }
+enum Map : byte { R, D20, D40, D60, D80, D100 }
+struct STEER_STATUS_UPDATE {
+	traction_control: Traction_Control;
+	map: Map;
+	radio_on: bool;
+}
+
+enum Car_Status_Set : byte { IDLE, RUN }
+struct SET_CAR_STATUS {
+	car_status_set: Car_Status_Set;
+}
+
+enum Car_Status : byte { IDLE, SETUP, RUN }
+enum Inverter_Status : byte { OFF, IDLE, ON }
+struct CAR_STATUS_UPDATE {
+	car_status: Car_Status;
+	inverter_l: Inverter_Status;
+	inverter_r: Inverter_Status;
+}
+
+enum Bound : byte { MAX, MIN }
+struct SET_PEDALS_RANGE {
+	bound: Bound;
+}
+
+

@@ -2,11 +2,10 @@
     "network_version": 1,
     "ids": [
         {
-            "topic": "STEER",
+            "topic": "BMS_HV",
             "id": 0,
             "messages": {
-                "TEST_TLM_STATUS_UPDATE": 256,
-                "CAR_STATUS_UPDATE": 0
+                "SET_TS_STATUS": 0
             }
         },
         {
@@ -20,10 +19,10 @@
             }
         },
         {
-            "topic": "BMS_HV",
+            "topic": "TLM",
             "id": 2,
             "messages": {
-                "SET_TS_STATUS": 2
+                "SET_TLM_STATUS": 258
             }
         },
         {
@@ -37,10 +36,11 @@
             }
         },
         {
-            "topic": "TLM",
+            "topic": "STEER",
             "id": 4,
             "messages": {
-                "SET_TLM_STATUS": 260
+                "TEST_TLM_STATUS_UPDATE": 260,
+                "CAR_STATUS_UPDATE": 4
             }
         },
         {
