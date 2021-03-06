@@ -5,7 +5,8 @@ The purpose of this project is to manage the CANbus, the data flowing throught i
 :open_file_folder: project root\
   ├ :open_file_folder: [id-generator](id-generator)\
   ├ :open_file_folder: [flatbuf-generator](flatbuf-generator)\
-  └ :open_file_folder: [includes-generator](includes-generator)
+  ├ :open_file_folder: [includes-generator](includes-generator)\
+  └ :open_file_folder: [sheet-generator](sheet-generator)
 
 # How to Use
 Before running any of the subprojects you will need to do the following:

@@ -1,4 +1,4 @@
-# Message IDs generation
+# Message IDs generator
 This subproject manages the id generation for all the messages on the CANbus
 # How to use
 ### [Configure your networks](../README.md#how-to-use)

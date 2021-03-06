@@ -1,8 +1,12 @@
 # Includes generator
 This subproject generates all the files that will be useful for can interactions
+#### Submodules required:
++ [id-generator](/id-generator)
++ [flatbuf-generator](/flatbuf-generator)
+
 # How to use
 ### [Run id-generator](../id-generator/README.md#how-to-use)
-### [Run flatbuf-schema-generator](../flatbuf-schema-generator/README.md#how-to-use)
+### [Run flatbuf-generator](../flatbuf-generator/README.md#how-to-use)
 ### Configure your config.py
 :open_file_folder: [includes-generator](/includes-generator)\
 └ :open_file_folder: [config](config)\
