@@ -27,10 +27,10 @@
             }
         },{
             "name": "HV_VOLTAGE",
-            "topic": "ECUnSTEER",
+            "topic": "ACUnSTEER",
             "priority": 4,
             "sending": ["BMS_HV"],
-            "receiving": ["ECU", "STEER"],
+            "receiving": ["ACU", "STEER"],
             "contents": {
                 "pack_voltage": "uint16",
                 "bus_voltage": "uint16",
@@ -39,20 +39,20 @@
             }
         },{
             "name": "HV_CURRENT",
-            "topic": "ECUnSTEER",
+            "topic": "ACUnSTEER",
             "priority": 4,
             "sending": ["BMS_HV"],
-            "receiving": ["ECU", "STEER"],
+            "receiving": ["ACU", "STEER"],
             "contents": {
                 "current": "uint16",
                 "power": "int8"
             }
         },{
             "name": "HV_TEMP",
-            "topic": "ECUnSTEER",
+            "topic": "ACUnSTEER",
             "priority": 4,
             "sending": ["BMS_HV"],
-            "receiving": ["ECU", "STEER"],
+            "receiving": ["ACU", "STEER"],
             "contents": {
                 "average_temp": "uint16",
                 "max_temp": "uint16",
@@ -60,10 +60,10 @@
             }
         },{
             "name": "HV_ERROR",
-            "topic": "ECUnSTEER",
+            "topic": "ACUnSTEER",
             "priority": 6,
             "sending": ["BMS_HV"],
-            "receiving": ["ECU", "STEER"],
+            "receiving": ["ACU", "STEER"],
             "contents": {
                 "error_code": "uint8",
                 "error_index": "uint8",
@@ -71,10 +71,10 @@
             }
         },{
             "name": "TS_STATUS_UPDATE",
-            "topic": "ECU",
+            "topic": "ACU",
             "priority": 7,
             "sending": ["BMS_HV"],
-            "receiving": ["ECU"],
+            "receiving": ["ACU"],
             "contents": {
                 "ts_status": ["OFF", "PRECHARGE", "ON", "FATAL"]
             }
@@ -82,17 +82,17 @@
             "name": "SET_TS_STATUS",
             "topic": "BMS_HV",
             "priority": 7,
-            "sending": ["ECU"],
+            "sending": ["ACU"],
             "receiving": ["BMS_HV"],
             "contents": {
                 "ts_status_set": ["OFF", "ON"]
             }
         },{
             "name": "STEER_STATUS_UPDATE",
-            "topic": "ECU",
+            "topic": "ACU",
             "priority": 7,
             "sending": ["STEER"],
-            "receiving": ["ECU"],
+            "receiving": ["ACU"],
             "contents": {
                 "traction_control": ["OFF", "SLIP_CONTROL", "TORQUE_VECTORING", "COMPLETE"],
                 "map": ["R", "D20", "D40", "D60", "D80", "D100"],
@@ -100,26 +100,26 @@
             }
         },{
             "name": "SET_CAR_STATUS",
-            "topic": "ECU",
+            "topic": "ACU",
             "priority": 7,
             "sending": ["STEER"],
-            "receiving": ["ECU"],
+            "receiving": ["ACU"],
             "contents": {
                 "car_status_set": ["IDLE", "RUN"]
             }
         },{
             "name": "ASK_CAR_STATUS",
-            "topic": "ECU",
+            "topic": "ACU",
             "priority": 7,
             "sending": ["STEER"],
-            "receiving": ["ECU"],
+            "receiving": ["ACU"],
             "contents": {
             }
         },{
             "name": "CAR_STATUS_UPDATE",
             "topic": "STEER",
             "priority": 7,
-            "sending": ["ECU"],
+            "sending": ["ACU"],
             "receiving": ["STEER"],
             "contents": {
                 "car_status": ["IDLE", "SETUP", "RUN"],
