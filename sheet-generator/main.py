@@ -1,4 +1,5 @@
 import os
+import re 
 import csv
 import shutil
 
@@ -17,7 +18,7 @@ def main():
         (name, network, paths_ids[name]) for name, network in paths_networks.items()
     ]
 
-    merge_networks = False
+    merge_networks = c.MERGE_NETWORKS
 
     networks = []
     for name, network_path, ids_path in paths:
@@ -42,16 +43,7 @@ def main():
         shutil.rmtree(out_dir)
     os.mkdir(out_dir)
 
-    columns = [
-        "name",
-        "id",
-        "network",
-        "topic",
-        "priority",
-        "sending",
-        "receiving",
-        "contents",
-    ]
+    columns = c.COLUMNS_ORDER
 
     tot = 0
     with open(c.OUTPUT_CSV, "w+") as out:
@@ -60,7 +52,7 @@ def main():
         for network in networks:
             tot += len(network.contents)
             for message in network.contents:
-                cols = [str(message[col]) for col in columns]
+                cols = [re.sub(r"\[|]|'|{|}|\"", "", str(message[col])) for col in columns]
                 writer.writerow(cols)
 
     print(f"{tot} line(s) written")
