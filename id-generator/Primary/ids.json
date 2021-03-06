@@ -2,14 +2,15 @@
     "network_version": 1,
     "ids": [
         {
-            "topic": "BMS_HV",
+            "topic": "STEER",
             "id": 0,
             "messages": {
-                "SET_TS_STATUS": 0
+                "TEST_TLM_STATUS_UPDATE": 256,
+                "CAR_STATUS_UPDATE": 0
             }
         },
         {
-            "topic": "ECUnSTEER",
+            "topic": "ACUnSTEER",
             "id": 1,
             "messages": {
                 "HV_VOLTAGE": 769,
@@ -19,35 +20,34 @@
             }
         },
         {
-            "topic": "TLM",
+            "topic": "PEDALS",
             "id": 2,
             "messages": {
-                "SET_TLM_STATUS": 258
+                "SET_PEDALS_RANGE": 2
             }
         },
         {
-            "topic": "ECU",
+            "topic": "BMS_HV",
             "id": 3,
             "messages": {
-                "TS_STATUS_UPDATE": 3,
-                "STEER_STATUS_UPDATE": 35,
-                "SET_CAR_STATUS": 67,
-                "ASK_CAR_STATUS": 99
+                "SET_TS_STATUS": 3
             }
         },
         {
-            "topic": "STEER",
+            "topic": "ACU",
             "id": 4,
             "messages": {
-                "TEST_TLM_STATUS_UPDATE": 260,
-                "CAR_STATUS_UPDATE": 4
+                "TS_STATUS_UPDATE": 4,
+                "STEER_STATUS_UPDATE": 36,
+                "SET_CAR_STATUS": 68,
+                "ASK_CAR_STATUS": 100
             }
         },
         {
-            "topic": "PEDALS",
+            "topic": "TLM",
             "id": 5,
             "messages": {
-                "SET_PEDALS_RANGE": 5
+                "SET_TLM_STATUS": 261
             }
         }
     ]
