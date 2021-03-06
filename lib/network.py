@@ -1,6 +1,5 @@
 from jsonschema import validate
 
-import config.config as c
 from lib.utils import *
 import os
 
@@ -12,20 +11,20 @@ def load_network(path):
 
 
 class Network:
-    def __init__(self, path, name):
+    def __init__(self, path, name, validation_schema=None):
         self.path = path
         self.name = name
         self.contents = []
         self.name_index = {}
         self.version = None
         if path:
-            self.load()
+            self.load(validation_schema)
 
-    def load(self):
+    def load(self, validation_schema=None):
         network = load_json(self.path)
-        network_schema = load_json(c.NETWORK_FILE_VALIDATION_SCHEMA)
 
-        validate(network, network_schema)
+        if validation_schema is not None:
+            validate(network, validation_schema)
 
         self.contents = network["messages"]
         self.version = network["network_version"]

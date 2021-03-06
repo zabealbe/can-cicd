@@ -87,15 +87,16 @@ def main():
     print("")
 
     merge_networks = False
+    validation_schema = load_json(c.NETWORK_FILE_VALIDATION_SCHEMA)
 
     print("====== Networks loading ======")
     paths = parse_network_multipath(c.NETWORK_FILE)
     networks = []
     for network_name, path in paths.items():
         if merge_networks and networks:
-            networks[0].merge_with(Network(path, network_name))
+            networks[0].merge_with(Network(path, network_name, validation_schema))
         else:
-            networks.append(Network(path, network_name))
+            networks.append(Network(path, network_name, validation_schema))
         print("Loaded {0}".format(network_name))
 
     print("{0} network(s) loaded".format(len(networks)))
