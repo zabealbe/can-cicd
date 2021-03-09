@@ -135,5 +135,6 @@ dmypy.json
 
 # Project specific
 **/out/
-**/flatcc
-**/flatc
+# Enabled for build branch
+#**/flatcc
+#**/flatc
