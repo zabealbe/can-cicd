@@ -45,8 +45,16 @@ jobs:
         mkdir -p /tmp/workspace/includes-generator/ && cp -R out/* /tmp/workspace/includes-generator/
     - name: Include external tools
       run: |
-        mkdir -p /tmp/workspace/external/
-        wget -O /tmp/workspace/external/flatcc_v0.6.0.tar.gz https://github.com/dvidelabs/flatcc/archive/v0.6.0.tar.gz
+
+        wget -O /tmp/v0.6.0.tar.gz https://github.com/dvidelabs/flatcc/archive/v0.6.0.tar.gz
+        tar -xvf /tmp/v0.6.0.tar.gz flatcc-0.6.0/include flatcc-0.6.0/src/runtime
+
+        mkdir -p "/tmp/workspace/external"
+        cp -r flatcc-0.6.0/include/flatcc "/tmp/workspace/external/"
+        cp -r flatcc-0.6.0/src/runtime "/tmp/workspace/external/flatcc/"
+
+        # remove useless stdlib include with flatcc
+        rm -r "/tmp/workspace/external/flatcc/portable/include"
     - uses: actions/checkout@v2
       with:
         ref: build
@@ -55,6 +63,7 @@ jobs:
         git config --global user.name 'Automated CICD'
         git config --global user.email noreply@noone.com
         git rm -r .
+        git checkout HEAD -- .gitignore # Restore gitignore
         cp -r /tmp/workspace/* .
         git add .
         git commit -am "Automatically generated files"
