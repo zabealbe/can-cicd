@@ -20,10 +20,13 @@
             }
         },
         {
-            "topic": "PEDALS",
+            "topic": "ACU",
             "id": 2,
             "messages": {
-                "SET_PEDALS_RANGE": 2
+                "TS_STATUS_UPDATE": 2,
+                "STEER_STATUS_UPDATE": 34,
+                "SET_CAR_STATUS": 66,
+                "ASK_CAR_STATUS": 98
             }
         },
         {
@@ -34,20 +37,17 @@
             }
         },
         {
-            "topic": "ACU",
+            "topic": "TLM",
             "id": 4,
             "messages": {
-                "TS_STATUS_UPDATE": 4,
-                "STEER_STATUS_UPDATE": 36,
-                "SET_CAR_STATUS": 68,
-                "ASK_CAR_STATUS": 100
+                "SET_TLM_STATUS": 260
             }
         },
         {
-            "topic": "TLM",
+            "topic": "PEDALS",
             "id": 5,
             "messages": {
-                "SET_TLM_STATUS": 261
+                "SET_PEDALS_RANGE": 5
             }
         }
     ]
