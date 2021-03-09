@@ -9,11 +9,10 @@
             }
         },
         {
-            "topic": "STEER",
+            "topic": "TLM",
             "id": 1,
             "messages": {
-                "TEST_TLM_STATUS_UPDATE": 257,
-                "CAR_STATUS_UPDATE": 1
+                "SET_TLM_STATUS": 257
             }
         },
         {
@@ -27,27 +26,28 @@
             }
         },
         {
-            "topic": "ACU",
+            "topic": "BMS_HV",
             "id": 3,
             "messages": {
-                "TS_STATUS_UPDATE": 3,
-                "STEER_STATUS_UPDATE": 35,
-                "SET_CAR_STATUS": 67,
-                "ASK_CAR_STATUS": 99
+                "SET_TS_STATUS": 3
             }
         },
         {
-            "topic": "BMS_HV",
+            "topic": "ACU",
             "id": 4,
             "messages": {
-                "SET_TS_STATUS": 4
+                "TS_STATUS_UPDATE": 4,
+                "STEER_STATUS_UPDATE": 36,
+                "SET_CAR_STATUS": 68,
+                "ASK_CAR_STATUS": 100
             }
         },
         {
-            "topic": "TLM",
+            "topic": "STEER",
             "id": 5,
             "messages": {
-                "SET_TLM_STATUS": 261
+                "TEST_TLM_STATUS_UPDATE": 261,
+                "CAR_STATUS_UPDATE": 5
             }
         }
     ]
