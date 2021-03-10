@@ -2,21 +2,18 @@
     "network_version": 1,
     "ids": [
         {
-            "topic": "ACUnSTEER",
+            "topic": "STEER",
             "id": 0,
             "messages": {
-                "HV_VOLTAGE": 768,
-                "HV_CURRENT": 800,
-                "HV_TEMP": 832,
-                "HV_ERROR": 256
+                "TEST_TLM_STATUS_UPDATE": 256,
+                "CAR_STATUS_UPDATE": 0
             }
         },
         {
-            "topic": "STEER",
+            "topic": "PEDALS",
             "id": 1,
             "messages": {
-                "TEST_TLM_STATUS_UPDATE": 257,
-                "CAR_STATUS_UPDATE": 1
+                "SET_PEDALS_RANGE": 1
             }
         },
         {
@@ -30,10 +27,13 @@
             }
         },
         {
-            "topic": "BMS_HV",
+            "topic": "ACUnSTEER",
             "id": 3,
             "messages": {
-                "SET_TS_STATUS": 3
+                "HV_VOLTAGE": 771,
+                "HV_CURRENT": 803,
+                "HV_TEMP": 835,
+                "HV_ERROR": 259
             }
         },
         {
@@ -44,10 +44,10 @@
             }
         },
         {
-            "topic": "PEDALS",
+            "topic": "BMS_HV",
             "id": 5,
             "messages": {
-                "SET_PEDALS_RANGE": 5
+                "SET_TS_STATUS": 5
             }
         }
     ]
