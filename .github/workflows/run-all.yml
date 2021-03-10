@@ -63,7 +63,7 @@ jobs:
       run: |
         git config --global user.name 'Automated CICD'
         git config --global user.email noreply@noone.com
-        git rm -r .
+        git rm -r --ignore-unmatch */*
         cp -r /tmp/workspace/* .
         git add .
         git commit -am "Automatically generated files"
