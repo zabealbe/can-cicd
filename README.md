@@ -15,7 +15,7 @@ Before running any of the subprojects you will need to do the following:
 **Build the file tree**\
 Each network should have its own folder and files as shown below:\
 :open_file_folder: project root\
-└:open_file_folder: config\
+└:open_file_folder: networks\
 &nbsp;&nbsp;&nbsp;└:open_file_folder: [network name]\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: network.json
 
@@ -142,7 +142,7 @@ result in an error.
 This project can be used in a couple of ways, the first one being the coolest:
 ### The automated way
 :open_file_folder: project root\
-  └ :open_file_folder: [config](config)
+  └ :open_file_folder: [networks](networks)
   
 
 Any **commit** to this directory will trigger GitHub's actions workflow as described in [this file](.github/workflows/run-all.yml),\

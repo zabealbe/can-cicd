@@ -1,5 +1,5 @@
 # INPUT FILES
-NETWORK_FILE = "../config/[network]/network.json"
+NETWORK_FILE = "../networks/[network]/network.json"
 NETWORK_FILE_VALIDATION_SCHEMA = "config/network_schema_idgenerator.json"
 
 # OUTPUT FILES
