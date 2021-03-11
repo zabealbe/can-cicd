@@ -26,9 +26,10 @@ FLATBUF_SCHEMA_FILE = "../flatbuf-schema-generator/out/[network]/schema.fbs"
 ```
 This is the flatbuffer schema file, the syntax is as any other path, exept for ```[network]``` tag.
 ```python
-OUTPUT_DIR = "./out/[network]"
+OUTPUT_DIR = "./out/[network]/"
 ```
-This is the output folder for the generated files, the syntax is as any other path, exept for ```[network]``` tag.
+This is the output folder for the generated files, the syntax is as any other path, exept for ```[network]``` tag, must
+end with `/`.
 
 ### Requirements
 +  Python >=3.6

@@ -25,11 +25,16 @@ def generate_canconfig_includes(canconfig, canconfig_version, output_path):
 
 
 def main():
+    # Config validity checks
+    if c.OUTPUT_DIR[-1] != "/":
+        print("OUTPUT_DIR in config.py isn't a valid directory path")
+        print("examples:\n\t./path/to/directory/\n\tpath/to/directory/")
+        exit(1)
+    
     # IDs & masks
     for n, path in parse_network_multipath(c.IDS_FILE).items():
         print(path)
         
-        # IDS & masks
         ids_file = load_json(path)
         ids = ids_file["ids"]
         network_version = ids_file["network_version"]
@@ -38,15 +43,14 @@ def main():
         output_path = c.OUTPUT_DIR.replace("[network]", n)
         create_subtree(output_path)
         
-        # IDS & masks
         output_ids_file = f"{output_path}/{c.C_IDS_INCLUDE}"
         generate_id_includes(ids, network_version, output_ids_file)
         print(f"Generated id includes for {n} in {output_ids_file}\n")
-        
+
+    # CAN config
     for n, path in parse_network_multipath(c.CANCONFIG_FILE).items():
         print(path)
 
-        # CAN config
         canconfig_file = load_json(path, c.CANCONFIG_FILE_VALIDATION_SCHEMA)
         canconfig = canconfig_file["canconfig"]
         canconfig_version = canconfig_file["canconfig_version"]
@@ -55,7 +59,6 @@ def main():
         output_path = c.OUTPUT_DIR.replace("[network]", n)
         create_subtree(output_path)
 
-        # CAN config
         output_canconfig_file = f"{output_path}/{c.C_CANCONFIG_INCLUDE}"
         generate_canconfig_includes(canconfig, canconfig_version, output_canconfig_file)
         print(f"Generated canconfig includes for {n} in {output_canconfig_file}\n")

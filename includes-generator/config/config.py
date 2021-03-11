@@ -6,7 +6,7 @@ CANCONFIG_FILE_VALIDATION_SCHEMA = "config/canconfig_schema_includesgenerator.js
 FLATBUF_SCHEMA_FILE = "../flatbuf-schema-generator/out/[network]/schema.fbs"
 
 # OUTPUT FILES
-OUTPUT_DIR = "./out/[network]"
+OUTPUT_DIR = "./out/[network]/"
 
 # IDS & masks
 C_IDS_INCLUDE = "ids.h"
