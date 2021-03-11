@@ -2,52 +2,52 @@
     "network_version": 1,
     "ids": [
         {
-            "topic": "STEER",
+            "topic": "TLM",
             "id": 0,
             "messages": {
-                "TEST_TLM_STATUS_UPDATE": 256,
-                "CAR_STATUS_UPDATE": 0
-            }
-        },
-        {
-            "topic": "PEDALS",
-            "id": 1,
-            "messages": {
-                "SET_PEDALS_RANGE": 1
-            }
-        },
-        {
-            "topic": "ACU",
-            "id": 2,
-            "messages": {
-                "TS_STATUS_UPDATE": 2,
-                "STEER_STATUS_UPDATE": 34,
-                "SET_CAR_STATUS": 66,
-                "ASK_CAR_STATUS": 98
+                "SET_TLM_STATUS": 256
             }
         },
         {
             "topic": "ACUnSTEER",
-            "id": 3,
+            "id": 1,
             "messages": {
-                "HV_VOLTAGE": 771,
-                "HV_CURRENT": 803,
-                "HV_TEMP": 835,
-                "HV_ERROR": 259
+                "HV_VOLTAGE": 769,
+                "HV_CURRENT": 801,
+                "HV_TEMP": 833,
+                "HV_ERROR": 257
             }
         },
         {
-            "topic": "TLM",
-            "id": 4,
+            "topic": "STEER",
+            "id": 2,
             "messages": {
-                "SET_TLM_STATUS": 260
+                "TEST_TLM_STATUS_UPDATE": 258,
+                "CAR_STATUS_UPDATE": 2
+            }
+        },
+        {
+            "topic": "ACU",
+            "id": 3,
+            "messages": {
+                "TS_STATUS_UPDATE": 3,
+                "STEER_STATUS_UPDATE": 35,
+                "SET_CAR_STATUS": 67,
+                "ASK_CAR_STATUS": 99
             }
         },
         {
             "topic": "BMS_HV",
+            "id": 4,
+            "messages": {
+                "SET_TS_STATUS": 4
+            }
+        },
+        {
+            "topic": "PEDALS",
             "id": 5,
             "messages": {
-                "SET_TS_STATUS": 5
+                "SET_PEDALS_RANGE": 5
             }
         }
     ]
