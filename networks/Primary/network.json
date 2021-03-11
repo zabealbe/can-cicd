@@ -108,7 +108,7 @@
                 "car_status_set": ["IDLE", "RUN"]
             }
         },{
-            "name": "ASK_CAR_STATUS",
+            "name": "GET_CAR_STATUS",
             "topic": "ACU",
             "priority": 7,
             "sending": ["STEER"],
