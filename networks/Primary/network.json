@@ -1,8 +1,8 @@
 {
-    "network_version": 1,
+    "network_version": 1.1,
     "messages": [
         {
-            "name": "TEST_TLM_STATUS_UPDATE",
+            "name": "TLM_STATUS",
             "topic": "STEER",
             "priority": 6,
             "sending": ["TLM"],
@@ -70,7 +70,7 @@
                 "active": "uint8"
             }
         },{
-            "name": "TS_STATUS_UPDATE",
+            "name": "TS_STATUS",
             "topic": "ACU",
             "priority": 7,
             "sending": ["BMS_HV"],
@@ -88,7 +88,7 @@
                 "ts_status_set": ["OFF", "ON"]
             }
         },{
-            "name": "STEER_STATUS_UPDATE",
+            "name": "STEER_STATUS",
             "topic": "ACU",
             "priority": 7,
             "sending": ["STEER"],
@@ -116,7 +116,7 @@
             "contents": {
             }
         },{
-            "name": "CAR_STATUS_UPDATE",
+            "name": "CAR_STATUS",
             "topic": "STEER",
             "priority": 7,
             "sending": ["ACU"],
