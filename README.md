@@ -12,31 +12,37 @@ The purpose of this project is to manage the CANbus, the data flowing throught i
 Before running any of the subprojects you will need to do the following:
 
 ## Configure your network(s)
-**Build the file tree**\
+### Build the file tree
 Each network should have its own folder and files as shown below:\
 :open_file_folder: project root\
 └:open_file_folder: networks\
 &nbsp;&nbsp;&nbsp;└:open_file_folder: [network name]\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: network.json
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├:page_with_curl: network.json\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: canconfig.json
 
-**Configure network.json**\
-This file contains the description of all the network's messages in the following format:
+### Configure network.json
+This file contains the description of all the network's messages.\
+\
+The json structure is as follows:
 ```yaml
-[{
-    "name": string,
-    "topic": string,
-    "priority": int,
-    "sending": [string],
-    "receiving": [string],
-    "contents": {
-        "field_name": "type",
-        "field2_name": "type",
-        ...
+{
+    "network_version": integer,
+    "messages": [ 
+    {
+        "name": string,
+        "topic": string,
+        "priority": integer,
+        "sending": [ string ],
+        "receiving": [ string ],
+        "contents": {
+            "field_name": "type",
+            "field2_name": "type",
+                        ...
+        }
     }
+    , ... ]
 }
-, ...]
 ```
-
 
 **Description and constraints you have to follow:**
 <details><summary>SHOW</summary>
@@ -135,6 +141,38 @@ by capitalizing the field name's first letter.
 If the same enum (same name, same items) is used multiple times within the same message or across 
 different messages it will be represented by flatbuffers with a single enum type, however items differences will 
 result in an error.
+</details>
+
+
+### Configure canconfig.json
+This file contains the parameters required by can devices to properly connect to the interface,
+such as the clock frequency.\
+\
+The json structure is as follows:
+```yaml
+{
+    "canconfig_version": integer,
+    "canconfig": { 
+        "peripheral_clk_mhz": integer,
+        "pref_sample_point_pct": decimal,
+        "sync_jump_width": integer,
+        "config_table": {
+           "bit_rate_kbps": integer,
+            "pre_scaler": integer,
+            "time_quanta_amount": integer,
+            "seg1": integer,
+            "seg2": integer,
+            "sample_point_pct": decimal     
+        }    
+    }
+}
+```
+
+**Description and constraints you have to follow:**
+<details><summary>SHOW</summary>
+
+#TODO
+
 </details>
 
 

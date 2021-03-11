@@ -1,0 +1,70 @@
+{
+	"type": "object",
+	"properties": {
+	    "canconfig_version": {
+	        "type": "integer",
+	        "minimum": 0,
+	        "maximum": 255
+	    },
+		"canconfig": {
+            "type": "object",
+            "properties": {
+                "peripheral_clk_mhz": {
+                    "type": "integer",
+                    "minimum": 0, 
+                    "maximum": 65535
+                },
+                "pref_sample_point_pct": {
+                    "type": "number",
+                    "minimum": 50, 
+                    "maximum": 90
+                },
+                "sync_jump_width": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 255
+                },
+                "config_table": {
+                    "type": "object",
+                    "properties": {
+                        "bit_rate_kbps": {
+                            "type": "integer",
+                            "minimum": 0, 
+                            "maximum": 65535
+                        },
+                        "pre_scaler": {
+                            "type": "integer",
+                            "minimum": 0, 
+                            "maximum": 65535
+                        },
+                        "time_quanta_amount": {
+                            "type": "integer",
+                            "minimum": 0, 
+                            "maximum": 255
+                        },
+                        "seg1": {
+                            "type": "integer",
+                            "minimum": 0, 
+                            "maximum": 255
+                        },
+                        "seg2": {
+                            "type": "integer",
+                            "minimum": 0, 
+                            "maximum": 255
+                        },
+                        "sample_point_pct": {
+                            "type": "number",
+                            "minimum": 50, 
+                            "maximum": 90
+                        }
+                    },
+                    "required": ["bit_rate_kbps", "pre_scaler", "time_quanta_amount", "seg1", "seg2", "sample_point_pct"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["peripheral_clk_mhz", "pref_sample_point_pct", "sync_jump_width", "config_table"],
+            "additionalProperties": false
+		}
+	},
+    "additionalProperties": false
+}

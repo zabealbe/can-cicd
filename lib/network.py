@@ -21,10 +21,7 @@ class Network:
             self.load(validation_schema)
 
     def load(self, validation_schema=None):
-        network = load_json(self.path)
-
-        if validation_schema is not None:
-            validate(network, validation_schema)
+        network = load_json(self.path, validation_schema)
 
         self.contents = network["messages"]
         self.version = network["network_version"]
