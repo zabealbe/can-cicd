@@ -68,16 +68,15 @@ def get_schema(messages):
 
 def main():
     merge_networks = c.MERGE_NETWORKS
-    validation_schema = load_json(c.NETWORK_FILE_VALIDATION_SCHEMA)
 
     print("====== Networks loading ======")
     paths = parse_network_multipath(c.NETWORK_FILE)
     networks = []
     for network_name, path in paths.items():
         if merge_networks and networks:
-            networks[0].merge_with(Network(path, network_name, validation_schema))
+            networks[0].merge_with(Network(path, network_name, c.NETWORK_FILE_VALIDATION_SCHEMA))
         else:
-            networks.append(Network(path, network_name, validation_schema))
+            networks.append(Network(path, network_name, c.NETWORK_FILE_VALIDATION_SCHEMA))
         print("Loaded {0}".format(network_name))
 
     print("{0} network(s) loaded".format(len(networks)))
@@ -88,7 +87,7 @@ def main():
         print("Schema for {0} generated successfully!".format(n.name))
         output_path = c.FLATBUF_SCHEMA_FILE.replace("[network]", n.name)
         print("Saving schema to {0}".format(output_path))
-        create_file_subtree(output_path)
+        create_subtree(output_path)
         with open(output_path, "w+") as f:
             print(schema, file=f)
 

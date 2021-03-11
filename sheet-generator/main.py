@@ -22,7 +22,7 @@ def main():
 
     networks = []
     for name, network_path, ids_path in paths:
-        network = Network(network_path, name)
+        network = Network(network_path, name, c.NETWORK_FILE_VALIDATION_SCHEMA)
         ids = MessageIds(ids_path, name)
         for message in network.contents:
             message["id"] = ids[message["name"]]

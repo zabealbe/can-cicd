@@ -10,8 +10,8 @@ def load_json(path, validation_schema_path=None):
         
     if validation_schema_path is not None:
         with open(validation_schema_path, 'r') as d:
-            json_validation_schema = json.load(d)
-        validate(json_data, json_validation_schema)
+            json_schema = json.load(d)
+        validate(json_data, json_schema)
 
     return json_data
 
