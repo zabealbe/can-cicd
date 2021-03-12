@@ -1,10 +1,12 @@
-MERGE_NETWORKS = False
-
+# INPUT FILES
 NETWORK_FILE = "../networks/[network]/network.json"
 NETWORK_FILE_VALIDATION_SCHEMA = "config/network_schema_flatbufgenerator.json"
 
+# OUTPUT for schema_generator
+# INPUT for schema_compiler
 FLATBUF_SCHEMA_FILE = "out/[network]/schema.fbs"
 
+MERGE_NETWORKS = False
 MAX_PAYLOAD_SIZE_BYTES = 8
 TYPES_SIZE = {
     "enum": 1,

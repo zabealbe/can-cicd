@@ -1,11 +1,11 @@
-import compile_schema
-import generate_schema
+import schema_compiler
+import schema_generator
 
 
 def main():
-    generate_schema.main()
+    schema_generator.main()
     print("")
-    compile_schema.main()
+    schema_compiler.main()
 
 
 if __name__ == "__main__":

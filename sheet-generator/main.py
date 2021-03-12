@@ -46,7 +46,7 @@ def main():
     columns = c.COLUMNS_ORDER
 
     tot = 0
-    with open(c.OUTPUT_CSV, "w+") as out:
+    with open(c.CSV_FILE, "w+") as out:
         writer = csv.writer(out)
         writer.writerow(columns)
         for network in networks:

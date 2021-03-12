@@ -5,7 +5,7 @@ def generate_ids_include(ids, network_version):
     header = ""
     header += "#ifndef {0}_H\n".format(c.C_IDS_INCLUDE.split("/")[-1].split(".")[0].upper())
     header += "#define {0}_H\n\n".format(c.C_IDS_INCLUDE.split("/")[-1].split(".")[0].upper())
-    header += "#define NETWORK_VERSION {0:}f\n\n".format(network_version)
+    header += "#define NETWORK_VERSION {0}f\n\n".format(network_version)
     for t in ids:
         header += "/* TOPIC {0} */\n".format(t['topic'])
         header += "#define TOPIC_{0}_MASK 0b{1:>011b}\n".format(t['topic'], 0b00000011111)
