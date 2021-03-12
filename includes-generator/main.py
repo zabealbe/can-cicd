@@ -37,7 +37,7 @@ def main():
         
         ids_file = load_json(path)
         ids = ids_file["ids"]
-        network_version = ids_file["network_version"]
+        network_version = float(ids_file["network_version"])
         print(f"Loaded message ids from {path}")
         
         output_path = c.OUTPUT_DIR.replace("[network]", n)
@@ -53,7 +53,7 @@ def main():
 
         canconfig_file = load_json(path, c.CANCONFIG_FILE_VALIDATION_SCHEMA)
         canconfig = canconfig_file["canconfig"]
-        canconfig_version = canconfig_file["canconfig_version"]
+        canconfig_version = float(canconfig_file["canconfig_version"])
         print(f"Loaded can configuration from {path}")
 
         output_path = c.OUTPUT_DIR.replace("[network]", n)

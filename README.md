@@ -26,7 +26,7 @@ This file contains the description of all the network's messages.\
 The json structure is as follows:
 ```yaml
 {
-    "network_version": integer,
+    "network_version": decimal,
     "messages": [ 
     {
         "name": string,
