@@ -2,7 +2,7 @@
 	"type": "object",
 	"properties": {
 	    "network_version": {
-	        "type": "decimal",
+	        "type": "number",
 	        "minimum": 0,
 	        "maximum": 255
 	    },
