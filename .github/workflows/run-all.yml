@@ -50,18 +50,19 @@ jobs:
         mkdir -p /tmp/workspace/sheet-generator/ && cp -R out/* /tmp/workspace/sheet-generator/
     - name: Include external tools
       run: |
-        mkdir -p /tmp/workspace/external/
-        wget -O /tmp/workspace/external/flatcc_v0.6.0.tar.gz https://github.com/dvidelabs/flatcc/archive/v0.6.0.tar.gz
+        # flatcc
+        wget -O /tmp/flatcv0.6.0.tar.gz https://github.com/dvidelabs/flatcc/archive/v0.6.0.tar.gz
+        tar -xvf /tmp/flatcv0.6.0.tar.gz flatcc-0.6.0/include flatcc-0.6.0/src/runtime
 
-        wget -O /tmp/v0.6.0.tar.gz https://github.com/dvidelabs/flatcc/archive/v0.6.0.tar.gz
-        tar -xvf /tmp/v0.6.0.tar.gz flatcc-0.6.0/include flatcc-0.6.0/src/runtime
+        mkdir -p /tmp/workspace/external
+        cp -r flatcc-0.6.0/include/flatcc /tmp/workspace/external/
+        cp -r flatcc-0.6.0/src/runtime /tmp/workspace/external/flatcc/
 
-        mkdir -p "/tmp/workspace/external"
-        cp -r flatcc-0.6.0/include/flatcc "/tmp/workspace/external/"
-        cp -r flatcc-0.6.0/src/runtime "/tmp/workspace/external/flatcc/"
-
-        # remove useless stdlib include with flatcc
-        rm -r "/tmp/workspace/external/flatcc/portable/include"
+        ## remove useless stdlib include with flatcc
+        rm -r /tmp/workspace/external/flatcc/portable/include
+        
+        cd /tmp/workspace/flatbuf-generator/out
+        for i in $(ls); do [[ -d $i ]] && [[ ! -e $i/flatcc ]]  && cd $i && ln -s ../../../external/flatcc && cd ..; done
     - uses: actions/checkout@v2
       with:
         ref: build

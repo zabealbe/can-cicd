@@ -7,7 +7,7 @@ from config import config as c
 
 
 def run_command(command):
-    print(f'running "{command}"')
+    print(f"running '{command}'")
     process = subprocess.Popen(
         command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
     )
@@ -86,11 +86,7 @@ def main():
             if args.flatcc_path == "flatcc":
                 print("Couldn't find flatcc executable in $PATH")
             else:
-                print(
-                    "Couldn't execute flatcc, is {0} the correct path?".format(
-                        args.flatcc_path
-                    )
-                )
+                print(f"Couldn't execute flatcc, is {args.flatcc_path} the correct path?")
             exit(1)
 
         flatcc = True
@@ -128,7 +124,6 @@ def main():
             outpath = f"{os.path.dirname(path)}/flatcc"
             if not os.path.exists(outpath):
                 os.mkdir(outpath)
-            os.symlink("../../../external/flatcc", "./flatcc", True)
             command = f"{args.flatcc_path} {flatcc_options} -o {outpath} {path}"
             out, err_out, err_code = run_command(command)
             if err_code != 0:
