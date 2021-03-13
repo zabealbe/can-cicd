@@ -43,10 +43,6 @@ jobs:
         cd includes-generator
         python main.py
         mkdir -p /tmp/workspace/includes-generator/ && cp -R out/* /tmp/workspace/includes-generator/
-    - name: Include external tools
-      run: |
-        mkdir -p /tmp/workspace/external/
-        wget -O /tmp/workspace/external/flatcc_v0.6.0.tar.gz https://github.com/dvidelabs/flatcc/archive/v0.6.0.tar.gz
     - name: Sheet generator
       run: |
         cd sheet-generator
@@ -54,8 +50,25 @@ jobs:
         mkdir -p /tmp/workspace/sheet-generator/ && cp -R out/* /tmp/workspace/sheet-generator/
     - name: Include external tools
       run: |
-        mkdir -p /tmp/workspace/external/
-        wget -O /tmp/workspace/external/flatcc_v0.6.0.tar.gz https://github.com/dvidelabs/flatcc/archive/v0.6.0.tar.gz
+        # flatcc
+        wget -O /tmp/flatcv0.6.0.tar.gz https://github.com/dvidelabs/flatcc/archive/v0.6.0.tar.gz
+        tar -xvf /tmp/flatcv0.6.0.tar.gz flatcc-0.6.0/include flatcc-0.6.0/src/runtime
+
+        mkdir -p /tmp/workspace/external
+        cp -r flatcc-0.6.0/include/flatcc /tmp/workspace/external/
+        cp -r flatcc-0.6.0/src/runtime /tmp/workspace/external/flatcc/
+
+        ## remove useless stdlib include with flatcc
+        rm -r /tmp/workspace/external/flatcc/portable/include
+        
+        cd /tmp/workspace/flatbuf-generator
+        for i in $(ls); do 
+          ([[ ! -d $i ]] || [[ ! -d $i/c ]]) && continue
+          [[ -L $i/c/flatcc ]] && rm -R $i/c/flatcc
+          cd $i/c
+          ln -s ../../../external/flatcc
+          cd ../..
+        done
     - uses: actions/checkout@v2
       with:
         ref: build

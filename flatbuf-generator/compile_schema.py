@@ -7,10 +7,10 @@ from config import config as c
 
 
 def run_command(command):
-    print(f"running \"{command}\"")
-    process = subprocess.Popen(command,
-                               stdout=subprocess.PIPE,
-                               stderr=subprocess.PIPE, shell=True)
+    print(f"running '{command}'")
+    process = subprocess.Popen(
+        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
+    )
     process.wait()
 
     code = process.returncode
@@ -30,7 +30,7 @@ def get_flatc_options():
     lang_args = {
         "python": "--python",
         "c": "",  # supported only by FlatCC
-        "cpp": "--cpp"
+        "cpp": "--cpp",
     }
     for lang in compile_languages:
         options += "{0}".format(lang_args[lang])
@@ -40,9 +40,7 @@ def get_flatc_options():
 def get_flatcc_options():
     options = ""
 
-    compile_args = [
-        "-a"
-    ]
+    compile_args = ["-a"]
     for value in compile_args:
         if value:
             options += "{0}".format(value)
@@ -57,23 +55,38 @@ def main():
     flatc_options = get_flatc_options()
     flatcc_options = get_flatcc_options()
 
-    parser = argparse.ArgumentParser(description='Flatbuffers schema compiler',
-                                     add_help=True)
-    parser.add_argument("-f", "--flatc", action="store", dest='flatc_path', metavar="PATH",
-                        help="FlatC executable", default="flatc")
-    parser.add_argument("-fc", "--flatcc", action="store", dest='flatcc_path', metavar="PATH",
-                        help="FlatCC executable", default="flatcc")
+    parser = argparse.ArgumentParser(
+        description="Flatbuffers schema compiler", add_help=True
+    )
+    parser.add_argument(
+        "-f",
+        "--flatc",
+        action="store",
+        dest="flatc_path",
+        metavar="PATH",
+        help="FlatC executable",
+        default="flatc",
+    )
+    parser.add_argument(
+        "-fc",
+        "--flatcc",
+        action="store",
+        dest="flatcc_path",
+        metavar="PATH",
+        help="FlatCC executable",
+        default="flatcc",
+    )
     args = parser.parse_args()
 
     flatcc = False
     if "c" in get_languages():  # flatcc
         out, err_out, err_code = run_command("{0} --version".format(args.flatcc_path))
 
-        if err_code or "flatcc" not in str(out+err_out):
+        if err_code or "flatcc" not in str(out + err_out):
             if args.flatcc_path == "flatcc":
                 print("Couldn't find flatcc executable in $PATH")
             else:
-                print("Couldn't execute flatcc, is {0} the correct path?".format(args.flatcc_path))
+                print(f"Couldn't execute flatcc, is {args.flatcc_path} the correct path?")
             exit(1)
 
         flatcc = True
@@ -86,7 +99,11 @@ def main():
             if args.flatc_path == "flatc":
                 print("Couldn't find flatc executable in $PATH")
             else:
-                print("Couldn't execute flatc, is {0} the correct path?".format(args.flatc_path))
+                print(
+                    "Couldn't execute flatc, is {0} the correct path?".format(
+                        args.flatc_path
+                    )
+                )
             exit(1)
 
         flatc = True
@@ -104,7 +121,7 @@ def main():
                 sys.exit(f"The command returned error code {err_code}")
 
         if flatcc:
-            outpath = f"{os.path.dirname(path)}/flatcc"
+            outpath = f"{os.path.dirname(path)}/c"
             if not os.path.exists(outpath):
                 os.mkdir(outpath)
             command = f"{args.flatcc_path} {flatcc_options} -o {outpath} {path}"
@@ -119,4 +136,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
