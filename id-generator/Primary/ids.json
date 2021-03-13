@@ -2,37 +2,34 @@
     "network_version": 1.1,
     "ids": [
         {
-            "topic": "ACU",
+            "topic": "ACUnSTEER",
             "id": 0,
             "messages": {
-                "TS_STATUS": 0,
-                "STEER_STATUS": 32,
-                "SET_CAR_STATUS": 64,
-                "GET_CAR_STATUS": 96
-            }
-        },
-        {
-            "topic": "TLM",
-            "id": 1,
-            "messages": {
-                "SET_TLM_STATUS": 257
-            }
-        },
-        {
-            "topic": "ACUnSTEER",
-            "id": 2,
-            "messages": {
-                "HV_VOLTAGE": 770,
-                "HV_CURRENT": 802,
-                "HV_TEMP": 834,
-                "HV_ERROR": 258
+                "HV_VOLTAGE": 768,
+                "HV_CURRENT": 800,
+                "HV_TEMP": 832,
+                "HV_ERROR": 256
             }
         },
         {
             "topic": "BMS_HV",
+            "id": 1,
+            "messages": {
+                "SET_TS_STATUS": 1
+            }
+        },
+        {
+            "topic": "TLM",
+            "id": 2,
+            "messages": {
+                "SET_TLM_STATUS": 258
+            }
+        },
+        {
+            "topic": "PEDALS",
             "id": 3,
             "messages": {
-                "SET_TS_STATUS": 3
+                "SET_PEDALS_RANGE": 3
             }
         },
         {
@@ -44,10 +41,13 @@
             }
         },
         {
-            "topic": "PEDALS",
+            "topic": "ACU",
             "id": 5,
             "messages": {
-                "SET_PEDALS_RANGE": 5
+                "TS_STATUS": 5,
+                "STEER_STATUS": 37,
+                "SET_CAR_STATUS": 69,
+                "GET_CAR_STATUS": 101
             }
         }
     ]
