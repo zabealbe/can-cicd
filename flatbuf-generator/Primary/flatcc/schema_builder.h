@@ -48,28 +48,28 @@ __flatbuffers_build_scalar(flatbuffers_, Inverter_Status, Inverter_Status_enum_t
 #define __Bound_call_args , v0
 __flatbuffers_build_scalar(flatbuffers_, Bound, Bound_enum_t)
 
-#define __TEST_TLM_STATUS_UPDATE_formal_args , Tlm_Status_enum_t v0, Race_Type_enum_t v1, uint8_t v2, uint8_t v3
-#define __TEST_TLM_STATUS_UPDATE_call_args , v0, v1, v2, v3
-static inline TEST_TLM_STATUS_UPDATE_t *TEST_TLM_STATUS_UPDATE_assign(TEST_TLM_STATUS_UPDATE_t *p, Tlm_Status_enum_t v0, Race_Type_enum_t v1, uint8_t v2, uint8_t v3)
+#define __TLM_STATUS_formal_args , Tlm_Status_enum_t v0, Race_Type_enum_t v1, uint8_t v2, uint8_t v3
+#define __TLM_STATUS_call_args , v0, v1, v2, v3
+static inline TLM_STATUS_t *TLM_STATUS_assign(TLM_STATUS_t *p, Tlm_Status_enum_t v0, Race_Type_enum_t v1, uint8_t v2, uint8_t v3)
 { p->tlm_status = v0; p->race_type = v1; p->driver = v2; p->circuit = v3;
   return p; }
-static inline TEST_TLM_STATUS_UPDATE_t *TEST_TLM_STATUS_UPDATE_copy(TEST_TLM_STATUS_UPDATE_t *p, const TEST_TLM_STATUS_UPDATE_t *p2)
+static inline TLM_STATUS_t *TLM_STATUS_copy(TLM_STATUS_t *p, const TLM_STATUS_t *p2)
 { p->tlm_status = p2->tlm_status; p->race_type = p2->race_type; p->driver = p2->driver; p->circuit = p2->circuit;
   return p; }
-static inline TEST_TLM_STATUS_UPDATE_t *TEST_TLM_STATUS_UPDATE_assign_to_pe(TEST_TLM_STATUS_UPDATE_t *p, Tlm_Status_enum_t v0, Race_Type_enum_t v1, uint8_t v2, uint8_t v3)
+static inline TLM_STATUS_t *TLM_STATUS_assign_to_pe(TLM_STATUS_t *p, Tlm_Status_enum_t v0, Race_Type_enum_t v1, uint8_t v2, uint8_t v3)
 { p->tlm_status = v0; p->race_type = v1; p->driver = v2; p->circuit = v3;
   return p; }
-static inline TEST_TLM_STATUS_UPDATE_t *TEST_TLM_STATUS_UPDATE_copy_to_pe(TEST_TLM_STATUS_UPDATE_t *p, const TEST_TLM_STATUS_UPDATE_t *p2)
+static inline TLM_STATUS_t *TLM_STATUS_copy_to_pe(TLM_STATUS_t *p, const TLM_STATUS_t *p2)
 { p->tlm_status = p2->tlm_status; p->race_type = p2->race_type; p->driver = p2->driver; p->circuit = p2->circuit;
   return p; }
-static inline TEST_TLM_STATUS_UPDATE_t *TEST_TLM_STATUS_UPDATE_assign_from_pe(TEST_TLM_STATUS_UPDATE_t *p, Tlm_Status_enum_t v0, Race_Type_enum_t v1, uint8_t v2, uint8_t v3)
+static inline TLM_STATUS_t *TLM_STATUS_assign_from_pe(TLM_STATUS_t *p, Tlm_Status_enum_t v0, Race_Type_enum_t v1, uint8_t v2, uint8_t v3)
 { p->tlm_status = v0; p->race_type = v1; p->driver = v2; p->circuit = v3;
   return p; }
-static inline TEST_TLM_STATUS_UPDATE_t *TEST_TLM_STATUS_UPDATE_copy_from_pe(TEST_TLM_STATUS_UPDATE_t *p, const TEST_TLM_STATUS_UPDATE_t *p2)
+static inline TLM_STATUS_t *TLM_STATUS_copy_from_pe(TLM_STATUS_t *p, const TLM_STATUS_t *p2)
 { p->tlm_status = p2->tlm_status; p->race_type = p2->race_type; p->driver = p2->driver; p->circuit = p2->circuit;
   return p; }
-__flatbuffers_build_struct(flatbuffers_, TEST_TLM_STATUS_UPDATE, 4, 1, TEST_TLM_STATUS_UPDATE_file_identifier, TEST_TLM_STATUS_UPDATE_type_identifier)
-__flatbuffers_define_fixed_array_primitives(flatbuffers_, TEST_TLM_STATUS_UPDATE, TEST_TLM_STATUS_UPDATE_t)
+__flatbuffers_build_struct(flatbuffers_, TLM_STATUS, 4, 1, TLM_STATUS_file_identifier, TLM_STATUS_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, TLM_STATUS, TLM_STATUS_t)
 
 #define __SET_TLM_STATUS_formal_args , Tlm_Status_enum_t v0, Race_Type_enum_t v1, uint8_t v2, uint8_t v3
 #define __SET_TLM_STATUS_call_args , v0, v1, v2, v3
@@ -186,28 +186,28 @@ static inline HV_ERROR_t *HV_ERROR_copy_from_pe(HV_ERROR_t *p, const HV_ERROR_t 
 __flatbuffers_build_struct(flatbuffers_, HV_ERROR, 3, 1, HV_ERROR_file_identifier, HV_ERROR_type_identifier)
 __flatbuffers_define_fixed_array_primitives(flatbuffers_, HV_ERROR, HV_ERROR_t)
 
-#define __TS_STATUS_UPDATE_formal_args , Ts_Status_enum_t v0
-#define __TS_STATUS_UPDATE_call_args , v0
-static inline TS_STATUS_UPDATE_t *TS_STATUS_UPDATE_assign(TS_STATUS_UPDATE_t *p, Ts_Status_enum_t v0)
+#define __TS_STATUS_formal_args , Ts_Status_enum_t v0
+#define __TS_STATUS_call_args , v0
+static inline TS_STATUS_t *TS_STATUS_assign(TS_STATUS_t *p, Ts_Status_enum_t v0)
 { p->ts_status = v0;
   return p; }
-static inline TS_STATUS_UPDATE_t *TS_STATUS_UPDATE_copy(TS_STATUS_UPDATE_t *p, const TS_STATUS_UPDATE_t *p2)
+static inline TS_STATUS_t *TS_STATUS_copy(TS_STATUS_t *p, const TS_STATUS_t *p2)
 { p->ts_status = p2->ts_status;
   return p; }
-static inline TS_STATUS_UPDATE_t *TS_STATUS_UPDATE_assign_to_pe(TS_STATUS_UPDATE_t *p, Ts_Status_enum_t v0)
+static inline TS_STATUS_t *TS_STATUS_assign_to_pe(TS_STATUS_t *p, Ts_Status_enum_t v0)
 { p->ts_status = v0;
   return p; }
-static inline TS_STATUS_UPDATE_t *TS_STATUS_UPDATE_copy_to_pe(TS_STATUS_UPDATE_t *p, const TS_STATUS_UPDATE_t *p2)
+static inline TS_STATUS_t *TS_STATUS_copy_to_pe(TS_STATUS_t *p, const TS_STATUS_t *p2)
 { p->ts_status = p2->ts_status;
   return p; }
-static inline TS_STATUS_UPDATE_t *TS_STATUS_UPDATE_assign_from_pe(TS_STATUS_UPDATE_t *p, Ts_Status_enum_t v0)
+static inline TS_STATUS_t *TS_STATUS_assign_from_pe(TS_STATUS_t *p, Ts_Status_enum_t v0)
 { p->ts_status = v0;
   return p; }
-static inline TS_STATUS_UPDATE_t *TS_STATUS_UPDATE_copy_from_pe(TS_STATUS_UPDATE_t *p, const TS_STATUS_UPDATE_t *p2)
+static inline TS_STATUS_t *TS_STATUS_copy_from_pe(TS_STATUS_t *p, const TS_STATUS_t *p2)
 { p->ts_status = p2->ts_status;
   return p; }
-__flatbuffers_build_struct(flatbuffers_, TS_STATUS_UPDATE, 1, 1, TS_STATUS_UPDATE_file_identifier, TS_STATUS_UPDATE_type_identifier)
-__flatbuffers_define_fixed_array_primitives(flatbuffers_, TS_STATUS_UPDATE, TS_STATUS_UPDATE_t)
+__flatbuffers_build_struct(flatbuffers_, TS_STATUS, 1, 1, TS_STATUS_file_identifier, TS_STATUS_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, TS_STATUS, TS_STATUS_t)
 
 #define __SET_TS_STATUS_formal_args , Ts_Status_Set_enum_t v0
 #define __SET_TS_STATUS_call_args , v0
@@ -232,28 +232,28 @@ static inline SET_TS_STATUS_t *SET_TS_STATUS_copy_from_pe(SET_TS_STATUS_t *p, co
 __flatbuffers_build_struct(flatbuffers_, SET_TS_STATUS, 1, 1, SET_TS_STATUS_file_identifier, SET_TS_STATUS_type_identifier)
 __flatbuffers_define_fixed_array_primitives(flatbuffers_, SET_TS_STATUS, SET_TS_STATUS_t)
 
-#define __STEER_STATUS_UPDATE_formal_args , Traction_Control_enum_t v0, Map_enum_t v1, flatbuffers_bool_t v2
-#define __STEER_STATUS_UPDATE_call_args , v0, v1, v2
-static inline STEER_STATUS_UPDATE_t *STEER_STATUS_UPDATE_assign(STEER_STATUS_UPDATE_t *p, Traction_Control_enum_t v0, Map_enum_t v1, flatbuffers_bool_t v2)
+#define __STEER_STATUS_formal_args , Traction_Control_enum_t v0, Map_enum_t v1, flatbuffers_bool_t v2
+#define __STEER_STATUS_call_args , v0, v1, v2
+static inline STEER_STATUS_t *STEER_STATUS_assign(STEER_STATUS_t *p, Traction_Control_enum_t v0, Map_enum_t v1, flatbuffers_bool_t v2)
 { p->traction_control = v0; p->map = v1; p->radio_on = v2;
   return p; }
-static inline STEER_STATUS_UPDATE_t *STEER_STATUS_UPDATE_copy(STEER_STATUS_UPDATE_t *p, const STEER_STATUS_UPDATE_t *p2)
+static inline STEER_STATUS_t *STEER_STATUS_copy(STEER_STATUS_t *p, const STEER_STATUS_t *p2)
 { p->traction_control = p2->traction_control; p->map = p2->map; p->radio_on = p2->radio_on;
   return p; }
-static inline STEER_STATUS_UPDATE_t *STEER_STATUS_UPDATE_assign_to_pe(STEER_STATUS_UPDATE_t *p, Traction_Control_enum_t v0, Map_enum_t v1, flatbuffers_bool_t v2)
+static inline STEER_STATUS_t *STEER_STATUS_assign_to_pe(STEER_STATUS_t *p, Traction_Control_enum_t v0, Map_enum_t v1, flatbuffers_bool_t v2)
 { p->traction_control = v0; p->map = v1; p->radio_on = v2;
   return p; }
-static inline STEER_STATUS_UPDATE_t *STEER_STATUS_UPDATE_copy_to_pe(STEER_STATUS_UPDATE_t *p, const STEER_STATUS_UPDATE_t *p2)
+static inline STEER_STATUS_t *STEER_STATUS_copy_to_pe(STEER_STATUS_t *p, const STEER_STATUS_t *p2)
 { p->traction_control = p2->traction_control; p->map = p2->map; p->radio_on = p2->radio_on;
   return p; }
-static inline STEER_STATUS_UPDATE_t *STEER_STATUS_UPDATE_assign_from_pe(STEER_STATUS_UPDATE_t *p, Traction_Control_enum_t v0, Map_enum_t v1, flatbuffers_bool_t v2)
+static inline STEER_STATUS_t *STEER_STATUS_assign_from_pe(STEER_STATUS_t *p, Traction_Control_enum_t v0, Map_enum_t v1, flatbuffers_bool_t v2)
 { p->traction_control = v0; p->map = v1; p->radio_on = v2;
   return p; }
-static inline STEER_STATUS_UPDATE_t *STEER_STATUS_UPDATE_copy_from_pe(STEER_STATUS_UPDATE_t *p, const STEER_STATUS_UPDATE_t *p2)
+static inline STEER_STATUS_t *STEER_STATUS_copy_from_pe(STEER_STATUS_t *p, const STEER_STATUS_t *p2)
 { p->traction_control = p2->traction_control; p->map = p2->map; p->radio_on = p2->radio_on;
   return p; }
-__flatbuffers_build_struct(flatbuffers_, STEER_STATUS_UPDATE, 3, 1, STEER_STATUS_UPDATE_file_identifier, STEER_STATUS_UPDATE_type_identifier)
-__flatbuffers_define_fixed_array_primitives(flatbuffers_, STEER_STATUS_UPDATE, STEER_STATUS_UPDATE_t)
+__flatbuffers_build_struct(flatbuffers_, STEER_STATUS, 3, 1, STEER_STATUS_file_identifier, STEER_STATUS_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, STEER_STATUS, STEER_STATUS_t)
 
 #define __SET_CAR_STATUS_formal_args , Car_Status_Set_enum_t v0
 #define __SET_CAR_STATUS_call_args , v0
@@ -278,28 +278,28 @@ static inline SET_CAR_STATUS_t *SET_CAR_STATUS_copy_from_pe(SET_CAR_STATUS_t *p,
 __flatbuffers_build_struct(flatbuffers_, SET_CAR_STATUS, 1, 1, SET_CAR_STATUS_file_identifier, SET_CAR_STATUS_type_identifier)
 __flatbuffers_define_fixed_array_primitives(flatbuffers_, SET_CAR_STATUS, SET_CAR_STATUS_t)
 
-#define __CAR_STATUS_UPDATE_formal_args , Car_Status_enum_t v0, Inverter_Status_enum_t v1, Inverter_Status_enum_t v2
-#define __CAR_STATUS_UPDATE_call_args , v0, v1, v2
-static inline CAR_STATUS_UPDATE_t *CAR_STATUS_UPDATE_assign(CAR_STATUS_UPDATE_t *p, Car_Status_enum_t v0, Inverter_Status_enum_t v1, Inverter_Status_enum_t v2)
+#define __CAR_STATUS_formal_args , Car_Status_enum_t v0, Inverter_Status_enum_t v1, Inverter_Status_enum_t v2
+#define __CAR_STATUS_call_args , v0, v1, v2
+static inline CAR_STATUS_t *CAR_STATUS_assign(CAR_STATUS_t *p, Car_Status_enum_t v0, Inverter_Status_enum_t v1, Inverter_Status_enum_t v2)
 { p->car_status = v0; p->inverter_l = v1; p->inverter_r = v2;
   return p; }
-static inline CAR_STATUS_UPDATE_t *CAR_STATUS_UPDATE_copy(CAR_STATUS_UPDATE_t *p, const CAR_STATUS_UPDATE_t *p2)
+static inline CAR_STATUS_t *CAR_STATUS_copy(CAR_STATUS_t *p, const CAR_STATUS_t *p2)
 { p->car_status = p2->car_status; p->inverter_l = p2->inverter_l; p->inverter_r = p2->inverter_r;
   return p; }
-static inline CAR_STATUS_UPDATE_t *CAR_STATUS_UPDATE_assign_to_pe(CAR_STATUS_UPDATE_t *p, Car_Status_enum_t v0, Inverter_Status_enum_t v1, Inverter_Status_enum_t v2)
+static inline CAR_STATUS_t *CAR_STATUS_assign_to_pe(CAR_STATUS_t *p, Car_Status_enum_t v0, Inverter_Status_enum_t v1, Inverter_Status_enum_t v2)
 { p->car_status = v0; p->inverter_l = v1; p->inverter_r = v2;
   return p; }
-static inline CAR_STATUS_UPDATE_t *CAR_STATUS_UPDATE_copy_to_pe(CAR_STATUS_UPDATE_t *p, const CAR_STATUS_UPDATE_t *p2)
+static inline CAR_STATUS_t *CAR_STATUS_copy_to_pe(CAR_STATUS_t *p, const CAR_STATUS_t *p2)
 { p->car_status = p2->car_status; p->inverter_l = p2->inverter_l; p->inverter_r = p2->inverter_r;
   return p; }
-static inline CAR_STATUS_UPDATE_t *CAR_STATUS_UPDATE_assign_from_pe(CAR_STATUS_UPDATE_t *p, Car_Status_enum_t v0, Inverter_Status_enum_t v1, Inverter_Status_enum_t v2)
+static inline CAR_STATUS_t *CAR_STATUS_assign_from_pe(CAR_STATUS_t *p, Car_Status_enum_t v0, Inverter_Status_enum_t v1, Inverter_Status_enum_t v2)
 { p->car_status = v0; p->inverter_l = v1; p->inverter_r = v2;
   return p; }
-static inline CAR_STATUS_UPDATE_t *CAR_STATUS_UPDATE_copy_from_pe(CAR_STATUS_UPDATE_t *p, const CAR_STATUS_UPDATE_t *p2)
+static inline CAR_STATUS_t *CAR_STATUS_copy_from_pe(CAR_STATUS_t *p, const CAR_STATUS_t *p2)
 { p->car_status = p2->car_status; p->inverter_l = p2->inverter_l; p->inverter_r = p2->inverter_r;
   return p; }
-__flatbuffers_build_struct(flatbuffers_, CAR_STATUS_UPDATE, 3, 1, CAR_STATUS_UPDATE_file_identifier, CAR_STATUS_UPDATE_type_identifier)
-__flatbuffers_define_fixed_array_primitives(flatbuffers_, CAR_STATUS_UPDATE, CAR_STATUS_UPDATE_t)
+__flatbuffers_build_struct(flatbuffers_, CAR_STATUS, 3, 1, CAR_STATUS_file_identifier, CAR_STATUS_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, CAR_STATUS, CAR_STATUS_t)
 
 #define __SET_PEDALS_RANGE_formal_args , Bound_enum_t v0
 #define __SET_PEDALS_RANGE_call_args , v0

@@ -1,46 +1,46 @@
 {
-    "network_version": 1,
+    "network_version": 1.1,
     "ids": [
         {
-            "topic": "TLM",
+            "topic": "ACU",
             "id": 0,
             "messages": {
-                "SET_TLM_STATUS": 256
-            }
-        },
-        {
-            "topic": "ACUnSTEER",
-            "id": 1,
-            "messages": {
-                "HV_VOLTAGE": 769,
-                "HV_CURRENT": 801,
-                "HV_TEMP": 833,
-                "HV_ERROR": 257
+                "TS_STATUS": 0,
+                "STEER_STATUS": 32,
+                "SET_CAR_STATUS": 64,
+                "GET_CAR_STATUS": 96
             }
         },
         {
             "topic": "STEER",
-            "id": 2,
+            "id": 1,
             "messages": {
-                "TEST_TLM_STATUS_UPDATE": 258,
-                "CAR_STATUS_UPDATE": 2
-            }
-        },
-        {
-            "topic": "ACU",
-            "id": 3,
-            "messages": {
-                "TS_STATUS_UPDATE": 3,
-                "STEER_STATUS_UPDATE": 35,
-                "SET_CAR_STATUS": 67,
-                "ASK_CAR_STATUS": 99
+                "TLM_STATUS": 257,
+                "CAR_STATUS": 1
             }
         },
         {
             "topic": "BMS_HV",
+            "id": 2,
+            "messages": {
+                "SET_TS_STATUS": 2
+            }
+        },
+        {
+            "topic": "TLM",
+            "id": 3,
+            "messages": {
+                "SET_TLM_STATUS": 259
+            }
+        },
+        {
+            "topic": "ACUnSTEER",
             "id": 4,
             "messages": {
-                "SET_TS_STATUS": 4
+                "HV_VOLTAGE": 772,
+                "HV_CURRENT": 804,
+                "HV_TEMP": 836,
+                "HV_ERROR": 260
             }
         },
         {

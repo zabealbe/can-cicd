@@ -6,25 +6,25 @@ import flatbuffers
 from flatbuffers.compat import import_numpy
 np = import_numpy()
 
-class STEER_STATUS_UPDATE(object):
+class STEER_STATUS(object):
     __slots__ = ['_tab']
 
     @classmethod
     def SizeOf(cls):
         return 3
 
-    # STEER_STATUS_UPDATE
+    # STEER_STATUS
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-    # STEER_STATUS_UPDATE
+    # STEER_STATUS
     def TractionControl(self): return self._tab.Get(flatbuffers.number_types.Int8Flags, self._tab.Pos + flatbuffers.number_types.UOffsetTFlags.py_type(0))
-    # STEER_STATUS_UPDATE
+    # STEER_STATUS
     def Map(self): return self._tab.Get(flatbuffers.number_types.Int8Flags, self._tab.Pos + flatbuffers.number_types.UOffsetTFlags.py_type(1))
-    # STEER_STATUS_UPDATE
+    # STEER_STATUS
     def RadioOn(self): return self._tab.Get(flatbuffers.number_types.BoolFlags, self._tab.Pos + flatbuffers.number_types.UOffsetTFlags.py_type(2))
 
-def CreateSTEER_STATUS_UPDATE(builder, tractionControl, map, radioOn):
+def CreateSTEER_STATUS(builder, tractionControl, map, radioOn):
     builder.Prep(1, 3)
     builder.PrependBool(radioOn)
     builder.PrependInt8(map)

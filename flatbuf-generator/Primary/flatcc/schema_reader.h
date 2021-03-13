@@ -18,11 +18,11 @@
 #define flatbuffers_extension ".bin"
 #endif
 
-typedef struct TEST_TLM_STATUS_UPDATE TEST_TLM_STATUS_UPDATE_t;
-typedef const TEST_TLM_STATUS_UPDATE_t *TEST_TLM_STATUS_UPDATE_struct_t;
-typedef TEST_TLM_STATUS_UPDATE_t *TEST_TLM_STATUS_UPDATE_mutable_struct_t;
-typedef const TEST_TLM_STATUS_UPDATE_t *TEST_TLM_STATUS_UPDATE_vec_t;
-typedef TEST_TLM_STATUS_UPDATE_t *TEST_TLM_STATUS_UPDATE_mutable_vec_t;
+typedef struct TLM_STATUS TLM_STATUS_t;
+typedef const TLM_STATUS_t *TLM_STATUS_struct_t;
+typedef TLM_STATUS_t *TLM_STATUS_mutable_struct_t;
+typedef const TLM_STATUS_t *TLM_STATUS_vec_t;
+typedef TLM_STATUS_t *TLM_STATUS_mutable_vec_t;
 typedef struct SET_TLM_STATUS SET_TLM_STATUS_t;
 typedef const SET_TLM_STATUS_t *SET_TLM_STATUS_struct_t;
 typedef SET_TLM_STATUS_t *SET_TLM_STATUS_mutable_struct_t;
@@ -48,46 +48,46 @@ typedef const HV_ERROR_t *HV_ERROR_struct_t;
 typedef HV_ERROR_t *HV_ERROR_mutable_struct_t;
 typedef const HV_ERROR_t *HV_ERROR_vec_t;
 typedef HV_ERROR_t *HV_ERROR_mutable_vec_t;
-typedef struct TS_STATUS_UPDATE TS_STATUS_UPDATE_t;
-typedef const TS_STATUS_UPDATE_t *TS_STATUS_UPDATE_struct_t;
-typedef TS_STATUS_UPDATE_t *TS_STATUS_UPDATE_mutable_struct_t;
-typedef const TS_STATUS_UPDATE_t *TS_STATUS_UPDATE_vec_t;
-typedef TS_STATUS_UPDATE_t *TS_STATUS_UPDATE_mutable_vec_t;
+typedef struct TS_STATUS TS_STATUS_t;
+typedef const TS_STATUS_t *TS_STATUS_struct_t;
+typedef TS_STATUS_t *TS_STATUS_mutable_struct_t;
+typedef const TS_STATUS_t *TS_STATUS_vec_t;
+typedef TS_STATUS_t *TS_STATUS_mutable_vec_t;
 typedef struct SET_TS_STATUS SET_TS_STATUS_t;
 typedef const SET_TS_STATUS_t *SET_TS_STATUS_struct_t;
 typedef SET_TS_STATUS_t *SET_TS_STATUS_mutable_struct_t;
 typedef const SET_TS_STATUS_t *SET_TS_STATUS_vec_t;
 typedef SET_TS_STATUS_t *SET_TS_STATUS_mutable_vec_t;
-typedef struct STEER_STATUS_UPDATE STEER_STATUS_UPDATE_t;
-typedef const STEER_STATUS_UPDATE_t *STEER_STATUS_UPDATE_struct_t;
-typedef STEER_STATUS_UPDATE_t *STEER_STATUS_UPDATE_mutable_struct_t;
-typedef const STEER_STATUS_UPDATE_t *STEER_STATUS_UPDATE_vec_t;
-typedef STEER_STATUS_UPDATE_t *STEER_STATUS_UPDATE_mutable_vec_t;
+typedef struct STEER_STATUS STEER_STATUS_t;
+typedef const STEER_STATUS_t *STEER_STATUS_struct_t;
+typedef STEER_STATUS_t *STEER_STATUS_mutable_struct_t;
+typedef const STEER_STATUS_t *STEER_STATUS_vec_t;
+typedef STEER_STATUS_t *STEER_STATUS_mutable_vec_t;
 typedef struct SET_CAR_STATUS SET_CAR_STATUS_t;
 typedef const SET_CAR_STATUS_t *SET_CAR_STATUS_struct_t;
 typedef SET_CAR_STATUS_t *SET_CAR_STATUS_mutable_struct_t;
 typedef const SET_CAR_STATUS_t *SET_CAR_STATUS_vec_t;
 typedef SET_CAR_STATUS_t *SET_CAR_STATUS_mutable_vec_t;
-typedef struct CAR_STATUS_UPDATE CAR_STATUS_UPDATE_t;
-typedef const CAR_STATUS_UPDATE_t *CAR_STATUS_UPDATE_struct_t;
-typedef CAR_STATUS_UPDATE_t *CAR_STATUS_UPDATE_mutable_struct_t;
-typedef const CAR_STATUS_UPDATE_t *CAR_STATUS_UPDATE_vec_t;
-typedef CAR_STATUS_UPDATE_t *CAR_STATUS_UPDATE_mutable_vec_t;
+typedef struct CAR_STATUS CAR_STATUS_t;
+typedef const CAR_STATUS_t *CAR_STATUS_struct_t;
+typedef CAR_STATUS_t *CAR_STATUS_mutable_struct_t;
+typedef const CAR_STATUS_t *CAR_STATUS_vec_t;
+typedef CAR_STATUS_t *CAR_STATUS_mutable_vec_t;
 typedef struct SET_PEDALS_RANGE SET_PEDALS_RANGE_t;
 typedef const SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_struct_t;
 typedef SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_mutable_struct_t;
 typedef const SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_vec_t;
 typedef SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_mutable_vec_t;
 
-#ifndef TEST_TLM_STATUS_UPDATE_file_identifier
-#define TEST_TLM_STATUS_UPDATE_file_identifier flatbuffers_identifier
+#ifndef TLM_STATUS_file_identifier
+#define TLM_STATUS_file_identifier flatbuffers_identifier
 #endif
-/* deprecated, use TEST_TLM_STATUS_UPDATE_file_identifier */
-#ifndef TEST_TLM_STATUS_UPDATE_identifier
-#define TEST_TLM_STATUS_UPDATE_identifier flatbuffers_identifier
+/* deprecated, use TLM_STATUS_file_identifier */
+#ifndef TLM_STATUS_identifier
+#define TLM_STATUS_identifier flatbuffers_identifier
 #endif
-#define TEST_TLM_STATUS_UPDATE_type_hash ((flatbuffers_thash_t)0x5f3d09f0)
-#define TEST_TLM_STATUS_UPDATE_type_identifier "\xf0\x09\x3d\x5f"
+#define TLM_STATUS_type_hash ((flatbuffers_thash_t)0xccb2c747)
+#define TLM_STATUS_type_identifier "\x47\xc7\xb2\xcc"
 #ifndef SET_TLM_STATUS_file_identifier
 #define SET_TLM_STATUS_file_identifier flatbuffers_identifier
 #endif
@@ -133,15 +133,15 @@ typedef SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_mutable_vec_t;
 #endif
 #define HV_ERROR_type_hash ((flatbuffers_thash_t)0xeb0a2bf2)
 #define HV_ERROR_type_identifier "\xf2\x2b\x0a\xeb"
-#ifndef TS_STATUS_UPDATE_file_identifier
-#define TS_STATUS_UPDATE_file_identifier flatbuffers_identifier
+#ifndef TS_STATUS_file_identifier
+#define TS_STATUS_file_identifier flatbuffers_identifier
 #endif
-/* deprecated, use TS_STATUS_UPDATE_file_identifier */
-#ifndef TS_STATUS_UPDATE_identifier
-#define TS_STATUS_UPDATE_identifier flatbuffers_identifier
+/* deprecated, use TS_STATUS_file_identifier */
+#ifndef TS_STATUS_identifier
+#define TS_STATUS_identifier flatbuffers_identifier
 #endif
-#define TS_STATUS_UPDATE_type_hash ((flatbuffers_thash_t)0xa410a589)
-#define TS_STATUS_UPDATE_type_identifier "\x89\xa5\x10\xa4"
+#define TS_STATUS_type_hash ((flatbuffers_thash_t)0xa15dec07)
+#define TS_STATUS_type_identifier "\x07\xec\x5d\xa1"
 #ifndef SET_TS_STATUS_file_identifier
 #define SET_TS_STATUS_file_identifier flatbuffers_identifier
 #endif
@@ -151,15 +151,15 @@ typedef SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_mutable_vec_t;
 #endif
 #define SET_TS_STATUS_type_hash ((flatbuffers_thash_t)0x4ed1150c)
 #define SET_TS_STATUS_type_identifier "\x0c\x15\xd1\x4e"
-#ifndef STEER_STATUS_UPDATE_file_identifier
-#define STEER_STATUS_UPDATE_file_identifier flatbuffers_identifier
+#ifndef STEER_STATUS_file_identifier
+#define STEER_STATUS_file_identifier flatbuffers_identifier
 #endif
-/* deprecated, use STEER_STATUS_UPDATE_file_identifier */
-#ifndef STEER_STATUS_UPDATE_identifier
-#define STEER_STATUS_UPDATE_identifier flatbuffers_identifier
+/* deprecated, use STEER_STATUS_file_identifier */
+#ifndef STEER_STATUS_identifier
+#define STEER_STATUS_identifier flatbuffers_identifier
 #endif
-#define STEER_STATUS_UPDATE_type_hash ((flatbuffers_thash_t)0xaf46dbcf)
-#define STEER_STATUS_UPDATE_type_identifier "\xcf\xdb\x46\xaf"
+#define STEER_STATUS_type_hash ((flatbuffers_thash_t)0xc0bde71d)
+#define STEER_STATUS_type_identifier "\x1d\xe7\xbd\xc0"
 #ifndef SET_CAR_STATUS_file_identifier
 #define SET_CAR_STATUS_file_identifier flatbuffers_identifier
 #endif
@@ -169,15 +169,15 @@ typedef SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_mutable_vec_t;
 #endif
 #define SET_CAR_STATUS_type_hash ((flatbuffers_thash_t)0xa658f439)
 #define SET_CAR_STATUS_type_identifier "\x39\xf4\x58\xa6"
-#ifndef CAR_STATUS_UPDATE_file_identifier
-#define CAR_STATUS_UPDATE_file_identifier flatbuffers_identifier
+#ifndef CAR_STATUS_file_identifier
+#define CAR_STATUS_file_identifier flatbuffers_identifier
 #endif
-/* deprecated, use CAR_STATUS_UPDATE_file_identifier */
-#ifndef CAR_STATUS_UPDATE_identifier
-#define CAR_STATUS_UPDATE_identifier flatbuffers_identifier
+/* deprecated, use CAR_STATUS_file_identifier */
+#ifndef CAR_STATUS_identifier
+#define CAR_STATUS_identifier flatbuffers_identifier
 #endif
-#define CAR_STATUS_UPDATE_type_hash ((flatbuffers_thash_t)0x6c57b460)
-#define CAR_STATUS_UPDATE_type_identifier "\x60\xb4\x57\x6c"
+#define CAR_STATUS_type_hash ((flatbuffers_thash_t)0xcad66a64)
+#define CAR_STATUS_type_identifier "\x64\x6a\xd6\xca"
 #ifndef SET_PEDALS_RANGE_file_identifier
 #define SET_PEDALS_RANGE_file_identifier flatbuffers_identifier
 #endif
@@ -455,27 +455,27 @@ static inline int Bound_is_known_value(Bound_enum_t value)
 }
 
 
-struct TEST_TLM_STATUS_UPDATE {
+struct TLM_STATUS {
     alignas(1) Tlm_Status_enum_t tlm_status;
     alignas(1) Race_Type_enum_t race_type;
     alignas(1) uint8_t driver;
     alignas(1) uint8_t circuit;
 };
-static_assert(sizeof(TEST_TLM_STATUS_UPDATE_t) == 4, "struct size mismatch");
+static_assert(sizeof(TLM_STATUS_t) == 4, "struct size mismatch");
 
-static inline const TEST_TLM_STATUS_UPDATE_t *TEST_TLM_STATUS_UPDATE__const_ptr_add(const TEST_TLM_STATUS_UPDATE_t *p, size_t i) { return p + i; }
-static inline TEST_TLM_STATUS_UPDATE_t *TEST_TLM_STATUS_UPDATE__ptr_add(TEST_TLM_STATUS_UPDATE_t *p, size_t i) { return p + i; }
-static inline TEST_TLM_STATUS_UPDATE_struct_t TEST_TLM_STATUS_UPDATE_vec_at(TEST_TLM_STATUS_UPDATE_vec_t vec, size_t i)
+static inline const TLM_STATUS_t *TLM_STATUS__const_ptr_add(const TLM_STATUS_t *p, size_t i) { return p + i; }
+static inline TLM_STATUS_t *TLM_STATUS__ptr_add(TLM_STATUS_t *p, size_t i) { return p + i; }
+static inline TLM_STATUS_struct_t TLM_STATUS_vec_at(TLM_STATUS_vec_t vec, size_t i)
 __flatbuffers_struct_vec_at(vec, i)
-static inline size_t TEST_TLM_STATUS_UPDATE__size(void) { return 4; }
-static inline size_t TEST_TLM_STATUS_UPDATE_vec_len(TEST_TLM_STATUS_UPDATE_vec_t vec)
+static inline size_t TLM_STATUS__size(void) { return 4; }
+static inline size_t TLM_STATUS_vec_len(TLM_STATUS_vec_t vec)
 __flatbuffers_vec_len(vec)
-__flatbuffers_struct_as_root(TEST_TLM_STATUS_UPDATE)
+__flatbuffers_struct_as_root(TLM_STATUS)
 
-__flatbuffers_define_struct_scalar_field(TEST_TLM_STATUS_UPDATE, tlm_status, Tlm_Status, Tlm_Status_enum_t)
-__flatbuffers_define_struct_scalar_field(TEST_TLM_STATUS_UPDATE, race_type, Race_Type, Race_Type_enum_t)
-__flatbuffers_define_struct_scalar_field(TEST_TLM_STATUS_UPDATE, driver, flatbuffers_uint8, uint8_t)
-__flatbuffers_define_struct_scalar_field(TEST_TLM_STATUS_UPDATE, circuit, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(TLM_STATUS, tlm_status, Tlm_Status, Tlm_Status_enum_t)
+__flatbuffers_define_struct_scalar_field(TLM_STATUS, race_type, Race_Type, Race_Type_enum_t)
+__flatbuffers_define_struct_scalar_field(TLM_STATUS, driver, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(TLM_STATUS, circuit, flatbuffers_uint8, uint8_t)
 
 struct SET_TLM_STATUS {
     alignas(1) Tlm_Status_enum_t tlm_status;
@@ -579,21 +579,21 @@ __flatbuffers_define_struct_scalar_field(HV_ERROR, error_code, flatbuffers_uint8
 __flatbuffers_define_struct_scalar_field(HV_ERROR, error_index, flatbuffers_uint8, uint8_t)
 __flatbuffers_define_struct_scalar_field(HV_ERROR, active, flatbuffers_uint8, uint8_t)
 
-struct TS_STATUS_UPDATE {
+struct TS_STATUS {
     alignas(1) Ts_Status_enum_t ts_status;
 };
-static_assert(sizeof(TS_STATUS_UPDATE_t) == 1, "struct size mismatch");
+static_assert(sizeof(TS_STATUS_t) == 1, "struct size mismatch");
 
-static inline const TS_STATUS_UPDATE_t *TS_STATUS_UPDATE__const_ptr_add(const TS_STATUS_UPDATE_t *p, size_t i) { return p + i; }
-static inline TS_STATUS_UPDATE_t *TS_STATUS_UPDATE__ptr_add(TS_STATUS_UPDATE_t *p, size_t i) { return p + i; }
-static inline TS_STATUS_UPDATE_struct_t TS_STATUS_UPDATE_vec_at(TS_STATUS_UPDATE_vec_t vec, size_t i)
+static inline const TS_STATUS_t *TS_STATUS__const_ptr_add(const TS_STATUS_t *p, size_t i) { return p + i; }
+static inline TS_STATUS_t *TS_STATUS__ptr_add(TS_STATUS_t *p, size_t i) { return p + i; }
+static inline TS_STATUS_struct_t TS_STATUS_vec_at(TS_STATUS_vec_t vec, size_t i)
 __flatbuffers_struct_vec_at(vec, i)
-static inline size_t TS_STATUS_UPDATE__size(void) { return 1; }
-static inline size_t TS_STATUS_UPDATE_vec_len(TS_STATUS_UPDATE_vec_t vec)
+static inline size_t TS_STATUS__size(void) { return 1; }
+static inline size_t TS_STATUS_vec_len(TS_STATUS_vec_t vec)
 __flatbuffers_vec_len(vec)
-__flatbuffers_struct_as_root(TS_STATUS_UPDATE)
+__flatbuffers_struct_as_root(TS_STATUS)
 
-__flatbuffers_define_struct_scalar_field(TS_STATUS_UPDATE, ts_status, Ts_Status, Ts_Status_enum_t)
+__flatbuffers_define_struct_scalar_field(TS_STATUS, ts_status, Ts_Status, Ts_Status_enum_t)
 
 struct SET_TS_STATUS {
     alignas(1) Ts_Status_Set_enum_t ts_status_set;
@@ -611,25 +611,25 @@ __flatbuffers_struct_as_root(SET_TS_STATUS)
 
 __flatbuffers_define_struct_scalar_field(SET_TS_STATUS, ts_status_set, Ts_Status_Set, Ts_Status_Set_enum_t)
 
-struct STEER_STATUS_UPDATE {
+struct STEER_STATUS {
     alignas(1) Traction_Control_enum_t traction_control;
     alignas(1) Map_enum_t map;
     alignas(1) flatbuffers_bool_t radio_on;
 };
-static_assert(sizeof(STEER_STATUS_UPDATE_t) == 3, "struct size mismatch");
+static_assert(sizeof(STEER_STATUS_t) == 3, "struct size mismatch");
 
-static inline const STEER_STATUS_UPDATE_t *STEER_STATUS_UPDATE__const_ptr_add(const STEER_STATUS_UPDATE_t *p, size_t i) { return p + i; }
-static inline STEER_STATUS_UPDATE_t *STEER_STATUS_UPDATE__ptr_add(STEER_STATUS_UPDATE_t *p, size_t i) { return p + i; }
-static inline STEER_STATUS_UPDATE_struct_t STEER_STATUS_UPDATE_vec_at(STEER_STATUS_UPDATE_vec_t vec, size_t i)
+static inline const STEER_STATUS_t *STEER_STATUS__const_ptr_add(const STEER_STATUS_t *p, size_t i) { return p + i; }
+static inline STEER_STATUS_t *STEER_STATUS__ptr_add(STEER_STATUS_t *p, size_t i) { return p + i; }
+static inline STEER_STATUS_struct_t STEER_STATUS_vec_at(STEER_STATUS_vec_t vec, size_t i)
 __flatbuffers_struct_vec_at(vec, i)
-static inline size_t STEER_STATUS_UPDATE__size(void) { return 3; }
-static inline size_t STEER_STATUS_UPDATE_vec_len(STEER_STATUS_UPDATE_vec_t vec)
+static inline size_t STEER_STATUS__size(void) { return 3; }
+static inline size_t STEER_STATUS_vec_len(STEER_STATUS_vec_t vec)
 __flatbuffers_vec_len(vec)
-__flatbuffers_struct_as_root(STEER_STATUS_UPDATE)
+__flatbuffers_struct_as_root(STEER_STATUS)
 
-__flatbuffers_define_struct_scalar_field(STEER_STATUS_UPDATE, traction_control, Traction_Control, Traction_Control_enum_t)
-__flatbuffers_define_struct_scalar_field(STEER_STATUS_UPDATE, map, Map, Map_enum_t)
-__flatbuffers_define_struct_scalar_field(STEER_STATUS_UPDATE, radio_on, flatbuffers_bool, flatbuffers_bool_t)
+__flatbuffers_define_struct_scalar_field(STEER_STATUS, traction_control, Traction_Control, Traction_Control_enum_t)
+__flatbuffers_define_struct_scalar_field(STEER_STATUS, map, Map, Map_enum_t)
+__flatbuffers_define_struct_scalar_field(STEER_STATUS, radio_on, flatbuffers_bool, flatbuffers_bool_t)
 
 struct SET_CAR_STATUS {
     alignas(1) Car_Status_Set_enum_t car_status_set;
@@ -647,25 +647,25 @@ __flatbuffers_struct_as_root(SET_CAR_STATUS)
 
 __flatbuffers_define_struct_scalar_field(SET_CAR_STATUS, car_status_set, Car_Status_Set, Car_Status_Set_enum_t)
 
-struct CAR_STATUS_UPDATE {
+struct CAR_STATUS {
     alignas(1) Car_Status_enum_t car_status;
     alignas(1) Inverter_Status_enum_t inverter_l;
     alignas(1) Inverter_Status_enum_t inverter_r;
 };
-static_assert(sizeof(CAR_STATUS_UPDATE_t) == 3, "struct size mismatch");
+static_assert(sizeof(CAR_STATUS_t) == 3, "struct size mismatch");
 
-static inline const CAR_STATUS_UPDATE_t *CAR_STATUS_UPDATE__const_ptr_add(const CAR_STATUS_UPDATE_t *p, size_t i) { return p + i; }
-static inline CAR_STATUS_UPDATE_t *CAR_STATUS_UPDATE__ptr_add(CAR_STATUS_UPDATE_t *p, size_t i) { return p + i; }
-static inline CAR_STATUS_UPDATE_struct_t CAR_STATUS_UPDATE_vec_at(CAR_STATUS_UPDATE_vec_t vec, size_t i)
+static inline const CAR_STATUS_t *CAR_STATUS__const_ptr_add(const CAR_STATUS_t *p, size_t i) { return p + i; }
+static inline CAR_STATUS_t *CAR_STATUS__ptr_add(CAR_STATUS_t *p, size_t i) { return p + i; }
+static inline CAR_STATUS_struct_t CAR_STATUS_vec_at(CAR_STATUS_vec_t vec, size_t i)
 __flatbuffers_struct_vec_at(vec, i)
-static inline size_t CAR_STATUS_UPDATE__size(void) { return 3; }
-static inline size_t CAR_STATUS_UPDATE_vec_len(CAR_STATUS_UPDATE_vec_t vec)
+static inline size_t CAR_STATUS__size(void) { return 3; }
+static inline size_t CAR_STATUS_vec_len(CAR_STATUS_vec_t vec)
 __flatbuffers_vec_len(vec)
-__flatbuffers_struct_as_root(CAR_STATUS_UPDATE)
+__flatbuffers_struct_as_root(CAR_STATUS)
 
-__flatbuffers_define_struct_scalar_field(CAR_STATUS_UPDATE, car_status, Car_Status, Car_Status_enum_t)
-__flatbuffers_define_struct_scalar_field(CAR_STATUS_UPDATE, inverter_l, Inverter_Status, Inverter_Status_enum_t)
-__flatbuffers_define_struct_scalar_field(CAR_STATUS_UPDATE, inverter_r, Inverter_Status, Inverter_Status_enum_t)
+__flatbuffers_define_struct_scalar_field(CAR_STATUS, car_status, Car_Status, Car_Status_enum_t)
+__flatbuffers_define_struct_scalar_field(CAR_STATUS, inverter_l, Inverter_Status, Inverter_Status_enum_t)
+__flatbuffers_define_struct_scalar_field(CAR_STATUS, inverter_r, Inverter_Status, Inverter_Status_enum_t)
 
 struct SET_PEDALS_RANGE {
     alignas(1) Bound_enum_t bound;

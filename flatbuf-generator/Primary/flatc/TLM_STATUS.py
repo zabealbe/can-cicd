@@ -6,27 +6,27 @@ import flatbuffers
 from flatbuffers.compat import import_numpy
 np = import_numpy()
 
-class TEST_TLM_STATUS_UPDATE(object):
+class TLM_STATUS(object):
     __slots__ = ['_tab']
 
     @classmethod
     def SizeOf(cls):
         return 4
 
-    # TEST_TLM_STATUS_UPDATE
+    # TLM_STATUS
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-    # TEST_TLM_STATUS_UPDATE
+    # TLM_STATUS
     def TlmStatus(self): return self._tab.Get(flatbuffers.number_types.Int8Flags, self._tab.Pos + flatbuffers.number_types.UOffsetTFlags.py_type(0))
-    # TEST_TLM_STATUS_UPDATE
+    # TLM_STATUS
     def RaceType(self): return self._tab.Get(flatbuffers.number_types.Int8Flags, self._tab.Pos + flatbuffers.number_types.UOffsetTFlags.py_type(1))
-    # TEST_TLM_STATUS_UPDATE
+    # TLM_STATUS
     def Driver(self): return self._tab.Get(flatbuffers.number_types.Uint8Flags, self._tab.Pos + flatbuffers.number_types.UOffsetTFlags.py_type(2))
-    # TEST_TLM_STATUS_UPDATE
+    # TLM_STATUS
     def Circuit(self): return self._tab.Get(flatbuffers.number_types.Uint8Flags, self._tab.Pos + flatbuffers.number_types.UOffsetTFlags.py_type(3))
 
-def CreateTEST_TLM_STATUS_UPDATE(builder, tlmStatus, raceType, driver, circuit):
+def CreateTLM_STATUS(builder, tlmStatus, raceType, driver, circuit):
     builder.Prep(1, 4)
     builder.PrependUint8(circuit)
     builder.PrependUint8(driver)

@@ -10,22 +10,22 @@
 #include "flatcc/flatcc_prologue.h"
 
 
-static inline int TEST_TLM_STATUS_UPDATE_verify_as_root(const void *buf, size_t bufsiz)
+static inline int TLM_STATUS_verify_as_root(const void *buf, size_t bufsiz)
 {
-    return flatcc_verify_struct_as_root(buf, bufsiz, TEST_TLM_STATUS_UPDATE_identifier, 4, 1);
+    return flatcc_verify_struct_as_root(buf, bufsiz, TLM_STATUS_identifier, 4, 1);
 }
 
-static inline int TEST_TLM_STATUS_UPDATE_verify_as_typed_root(const void *buf, size_t bufsiz)
+static inline int TLM_STATUS_verify_as_typed_root(const void *buf, size_t bufsiz)
 {
-    return flatcc_verify_struct_as_typed_root(buf, bufsiz, TEST_TLM_STATUS_UPDATE_type_hash, 4, 1);
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, TLM_STATUS_type_hash, 4, 1);
 }
 
-static inline int TEST_TLM_STATUS_UPDATE_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+static inline int TLM_STATUS_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
 {
     return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 4, 1);
 }
 
-static inline int TEST_TLM_STATUS_UPDATE_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+static inline int TLM_STATUS_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
 {
     return flatcc_verify_struct_as_root(buf, bufsiz, fid, 4, 1);
 }
@@ -130,22 +130,22 @@ static inline int HV_ERROR_verify_as_root_with_identifier(const void *buf, size_
     return flatcc_verify_struct_as_root(buf, bufsiz, fid, 3, 1);
 }
 
-static inline int TS_STATUS_UPDATE_verify_as_root(const void *buf, size_t bufsiz)
+static inline int TS_STATUS_verify_as_root(const void *buf, size_t bufsiz)
 {
-    return flatcc_verify_struct_as_root(buf, bufsiz, TS_STATUS_UPDATE_identifier, 1, 1);
+    return flatcc_verify_struct_as_root(buf, bufsiz, TS_STATUS_identifier, 1, 1);
 }
 
-static inline int TS_STATUS_UPDATE_verify_as_typed_root(const void *buf, size_t bufsiz)
+static inline int TS_STATUS_verify_as_typed_root(const void *buf, size_t bufsiz)
 {
-    return flatcc_verify_struct_as_typed_root(buf, bufsiz, TS_STATUS_UPDATE_type_hash, 1, 1);
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, TS_STATUS_type_hash, 1, 1);
 }
 
-static inline int TS_STATUS_UPDATE_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+static inline int TS_STATUS_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
 {
     return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 1, 1);
 }
 
-static inline int TS_STATUS_UPDATE_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+static inline int TS_STATUS_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
 {
     return flatcc_verify_struct_as_root(buf, bufsiz, fid, 1, 1);
 }
@@ -170,22 +170,22 @@ static inline int SET_TS_STATUS_verify_as_root_with_identifier(const void *buf, 
     return flatcc_verify_struct_as_root(buf, bufsiz, fid, 1, 1);
 }
 
-static inline int STEER_STATUS_UPDATE_verify_as_root(const void *buf, size_t bufsiz)
+static inline int STEER_STATUS_verify_as_root(const void *buf, size_t bufsiz)
 {
-    return flatcc_verify_struct_as_root(buf, bufsiz, STEER_STATUS_UPDATE_identifier, 3, 1);
+    return flatcc_verify_struct_as_root(buf, bufsiz, STEER_STATUS_identifier, 3, 1);
 }
 
-static inline int STEER_STATUS_UPDATE_verify_as_typed_root(const void *buf, size_t bufsiz)
+static inline int STEER_STATUS_verify_as_typed_root(const void *buf, size_t bufsiz)
 {
-    return flatcc_verify_struct_as_typed_root(buf, bufsiz, STEER_STATUS_UPDATE_type_hash, 3, 1);
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, STEER_STATUS_type_hash, 3, 1);
 }
 
-static inline int STEER_STATUS_UPDATE_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+static inline int STEER_STATUS_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
 {
     return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 3, 1);
 }
 
-static inline int STEER_STATUS_UPDATE_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+static inline int STEER_STATUS_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
 {
     return flatcc_verify_struct_as_root(buf, bufsiz, fid, 3, 1);
 }
@@ -210,22 +210,22 @@ static inline int SET_CAR_STATUS_verify_as_root_with_identifier(const void *buf,
     return flatcc_verify_struct_as_root(buf, bufsiz, fid, 1, 1);
 }
 
-static inline int CAR_STATUS_UPDATE_verify_as_root(const void *buf, size_t bufsiz)
+static inline int CAR_STATUS_verify_as_root(const void *buf, size_t bufsiz)
 {
-    return flatcc_verify_struct_as_root(buf, bufsiz, CAR_STATUS_UPDATE_identifier, 3, 1);
+    return flatcc_verify_struct_as_root(buf, bufsiz, CAR_STATUS_identifier, 3, 1);
 }
 
-static inline int CAR_STATUS_UPDATE_verify_as_typed_root(const void *buf, size_t bufsiz)
+static inline int CAR_STATUS_verify_as_typed_root(const void *buf, size_t bufsiz)
 {
-    return flatcc_verify_struct_as_typed_root(buf, bufsiz, CAR_STATUS_UPDATE_type_hash, 3, 1);
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, CAR_STATUS_type_hash, 3, 1);
 }
 
-static inline int CAR_STATUS_UPDATE_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+static inline int CAR_STATUS_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
 {
     return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 3, 1);
 }
 
-static inline int CAR_STATUS_UPDATE_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+static inline int CAR_STATUS_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
 {
     return flatcc_verify_struct_as_root(buf, bufsiz, fid, 3, 1);
 }

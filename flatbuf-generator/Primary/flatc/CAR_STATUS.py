@@ -6,25 +6,25 @@ import flatbuffers
 from flatbuffers.compat import import_numpy
 np = import_numpy()
 
-class CAR_STATUS_UPDATE(object):
+class CAR_STATUS(object):
     __slots__ = ['_tab']
 
     @classmethod
     def SizeOf(cls):
         return 3
 
-    # CAR_STATUS_UPDATE
+    # CAR_STATUS
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-    # CAR_STATUS_UPDATE
+    # CAR_STATUS
     def CarStatus(self): return self._tab.Get(flatbuffers.number_types.Int8Flags, self._tab.Pos + flatbuffers.number_types.UOffsetTFlags.py_type(0))
-    # CAR_STATUS_UPDATE
+    # CAR_STATUS
     def InverterL(self): return self._tab.Get(flatbuffers.number_types.Int8Flags, self._tab.Pos + flatbuffers.number_types.UOffsetTFlags.py_type(1))
-    # CAR_STATUS_UPDATE
+    # CAR_STATUS
     def InverterR(self): return self._tab.Get(flatbuffers.number_types.Int8Flags, self._tab.Pos + flatbuffers.number_types.UOffsetTFlags.py_type(2))
 
-def CreateCAR_STATUS_UPDATE(builder, carStatus, inverterL, inverterR):
+def CreateCAR_STATUS(builder, carStatus, inverterL, inverterR):
     builder.Prep(1, 3)
     builder.PrependInt8(inverterR)
     builder.PrependInt8(inverterL)
