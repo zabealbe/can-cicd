@@ -133,6 +133,9 @@ dmypy.json
 # Intellij
 .idea/
 
+# VScode
+.vscode
+
 # Project specific
 **/out/
 **/flatcc

@@ -36,17 +36,13 @@ jobs:
         wget -O flatcc https://raw.githubusercontent.com/zabealbe/flatc-musl/main/versions/flatcc_v0.6.0
         chmod +x flatc
         chmod +x flatcc
-        python compile_schema.py --flatc ./flatc --flatcc ./flatcc
+        python compile_schema.py --flatc ./flatc --flatcc ./flatcc --flatcc-lib-path ../../../external/flatcc
         mkdir -p /tmp/workspace/flatbuf-generator/ && cp -R out/* /tmp/workspace/flatbuf-generator/
     - name: Run Includes generator
       run: |
         cd includes-generator
         python main.py
         mkdir -p /tmp/workspace/includes-generator/ && cp -R out/* /tmp/workspace/includes-generator/
-    - name: Include external tools
-      run: |
-        mkdir -p /tmp/workspace/external/
-        wget -O /tmp/workspace/external/flatcc_v0.6.0.tar.gz https://github.com/dvidelabs/flatcc/archive/v0.6.0.tar.gz
     - name: Sheet generator
       run: |
         cd sheet-generator
@@ -54,8 +50,16 @@ jobs:
         mkdir -p /tmp/workspace/sheet-generator/ && cp -R out/* /tmp/workspace/sheet-generator/
     - name: Include external tools
       run: |
-        mkdir -p /tmp/workspace/external/
-        wget -O /tmp/workspace/external/flatcc_v0.6.0.tar.gz https://github.com/dvidelabs/flatcc/archive/v0.6.0.tar.gz
+        # flatcc
+        wget -O /tmp/flatcv0.6.0.tar.gz https://github.com/dvidelabs/flatcc/archive/v0.6.0.tar.gz
+        tar -xvf /tmp/flatcv0.6.0.tar.gz flatcc-0.6.0/include flatcc-0.6.0/src/runtime
+
+        mkdir -p /tmp/workspace/external
+        cp -r flatcc-0.6.0/include/flatcc /tmp/workspace/external/
+        cp -r flatcc-0.6.0/src/runtime /tmp/workspace/external/flatcc/
+
+        ## remove useless stdlib include with flatcc
+        rm -r /tmp/workspace/external/flatcc/portable/include
     - uses: actions/checkout@v2
       with:
         ref: build

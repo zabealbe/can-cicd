@@ -5,7 +5,6 @@ NETWORK_FILE_VALIDATION_SCHEMA = "config/network_schema_flatbufgenerator.json"
 
 FLATBUF_SCHEMA_FILE = "out/[network]/schema.fbs"
 
-MAX_PAYLOAD_SIZE_BYTES = 8
 TYPES_SIZE = {
     "enum": 1,
     "bool": 1,

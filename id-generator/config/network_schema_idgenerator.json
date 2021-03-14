@@ -2,9 +2,9 @@
 	"type": "object",
 	"properties": {
 	    "network_version": {
-	        "type": "integer",
+	        "type": "number",
 	        "minimum": 0,
-	        "maximum": 255
+	        "maximum": 65535
 	    },
 		"messages": {
 			"type": "array",
@@ -30,5 +30,5 @@
 			}
 		}
 	},
-    "additionalProperties": false
+    "additionalProperties": true
 }
