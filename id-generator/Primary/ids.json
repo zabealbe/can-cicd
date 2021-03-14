@@ -2,52 +2,52 @@
     "network_version": 1.1,
     "ids": [
         {
-            "topic": "PEDALS",
+            "topic": "ACU",
             "id": 0,
             "messages": {
-                "SET_PEDALS_RANGE": 0
-            }
-        },
-        {
-            "topic": "ACUnSTEER",
-            "id": 1,
-            "messages": {
-                "HV_VOLTAGE": 769,
-                "HV_CURRENT": 801,
-                "HV_TEMP": 833,
-                "HV_ERROR": 257
-            }
-        },
-        {
-            "topic": "BMS_HV",
-            "id": 2,
-            "messages": {
-                "SET_TS_STATUS": 2
-            }
-        },
-        {
-            "topic": "TLM",
-            "id": 3,
-            "messages": {
-                "SET_TLM_STATUS": 259
+                "TS_STATUS": 0,
+                "STEER_STATUS": 32,
+                "SET_CAR_STATUS": 64,
+                "GET_CAR_STATUS": 96
             }
         },
         {
             "topic": "STEER",
-            "id": 4,
+            "id": 1,
             "messages": {
-                "TLM_STATUS": 260,
-                "CAR_STATUS": 4
+                "TLM_STATUS": 257,
+                "CAR_STATUS": 1
             }
         },
         {
-            "topic": "ACU",
+            "topic": "PEDALS",
+            "id": 2,
+            "messages": {
+                "SET_PEDALS_RANGE": 2
+            }
+        },
+        {
+            "topic": "BMS_HV",
+            "id": 3,
+            "messages": {
+                "SET_TS_STATUS": 3
+            }
+        },
+        {
+            "topic": "ACUnSTEER",
+            "id": 4,
+            "messages": {
+                "HV_VOLTAGE": 772,
+                "HV_CURRENT": 804,
+                "HV_TEMP": 836,
+                "HV_ERROR": 260
+            }
+        },
+        {
+            "topic": "TLM",
             "id": 5,
             "messages": {
-                "TS_STATUS": 5,
-                "STEER_STATUS": 37,
-                "SET_CAR_STATUS": 69,
-                "GET_CAR_STATUS": 101
+                "SET_TLM_STATUS": 261
             }
         }
     ]
