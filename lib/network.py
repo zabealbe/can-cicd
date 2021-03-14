@@ -17,6 +17,8 @@ class Network:
         self.contents = []
         self.name_index = {}
         self.version = None
+        self.max_payload_size = None
+        
         if path:
             self.load(validation_schema)
 
@@ -25,6 +27,8 @@ class Network:
 
         self.contents = network["messages"]
         self.version = network["network_version"]
+        self.max_payload_size = network["max_payload_size"]
+        
         for i, m in enumerate(self.contents):
             self.name_index[m["name"]] = i
 

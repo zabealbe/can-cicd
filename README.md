@@ -27,6 +27,7 @@ The json structure is as follows:
 ```yaml
 {
     "network_version": decimal,
+    "max_payload_size": integer,
     "messages": [ 
     {
         "name": string,

@@ -1,5 +1,6 @@
 {
     "network_version": 1,
+    "max_payload_size": 8,
     "messages": [
         {
             "name": "VOLTAGES_CB0_0",

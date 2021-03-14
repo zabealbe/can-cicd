@@ -31,14 +31,15 @@ def get_message_schema(message):
     return schema, payload_size
 
 
-def get_schema(messages):
+def get_schema(network):
     schema = ""
-    for m in messages:
+    for m in network.get_all_messages():
         if len(m["contents"]) == 0:  # skip empty messages
             continue
         message_schema, payload_size = get_message_schema(m)
-        assert payload_size <= c.MAX_PAYLOAD_SIZE_BYTES, "Payload configured max size of {0} bytes is exceeded by {1}"\
-            .format(c.MAX_PAYLOAD_SIZE_BYTES, m["name"])
+        assert payload_size <= network.max_payload_size, \
+            f"Payload max size of {network.max_payload_size} bytes for network '{network.name}'" \
+            f" is exceeded by {m['name']}"
         schema += "{0}\n\n".format(message_schema)
 
     stripped_schema = ""
@@ -83,7 +84,7 @@ def main():
 
     print("====== Schema generation ======")
     for n in networks:
-        schema = get_schema(n.get_all_messages())
+        schema = get_schema(n)
         print("Schema for {0} generated successfully!".format(n.name))
         output_path = c.FLATBUF_SCHEMA_FILE.replace("[network]", n.name)
         print("Saving schema to {0}".format(output_path))

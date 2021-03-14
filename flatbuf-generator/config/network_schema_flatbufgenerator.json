@@ -4,7 +4,12 @@
 	    "network_version": {
 	        "type": "number",
 	        "minimum": 0,
-	        "maximum": 255
+	        "maximum": 65535
+	    },
+        "max_payload_size": {
+	        "type": "integer",
+	        "minimum": 0,
+	        "maximum": 65535
 	    },
 		"messages": {
 			"type": "array",
@@ -44,5 +49,5 @@
 			}
 		}
 	},
-    "additionalProperties": false
+    "additionalProperties": true
 }
