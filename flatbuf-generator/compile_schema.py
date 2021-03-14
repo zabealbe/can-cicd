@@ -59,7 +59,7 @@ def main():
         description="Flatbuffers schema compiler", add_help=True
     )
     parser.add_argument(
-        "-f",
+        "-fc",
         "--flatc",
         action="store",
         dest="flatc_path",
@@ -68,13 +68,22 @@ def main():
         default="flatc",
     )
     parser.add_argument(
-        "-fc",
+        "-fcc",
         "--flatcc",
         action="store",
         dest="flatcc_path",
         metavar="PATH",
         help="FlatCC executable",
         default="flatcc",
+    )
+    parser.add_argument(
+        "-fccl",
+        "--flatcc-lib-path",
+        action="store",
+        dest="flatcc_lib_path",
+        metavar="PATH",
+        help="Overwrite path of FlatCC library (default is ./flatcc)",
+        default=None,
     )
     args = parser.parse_args()
 
@@ -92,6 +101,7 @@ def main():
         flatcc = True
 
     flatc = False
+    
     if not ("c" in get_languages() and len(get_languages()) == 1):  # flatc
         out, err_out, err_code = run_command("{0} --version".format(args.flatc_path))
 
@@ -107,30 +117,53 @@ def main():
             exit(1)
 
         flatc = True
+        
     print("====== Schema compilation ======")
     paths = parse_network_multipath(c.FLATBUF_SCHEMA_FILE)
     for network_name, path in paths.items():
         if flatc:
-            outpath = f"{os.path.dirname(path)}/flatc"
-            if not os.path.exists(outpath):
-                os.mkdir(outpath)
-            command = f"{args.flatc_path} {flatc_options} -o {outpath} {path}"
+            # Generating files with flatc
+            out_path = f"{os.path.dirname(path)}/flatc"
+            if not os.path.exists(out_path):
+                os.mkdir(out_path)
+            command = f"{args.flatc_path} {flatc_options} -o {out_path} {path}"
             out, err_out, err_code = run_command(command)
             if err_code != 0:
                 print(err_out, file=sys.stderr)
                 sys.exit(f"The command returned error code {err_code}")
 
         if flatcc:
-            outpath = f"{os.path.dirname(path)}/c"
-            if not os.path.exists(outpath):
-                os.mkdir(outpath)
-            command = f"{args.flatcc_path} {flatcc_options} -o {outpath} {path}"
+            # Generating files with flatcc
+            out_path = f"{os.path.dirname(path)}/c"
+            if not os.path.exists(out_path):
+                os.mkdir(out_path)
+            command = f"{args.flatcc_path} {flatcc_options} -o {out_path} {path}"
             out, err_out, err_code = run_command(command)
             if err_code != 0:
                 print(err_out, file=sys.stderr)
                 sys.exit(f"The command returned error code {err_code}")
 
+            # Replacing flatcc library path in generated files
+            if args.flatcc_lib_path is not None:
+                find_pattern = "#include \"flatcc/"
+                replace_with = f"#include \"{args.flatcc_lib_path}"
+                
+                # Check if user included trailing '/' in path
+                replace_with += "" if args.flatcc_lib_path[-1] == "/" else "/"
+                
+                for root, _, files in os.walk(out_path):
+                    for file_path in files:
+                        if file_path[-2:] not in [".c", ".h"]:  # check for file type
+                            continue
+                        file_path = root + "/" + file_path
+                        with open(file_path, "r") as file:
+                            text = file.readlines()
+                        text = [line.replace(find_pattern, replace_with) for line in text]
+                        with open(file_path, "w") as file:
+                            file.writelines(text)
+                    
         print("Compiled schema for {0}".format(network_name))
+        
     print("done.")
 
 

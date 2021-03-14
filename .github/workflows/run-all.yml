@@ -36,7 +36,7 @@ jobs:
         wget -O flatcc https://raw.githubusercontent.com/zabealbe/flatc-musl/main/versions/flatcc_v0.6.0
         chmod +x flatc
         chmod +x flatcc
-        python compile_schema.py --flatc ./flatc --flatcc ./flatcc
+        python compile_schema.py --flatc ./flatc --flatcc ./flatcc --flatcc-lib-path ../../../external/flatcc
         mkdir -p /tmp/workspace/flatbuf-generator/ && cp -R out/* /tmp/workspace/flatbuf-generator/
     - name: Run Includes generator
       run: |
@@ -60,15 +60,6 @@ jobs:
 
         ## remove useless stdlib include with flatcc
         rm -r /tmp/workspace/external/flatcc/portable/include
-        
-        cd /tmp/workspace/flatbuf-generator
-        for i in $(ls); do 
-          ([[ ! -d $i ]] || [[ ! -d $i/c ]]) && continue
-          [[ -L $i/c/flatcc ]] && rm -R $i/c/flatcc
-          cd $i/c
-          ln -s ../../../external/flatcc
-          cd ../..
-        done
     - uses: actions/checkout@v2
       with:
         ref: build
