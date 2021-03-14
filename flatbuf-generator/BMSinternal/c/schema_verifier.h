@@ -6,8 +6,8 @@
 #ifndef SCHEMA_READER_H
 #include "schema_reader.h"
 #endif
-#include "flatcc/flatcc_verifier.h"
-#include "flatcc/flatcc_prologue.h"
+#include ../../../external/flatcc/flatcc_verifier.h"
+#include ../../../external/flatcc/flatcc_prologue.h"
 
 
 static inline int VOLTAGES_CB0_0_verify_as_root(const void *buf, size_t bufsiz)
@@ -1010,5 +1010,5 @@ static inline int CELLBOARD_TOKEN_verify_as_root_with_identifier(const void *buf
     return flatcc_verify_struct_as_root(buf, bufsiz, fid, 8, 4);
 }
 
-#include "flatcc/flatcc_epilogue.h"
+#include ../../../external/flatcc/flatcc_epilogue.h"
 #endif /* SCHEMA_VERIFIER_H */

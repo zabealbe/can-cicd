@@ -9,7 +9,7 @@
 #ifndef FLATBUFFERS_COMMON_BUILDER_H
 #include "flatbuffers_common_builder.h"
 #endif
-#include "flatcc/flatcc_prologue.h"
+#include ../../../external/flatcc/flatcc_prologue.h"
 #ifndef flatbuffers_identifier
 #define flatbuffers_identifier 0
 #endif
@@ -1359,5 +1359,5 @@ static inline CELLBOARD_TOKEN_t *CELLBOARD_TOKEN_copy_from_pe(CELLBOARD_TOKEN_t 
 __flatbuffers_build_struct(flatbuffers_, CELLBOARD_TOKEN, 8, 4, CELLBOARD_TOKEN_file_identifier, CELLBOARD_TOKEN_type_identifier)
 __flatbuffers_define_fixed_array_primitives(flatbuffers_, CELLBOARD_TOKEN, CELLBOARD_TOKEN_t)
 
-#include "flatcc/flatcc_epilogue.h"
+#include ../../../external/flatcc/flatcc_epilogue.h"
 #endif /* SCHEMA_BUILDER_H */

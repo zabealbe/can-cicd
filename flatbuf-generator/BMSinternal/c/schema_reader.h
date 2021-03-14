@@ -6,11 +6,11 @@
 #ifndef FLATBUFFERS_COMMON_READER_H
 #include "flatbuffers_common_reader.h"
 #endif
-#include "flatcc/flatcc_flatbuffers.h"
+#include ../../../external/flatcc/flatcc_flatbuffers.h"
 #ifndef __alignas_is_defined
 #include <stdalign.h>
 #endif
-#include "flatcc/flatcc_prologue.h"
+#include ../../../external/flatcc/flatcc_prologue.h"
 #ifndef flatbuffers_identifier
 #define flatbuffers_identifier 0
 #endif
@@ -1905,5 +1905,5 @@ __flatbuffers_define_struct_scalar_field(CELLBOARD_TOKEN, time, flatbuffers_uint
 
 
 
-#include "flatcc/flatcc_epilogue.h"
+#include ../../../external/flatcc/flatcc_epilogue.h"
 #endif /* SCHEMA_READER_H */

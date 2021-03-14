@@ -9,7 +9,7 @@
 #ifndef FLATBUFFERS_COMMON_BUILDER_H
 #include "flatbuffers_common_builder.h"
 #endif
-#include "flatcc/flatcc_prologue.h"
+#include ../../../external/flatcc/flatcc_prologue.h"
 #ifndef flatbuffers_identifier
 #define flatbuffers_identifier 0
 #endif
@@ -324,5 +324,5 @@ static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_copy_from_pe(SET_PEDALS_RANGE
 __flatbuffers_build_struct(flatbuffers_, SET_PEDALS_RANGE, 1, 1, SET_PEDALS_RANGE_file_identifier, SET_PEDALS_RANGE_type_identifier)
 __flatbuffers_define_fixed_array_primitives(flatbuffers_, SET_PEDALS_RANGE, SET_PEDALS_RANGE_t)
 
-#include "flatcc/flatcc_epilogue.h"
+#include ../../../external/flatcc/flatcc_epilogue.h"
 #endif /* SCHEMA_BUILDER_H */
