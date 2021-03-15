@@ -11,27 +11,28 @@ from lib.ids import MessageIds
 
 def main():
     print("====== Networks + IDs loading ======")
-    paths_networks = parse_network_multipath(c.NETWORK_FILE)
+    network_paths = parse_network_multipath(c.NETWORK_FILE)
     paths_ids = parse_network_multipath(c.NETWORK_IDS_FILE)
-
     paths = [
-        (name, network, paths_ids[name]) for name, network in paths_networks.items()
+        (network_name, network_path, paths_ids[network_name]) for network_name, network_path in network_paths.items()
     ]
 
     merge_networks = c.MERGE_NETWORKS
 
     networks = []
-    for name, network_path, ids_path in paths:
-        network = Network(network_path, name, c.NETWORK_FILE_VALIDATION_SCHEMA)
-        ids = MessageIds(ids_path, name)
+    for network_name, network_path, ids_path in paths:
+        network = Network(network_path, network_name, c.NETWORK_FILE_VALIDATION_SCHEMA)
+        ids = MessageIds(ids_path, network_name)
+        
         for message in network.contents:
             message["id"] = ids[message["name"]]
-            message["network"] = name
+            message["network"] = network_name
+
         if merge_networks and networks:
             networks[0].merge_with(network)
         else:
             networks.append(network)
-        print(f"Loaded {name}")
+        print(f"Loaded {network_name}")
 
     print(f"{len(networks)} network(s) loaded")
 
@@ -52,7 +53,9 @@ def main():
         for network in networks:
             tot += len(network.contents)
             for message in network.contents:
-                cols = [re.sub(r"\[|]|'|{|}|\"", "", str(message[col])) for col in columns]
+                cols = [""] * len(columns)
+                for i, (key, value) in enumerate(message.items()):
+                    cols[columns.index(key)] = re.sub(r"\[|]|'|{|}|\"", "", str(value))  
                 writer.writerow(cols)
 
     print(f"{tot} line(s) written")

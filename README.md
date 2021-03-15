@@ -38,7 +38,7 @@ The json structure is as follows:
         "contents": {
             "field_name": "type",
             "field2_name": "type",
-                        ...
+            ...
         }
     }
     , ... ]
@@ -85,7 +85,7 @@ ___
 ```
 Not required.
 
-This field indicates the receiving device(s), **can be more than one**.\
+This field indicates the sending device(s), **can be more than one**.\
 The characters you should use are all UPPERCASE letters and "_".
 If there is more than one sending device insert each one as a different array element.\
 If there is only one sending device use an array with a single element.
