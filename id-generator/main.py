@@ -33,14 +33,20 @@ def generate_message_ids(topic, messages, blacklist=None):
                 .format(MESSAGE_BITS))
 
         item_id = items_count[item_priority]
-        if item_id >= MESSAGES_PER_PRIORITY:
-            raise Exception(
-                f"You exceeded the maximum messages per priority level per topic! ({MESSAGES_PER_PRIORITY})"
-                .format(MESSAGE_BITS))
-
         items_count[item_priority] += 1
-        scoped_id = item_id + MESSAGES_PER_PRIORITY * (MAX_PRIORITY - item_priority)
+        start = MESSAGES_PER_PRIORITY * (MAX_PRIORITY - item_priority)
         
+        while True:
+            if item_id >= MESSAGES_PER_PRIORITY:
+                raise Exception(
+                    f"You exceeded the maximum messages per priority level per topic! ({MESSAGES_PER_PRIORITY})"
+                    .format(MESSAGE_BITS))
+            scoped_id = item_id + start
+            
+            if scoped_id not in blacklist:
+                break
+            item_id += 1  # If can't use ID, try next one
+
         scoped_msg_ids[item_name] = scoped_id
         msg_ids[item_name] = (scoped_id << TOPIC_BITS) + topic
 
