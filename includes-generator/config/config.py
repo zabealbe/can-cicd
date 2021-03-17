@@ -1,5 +1,6 @@
 # INPUT FILES
 IDS_FILE = "../id-generator/out/[network]/ids.json"
+
 CANCONFIG_FILE = "../networks/[network]/canconfig.json"
 CANCONFIG_FILE_VALIDATION_SCHEMA = "config/canconfig_schema_includesgenerator.json"
 
