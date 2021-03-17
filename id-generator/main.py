@@ -1,5 +1,6 @@
 from lib.network import Network
 from lib.utils import *
+
 from config import config as c
 
 # xxxxxx xxxxx => can id has 11 bits
@@ -19,11 +20,11 @@ def generate_message_ids(topic, messages):
     if len(messages) >= 2 ** MESSAGE_BITS:
         raise Exception(
             "Oops, you can't have more than {0} messages per topic!, maybe its time to rework the software?"
-                .format(MESSAGE_BITS))
+            .format(MESSAGE_BITS))
 
     global_msg_ids = {}
-    for msg, id in scoped_msg_ids:
-        global_msg_ids[msg] = (id << TOPIC_BITS) + topic
+    for msg, msg_id in scoped_msg_ids:
+        global_msg_ids[msg] = (msg_id << TOPIC_BITS) + topic
 
     if __debug__:
         for g, s in zip(global_msg_ids.keys(), scoped_msg_ids):
@@ -43,7 +44,7 @@ def generate_topic_ids(network):
     if len(ids) >= 2 ** TOPIC_BITS:
         raise Exception(
             "Oops, you can't have more than {0} topics!, maybe its time to rework the software?"
-                .format(TOPIC_BITS))
+            .format(TOPIC_BITS))
 
     if __debug__:
         print("Assigned topic ids:", ids)
@@ -86,13 +87,11 @@ def main():
     print("Max messages per priority per topic: {0}".format(int(2 ** MESSAGE_BITS / (MAX_PRIORITY + 1))))
     print("")
 
-    merge_networks = False
-
     print("====== Networks loading ======")
     paths = parse_network_multipath(c.NETWORK_FILE)
     networks = []
     for network_name, path in paths.items():
-        if merge_networks and networks:
+        if c.MERGE_NETWORKS and networks:
             networks[0].merge_with(Network(path, network_name, c.NETWORK_FILE_VALIDATION_SCHEMA))
         else:
             networks.append(Network(path, network_name, c.NETWORK_FILE_VALIDATION_SCHEMA))
@@ -107,15 +106,14 @@ def main():
         ids = []
         for topic, topic_id in topic_ids.items():
             if __debug__:
-                print("\nTOPIC {0}".format(topic))
+                print("TOPIC {0}".format(topic))
             ids.append({
                 "topic": topic,
                 "id": topic_id,
                 "messages": generate_message_ids(
                     topic_ids[topic], n.get_messages_by_topic(topic)
                 )
-            })
-        print("")
+            })       
         output_path = c.OUTPUT_FILE.replace("[network]", n.name)
         print("Saving IDs to {0}".format(output_path))
         create_subtree(output_path)
@@ -126,6 +124,8 @@ def main():
         }
         with open(output_path, "w+") as f:
             json.dump(output, f, indent=4)
+            
+        print("")
     print("done.")
 
 

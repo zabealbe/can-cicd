@@ -1,7 +1,7 @@
-from jsonschema import validate
+from collections import OrderedDict
+import os
 
 from lib.utils import *
-import os
 
 
 def load_network(path):
@@ -55,11 +55,11 @@ class Network:
         return self.contents
 
     def get_topics(self):
-        topics = set()
+        topics = OrderedDict()  # NEEDED for IDs consistency across runs
         for m in self.contents:
             if "topic" in m:
-                topics.add(m["topic"])
-        return list(topics)
+                topics[m["topic"]] = ""
+        return list(topics.keys())
 
     def get_messages_by_topic(self, topic):
         """
