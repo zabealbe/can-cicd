@@ -1,5 +1,6 @@
-# CAN CI-CD (Fenice)
-The purpose of this project is to manage the CANbus, the data flowing throught it and how the bus itself is accessed
+# CAN CI-CD
+The purpose of this project is to manage **any** can network, the data flowing throught it, its serialization/deserialization
+and the interactions with the bus itself
 
 ## Subprojects
 :open_file_folder: project root\
