@@ -11,33 +11,55 @@ TOPIC_BITS = 5
 
 MAX_PRIORITY = 7
 
+MESSAGES_PER_PRIORITY = int(2 ** MESSAGE_BITS / (MAX_PRIORITY + 1))
 
-def generate_message_ids(topic, messages):
-    scoped_msg_ids = priority_to_id(
+
+def generate_message_ids(topic, messages, blacklist=None):
+    """
+        generates consecutive ids for each item based on the priority (higher priority = lower id)
+        returns [(name, id), ... ]
+    """
+
+    msg_ids = {}
+    scoped_msg_ids = {}
+    items_count = [0] * (MAX_PRIORITY + 1)  # keeps track of how many items are present in each priority level
+    for item_name, item_priority in zip(
         [tm['name'] for tm in messages],  # messages names ["A", "B", ... ]
         [tm['priority'] for tm in messages]  # messages priorities [0, 0, 4, ... ] (dont have to be unique)
-    )
+    ):
+        if item_priority > MAX_PRIORITY:
+            raise Exception(
+                f"Priority assigned to {item_name} is outside of the allowed range (0-{MAX_PRIORITY})"
+                .format(MESSAGE_BITS))
+
+        item_id = items_count[item_priority]
+        if item_id >= MESSAGES_PER_PRIORITY:
+            raise Exception(
+                f"You exceeded the maximum messages per priority level per topic! ({MESSAGES_PER_PRIORITY})"
+                .format(MESSAGE_BITS))
+
+        items_count[item_priority] += 1
+        scoped_id = item_id + MESSAGES_PER_PRIORITY * (MAX_PRIORITY - item_priority)
+        
+        scoped_msg_ids[item_name] = scoped_id
+        msg_ids[item_name] = (scoped_id << TOPIC_BITS) + topic
+
     if len(messages) >= 2 ** MESSAGE_BITS:
         raise Exception(
             "Oops, you can't have more than {0} messages per topic!, maybe its time to rework the software?"
             .format(MESSAGE_BITS))
 
-    global_msg_ids = {}
-    for msg, msg_id in scoped_msg_ids:
-        global_msg_ids[msg] = (msg_id << TOPIC_BITS) + topic
-
     if __debug__:
-        for g, s in zip(global_msg_ids.keys(), scoped_msg_ids):
-            print("{0:<16}\tbin  int\n\t"
-                  "topic:  {1:>011b}  {1}\n\t"
-                  "scoped: {2:>011b}  {2}\n\t"
-                  "global: {3:>011b}  {3}"
-                  .format(s[0], topic, s[1], global_msg_ids[g]))
+        for g, s in zip(msg_ids.items(), scoped_msg_ids.items()):
+            print(f"{s[0]:<16}\tbin  int\n\t"
+                  f"topic:  {topic:>011b}  {1}\n\t"
+                  f"scoped: {s[1]:>011b}  {2}\n\t"
+                  f"global: {g[1]:>011b}  {3}")
 
-    return global_msg_ids
+    return msg_ids
 
 
-def generate_topic_ids(network):
+def generate_topic_ids(network, blacklist=None):  # TODO: implement blacklist for topics
     ids = {}
     for i, t in enumerate(network.get_topics()):
         ids[t] = i
@@ -50,33 +72,6 @@ def generate_topic_ids(network):
         print("Assigned topic ids:", ids)
 
     return ids
-
-
-def priority_to_id(names, priorities):
-    """
-        generates consecutive ids for each item based on the priority (higher priority = lower id)
-        returns [(name, id), ... ]
-    """
-    messages_per_level = int(2 ** MESSAGE_BITS / (MAX_PRIORITY + 1))
-
-    items_ids = []
-    items_count = [0] * (MAX_PRIORITY + 1)  # keeps track of how many items are present in each priority level
-    for item_name, item_priority in zip(names, priorities):
-        if item_priority > MAX_PRIORITY:
-            raise Exception(
-                "Priority assigned to {0} is outside of the allowed range ({1}-{2})".format(item_name, 0, MAX_PRIORITY)
-                    .format(MESSAGE_BITS))
-
-        item_id = items_count[item_priority]
-        if item_id >= messages_per_level:
-            raise Exception(
-                "You exceeded the maximum messages per priority level per topic! ({0})".format(messages_per_level)
-                    .format(MESSAGE_BITS))
-
-        items_count[item_priority] += 1
-        items_ids.append((item_name, item_id + messages_per_level * (MAX_PRIORITY - item_priority)))
-
-    return items_ids
 
 
 def main():
@@ -103,7 +98,9 @@ def main():
     for n in networks:
         print("====== Id generation for network {0} ======".format(n.name))
         topic_ids = generate_topic_ids(n)
+        reserved_ids = n.get_reserved_ids()
         ids = []
+        
         for topic, topic_id in topic_ids.items():
             if __debug__:
                 print("TOPIC {0}".format(topic))
@@ -111,7 +108,8 @@ def main():
                 "topic": topic,
                 "id": topic_id,
                 "messages": generate_message_ids(
-                    topic_ids[topic], n.get_messages_by_topic(topic)
+                    topic_ids[topic], n.get_messages_by_topic(topic),
+                    blacklist=reserved_ids.keys()
                 )
             })       
         output_path = c.OUTPUT_FILE.replace("[network]", n.name)

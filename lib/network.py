@@ -72,9 +72,31 @@ class Network:
 
         return messages
 
+    def get_messages_with_fixed_id(self):
+        """
+            Very resource-heavy, can be optimized with index
+        """
+        messages = []
+        for m in self.contents:
+            if "fixed_id" in m:
+                messages.append(m)
+
+        return messages
+    
+    def get_reserved_ids(self):
+        """
+            Very resource-heavy, can be optimized with index
+        """
+        ids = {}
+        for m in self.get_messages_with_fixed_id():
+            ids[m["fixed_id"]] = m
+        
+        return ids
+
     def get_message_by_name(self, name):
         try:
             message = self.contents[self.name_index[name]]
         except KeyError:
             return {}
         return message
+

@@ -23,7 +23,12 @@
 						"type": "integer",
 						"minimum": 0,
 						"maximum": 7
-					}
+					},
+                    "fixed_id": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 65535
+                    }
 				},
 				"required": ["name", "topic", "priority"],
                 "additionalProperties": true
