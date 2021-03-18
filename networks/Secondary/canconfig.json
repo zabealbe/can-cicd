@@ -1,0 +1,16 @@
+{
+    "canconfig_version": 1,
+    "canconfig": {
+        "peripheral_clk_mhz": 36,
+        "pref_sample_point_pct": 70.0,
+        "sync_jump_width": 1,
+        "config_table": {
+            "bit_rate_kbps": 1000,
+            "pre_scaler": 2,
+            "time_quanta_amount": 18,
+            "seg1": 12,
+            "seg2": 5,
+            "sample_point_pct": 72.2
+        }
+    }    
+}
