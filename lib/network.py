@@ -1,6 +1,3 @@
-from collections import OrderedDict
-import os
-
 from lib.utils import *
 
 
@@ -55,11 +52,11 @@ class Network:
         return self.contents
 
     def get_topics(self):
-        topics = OrderedDict()  # NEEDED for IDs consistency across runs
+        topics = set()
         for m in self.contents:
             if "topic" in m:
-                topics[m["topic"]] = ""
-        return list(topics.keys())
+                topics.add(m["topic"])
+        return sorted(topics)  # NEEDED for IDs consistency across runs
 
     def get_messages_by_topic(self, topic):
         """

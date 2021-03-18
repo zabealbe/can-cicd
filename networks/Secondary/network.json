@@ -5,234 +5,216 @@
         {
            "name": "IMU_ANGULAR_RATE",
             "fixed_id": 1260,
-            "topic": "SENSORS",
             "sending": ["IMU"],
             "receiving": ["ECU"],
             "description": "Inertial Measurement Unit [x,y,z]-axis angular rate value. 0.01dps per bit, Big-Endian, 16bit Total, signed",
             "contents": {
-                "uint16_t":"ang_rate_x",
-                "uint16_t":"ang_rate_y",
-                "uint16_t":"ang_rate_z"
+                "uint16":"ang_rate_x",
+                "uint16":"ang_rate_y",
+                "uint16":"ang_rate_z"
             }
         },{
             "name": "IMU_ACCELERATION",
             "fixed_id": 1261,
-            "topic": "SENSORS",
             "sending": ["IMU"],
             "receiving": ["ECU"],
             "description": "Inertial Measurement Unit [x,y,z]-axis acceleration value. 0.01g per bit, Big-Endian, 16bit Total, signed",
             "contents": {
-                "uint16_t":"accel_x",
-                "uint16_t":"accel_y",
-                "uint16_t":"accel_z"
+                "uint16":"accel_x",
+                "uint16":"accel_y",
+                "uint16":"accel_z"
             }
         },{
             "name": "IRTS_FL_0",
             "fixed_id": 1460,
-            "topic": "SENSORS",
             "sending": ["IRTS_FL"],
             "receiving": ["ECU"],
             "description": "Front Left wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel1",
-                "uint16_t":"channel2",
-                "uint16_t":"channel3",
-                "uint16_t":"channel4"
+                "uint16":"channel1",
+                "uint16":"channel2",
+                "uint16":"channel3",
+                "uint16":"channel4"
             }
         },{
             "name": "IRTS_FL_1",
             "fixed_id": 1461,
-            "topic": "SENSORS",
             "sending": ["IRTS_FL"],
             "receiving": ["ECU"],
             "description": "Front Left wheel InfraRed Temperature Sensor data, channels 5 through 8. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel5",
-                "uint16_t":"channel6",
-                "uint16_t":"channel7",
-                "uint16_t":"channel8"
+                "uint16":"channel5",
+                "uint16":"channel6",
+                "uint16":"channel7",
+                "uint16":"channel8"
             }
         },{
             "name": "IRTS_FL_2",
             "fixed_id": 1462,
-            "topic": "SENSORS",
             "sending": ["IRTS_FL"],
             "receiving": ["ECU"],
             "description": "Front Left wheel InfraRed Temperature Sensor data, channels 9 through 12. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel9",
-                "uint16_t":"channel10",
-                "uint16_t":"channel11",
-                "uint16_t":"channel12"
+                "uint16":"channel9",
+                "uint16":"channel10",
+                "uint16":"channel11",
+                "uint16":"channel12"
             }
         },{
             "name": "IRTS_FL_3",
             "fixed_id": 1463,
-            "topic": "SENSORS",
             "sending": ["IRTS_FL"],
             "receiving": ["ECU"],
             "description": "Front Left wheel InfraRed Temperature Sensor data, channels 13 through 16. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel13",
-                "uint16_t":"channel14",
-                "uint16_t":"channel15",
-                "uint16_t":"channel16"
+                "uint16":"channel13",
+                "uint16":"channel14",
+                "uint16":"channel15",
+                "uint16":"channel16"
             }
         },{
             "name": "IRTS_FR_0",
             "fixed_id": 1464,
-            "topic": "SENSORS",
             "sending": ["IRTS_FR"],
             "receiving": ["ECU"],
             "description": "Front Right wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel1",
-                "uint16_t":"channel2",
-                "uint16_t":"channel3",
-                "uint16_t":"channel4"
+                "uint16":"channel1",
+                "uint16":"channel2",
+                "uint16":"channel3",
+                "uint16":"channel4"
             }
         },{
             "name": "IRTS_FR_1",
             "fixed_id": 1465,
-            "topic": "SENSORS",
             "sending": ["IRTS_FR"],
             "receiving": ["ECU"],
             "description": "Front Right wheel InfraRed Temperature Sensor data, channels 5 through 8. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel5",
-                "uint16_t":"channel6",
-                "uint16_t":"channel7",
-                "uint16_t":"channel8"
+                "uint16":"channel5",
+                "uint16":"channel6",
+                "uint16":"channel7",
+                "uint16":"channel8"
             }
         },{
             "name": "IRTS_FR_2",
             "fixed_id": 1466,
-            "topic": "SENSORS",
             "sending": ["IRTS_FR"],
             "receiving": ["ECU"],
             "description": "Front Right wheel InfraRed Temperature Sensor data, channels 9 through 12. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel9",
-                "uint16_t":"channel10",
-                "uint16_t":"channel11",
-                "uint16_t":"channel12"
+                "uint16":"channel9",
+                "uint16":"channel10",
+                "uint16":"channel11",
+                "uint16":"channel12"
             }
         },{
             "name": "IRTS_FR_3",
             "fixed_id": 1467,
-            "topic": "SENSORS",
             "sending": ["IRTS_FR"],
             "receiving": ["ECU"],
             "description": "Front Right wheel InfraRed Temperature Sensor data, channels 13 through 16. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel13",
-                "uint16_t":"channel14",
-                "uint16_t":"channel15",
-                "uint16_t":"channel16"
+                "uint16":"channel13",
+                "uint16":"channel14",
+                "uint16":"channel15",
+                "uint16":"channel16"
             }
         },{
             "name": "IRTS_RL_0",
             "fixed_id": 1468,
-            "topic": "SENSORS",
             "sending": ["IRTS_RL"],
             "receiving": ["ECU"],
             "description": "Rear Left wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel1",
-                "uint16_t":"channel2",
-                "uint16_t":"channel3",
-                "uint16_t":"channel4"
+                "uint16":"channel1",
+                "uint16":"channel2",
+                "uint16":"channel3",
+                "uint16":"channel4"
             }
         },{
             "name": "IRTS_RL_1",
             "fixed_id": 1469,
-            "topic": "SENSORS",
             "sending": ["IRTS_RL"],
             "receiving": ["ECU"],
             "description": "Rear Left wheel InfraRed Temperature Sensor data, channels 5 through 8. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel5",
-                "uint16_t":"channel6",
-                "uint16_t":"channel7",
-                "uint16_t":"channel8"
+                "uint16":"channel5",
+                "uint16":"channel6",
+                "uint16":"channel7",
+                "uint16":"channel8"
             }
         },{
             "name": "IRTS_RL_2",
             "fixed_id": 1470,
-            "topic": "SENSORS",
             "sending": ["IRTS_RL"],
             "receiving": ["ECU"],
             "description": "Rear Left wheel InfraRed Temperature Sensor data, channels 9 through 12. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel9",
-                "uint16_t":"channel10",
-                "uint16_t":"channel11",
-                "uint16_t":"channel12"
+                "uint16":"channel9",
+                "uint16":"channel10",
+                "uint16":"channel11",
+                "uint16":"channel12"
             }
         },{
             "name": "IRTS_RL_3",
             "fixed_id": 1471,
-            "topic": "SENSORS",
             "sending": ["IRTS_RL"],
             "receiving": ["ECU"],
             "description": "Rear Left wheel InfraRed Temperature Sensor data, channels 13 through 16. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel13",
-                "uint16_t":"channel14",
-                "uint16_t":"channel15",
-                "uint16_t":"channel16"
+                "uint16":"channel13",
+                "uint16":"channel14",
+                "uint16":"channel15",
+                "uint16":"channel16"
             }
         },{
             "name": "IRTS_RR_0",
             "fixed_id": 1472,
-            "topic": "SENSORS",
             "sending": ["IRTS_RR"],
             "receiving": ["ECU"],
             "description": "Rear Right wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel1",
-                "uint16_t":"channel2",
-                "uint16_t":"channel3",
-                "uint16_t":"channel4"
+                "uint16":"channel1",
+                "uint16":"channel2",
+                "uint16":"channel3",
+                "uint16":"channel4"
             }
         },{
             "name": "IRTS_RR_1",
             "fixed_id": 1473,
-            "topic": "SENSORS",
             "sending": ["IRTS_RR"],
             "receiving": ["ECU"],
             "description": "Rear Right wheel InfraRed Temperature Sensor data, channels 5 through 8. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel5",
-                "uint16_t":"channel6",
-                "uint16_t":"channel7",
-                "uint16_t":"channel8"
+                "uint16":"channel5",
+                "uint16":"channel6",
+                "uint16":"channel7",
+                "uint16":"channel8"
             }
         },{
             "name": "IRTS_RR_2",
             "fixed_id": 1474,
-            "topic": "SENSORS",
             "sending": ["IRTS_RR"],
             "receiving": ["ECU"],
             "description": "Rear Right wheel InfraRed Temperature Sensor data, channels 9 through 12. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel9",
-                "uint16_t":"channel10",
-                "uint16_t":"channel11",
-                "uint16_t":"channel12"
+                "uint16":"channel9",
+                "uint16":"channel10",
+                "uint16":"channel11",
+                "uint16":"channel12"
             }
         },{
             "name": "IRTS_RR_3",
             "fixed_id": 1475,
-            "topic": "SENSORS",
             "sending": ["IRTS_RR"],
             "receiving": ["ECU"],
             "description": "Rear Right wheel InfraRed Temperature Sensor data, channels 13 through 16. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned.",
             "contents": {
-                "uint16_t":"channel13",
-                "uint16_t":"channel14",
-                "uint16_t":"channel15",
-                "uint16_t":"channel16"
+                "uint16":"channel13",
+                "uint16":"channel14",
+                "uint16":"channel15",
+                "uint16":"channel16"
             }
         }
 
