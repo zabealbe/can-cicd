@@ -1,0 +1,334 @@
+[33maa5ea64[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/fixed_ids[m[33m, [m[1;31morigin/feature/fixed_ids[m[33m)[m HEAD@{0}: checkout: moving from master to feature/fixed_ids
+[33m7dbf4b9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{1}: rebase (finish): returning to refs/heads/master
+[33m7dbf4b9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{2}: rebase (squash): docs: fixed documentation for network.json
+[33md3252ca[m HEAD@{3}: rebase (start): checkout HEAD~2
+[33mdb2f63f[m HEAD@{4}: commit: docs: fixed documentation for network.json
+[33md3252ca[m HEAD@{5}: commit: docs: fixed documentation for network.json
+[33m28b3725[m HEAD@{6}: checkout: moving from feature/fixed_ids to master
+[33maa5ea64[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/fixed_ids[m[33m, [m[1;31morigin/feature/fixed_ids[m[33m)[m HEAD@{7}: commit: feat: added Secondary network
+[33mf952264[m HEAD@{8}: checkout: moving from master to feature/fixed_ids
+[33m28b3725[m HEAD@{9}: rebase (finish): returning to refs/heads/master
+[33m28b3725[m HEAD@{10}: rebase (squash): feat: added description for messages, as of now is used only by sheet-generator
+[33m85b966b[m HEAD@{11}: rebase (start): checkout HEAD~2
+[33m482f529[m HEAD@{12}: commit: feat: added description for messages, as of now is used only by sheet-generator
+[33m85b966b[m HEAD@{13}: rebase (finish): returning to refs/heads/master
+[33m85b966b[m HEAD@{14}: rebase (squash): feat: added description for messages, as of now is used only by sheet-generator
+[33m7fefe1f[m HEAD@{15}: rebase (start): checkout HEAD~2
+[33me8ad4ba[m HEAD@{16}: commit: feat: added description for messages, as of now is used only by sheet-generator
+[33m7fefe1f[m HEAD@{17}: commit: feat: added description for messages, as of now is used only by sheet-generator
+[33m89b98ff[m HEAD@{18}: checkout: moving from feature/fixed_ids to master
+[33mf952264[m HEAD@{19}: commit: feat(id-generator): added fixed ids feature, needs to be perfected
+[33mfeb5c2a[m HEAD@{20}: rebase (finish): returning to refs/heads/feature/fixed_ids
+[33mfeb5c2a[m HEAD@{21}: rebase (squash): refactor(id-generator): modified some code to accomodate upcoming fixed ids feature
+[33mf45a693[m HEAD@{22}: rebase (start): checkout HEAD~2
+[33m62a2cab[m HEAD@{23}: commit: refactor(id-generator): modified some code to accomodate upcoming fixed ids feature
+[33mf45a693[m HEAD@{24}: commit: refactor(id-generator): modified some code to accomodate upcoming fixed ids feature
+[33m89b98ff[m HEAD@{25}: checkout: moving from master to feature/fixed_ids
+[33m89b98ff[m HEAD@{26}: checkout: moving from feature/fixed_ids to master
+[33m6af4fbd[m[33m ([m[1;31morigin/testing[m[33m)[m HEAD@{27}: Branch: renamed refs/heads/testing to refs/heads/feature/fixed_ids
+[33m6af4fbd[m[33m ([m[1;31morigin/testing[m[33m)[m HEAD@{29}: checkout: moving from master to testing
+[33m89b98ff[m HEAD@{30}: rebase (finish): returning to refs/heads/master
+[33m89b98ff[m HEAD@{31}: rebase (squash): fix(id-generator): improved ids consistency across runs
+[33m456015a[m HEAD@{32}: rebase (start): checkout HEAD~2
+[33m4cd1a4c[m HEAD@{33}: commit: fix(id-generator): improved ids consistency across runs
+[33m456015a[m HEAD@{34}: commit: fix(id-generator): improved ids consistency across runs
+[33m7acfef3[m HEAD@{35}: commit: Project scope changed from Fenice's can networks to ANY can network
+[33md41144c[m HEAD@{36}: commit: feat(includes-generator): added python support
+[33mc80feb1[m HEAD@{37}: checkout: moving from feature/google_sheets to master
+[33mfb2a86f[m[33m ([m[1;31morigin/feature/google_sheets[m[33m, [m[1;32mfeature/google_sheets[m[33m)[m HEAD@{38}: commit: fix(sheet-generator): fixed authentication for edit authorizations for gsheets
+[33mca2df5b[m HEAD@{39}: checkout: moving from master to feature/google_sheets
+[33mc80feb1[m HEAD@{40}: rebase (finish): returning to refs/heads/master
+[33mc80feb1[m HEAD@{41}: rebase (reword): fix(sheet-generator): fixed not accepting missing fields for messages
+[33m0628fe0[m HEAD@{42}: rebase: fast-forward
+[33md8c6eda[m HEAD@{43}: rebase (start): checkout HEAD~1
+[33m0628fe0[m HEAD@{44}: commit: feat(sheet-generator): fixed not accepting missing fields for messages
+[33md8c6eda[m HEAD@{45}: reset: moving to HEAD
+[33md8c6eda[m HEAD@{46}: commit: feat(flatbuf-generator): added per-network maximum payload size setting, moved it from config.py to network.json
+[33m7a0cc33[m HEAD@{47}: rebase (finish): returning to refs/heads/master
+[33m7a0cc33[m HEAD@{48}: rebase (squash): feat(flatbuf-generator): added the possibility to specify where flatcc library is located
+[33m21ce4f8[m HEAD@{49}: rebase (start): checkout HEAD~2
+[33mcba2c63[m HEAD@{50}: commit: feat(flatbuf-generator): added the possibility to specify where flatcc library is located
+[33m21ce4f8[m HEAD@{51}: rebase (finish): returning to refs/heads/master
+[33m21ce4f8[m HEAD@{52}: rebase (squash): feat(flatbuf-generator): added the possibility to specify where flatcc library is located
+[33m82f7b60[m HEAD@{53}: rebase (start): checkout HEAD~2
+[33m21c3e36[m HEAD@{54}: commit: feat(flatbuf-generator): added the possibility to specify where flatcc library is located
+[33m82f7b60[m HEAD@{55}: commit: feat(flatbuf-generator): added the possibility to specify where flatcc library is located
+[33m06735cc[m HEAD@{56}: rebase (finish): returning to refs/heads/master
+[33m06735cc[m HEAD@{57}: rebase (squash): feat(flatbuf-generator): included flatcc library with generated code (#22)
+[33m0b5b135[m HEAD@{58}: rebase (start): checkout HEAD~2
+[33maadd255[m HEAD@{59}: commit: xd
+[33m0b5b135[m HEAD@{60}: checkout: moving from build to master
+[33mdba03ea[m[33m ([m[1;32mbuild[m[33m)[m HEAD@{61}: pull: Fast-forward
+[33m85e06f3[m HEAD@{62}: checkout: moving from master to build
+[33m0b5b135[m HEAD@{63}: rebase (finish): returning to refs/heads/master
+[33m0b5b135[m HEAD@{64}: rebase (squash): feat(flatbuf-generator): included flatcc library with generated code (#22)
+[33m9371474[m HEAD@{65}: rebase (start): checkout HEAD~2
+[33m391de5b[m HEAD@{66}: commit: a
+[33m9371474[m HEAD@{67}: rebase (finish): returning to refs/heads/master
+[33m9371474[m HEAD@{68}: rebase (reword): feat(flatbuf-generator): included flatcc library with generated code (#22)
+[33m8eca440[m HEAD@{69}: rebase: fast-forward
+[33md42229d[m HEAD@{70}: rebase (start): checkout HEAD~2
+[33m8eca440[m HEAD@{71}: rebase (finish): returning to refs/heads/master
+[33m8eca440[m HEAD@{72}: rebase (squash): feat(flatbuf-generator): included flatcc library with generated code (#22)
+[33m2a74f1e[m HEAD@{73}: rebase (start): checkout HEAD~2
+[33m8225c01[m HEAD@{74}: commit: a
+[33m2a74f1e[m HEAD@{75}: rebase (finish): returning to refs/heads/master
+[33m2a74f1e[m HEAD@{76}: rebase (reword): feat(flatbuf-generator): included flatcc library with generated code (#22)
+[33m1d9573e[m HEAD@{77}: rebase: fast-forward
+[33md42229d[m HEAD@{78}: rebase (start): checkout HEAD~1
+[33m1d9573e[m HEAD@{79}: checkout: moving from build to master
+[33m85e06f3[m HEAD@{80}: rebase (finish): returning to refs/heads/build
+[33m85e06f3[m HEAD@{81}: rebase (start): checkout HEAD~1
+[33m85e06f3[m HEAD@{82}: pull: Fast-forward
+[33m75e45da[m HEAD@{83}: checkout: moving from master to build
+[33m1d9573e[m HEAD@{84}: rebase (finish): returning to refs/heads/master
+[33m1d9573e[m HEAD@{85}: rebase (squash): fix(flatbuf-generator): included flatcc library with generated code (#22)
+[33mc90c656[m HEAD@{86}: rebase (squash): # This is a combination of 6 commits.
+[33m20177f6[m HEAD@{87}: rebase (squash): # This is a combination of 5 commits.
+[33m557e90e[m HEAD@{88}: rebase (squash): # This is a combination of 4 commits.
+[33mf05fa30[m HEAD@{89}: rebase (squash): # This is a combination of 3 commits.
+[33mdb682f7[m HEAD@{90}: rebase (squash): # This is a combination of 2 commits.
+[33m0c6d824[m HEAD@{91}: rebase (start): checkout HEAD~8
+[33mde65a89[m HEAD@{92}: rebase (finish): returning to refs/heads/master
+[33mde65a89[m HEAD@{93}: rebase (start): checkout HEAD~9
+[33mde65a89[m HEAD@{94}: rebase (finish): returning to refs/heads/master
+[33mde65a89[m HEAD@{95}: rebase (start): checkout HEAD~10
+[33mde65a89[m HEAD@{96}: rebase (finish): returning to refs/heads/master
+[33mde65a89[m HEAD@{97}: rebase (start): checkout HEAD~8
+[33mde65a89[m HEAD@{98}: rebase (finish): returning to refs/heads/master
+[33mde65a89[m HEAD@{99}: rebase (start): checkout HEAD~6
+[33mde65a89[m HEAD@{100}: commit: fix
+[33m9d7dbc1[m HEAD@{101}: checkout: moving from build to master
+[33m75e45da[m HEAD@{102}: pull: Fast-forward
+[33m5366364[m HEAD@{103}: checkout: moving from master to build
+[33m9d7dbc1[m HEAD@{104}: commit: fix
+[33m23cf4c6[m HEAD@{105}: commit: fix
+[33mb2ff92a[m HEAD@{106}: commit: fix
+[33m73570b5[m HEAD@{107}: commit: fix
+[33m2cbbeb3[m HEAD@{108}: commit: fix
+[33m0c6d824[m HEAD@{109}: pull: Fast-forward
+[33md42229d[m HEAD@{110}: checkout: moving from build-fix to master
+[33mf30cacb[m[33m ([m[1;31morigin/build-fix[m[33m, [m[1;32mbuild-fix[m[33m)[m HEAD@{111}: reset: moving to HEAD
+[33mf30cacb[m[33m ([m[1;31morigin/build-fix[m[33m, [m[1;32mbuild-fix[m[33m)[m HEAD@{112}: commit: fix: applied cleaner solution for including flatc library
+[33m65a3e80[m HEAD@{113}: checkout: moving from master to build-fix
+[33md42229d[m HEAD@{114}: rebase (finish): returning to refs/heads/master
+[33md42229d[m HEAD@{115}: rebase (squash): fix: json schema for network.json
+[33m01ce3b9[m HEAD@{116}: rebase (start): checkout HEAD~2
+[33maddb0e0[m HEAD@{117}: commit: fix: json schema for network.json
+[33m01ce3b9[m HEAD@{118}: commit: fix: json schema for network.json
+[33mf4939a4[m HEAD@{119}: checkout: moving from feature/google_sheets to master
+[33mca2df5b[m HEAD@{120}: commit: idk
+[33mdf7a349[m HEAD@{121}: commit: feat(sheet-generator): WIP google sheets integration
+[33mf4939a4[m HEAD@{122}: checkout: moving from master to feature/google_sheets
+[33mf4939a4[m HEAD@{123}: reset: moving to HEAD
+[33mf4939a4[m HEAD@{124}: rebase (finish): returning to refs/heads/master
+[33mf4939a4[m HEAD@{125}: rebase (start): checkout HEAD~3
+[33mf4939a4[m HEAD@{126}: commit: feat: changed config version property to decimal
+[33me9398d0[m HEAD@{127}: pull: Fast-forward
+[33mf795444[m HEAD@{128}: reset: moving to HEAD
+[33mf795444[m HEAD@{129}: reset: moving to HEAD~
+[33m8675733[m HEAD@{130}: commit: feat: changed network version from int to decimal
+[33mf795444[m HEAD@{131}: rebase (finish): returning to refs/heads/master
+[33mf795444[m HEAD@{132}: rebase (squash): fix(includes-generator)
+[33m3975641[m HEAD@{133}: rebase (start): checkout HEAD~2
+[33m1521571[m HEAD@{134}: commit: fix(includes-generator)
+[33m3975641[m HEAD@{135}: commit: fix(includes-generator)
+[33mad84fe8[m HEAD@{136}: commit: fix: fixed references to renamed functions
+[33m8442afa[m HEAD@{137}: commit: feat: added config and c headers generation for can paramenters
+[33me1fc326[m HEAD@{138}: commit: Refactored project structure to accomodate upcoming can config feature
+[33m120f54d[m HEAD@{139}: rebase (finish): returning to refs/heads/master
+[33m120f54d[m HEAD@{140}: rebase (squash): Fixed wrong untracking of README and other files in branch build
+[33m9801ccc[m HEAD@{141}: rebase (start): checkout HEAD~2
+[33mbb3d1c3[m HEAD@{142}: commit: Fixed wrong untracking of README and other files in branch build
+[33m9801ccc[m HEAD@{143}: rebase (finish): returning to refs/heads/master
+[33m9801ccc[m HEAD@{144}: rebase (squash): Fixed wrong untracking of README and other files in branch build
+[33me4adefd[m HEAD@{145}: rebase (start): checkout HEAD~2
+[33m3347cdf[m HEAD@{146}: commit: Fixed wrong untracking of README and other files in branch build
+[33me4adefd[m HEAD@{147}: checkout: moving from build to master
+[33m5366364[m HEAD@{148}: checkout: moving from master to build
+[33me4adefd[m HEAD@{149}: commit: Fixed wrong untracking of README and other files in branch build
+[33m1cb3920[m HEAD@{150}: pull: Fast-forward
+[33m7dc027c[m HEAD@{151}: checkout: moving from build to master
+[33m5366364[m HEAD@{152}: rebase (finish): returning to refs/heads/build
+[33m5366364[m HEAD@{153}: rebase (reword): Fixed untracked files due to .gitignore
+[33mdacaaac[m HEAD@{154}: rebase: fast-forward
+[33m6bcfe21[m HEAD@{155}: rebase (start): checkout HEAD~1
+[33mdacaaac[m HEAD@{156}: rebase (finish): returning to refs/heads/build
+[33mdacaaac[m HEAD@{157}: rebase (pick): fix
+[33m6bcfe21[m HEAD@{158}: rebase (pick): Automatically generated files
+[33m890cbc9[m HEAD@{159}: rebase (pick): Automatically generated files
+[33mec4108d[m HEAD@{160}: rebase (pick): Automatically generated files
+[33m3683d27[m HEAD@{161}: rebase (pick): Automatically generated files
+[33m2bf1ad2[m HEAD@{162}: rebase (pick): Automatically generated files
+[33m6e472cc[m HEAD@{163}: rebase (pick): Automatically generated files
+[33m8f0b3eb[m HEAD@{164}: rebase (pick): Automatically generated files
+[33m84b3b4f[m HEAD@{165}: rebase (start): checkout HEAD~2
+[33mfd59c18[m HEAD@{166}: pull: Merge made by the 'recursive' strategy.
+[33m84b3b4f[m HEAD@{167}: checkout: moving from master to build
+[33m7dc027c[m HEAD@{168}: rebase (finish): returning to refs/heads/master
+[33m7dc027c[m HEAD@{169}: rebase (squash): Fixed tracking of old files in branch build
+[33m717beb4[m HEAD@{170}: rebase (start): checkout HEAD~2
+[33meb879d2[m HEAD@{171}: commit: lol
+[33m717beb4[m HEAD@{172}: rebase (continue) (finish): returning to refs/heads/master
+[33m717beb4[m HEAD@{173}: rebase (continue) (squash): Fixed tracking of old files in branch build
+[33mb61ca92[m HEAD@{174}: rebase (continue) (squash): # This is a combination of 3 commits.
+[33m2673002[m HEAD@{175}: rebase (continue) (squash): # This is a combination of 2 commits.
+[33m081e881[m HEAD@{176}: rebase (continue): Fixed tracking of old files in branch build
+[33m575773e[m HEAD@{177}: rebase (squash): # This is a combination of 3 commits.
+[33m4d9b4ef[m HEAD@{178}: rebase (squash): # This is a combination of 2 commits.
+[33m928da82[m HEAD@{179}: rebase (start): checkout HEAD~7
+[33m7d97853[m HEAD@{180}: rebase (abort): updating HEAD
+[33m906a537[m HEAD@{181}: rebase (squash): # This is a combination of 3 commits.
+[33m177b3aa[m HEAD@{182}: rebase (squash): # This is a combination of 2 commits.
+[33m928da82[m HEAD@{183}: rebase (start): checkout HEAD~7
+[33m7d97853[m HEAD@{184}: rebase (abort): updating HEAD
+[33m148129b[m HEAD@{185}: commit: lol
+[33md5cae9f[m HEAD@{186}: rebase (squash): # This is a combination of 3 commits.
+[33m40a42a4[m HEAD@{187}: rebase (squash): # This is a combination of 2 commits.
+[33m928da82[m HEAD@{188}: rebase (start): checkout HEAD~7
+[33m7d97853[m HEAD@{189}: commit (merge): lol
+[33me065257[m HEAD@{190}: commit: lol
+[33m928da82[m HEAD@{191}: commit: Fixed tracking of old files in branch build
+[33m50e8ab7[m HEAD@{192}: rebase (finish): returning to refs/heads/master
+[33m50e8ab7[m HEAD@{193}: rebase (squash): Updated README.md
+[33m9e47f3a[m HEAD@{194}: rebase (start): checkout HEAD~2
+[33m970aa45[m HEAD@{195}: commit: Updated README.md
+[33m9e47f3a[m HEAD@{196}: rebase (finish): returning to refs/heads/master
+[33m9e47f3a[m HEAD@{197}: rebase (squash): Updated README.md
+[33m0e256c1[m HEAD@{198}: rebase (start): checkout HEAD~2
+[33m235d986[m HEAD@{199}: commit: Updated README.md
+[33m0e256c1[m HEAD@{200}: commit: Updated README.md
+[33m40cf1a6[m HEAD@{201}: rebase (finish): returning to refs/heads/master
+[33m40cf1a6[m HEAD@{202}: rebase (squash): Reformatted sheet-generator submodule
+[33ma502991[m HEAD@{203}: rebase (start): checkout HEAD~2
+[33m9640da1[m HEAD@{204}: commit: fix
+[33ma502991[m HEAD@{205}: commit: Reformatted sheet-generator submodule
+[33m3b0104a[m HEAD@{206}: pull: Fast-forward
+[33maf211cd[m HEAD@{207}: rebase (finish): returning to refs/heads/master
+[33maf211cd[m HEAD@{208}: rebase (squash): Minor fix
+[33mbfa9af9[m HEAD@{209}: rebase (start): checkout HEAD~2
+[33m15d789b[m HEAD@{210}: commit: Minor fix
+[33mbfa9af9[m HEAD@{211}: commit: Minor fix
+[33m56d8abf[m HEAD@{212}: commit: Renamed ECU to ACU (acquisition control unit)
+[33mf4a155a[m HEAD@{213}: rebase (finish): returning to refs/heads/master
+[33mf4a155a[m HEAD@{214}: rebase (squash): Added requirements for each submodule, shared common code in a single lib folder
+[33m6cd7de7[m HEAD@{215}: rebase (start): checkout HEAD~2
+[33m1bf4fc3[m HEAD@{216}: commit: Added requirements for each submodule, shared common code in a single lib folder
+[33m6cd7de7[m HEAD@{217}: commit: Added requirements for each submodule, shared common code in a single lib folder
+[33md8d3fd9[m HEAD@{218}: checkout: moving from build to master
+[33m84b3b4f[m HEAD@{219}: commit: Updated README.md
+[33m02e0685[m HEAD@{220}: checkout: moving from master to build
+[33md8d3fd9[m HEAD@{221}: checkout: moving from build to master
+[33m02e0685[m HEAD@{222}: rebase (continue) (finish): returning to refs/heads/build
+[33m02e0685[m HEAD@{223}: rebase (continue) (squash): Updated README.md
+[33m3ea200b[m HEAD@{224}: rebase (continue) (squash): # This is a combination of 8 commits.
+[33m57dee7a[m HEAD@{225}: rebase (continue) (squash): # This is a combination of 7 commits.
+[33mb56b3b8[m HEAD@{226}: rebase (continue) (squash): # This is a combination of 6 commits.
+[33m603a821[m HEAD@{227}: rebase (continue) (squash): # This is a combination of 5 commits.
+[33m0c553df[m HEAD@{228}: rebase: fast-forward
+[33m31b5aa8[m HEAD@{229}: rebase (start): checkout HEAD~6
+[33mbde8700[m HEAD@{230}: commit: Removed tracking for files
+[33m9055330[m HEAD@{231}: rebase (continue): Updated README.md
+[33mc69a072[m HEAD@{232}: checkout: moving from 0c553dffa2d8bafc8c30952a7c2239489a6cdf4d to build
+[33m0c553df[m HEAD@{233}: rebase (start): checkout HEAD~4
+[33mc69a072[m HEAD@{234}: commit: Removed venv files
+[33m20e4e3f[m HEAD@{235}: commit: Added .gitignore
+[33m632d180[m HEAD@{236}: commit: Updated README.md
+[33m0c553df[m HEAD@{237}: pull: Fast-forward
+[33md7383a0[m HEAD@{238}: checkout: moving from master to build
+[33md8d3fd9[m HEAD@{239}: commit: Added external tools in branch build for ease of use
+[33m653a59f[m HEAD@{240}: rebase (finish): returning to refs/heads/master
+[33m653a59f[m HEAD@{241}: rebase (squash): Added subfolders for flatc and flatcc outputs
+[33m89273e7[m HEAD@{242}: rebase (start): checkout HEAD~2
+[33m60337d6[m HEAD@{243}: commit: Added subfolders for flatc and flatcc outputs
+[33m89273e7[m HEAD@{244}: commit: Added subfolders for flatc and flatcc outputs
+[33mfe75a07[m HEAD@{245}: commit: Added python support
+[33m303fe25[m HEAD@{246}: pull: Fast-forward
+[33mf35906a[m HEAD@{247}: checkout: moving from build to master
+[33md7383a0[m HEAD@{248}: rebase (finish): returning to refs/heads/build
+[33md7383a0[m HEAD@{249}: rebase (pick): Automatically generated files
+[33m22dfd04[m HEAD@{250}: rebase (start): checkout HEAD~6
+[33mfabe4c6[m HEAD@{251}: commit: test
+[33mcc4c524[m HEAD@{252}: pull: Fast-forward
+[33maa58197[m HEAD@{253}: checkout: moving from master to build
+[33mf35906a[m HEAD@{254}: rebase (finish): returning to refs/heads/master
+[33mf35906a[m HEAD@{255}: rebase (squash): Fixed file names for network config files, added BMS HV internal network
+[33mee378c9[m HEAD@{256}: rebase (start): checkout HEAD~2
+[33ma8c6297[m HEAD@{257}: commit: lol
+[33mee378c9[m HEAD@{258}: rebase (finish): returning to refs/heads/master
+[33mee378c9[m HEAD@{259}: rebase (squash): Fixed file names for network config files, added BMS HV internal network
+[33m55f7665[m HEAD@{260}: rebase (squash): # This is a combination of 2 commits.
+[33m26d56ce[m HEAD@{261}: rebase (pick): version 1 of bms cellboard/mainboard network (#10)
+[33me76097d[m HEAD@{262}: rebase (start): checkout HEAD~4
+[33m2b98b07[m HEAD@{263}: pull: Merge made by the 'recursive' strategy.
+[33m2844256[m HEAD@{264}: rebase (finish): returning to refs/heads/master
+[33m2844256[m HEAD@{265}: rebase (pick): Fixed wrong network definition file names
+[33mf6f9491[m HEAD@{266}: rebase (pick): version 1 of bms cellboard/mainboard network (#10)
+[33m39f20b0[m HEAD@{267}: rebase (start): checkout HEAD~2
+[33m2ea2a98[m HEAD@{268}: commit: Fixed wrong network definition file names
+[33m12f7984[m HEAD@{269}: pull: Merge made by the 'recursive' strategy.
+[33m39f20b0[m HEAD@{270}: checkout: moving from build to master
+[33maa58197[m HEAD@{271}: commit (amend): Second commit
+[33m98704f3[m HEAD@{272}: commit (amend): First commit
+[33m751b3bb[m HEAD@{273}: rebase (finish): returning to refs/heads/build
+[33m751b3bb[m HEAD@{274}: rebase (squash): First commit
+[33me1ad227[m HEAD@{275}: rebase (squash): # This is a combination of 5 commits.
+[33madf5c03[m HEAD@{276}: rebase (squash): # This is a combination of 4 commits.
+[33m16bcf22[m HEAD@{277}: rebase (squash): # This is a combination of 3 commits.
+[33m0171213[m HEAD@{278}: rebase (squash): # This is a combination of 2 commits.
+[33mf2e778b[m HEAD@{279}: rebase (start): checkout 22dfd04
+[33m0a9d3e0[m HEAD@{280}: checkout: moving from 781cd1554ea728c2f1576955830df8139fc66275 to build
+[33m781cd15[m HEAD@{281}: rebase (start): checkout HEAD~6
+[33m0a9d3e0[m HEAD@{282}: checkout: moving from 781cd1554ea728c2f1576955830df8139fc66275 to build
+[33m781cd15[m HEAD@{283}: rebase (start): checkout HEAD~5
+[33m0a9d3e0[m HEAD@{284}: commit: Updated README.md
+[33m43d9ded[m HEAD@{285}: checkout: moving from 781cd1554ea728c2f1576955830df8139fc66275 to build
+[33m781cd15[m HEAD@{286}: rebase (start): checkout HEAD~3
+[33m43d9ded[m HEAD@{287}: pull: Merge made by the 'recursive' strategy.
+[33m781cd15[m HEAD@{288}: rebase (finish): returning to refs/heads/build
+[33m781cd15[m HEAD@{289}: rebase (start): checkout HEAD~3
+[33m781cd15[m HEAD@{290}: rebase (finish): returning to refs/heads/build
+[33m781cd15[m HEAD@{291}: rebase (pick): Automatically generated files
+[33ma91a9b7[m HEAD@{292}: rebase (start): checkout HEAD~3
+[33m95964dc[m HEAD@{293}: pull: Merge made by the 'recursive' strategy.
+[33ma91a9b7[m HEAD@{294}: commit: Updated README.md
+[33mc90580d[m HEAD@{295}: checkout: moving from master to build
+[33m39f20b0[m HEAD@{296}: commit: Updated README.md
+[33me76097d[m HEAD@{297}: checkout: moving from build to master
+[33mc90580d[m HEAD@{298}: reset: moving to HEAD
+[33mc90580d[m HEAD@{299}: checkout: moving from master to build
+[33me76097d[m HEAD@{300}: commit: Updated README.md
+[33m24d64b3[m HEAD@{301}: commit: Removed output files from branch master
+[33md2f3a8b[m HEAD@{302}: commit: Added error handling for flatc and flatcc
+[33md3e352f[m HEAD@{303}: commit: Fixed flatbuffers schema generation
+[33mc356674[m HEAD@{304}: checkout: moving from build to master
+[33mc90580d[m HEAD@{305}: checkout: moving from master to build
+[33mc356674[m HEAD@{306}: checkout: moving from build to master
+[33mc90580d[m HEAD@{307}: checkout: moving from master to build
+[33mc356674[m HEAD@{308}: checkout: moving from build to master
+[33mc90580d[m HEAD@{309}: commit (amend): Added .gitignore, cleaned README.md
+[33m87b3ed0[m HEAD@{310}: rebase (finish): returning to refs/heads/build
+[33m87b3ed0[m HEAD@{311}: rebase (start): checkout HEAD~1
+[33m87b3ed0[m HEAD@{312}: commit: commit
+[33mf2e778b[m HEAD@{313}: pull: Fast-forward
+[33m22dfd04[m HEAD@{314}: commit (initial): First commit
+[33mc356674[m HEAD@{315}: commit: Automatically generated files
+[33m9730a32[m HEAD@{316}: checkout: moving from build to master
+[33m9730a32[m HEAD@{317}: checkout: moving from build to master
+[33m9730a32[m HEAD@{318}: commit: Automatically generated files
+[33md33a8fd[m HEAD@{319}: checkout: moving from build to master
+[33mec9b7b7[m HEAD@{320}: commit: Automatically generated files
+[33m1287751[m HEAD@{321}: checkout: moving from master to build
+[33md33a8fd[m HEAD@{322}: pull: Merge made by the 'recursive' strategy.
+[33m1bc465f[m HEAD@{323}: commit: Added actions to push output in build branch
+[33mc151c97[m HEAD@{324}: commit: Added actions to push output in build branch
+[33m3e80910[m HEAD@{325}: commit: Added actions to push output in build branch
+[33m1060678[m HEAD@{326}: checkout: moving from build to master
+[33m1060678[m HEAD@{327}: commit: Added actions to push output in build branch
+[33mc5d0b93[m HEAD@{328}: commit: Added actions to push output in build branch
+[33m312580d[m HEAD@{329}: commit: Added actions to push output in build branch
+[33m80b36ad[m HEAD@{330}: commit: Added actions to push output in build branch
+[33m3e071fc[m HEAD@{331}: commit: Added actions to push output in build branch
+[33m06b590a[m HEAD@{332}: checkout: moving from build to master
+[33m06b590a[m HEAD@{333}: checkout: moving from orphan to master
+[33m06b590a[m HEAD@{334}: clone: from github.com:eagletrt/fenice-can-cicd.git

@@ -4,8 +4,6 @@
     "messages": [
         {
             "name": "REQ_INV_L",
-            "topic": "INVERTERS",
-            "priority": 4,
             "sending": ["ACU"],
             "receiving": ["INVERTER_L"],
             "fixed_id": 0,
@@ -13,8 +11,6 @@
             }
         },{
             "name": "REQ_INV_R",
-            "topic": "INVERTERS",
-            "priority": 4,
             "sending": ["ACU"],
             "receiving": ["INVERTER_R"],
             "fixed_id": 1,
