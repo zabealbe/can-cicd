@@ -15,7 +15,7 @@
                 "uint16_t":"ang_rate_z"
             }
         },{
-           "name": "IMU_ACCELERATION",
+            "name": "IMU_ACCELERATION",
             "fixed_id": 1261,
             "topic": "SENSORS",
             "sending": ["IMU"],

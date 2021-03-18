@@ -67,8 +67,8 @@ class Network:
         """
         messages = []
         for m in self.contents:
-            if "topic" in m and m["topic"] == topic:
-                messages.append(m)
+            if "topic" in m and m["topic"] == topic:  # This also filters messages with fixed id
+                messages.append(m)                    # because topic field can't be present if fixed_id is
 
         return messages
 
