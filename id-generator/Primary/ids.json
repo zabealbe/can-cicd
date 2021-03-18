@@ -2,13 +2,11 @@
     "network_version": 1.1,
     "ids": [
         {
-            "topic": "ACU",
+            "topic": "STEER",
             "id": 0,
             "messages": {
-                "TS_STATUS": 0,
-                "STEER_STATUS": 32,
-                "SET_CAR_STATUS": 64,
-                "GET_CAR_STATUS": 96
+                "TLM_STATUS": 256,
+                "CAR_STATUS": 0
             }
         },
         {
@@ -29,11 +27,13 @@
             }
         },
         {
-            "topic": "STEER",
+            "topic": "ACU",
             "id": 3,
             "messages": {
-                "TLM_STATUS": 259,
-                "CAR_STATUS": 3
+                "TS_STATUS": 3,
+                "STEER_STATUS": 35,
+                "SET_CAR_STATUS": 67,
+                "GET_CAR_STATUS": 99
             }
         },
         {
