@@ -11,7 +11,6 @@ STEER_STATUS,35,Primary,ACU,7,STEER,ACU,"traction_control: OFF, SLIP_CONTROL, TO
 SET_CAR_STATUS,67,Primary,ACU,7,STEER,ACU,"car_status_set: IDLE, RUN",
 GET_CAR_STATUS,99,Primary,ACU,7,STEER,ACU,,
 CAR_STATUS,0,Primary,STEER,7,ACU,STEER,"car_status: IDLE, SETUP, RUN, Inverter_status: inverter_l: OFF, IDLE, ON, Inverter_status: inverter_r: OFF, IDLE, ON",
-SET_PEDALS_RANGE,5,Primary,PEDALS,7,STEER,PEDALS,"bound: MAX, MIN",
 VOLTAGES_CB0_0,1024,BMSinternal,VOLTAGE_INFO,3,CELLBOARD0,MAINBOARD,"voltage0: uint16, voltage1: uint16, voltage2: uint16, voltage3: uint16",
 VOLTAGES_CB0_1,768,BMSinternal,VOLTAGE_INFO,4,CELLBOARD0,MAINBOARD,"voltage4: uint16, voltage5: uint16, voltage6: uint16, voltage7: uint16",
 VOLTAGES_CB0_2,512,BMSinternal,VOLTAGE_INFO,5,CELLBOARD0,MAINBOARD,"voltage8: uint16, voltage9: uint16, voltage10: uint16, voltage11: uint16",
@@ -62,3 +61,6 @@ TEMPERATURES_CB5_1,929,BMSinternal,TEMPERATURE_INFO,4,CELLBOARD5,MAINBOARD,"temp
 TEMPERATURES_CB5_2,673,BMSinternal,TEMPERATURE_INFO,5,CELLBOARD5,MAINBOARD,"temperature16: uint8, temperature17: uint8, max_temperature: uint8, min_temperature: uint8",
 MASTER_SYNC,1794,BMSinternal,INTRA_NET_BMS_SYNC,0,MAINBOARD,"CELLBOARD0, CELLBOARD1, CELLBOARD2, CELLBOARD3, CELLBOARD4, CELLBOARD5",time: uint32,
 CELLBOARD_TOKEN,1538,BMSinternal,INTRA_NET_BMS_SYNC,1,"CELLBOARD0, CELLBOARD1, CELLBOARD2, CELLBOARD3, CELLBOARD4, CELLBOARD5","CELLBOARD0, CELLBOARD1, CELLBOARD2, CELLBOARD3, CELLBOARD4, CELLBOARD5","sender_cellboard: uint8, time: uint32",
+SET_PEDALS_RANGE,0,Secondary,PEDALS,7,STEER,PCU,"sync_state: MAX_START, MAX_END, MIN_START, MIN_END, pedal: ACCELERATOR, BRAKE, ALL",Syncronization message from Steering Wheel to Pedals Control Unit. Message semantic: (start|end) set of (max|min) value for (accelerator|brake|all) pedal.
+ACCELERATOR_PEDAL_VAL,1280,Secondary,PEDALS,2,PCU,"ECU,TLM",level: uint8,"Accelerator Pedal potentiometer Value. Average of 2 sensors normalized from 0 to 255, linear, 8bit total, unsigned."
+BRAKE_PEDAL_VAL,1312,Secondary,PEDALS,2,PCU,"ECU,TLM",level: uint8,"Brake Pedal pressure sensor Value. Normalized from 0 to 255, linear, 8bit total, unsigned."

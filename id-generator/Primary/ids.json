@@ -42,13 +42,6 @@
             "messages": {
                 "SET_TS_STATUS": 4
             }
-        },
-        {
-            "topic": "PEDALS",
-            "id": 5,
-            "messages": {
-                "SET_PEDALS_RANGE": 5
-            }
         }
     ]
 }

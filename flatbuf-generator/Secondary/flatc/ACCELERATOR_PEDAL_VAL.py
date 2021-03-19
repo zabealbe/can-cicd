@@ -6,21 +6,21 @@ import flatbuffers
 from flatbuffers.compat import import_numpy
 np = import_numpy()
 
-class SET_PEDALS_RANGE(object):
+class ACCELERATOR_PEDAL_VAL(object):
     __slots__ = ['_tab']
 
     @classmethod
     def SizeOf(cls):
         return 1
 
-    # SET_PEDALS_RANGE
+    # ACCELERATOR_PEDAL_VAL
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-    # SET_PEDALS_RANGE
-    def Bound(self): return self._tab.Get(flatbuffers.number_types.Int8Flags, self._tab.Pos + flatbuffers.number_types.UOffsetTFlags.py_type(0))
+    # ACCELERATOR_PEDAL_VAL
+    def Level(self): return self._tab.Get(flatbuffers.number_types.Uint8Flags, self._tab.Pos + flatbuffers.number_types.UOffsetTFlags.py_type(0))
 
-def CreateSET_PEDALS_RANGE(builder, bound):
+def CreateACCELERATOR_PEDAL_VAL(builder, level):
     builder.Prep(1, 1)
-    builder.PrependInt8(bound)
+    builder.PrependUint8(level)
     return builder.Offset()

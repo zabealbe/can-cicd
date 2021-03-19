@@ -230,25 +230,5 @@ static inline int CAR_STATUS_verify_as_root_with_identifier(const void *buf, siz
     return flatcc_verify_struct_as_root(buf, bufsiz, fid, 3, 1);
 }
 
-static inline int SET_PEDALS_RANGE_verify_as_root(const void *buf, size_t bufsiz)
-{
-    return flatcc_verify_struct_as_root(buf, bufsiz, SET_PEDALS_RANGE_identifier, 1, 1);
-}
-
-static inline int SET_PEDALS_RANGE_verify_as_typed_root(const void *buf, size_t bufsiz)
-{
-    return flatcc_verify_struct_as_typed_root(buf, bufsiz, SET_PEDALS_RANGE_type_hash, 1, 1);
-}
-
-static inline int SET_PEDALS_RANGE_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
-{
-    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 1, 1);
-}
-
-static inline int SET_PEDALS_RANGE_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
-{
-    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 1, 1);
-}
-
 #include "../../../external/flatcc/flatcc_epilogue.h"
 #endif /* SCHEMA_VERIFIER_H */

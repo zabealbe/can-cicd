@@ -73,11 +73,6 @@ typedef const CAR_STATUS_t *CAR_STATUS_struct_t;
 typedef CAR_STATUS_t *CAR_STATUS_mutable_struct_t;
 typedef const CAR_STATUS_t *CAR_STATUS_vec_t;
 typedef CAR_STATUS_t *CAR_STATUS_mutable_vec_t;
-typedef struct SET_PEDALS_RANGE SET_PEDALS_RANGE_t;
-typedef const SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_struct_t;
-typedef SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_mutable_struct_t;
-typedef const SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_vec_t;
-typedef SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_mutable_vec_t;
 
 #ifndef TLM_STATUS_file_identifier
 #define TLM_STATUS_file_identifier flatbuffers_identifier
@@ -178,15 +173,6 @@ typedef SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_mutable_vec_t;
 #endif
 #define CAR_STATUS_type_hash ((flatbuffers_thash_t)0xcad66a64)
 #define CAR_STATUS_type_identifier "\x64\x6a\xd6\xca"
-#ifndef SET_PEDALS_RANGE_file_identifier
-#define SET_PEDALS_RANGE_file_identifier flatbuffers_identifier
-#endif
-/* deprecated, use SET_PEDALS_RANGE_file_identifier */
-#ifndef SET_PEDALS_RANGE_identifier
-#define SET_PEDALS_RANGE_identifier flatbuffers_identifier
-#endif
-#define SET_PEDALS_RANGE_type_hash ((flatbuffers_thash_t)0x530c2c7)
-#define SET_PEDALS_RANGE_type_identifier "\xc7\xc2\x30\x05"
 
 typedef int8_t Tlm_Status_enum_t;
 __flatbuffers_define_integer_type(Tlm_Status, Tlm_Status_enum_t, 8)
@@ -431,29 +417,6 @@ static inline int Inverter_Status_is_known_value(Inverter_Status_enum_t value)
     }
 }
 
-typedef int8_t Bound_enum_t;
-__flatbuffers_define_integer_type(Bound, Bound_enum_t, 8)
-#define Bound_MAX ((Bound_enum_t)INT8_C(0))
-#define Bound_MIN ((Bound_enum_t)INT8_C(1))
-
-static inline const char *Bound_name(Bound_enum_t value)
-{
-    switch (value) {
-    case Bound_MAX: return "MAX";
-    case Bound_MIN: return "MIN";
-    default: return "";
-    }
-}
-
-static inline int Bound_is_known_value(Bound_enum_t value)
-{
-    switch (value) {
-    case Bound_MAX: return 1;
-    case Bound_MIN: return 1;
-    default: return 0;
-    }
-}
-
 
 struct TLM_STATUS {
     alignas(1) Tlm_Status_enum_t tlm_status;
@@ -666,22 +629,6 @@ __flatbuffers_struct_as_root(CAR_STATUS)
 __flatbuffers_define_struct_scalar_field(CAR_STATUS, car_status, Car_Status, Car_Status_enum_t)
 __flatbuffers_define_struct_scalar_field(CAR_STATUS, inverter_l, Inverter_Status, Inverter_Status_enum_t)
 __flatbuffers_define_struct_scalar_field(CAR_STATUS, inverter_r, Inverter_Status, Inverter_Status_enum_t)
-
-struct SET_PEDALS_RANGE {
-    alignas(1) Bound_enum_t bound;
-};
-static_assert(sizeof(SET_PEDALS_RANGE_t) == 1, "struct size mismatch");
-
-static inline const SET_PEDALS_RANGE_t *SET_PEDALS_RANGE__const_ptr_add(const SET_PEDALS_RANGE_t *p, size_t i) { return p + i; }
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE__ptr_add(SET_PEDALS_RANGE_t *p, size_t i) { return p + i; }
-static inline SET_PEDALS_RANGE_struct_t SET_PEDALS_RANGE_vec_at(SET_PEDALS_RANGE_vec_t vec, size_t i)
-__flatbuffers_struct_vec_at(vec, i)
-static inline size_t SET_PEDALS_RANGE__size(void) { return 1; }
-static inline size_t SET_PEDALS_RANGE_vec_len(SET_PEDALS_RANGE_vec_t vec)
-__flatbuffers_vec_len(vec)
-__flatbuffers_struct_as_root(SET_PEDALS_RANGE)
-
-__flatbuffers_define_struct_scalar_field(SET_PEDALS_RANGE, bound, Bound, Bound_enum_t)
 
 
 

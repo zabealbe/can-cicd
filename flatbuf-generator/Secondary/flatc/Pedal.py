@@ -2,7 +2,8 @@
 
 # namespace: 
 
-class Bound(object):
-    MAX = 0
-    MIN = 1
+class Pedal(object):
+    ACCELERATOR = 0
+    BRAKE = 1
+    ALL = 2
 

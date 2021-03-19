@@ -1,0 +1,16 @@
+enum Sync_State : byte { MAX_START, MAX_END, MIN_START, MIN_END }
+enum Pedal : byte { ACCELERATOR, BRAKE, ALL }
+struct SET_PEDALS_RANGE {
+	sync_state: Sync_State;
+	pedal: Pedal;
+}
+
+struct ACCELERATOR_PEDAL_VAL {
+	level: uint8;
+}
+
+struct BRAKE_PEDAL_VAL {
+	level: uint8;
+}
+
+

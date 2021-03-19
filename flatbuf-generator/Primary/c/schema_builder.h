@@ -44,9 +44,6 @@ __flatbuffers_build_scalar(flatbuffers_, Car_Status, Car_Status_enum_t)
 #define __Inverter_Status_formal_args , Inverter_Status_enum_t v0
 #define __Inverter_Status_call_args , v0
 __flatbuffers_build_scalar(flatbuffers_, Inverter_Status, Inverter_Status_enum_t)
-#define __Bound_formal_args , Bound_enum_t v0
-#define __Bound_call_args , v0
-__flatbuffers_build_scalar(flatbuffers_, Bound, Bound_enum_t)
 
 #define __TLM_STATUS_formal_args , Tlm_Status_enum_t v0, Race_Type_enum_t v1, uint8_t v2, uint8_t v3
 #define __TLM_STATUS_call_args , v0, v1, v2, v3
@@ -300,29 +297,6 @@ static inline CAR_STATUS_t *CAR_STATUS_copy_from_pe(CAR_STATUS_t *p, const CAR_S
   return p; }
 __flatbuffers_build_struct(flatbuffers_, CAR_STATUS, 3, 1, CAR_STATUS_file_identifier, CAR_STATUS_type_identifier)
 __flatbuffers_define_fixed_array_primitives(flatbuffers_, CAR_STATUS, CAR_STATUS_t)
-
-#define __SET_PEDALS_RANGE_formal_args , Bound_enum_t v0
-#define __SET_PEDALS_RANGE_call_args , v0
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_assign(SET_PEDALS_RANGE_t *p, Bound_enum_t v0)
-{ p->bound = v0;
-  return p; }
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_copy(SET_PEDALS_RANGE_t *p, const SET_PEDALS_RANGE_t *p2)
-{ p->bound = p2->bound;
-  return p; }
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_assign_to_pe(SET_PEDALS_RANGE_t *p, Bound_enum_t v0)
-{ p->bound = v0;
-  return p; }
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_copy_to_pe(SET_PEDALS_RANGE_t *p, const SET_PEDALS_RANGE_t *p2)
-{ p->bound = p2->bound;
-  return p; }
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_assign_from_pe(SET_PEDALS_RANGE_t *p, Bound_enum_t v0)
-{ p->bound = v0;
-  return p; }
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_copy_from_pe(SET_PEDALS_RANGE_t *p, const SET_PEDALS_RANGE_t *p2)
-{ p->bound = p2->bound;
-  return p; }
-__flatbuffers_build_struct(flatbuffers_, SET_PEDALS_RANGE, 1, 1, SET_PEDALS_RANGE_file_identifier, SET_PEDALS_RANGE_type_identifier)
-__flatbuffers_define_fixed_array_primitives(flatbuffers_, SET_PEDALS_RANGE, SET_PEDALS_RANGE_t)
 
 #include "../../../external/flatcc/flatcc_epilogue.h"
 #endif /* SCHEMA_BUILDER_H */

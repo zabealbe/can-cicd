@@ -69,9 +69,4 @@ struct CAR_STATUS {
 	inverter_r: Inverter_Status;
 }
 
-enum Bound : byte { MAX, MIN }
-struct SET_PEDALS_RANGE {
-	bound: Bound;
-}
-
 
