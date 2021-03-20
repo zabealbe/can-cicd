@@ -23,9 +23,23 @@
 						"type": "integer",
 						"minimum": 0,
 						"maximum": 7
-					}
+					},
+                    "fixed_id": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 65535
+                    }
 				},
-				"required": ["name", "topic", "priority"],
+                "not": {
+                    "anyOf": [
+                        {"required": ["topic", "fixed_id"]},
+                        {"required": ["priority", "fixed_id"]}
+                    ]
+                },
+                "anyOf": [
+                        {"required": ["fixed_id"]},
+                        {"required": ["topic", "priority"]}
+                ],
                 "additionalProperties": true
 			}
 		}

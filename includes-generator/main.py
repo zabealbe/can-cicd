@@ -4,12 +4,12 @@ from generators import py_gen
 from config import config as c
 
 
-def generate_id_includes(message_ids, network_version, output_path):
-    cgenerated = c_gen.generate_ids_include(message_ids, network_version)
+def generate_id_includes(topics, network_version, output_path):
+    cgenerated = c_gen.generate_ids_include(topics, network_version)
     with open(f"{output_path}{c.C_IDS_INCLUDE}", "w+") as f:
         print(cgenerated, file=f)
 
-    pygenerated = py_gen.generate_ids_include(message_ids, network_version)
+    pygenerated = py_gen.generate_ids_include(topics, network_version)
     with open(f"{output_path}{c.PY_IDS_INCLUDE}", "w+") as f:
         print(pygenerated, file=f)
 
@@ -41,13 +41,14 @@ def main():
         print(path)
         
         ids_file = load_json(path)
-        ids = ids_file["ids"]
+        topics = ids_file["topics"]
+        ids = ids_file["topics"]
         network_version = float(ids_file["network_version"])
         print(f"Loaded message ids from {path}")
         
         create_subtree(output_path)
         
-        generate_id_includes(ids, network_version, output_path)
+        generate_id_includes(topics, network_version, output_path)
         print(f"Generated id includes in {output_path}\n")
 
     # CAN config

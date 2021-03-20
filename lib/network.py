@@ -1,6 +1,3 @@
-from collections import OrderedDict
-import os
-
 from lib.utils import *
 
 
@@ -55,11 +52,11 @@ class Network:
         return self.contents
 
     def get_topics(self):
-        topics = OrderedDict()  # NEEDED for IDs consistency across runs
+        topics = set()
         for m in self.contents:
             if "topic" in m:
-                topics[m["topic"]] = ""
-        return list(topics.keys())
+                topics.add(m["topic"])
+        return sorted(topics)  # NEEDED for IDs consistency across runs
 
     def get_messages_by_topic(self, topic):
         """
@@ -67,10 +64,31 @@ class Network:
         """
         messages = []
         for m in self.contents:
-            if "topic" in m and m["topic"] == topic:
+            if "topic" in m and m["topic"] == topic:  # This also filters messages with fixed id
+                messages.append(m)                    # because topic field can't be present if fixed_id is
+
+        return messages
+
+    def get_messages_with_fixed_id(self):
+        """
+            Very resource-heavy, can be optimized with index
+        """
+        messages = []
+        for m in self.contents:
+            if "fixed_id" in m:
                 messages.append(m)
 
         return messages
+    
+    def get_reserved_ids(self):
+        """
+            Very resource-heavy, can be optimized with index
+        """
+        ids = {}
+        for m in self.get_messages_with_fixed_id():
+            ids[m["fixed_id"]] = m
+        
+        return ids
 
     def get_message_by_name(self, name):
         try:
@@ -78,3 +96,4 @@ class Network:
         except KeyError:
             return {}
         return message
+
