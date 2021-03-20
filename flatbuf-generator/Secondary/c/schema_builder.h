@@ -17,81 +17,419 @@
 #define flatbuffers_extension ".bin"
 #endif
 
-#define __Sync_State_formal_args , Sync_State_enum_t v0
-#define __Sync_State_call_args , v0
-__flatbuffers_build_scalar(flatbuffers_, Sync_State, Sync_State_enum_t)
-#define __Pedal_formal_args , Pedal_enum_t v0
-#define __Pedal_call_args , v0
-__flatbuffers_build_scalar(flatbuffers_, Pedal, Pedal_enum_t)
+#define __IMU_ANGULAR_RATE_formal_args , uint16_t v0, uint16_t v1, uint16_t v2
+#define __IMU_ANGULAR_RATE_call_args , v0, v1, v2
+static inline IMU_ANGULAR_RATE_t *IMU_ANGULAR_RATE_assign(IMU_ANGULAR_RATE_t *p, uint16_t v0, uint16_t v1, uint16_t v2)
+{ p->ang_rate_x = v0; p->ang_rate_y = v1; p->ang_rate_z = v2;
+  return p; }
+static inline IMU_ANGULAR_RATE_t *IMU_ANGULAR_RATE_copy(IMU_ANGULAR_RATE_t *p, const IMU_ANGULAR_RATE_t *p2)
+{ p->ang_rate_x = p2->ang_rate_x; p->ang_rate_y = p2->ang_rate_y; p->ang_rate_z = p2->ang_rate_z;
+  return p; }
+static inline IMU_ANGULAR_RATE_t *IMU_ANGULAR_RATE_assign_to_pe(IMU_ANGULAR_RATE_t *p, uint16_t v0, uint16_t v1, uint16_t v2)
+{ flatbuffers_uint16_assign_to_pe(&p->ang_rate_x, v0); flatbuffers_uint16_assign_to_pe(&p->ang_rate_y, v1); flatbuffers_uint16_assign_to_pe(&p->ang_rate_z, v2);
+  return p; }
+static inline IMU_ANGULAR_RATE_t *IMU_ANGULAR_RATE_copy_to_pe(IMU_ANGULAR_RATE_t *p, const IMU_ANGULAR_RATE_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->ang_rate_x, &p2->ang_rate_x); flatbuffers_uint16_copy_to_pe(&p->ang_rate_y, &p2->ang_rate_y); flatbuffers_uint16_copy_to_pe(&p->ang_rate_z, &p2->ang_rate_z);
+  return p; }
+static inline IMU_ANGULAR_RATE_t *IMU_ANGULAR_RATE_assign_from_pe(IMU_ANGULAR_RATE_t *p, uint16_t v0, uint16_t v1, uint16_t v2)
+{ flatbuffers_uint16_assign_from_pe(&p->ang_rate_x, v0); flatbuffers_uint16_assign_from_pe(&p->ang_rate_y, v1); flatbuffers_uint16_assign_from_pe(&p->ang_rate_z, v2);
+  return p; }
+static inline IMU_ANGULAR_RATE_t *IMU_ANGULAR_RATE_copy_from_pe(IMU_ANGULAR_RATE_t *p, const IMU_ANGULAR_RATE_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->ang_rate_x, &p2->ang_rate_x); flatbuffers_uint16_copy_from_pe(&p->ang_rate_y, &p2->ang_rate_y); flatbuffers_uint16_copy_from_pe(&p->ang_rate_z, &p2->ang_rate_z);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IMU_ANGULAR_RATE, 6, 2, IMU_ANGULAR_RATE_file_identifier, IMU_ANGULAR_RATE_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IMU_ANGULAR_RATE, IMU_ANGULAR_RATE_t)
 
-#define __SET_PEDALS_RANGE_formal_args , Sync_State_enum_t v0, Pedal_enum_t v1
-#define __SET_PEDALS_RANGE_call_args , v0, v1
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_assign(SET_PEDALS_RANGE_t *p, Sync_State_enum_t v0, Pedal_enum_t v1)
-{ p->sync_state = v0; p->pedal = v1;
+#define __IMU_ACCELERATION_formal_args , uint16_t v0, uint16_t v1, uint16_t v2
+#define __IMU_ACCELERATION_call_args , v0, v1, v2
+static inline IMU_ACCELERATION_t *IMU_ACCELERATION_assign(IMU_ACCELERATION_t *p, uint16_t v0, uint16_t v1, uint16_t v2)
+{ p->accel_x = v0; p->accel_y = v1; p->accel_z = v2;
   return p; }
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_copy(SET_PEDALS_RANGE_t *p, const SET_PEDALS_RANGE_t *p2)
-{ p->sync_state = p2->sync_state; p->pedal = p2->pedal;
+static inline IMU_ACCELERATION_t *IMU_ACCELERATION_copy(IMU_ACCELERATION_t *p, const IMU_ACCELERATION_t *p2)
+{ p->accel_x = p2->accel_x; p->accel_y = p2->accel_y; p->accel_z = p2->accel_z;
   return p; }
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_assign_to_pe(SET_PEDALS_RANGE_t *p, Sync_State_enum_t v0, Pedal_enum_t v1)
-{ p->sync_state = v0; p->pedal = v1;
+static inline IMU_ACCELERATION_t *IMU_ACCELERATION_assign_to_pe(IMU_ACCELERATION_t *p, uint16_t v0, uint16_t v1, uint16_t v2)
+{ flatbuffers_uint16_assign_to_pe(&p->accel_x, v0); flatbuffers_uint16_assign_to_pe(&p->accel_y, v1); flatbuffers_uint16_assign_to_pe(&p->accel_z, v2);
   return p; }
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_copy_to_pe(SET_PEDALS_RANGE_t *p, const SET_PEDALS_RANGE_t *p2)
-{ p->sync_state = p2->sync_state; p->pedal = p2->pedal;
+static inline IMU_ACCELERATION_t *IMU_ACCELERATION_copy_to_pe(IMU_ACCELERATION_t *p, const IMU_ACCELERATION_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->accel_x, &p2->accel_x); flatbuffers_uint16_copy_to_pe(&p->accel_y, &p2->accel_y); flatbuffers_uint16_copy_to_pe(&p->accel_z, &p2->accel_z);
   return p; }
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_assign_from_pe(SET_PEDALS_RANGE_t *p, Sync_State_enum_t v0, Pedal_enum_t v1)
-{ p->sync_state = v0; p->pedal = v1;
+static inline IMU_ACCELERATION_t *IMU_ACCELERATION_assign_from_pe(IMU_ACCELERATION_t *p, uint16_t v0, uint16_t v1, uint16_t v2)
+{ flatbuffers_uint16_assign_from_pe(&p->accel_x, v0); flatbuffers_uint16_assign_from_pe(&p->accel_y, v1); flatbuffers_uint16_assign_from_pe(&p->accel_z, v2);
   return p; }
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_copy_from_pe(SET_PEDALS_RANGE_t *p, const SET_PEDALS_RANGE_t *p2)
-{ p->sync_state = p2->sync_state; p->pedal = p2->pedal;
+static inline IMU_ACCELERATION_t *IMU_ACCELERATION_copy_from_pe(IMU_ACCELERATION_t *p, const IMU_ACCELERATION_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->accel_x, &p2->accel_x); flatbuffers_uint16_copy_from_pe(&p->accel_y, &p2->accel_y); flatbuffers_uint16_copy_from_pe(&p->accel_z, &p2->accel_z);
   return p; }
-__flatbuffers_build_struct(flatbuffers_, SET_PEDALS_RANGE, 2, 1, SET_PEDALS_RANGE_file_identifier, SET_PEDALS_RANGE_type_identifier)
-__flatbuffers_define_fixed_array_primitives(flatbuffers_, SET_PEDALS_RANGE, SET_PEDALS_RANGE_t)
+__flatbuffers_build_struct(flatbuffers_, IMU_ACCELERATION, 6, 2, IMU_ACCELERATION_file_identifier, IMU_ACCELERATION_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IMU_ACCELERATION, IMU_ACCELERATION_t)
 
-#define __ACCELERATOR_PEDAL_VAL_formal_args , uint8_t v0
-#define __ACCELERATOR_PEDAL_VAL_call_args , v0
-static inline ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_assign(ACCELERATOR_PEDAL_VAL_t *p, uint8_t v0)
-{ p->level = v0;
+#define __IRTS_FL_0_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_FL_0_call_args , v0, v1, v2, v3
+static inline IRTS_FL_0_t *IRTS_FL_0_assign(IRTS_FL_0_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel1 = v0; p->channel2 = v1; p->channel3 = v2; p->channel4 = v3;
   return p; }
-static inline ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_copy(ACCELERATOR_PEDAL_VAL_t *p, const ACCELERATOR_PEDAL_VAL_t *p2)
-{ p->level = p2->level;
+static inline IRTS_FL_0_t *IRTS_FL_0_copy(IRTS_FL_0_t *p, const IRTS_FL_0_t *p2)
+{ p->channel1 = p2->channel1; p->channel2 = p2->channel2; p->channel3 = p2->channel3; p->channel4 = p2->channel4;
   return p; }
-static inline ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_assign_to_pe(ACCELERATOR_PEDAL_VAL_t *p, uint8_t v0)
-{ p->level = v0;
+static inline IRTS_FL_0_t *IRTS_FL_0_assign_to_pe(IRTS_FL_0_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel1, v0); flatbuffers_uint16_assign_to_pe(&p->channel2, v1); flatbuffers_uint16_assign_to_pe(&p->channel3, v2); flatbuffers_uint16_assign_to_pe(&p->channel4, v3);
   return p; }
-static inline ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_copy_to_pe(ACCELERATOR_PEDAL_VAL_t *p, const ACCELERATOR_PEDAL_VAL_t *p2)
-{ p->level = p2->level;
+static inline IRTS_FL_0_t *IRTS_FL_0_copy_to_pe(IRTS_FL_0_t *p, const IRTS_FL_0_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel1, &p2->channel1); flatbuffers_uint16_copy_to_pe(&p->channel2, &p2->channel2); flatbuffers_uint16_copy_to_pe(&p->channel3, &p2->channel3); flatbuffers_uint16_copy_to_pe(&p->channel4, &p2->channel4);
   return p; }
-static inline ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_assign_from_pe(ACCELERATOR_PEDAL_VAL_t *p, uint8_t v0)
-{ p->level = v0;
+static inline IRTS_FL_0_t *IRTS_FL_0_assign_from_pe(IRTS_FL_0_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel1, v0); flatbuffers_uint16_assign_from_pe(&p->channel2, v1); flatbuffers_uint16_assign_from_pe(&p->channel3, v2); flatbuffers_uint16_assign_from_pe(&p->channel4, v3);
   return p; }
-static inline ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_copy_from_pe(ACCELERATOR_PEDAL_VAL_t *p, const ACCELERATOR_PEDAL_VAL_t *p2)
-{ p->level = p2->level;
+static inline IRTS_FL_0_t *IRTS_FL_0_copy_from_pe(IRTS_FL_0_t *p, const IRTS_FL_0_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel1, &p2->channel1); flatbuffers_uint16_copy_from_pe(&p->channel2, &p2->channel2); flatbuffers_uint16_copy_from_pe(&p->channel3, &p2->channel3); flatbuffers_uint16_copy_from_pe(&p->channel4, &p2->channel4);
   return p; }
-__flatbuffers_build_struct(flatbuffers_, ACCELERATOR_PEDAL_VAL, 1, 1, ACCELERATOR_PEDAL_VAL_file_identifier, ACCELERATOR_PEDAL_VAL_type_identifier)
-__flatbuffers_define_fixed_array_primitives(flatbuffers_, ACCELERATOR_PEDAL_VAL, ACCELERATOR_PEDAL_VAL_t)
+__flatbuffers_build_struct(flatbuffers_, IRTS_FL_0, 8, 2, IRTS_FL_0_file_identifier, IRTS_FL_0_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_FL_0, IRTS_FL_0_t)
 
-#define __BRAKE_PEDAL_VAL_formal_args , uint8_t v0
-#define __BRAKE_PEDAL_VAL_call_args , v0
-static inline BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_assign(BRAKE_PEDAL_VAL_t *p, uint8_t v0)
-{ p->level = v0;
+#define __IRTS_FL_1_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_FL_1_call_args , v0, v1, v2, v3
+static inline IRTS_FL_1_t *IRTS_FL_1_assign(IRTS_FL_1_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel5 = v0; p->channel6 = v1; p->channel7 = v2; p->channel8 = v3;
   return p; }
-static inline BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_copy(BRAKE_PEDAL_VAL_t *p, const BRAKE_PEDAL_VAL_t *p2)
-{ p->level = p2->level;
+static inline IRTS_FL_1_t *IRTS_FL_1_copy(IRTS_FL_1_t *p, const IRTS_FL_1_t *p2)
+{ p->channel5 = p2->channel5; p->channel6 = p2->channel6; p->channel7 = p2->channel7; p->channel8 = p2->channel8;
   return p; }
-static inline BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_assign_to_pe(BRAKE_PEDAL_VAL_t *p, uint8_t v0)
-{ p->level = v0;
+static inline IRTS_FL_1_t *IRTS_FL_1_assign_to_pe(IRTS_FL_1_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel5, v0); flatbuffers_uint16_assign_to_pe(&p->channel6, v1); flatbuffers_uint16_assign_to_pe(&p->channel7, v2); flatbuffers_uint16_assign_to_pe(&p->channel8, v3);
   return p; }
-static inline BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_copy_to_pe(BRAKE_PEDAL_VAL_t *p, const BRAKE_PEDAL_VAL_t *p2)
-{ p->level = p2->level;
+static inline IRTS_FL_1_t *IRTS_FL_1_copy_to_pe(IRTS_FL_1_t *p, const IRTS_FL_1_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel5, &p2->channel5); flatbuffers_uint16_copy_to_pe(&p->channel6, &p2->channel6); flatbuffers_uint16_copy_to_pe(&p->channel7, &p2->channel7); flatbuffers_uint16_copy_to_pe(&p->channel8, &p2->channel8);
   return p; }
-static inline BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_assign_from_pe(BRAKE_PEDAL_VAL_t *p, uint8_t v0)
-{ p->level = v0;
+static inline IRTS_FL_1_t *IRTS_FL_1_assign_from_pe(IRTS_FL_1_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel5, v0); flatbuffers_uint16_assign_from_pe(&p->channel6, v1); flatbuffers_uint16_assign_from_pe(&p->channel7, v2); flatbuffers_uint16_assign_from_pe(&p->channel8, v3);
   return p; }
-static inline BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_copy_from_pe(BRAKE_PEDAL_VAL_t *p, const BRAKE_PEDAL_VAL_t *p2)
-{ p->level = p2->level;
+static inline IRTS_FL_1_t *IRTS_FL_1_copy_from_pe(IRTS_FL_1_t *p, const IRTS_FL_1_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel5, &p2->channel5); flatbuffers_uint16_copy_from_pe(&p->channel6, &p2->channel6); flatbuffers_uint16_copy_from_pe(&p->channel7, &p2->channel7); flatbuffers_uint16_copy_from_pe(&p->channel8, &p2->channel8);
   return p; }
-__flatbuffers_build_struct(flatbuffers_, BRAKE_PEDAL_VAL, 1, 1, BRAKE_PEDAL_VAL_file_identifier, BRAKE_PEDAL_VAL_type_identifier)
-__flatbuffers_define_fixed_array_primitives(flatbuffers_, BRAKE_PEDAL_VAL, BRAKE_PEDAL_VAL_t)
+__flatbuffers_build_struct(flatbuffers_, IRTS_FL_1, 8, 2, IRTS_FL_1_file_identifier, IRTS_FL_1_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_FL_1, IRTS_FL_1_t)
+
+#define __IRTS_FL_2_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_FL_2_call_args , v0, v1, v2, v3
+static inline IRTS_FL_2_t *IRTS_FL_2_assign(IRTS_FL_2_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel9 = v0; p->channel10 = v1; p->channel11 = v2; p->channel12 = v3;
+  return p; }
+static inline IRTS_FL_2_t *IRTS_FL_2_copy(IRTS_FL_2_t *p, const IRTS_FL_2_t *p2)
+{ p->channel9 = p2->channel9; p->channel10 = p2->channel10; p->channel11 = p2->channel11; p->channel12 = p2->channel12;
+  return p; }
+static inline IRTS_FL_2_t *IRTS_FL_2_assign_to_pe(IRTS_FL_2_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel9, v0); flatbuffers_uint16_assign_to_pe(&p->channel10, v1); flatbuffers_uint16_assign_to_pe(&p->channel11, v2); flatbuffers_uint16_assign_to_pe(&p->channel12, v3);
+  return p; }
+static inline IRTS_FL_2_t *IRTS_FL_2_copy_to_pe(IRTS_FL_2_t *p, const IRTS_FL_2_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel9, &p2->channel9); flatbuffers_uint16_copy_to_pe(&p->channel10, &p2->channel10); flatbuffers_uint16_copy_to_pe(&p->channel11, &p2->channel11); flatbuffers_uint16_copy_to_pe(&p->channel12, &p2->channel12);
+  return p; }
+static inline IRTS_FL_2_t *IRTS_FL_2_assign_from_pe(IRTS_FL_2_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel9, v0); flatbuffers_uint16_assign_from_pe(&p->channel10, v1); flatbuffers_uint16_assign_from_pe(&p->channel11, v2); flatbuffers_uint16_assign_from_pe(&p->channel12, v3);
+  return p; }
+static inline IRTS_FL_2_t *IRTS_FL_2_copy_from_pe(IRTS_FL_2_t *p, const IRTS_FL_2_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel9, &p2->channel9); flatbuffers_uint16_copy_from_pe(&p->channel10, &p2->channel10); flatbuffers_uint16_copy_from_pe(&p->channel11, &p2->channel11); flatbuffers_uint16_copy_from_pe(&p->channel12, &p2->channel12);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_FL_2, 8, 2, IRTS_FL_2_file_identifier, IRTS_FL_2_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_FL_2, IRTS_FL_2_t)
+
+#define __IRTS_FL_3_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_FL_3_call_args , v0, v1, v2, v3
+static inline IRTS_FL_3_t *IRTS_FL_3_assign(IRTS_FL_3_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel13 = v0; p->channel14 = v1; p->channel15 = v2; p->channel16 = v3;
+  return p; }
+static inline IRTS_FL_3_t *IRTS_FL_3_copy(IRTS_FL_3_t *p, const IRTS_FL_3_t *p2)
+{ p->channel13 = p2->channel13; p->channel14 = p2->channel14; p->channel15 = p2->channel15; p->channel16 = p2->channel16;
+  return p; }
+static inline IRTS_FL_3_t *IRTS_FL_3_assign_to_pe(IRTS_FL_3_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel13, v0); flatbuffers_uint16_assign_to_pe(&p->channel14, v1); flatbuffers_uint16_assign_to_pe(&p->channel15, v2); flatbuffers_uint16_assign_to_pe(&p->channel16, v3);
+  return p; }
+static inline IRTS_FL_3_t *IRTS_FL_3_copy_to_pe(IRTS_FL_3_t *p, const IRTS_FL_3_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel13, &p2->channel13); flatbuffers_uint16_copy_to_pe(&p->channel14, &p2->channel14); flatbuffers_uint16_copy_to_pe(&p->channel15, &p2->channel15); flatbuffers_uint16_copy_to_pe(&p->channel16, &p2->channel16);
+  return p; }
+static inline IRTS_FL_3_t *IRTS_FL_3_assign_from_pe(IRTS_FL_3_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel13, v0); flatbuffers_uint16_assign_from_pe(&p->channel14, v1); flatbuffers_uint16_assign_from_pe(&p->channel15, v2); flatbuffers_uint16_assign_from_pe(&p->channel16, v3);
+  return p; }
+static inline IRTS_FL_3_t *IRTS_FL_3_copy_from_pe(IRTS_FL_3_t *p, const IRTS_FL_3_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel13, &p2->channel13); flatbuffers_uint16_copy_from_pe(&p->channel14, &p2->channel14); flatbuffers_uint16_copy_from_pe(&p->channel15, &p2->channel15); flatbuffers_uint16_copy_from_pe(&p->channel16, &p2->channel16);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_FL_3, 8, 2, IRTS_FL_3_file_identifier, IRTS_FL_3_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_FL_3, IRTS_FL_3_t)
+
+#define __IRTS_FR_0_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_FR_0_call_args , v0, v1, v2, v3
+static inline IRTS_FR_0_t *IRTS_FR_0_assign(IRTS_FR_0_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel1 = v0; p->channel2 = v1; p->channel3 = v2; p->channel4 = v3;
+  return p; }
+static inline IRTS_FR_0_t *IRTS_FR_0_copy(IRTS_FR_0_t *p, const IRTS_FR_0_t *p2)
+{ p->channel1 = p2->channel1; p->channel2 = p2->channel2; p->channel3 = p2->channel3; p->channel4 = p2->channel4;
+  return p; }
+static inline IRTS_FR_0_t *IRTS_FR_0_assign_to_pe(IRTS_FR_0_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel1, v0); flatbuffers_uint16_assign_to_pe(&p->channel2, v1); flatbuffers_uint16_assign_to_pe(&p->channel3, v2); flatbuffers_uint16_assign_to_pe(&p->channel4, v3);
+  return p; }
+static inline IRTS_FR_0_t *IRTS_FR_0_copy_to_pe(IRTS_FR_0_t *p, const IRTS_FR_0_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel1, &p2->channel1); flatbuffers_uint16_copy_to_pe(&p->channel2, &p2->channel2); flatbuffers_uint16_copy_to_pe(&p->channel3, &p2->channel3); flatbuffers_uint16_copy_to_pe(&p->channel4, &p2->channel4);
+  return p; }
+static inline IRTS_FR_0_t *IRTS_FR_0_assign_from_pe(IRTS_FR_0_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel1, v0); flatbuffers_uint16_assign_from_pe(&p->channel2, v1); flatbuffers_uint16_assign_from_pe(&p->channel3, v2); flatbuffers_uint16_assign_from_pe(&p->channel4, v3);
+  return p; }
+static inline IRTS_FR_0_t *IRTS_FR_0_copy_from_pe(IRTS_FR_0_t *p, const IRTS_FR_0_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel1, &p2->channel1); flatbuffers_uint16_copy_from_pe(&p->channel2, &p2->channel2); flatbuffers_uint16_copy_from_pe(&p->channel3, &p2->channel3); flatbuffers_uint16_copy_from_pe(&p->channel4, &p2->channel4);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_FR_0, 8, 2, IRTS_FR_0_file_identifier, IRTS_FR_0_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_FR_0, IRTS_FR_0_t)
+
+#define __IRTS_FR_1_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_FR_1_call_args , v0, v1, v2, v3
+static inline IRTS_FR_1_t *IRTS_FR_1_assign(IRTS_FR_1_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel5 = v0; p->channel6 = v1; p->channel7 = v2; p->channel8 = v3;
+  return p; }
+static inline IRTS_FR_1_t *IRTS_FR_1_copy(IRTS_FR_1_t *p, const IRTS_FR_1_t *p2)
+{ p->channel5 = p2->channel5; p->channel6 = p2->channel6; p->channel7 = p2->channel7; p->channel8 = p2->channel8;
+  return p; }
+static inline IRTS_FR_1_t *IRTS_FR_1_assign_to_pe(IRTS_FR_1_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel5, v0); flatbuffers_uint16_assign_to_pe(&p->channel6, v1); flatbuffers_uint16_assign_to_pe(&p->channel7, v2); flatbuffers_uint16_assign_to_pe(&p->channel8, v3);
+  return p; }
+static inline IRTS_FR_1_t *IRTS_FR_1_copy_to_pe(IRTS_FR_1_t *p, const IRTS_FR_1_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel5, &p2->channel5); flatbuffers_uint16_copy_to_pe(&p->channel6, &p2->channel6); flatbuffers_uint16_copy_to_pe(&p->channel7, &p2->channel7); flatbuffers_uint16_copy_to_pe(&p->channel8, &p2->channel8);
+  return p; }
+static inline IRTS_FR_1_t *IRTS_FR_1_assign_from_pe(IRTS_FR_1_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel5, v0); flatbuffers_uint16_assign_from_pe(&p->channel6, v1); flatbuffers_uint16_assign_from_pe(&p->channel7, v2); flatbuffers_uint16_assign_from_pe(&p->channel8, v3);
+  return p; }
+static inline IRTS_FR_1_t *IRTS_FR_1_copy_from_pe(IRTS_FR_1_t *p, const IRTS_FR_1_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel5, &p2->channel5); flatbuffers_uint16_copy_from_pe(&p->channel6, &p2->channel6); flatbuffers_uint16_copy_from_pe(&p->channel7, &p2->channel7); flatbuffers_uint16_copy_from_pe(&p->channel8, &p2->channel8);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_FR_1, 8, 2, IRTS_FR_1_file_identifier, IRTS_FR_1_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_FR_1, IRTS_FR_1_t)
+
+#define __IRTS_FR_2_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_FR_2_call_args , v0, v1, v2, v3
+static inline IRTS_FR_2_t *IRTS_FR_2_assign(IRTS_FR_2_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel9 = v0; p->channel10 = v1; p->channel11 = v2; p->channel12 = v3;
+  return p; }
+static inline IRTS_FR_2_t *IRTS_FR_2_copy(IRTS_FR_2_t *p, const IRTS_FR_2_t *p2)
+{ p->channel9 = p2->channel9; p->channel10 = p2->channel10; p->channel11 = p2->channel11; p->channel12 = p2->channel12;
+  return p; }
+static inline IRTS_FR_2_t *IRTS_FR_2_assign_to_pe(IRTS_FR_2_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel9, v0); flatbuffers_uint16_assign_to_pe(&p->channel10, v1); flatbuffers_uint16_assign_to_pe(&p->channel11, v2); flatbuffers_uint16_assign_to_pe(&p->channel12, v3);
+  return p; }
+static inline IRTS_FR_2_t *IRTS_FR_2_copy_to_pe(IRTS_FR_2_t *p, const IRTS_FR_2_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel9, &p2->channel9); flatbuffers_uint16_copy_to_pe(&p->channel10, &p2->channel10); flatbuffers_uint16_copy_to_pe(&p->channel11, &p2->channel11); flatbuffers_uint16_copy_to_pe(&p->channel12, &p2->channel12);
+  return p; }
+static inline IRTS_FR_2_t *IRTS_FR_2_assign_from_pe(IRTS_FR_2_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel9, v0); flatbuffers_uint16_assign_from_pe(&p->channel10, v1); flatbuffers_uint16_assign_from_pe(&p->channel11, v2); flatbuffers_uint16_assign_from_pe(&p->channel12, v3);
+  return p; }
+static inline IRTS_FR_2_t *IRTS_FR_2_copy_from_pe(IRTS_FR_2_t *p, const IRTS_FR_2_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel9, &p2->channel9); flatbuffers_uint16_copy_from_pe(&p->channel10, &p2->channel10); flatbuffers_uint16_copy_from_pe(&p->channel11, &p2->channel11); flatbuffers_uint16_copy_from_pe(&p->channel12, &p2->channel12);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_FR_2, 8, 2, IRTS_FR_2_file_identifier, IRTS_FR_2_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_FR_2, IRTS_FR_2_t)
+
+#define __IRTS_FR_3_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_FR_3_call_args , v0, v1, v2, v3
+static inline IRTS_FR_3_t *IRTS_FR_3_assign(IRTS_FR_3_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel13 = v0; p->channel14 = v1; p->channel15 = v2; p->channel16 = v3;
+  return p; }
+static inline IRTS_FR_3_t *IRTS_FR_3_copy(IRTS_FR_3_t *p, const IRTS_FR_3_t *p2)
+{ p->channel13 = p2->channel13; p->channel14 = p2->channel14; p->channel15 = p2->channel15; p->channel16 = p2->channel16;
+  return p; }
+static inline IRTS_FR_3_t *IRTS_FR_3_assign_to_pe(IRTS_FR_3_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel13, v0); flatbuffers_uint16_assign_to_pe(&p->channel14, v1); flatbuffers_uint16_assign_to_pe(&p->channel15, v2); flatbuffers_uint16_assign_to_pe(&p->channel16, v3);
+  return p; }
+static inline IRTS_FR_3_t *IRTS_FR_3_copy_to_pe(IRTS_FR_3_t *p, const IRTS_FR_3_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel13, &p2->channel13); flatbuffers_uint16_copy_to_pe(&p->channel14, &p2->channel14); flatbuffers_uint16_copy_to_pe(&p->channel15, &p2->channel15); flatbuffers_uint16_copy_to_pe(&p->channel16, &p2->channel16);
+  return p; }
+static inline IRTS_FR_3_t *IRTS_FR_3_assign_from_pe(IRTS_FR_3_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel13, v0); flatbuffers_uint16_assign_from_pe(&p->channel14, v1); flatbuffers_uint16_assign_from_pe(&p->channel15, v2); flatbuffers_uint16_assign_from_pe(&p->channel16, v3);
+  return p; }
+static inline IRTS_FR_3_t *IRTS_FR_3_copy_from_pe(IRTS_FR_3_t *p, const IRTS_FR_3_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel13, &p2->channel13); flatbuffers_uint16_copy_from_pe(&p->channel14, &p2->channel14); flatbuffers_uint16_copy_from_pe(&p->channel15, &p2->channel15); flatbuffers_uint16_copy_from_pe(&p->channel16, &p2->channel16);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_FR_3, 8, 2, IRTS_FR_3_file_identifier, IRTS_FR_3_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_FR_3, IRTS_FR_3_t)
+
+#define __IRTS_RL_0_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_RL_0_call_args , v0, v1, v2, v3
+static inline IRTS_RL_0_t *IRTS_RL_0_assign(IRTS_RL_0_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel1 = v0; p->channel2 = v1; p->channel3 = v2; p->channel4 = v3;
+  return p; }
+static inline IRTS_RL_0_t *IRTS_RL_0_copy(IRTS_RL_0_t *p, const IRTS_RL_0_t *p2)
+{ p->channel1 = p2->channel1; p->channel2 = p2->channel2; p->channel3 = p2->channel3; p->channel4 = p2->channel4;
+  return p; }
+static inline IRTS_RL_0_t *IRTS_RL_0_assign_to_pe(IRTS_RL_0_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel1, v0); flatbuffers_uint16_assign_to_pe(&p->channel2, v1); flatbuffers_uint16_assign_to_pe(&p->channel3, v2); flatbuffers_uint16_assign_to_pe(&p->channel4, v3);
+  return p; }
+static inline IRTS_RL_0_t *IRTS_RL_0_copy_to_pe(IRTS_RL_0_t *p, const IRTS_RL_0_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel1, &p2->channel1); flatbuffers_uint16_copy_to_pe(&p->channel2, &p2->channel2); flatbuffers_uint16_copy_to_pe(&p->channel3, &p2->channel3); flatbuffers_uint16_copy_to_pe(&p->channel4, &p2->channel4);
+  return p; }
+static inline IRTS_RL_0_t *IRTS_RL_0_assign_from_pe(IRTS_RL_0_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel1, v0); flatbuffers_uint16_assign_from_pe(&p->channel2, v1); flatbuffers_uint16_assign_from_pe(&p->channel3, v2); flatbuffers_uint16_assign_from_pe(&p->channel4, v3);
+  return p; }
+static inline IRTS_RL_0_t *IRTS_RL_0_copy_from_pe(IRTS_RL_0_t *p, const IRTS_RL_0_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel1, &p2->channel1); flatbuffers_uint16_copy_from_pe(&p->channel2, &p2->channel2); flatbuffers_uint16_copy_from_pe(&p->channel3, &p2->channel3); flatbuffers_uint16_copy_from_pe(&p->channel4, &p2->channel4);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_RL_0, 8, 2, IRTS_RL_0_file_identifier, IRTS_RL_0_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_RL_0, IRTS_RL_0_t)
+
+#define __IRTS_RL_1_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_RL_1_call_args , v0, v1, v2, v3
+static inline IRTS_RL_1_t *IRTS_RL_1_assign(IRTS_RL_1_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel5 = v0; p->channel6 = v1; p->channel7 = v2; p->channel8 = v3;
+  return p; }
+static inline IRTS_RL_1_t *IRTS_RL_1_copy(IRTS_RL_1_t *p, const IRTS_RL_1_t *p2)
+{ p->channel5 = p2->channel5; p->channel6 = p2->channel6; p->channel7 = p2->channel7; p->channel8 = p2->channel8;
+  return p; }
+static inline IRTS_RL_1_t *IRTS_RL_1_assign_to_pe(IRTS_RL_1_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel5, v0); flatbuffers_uint16_assign_to_pe(&p->channel6, v1); flatbuffers_uint16_assign_to_pe(&p->channel7, v2); flatbuffers_uint16_assign_to_pe(&p->channel8, v3);
+  return p; }
+static inline IRTS_RL_1_t *IRTS_RL_1_copy_to_pe(IRTS_RL_1_t *p, const IRTS_RL_1_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel5, &p2->channel5); flatbuffers_uint16_copy_to_pe(&p->channel6, &p2->channel6); flatbuffers_uint16_copy_to_pe(&p->channel7, &p2->channel7); flatbuffers_uint16_copy_to_pe(&p->channel8, &p2->channel8);
+  return p; }
+static inline IRTS_RL_1_t *IRTS_RL_1_assign_from_pe(IRTS_RL_1_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel5, v0); flatbuffers_uint16_assign_from_pe(&p->channel6, v1); flatbuffers_uint16_assign_from_pe(&p->channel7, v2); flatbuffers_uint16_assign_from_pe(&p->channel8, v3);
+  return p; }
+static inline IRTS_RL_1_t *IRTS_RL_1_copy_from_pe(IRTS_RL_1_t *p, const IRTS_RL_1_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel5, &p2->channel5); flatbuffers_uint16_copy_from_pe(&p->channel6, &p2->channel6); flatbuffers_uint16_copy_from_pe(&p->channel7, &p2->channel7); flatbuffers_uint16_copy_from_pe(&p->channel8, &p2->channel8);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_RL_1, 8, 2, IRTS_RL_1_file_identifier, IRTS_RL_1_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_RL_1, IRTS_RL_1_t)
+
+#define __IRTS_RL_2_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_RL_2_call_args , v0, v1, v2, v3
+static inline IRTS_RL_2_t *IRTS_RL_2_assign(IRTS_RL_2_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel9 = v0; p->channel10 = v1; p->channel11 = v2; p->channel12 = v3;
+  return p; }
+static inline IRTS_RL_2_t *IRTS_RL_2_copy(IRTS_RL_2_t *p, const IRTS_RL_2_t *p2)
+{ p->channel9 = p2->channel9; p->channel10 = p2->channel10; p->channel11 = p2->channel11; p->channel12 = p2->channel12;
+  return p; }
+static inline IRTS_RL_2_t *IRTS_RL_2_assign_to_pe(IRTS_RL_2_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel9, v0); flatbuffers_uint16_assign_to_pe(&p->channel10, v1); flatbuffers_uint16_assign_to_pe(&p->channel11, v2); flatbuffers_uint16_assign_to_pe(&p->channel12, v3);
+  return p; }
+static inline IRTS_RL_2_t *IRTS_RL_2_copy_to_pe(IRTS_RL_2_t *p, const IRTS_RL_2_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel9, &p2->channel9); flatbuffers_uint16_copy_to_pe(&p->channel10, &p2->channel10); flatbuffers_uint16_copy_to_pe(&p->channel11, &p2->channel11); flatbuffers_uint16_copy_to_pe(&p->channel12, &p2->channel12);
+  return p; }
+static inline IRTS_RL_2_t *IRTS_RL_2_assign_from_pe(IRTS_RL_2_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel9, v0); flatbuffers_uint16_assign_from_pe(&p->channel10, v1); flatbuffers_uint16_assign_from_pe(&p->channel11, v2); flatbuffers_uint16_assign_from_pe(&p->channel12, v3);
+  return p; }
+static inline IRTS_RL_2_t *IRTS_RL_2_copy_from_pe(IRTS_RL_2_t *p, const IRTS_RL_2_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel9, &p2->channel9); flatbuffers_uint16_copy_from_pe(&p->channel10, &p2->channel10); flatbuffers_uint16_copy_from_pe(&p->channel11, &p2->channel11); flatbuffers_uint16_copy_from_pe(&p->channel12, &p2->channel12);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_RL_2, 8, 2, IRTS_RL_2_file_identifier, IRTS_RL_2_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_RL_2, IRTS_RL_2_t)
+
+#define __IRTS_RL_3_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_RL_3_call_args , v0, v1, v2, v3
+static inline IRTS_RL_3_t *IRTS_RL_3_assign(IRTS_RL_3_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel13 = v0; p->channel14 = v1; p->channel15 = v2; p->channel16 = v3;
+  return p; }
+static inline IRTS_RL_3_t *IRTS_RL_3_copy(IRTS_RL_3_t *p, const IRTS_RL_3_t *p2)
+{ p->channel13 = p2->channel13; p->channel14 = p2->channel14; p->channel15 = p2->channel15; p->channel16 = p2->channel16;
+  return p; }
+static inline IRTS_RL_3_t *IRTS_RL_3_assign_to_pe(IRTS_RL_3_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel13, v0); flatbuffers_uint16_assign_to_pe(&p->channel14, v1); flatbuffers_uint16_assign_to_pe(&p->channel15, v2); flatbuffers_uint16_assign_to_pe(&p->channel16, v3);
+  return p; }
+static inline IRTS_RL_3_t *IRTS_RL_3_copy_to_pe(IRTS_RL_3_t *p, const IRTS_RL_3_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel13, &p2->channel13); flatbuffers_uint16_copy_to_pe(&p->channel14, &p2->channel14); flatbuffers_uint16_copy_to_pe(&p->channel15, &p2->channel15); flatbuffers_uint16_copy_to_pe(&p->channel16, &p2->channel16);
+  return p; }
+static inline IRTS_RL_3_t *IRTS_RL_3_assign_from_pe(IRTS_RL_3_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel13, v0); flatbuffers_uint16_assign_from_pe(&p->channel14, v1); flatbuffers_uint16_assign_from_pe(&p->channel15, v2); flatbuffers_uint16_assign_from_pe(&p->channel16, v3);
+  return p; }
+static inline IRTS_RL_3_t *IRTS_RL_3_copy_from_pe(IRTS_RL_3_t *p, const IRTS_RL_3_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel13, &p2->channel13); flatbuffers_uint16_copy_from_pe(&p->channel14, &p2->channel14); flatbuffers_uint16_copy_from_pe(&p->channel15, &p2->channel15); flatbuffers_uint16_copy_from_pe(&p->channel16, &p2->channel16);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_RL_3, 8, 2, IRTS_RL_3_file_identifier, IRTS_RL_3_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_RL_3, IRTS_RL_3_t)
+
+#define __IRTS_RR_0_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_RR_0_call_args , v0, v1, v2, v3
+static inline IRTS_RR_0_t *IRTS_RR_0_assign(IRTS_RR_0_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel1 = v0; p->channel2 = v1; p->channel3 = v2; p->channel4 = v3;
+  return p; }
+static inline IRTS_RR_0_t *IRTS_RR_0_copy(IRTS_RR_0_t *p, const IRTS_RR_0_t *p2)
+{ p->channel1 = p2->channel1; p->channel2 = p2->channel2; p->channel3 = p2->channel3; p->channel4 = p2->channel4;
+  return p; }
+static inline IRTS_RR_0_t *IRTS_RR_0_assign_to_pe(IRTS_RR_0_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel1, v0); flatbuffers_uint16_assign_to_pe(&p->channel2, v1); flatbuffers_uint16_assign_to_pe(&p->channel3, v2); flatbuffers_uint16_assign_to_pe(&p->channel4, v3);
+  return p; }
+static inline IRTS_RR_0_t *IRTS_RR_0_copy_to_pe(IRTS_RR_0_t *p, const IRTS_RR_0_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel1, &p2->channel1); flatbuffers_uint16_copy_to_pe(&p->channel2, &p2->channel2); flatbuffers_uint16_copy_to_pe(&p->channel3, &p2->channel3); flatbuffers_uint16_copy_to_pe(&p->channel4, &p2->channel4);
+  return p; }
+static inline IRTS_RR_0_t *IRTS_RR_0_assign_from_pe(IRTS_RR_0_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel1, v0); flatbuffers_uint16_assign_from_pe(&p->channel2, v1); flatbuffers_uint16_assign_from_pe(&p->channel3, v2); flatbuffers_uint16_assign_from_pe(&p->channel4, v3);
+  return p; }
+static inline IRTS_RR_0_t *IRTS_RR_0_copy_from_pe(IRTS_RR_0_t *p, const IRTS_RR_0_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel1, &p2->channel1); flatbuffers_uint16_copy_from_pe(&p->channel2, &p2->channel2); flatbuffers_uint16_copy_from_pe(&p->channel3, &p2->channel3); flatbuffers_uint16_copy_from_pe(&p->channel4, &p2->channel4);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_RR_0, 8, 2, IRTS_RR_0_file_identifier, IRTS_RR_0_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_RR_0, IRTS_RR_0_t)
+
+#define __IRTS_RR_1_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_RR_1_call_args , v0, v1, v2, v3
+static inline IRTS_RR_1_t *IRTS_RR_1_assign(IRTS_RR_1_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel5 = v0; p->channel6 = v1; p->channel7 = v2; p->channel8 = v3;
+  return p; }
+static inline IRTS_RR_1_t *IRTS_RR_1_copy(IRTS_RR_1_t *p, const IRTS_RR_1_t *p2)
+{ p->channel5 = p2->channel5; p->channel6 = p2->channel6; p->channel7 = p2->channel7; p->channel8 = p2->channel8;
+  return p; }
+static inline IRTS_RR_1_t *IRTS_RR_1_assign_to_pe(IRTS_RR_1_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel5, v0); flatbuffers_uint16_assign_to_pe(&p->channel6, v1); flatbuffers_uint16_assign_to_pe(&p->channel7, v2); flatbuffers_uint16_assign_to_pe(&p->channel8, v3);
+  return p; }
+static inline IRTS_RR_1_t *IRTS_RR_1_copy_to_pe(IRTS_RR_1_t *p, const IRTS_RR_1_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel5, &p2->channel5); flatbuffers_uint16_copy_to_pe(&p->channel6, &p2->channel6); flatbuffers_uint16_copy_to_pe(&p->channel7, &p2->channel7); flatbuffers_uint16_copy_to_pe(&p->channel8, &p2->channel8);
+  return p; }
+static inline IRTS_RR_1_t *IRTS_RR_1_assign_from_pe(IRTS_RR_1_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel5, v0); flatbuffers_uint16_assign_from_pe(&p->channel6, v1); flatbuffers_uint16_assign_from_pe(&p->channel7, v2); flatbuffers_uint16_assign_from_pe(&p->channel8, v3);
+  return p; }
+static inline IRTS_RR_1_t *IRTS_RR_1_copy_from_pe(IRTS_RR_1_t *p, const IRTS_RR_1_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel5, &p2->channel5); flatbuffers_uint16_copy_from_pe(&p->channel6, &p2->channel6); flatbuffers_uint16_copy_from_pe(&p->channel7, &p2->channel7); flatbuffers_uint16_copy_from_pe(&p->channel8, &p2->channel8);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_RR_1, 8, 2, IRTS_RR_1_file_identifier, IRTS_RR_1_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_RR_1, IRTS_RR_1_t)
+
+#define __IRTS_RR_2_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_RR_2_call_args , v0, v1, v2, v3
+static inline IRTS_RR_2_t *IRTS_RR_2_assign(IRTS_RR_2_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel9 = v0; p->channel10 = v1; p->channel11 = v2; p->channel12 = v3;
+  return p; }
+static inline IRTS_RR_2_t *IRTS_RR_2_copy(IRTS_RR_2_t *p, const IRTS_RR_2_t *p2)
+{ p->channel9 = p2->channel9; p->channel10 = p2->channel10; p->channel11 = p2->channel11; p->channel12 = p2->channel12;
+  return p; }
+static inline IRTS_RR_2_t *IRTS_RR_2_assign_to_pe(IRTS_RR_2_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel9, v0); flatbuffers_uint16_assign_to_pe(&p->channel10, v1); flatbuffers_uint16_assign_to_pe(&p->channel11, v2); flatbuffers_uint16_assign_to_pe(&p->channel12, v3);
+  return p; }
+static inline IRTS_RR_2_t *IRTS_RR_2_copy_to_pe(IRTS_RR_2_t *p, const IRTS_RR_2_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel9, &p2->channel9); flatbuffers_uint16_copy_to_pe(&p->channel10, &p2->channel10); flatbuffers_uint16_copy_to_pe(&p->channel11, &p2->channel11); flatbuffers_uint16_copy_to_pe(&p->channel12, &p2->channel12);
+  return p; }
+static inline IRTS_RR_2_t *IRTS_RR_2_assign_from_pe(IRTS_RR_2_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel9, v0); flatbuffers_uint16_assign_from_pe(&p->channel10, v1); flatbuffers_uint16_assign_from_pe(&p->channel11, v2); flatbuffers_uint16_assign_from_pe(&p->channel12, v3);
+  return p; }
+static inline IRTS_RR_2_t *IRTS_RR_2_copy_from_pe(IRTS_RR_2_t *p, const IRTS_RR_2_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel9, &p2->channel9); flatbuffers_uint16_copy_from_pe(&p->channel10, &p2->channel10); flatbuffers_uint16_copy_from_pe(&p->channel11, &p2->channel11); flatbuffers_uint16_copy_from_pe(&p->channel12, &p2->channel12);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_RR_2, 8, 2, IRTS_RR_2_file_identifier, IRTS_RR_2_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_RR_2, IRTS_RR_2_t)
+
+#define __IRTS_RR_3_formal_args , uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __IRTS_RR_3_call_args , v0, v1, v2, v3
+static inline IRTS_RR_3_t *IRTS_RR_3_assign(IRTS_RR_3_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->channel13 = v0; p->channel14 = v1; p->channel15 = v2; p->channel16 = v3;
+  return p; }
+static inline IRTS_RR_3_t *IRTS_RR_3_copy(IRTS_RR_3_t *p, const IRTS_RR_3_t *p2)
+{ p->channel13 = p2->channel13; p->channel14 = p2->channel14; p->channel15 = p2->channel15; p->channel16 = p2->channel16;
+  return p; }
+static inline IRTS_RR_3_t *IRTS_RR_3_assign_to_pe(IRTS_RR_3_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_to_pe(&p->channel13, v0); flatbuffers_uint16_assign_to_pe(&p->channel14, v1); flatbuffers_uint16_assign_to_pe(&p->channel15, v2); flatbuffers_uint16_assign_to_pe(&p->channel16, v3);
+  return p; }
+static inline IRTS_RR_3_t *IRTS_RR_3_copy_to_pe(IRTS_RR_3_t *p, const IRTS_RR_3_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->channel13, &p2->channel13); flatbuffers_uint16_copy_to_pe(&p->channel14, &p2->channel14); flatbuffers_uint16_copy_to_pe(&p->channel15, &p2->channel15); flatbuffers_uint16_copy_to_pe(&p->channel16, &p2->channel16);
+  return p; }
+static inline IRTS_RR_3_t *IRTS_RR_3_assign_from_pe(IRTS_RR_3_t *p, uint16_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ flatbuffers_uint16_assign_from_pe(&p->channel13, v0); flatbuffers_uint16_assign_from_pe(&p->channel14, v1); flatbuffers_uint16_assign_from_pe(&p->channel15, v2); flatbuffers_uint16_assign_from_pe(&p->channel16, v3);
+  return p; }
+static inline IRTS_RR_3_t *IRTS_RR_3_copy_from_pe(IRTS_RR_3_t *p, const IRTS_RR_3_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->channel13, &p2->channel13); flatbuffers_uint16_copy_from_pe(&p->channel14, &p2->channel14); flatbuffers_uint16_copy_from_pe(&p->channel15, &p2->channel15); flatbuffers_uint16_copy_from_pe(&p->channel16, &p2->channel16);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, IRTS_RR_3, 8, 2, IRTS_RR_3_file_identifier, IRTS_RR_3_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, IRTS_RR_3, IRTS_RR_3_t)
 
 #include "../../../external/flatcc/flatcc_epilogue.h"
 #endif /* SCHEMA_BUILDER_H */

@@ -1,14 +1,63 @@
 {
-    "network_version": 1,
-    "ids": [
-        {
-            "topic": "PEDALS",
-            "id": 0,
+    "network_version": 0,
+    "topics": {
+        "FIXED_IDS": {
             "messages": {
-                "SET_PEDALS_RANGE": 0,
-                "ACCELERATOR_PEDAL_VAL": 1280,
-                "BRAKE_PEDAL_VAL": 1312
+                "IMU_ANGULAR_RATE": {
+                    "id": 1260
+                },
+                "IMU_ACCELERATION": {
+                    "id": 1261
+                },
+                "IRTS_FL_0": {
+                    "id": 1460
+                },
+                "IRTS_FL_1": {
+                    "id": 1461
+                },
+                "IRTS_FL_2": {
+                    "id": 1462
+                },
+                "IRTS_FL_3": {
+                    "id": 1463
+                },
+                "IRTS_FR_0": {
+                    "id": 1464
+                },
+                "IRTS_FR_1": {
+                    "id": 1465
+                },
+                "IRTS_FR_2": {
+                    "id": 1466
+                },
+                "IRTS_FR_3": {
+                    "id": 1467
+                },
+                "IRTS_RL_0": {
+                    "id": 1468
+                },
+                "IRTS_RL_1": {
+                    "id": 1469
+                },
+                "IRTS_RL_2": {
+                    "id": 1470
+                },
+                "IRTS_RL_3": {
+                    "id": 1471
+                },
+                "IRTS_RR_0": {
+                    "id": 1472
+                },
+                "IRTS_RR_1": {
+                    "id": 1473
+                },
+                "IRTS_RR_2": {
+                    "id": 1474
+                },
+                "IRTS_RR_3": {
+                    "id": 1475
+                }
             }
         }
-    ]
+    }
 }

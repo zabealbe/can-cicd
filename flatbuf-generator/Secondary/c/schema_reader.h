@@ -18,155 +18,652 @@
 #define flatbuffers_extension ".bin"
 #endif
 
-typedef struct SET_PEDALS_RANGE SET_PEDALS_RANGE_t;
-typedef const SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_struct_t;
-typedef SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_mutable_struct_t;
-typedef const SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_vec_t;
-typedef SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_mutable_vec_t;
-typedef struct ACCELERATOR_PEDAL_VAL ACCELERATOR_PEDAL_VAL_t;
-typedef const ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_struct_t;
-typedef ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_mutable_struct_t;
-typedef const ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_vec_t;
-typedef ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_mutable_vec_t;
-typedef struct BRAKE_PEDAL_VAL BRAKE_PEDAL_VAL_t;
-typedef const BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_struct_t;
-typedef BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_mutable_struct_t;
-typedef const BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_vec_t;
-typedef BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_mutable_vec_t;
+typedef struct IMU_ANGULAR_RATE IMU_ANGULAR_RATE_t;
+typedef const IMU_ANGULAR_RATE_t *IMU_ANGULAR_RATE_struct_t;
+typedef IMU_ANGULAR_RATE_t *IMU_ANGULAR_RATE_mutable_struct_t;
+typedef const IMU_ANGULAR_RATE_t *IMU_ANGULAR_RATE_vec_t;
+typedef IMU_ANGULAR_RATE_t *IMU_ANGULAR_RATE_mutable_vec_t;
+typedef struct IMU_ACCELERATION IMU_ACCELERATION_t;
+typedef const IMU_ACCELERATION_t *IMU_ACCELERATION_struct_t;
+typedef IMU_ACCELERATION_t *IMU_ACCELERATION_mutable_struct_t;
+typedef const IMU_ACCELERATION_t *IMU_ACCELERATION_vec_t;
+typedef IMU_ACCELERATION_t *IMU_ACCELERATION_mutable_vec_t;
+typedef struct IRTS_FL_0 IRTS_FL_0_t;
+typedef const IRTS_FL_0_t *IRTS_FL_0_struct_t;
+typedef IRTS_FL_0_t *IRTS_FL_0_mutable_struct_t;
+typedef const IRTS_FL_0_t *IRTS_FL_0_vec_t;
+typedef IRTS_FL_0_t *IRTS_FL_0_mutable_vec_t;
+typedef struct IRTS_FL_1 IRTS_FL_1_t;
+typedef const IRTS_FL_1_t *IRTS_FL_1_struct_t;
+typedef IRTS_FL_1_t *IRTS_FL_1_mutable_struct_t;
+typedef const IRTS_FL_1_t *IRTS_FL_1_vec_t;
+typedef IRTS_FL_1_t *IRTS_FL_1_mutable_vec_t;
+typedef struct IRTS_FL_2 IRTS_FL_2_t;
+typedef const IRTS_FL_2_t *IRTS_FL_2_struct_t;
+typedef IRTS_FL_2_t *IRTS_FL_2_mutable_struct_t;
+typedef const IRTS_FL_2_t *IRTS_FL_2_vec_t;
+typedef IRTS_FL_2_t *IRTS_FL_2_mutable_vec_t;
+typedef struct IRTS_FL_3 IRTS_FL_3_t;
+typedef const IRTS_FL_3_t *IRTS_FL_3_struct_t;
+typedef IRTS_FL_3_t *IRTS_FL_3_mutable_struct_t;
+typedef const IRTS_FL_3_t *IRTS_FL_3_vec_t;
+typedef IRTS_FL_3_t *IRTS_FL_3_mutable_vec_t;
+typedef struct IRTS_FR_0 IRTS_FR_0_t;
+typedef const IRTS_FR_0_t *IRTS_FR_0_struct_t;
+typedef IRTS_FR_0_t *IRTS_FR_0_mutable_struct_t;
+typedef const IRTS_FR_0_t *IRTS_FR_0_vec_t;
+typedef IRTS_FR_0_t *IRTS_FR_0_mutable_vec_t;
+typedef struct IRTS_FR_1 IRTS_FR_1_t;
+typedef const IRTS_FR_1_t *IRTS_FR_1_struct_t;
+typedef IRTS_FR_1_t *IRTS_FR_1_mutable_struct_t;
+typedef const IRTS_FR_1_t *IRTS_FR_1_vec_t;
+typedef IRTS_FR_1_t *IRTS_FR_1_mutable_vec_t;
+typedef struct IRTS_FR_2 IRTS_FR_2_t;
+typedef const IRTS_FR_2_t *IRTS_FR_2_struct_t;
+typedef IRTS_FR_2_t *IRTS_FR_2_mutable_struct_t;
+typedef const IRTS_FR_2_t *IRTS_FR_2_vec_t;
+typedef IRTS_FR_2_t *IRTS_FR_2_mutable_vec_t;
+typedef struct IRTS_FR_3 IRTS_FR_3_t;
+typedef const IRTS_FR_3_t *IRTS_FR_3_struct_t;
+typedef IRTS_FR_3_t *IRTS_FR_3_mutable_struct_t;
+typedef const IRTS_FR_3_t *IRTS_FR_3_vec_t;
+typedef IRTS_FR_3_t *IRTS_FR_3_mutable_vec_t;
+typedef struct IRTS_RL_0 IRTS_RL_0_t;
+typedef const IRTS_RL_0_t *IRTS_RL_0_struct_t;
+typedef IRTS_RL_0_t *IRTS_RL_0_mutable_struct_t;
+typedef const IRTS_RL_0_t *IRTS_RL_0_vec_t;
+typedef IRTS_RL_0_t *IRTS_RL_0_mutable_vec_t;
+typedef struct IRTS_RL_1 IRTS_RL_1_t;
+typedef const IRTS_RL_1_t *IRTS_RL_1_struct_t;
+typedef IRTS_RL_1_t *IRTS_RL_1_mutable_struct_t;
+typedef const IRTS_RL_1_t *IRTS_RL_1_vec_t;
+typedef IRTS_RL_1_t *IRTS_RL_1_mutable_vec_t;
+typedef struct IRTS_RL_2 IRTS_RL_2_t;
+typedef const IRTS_RL_2_t *IRTS_RL_2_struct_t;
+typedef IRTS_RL_2_t *IRTS_RL_2_mutable_struct_t;
+typedef const IRTS_RL_2_t *IRTS_RL_2_vec_t;
+typedef IRTS_RL_2_t *IRTS_RL_2_mutable_vec_t;
+typedef struct IRTS_RL_3 IRTS_RL_3_t;
+typedef const IRTS_RL_3_t *IRTS_RL_3_struct_t;
+typedef IRTS_RL_3_t *IRTS_RL_3_mutable_struct_t;
+typedef const IRTS_RL_3_t *IRTS_RL_3_vec_t;
+typedef IRTS_RL_3_t *IRTS_RL_3_mutable_vec_t;
+typedef struct IRTS_RR_0 IRTS_RR_0_t;
+typedef const IRTS_RR_0_t *IRTS_RR_0_struct_t;
+typedef IRTS_RR_0_t *IRTS_RR_0_mutable_struct_t;
+typedef const IRTS_RR_0_t *IRTS_RR_0_vec_t;
+typedef IRTS_RR_0_t *IRTS_RR_0_mutable_vec_t;
+typedef struct IRTS_RR_1 IRTS_RR_1_t;
+typedef const IRTS_RR_1_t *IRTS_RR_1_struct_t;
+typedef IRTS_RR_1_t *IRTS_RR_1_mutable_struct_t;
+typedef const IRTS_RR_1_t *IRTS_RR_1_vec_t;
+typedef IRTS_RR_1_t *IRTS_RR_1_mutable_vec_t;
+typedef struct IRTS_RR_2 IRTS_RR_2_t;
+typedef const IRTS_RR_2_t *IRTS_RR_2_struct_t;
+typedef IRTS_RR_2_t *IRTS_RR_2_mutable_struct_t;
+typedef const IRTS_RR_2_t *IRTS_RR_2_vec_t;
+typedef IRTS_RR_2_t *IRTS_RR_2_mutable_vec_t;
+typedef struct IRTS_RR_3 IRTS_RR_3_t;
+typedef const IRTS_RR_3_t *IRTS_RR_3_struct_t;
+typedef IRTS_RR_3_t *IRTS_RR_3_mutable_struct_t;
+typedef const IRTS_RR_3_t *IRTS_RR_3_vec_t;
+typedef IRTS_RR_3_t *IRTS_RR_3_mutable_vec_t;
 
-#ifndef SET_PEDALS_RANGE_file_identifier
-#define SET_PEDALS_RANGE_file_identifier flatbuffers_identifier
+#ifndef IMU_ANGULAR_RATE_file_identifier
+#define IMU_ANGULAR_RATE_file_identifier flatbuffers_identifier
 #endif
-/* deprecated, use SET_PEDALS_RANGE_file_identifier */
-#ifndef SET_PEDALS_RANGE_identifier
-#define SET_PEDALS_RANGE_identifier flatbuffers_identifier
+/* deprecated, use IMU_ANGULAR_RATE_file_identifier */
+#ifndef IMU_ANGULAR_RATE_identifier
+#define IMU_ANGULAR_RATE_identifier flatbuffers_identifier
 #endif
-#define SET_PEDALS_RANGE_type_hash ((flatbuffers_thash_t)0x530c2c7)
-#define SET_PEDALS_RANGE_type_identifier "\xc7\xc2\x30\x05"
-#ifndef ACCELERATOR_PEDAL_VAL_file_identifier
-#define ACCELERATOR_PEDAL_VAL_file_identifier flatbuffers_identifier
+#define IMU_ANGULAR_RATE_type_hash ((flatbuffers_thash_t)0x82777126)
+#define IMU_ANGULAR_RATE_type_identifier "\x26\x71\x77\x82"
+#ifndef IMU_ACCELERATION_file_identifier
+#define IMU_ACCELERATION_file_identifier flatbuffers_identifier
 #endif
-/* deprecated, use ACCELERATOR_PEDAL_VAL_file_identifier */
-#ifndef ACCELERATOR_PEDAL_VAL_identifier
-#define ACCELERATOR_PEDAL_VAL_identifier flatbuffers_identifier
+/* deprecated, use IMU_ACCELERATION_file_identifier */
+#ifndef IMU_ACCELERATION_identifier
+#define IMU_ACCELERATION_identifier flatbuffers_identifier
 #endif
-#define ACCELERATOR_PEDAL_VAL_type_hash ((flatbuffers_thash_t)0x6acd8f)
-#define ACCELERATOR_PEDAL_VAL_type_identifier "\x8f\xcd\x6a\x00"
-#ifndef BRAKE_PEDAL_VAL_file_identifier
-#define BRAKE_PEDAL_VAL_file_identifier flatbuffers_identifier
+#define IMU_ACCELERATION_type_hash ((flatbuffers_thash_t)0xab269a6b)
+#define IMU_ACCELERATION_type_identifier "\x6b\x9a\x26\xab"
+#ifndef IRTS_FL_0_file_identifier
+#define IRTS_FL_0_file_identifier flatbuffers_identifier
 #endif
-/* deprecated, use BRAKE_PEDAL_VAL_file_identifier */
-#ifndef BRAKE_PEDAL_VAL_identifier
-#define BRAKE_PEDAL_VAL_identifier flatbuffers_identifier
+/* deprecated, use IRTS_FL_0_file_identifier */
+#ifndef IRTS_FL_0_identifier
+#define IRTS_FL_0_identifier flatbuffers_identifier
 #endif
-#define BRAKE_PEDAL_VAL_type_hash ((flatbuffers_thash_t)0x3fc639a3)
-#define BRAKE_PEDAL_VAL_type_identifier "\xa3\x39\xc6\x3f"
+#define IRTS_FL_0_type_hash ((flatbuffers_thash_t)0xd5f7d389)
+#define IRTS_FL_0_type_identifier "\x89\xd3\xf7\xd5"
+#ifndef IRTS_FL_1_file_identifier
+#define IRTS_FL_1_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_FL_1_file_identifier */
+#ifndef IRTS_FL_1_identifier
+#define IRTS_FL_1_identifier flatbuffers_identifier
+#endif
+#define IRTS_FL_1_type_hash ((flatbuffers_thash_t)0xd4f7d1f6)
+#define IRTS_FL_1_type_identifier "\xf6\xd1\xf7\xd4"
+#ifndef IRTS_FL_2_file_identifier
+#define IRTS_FL_2_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_FL_2_file_identifier */
+#ifndef IRTS_FL_2_identifier
+#define IRTS_FL_2_identifier flatbuffers_identifier
+#endif
+#define IRTS_FL_2_type_hash ((flatbuffers_thash_t)0xd3f7d063)
+#define IRTS_FL_2_type_identifier "\x63\xd0\xf7\xd3"
+#ifndef IRTS_FL_3_file_identifier
+#define IRTS_FL_3_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_FL_3_file_identifier */
+#ifndef IRTS_FL_3_identifier
+#define IRTS_FL_3_identifier flatbuffers_identifier
+#endif
+#define IRTS_FL_3_type_hash ((flatbuffers_thash_t)0xd2f7ced0)
+#define IRTS_FL_3_type_identifier "\xd0\xce\xf7\xd2"
+#ifndef IRTS_FR_0_file_identifier
+#define IRTS_FR_0_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_FR_0_file_identifier */
+#ifndef IRTS_FR_0_identifier
+#define IRTS_FR_0_identifier flatbuffers_identifier
+#endif
+#define IRTS_FR_0_type_hash ((flatbuffers_thash_t)0x76b893b)
+#define IRTS_FR_0_type_identifier "\x3b\x89\x6b\x07"
+#ifndef IRTS_FR_1_file_identifier
+#define IRTS_FR_1_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_FR_1_file_identifier */
+#ifndef IRTS_FR_1_identifier
+#define IRTS_FR_1_identifier flatbuffers_identifier
+#endif
+#define IRTS_FR_1_type_hash ((flatbuffers_thash_t)0x66b87a8)
+#define IRTS_FR_1_type_identifier "\xa8\x87\x6b\x06"
+#ifndef IRTS_FR_2_file_identifier
+#define IRTS_FR_2_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_FR_2_file_identifier */
+#ifndef IRTS_FR_2_identifier
+#define IRTS_FR_2_identifier flatbuffers_identifier
+#endif
+#define IRTS_FR_2_type_hash ((flatbuffers_thash_t)0x96b8c61)
+#define IRTS_FR_2_type_identifier "\x61\x8c\x6b\x09"
+#ifndef IRTS_FR_3_file_identifier
+#define IRTS_FR_3_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_FR_3_file_identifier */
+#ifndef IRTS_FR_3_identifier
+#define IRTS_FR_3_identifier flatbuffers_identifier
+#endif
+#define IRTS_FR_3_type_hash ((flatbuffers_thash_t)0x86b8ace)
+#define IRTS_FR_3_type_identifier "\xce\x8a\x6b\x08"
+#ifndef IRTS_RL_0_file_identifier
+#define IRTS_RL_0_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_RL_0_file_identifier */
+#ifndef IRTS_RL_0_identifier
+#define IRTS_RL_0_identifier flatbuffers_identifier
+#endif
+#define IRTS_RL_0_type_hash ((flatbuffers_thash_t)0x8e380d9d)
+#define IRTS_RL_0_type_identifier "\x9d\x0d\x38\x8e"
+#ifndef IRTS_RL_1_file_identifier
+#define IRTS_RL_1_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_RL_1_file_identifier */
+#ifndef IRTS_RL_1_identifier
+#define IRTS_RL_1_identifier flatbuffers_identifier
+#endif
+#define IRTS_RL_1_type_hash ((flatbuffers_thash_t)0x8d380c0a)
+#define IRTS_RL_1_type_identifier "\x0a\x0c\x38\x8d"
+#ifndef IRTS_RL_2_file_identifier
+#define IRTS_RL_2_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_RL_2_file_identifier */
+#ifndef IRTS_RL_2_identifier
+#define IRTS_RL_2_identifier flatbuffers_identifier
+#endif
+#define IRTS_RL_2_type_hash ((flatbuffers_thash_t)0x8c380a77)
+#define IRTS_RL_2_type_identifier "\x77\x0a\x38\x8c"
+#ifndef IRTS_RL_3_file_identifier
+#define IRTS_RL_3_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_RL_3_file_identifier */
+#ifndef IRTS_RL_3_identifier
+#define IRTS_RL_3_identifier flatbuffers_identifier
+#endif
+#define IRTS_RL_3_type_hash ((flatbuffers_thash_t)0x8b3808e4)
+#define IRTS_RL_3_type_identifier "\xe4\x08\x38\x8b"
+#ifndef IRTS_RR_0_file_identifier
+#define IRTS_RR_0_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_RR_0_file_identifier */
+#ifndef IRTS_RR_0_identifier
+#define IRTS_RR_0_identifier flatbuffers_identifier
+#endif
+#define IRTS_RR_0_type_hash ((flatbuffers_thash_t)0x47b07f47)
+#define IRTS_RR_0_type_identifier "\x47\x7f\xb0\x47"
+#ifndef IRTS_RR_1_file_identifier
+#define IRTS_RR_1_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_RR_1_file_identifier */
+#ifndef IRTS_RR_1_identifier
+#define IRTS_RR_1_identifier flatbuffers_identifier
+#endif
+#define IRTS_RR_1_type_hash ((flatbuffers_thash_t)0x46b07db4)
+#define IRTS_RR_1_type_identifier "\xb4\x7d\xb0\x46"
+#ifndef IRTS_RR_2_file_identifier
+#define IRTS_RR_2_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_RR_2_file_identifier */
+#ifndef IRTS_RR_2_identifier
+#define IRTS_RR_2_identifier flatbuffers_identifier
+#endif
+#define IRTS_RR_2_type_hash ((flatbuffers_thash_t)0x49b0826d)
+#define IRTS_RR_2_type_identifier "\x6d\x82\xb0\x49"
+#ifndef IRTS_RR_3_file_identifier
+#define IRTS_RR_3_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use IRTS_RR_3_file_identifier */
+#ifndef IRTS_RR_3_identifier
+#define IRTS_RR_3_identifier flatbuffers_identifier
+#endif
+#define IRTS_RR_3_type_hash ((flatbuffers_thash_t)0x48b080da)
+#define IRTS_RR_3_type_identifier "\xda\x80\xb0\x48"
 
-typedef int8_t Sync_State_enum_t;
-__flatbuffers_define_integer_type(Sync_State, Sync_State_enum_t, 8)
-#define Sync_State_MAX_START ((Sync_State_enum_t)INT8_C(0))
-#define Sync_State_MAX_END ((Sync_State_enum_t)INT8_C(1))
-#define Sync_State_MIN_START ((Sync_State_enum_t)INT8_C(2))
-#define Sync_State_MIN_END ((Sync_State_enum_t)INT8_C(3))
 
-static inline const char *Sync_State_name(Sync_State_enum_t value)
-{
-    switch (value) {
-    case Sync_State_MAX_START: return "MAX_START";
-    case Sync_State_MAX_END: return "MAX_END";
-    case Sync_State_MIN_START: return "MIN_START";
-    case Sync_State_MIN_END: return "MIN_END";
-    default: return "";
-    }
-}
-
-static inline int Sync_State_is_known_value(Sync_State_enum_t value)
-{
-    switch (value) {
-    case Sync_State_MAX_START: return 1;
-    case Sync_State_MAX_END: return 1;
-    case Sync_State_MIN_START: return 1;
-    case Sync_State_MIN_END: return 1;
-    default: return 0;
-    }
-}
-
-typedef int8_t Pedal_enum_t;
-__flatbuffers_define_integer_type(Pedal, Pedal_enum_t, 8)
-#define Pedal_ACCELERATOR ((Pedal_enum_t)INT8_C(0))
-#define Pedal_BRAKE ((Pedal_enum_t)INT8_C(1))
-#define Pedal_ALL ((Pedal_enum_t)INT8_C(2))
-
-static inline const char *Pedal_name(Pedal_enum_t value)
-{
-    switch (value) {
-    case Pedal_ACCELERATOR: return "ACCELERATOR";
-    case Pedal_BRAKE: return "BRAKE";
-    case Pedal_ALL: return "ALL";
-    default: return "";
-    }
-}
-
-static inline int Pedal_is_known_value(Pedal_enum_t value)
-{
-    switch (value) {
-    case Pedal_ACCELERATOR: return 1;
-    case Pedal_BRAKE: return 1;
-    case Pedal_ALL: return 1;
-    default: return 0;
-    }
-}
-
-
-struct SET_PEDALS_RANGE {
-    alignas(1) Sync_State_enum_t sync_state;
-    alignas(1) Pedal_enum_t pedal;
+struct IMU_ANGULAR_RATE {
+    alignas(2) uint16_t ang_rate_x;
+    alignas(2) uint16_t ang_rate_y;
+    alignas(2) uint16_t ang_rate_z;
 };
-static_assert(sizeof(SET_PEDALS_RANGE_t) == 2, "struct size mismatch");
+static_assert(sizeof(IMU_ANGULAR_RATE_t) == 6, "struct size mismatch");
 
-static inline const SET_PEDALS_RANGE_t *SET_PEDALS_RANGE__const_ptr_add(const SET_PEDALS_RANGE_t *p, size_t i) { return p + i; }
-static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE__ptr_add(SET_PEDALS_RANGE_t *p, size_t i) { return p + i; }
-static inline SET_PEDALS_RANGE_struct_t SET_PEDALS_RANGE_vec_at(SET_PEDALS_RANGE_vec_t vec, size_t i)
+static inline const IMU_ANGULAR_RATE_t *IMU_ANGULAR_RATE__const_ptr_add(const IMU_ANGULAR_RATE_t *p, size_t i) { return p + i; }
+static inline IMU_ANGULAR_RATE_t *IMU_ANGULAR_RATE__ptr_add(IMU_ANGULAR_RATE_t *p, size_t i) { return p + i; }
+static inline IMU_ANGULAR_RATE_struct_t IMU_ANGULAR_RATE_vec_at(IMU_ANGULAR_RATE_vec_t vec, size_t i)
 __flatbuffers_struct_vec_at(vec, i)
-static inline size_t SET_PEDALS_RANGE__size(void) { return 2; }
-static inline size_t SET_PEDALS_RANGE_vec_len(SET_PEDALS_RANGE_vec_t vec)
+static inline size_t IMU_ANGULAR_RATE__size(void) { return 6; }
+static inline size_t IMU_ANGULAR_RATE_vec_len(IMU_ANGULAR_RATE_vec_t vec)
 __flatbuffers_vec_len(vec)
-__flatbuffers_struct_as_root(SET_PEDALS_RANGE)
+__flatbuffers_struct_as_root(IMU_ANGULAR_RATE)
 
-__flatbuffers_define_struct_scalar_field(SET_PEDALS_RANGE, sync_state, Sync_State, Sync_State_enum_t)
-__flatbuffers_define_struct_scalar_field(SET_PEDALS_RANGE, pedal, Pedal, Pedal_enum_t)
+__flatbuffers_define_struct_scalar_field(IMU_ANGULAR_RATE, ang_rate_x, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IMU_ANGULAR_RATE, ang_rate_y, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IMU_ANGULAR_RATE, ang_rate_z, flatbuffers_uint16, uint16_t)
 
-struct ACCELERATOR_PEDAL_VAL {
-    alignas(1) uint8_t level;
+struct IMU_ACCELERATION {
+    alignas(2) uint16_t accel_x;
+    alignas(2) uint16_t accel_y;
+    alignas(2) uint16_t accel_z;
 };
-static_assert(sizeof(ACCELERATOR_PEDAL_VAL_t) == 1, "struct size mismatch");
+static_assert(sizeof(IMU_ACCELERATION_t) == 6, "struct size mismatch");
 
-static inline const ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL__const_ptr_add(const ACCELERATOR_PEDAL_VAL_t *p, size_t i) { return p + i; }
-static inline ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL__ptr_add(ACCELERATOR_PEDAL_VAL_t *p, size_t i) { return p + i; }
-static inline ACCELERATOR_PEDAL_VAL_struct_t ACCELERATOR_PEDAL_VAL_vec_at(ACCELERATOR_PEDAL_VAL_vec_t vec, size_t i)
+static inline const IMU_ACCELERATION_t *IMU_ACCELERATION__const_ptr_add(const IMU_ACCELERATION_t *p, size_t i) { return p + i; }
+static inline IMU_ACCELERATION_t *IMU_ACCELERATION__ptr_add(IMU_ACCELERATION_t *p, size_t i) { return p + i; }
+static inline IMU_ACCELERATION_struct_t IMU_ACCELERATION_vec_at(IMU_ACCELERATION_vec_t vec, size_t i)
 __flatbuffers_struct_vec_at(vec, i)
-static inline size_t ACCELERATOR_PEDAL_VAL__size(void) { return 1; }
-static inline size_t ACCELERATOR_PEDAL_VAL_vec_len(ACCELERATOR_PEDAL_VAL_vec_t vec)
+static inline size_t IMU_ACCELERATION__size(void) { return 6; }
+static inline size_t IMU_ACCELERATION_vec_len(IMU_ACCELERATION_vec_t vec)
 __flatbuffers_vec_len(vec)
-__flatbuffers_struct_as_root(ACCELERATOR_PEDAL_VAL)
+__flatbuffers_struct_as_root(IMU_ACCELERATION)
 
-__flatbuffers_define_struct_scalar_field(ACCELERATOR_PEDAL_VAL, level, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(IMU_ACCELERATION, accel_x, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IMU_ACCELERATION, accel_y, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IMU_ACCELERATION, accel_z, flatbuffers_uint16, uint16_t)
 
-struct BRAKE_PEDAL_VAL {
-    alignas(1) uint8_t level;
+struct IRTS_FL_0 {
+    alignas(2) uint16_t channel1;
+    alignas(2) uint16_t channel2;
+    alignas(2) uint16_t channel3;
+    alignas(2) uint16_t channel4;
 };
-static_assert(sizeof(BRAKE_PEDAL_VAL_t) == 1, "struct size mismatch");
+static_assert(sizeof(IRTS_FL_0_t) == 8, "struct size mismatch");
 
-static inline const BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL__const_ptr_add(const BRAKE_PEDAL_VAL_t *p, size_t i) { return p + i; }
-static inline BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL__ptr_add(BRAKE_PEDAL_VAL_t *p, size_t i) { return p + i; }
-static inline BRAKE_PEDAL_VAL_struct_t BRAKE_PEDAL_VAL_vec_at(BRAKE_PEDAL_VAL_vec_t vec, size_t i)
+static inline const IRTS_FL_0_t *IRTS_FL_0__const_ptr_add(const IRTS_FL_0_t *p, size_t i) { return p + i; }
+static inline IRTS_FL_0_t *IRTS_FL_0__ptr_add(IRTS_FL_0_t *p, size_t i) { return p + i; }
+static inline IRTS_FL_0_struct_t IRTS_FL_0_vec_at(IRTS_FL_0_vec_t vec, size_t i)
 __flatbuffers_struct_vec_at(vec, i)
-static inline size_t BRAKE_PEDAL_VAL__size(void) { return 1; }
-static inline size_t BRAKE_PEDAL_VAL_vec_len(BRAKE_PEDAL_VAL_vec_t vec)
+static inline size_t IRTS_FL_0__size(void) { return 8; }
+static inline size_t IRTS_FL_0_vec_len(IRTS_FL_0_vec_t vec)
 __flatbuffers_vec_len(vec)
-__flatbuffers_struct_as_root(BRAKE_PEDAL_VAL)
+__flatbuffers_struct_as_root(IRTS_FL_0)
 
-__flatbuffers_define_struct_scalar_field(BRAKE_PEDAL_VAL, level, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FL_0, channel1, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FL_0, channel2, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FL_0, channel3, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FL_0, channel4, flatbuffers_uint16, uint16_t)
+
+struct IRTS_FL_1 {
+    alignas(2) uint16_t channel5;
+    alignas(2) uint16_t channel6;
+    alignas(2) uint16_t channel7;
+    alignas(2) uint16_t channel8;
+};
+static_assert(sizeof(IRTS_FL_1_t) == 8, "struct size mismatch");
+
+static inline const IRTS_FL_1_t *IRTS_FL_1__const_ptr_add(const IRTS_FL_1_t *p, size_t i) { return p + i; }
+static inline IRTS_FL_1_t *IRTS_FL_1__ptr_add(IRTS_FL_1_t *p, size_t i) { return p + i; }
+static inline IRTS_FL_1_struct_t IRTS_FL_1_vec_at(IRTS_FL_1_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_FL_1__size(void) { return 8; }
+static inline size_t IRTS_FL_1_vec_len(IRTS_FL_1_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_FL_1)
+
+__flatbuffers_define_struct_scalar_field(IRTS_FL_1, channel5, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FL_1, channel6, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FL_1, channel7, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FL_1, channel8, flatbuffers_uint16, uint16_t)
+
+struct IRTS_FL_2 {
+    alignas(2) uint16_t channel9;
+    alignas(2) uint16_t channel10;
+    alignas(2) uint16_t channel11;
+    alignas(2) uint16_t channel12;
+};
+static_assert(sizeof(IRTS_FL_2_t) == 8, "struct size mismatch");
+
+static inline const IRTS_FL_2_t *IRTS_FL_2__const_ptr_add(const IRTS_FL_2_t *p, size_t i) { return p + i; }
+static inline IRTS_FL_2_t *IRTS_FL_2__ptr_add(IRTS_FL_2_t *p, size_t i) { return p + i; }
+static inline IRTS_FL_2_struct_t IRTS_FL_2_vec_at(IRTS_FL_2_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_FL_2__size(void) { return 8; }
+static inline size_t IRTS_FL_2_vec_len(IRTS_FL_2_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_FL_2)
+
+__flatbuffers_define_struct_scalar_field(IRTS_FL_2, channel9, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FL_2, channel10, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FL_2, channel11, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FL_2, channel12, flatbuffers_uint16, uint16_t)
+
+struct IRTS_FL_3 {
+    alignas(2) uint16_t channel13;
+    alignas(2) uint16_t channel14;
+    alignas(2) uint16_t channel15;
+    alignas(2) uint16_t channel16;
+};
+static_assert(sizeof(IRTS_FL_3_t) == 8, "struct size mismatch");
+
+static inline const IRTS_FL_3_t *IRTS_FL_3__const_ptr_add(const IRTS_FL_3_t *p, size_t i) { return p + i; }
+static inline IRTS_FL_3_t *IRTS_FL_3__ptr_add(IRTS_FL_3_t *p, size_t i) { return p + i; }
+static inline IRTS_FL_3_struct_t IRTS_FL_3_vec_at(IRTS_FL_3_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_FL_3__size(void) { return 8; }
+static inline size_t IRTS_FL_3_vec_len(IRTS_FL_3_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_FL_3)
+
+__flatbuffers_define_struct_scalar_field(IRTS_FL_3, channel13, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FL_3, channel14, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FL_3, channel15, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FL_3, channel16, flatbuffers_uint16, uint16_t)
+
+struct IRTS_FR_0 {
+    alignas(2) uint16_t channel1;
+    alignas(2) uint16_t channel2;
+    alignas(2) uint16_t channel3;
+    alignas(2) uint16_t channel4;
+};
+static_assert(sizeof(IRTS_FR_0_t) == 8, "struct size mismatch");
+
+static inline const IRTS_FR_0_t *IRTS_FR_0__const_ptr_add(const IRTS_FR_0_t *p, size_t i) { return p + i; }
+static inline IRTS_FR_0_t *IRTS_FR_0__ptr_add(IRTS_FR_0_t *p, size_t i) { return p + i; }
+static inline IRTS_FR_0_struct_t IRTS_FR_0_vec_at(IRTS_FR_0_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_FR_0__size(void) { return 8; }
+static inline size_t IRTS_FR_0_vec_len(IRTS_FR_0_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_FR_0)
+
+__flatbuffers_define_struct_scalar_field(IRTS_FR_0, channel1, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FR_0, channel2, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FR_0, channel3, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FR_0, channel4, flatbuffers_uint16, uint16_t)
+
+struct IRTS_FR_1 {
+    alignas(2) uint16_t channel5;
+    alignas(2) uint16_t channel6;
+    alignas(2) uint16_t channel7;
+    alignas(2) uint16_t channel8;
+};
+static_assert(sizeof(IRTS_FR_1_t) == 8, "struct size mismatch");
+
+static inline const IRTS_FR_1_t *IRTS_FR_1__const_ptr_add(const IRTS_FR_1_t *p, size_t i) { return p + i; }
+static inline IRTS_FR_1_t *IRTS_FR_1__ptr_add(IRTS_FR_1_t *p, size_t i) { return p + i; }
+static inline IRTS_FR_1_struct_t IRTS_FR_1_vec_at(IRTS_FR_1_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_FR_1__size(void) { return 8; }
+static inline size_t IRTS_FR_1_vec_len(IRTS_FR_1_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_FR_1)
+
+__flatbuffers_define_struct_scalar_field(IRTS_FR_1, channel5, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FR_1, channel6, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FR_1, channel7, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FR_1, channel8, flatbuffers_uint16, uint16_t)
+
+struct IRTS_FR_2 {
+    alignas(2) uint16_t channel9;
+    alignas(2) uint16_t channel10;
+    alignas(2) uint16_t channel11;
+    alignas(2) uint16_t channel12;
+};
+static_assert(sizeof(IRTS_FR_2_t) == 8, "struct size mismatch");
+
+static inline const IRTS_FR_2_t *IRTS_FR_2__const_ptr_add(const IRTS_FR_2_t *p, size_t i) { return p + i; }
+static inline IRTS_FR_2_t *IRTS_FR_2__ptr_add(IRTS_FR_2_t *p, size_t i) { return p + i; }
+static inline IRTS_FR_2_struct_t IRTS_FR_2_vec_at(IRTS_FR_2_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_FR_2__size(void) { return 8; }
+static inline size_t IRTS_FR_2_vec_len(IRTS_FR_2_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_FR_2)
+
+__flatbuffers_define_struct_scalar_field(IRTS_FR_2, channel9, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FR_2, channel10, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FR_2, channel11, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FR_2, channel12, flatbuffers_uint16, uint16_t)
+
+struct IRTS_FR_3 {
+    alignas(2) uint16_t channel13;
+    alignas(2) uint16_t channel14;
+    alignas(2) uint16_t channel15;
+    alignas(2) uint16_t channel16;
+};
+static_assert(sizeof(IRTS_FR_3_t) == 8, "struct size mismatch");
+
+static inline const IRTS_FR_3_t *IRTS_FR_3__const_ptr_add(const IRTS_FR_3_t *p, size_t i) { return p + i; }
+static inline IRTS_FR_3_t *IRTS_FR_3__ptr_add(IRTS_FR_3_t *p, size_t i) { return p + i; }
+static inline IRTS_FR_3_struct_t IRTS_FR_3_vec_at(IRTS_FR_3_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_FR_3__size(void) { return 8; }
+static inline size_t IRTS_FR_3_vec_len(IRTS_FR_3_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_FR_3)
+
+__flatbuffers_define_struct_scalar_field(IRTS_FR_3, channel13, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FR_3, channel14, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FR_3, channel15, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_FR_3, channel16, flatbuffers_uint16, uint16_t)
+
+struct IRTS_RL_0 {
+    alignas(2) uint16_t channel1;
+    alignas(2) uint16_t channel2;
+    alignas(2) uint16_t channel3;
+    alignas(2) uint16_t channel4;
+};
+static_assert(sizeof(IRTS_RL_0_t) == 8, "struct size mismatch");
+
+static inline const IRTS_RL_0_t *IRTS_RL_0__const_ptr_add(const IRTS_RL_0_t *p, size_t i) { return p + i; }
+static inline IRTS_RL_0_t *IRTS_RL_0__ptr_add(IRTS_RL_0_t *p, size_t i) { return p + i; }
+static inline IRTS_RL_0_struct_t IRTS_RL_0_vec_at(IRTS_RL_0_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_RL_0__size(void) { return 8; }
+static inline size_t IRTS_RL_0_vec_len(IRTS_RL_0_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_RL_0)
+
+__flatbuffers_define_struct_scalar_field(IRTS_RL_0, channel1, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RL_0, channel2, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RL_0, channel3, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RL_0, channel4, flatbuffers_uint16, uint16_t)
+
+struct IRTS_RL_1 {
+    alignas(2) uint16_t channel5;
+    alignas(2) uint16_t channel6;
+    alignas(2) uint16_t channel7;
+    alignas(2) uint16_t channel8;
+};
+static_assert(sizeof(IRTS_RL_1_t) == 8, "struct size mismatch");
+
+static inline const IRTS_RL_1_t *IRTS_RL_1__const_ptr_add(const IRTS_RL_1_t *p, size_t i) { return p + i; }
+static inline IRTS_RL_1_t *IRTS_RL_1__ptr_add(IRTS_RL_1_t *p, size_t i) { return p + i; }
+static inline IRTS_RL_1_struct_t IRTS_RL_1_vec_at(IRTS_RL_1_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_RL_1__size(void) { return 8; }
+static inline size_t IRTS_RL_1_vec_len(IRTS_RL_1_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_RL_1)
+
+__flatbuffers_define_struct_scalar_field(IRTS_RL_1, channel5, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RL_1, channel6, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RL_1, channel7, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RL_1, channel8, flatbuffers_uint16, uint16_t)
+
+struct IRTS_RL_2 {
+    alignas(2) uint16_t channel9;
+    alignas(2) uint16_t channel10;
+    alignas(2) uint16_t channel11;
+    alignas(2) uint16_t channel12;
+};
+static_assert(sizeof(IRTS_RL_2_t) == 8, "struct size mismatch");
+
+static inline const IRTS_RL_2_t *IRTS_RL_2__const_ptr_add(const IRTS_RL_2_t *p, size_t i) { return p + i; }
+static inline IRTS_RL_2_t *IRTS_RL_2__ptr_add(IRTS_RL_2_t *p, size_t i) { return p + i; }
+static inline IRTS_RL_2_struct_t IRTS_RL_2_vec_at(IRTS_RL_2_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_RL_2__size(void) { return 8; }
+static inline size_t IRTS_RL_2_vec_len(IRTS_RL_2_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_RL_2)
+
+__flatbuffers_define_struct_scalar_field(IRTS_RL_2, channel9, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RL_2, channel10, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RL_2, channel11, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RL_2, channel12, flatbuffers_uint16, uint16_t)
+
+struct IRTS_RL_3 {
+    alignas(2) uint16_t channel13;
+    alignas(2) uint16_t channel14;
+    alignas(2) uint16_t channel15;
+    alignas(2) uint16_t channel16;
+};
+static_assert(sizeof(IRTS_RL_3_t) == 8, "struct size mismatch");
+
+static inline const IRTS_RL_3_t *IRTS_RL_3__const_ptr_add(const IRTS_RL_3_t *p, size_t i) { return p + i; }
+static inline IRTS_RL_3_t *IRTS_RL_3__ptr_add(IRTS_RL_3_t *p, size_t i) { return p + i; }
+static inline IRTS_RL_3_struct_t IRTS_RL_3_vec_at(IRTS_RL_3_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_RL_3__size(void) { return 8; }
+static inline size_t IRTS_RL_3_vec_len(IRTS_RL_3_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_RL_3)
+
+__flatbuffers_define_struct_scalar_field(IRTS_RL_3, channel13, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RL_3, channel14, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RL_3, channel15, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RL_3, channel16, flatbuffers_uint16, uint16_t)
+
+struct IRTS_RR_0 {
+    alignas(2) uint16_t channel1;
+    alignas(2) uint16_t channel2;
+    alignas(2) uint16_t channel3;
+    alignas(2) uint16_t channel4;
+};
+static_assert(sizeof(IRTS_RR_0_t) == 8, "struct size mismatch");
+
+static inline const IRTS_RR_0_t *IRTS_RR_0__const_ptr_add(const IRTS_RR_0_t *p, size_t i) { return p + i; }
+static inline IRTS_RR_0_t *IRTS_RR_0__ptr_add(IRTS_RR_0_t *p, size_t i) { return p + i; }
+static inline IRTS_RR_0_struct_t IRTS_RR_0_vec_at(IRTS_RR_0_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_RR_0__size(void) { return 8; }
+static inline size_t IRTS_RR_0_vec_len(IRTS_RR_0_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_RR_0)
+
+__flatbuffers_define_struct_scalar_field(IRTS_RR_0, channel1, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RR_0, channel2, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RR_0, channel3, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RR_0, channel4, flatbuffers_uint16, uint16_t)
+
+struct IRTS_RR_1 {
+    alignas(2) uint16_t channel5;
+    alignas(2) uint16_t channel6;
+    alignas(2) uint16_t channel7;
+    alignas(2) uint16_t channel8;
+};
+static_assert(sizeof(IRTS_RR_1_t) == 8, "struct size mismatch");
+
+static inline const IRTS_RR_1_t *IRTS_RR_1__const_ptr_add(const IRTS_RR_1_t *p, size_t i) { return p + i; }
+static inline IRTS_RR_1_t *IRTS_RR_1__ptr_add(IRTS_RR_1_t *p, size_t i) { return p + i; }
+static inline IRTS_RR_1_struct_t IRTS_RR_1_vec_at(IRTS_RR_1_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_RR_1__size(void) { return 8; }
+static inline size_t IRTS_RR_1_vec_len(IRTS_RR_1_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_RR_1)
+
+__flatbuffers_define_struct_scalar_field(IRTS_RR_1, channel5, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RR_1, channel6, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RR_1, channel7, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RR_1, channel8, flatbuffers_uint16, uint16_t)
+
+struct IRTS_RR_2 {
+    alignas(2) uint16_t channel9;
+    alignas(2) uint16_t channel10;
+    alignas(2) uint16_t channel11;
+    alignas(2) uint16_t channel12;
+};
+static_assert(sizeof(IRTS_RR_2_t) == 8, "struct size mismatch");
+
+static inline const IRTS_RR_2_t *IRTS_RR_2__const_ptr_add(const IRTS_RR_2_t *p, size_t i) { return p + i; }
+static inline IRTS_RR_2_t *IRTS_RR_2__ptr_add(IRTS_RR_2_t *p, size_t i) { return p + i; }
+static inline IRTS_RR_2_struct_t IRTS_RR_2_vec_at(IRTS_RR_2_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_RR_2__size(void) { return 8; }
+static inline size_t IRTS_RR_2_vec_len(IRTS_RR_2_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_RR_2)
+
+__flatbuffers_define_struct_scalar_field(IRTS_RR_2, channel9, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RR_2, channel10, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RR_2, channel11, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RR_2, channel12, flatbuffers_uint16, uint16_t)
+
+struct IRTS_RR_3 {
+    alignas(2) uint16_t channel13;
+    alignas(2) uint16_t channel14;
+    alignas(2) uint16_t channel15;
+    alignas(2) uint16_t channel16;
+};
+static_assert(sizeof(IRTS_RR_3_t) == 8, "struct size mismatch");
+
+static inline const IRTS_RR_3_t *IRTS_RR_3__const_ptr_add(const IRTS_RR_3_t *p, size_t i) { return p + i; }
+static inline IRTS_RR_3_t *IRTS_RR_3__ptr_add(IRTS_RR_3_t *p, size_t i) { return p + i; }
+static inline IRTS_RR_3_struct_t IRTS_RR_3_vec_at(IRTS_RR_3_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t IRTS_RR_3__size(void) { return 8; }
+static inline size_t IRTS_RR_3_vec_len(IRTS_RR_3_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(IRTS_RR_3)
+
+__flatbuffers_define_struct_scalar_field(IRTS_RR_3, channel13, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RR_3, channel14, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RR_3, channel15, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(IRTS_RR_3, channel16, flatbuffers_uint16, uint16_t)
 
 
 

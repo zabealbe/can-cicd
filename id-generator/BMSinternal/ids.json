@@ -1,73 +1,170 @@
 {
     "network_version": 1,
-    "ids": [
-        {
-            "topic": "VOLTAGE_INFO",
+    "topics": {
+        "INTRA_NET_BMS_SYNC": {
             "id": 0,
             "messages": {
-                "VOLTAGES_CB0_0": 1024,
-                "VOLTAGES_CB0_1": 768,
-                "VOLTAGES_CB0_2": 512,
-                "VOLTAGES_CB0_3": 256,
-                "VOLTAGES_CB0_4": 0,
-                "VOLTAGES_CB1_0": 1056,
-                "VOLTAGES_CB1_1": 800,
-                "VOLTAGES_CB1_2": 544,
-                "VOLTAGES_CB1_3": 288,
-                "VOLTAGES_CB1_4": 32,
-                "VOLTAGES_CB2_0": 1088,
-                "VOLTAGES_CB2_1": 832,
-                "VOLTAGES_CB2_2": 576,
-                "VOLTAGES_CB2_3": 320,
-                "VOLTAGES_CB2_4": 64,
-                "VOLTAGES_CB3_0": 1120,
-                "VOLTAGES_CB3_1": 864,
-                "VOLTAGES_CB3_2": 608,
-                "VOLTAGES_CB3_3": 352,
-                "VOLTAGES_CB3_4": 96,
-                "VOLTAGES_CB4_0": 1152,
-                "VOLTAGES_CB4_1": 896,
-                "VOLTAGES_CB4_2": 640,
-                "VOLTAGES_CB4_3": 384,
-                "VOLTAGES_CB4_4": 128,
-                "VOLTAGES_CB5_0": 1184,
-                "VOLTAGES_CB5_1": 928,
-                "VOLTAGES_CB5_2": 672,
-                "VOLTAGES_CB5_3": 416,
-                "VOLTAGES_CB5_4": 160
+                "MASTER_SYNC": {
+                    "id": 1792
+                },
+                "CELLBOARD_TOKEN": {
+                    "id": 1536
+                }
             }
         },
-        {
-            "topic": "TEMPERATURE_INFO",
+        "TEMPERATURE_INFO": {
             "id": 1,
             "messages": {
-                "TEMPERATURES_CB0_0": 1025,
-                "TEMPERATURES_CB0_1": 769,
-                "TEMPERATURES_CB0_2": 513,
-                "TEMPERATURES_CB1_0": 1057,
-                "TEMPERATURES_CB1_1": 801,
-                "TEMPERATURES_CB1_2": 545,
-                "TEMPERATURES_CB2_0": 1089,
-                "TEMPERATURES_CB2_1": 833,
-                "TEMPERATURES_CB2_2": 577,
-                "TEMPERATURES_CB3_0": 1121,
-                "TEMPERATURES_CB3_1": 865,
-                "TEMPERATURES_CB3_2": 609,
-                "TEMPERATURES_CB4_0": 1153,
-                "TEMPERATURES_CB4_1": 897,
-                "TEMPERATURES_CB4_2": 641,
-                "TEMPERATURES_CB5_0": 1185,
-                "TEMPERATURES_CB5_1": 929,
-                "TEMPERATURES_CB5_2": 673
+                "TEMPERATURES_CB0_0": {
+                    "id": 1025
+                },
+                "TEMPERATURES_CB0_1": {
+                    "id": 769
+                },
+                "TEMPERATURES_CB0_2": {
+                    "id": 513
+                },
+                "TEMPERATURES_CB1_0": {
+                    "id": 1057
+                },
+                "TEMPERATURES_CB1_1": {
+                    "id": 801
+                },
+                "TEMPERATURES_CB1_2": {
+                    "id": 545
+                },
+                "TEMPERATURES_CB2_0": {
+                    "id": 1089
+                },
+                "TEMPERATURES_CB2_1": {
+                    "id": 833
+                },
+                "TEMPERATURES_CB2_2": {
+                    "id": 577
+                },
+                "TEMPERATURES_CB3_0": {
+                    "id": 1121
+                },
+                "TEMPERATURES_CB3_1": {
+                    "id": 865
+                },
+                "TEMPERATURES_CB3_2": {
+                    "id": 609
+                },
+                "TEMPERATURES_CB4_0": {
+                    "id": 1153
+                },
+                "TEMPERATURES_CB4_1": {
+                    "id": 897
+                },
+                "TEMPERATURES_CB4_2": {
+                    "id": 641
+                },
+                "TEMPERATURES_CB5_0": {
+                    "id": 1185
+                },
+                "TEMPERATURES_CB5_1": {
+                    "id": 929
+                },
+                "TEMPERATURES_CB5_2": {
+                    "id": 673
+                }
             }
         },
-        {
-            "topic": "INTRA_NET_BMS_SYNC",
+        "VOLTAGE_INFO": {
             "id": 2,
             "messages": {
-                "MASTER_SYNC": 1794,
-                "CELLBOARD_TOKEN": 1538
+                "VOLTAGES_CB0_0": {
+                    "id": 1026
+                },
+                "VOLTAGES_CB0_1": {
+                    "id": 770
+                },
+                "VOLTAGES_CB0_2": {
+                    "id": 514
+                },
+                "VOLTAGES_CB0_3": {
+                    "id": 258
+                },
+                "VOLTAGES_CB0_4": {
+                    "id": 2
+                },
+                "VOLTAGES_CB1_0": {
+                    "id": 1058
+                },
+                "VOLTAGES_CB1_1": {
+                    "id": 802
+                },
+                "VOLTAGES_CB1_2": {
+                    "id": 546
+                },
+                "VOLTAGES_CB1_3": {
+                    "id": 290
+                },
+                "VOLTAGES_CB1_4": {
+                    "id": 34
+                },
+                "VOLTAGES_CB2_0": {
+                    "id": 1090
+                },
+                "VOLTAGES_CB2_1": {
+                    "id": 834
+                },
+                "VOLTAGES_CB2_2": {
+                    "id": 578
+                },
+                "VOLTAGES_CB2_3": {
+                    "id": 322
+                },
+                "VOLTAGES_CB2_4": {
+                    "id": 66
+                },
+                "VOLTAGES_CB3_0": {
+                    "id": 1122
+                },
+                "VOLTAGES_CB3_1": {
+                    "id": 866
+                },
+                "VOLTAGES_CB3_2": {
+                    "id": 610
+                },
+                "VOLTAGES_CB3_3": {
+                    "id": 354
+                },
+                "VOLTAGES_CB3_4": {
+                    "id": 98
+                },
+                "VOLTAGES_CB4_0": {
+                    "id": 1154
+                },
+                "VOLTAGES_CB4_1": {
+                    "id": 898
+                },
+                "VOLTAGES_CB4_2": {
+                    "id": 642
+                },
+                "VOLTAGES_CB4_3": {
+                    "id": 386
+                },
+                "VOLTAGES_CB4_4": {
+                    "id": 130
+                },
+                "VOLTAGES_CB5_0": {
+                    "id": 1186
+                },
+                "VOLTAGES_CB5_1": {
+                    "id": 930
+                },
+                "VOLTAGES_CB5_2": {
+                    "id": 674
+                },
+                "VOLTAGES_CB5_3": {
+                    "id": 418
+                },
+                "VOLTAGES_CB5_4": {
+                    "id": 162
+                }
             }
         }
-    ]
+    }
 }

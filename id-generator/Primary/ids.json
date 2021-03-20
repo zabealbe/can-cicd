@@ -1,47 +1,66 @@
 {
-    "network_version": 1.1,
-    "ids": [
-        {
-            "topic": "STEER",
+    "network_version": 1.2,
+    "topics": {
+        "ACU": {
             "id": 0,
             "messages": {
-                "TLM_STATUS": 256,
-                "CAR_STATUS": 0
+                "TS_STATUS": {
+                    "id": 0
+                },
+                "STEER_STATUS": {
+                    "id": 32
+                },
+                "SET_CAR_STATUS": {
+                    "id": 64
+                },
+                "GET_CAR_STATUS": {
+                    "id": 96
+                }
             }
         },
-        {
-            "topic": "TLM",
+        "ACUnSTEER": {
             "id": 1,
             "messages": {
-                "SET_TLM_STATUS": 257
+                "HV_VOLTAGE": {
+                    "id": 769
+                },
+                "HV_CURRENT": {
+                    "id": 801
+                },
+                "HV_TEMP": {
+                    "id": 833
+                },
+                "HV_ERROR": {
+                    "id": 257
+                }
             }
         },
-        {
-            "topic": "ACUnSTEER",
+        "BMS_HV": {
             "id": 2,
             "messages": {
-                "HV_VOLTAGE": 770,
-                "HV_CURRENT": 802,
-                "HV_TEMP": 834,
-                "HV_ERROR": 258
+                "SET_TS_STATUS": {
+                    "id": 2
+                }
             }
         },
-        {
-            "topic": "ACU",
+        "STEER": {
             "id": 3,
             "messages": {
-                "TS_STATUS": 3,
-                "STEER_STATUS": 35,
-                "SET_CAR_STATUS": 67,
-                "GET_CAR_STATUS": 99
+                "TLM_STATUS": {
+                    "id": 259
+                },
+                "CAR_STATUS": {
+                    "id": 3
+                }
             }
         },
-        {
-            "topic": "BMS_HV",
+        "TLM": {
             "id": 4,
             "messages": {
-                "SET_TS_STATUS": 4
+                "SET_TLM_STATUS": {
+                    "id": 260
+                }
             }
         }
-    ]
+    }
 }
