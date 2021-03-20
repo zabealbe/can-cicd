@@ -104,9 +104,13 @@ def main():
     networks = []
     for network_name, path in paths.items():
         if c.MERGE_NETWORKS and networks:
-            networks[0].merge_with(Network(path, network_name, c.NETWORK_FILE_VALIDATION_SCHEMA))
+            networks[0].merge_with(
+                Network(name=network_name, path=path, validation_schema=c.NETWORK_FILE_VALIDATION_SCHEMA)
+            )
         else:
-            networks.append(Network(path, network_name, c.NETWORK_FILE_VALIDATION_SCHEMA))
+            networks.append(
+                Network(name=network_name, path=path, validation_schema=c.NETWORK_FILE_VALIDATION_SCHEMA)
+            )
         print("Loaded {0}".format(network_name))
 
     print("{0} network(s) loaded".format(len(networks)))

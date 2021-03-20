@@ -8,28 +8,47 @@ def load_network(path):
 
 
 class Network:
-    def __init__(self, path, name, validation_schema=None):
-        self.path = path
+    def __init__(self, name: str
+                 , path: str = None, validation_schema: str = None
+                 , ids_path: str = None, ids_validation_schema: str = None):
+        self.path = None
+        self.ids_path = None
         self.name = name
         self.contents = []
         self.name_index = {}
         self.version = None
         self.max_payload_size = None
-        
-        if path:
-            self.load(validation_schema)
 
-    def load(self, validation_schema=None):
+        if path:
+            self.load(path, validation_schema)
+        
+        if ids_path:
+            self.load_ids(ids_path, ids_validation_schema)
+
+    def load(self, path: str, validation_schema: str = None):
+        self.path = path
         network = load_json(self.path, validation_schema)
 
         self.contents = network["messages"]
         self.version = network["network_version"]
         self.max_payload_size = network["max_payload_size"]
-        
+
         for i, m in enumerate(self.contents):
             self.name_index[m["name"]] = i
 
-    def merge_with(self, network):
+    def load_ids(self, path: str, validation_schema: str = None):
+        self.ids_path = path
+        network_ids = load_json(self.ids_path)#, validation_schema) # TODO: fix
+        assert network_ids["network_version"] == self.version, \
+            f"Version mismatch between {self.path} and {self.ids_path}"
+
+        for m in self.contents:
+            if "fixed_id" in m:  # skipping if message has already a fixed id
+                m["topic"] = "FIXED_IDS"
+            topic = m["topic"]
+            m["id"] = network_ids["topics"][topic]["messages"][m["name"]]["id"]
+
+    def merge_with(self, network: 'Network'):
         if isinstance(network, Network):
             for m1 in network.contents:
                 m2 = self.get_message_by_name(m1['name'])
@@ -65,7 +84,7 @@ class Network:
         messages = []
         for m in self.contents:
             if "topic" in m and m["topic"] == topic:  # This also filters messages with fixed id
-                messages.append(m)                    # because topic field can't be present if fixed_id is
+                messages.append(m)  # because topic field can't be present if fixed_id is
 
         return messages
 
@@ -79,7 +98,7 @@ class Network:
                 messages.append(m)
 
         return messages
-    
+
     def get_reserved_ids(self):
         """
             Very resource-heavy, can be optimized with index
@@ -87,7 +106,7 @@ class Network:
         ids = {}
         for m in self.get_messages_with_fixed_id():
             ids[m["fixed_id"]] = m
-        
+
         return ids
 
     def get_message_by_name(self, name):
@@ -96,4 +115,3 @@ class Network:
         except KeyError:
             return {}
         return message
-

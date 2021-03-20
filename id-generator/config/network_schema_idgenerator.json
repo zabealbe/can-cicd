@@ -17,7 +17,7 @@
 					},
 					"topic": {
 						"type": "string",
-						"pattern": "^[A-Za-z][A-Za-z0-9_]*$"
+						"pattern": "(?!^FIXED_IDS$)^[A-Za-z][A-Za-z0-9_]*$"
 					},
 					"priority": {
 						"type": "integer",

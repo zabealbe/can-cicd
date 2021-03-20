@@ -6,7 +6,6 @@ import shutil
 from config import config as c
 from lib.utils import parse_network_multipath
 from lib.network import Network
-from lib.ids import MessageIds
 
 
 def main():
@@ -21,12 +20,9 @@ def main():
 
     networks = []
     for network_name, network_path, ids_path in paths:
-        network = Network(network_path, network_name, c.NETWORK_FILE_VALIDATION_SCHEMA)
-        ids = MessageIds(ids_path, network_name)
-        
-        for message in network.contents:
-            message["id"] = ids[message["name"]]
-            message["network"] = network_name
+        network = Network(name=network_name, 
+                          path=network_path, validation_schema=c.NETWORK_FILE_VALIDATION_SCHEMA,
+                          ids_path=ids_path, ids_validation_schema=c.NETWORK_IDS_FILE_VALIDATION_SCHEMA)
 
         if merge_networks and networks:
             networks[0].merge_with(network)
@@ -53,6 +49,10 @@ def main():
         for network in networks:
             tot += len(network.contents)
             for message in network.contents:
+                # Cleaning message dict and adding network column
+                message.pop("fixed_id", None)
+                message["network"] = network.name
+                
                 cols = [""] * len(columns)
                 for i, (key, value) in enumerate(message.items()):
                     cols[columns.index(key)] = re.sub(r"\[|]|'|{|}|\"", "", str(value))

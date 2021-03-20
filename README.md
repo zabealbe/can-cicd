@@ -68,8 +68,10 @@ ___
 Required by: [id-generator](id-generator)
 
 This field can be the same across **at most 64 messages**, meaning a topic can contain at most 64 messages.
-The characters you should use are all UPPERCASE letters and "_".
-Messages should be subdivided in topics keeping in mind that the topic will be used by CAN devices to discriminate wether a message is interesting or not.
+The characters you should use are all UPPERCASE letters and "_", additionally it can't be named FIXED_IDS as it is
+a reserved topic used internally.\
+Messages should be subdivided in topics keeping in mind that the topic will be used by CAN devices to discriminate 
+whether a message is interesting or not.
 ___
 
 ```yaml
