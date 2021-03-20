@@ -11,7 +11,7 @@ def generate_ids_include(ids, network_version):
         header += "#define TOPIC_{0}_MASK 0b{1:>011b}\n".format(t['topic'], 0b00000011111)
         header += "#define TOPIC_{0}_FILTER 0b{1:>011b}\n".format(t['topic'], t['id'])
         for m, mid in t['messages'].items():
-            header += "#define {0} 0b{1:>011b}\n".format(m, mid)
+            header += "#define ID_{0} 0b{1:>011b}\n".format(m, mid)
         header += "\n"
     header += "#endif\n"
 
