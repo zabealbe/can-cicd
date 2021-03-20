@@ -114,7 +114,7 @@ ___
 Required by: [flatbuf-generator](flatbuf-generator)
 
 
-This field describes the message's payload, the overall size can be **at most 8 bytes**.\
+This field describes the message's payload, can be left empty. The overall size can be **at most 8 bytes**.\
 Each value contained in the payload must be indicated with its name and its type.\
 The field name must satisfy this regex: `^[a-z][a-z0-9_]*$`.\
 The type can be one of the following:
@@ -185,8 +185,9 @@ This project can be used in a couple of ways, the first one being the coolest:
   └ :open_file_folder: [networks](networks)
   
 
-Any **commit** to this directory will trigger GitHub's actions workflow as described in [this file](.github/workflows/run-all.yml),\
-you will find the generated files in the branch **build** under the **:open_file_folder:** folder of each submodule.
+Any **commit** to this directory will trigger GitHub's actions workflow as described in 
+[this file](.github/workflows/run-all.yml). You will find the generated files in the branch **build** under the **:open_file_folder:** folder 
+named after each submodule.
 
 ### The manual way
 Any subproject is a standalone module. However some subprojects may have the specific job to generate configurations

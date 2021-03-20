@@ -55,7 +55,7 @@ def main():
             for message in network.contents:
                 cols = [""] * len(columns)
                 for i, (key, value) in enumerate(message.items()):
-                    cols[columns.index(key)] = re.sub(r"\[|]|'|{|}|\"", "", str(value))  
+                    cols[columns.index(key)] = re.sub(r"\[|]|'|{|}|\"", "", str(value))
                 writer.writerow(cols)
 
     print(f"{tot} line(s) written")

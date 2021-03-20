@@ -127,15 +127,6 @@
                 "Inverter_status: inverter_l": ["OFF", "IDLE", "ON"],
                 "Inverter_status: inverter_r": ["OFF", "IDLE", "ON"]
             }
-        },{
-            "name": "SET_PEDALS_RANGE",
-            "topic": "PEDALS",
-            "priority": 7,
-            "sending": ["STEER"],
-            "receiving": ["PEDALS"],
-            "contents": {
-                "bound": ["MAX", "MIN"]
-            }
         }
     ]
 }

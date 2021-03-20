@@ -23,9 +23,12 @@
 						"type": "integer",
 						"minimum": 0,
 						"maximum": 7
-					}
+					},
+                    "description": {
+						"type": "string"
+                    }
 				},
-				"required": ["name", "topic", "priority"],
+				"required": ["name"],
                 "additionalProperties": true
 			}
 		}
