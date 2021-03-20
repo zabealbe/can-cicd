@@ -12,7 +12,7 @@ def generate_ids_include(topics, network_version):
             header += f"#define TOPIC_{topic_name}_MASK 0b{0b00000011111:>011b}\n"
             header += f"#define TOPIC_{topic_name}_FILTER 0b{topic['id']:>011b}\n"
         for message_name, message in topic["messages"].items():
-            header += f"#define {message_name} 0b{message['id']:>011b}\n"
+            header += f"#define ID_{message_name} 0b{message['id']:>011b}\n"
         header += "\n"
     header += "#endif\n"
 

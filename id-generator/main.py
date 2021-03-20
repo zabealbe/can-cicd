@@ -138,10 +138,11 @@ def main():
         for m in n.get_messages_with_fixed_id():
             message_fixed_ids[m["name"]] = {
                 "id": m["fixed_id"]
-            }          
-        topics["FIXED_IDS"] = {
-            "messages": message_fixed_ids
-        }
+            }
+        if message_fixed_ids:  # Don't create the topic unless there is at least one fixed id
+            topics["FIXED_IDS"] = {
+                "messages": message_fixed_ids
+            }
             
         output_path = c.OUTPUT_FILE.replace("[network]", n.name)
         print("Saving IDs to {0}".format(output_path))
