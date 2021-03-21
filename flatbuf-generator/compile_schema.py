@@ -23,20 +23,6 @@ def get_languages():
     return c.CONFIG_LANGUAGES
 
 
-def get_flatc_options():
-    options = ""
-
-    compile_languages = c.CONFIG_LANGUAGES
-    lang_args = {
-        "python": "--python",
-        "c": "",  # supported only by FlatCC
-        "cpp": "--cpp",
-    }
-    for lang in compile_languages:
-        options += "{0}".format(lang_args[lang])
-    return options
-
-
 def get_flatcc_options():
     options = ""
 
@@ -47,12 +33,51 @@ def get_flatcc_options():
     return options
 
 
+def run_flatc(flatc_path, language, out_path, schema_path):
+    out_path = f"{out_path}/{language}/"
+    if not os.path.exists(out_path):
+        os.mkdir(out_path)
+    command = f"{flatc_path} --{language} -o {out_path} {schema_path}"
+    out, err_out, err_code = run_command(command)
+    if err_code != 0:
+        print(err_out, file=sys.stderr)
+        sys.exit(f"The command returned error code {err_code}")
+
+
+def run_flatcc(flatcc_path, flatcc_lib_path, out_path, schema_path):
+    out_path = f"{out_path}/c"
+    if not os.path.exists(out_path):
+        os.mkdir(out_path)
+    command = f"{flatcc_path} -a -o {out_path} {schema_path}"
+    out, err_out, err_code = run_command(command)
+    if err_code != 0:
+        print(err_out, file=sys.stderr)
+        sys.exit(f"The command returned error code {err_code}")
+
+    # Replacing flatcc library path in generated files
+    if flatcc_lib_path is not None:
+        find_pattern = "#include \"flatcc/"
+        replace_with = f"#include \"{flatcc_lib_path}"
+
+        # Check if user included trailing '/' in path
+        replace_with += "" if flatcc_lib_path[-1] == "/" else "/"
+
+        for root, _, files in os.walk(out_path):
+            for file_path in files:
+                if file_path[-2:] not in [".c", ".h"]:  # check for file type
+                    continue
+                file_path = root + "/" + file_path
+                with open(file_path, "r") as file:
+                    text = file.readlines()
+                text = [line.replace(find_pattern, replace_with) for line in text]
+                with open(file_path, "w") as file:
+                    file.writelines(text)
+                    
 def usage():
     print("Usage: python main.py [OPTION]")
 
 
 def main():
-    flatc_options = get_flatc_options()
     flatcc_options = get_flatcc_options()
 
     parser = argparse.ArgumentParser(
@@ -101,7 +126,6 @@ def main():
         flatcc = True
 
     flatc = False
-    
     if not ("c" in get_languages() and len(get_languages()) == 1):  # flatc
         out, err_out, err_code = run_command("{0} --version".format(args.flatc_path))
 
@@ -120,48 +144,18 @@ def main():
         
     print("====== Schema compilation ======")
     paths = parse_network_multipath(c.FLATBUF_SCHEMA_FILE)
-    for network_name, path in paths.items():
+    for network_name, schema_path in paths.items():
+        out_path = f"{os.path.dirname(schema_path)}"
+
         if flatc:
-            # Generating files with flatc
-            out_path = f"{os.path.dirname(path)}/flatc"
-            if not os.path.exists(out_path):
-                os.mkdir(out_path)
-            command = f"{args.flatc_path} {flatc_options} -o {out_path} {path}"
-            out, err_out, err_code = run_command(command)
-            if err_code != 0:
-                print(err_out, file=sys.stderr)
-                sys.exit(f"The command returned error code {err_code}")
+            for lang in get_languages():
+                if lang == "c":  # C is specifically supported by FlatCC
+                    continue
+                run_flatc(args.flatc_path, lang, out_path, schema_path)
 
         if flatcc:
-            # Generating files with flatcc
-            out_path = f"{os.path.dirname(path)}/c"
-            if not os.path.exists(out_path):
-                os.mkdir(out_path)
-            command = f"{args.flatcc_path} {flatcc_options} -o {out_path} {path}"
-            out, err_out, err_code = run_command(command)
-            if err_code != 0:
-                print(err_out, file=sys.stderr)
-                sys.exit(f"The command returned error code {err_code}")
-
-            # Replacing flatcc library path in generated files
-            if args.flatcc_lib_path is not None:
-                find_pattern = "#include \"flatcc/"
-                replace_with = f"#include \"{args.flatcc_lib_path}"
-                
-                # Check if user included trailing '/' in path
-                replace_with += "" if args.flatcc_lib_path[-1] == "/" else "/"
-                
-                for root, _, files in os.walk(out_path):
-                    for file_path in files:
-                        if file_path[-2:] not in [".c", ".h"]:  # check for file type
-                            continue
-                        file_path = root + "/" + file_path
-                        with open(file_path, "r") as file:
-                            text = file.readlines()
-                        text = [line.replace(find_pattern, replace_with) for line in text]
-                        with open(file_path, "w") as file:
-                            file.writelines(text)
-                    
+            run_flatcc(args.flatcc_path, args.flatcc_lib_path, out_path, schema_path)
+            
         print("Compiled schema for {0}".format(network_name))
         
     print("done.")
