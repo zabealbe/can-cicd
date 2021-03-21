@@ -44,8 +44,8 @@ $ python main.py
 ```
 Generated files:\
 :open_file_folder: [flatbuf-generator](flatbuf-generator)\
- └ :open_file_folder: [out](out)\
-&nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [[network folder]](out/ExampleNetwork)\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: [schema.fbs](out/schema.fbs)\
+ └ :open_file_folder: out\
+&nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [network folder]\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: schema.fbs\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: [...] compiled schema files
 

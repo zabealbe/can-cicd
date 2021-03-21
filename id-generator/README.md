@@ -45,9 +45,9 @@ $ python main.py
 
 Generated files:\
 :open_file_folder: [id-generator](id-generator)\
-└ :open_file_folder: [out](out)\
-&nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [[network name]](out/ExampleNetwork)\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: [ids.json](out/ExampleNetwork/ids.json)
+└ :open_file_folder: out\
+&nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [network name]\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: ids.json
 
 # How it works
 ## Message structure

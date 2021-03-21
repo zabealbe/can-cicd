@@ -72,7 +72,8 @@ def run_flatcc(flatcc_path, flatcc_lib_path, out_path, schema_path):
                 text = [line.replace(find_pattern, replace_with) for line in text]
                 with open(file_path, "w") as file:
                     file.writelines(text)
-                    
+
+       
 def usage():
     print("Usage: python main.py [OPTION]")
 
