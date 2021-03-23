@@ -3,96 +3,102 @@ from generators.gen import Generator as G
 
 
 class Generator(G):
-    def __init__(self, schema, types, skeleton_file_c: Path, skeleton_file_h: Path):
+    def __init__(self, schema, types, endianness: str, skeleton_file_h: Path):
         self.schema = schema
         self.types = types
-        self.skeleton_file_c = skeleton_file_c
-        self.skeleton_file_h = skeleton_file_h
+        self.skeleton_file_py = skeleton_file_h
+
+        super(Generator, self).__init__(types, endianness)
+
+    def generate_header(self):
+        with open(self.skeleton_file_py) as f:
+            code = f.read()
+
+        for enum_name, enum in self.schema["enums"].items():
+            code += "\n"
+            code += f"enum {enum_name} {{\n"
+            for index, item in enumerate(enum):
+                code += f"\t{item},\n"
+            code += "};\n"
+        
+        code += "\n"
+        for struct_name, struct in self.schema["structs"].items():
+            code += "#pragma pack(1)\n"  # Align to 1 byte
+            code += f"struct {struct_name} {{\n"
+            for index, (field_name, field) in enumerate(struct.items()):
+                if "struct" in field:
+                    continue
+                
+                field = field.split(":", 1)
+                type_func = self.types[field[0]][1]
+                field_class = type_func() if len(field) == 1 else type_func().format(field[1])
+                code += f"\t{field_class} {field_name};\n"
+            code += "}\n"
+
+        return code
 
     def generate_serializer(self):
-        """
-            DOC
-        """
+        code = ""
+        for struct_name, struct in self.schema["structs"].items():
+            code += f"void serialize_{struct_name}({struct_name}* struct, char* buffer, size_t len)) {{\n"
+            code += f"\tassert(len == sizeof(struct {struct_name}));\n"
+            code += f"\treturn;\n"
+            code += "}\n"
+        return code
 
     def generate_deserializer(self):
-        """
-            DOC
-        """
+        code = ""
+        for struct_name, struct in self.schema["structs"].items():
+            code += f"void deserialize_{struct_name}(char* buffer, size_t len, {struct_name}* struct) {{\n"
+            code += f"\tassert(len == sizeof(struct {struct_name}));\n"
+            code += f"\treturn;\n"
+            code += "}\n"
+        return code
 
-    """
-        DESERIALIZERS
-    """
-    def deserialize_bool(self):
-        pass
+    @staticmethod
+    def add_bool(self):
+        return "bool"
 
-    def deserialize_int8(self):
-        pass
+    @staticmethod
+    def add_int8():
+        return "int8_t"
 
-    def deserialize_int16(self):
-        pass
+    @staticmethod
+    def add_int16():
+        return "int16_t"
 
-    def deserialize_int32(self):
-        pass
+    @staticmethod
+    def add_int32():
+        return "int32_t"
 
-    def deserialize_int64(self):
-        pass
+    @staticmethod
+    def add_int64():
+        return "int64_t"
 
-    def deserialize_uint8(self):
-        pass
+    @staticmethod
+    def add_uint8():
+        return "uint8_t"
 
-    def deserialize_uint16(self):
-        pass
+    @staticmethod
+    def add_uint16():
+        return "uint16_t"
 
-    def deserialize_int32(self):
-        pass
+    @staticmethod
+    def add_uint32():
+        return "uint32_t"
 
-    def deserialize_int64(self):
-        pass
+    @staticmethod
+    def add_uint64():
+        return "uint64_t"
 
-    def deserialize_float32(self):
-        pass
+    @staticmethod
+    def add_float32():
+        return "float"
 
-    def deserialize_float64(self):
-        pass
+    @staticmethod
+    def add_float64():
+        return "double"
 
-    def deserialize_enum(self):
-        pass
-
-    """
-        SERIALIZERS
-    """
-    def serialize_bool(self):
-        pass
-
-    def serialize_int8(self):
-        pass
-
-    def serialize_int16(self):
-        pass
-
-    def serialize_int32(self):
-        pass
-
-    def serialize_int64(self):
-        pass
-
-    def serialize_uint8(self):
-        pass
-
-    def serialize_uint16(self):
-        pass
-
-    def serialize_int32(self):
-        pass
-
-    def serialize_int64(self):
-        pass
-
-    def serialize_float32(self):
-        pass
-
-    def serialize_float64(self):
-        pass
-
-    def serialize_enum(self):
-        pass
+    @staticmethod
+    def add_enum():
+        return "{0}"

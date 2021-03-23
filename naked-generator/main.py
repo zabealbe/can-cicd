@@ -29,18 +29,18 @@ def main():
     schema = utils.load_json(c.SCHEMA_LOCATION)
     
     for file_schema in schema:
-        # Run pygen
-        py_gen = GeneratorPY(file_schema, types, c.ENDIANNESS, "generators/py_gen/skeleton.py")
-        a = py_gen.generate_all()
-        # output s and d to files
+        if True:
+            # Run pygen
+            py_gen = GeneratorPY(file_schema, types, c.ENDIANNESS, "generators/py_gen/skeleton.py")
+            a = py_gen.generate_all()
+            # output s and d to files
         
-        """
-        # Run cgen
-        c_gen = GeneratorC(file_schema, types, "generators/py_gen/skeleton.c", "generators/py_gen/skeleton.h")
-        s = c_gen.generate_serializer()
-        d = c_gen.generate_deserializer()
-        # output s and d to files
-        """
+        if True:
+            # Run cgen
+            c_gen = GeneratorC(file_schema, types, c.ENDIANNESS, "generators/c_gen/skeleton.h")
+            a = c_gen.generate_all()
+            # output s and d to files
+        
         break
         
 

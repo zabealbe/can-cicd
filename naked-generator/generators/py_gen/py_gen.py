@@ -1,38 +1,35 @@
 from pathlib import Path
 from generators.gen import Generator as G
+from enum import Enum
 
 
 class Generator(G):
     def __init__(self, schema, types, endianness: str, skeleton_file_py: Path):
         self.schema = schema
         self.types = types
-        if endianness != "little" and endianness != "big":
-            raise ValueError(f"Endianness parameter must be either 'little' or 'big', got {endianness}")
-        self.endianness = endianness
         self.skeleton_file_py = skeleton_file_py
         
-        super(Generator, self).__init__(types)
+        super(Generator, self).__init__(types, endianness)
         
-    def generate_all(self):
-        code = self.generate_header() + "\n\n"
-        code += self.generate_serializer() + "\n\n"
-        code += self.generate_deserializer() + "\n\n"
-        print(code)
-        return code
-    
     def generate_header(self):
         with open(self.skeleton_file_py) as f:
             code = f.read()
-        
-        code += "\n"
+            
+        for enum_name, enum in self.schema["enums"].items():
+            code += "\n"
+            code += f"class {enum_name}(Enum):\n"
+            for index, item in enumerate(enum):
+                code += f"\t{item} = {index}\n"
+
         for struct_name, struct in self.schema["structs"].items():
+            code += "\n"
             code += f"{struct_name} = namedtuple('{struct_name}', '"
             schema = "<" if self.endianness == "little" else ">"
             for index, (field_name, field_type) in enumerate(struct.items()):
-                if "enums" in field_type or "struct" in field_type:
+                if "struct" in field_type:
                     continue
                 code += f"{field_name} "
-                schema += self.types[field_type][1]()
+                schema += self.types[field_type.split(":", 1)[0]][1]()
             code = code[:-1] + "')\n"  # Removing last whitespace
             code += f"{struct_name}_schema = '{schema}'"
 
@@ -98,4 +95,4 @@ class Generator(G):
 
     @staticmethod
     def add_enum():
-        return ""
+        return "c"
