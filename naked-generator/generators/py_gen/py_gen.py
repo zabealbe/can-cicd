@@ -3,144 +3,99 @@ from generators.gen import Generator as G
 
 
 class Generator(G):
-    def __init__(self, schema, types, skeleton_file_py: Path):
+    def __init__(self, schema, types, endianness: str, skeleton_file_py: Path):
         self.schema = schema
         self.types = types
+        if endianness != "little" and endianness != "big":
+            raise ValueError(f"Endianness parameter must be either 'little' or 'big', got {endianness}")
+        self.endianness = endianness
         self.skeleton_file_py = skeleton_file_py
         
         super(Generator, self).__init__(types)
-
-    def generate_serializer(self):
+        
+    def generate_all(self):
+        code = self.generate_header() + "\n\n"
+        code += self.generate_serializer() + "\n\n"
+        code += self.generate_deserializer() + "\n\n"
+        print(code)
+        return code
+    
+    def generate_header(self):
         with open(self.skeleton_file_py) as f:
             code = f.read()
-        code += "\n\n"
+        
+        code += "\n"
         for struct_name, struct in self.schema["structs"].items():
-            code += f"def serialize_{struct_name}(struct: dict) -> bytearray:\n"
-            
+            code += f"{struct_name} = namedtuple('{struct_name}', '"
+            schema = "<" if self.endianness == "little" else ">"
             for index, (field_name, field_type) in enumerate(struct.items()):
                 if "enums" in field_type or "struct" in field_type:
                     continue
-                code += "\t" + self.types[field_type][1]().format(index) + "\n"
-                
-            code += "\tbuffer = bytearray()\n"
-            code += "\treturn buffer\n"
-            print(code)
+                code += f"{field_name} "
+                schema += self.types[field_type][1]()
+            code = code[:-1] + "')\n"  # Removing last whitespace
+            code += f"{struct_name}_schema = '{schema}'"
+
+        return code        
+
+    def generate_serializer(self):
+        code = ""
+        for struct_name, struct in self.schema["structs"].items():
+            code += f"def serialize_{struct_name}(struct: {struct_name}) -> bytearray:\n"
+            code += f"\treturn pack({struct_name}, *tuple(struct))\n"
+        return code
 
     def generate_deserializer(self):
-        """
-            DOC
-        """
-
-    """
-        DESERIALIZERS
-    """
+        code = ""
+        for struct_name, struct in self.schema["structs"].items():
+            code += f"def deserialize_{struct_name}(buffer: bytearray) -> {struct_name}:\n"
+            code += f"\treturn {struct_name}._make(unpack({struct_name}_schema, buffer))\n"
+        return code
+    
     @staticmethod
-    def deserialize_bool(self):
-        pass
-
-    @staticmethod
-    def deserialize_int8(self):
-        pass
+    def add_bool(self):
+        return "?"
 
     @staticmethod
-    def deserialize_int16(self):
-        pass
+    def add_int8():
+        return "c"
 
     @staticmethod
-    def deserialize_int32(self):
-        pass
+    def add_int16():
+        return "h"
 
     @staticmethod
-    def deserialize_int64(self):
-        pass
+    def add_int32():
+        return "i"
 
     @staticmethod
-    def deserialize_uint8(self):
-        pass
+    def add_int64():
+        return "q"
 
     @staticmethod
-    def deserialize_uint16(self):
-        pass
+    def add_uint8():
+        return "B"
 
     @staticmethod
-    def deserialize_uint32(self):
-        pass
+    def add_uint16():
+        return "H"
 
     @staticmethod
-    def deserialize_uint64(self):
-        pass
+    def add_uint32():
+        return "I"
 
     @staticmethod
-    def deserialize_float32(self):
-        pass
+    def add_uint64():
+        return "Q"
 
     @staticmethod
-    def deserialize_float64(self):
-        pass
+    def add_float32():
+        return "f"
 
     @staticmethod
-    def deserialize_enum(self):
-        pass
-
-    """
-        SERIALIZERS
-    """
-    @staticmethod
-    def serialize_bool():
-        return f"produce_bool(buffer, struct.values()[{0}])"
-        pass
+    def add_float64():
+        return "d"
 
     @staticmethod
-    def serialize_int8():
-        return f"produce_int(buffer, struct.values()[{0}], True, 8)"
-        pass
-
-    @staticmethod
-    def serialize_int16():
-        return f"produce_int16(buffer, struct.values()[{0}], True, 16)"
-        pass
-
-    @staticmethod
-    def serialize_int32():
-        return f"produce_int32(buffer, struct.values()[{0}], True, 32)"
-        pass
-
-    @staticmethod
-    def serialize_int64():
-        return f"produce_int64(buffer, struct.values()[{0}], True, 64)"
-        pass
-
-    @staticmethod
-    def serialize_uint8():
-        return f"produce_uint8(buffer, struct.values()[{0}], False, 8)"
-        pass
-
-    @staticmethod
-    def serialize_uint16():
-        return f"produce_uint16(buffer, struct.values()[{0}], False, 16)"
-        pass
-
-    @staticmethod
-    def serialize_uint32():
-        return f"produce_uint32(buffer, struct.values()[{0}], False, 32)"
-        pass
-
-    @staticmethod
-    def serialize_uint64():
-        return f"produce_uint64(buffer, struct.values()[{0}], False, 64)"
-        pass
-
-    @staticmethod
-    def serialize_float32():
-        return f"produce_float32(buffer, struct.values()[{0}], 32)"
-        pass
-
-    @staticmethod
-    def serialize_float64():
-        return f"produce_float64(buffer, struct.values()[{0}], 64)"
-        pass
-
-    @staticmethod
-    def serialize_enum():
-        return f"produce_enum(buffer, struct.values()[{0}])"
-        pass
+    def add_enum():
+        return ""
