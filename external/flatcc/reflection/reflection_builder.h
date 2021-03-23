@@ -9,7 +9,7 @@
 #ifndef FLATBUFFERS_COMMON_BUILDER_H
 #include "flatbuffers_common_builder.h"
 #endif
-#include "flatcc/flatcc_prologue.h"
+#include "../flatcc_prologue.h"
 #undef flatbuffers_identifier
 #define flatbuffers_identifier "BFBS"
 #undef flatbuffers_extension
@@ -340,5 +340,5 @@ static reflection_Schema_ref_t reflection_Schema_clone(flatbuffers_builder_t *B,
     __flatbuffers_memoize_end(B, t, reflection_Schema_end(B));
 }
 
-#include "flatcc/flatcc_epilogue.h"
+#include "../flatcc_epilogue.h"
 #endif /* REFLECTION_BUILDER_H */

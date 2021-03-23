@@ -14,9 +14,9 @@
 #include <string.h>
 #include <assert.h>
 
-#include "flatcc/flatcc_rtconfig.h"
-#include "flatcc/flatcc_refmap.h"
-#include "flatcc/flatcc_alloc.h"
+#include "../flatcc_rtconfig.h"
+#include "../flatcc_refmap.h"
+#include "../flatcc_alloc.h"
 
 #define _flatcc_refmap_calloc FLATCC_CALLOC
 #define _flatcc_refmap_free FLATCC_FREE
@@ -179,7 +179,7 @@ flatcc_refmap_ref_t flatcc_refmap_find(flatcc_refmap_t *refmap, const void *src)
 #include <stdio.h>
 
 #ifndef FLATCC_REFMAP_H
-#include "flatcc/flatcc_refmap.h"
+#include "../flatcc_refmap.h"
 #endif
 
 #define test(x) do { if (!(x)) { fprintf(stderr, "%02d: refmap test failed\n", __LINE__); exit(-1); } } while (0)

@@ -6,11 +6,11 @@
 #ifndef FLATBUFFERS_COMMON_READER_H
 #include "flatbuffers_common_reader.h"
 #endif
-#include "flatcc/flatcc_flatbuffers.h"
+#include "../flatcc_flatbuffers.h"
 #ifndef __alignas_is_defined
 #include <stdalign.h>
 #endif
-#include "flatcc/flatcc_prologue.h"
+#include "../flatcc_prologue.h"
 #undef flatbuffers_identifier
 #define flatbuffers_identifier "BFBS"
 #undef flatbuffers_extension
@@ -280,5 +280,5 @@ __flatbuffers_define_string_field(3, reflection_Schema, file_ext, 0)
 __flatbuffers_define_table_field(4, reflection_Schema, root_table, reflection_Object_table_t, 0)
 
 
-#include "flatcc/flatcc_epilogue.h"
+#include "../flatcc_epilogue.h"
 #endif /* REFLECTION_READER_H */

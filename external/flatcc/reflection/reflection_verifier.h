@@ -6,8 +6,8 @@
 #ifndef REFLECTION_READER_H
 #include "reflection_reader.h"
 #endif
-#include "flatcc/flatcc_verifier.h"
-#include "flatcc/flatcc_prologue.h"
+#include "../flatcc_verifier.h"
+#include "../flatcc_prologue.h"
 
 static int reflection_Type_verify_table(flatcc_table_verifier_descriptor_t *td);
 static int reflection_KeyValue_verify_table(flatcc_table_verifier_descriptor_t *td);
@@ -235,5 +235,5 @@ static inline int reflection_Schema_verify_as_root_with_type_hash(const void *bu
     return flatcc_verify_table_as_typed_root(buf, bufsiz, thash, &reflection_Schema_verify_table);
 }
 
-#include "flatcc/flatcc_epilogue.h"
+#include "../flatcc_epilogue.h"
 #endif /* REFLECTION_VERIFIER_H */

@@ -7,10 +7,10 @@
 #include <assert.h>
 #include <string.h>
 
-#include "flatcc/flatcc_rtconfig.h"
-#include "flatcc/flatcc_flatbuffers.h"
-#include "flatcc/flatcc_verifier.h"
-#include "flatcc/flatcc_identifier.h"
+#include "../flatcc_rtconfig.h"
+#include "../flatcc_flatbuffers.h"
+#include "../flatcc_verifier.h"
+#include "../flatcc_identifier.h"
 
 /* Customization for testing. */
 #if FLATCC_DEBUG_VERIFY

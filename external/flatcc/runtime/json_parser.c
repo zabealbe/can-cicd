@@ -1,5 +1,5 @@
-#include "flatcc/flatcc_rtconfig.h"
-#include "flatcc/flatcc_json_parser.h"
+#include "../flatcc_rtconfig.h"
+#include "../flatcc_json_parser.h"
 
 #define uoffset_t flatbuffers_uoffset_t
 #define soffset_t flatbuffers_soffset_t
@@ -15,8 +15,8 @@
 #if FLATCC_USE_GRISU3 && !defined(PORTABLE_USE_GRISU3)
 #define PORTABLE_USE_GRISU3 1
 #endif
-#include "flatcc/portable/pparsefp.h"
-#include "flatcc/portable/pbase64.h"
+#include "../portable/pparsefp.h"
+#include "../portable/pbase64.h"
 
 #if FLATCC_USE_SSE4_2
 #ifdef __SSE4_2__
