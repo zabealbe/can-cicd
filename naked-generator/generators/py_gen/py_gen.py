@@ -21,7 +21,6 @@ class Generator(G):
                 if "enums" in field_type or "struct" in field_type:
                     continue
                 code += "\t" + self.types[field_type][1]().format(index) + "\n"
-                print(code)
                 
             code += "\tbuffer = bytearray()\n"
             code += "\treturn buffer\n"
@@ -93,52 +92,52 @@ class Generator(G):
 
     @staticmethod
     def serialize_int8():
-        return f"produce_int8(buffer, struct.values()[{0}])"
+        return f"produce_int(buffer, struct.values()[{0}], True, 8)"
         pass
 
     @staticmethod
     def serialize_int16():
-        return f"produce_int16(buffer, struct.values()[{0}])"
+        return f"produce_int16(buffer, struct.values()[{0}], True, 16)"
         pass
 
     @staticmethod
     def serialize_int32():
-        return f"produce_int32(buffer, struct.values()[{0}])"
+        return f"produce_int32(buffer, struct.values()[{0}], True, 32)"
         pass
 
     @staticmethod
     def serialize_int64():
-        return f"produce_int64(buffer, struct.values()[{0}])"
+        return f"produce_int64(buffer, struct.values()[{0}], True, 64)"
         pass
 
     @staticmethod
     def serialize_uint8():
-        return f"produce_uint8(buffer, struct.values()[{0}])"
+        return f"produce_uint8(buffer, struct.values()[{0}], False, 8)"
         pass
 
     @staticmethod
     def serialize_uint16():
-        return f"produce_uint16(buffer, struct.values()[{0}])"
+        return f"produce_uint16(buffer, struct.values()[{0}], False, 16)"
         pass
 
     @staticmethod
     def serialize_uint32():
-        return f"produce_uint32(buffer, struct.values()[{0}])"
+        return f"produce_uint32(buffer, struct.values()[{0}], False, 32)"
         pass
 
     @staticmethod
     def serialize_uint64():
-        return f"produce_uint64(buffer, struct.values()[{0}])"
+        return f"produce_uint64(buffer, struct.values()[{0}], False, 64)"
         pass
 
     @staticmethod
     def serialize_float32():
-        return f"produce_float32(buffer, struct.values()[{0}])"
+        return f"produce_float32(buffer, struct.values()[{0}], 32)"
         pass
 
     @staticmethod
     def serialize_float64():
-        return f"produce_float64(buffer, struct.values()[{0}])"
+        return f"produce_float64(buffer, struct.values()[{0}], 64)"
         pass
 
     @staticmethod
