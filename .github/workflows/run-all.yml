@@ -60,6 +60,11 @@ jobs:
 
         ## remove useless stdlib include with flatcc
         rm -r /tmp/workspace/external/flatcc/portable/include
+        
+        cp flatbuf-generator/fix_flatcc.py /tmp/workspace/external/
+        cd /tmp/workspace/external/
+        python fix_flatcc.py ./flatcc
+        rm fix_flatcc.py
     - uses: actions/checkout@v2
       with:
         ref: build
