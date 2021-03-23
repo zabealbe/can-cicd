@@ -43,14 +43,16 @@ def compile_schema():
     
             if True:
                 # Run for c
-                c_gen = GeneratorC(file_schema, types, c.ENDIANNESS, "generators/c_gen/skeleton.h")
-                a = c_gen.generate_all()
-    
+                c_gen = GeneratorC(file_schema, types, c.ENDIANNESS, "generators/c_gen/skeleton.h", "generators/c_gen/skeleton.c")
+
                 output_file = f"{os.path.dirname(schema_path)}/c/naked.h"
                 utils.create_subtree(output_file)
                 with open(output_file, "w") as f:
-                    f.write(a)
-    
+                    f.write(c_gen.generate_h())
+
+                output_file = f"{os.path.dirname(schema_path)}/c/naked.c"
+                with open(output_file, "w") as f:
+                    f.write(c_gen.generate_c())
             break
 
 

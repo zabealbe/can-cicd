@@ -8,5 +8,6 @@ SCHEMA_LOCATION = "out/[network]/schema.json"
 ENDIANNESS = "little"  # Can be either little or big
 
 OUTPUT_DIR = "out/"
+OUTPUT_FILE = "naked"
 
 MERGE_NETWORKS = False

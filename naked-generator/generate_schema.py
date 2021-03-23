@@ -41,7 +41,8 @@ def generate_schema_from_network(network):
                     schema["enums"][enum_name] = field
                     field = f"enum:{enum_name}"
                 struct[field_name] = field
-            schema["structs"][message["name"]] = struct
+            if struct:  # Don't allow empty structs
+                schema["structs"][message["name"]] = struct
         schemas.append(schema)
         
     if __debug__:
@@ -83,5 +84,6 @@ def generate_schema():
 
 
 if __name__ == "__main__":
-    main()
+    generate_schema()
+
 

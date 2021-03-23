@@ -1,62 +1,98 @@
+from config import config as c
 from pathlib import Path
 from generators.gen import Generator as G
 
 
 class Generator(G):
-    def __init__(self, schema, types, endianness: str, skeleton_file_h: Path):
+    def __init__(self, schema, types, endianness: str, skeleton_file_h: Path, skeleton_file_c: Path):
         self.schema = schema
         self.types = types
-        self.skeleton_file_py = skeleton_file_h
+        self.skeleton_file_h = skeleton_file_h
+        self.skeleton_file_c = skeleton_file_c
 
         super(Generator, self).__init__(types, endianness)
 
-    def generate_header(self):
-        with open(self.skeleton_file_py) as f:
-            code = f.read()
-
-        for enum_name, enum in self.schema["enums"].items():
-            code += "\n"
-            code += f"enum {enum_name} {{\n"
-            for index, item in enumerate(enum):
-                code += f"\t{item},\n"
-            code += "};\n"
+    def generate_h(self):  
+        code_h = ""
         
-        code += "\n"
+        """
+        Enums
+        """
+        for enum_name, enum in self.schema["enums"].items():
+            code_h += "\n"
+            code_h += f"typedef enum __is_packed {{\n"
+            for index, item in enumerate(enum):
+                code_h += f"\t{enum_name}_{item},\n"
+            code_h += f"}} {enum_name};\n"
+
+        """
+        Structs
+        """
+        code_h += "\n"
         for struct_name, struct in self.schema["structs"].items():
-            code += "#pragma pack(1)\n"  # Align to 1 byte
-            code += f"struct {struct_name} {{\n"
+            #code_h += "#pragma pack(1)\n"  # Align to 1 byte
+            code_h += f"typedef struct __is_packed {{\n"
             for index, (field_name, field) in enumerate(struct.items()):
                 if "struct" in field:
                     continue
-                
+
                 field = field.split(":", 1)
                 type_func = self.types[field[0]][1]
                 field_class = type_func() if len(field) == 1 else type_func().format(field[1])
-                code += f"\t{field_class} {field_name};\n"
-            code += "}\n"
+                code_h += f"\t{field_class} {field_name};\n"
+            code_h += f"}} {struct_name};\n\n"
 
-        return code
-
-    def generate_serializer(self):
-        code = ""
+        """
+        Serializer
+        """
         for struct_name, struct in self.schema["structs"].items():
-            code += f"void serialize_{struct_name}({struct_name}* {struct_name.lower()}, char* buffer, size_t len)) {{\n"
-            code += f"\tassert(len >= sizeof(struct {struct_name}));\n"
-            code += f"\tbuffer = (char*) {struct_name.lower()};\n"
-            code += f"\treturn;\n"
-            code += "}\n"
-        return code
-
-    def generate_deserializer(self):
-        code = ""
+            code_h += f"void serialize_{struct_name}({struct_name}* {struct_name.lower()}, uint8_t* buffer, size_t buf_len);\n"
+        code_h += "\n"
+        """
+        Deserializer
+        """
         for struct_name, struct in self.schema["structs"].items():
-            code += f"void deserialize_{struct_name}(char* buffer, size_t len, {struct_name}* {struct_name.lower()}) {{\n"
-            code += f"\tassert(len >= sizeof(struct {struct_name}));\n"
-            code += f"\t{struct_name.lower()} = (struct {struct_name}*) buffer;\n"
-            code += f"\treturn;\n"
-            code += "}\n"
-        return code
+            code_h += f"void deserialize_{struct_name}(uint8_t* buffer, size_t buf_len, {struct_name}* {struct_name.lower()});\n"
+        
+        """
+        Building from skeleton
+        """      
+        endianness = "BIG_ENDIAN" if self.endianness == "big" else "LITTLE_ENDIAN"
+        with open(self.skeleton_file_h, "r") as f:
+            skeleton_h = f.read().format(code=code_h, endianness=endianness, filename_caps=c.OUTPUT_FILE.upper())
+            
+        return skeleton_h
 
+    def generate_c(self):
+        code_c = ""
+        
+        """
+        Serializer
+        """
+        for struct_name, struct in self.schema["structs"].items():
+            code_c += f"void serialize_{struct_name}({struct_name}* {struct_name.lower()}, uint8_t* buffer, size_t buf_len) {{\n"
+            code_c += f"\tassert(buf_len >= sizeof({struct_name}));\n"
+            code_c += f"\tmemcpy(buffer, {struct_name.lower()}, sizeof(STEER_STATUS));\n"
+            code_c += "}\n"
+        code_c += "\n"
+
+        """
+        Deserializer
+        """
+        for struct_name, struct in self.schema["structs"].items():
+            code_c += f"void deserialize_{struct_name}(uint8_t* buffer, size_t buf_len, {struct_name}* {struct_name.lower()}) {{\n"
+            code_c += f"\tassert(buf_len >= sizeof({struct_name}));\n"
+            code_c += f"\tmemcpy({struct_name.lower()}, buffer, sizeof(STEER_STATUS));\n"
+            code_c += "}\n"
+
+        """
+        Building from skeleton
+        """
+        with open(self.skeleton_file_c, "r") as f:
+            skeleton_c = f.read().format(code=code_c, filename=c.OUTPUT_FILE)
+        
+        return skeleton_c
+    
     @staticmethod
     def add_bool():
         return "bool"

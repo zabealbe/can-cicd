@@ -12,17 +12,14 @@ class Generator(G):
         super(Generator, self).__init__(types, endianness)
         
     def generate_header(self):
-        with open(self.skeleton_file_py) as f:
-            code = f.read()
-            
+        code = ""
         for enum_name, enum in self.schema["enums"].items():
-            code += "\n"
             code += f"class {enum_name}(Enum):\n"
             for index, item in enumerate(enum):
                 code += f"\t{item} = {index}\n"
+            code += "\n\n"
 
         for struct_name, struct in self.schema["structs"].items():
-            code += "\n"
             code += f"{struct_name} = namedtuple('{struct_name}', '"
             schema = "<" if self.endianness == "little" else ">"
             for index, (field_name, field_type) in enumerate(struct.items()):
@@ -32,14 +29,20 @@ class Generator(G):
                 schema += self.types[field_type.split(":", 1)[0]][1]()
             code = code[:-1] + "')\n"  # Removing last whitespace
             code += f"{struct_name}_schema = '{schema}'"
-
-        return code        
+            code += "\n\n"
+        code += "\n"
+        
+        with open(self.skeleton_file_py) as f:
+            schema_py = f.read().format(code=code)
+        
+        return schema_py
 
     def generate_serializer(self):
         code = ""
         for struct_name, struct in self.schema["structs"].items():
             code += f"def serialize_{struct_name}(struct: {struct_name}) -> bytearray:\n"
             code += f"\treturn pack({struct_name}, *tuple(struct))\n"
+            code += "\n\n"
         return code
 
     def generate_deserializer(self):
@@ -47,6 +50,15 @@ class Generator(G):
         for struct_name, struct in self.schema["structs"].items():
             code += f"def deserialize_{struct_name}(buffer: bytearray) -> {struct_name}:\n"
             code += f"\treturn {struct_name}._make(unpack({struct_name}_schema, buffer))\n"
+            code += "\n\n"
+        return code
+    
+    def generate_all(self):
+        code = self.generate_header()
+        code += self.generate_serializer()
+        code += self.generate_deserializer()
+        if __debug__:
+            print(code)
         return code
     
     @staticmethod
