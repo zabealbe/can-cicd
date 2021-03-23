@@ -50,7 +50,7 @@ class Generator(G):
         return code
     
     @staticmethod
-    def add_bool(self):
+    def add_bool():
         return "?"
 
     @staticmethod

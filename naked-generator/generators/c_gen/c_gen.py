@@ -40,8 +40,9 @@ class Generator(G):
     def generate_serializer(self):
         code = ""
         for struct_name, struct in self.schema["structs"].items():
-            code += f"void serialize_{struct_name}({struct_name}* struct, char* buffer, size_t len)) {{\n"
-            code += f"\tassert(len == sizeof(struct {struct_name}));\n"
+            code += f"void serialize_{struct_name}({struct_name}* {struct_name.lower()}, char* buffer, size_t len)) {{\n"
+            code += f"\tassert(len >= sizeof(struct {struct_name}));\n"
+            code += f"\tbuffer = (char*) {struct_name.lower()};\n"
             code += f"\treturn;\n"
             code += "}\n"
         return code
@@ -49,14 +50,15 @@ class Generator(G):
     def generate_deserializer(self):
         code = ""
         for struct_name, struct in self.schema["structs"].items():
-            code += f"void deserialize_{struct_name}(char* buffer, size_t len, {struct_name}* struct) {{\n"
-            code += f"\tassert(len == sizeof(struct {struct_name}));\n"
+            code += f"void deserialize_{struct_name}(char* buffer, size_t len, {struct_name}* {struct_name.lower()}) {{\n"
+            code += f"\tassert(len >= sizeof(struct {struct_name}));\n"
+            code += f"\t{struct_name.lower()} = (struct {struct_name}*) buffer;\n"
             code += f"\treturn;\n"
             code += "}\n"
         return code
 
     @staticmethod
-    def add_bool(self):
+    def add_bool():
         return "bool"
 
     @staticmethod

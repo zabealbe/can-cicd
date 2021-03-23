@@ -35,6 +35,10 @@ class Network:
 
         for i, m in enumerate(self.contents):
             self.name_index[m["name"]] = i
+        
+        for m in self.contents:
+            if "topic" not in m:
+                m["topic"] = "FIXED_IDS"
 
     def load_ids(self, path: str, validation_schema: str = None):
         self.ids_path = path
