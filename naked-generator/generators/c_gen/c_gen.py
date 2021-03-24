@@ -1,7 +1,7 @@
+from generators.gen import Generator as G
 from config import config as c
 from pathlib import Path
-from generators.gen import Generator as G
-import utils
+from lib import utils
 
 
 class Generator(G):

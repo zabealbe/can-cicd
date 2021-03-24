@@ -38,17 +38,17 @@ def compile_schema():
                 py_gen = GeneratorPY(file_schema, types, c.ENDIANNESS, "generators/py_gen/skeleton.py")
                 a = py_gen.generate_all()
     
-                output_file = f"{os.path.dirname(schema_path)}/py/{output_file}.py"
-                utils.create_subtree(os.path.dirname(output_file))
-                with open(output_file, "w") as f:
+                output_path = f"{os.path.dirname(schema_path)}/py"
+                utils.create_subtree(output_path)
+                with open(f"{output_path}/{output_file}.py", "w") as f:
                     f.write(a)
     
             if True:
                 # Run for c
-                utils.create_subtree(f"{os.path.dirname(schema_path)}/c/a")
-                c_gen = GeneratorC(file_schema, types, c.ENDIANNESS, "generators/c_gen/skeleton.h", "generators/c_gen/skeleton.c")
-
                 output_path = f"{os.path.dirname(schema_path)}/c"
+                utils.create_subtree(output_path)
+                
+                c_gen = GeneratorC(file_schema, types, c.ENDIANNESS, "generators/c_gen/skeleton.h", "generators/c_gen/skeleton.c")
                 c_gen.generate(output_path, output_file)
 
 

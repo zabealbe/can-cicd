@@ -74,13 +74,14 @@ def generate_schema():
 
     print("====== Schemas generation ======")
     for network in networks:
-        output_file = f"{c.OUTPUT_DIR}{network.name}/schema.json"
+        output_path = f"{c.OUTPUT_DIR}{network.name}"
+        output_file_path = f"{output_path}/schema.json"
         schema = generate_schema_from_network(network)
         
-        create_subtree(output_file)
-        with open(output_file, "w") as f:
+        create_subtree(output_path)
+        with open(output_file_path, "w") as f:
             json.dump(schema, f, indent=4)
-        print(f"Generated schema for {network.name} in {output_file}")
+        print(f"Generated schema for {network.name} in {output_file_path}")
 
 
 if __name__ == "__main__":

@@ -3,6 +3,7 @@ from lib.network import Network
 from config import config as c
 from lib import utils
 import json
+import os
 
 # xxxxxx xxxxx => can id has 11 bits
 # ^^^^^^       => bits for message id
@@ -159,7 +160,7 @@ def main():
         output_file = c.OUTPUT_FILE.replace("[network]", n.name)
         print("Saving IDs to {0}".format(output_file))
         
-        utils.create_subtree(output_file)
+        utils.create_subtree(os.path.dirname(output_file))
         with open(output_file, "w+") as f:
             json.dump(output, f, indent=4)
             

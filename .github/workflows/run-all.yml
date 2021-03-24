@@ -38,6 +38,11 @@ jobs:
         chmod +x flatcc
         python compile_schema.py --flatc ./flatc --flatcc ./flatcc --flatcc-lib-path ../../../external/flatcc
         mkdir -p /tmp/workspace/flatbuf-generator/ && cp -R out/* /tmp/workspace/flatbuf-generator/
+    - name: Naked generator
+      run: |
+        cd naked-generator
+        python main.py
+        mkdir -p /tmp/workspace/naked-generator/ && cp -R out/* /tmp/workspace/naked-generator/
     - name: Run Includes generator
       run: |
         cd includes-generator
