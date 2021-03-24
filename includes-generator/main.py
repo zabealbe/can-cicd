@@ -37,7 +37,7 @@ def main():
 
     # IDs & masks
     for network_name, path in parse_network_multipath(c.IDS_FILE).items():
-        output_path = c.OUTPUT_DIR.replace("[network]", network_name)
+        output_file = c.OUTPUT_DIR.replace("[network]", network_name)
         print(path)
         
         ids_file = load_json(path)
@@ -46,14 +46,14 @@ def main():
         network_version = float(ids_file["network_version"])
         print(f"Loaded message ids from {path}")
         
-        create_subtree(output_path)
+        create_subtree(os.path.dirname(output_file))
         
-        generate_id_includes(topics, network_version, output_path)
-        print(f"Generated id includes in {output_path}\n")
+        generate_id_includes(topics, network_version, output_file)
+        print(f"Generated id includes in {output_file}\n")
 
     # CAN config
     for network_name, path in parse_network_multipath(c.CANCONFIG_FILE).items():
-        output_path = c.OUTPUT_DIR.replace("[network]", network_name)
+        output_file = c.OUTPUT_DIR.replace("[network]", network_name)
         print(path)
 
         canconfig_file = load_json(path, c.CANCONFIG_FILE_VALIDATION_SCHEMA)
@@ -61,10 +61,10 @@ def main():
         canconfig_version = float(canconfig_file["canconfig_version"])
         print(f"Loaded can configuration from {path}")
 
-        create_subtree(output_path)
+        create_subtree(os.path.dirname(output_file))
 
-        generate_canconfig_includes(canconfig, canconfig_version, output_path)
-        print(f"Generated canconfig includes in {output_path}\n")
+        generate_canconfig_includes(canconfig, canconfig_version, output_file)
+        print(f"Generated canconfig includes in {output_file}\n")
 
     '''
         with open(config.FLATBUF_SCHEMA_FILE) as flatbuf_schema:

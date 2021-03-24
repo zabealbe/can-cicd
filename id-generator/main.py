@@ -1,8 +1,8 @@
 from collections import OrderedDict
 from lib.network import Network
-from lib.utils import *
-
 from config import config as c
+from lib import utils
+import json
 
 # xxxxxx xxxxx => can id has 11 bits
 # ^^^^^^       => bits for message id
@@ -100,7 +100,7 @@ def main():
     print("")
 
     print("====== Networks loading ======")
-    paths = parse_network_multipath(c.NETWORK_FILE)
+    paths = utils.parse_network_multipath(c.NETWORK_FILE)
     networks = []
     for network_name, path in paths.items():
         if c.MERGE_NETWORKS and networks:
@@ -123,6 +123,9 @@ def main():
 
         topics = {}
         for topic, topic_id in topic_ids.items():
+            if topic == "FIXED_IDS":
+                break
+                
             if __debug__:
                 print("TOPIC {0}".format(topic))
 
@@ -148,15 +151,16 @@ def main():
                 "messages": message_fixed_ids
             }
             
-        output_path = c.OUTPUT_FILE.replace("[network]", n.name)
-        print("Saving IDs to {0}".format(output_path))
-        create_subtree(output_path)
-
         output = {
             "network_version": n.version,
             "topics": topics
         }
-        with open(output_path, "w+") as f:
+            
+        output_file = c.OUTPUT_FILE.replace("[network]", n.name)
+        print("Saving IDs to {0}".format(output_file))
+        
+        utils.create_subtree(output_file)
+        with open(output_file, "w+") as f:
             json.dump(output, f, indent=4)
             
         print("")
