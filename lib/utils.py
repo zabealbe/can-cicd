@@ -37,3 +37,10 @@ def parse_network_multipath(multipath):
         Exception()
 
     return paths
+
+
+def remove_trailing_slash(path: str):
+    if path[-1] == "/":
+        return path[:-1]
+    else:
+        return path

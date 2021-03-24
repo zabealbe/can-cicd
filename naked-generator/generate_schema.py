@@ -1,6 +1,6 @@
 from lib.utils import *
 from lib.network import Network
-from config import config as c
+import sanitized_config as c
 from generators.gen import Generator
 from generators.py_gen.py_gen import Generator as GeneratorPY
 from generators.c_gen.c_gen import Generator as GeneratorC
@@ -52,12 +52,6 @@ def generate_schema_from_network(network):
 
 
 def generate_schema():
-    # Config validity checks
-    if c.OUTPUT_DIR[-1] != "/":
-        print("OUTPUT_DIR in config.py isn't a valid directory path")
-        print("examples:\n\t./path/to/directory/\n\tpath/to/directory/")
-        exit(1)
-
     print("====== Networks loading ======")
     paths = parse_network_multipath(c.NETWORK_FILE)
     networks = []
@@ -74,7 +68,7 @@ def generate_schema():
 
     print("====== Schemas generation ======")
     for network in networks:
-        output_path = f"{c.OUTPUT_DIR}{network.name}"
+        output_path = f"{c.OUTPUT_DIR}/{network.name}"
         output_file_path = f"{output_path}/schema.json"
         schema = generate_schema_from_network(network)
         

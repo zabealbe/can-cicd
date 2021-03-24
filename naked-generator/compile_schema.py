@@ -1,6 +1,6 @@
 import os
 from lib import utils
-from config import config as c
+import sanitized_config as c
 from generators.gen import Generator
 from generators.py_gen.py_gen import Generator as GeneratorPY
 from generators.c_gen.c_gen import Generator as GeneratorC

@@ -5,7 +5,7 @@ from lib import utils
 
 
 class Generator(G):
-    def __init__(self, schema, types, endianness: str, skeleton_file_h: Path, skeleton_file_c: Path):
+    def __init__(self, schema, types, endianness: str, skeleton_file_h: str, skeleton_file_c: str):
         self.schema = schema
         self.types = types
         self.skeleton_file_h = skeleton_file_h
@@ -17,7 +17,7 @@ class Generator(G):
         code_h = ""
 
         """
-        Enums
+        Enum(s)
         """
         for enum_name, enum in self.schema["enums"].items():
             code_h += "\n"
@@ -27,7 +27,7 @@ class Generator(G):
             code_h += f"}};\n"
 
         """
-        Structs
+        Struct(s)
         """
         code_h += "\n"
         for struct_name, struct in self.schema["structs"].items():
@@ -44,13 +44,14 @@ class Generator(G):
             code_h += f"}} {struct_name};\n\n"
 
         """
-        Serializer
+        Serializer(s)
         """
         for struct_name, struct in self.schema["structs"].items():
             code_h += f"void serialize_{struct_name}({struct_name}* {struct_name.lower()}, uint8_t* buffer, size_t buf_len);\n"
         code_h += "\n"
+        
         """
-        Deserializer
+        Deserializer(s)
         """
         for struct_name, struct in self.schema["structs"].items():
             code_h += f"void deserialize_{struct_name}(uint8_t* buffer, size_t buf_len, {struct_name}* {struct_name.lower()});\n"
@@ -68,7 +69,7 @@ class Generator(G):
         code_c = ""
 
         """
-        Serializer
+        Serializer(s)
         """
         for struct_name, struct in self.schema["structs"].items():
             code_c += f"void serialize_{struct_name}({struct_name}* {struct_name.lower()}, uint8_t* buffer, size_t buf_len) {{\n"
@@ -78,7 +79,7 @@ class Generator(G):
         code_c += "\n"
 
         """
-        Deserializer
+        Deserializer(s)
         """
         for struct_name, struct in self.schema["structs"].items():
             code_c += f"void deserialize_{struct_name}(uint8_t* buffer, size_t buf_len, {struct_name}* {struct_name.lower()}) {{\n"

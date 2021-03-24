@@ -4,7 +4,7 @@ from enum import Enum
 
 
 class Generator(G):
-    def __init__(self, schema, types, endianness: str, skeleton_file_py: Path):
+    def __init__(self, schema, types, endianness: str, skeleton_file_py: str):
         self.schema = schema
         self.types = types
         self.skeleton_file_py = skeleton_file_py
