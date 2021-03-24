@@ -90,10 +90,10 @@ def main():
     for n in networks:
         schema = get_schema(n)
         print("Schema for {0} generated successfully!".format(n.name))
-        output_path = c.FLATBUF_SCHEMA_FILE.replace("[network]", n.name)
-        print("Saving schema to {0}".format(output_path))
-        create_subtree(output_path)
-        with open(output_path, "w+") as f:
+        output_file = c.FLATBUF_SCHEMA_FILE.replace("[network]", n.name)
+        print("Saving schema to {0}".format(output_file))
+        create_subtree(os.path.dirname(output_file))
+        with open(output_file, "w+") as f:
             print(schema, file=f)
 
     print("done.")

@@ -1,6 +1,7 @@
 from config import config as c
 from pathlib import Path
 from generators.gen import Generator as G
+import utils
 
 
 class Generator(G):
@@ -12,25 +13,25 @@ class Generator(G):
 
         super(Generator, self).__init__(types, endianness)
 
-    def generate_h(self):  
+    def generate_h(self, output_file):
         code_h = ""
-        
+
         """
         Enums
         """
         for enum_name, enum in self.schema["enums"].items():
             code_h += "\n"
-            code_h += f"typedef enum __is_packed {{\n"
+            code_h += f"enum {enum_name} __is_packed {{\n"
             for index, item in enumerate(enum):
                 code_h += f"\t{enum_name}_{item},\n"
-            code_h += f"}} {enum_name};\n"
+            code_h += f"}};\n"
 
         """
         Structs
         """
         code_h += "\n"
         for struct_name, struct in self.schema["structs"].items():
-            #code_h += "#pragma pack(1)\n"  # Align to 1 byte
+            # code_h += "#pragma pack(1)\n"  # Align to 1 byte
             code_h += f"typedef struct __is_packed {{\n"
             for index, (field_name, field) in enumerate(struct.items()):
                 if "struct" in field:
@@ -53,19 +54,19 @@ class Generator(G):
         """
         for struct_name, struct in self.schema["structs"].items():
             code_h += f"void deserialize_{struct_name}(uint8_t* buffer, size_t buf_len, {struct_name}* {struct_name.lower()});\n"
-        
+
         """
         Building from skeleton
-        """      
+        """
         endianness = "BIG_ENDIAN" if self.endianness == "big" else "LITTLE_ENDIAN"
         with open(self.skeleton_file_h, "r") as f:
-            skeleton_h = f.read().format(code=code_h, endianness=endianness, filename_caps=c.OUTPUT_FILE.upper())
-            
+            skeleton_h = f.read().format(code=code_h, endianness=endianness, filename_caps=output_file.upper())
+
         return skeleton_h
 
-    def generate_c(self):
+    def generate_c(self, output_file):
         code_c = ""
-        
+
         """
         Serializer
         """
@@ -89,10 +90,19 @@ class Generator(G):
         Building from skeleton
         """
         with open(self.skeleton_file_c, "r") as f:
-            skeleton_c = f.read().format(code=code_c, filename=c.OUTPUT_FILE)
-        
+            skeleton_c = f.read().format(code=code_c, filename=output_file)
+
         return skeleton_c
-    
+
+    def generate(self, output_path: str, filename: str):
+        utils.create_subtree(output_path)
+
+        with open(f"{output_path}/{filename}.h", "w") as f:
+            f.write(self.generate_h(filename))
+
+        with open(f"{output_path}/{filename}.c", "w") as f:
+            f.write(self.generate_c(filename))
+
     @staticmethod
     def add_bool():
         return "bool"
