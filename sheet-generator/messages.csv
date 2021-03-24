@@ -1,16 +1,22 @@
 name,id,network,topic,priority,sending,receiving,contents,description
-TLM_STATUS,259,Primary,STEER,6,TLM,STEER,"tlm_status: ON, OFF, race_type: ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE, driver: uint8, circuit: uint8",
-SET_TLM_STATUS,260,Primary,TLM,6,STEER,TLM,"tlm_status: ON, OFF, race_type: ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE, driver: uint8, circuit: uint8",
-HV_VOLTAGE,769,Primary,ACUnSTEER,4,BMS_HV,"ACU, STEER","pack_voltage: uint16, bus_voltage: uint16, max_cell_voltage: uint16, min_cell_voltage: uint16",
-HV_CURRENT,801,Primary,ACUnSTEER,4,BMS_HV,"ACU, STEER","current: uint16, power: int8",
-HV_TEMP,833,Primary,ACUnSTEER,4,BMS_HV,"ACU, STEER","average_temp: uint16, max_temp: uint16, min_temp: uint16",
-HV_ERROR,257,Primary,ACUnSTEER,6,BMS_HV,"ACU, STEER","error_code: uint8, error_index: uint8, active: uint8",
-TS_STATUS,0,Primary,ACU,7,BMS_HV,ACU,"ts_status: OFF, PRECHARGE, ON, FATAL",
-SET_TS_STATUS,2,Primary,BMS_HV,7,ACU,BMS_HV,"ts_status_set: OFF, ON",
-STEER_STATUS,32,Primary,ACU,7,STEER,ACU,"traction_control: OFF, SLIP_CONTROL, TORQUE_VECTORING, COMPLETE, map: R, D20, D40, D60, D80, D100, radio_on: bool",
-SET_CAR_STATUS,64,Primary,ACU,7,STEER,ACU,"car_status_set: IDLE, RUN",
-GET_CAR_STATUS,96,Primary,ACU,7,STEER,ACU,,
-CAR_STATUS,3,Primary,STEER,7,ACU,STEER,"car_status: IDLE, SETUP, RUN, Inverter_status: inverter_l: OFF, IDLE, ON, Inverter_status: inverter_r: OFF, IDLE, ON",
+IMU_ANGULAR_RATE,1260,Secondary,FIXED_IDS,,IMU,ECU,"ang_rate_x: uint16, ang_rate_y: uint16, ang_rate_z: uint16","Inertial Measurement Unit x,y,z-axis angular rate value. 0.01dps per bit, Big-Endian, 16bit Total, signed"
+IMU_ACCELERATION,1261,Secondary,FIXED_IDS,,IMU,ECU,"accel_x: uint16, accel_y: uint16, accel_z: uint16","Inertial Measurement Unit x,y,z-axis acceleration value. 0.01g per bit, Big-Endian, 16bit Total, signed"
+IRTS_FL_0,1460,Secondary,FIXED_IDS,,IRTS_FL,ECU,"channel1: uint16, channel2: uint16, channel3: uint16, channel4: uint16","Front Left wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_FL_1,1461,Secondary,FIXED_IDS,,IRTS_FL,ECU,"channel5: uint16, channel6: uint16, channel7: uint16, channel8: uint16","Front Left wheel InfraRed Temperature Sensor data, channels 5 through 8. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_FL_2,1462,Secondary,FIXED_IDS,,IRTS_FL,ECU,"channel9: uint16, channel10: uint16, channel11: uint16, channel12: uint16","Front Left wheel InfraRed Temperature Sensor data, channels 9 through 12. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_FL_3,1463,Secondary,FIXED_IDS,,IRTS_FL,ECU,"channel13: uint16, channel14: uint16, channel15: uint16, channel16: uint16","Front Left wheel InfraRed Temperature Sensor data, channels 13 through 16. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_FR_0,1464,Secondary,FIXED_IDS,,IRTS_FR,ECU,"channel1: uint16, channel2: uint16, channel3: uint16, channel4: uint16","Front Right wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_FR_1,1465,Secondary,FIXED_IDS,,IRTS_FR,ECU,"channel5: uint16, channel6: uint16, channel7: uint16, channel8: uint16","Front Right wheel InfraRed Temperature Sensor data, channels 5 through 8. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_FR_2,1466,Secondary,FIXED_IDS,,IRTS_FR,ECU,"channel9: uint16, channel10: uint16, channel11: uint16, channel12: uint16","Front Right wheel InfraRed Temperature Sensor data, channels 9 through 12. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_FR_3,1467,Secondary,FIXED_IDS,,IRTS_FR,ECU,"channel13: uint16, channel14: uint16, channel15: uint16, channel16: uint16","Front Right wheel InfraRed Temperature Sensor data, channels 13 through 16. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_RL_0,1468,Secondary,FIXED_IDS,,IRTS_RL,ECU,"channel1: uint16, channel2: uint16, channel3: uint16, channel4: uint16","Rear Left wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_RL_1,1469,Secondary,FIXED_IDS,,IRTS_RL,ECU,"channel5: uint16, channel6: uint16, channel7: uint16, channel8: uint16","Rear Left wheel InfraRed Temperature Sensor data, channels 5 through 8. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_RL_2,1470,Secondary,FIXED_IDS,,IRTS_RL,ECU,"channel9: uint16, channel10: uint16, channel11: uint16, channel12: uint16","Rear Left wheel InfraRed Temperature Sensor data, channels 9 through 12. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_RL_3,1471,Secondary,FIXED_IDS,,IRTS_RL,ECU,"channel13: uint16, channel14: uint16, channel15: uint16, channel16: uint16","Rear Left wheel InfraRed Temperature Sensor data, channels 13 through 16. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_RR_0,1472,Secondary,FIXED_IDS,,IRTS_RR,ECU,"channel1: uint16, channel2: uint16, channel3: uint16, channel4: uint16","Rear Right wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_RR_1,1473,Secondary,FIXED_IDS,,IRTS_RR,ECU,"channel5: uint16, channel6: uint16, channel7: uint16, channel8: uint16","Rear Right wheel InfraRed Temperature Sensor data, channels 5 through 8. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_RR_2,1474,Secondary,FIXED_IDS,,IRTS_RR,ECU,"channel9: uint16, channel10: uint16, channel11: uint16, channel12: uint16","Rear Right wheel InfraRed Temperature Sensor data, channels 9 through 12. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+IRTS_RR_3,1475,Secondary,FIXED_IDS,,IRTS_RR,ECU,"channel13: uint16, channel14: uint16, channel15: uint16, channel16: uint16","Rear Right wheel InfraRed Temperature Sensor data, channels 13 through 16. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
 VOLTAGES_CB0_0,1026,BMSinternal,VOLTAGE_INFO,3,CELLBOARD0,MAINBOARD,"voltage0: uint16, voltage1: uint16, voltage2: uint16, voltage3: uint16",
 VOLTAGES_CB0_1,770,BMSinternal,VOLTAGE_INFO,4,CELLBOARD0,MAINBOARD,"voltage4: uint16, voltage5: uint16, voltage6: uint16, voltage7: uint16",
 VOLTAGES_CB0_2,514,BMSinternal,VOLTAGE_INFO,5,CELLBOARD0,MAINBOARD,"voltage8: uint16, voltage9: uint16, voltage10: uint16, voltage11: uint16",
@@ -61,21 +67,15 @@ TEMPERATURES_CB5_1,929,BMSinternal,TEMPERATURE_INFO,4,CELLBOARD5,MAINBOARD,"temp
 TEMPERATURES_CB5_2,673,BMSinternal,TEMPERATURE_INFO,5,CELLBOARD5,MAINBOARD,"temperature16: uint8, temperature17: uint8, max_temperature: uint8, min_temperature: uint8",
 MASTER_SYNC,1792,BMSinternal,INTRA_NET_BMS_SYNC,0,MAINBOARD,"CELLBOARD0, CELLBOARD1, CELLBOARD2, CELLBOARD3, CELLBOARD4, CELLBOARD5",time: uint32,
 CELLBOARD_TOKEN,1536,BMSinternal,INTRA_NET_BMS_SYNC,1,"CELLBOARD0, CELLBOARD1, CELLBOARD2, CELLBOARD3, CELLBOARD4, CELLBOARD5","CELLBOARD0, CELLBOARD1, CELLBOARD2, CELLBOARD3, CELLBOARD4, CELLBOARD5","sender_cellboard: uint8, time: uint32",
-IMU_ANGULAR_RATE,1260,Secondary,FIXED_IDS,,IMU,ECU,"ang_rate_x: uint16, ang_rate_y: uint16, ang_rate_z: uint16","Inertial Measurement Unit x,y,z-axis angular rate value. 0.01dps per bit, Big-Endian, 16bit Total, signed"
-IMU_ACCELERATION,1261,Secondary,FIXED_IDS,,IMU,ECU,"accel_x: uint16, accel_y: uint16, accel_z: uint16","Inertial Measurement Unit x,y,z-axis acceleration value. 0.01g per bit, Big-Endian, 16bit Total, signed"
-IRTS_FL_0,1460,Secondary,FIXED_IDS,,IRTS_FL,ECU,"channel1: uint16, channel2: uint16, channel3: uint16, channel4: uint16","Front Left wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_FL_1,1461,Secondary,FIXED_IDS,,IRTS_FL,ECU,"channel5: uint16, channel6: uint16, channel7: uint16, channel8: uint16","Front Left wheel InfraRed Temperature Sensor data, channels 5 through 8. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_FL_2,1462,Secondary,FIXED_IDS,,IRTS_FL,ECU,"channel9: uint16, channel10: uint16, channel11: uint16, channel12: uint16","Front Left wheel InfraRed Temperature Sensor data, channels 9 through 12. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_FL_3,1463,Secondary,FIXED_IDS,,IRTS_FL,ECU,"channel13: uint16, channel14: uint16, channel15: uint16, channel16: uint16","Front Left wheel InfraRed Temperature Sensor data, channels 13 through 16. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_FR_0,1464,Secondary,FIXED_IDS,,IRTS_FR,ECU,"channel1: uint16, channel2: uint16, channel3: uint16, channel4: uint16","Front Right wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_FR_1,1465,Secondary,FIXED_IDS,,IRTS_FR,ECU,"channel5: uint16, channel6: uint16, channel7: uint16, channel8: uint16","Front Right wheel InfraRed Temperature Sensor data, channels 5 through 8. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_FR_2,1466,Secondary,FIXED_IDS,,IRTS_FR,ECU,"channel9: uint16, channel10: uint16, channel11: uint16, channel12: uint16","Front Right wheel InfraRed Temperature Sensor data, channels 9 through 12. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_FR_3,1467,Secondary,FIXED_IDS,,IRTS_FR,ECU,"channel13: uint16, channel14: uint16, channel15: uint16, channel16: uint16","Front Right wheel InfraRed Temperature Sensor data, channels 13 through 16. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_RL_0,1468,Secondary,FIXED_IDS,,IRTS_RL,ECU,"channel1: uint16, channel2: uint16, channel3: uint16, channel4: uint16","Rear Left wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_RL_1,1469,Secondary,FIXED_IDS,,IRTS_RL,ECU,"channel5: uint16, channel6: uint16, channel7: uint16, channel8: uint16","Rear Left wheel InfraRed Temperature Sensor data, channels 5 through 8. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_RL_2,1470,Secondary,FIXED_IDS,,IRTS_RL,ECU,"channel9: uint16, channel10: uint16, channel11: uint16, channel12: uint16","Rear Left wheel InfraRed Temperature Sensor data, channels 9 through 12. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_RL_3,1471,Secondary,FIXED_IDS,,IRTS_RL,ECU,"channel13: uint16, channel14: uint16, channel15: uint16, channel16: uint16","Rear Left wheel InfraRed Temperature Sensor data, channels 13 through 16. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_RR_0,1472,Secondary,FIXED_IDS,,IRTS_RR,ECU,"channel1: uint16, channel2: uint16, channel3: uint16, channel4: uint16","Rear Right wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_RR_1,1473,Secondary,FIXED_IDS,,IRTS_RR,ECU,"channel5: uint16, channel6: uint16, channel7: uint16, channel8: uint16","Rear Right wheel InfraRed Temperature Sensor data, channels 5 through 8. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_RR_2,1474,Secondary,FIXED_IDS,,IRTS_RR,ECU,"channel9: uint16, channel10: uint16, channel11: uint16, channel12: uint16","Rear Right wheel InfraRed Temperature Sensor data, channels 9 through 12. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-IRTS_RR_3,1475,Secondary,FIXED_IDS,,IRTS_RR,ECU,"channel13: uint16, channel14: uint16, channel15: uint16, channel16: uint16","Rear Right wheel InfraRed Temperature Sensor data, channels 13 through 16. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
+TLM_STATUS,259,Primary,STEER,6,TLM,STEER,"tlm_status: ON, OFF, race_type: ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE, driver: uint8, circuit: uint8",
+SET_TLM_STATUS,260,Primary,TLM,6,STEER,TLM,"tlm_status: ON, OFF, race_type: ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE, driver: uint8, circuit: uint8",
+HV_VOLTAGE,769,Primary,ACUnSTEER,4,BMS_HV,"ACU, STEER","pack_voltage: uint16, bus_voltage: uint16, max_cell_voltage: uint16, min_cell_voltage: uint16",
+HV_CURRENT,801,Primary,ACUnSTEER,4,BMS_HV,"ACU, STEER","current: uint16, power: int8",
+HV_TEMP,833,Primary,ACUnSTEER,4,BMS_HV,"ACU, STEER","average_temp: uint16, max_temp: uint16, min_temp: uint16",
+HV_ERROR,257,Primary,ACUnSTEER,6,BMS_HV,"ACU, STEER","error_code: uint8, error_index: uint8, active: uint8",
+TS_STATUS,0,Primary,ACU,7,BMS_HV,ACU,"ts_status: OFF, PRECHARGE, ON, FATAL",
+SET_TS_STATUS,2,Primary,BMS_HV,7,ACU,BMS_HV,"ts_status_set: OFF, ON",
+STEER_STATUS,32,Primary,ACU,7,STEER,ACU,"traction_control: OFF, SLIP_CONTROL, TORQUE_VECTORING, COMPLETE, map: R, D20, D40, D60, D80, D100, radio_on: bool",
+SET_CAR_STATUS,64,Primary,ACU,7,STEER,ACU,"car_status_set: IDLE, RUN",
+GET_CAR_STATUS,96,Primary,ACU,7,STEER,ACU,,
+CAR_STATUS,3,Primary,STEER,7,ACU,STEER,"car_status: IDLE, SETUP, RUN, Inverter_status: inverter_l: OFF, IDLE, ON, Inverter_status: inverter_r: OFF, IDLE, ON",

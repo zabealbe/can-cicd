@@ -1,5 +1,5 @@
-#ifndef IDS_H
-#define IDS_H
+#ifndef BMSinternal_IDS_H
+#define BMSinternal_IDS_H
 
 #define NETWORK_VERSION 1.0f
 

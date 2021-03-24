@@ -1,5 +1,5 @@
-#ifndef IDS_H
-#define IDS_H
+#ifndef Primary_IDS_H
+#define Primary_IDS_H
 
 #define NETWORK_VERSION 1.2f
 

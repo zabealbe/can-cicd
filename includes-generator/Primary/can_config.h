@@ -1,5 +1,5 @@
-#ifndef CAN_CONFIG_H
-#define CAN_CONFIG_H
+#ifndef Primary_CAN_CONFIG_H
+#define Primary_CAN_CONFIG_H
 
 #define CANCONFIG_VERSION 1.0f
 
