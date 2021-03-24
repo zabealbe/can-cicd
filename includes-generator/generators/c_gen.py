@@ -1,10 +1,12 @@
 from config import config as c
 
 
-def generate_ids_include(topics, network_version):
+def generate_ids_include(topics, namespace, network_version):
+    filename = c.C_IDS_INCLUDE.split("/")[-1].split(".")[0]
+    
     header = ""
-    header += "#ifndef {0}_H\n".format(c.C_IDS_INCLUDE.split("/")[-1].split(".")[0].upper())
-    header += "#define {0}_H\n\n".format(c.C_IDS_INCLUDE.split("/")[-1].split(".")[0].upper())
+    header += f"#ifndef {namespace}_{filename.upper()}_H\n"
+    header += f"#define {namespace}_{filename.upper()}_H\n\n"
     header += "#define NETWORK_VERSION {0:}f\n\n".format(network_version)
     for topic_name, topic in topics.items():
         header += f"/* TOPIC {topic_name} */\n"
@@ -24,11 +26,13 @@ def generate_flatbuf_include(flatbuf_schema):
     return output
 
 
-def generate_canconfig_include(canconfig, canconfig_version):
+def generate_canconfig_include(canconfig, canconfig_version, namespace):
+    filename = c.C_CANCONFIG_INCLUDE.split("/")[-1].split(".")[0]
+    
     header = ""
-    header += "#ifndef {0}_H\n".format(c.C_CANCONFIG_INCLUDE.split("/")[-1].split(".")[0].upper())
-    header += "#define {0}_H\n\n".format(c.C_CANCONFIG_INCLUDE.split("/")[-1].split(".")[0].upper())
-    header += "#define CANCONFIG_VERSION {0}f\n\n".format(canconfig_version)
+    header += f"#ifndef {namespace}_{filename.upper()}_H\n"
+    header += f"#define {namespace}_{filename.upper()}_H\n\n"
+    header += f"#define CANCONFIG_VERSION {canconfig_version}f\n\n"
     for k, v in canconfig.items():
         if isinstance(v, dict):
             header += "\n"
