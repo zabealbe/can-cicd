@@ -1,14 +1,7 @@
-from config import config as c
+from config.config import *
 from lib.utils import *
 
-NETWORK_FILE = c.NETWORK_FILE
-NETWORK_FILE_VALIDATION_SCHEMA = c.NETWORK_FILE_VALIDATION_SCHEMA
+assert ENDIANNESS == "little" or ENDIANNESS == "big", "ENDIANNESS can be either 'little' or 'big'"
+ENDIANNESS = ENDIANNESS
 
-SCHEMA_LOCATION = c.SCHEMA_LOCATION 
-
-assert c.ENDIANNESS == "little" or c.ENDIANNESS == "big", "ENDIANNESS can be either 'little' or 'big'"
-ENDIANNESS = c.ENDIANNESS
-
-OUTPUT_DIR = remove_trailing_slash(c.OUTPUT_DIR)
-
-MERGE_NETWORKS = c.MERGE_NETWORKS
+OUTPUT_DIR = remove_trailing_slash(OUTPUT_DIR)

@@ -1,16 +1,16 @@
 from lib.utils import *
 from generators import c_gen
 from generators import py_gen
-from config import config as c
+import sanitized_config as c
 
 
 def generate_id_includes(topics, network_name, network_version, output_path):
     cgenerated = c_gen.generate_ids_include(topics, network_name, network_version)
-    with open(f"{output_path}{c.C_IDS_INCLUDE}", "w+") as f:
+    with open(f"{output_path}/{c.C_IDS_INCLUDE}", "w+") as f:
         print(cgenerated, file=f)
 
     pygenerated = py_gen.generate_ids_include(topics, network_version)
-    with open(f"{output_path}{c.PY_IDS_INCLUDE}", "w+") as f:
+    with open(f"{output_path}/{c.PY_IDS_INCLUDE}", "w+") as f:
         print(pygenerated, file=f)
 
 
@@ -20,24 +20,18 @@ def generate_flatbuf_includes(flatbuf_schema):
 
 def generate_canconfig_includes(canconfig, canconfig_version, network_name, output_path):
     cgenerated = c_gen.generate_canconfig_include(canconfig, canconfig_version, network_name)
-    with open(f"{output_path}{c.C_CANCONFIG_INCLUDE}", "w+") as f:
+    with open(f"{output_path}/{c.C_CANCONFIG_INCLUDE}", "w+") as f:
         print(cgenerated, file=f)
 
     pygenerated = py_gen.generate_canconfig_include(canconfig, canconfig_version)
-    with open(f"{output_path}{c.PY_CANCONFIG_INCLUDE}", "w+") as f:
+    with open(f"{output_path}/{c.PY_CANCONFIG_INCLUDE}", "w+") as f:
         print(pygenerated, file=f)
         
 
 def main():
-    # Config validity checks
-    if c.OUTPUT_DIR[-1] != "/":
-        print("OUTPUT_DIR in config.py isn't a valid directory path")
-        print("examples:\n\t./path/to/directory/\n\tpath/to/directory/")
-        exit(1)
-
     # IDs & masks
     for network_name, path in parse_network_multipath(c.IDS_FILE).items():
-        output_file = c.OUTPUT_DIR.replace("[network]", network_name)
+        output_path = c.OUTPUT_DIR.replace("[network]", network_name)
         print(path)
         
         ids_file = load_json(path)
@@ -45,10 +39,10 @@ def main():
         network_version = float(ids_file["network_version"])
         print(f"Loaded message ids from {path}")
         
-        create_subtree(os.path.dirname(output_file))
+        create_subtree(os.path.dirname(output_path))
         
-        generate_id_includes(topics, network_name, network_version, output_file)
-        print(f"Generated id includes in {output_file}\n")
+        generate_id_includes(topics, network_name, network_version, output_path)
+        print(f"Generated id includes in {output_path}\n")
 
     # CAN config
     for network_name, path in parse_network_multipath(c.CANCONFIG_FILE).items():
