@@ -1,0 +1,28 @@
+name: Documentation
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Documentation
+      uses: eagletrt/documentation@main
+      with:
+        author: Eagletrt           # project author
+        project: Eagletrt Project  # project name
+        rootfile: Title             # project title
+        folders: ./               # path of folders and files you want to document
+        version: 1.0.0             # project version
+        release: 1.0.0             # project release
+        language: c                # language used
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.0.0
+      with:
+        nojekyll: true 
+        branch: docs # The branch the action should deploy to.
+        folder: docs/_build # The folder the action should deploy.

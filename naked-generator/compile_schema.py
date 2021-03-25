@@ -5,7 +5,10 @@ from generators.gen import Generator
 from generators.py_gen.py_gen import Generator as GeneratorPY
 from generators.c_gen.c_gen import Generator as GeneratorC
 
-types = {  # "type": ("bytes_size", "parsing_function")
+"""
+This dictionary is used by the generators to call a specific action when one of these types is encountered
+"""
+types = {  # "type": ("bytes_size", "parsing_function")   
     "bool": (1, Generator.add_bool),
 
     "uint8": (1, Generator.add_uint8),
