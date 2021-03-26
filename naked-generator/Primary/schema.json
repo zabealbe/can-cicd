@@ -1,87 +1,5 @@
 [
     {
-        "output_file": "acu",
-        "enums": {
-            "Ts_Status": [
-                "OFF",
-                "PRECHARGE",
-                "ON",
-                "FATAL"
-            ],
-            "Traction_Control": [
-                "OFF",
-                "SLIP_CONTROL",
-                "TORQUE_VECTORING",
-                "COMPLETE"
-            ],
-            "Map": [
-                "R",
-                "D20",
-                "D40",
-                "D60",
-                "D80",
-                "D100"
-            ],
-            "Car_Status_Set": [
-                "IDLE",
-                "RUN"
-            ]
-        },
-        "structs": {
-            "TS_STATUS": {
-                "ts_status": "enum:Ts_Status"
-            },
-            "STEER_STATUS": {
-                "traction_control": "enum:Traction_Control",
-                "map": "enum:Map",
-                "radio_on": "bool"
-            },
-            "SET_CAR_STATUS": {
-                "car_status_set": "enum:Car_Status_Set"
-            }
-        }
-    },
-    {
-        "output_file": "acunsteer",
-        "enums": {},
-        "structs": {
-            "HV_VOLTAGE": {
-                "pack_voltage": "uint16",
-                "bus_voltage": "uint16",
-                "max_cell_voltage": "uint16",
-                "min_cell_voltage": "uint16"
-            },
-            "HV_CURRENT": {
-                "current": "uint16",
-                "power": "int8"
-            },
-            "HV_TEMP": {
-                "average_temp": "uint16",
-                "max_temp": "uint16",
-                "min_temp": "uint16"
-            },
-            "HV_ERROR": {
-                "error_code": "uint8",
-                "error_index": "uint8",
-                "active": "uint8"
-            }
-        }
-    },
-    {
-        "output_file": "bms_hv",
-        "enums": {
-            "Ts_Status_Set": [
-                "OFF",
-                "ON"
-            ]
-        },
-        "structs": {
-            "SET_TS_STATUS": {
-                "ts_status_set": "enum:Ts_Status_Set"
-            }
-        }
-    },
-    {
         "output_file": "steer",
         "enums": {
             "Tlm_Status": [
@@ -144,6 +62,88 @@
                 "race_type": "enum:Race_Type",
                 "driver": "uint8",
                 "circuit": "uint8"
+            }
+        }
+    },
+    {
+        "output_file": "acunsteer",
+        "enums": {},
+        "structs": {
+            "HV_VOLTAGE": {
+                "pack_voltage": "uint16",
+                "bus_voltage": "uint16",
+                "max_cell_voltage": "uint16",
+                "min_cell_voltage": "uint16"
+            },
+            "HV_CURRENT": {
+                "current": "uint16",
+                "power": "int8"
+            },
+            "HV_TEMP": {
+                "average_temp": "uint16",
+                "max_temp": "uint16",
+                "min_temp": "uint16"
+            },
+            "HV_ERROR": {
+                "error_code": "uint8",
+                "error_index": "uint8",
+                "active": "uint8"
+            }
+        }
+    },
+    {
+        "output_file": "acu",
+        "enums": {
+            "Ts_Status": [
+                "OFF",
+                "PRECHARGE",
+                "ON",
+                "FATAL"
+            ],
+            "Traction_Control": [
+                "OFF",
+                "SLIP_CONTROL",
+                "TORQUE_VECTORING",
+                "COMPLETE"
+            ],
+            "Map": [
+                "R",
+                "D20",
+                "D40",
+                "D60",
+                "D80",
+                "D100"
+            ],
+            "Car_Status_Set": [
+                "IDLE",
+                "RUN"
+            ]
+        },
+        "structs": {
+            "TS_STATUS": {
+                "ts_status": "enum:Ts_Status"
+            },
+            "STEER_STATUS": {
+                "traction_control": "enum:Traction_Control",
+                "map": "enum:Map",
+                "radio_on": "bool"
+            },
+            "SET_CAR_STATUS": {
+                "car_status_set": "enum:Car_Status_Set"
+            }
+        }
+    },
+    {
+        "output_file": "bms_hv",
+        "enums": {
+            "Ts_Status_Set": [
+                "OFF",
+                "ON"
+            ]
+        },
+        "structs": {
+            "SET_TS_STATUS": {
+                "ts_status_set": "enum:Ts_Status_Set"
             }
         }
     }

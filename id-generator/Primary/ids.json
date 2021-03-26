@@ -1,64 +1,64 @@
 {
     "network_version": 1.2,
     "topics": {
-        "ACU": {
+        "STEER": {
             "id": 0,
             "messages": {
-                "TS_STATUS": {
-                    "id": 0
-                },
-                "STEER_STATUS": {
-                    "id": 32
-                },
-                "SET_CAR_STATUS": {
-                    "id": 64
-                },
-                "GET_CAR_STATUS": {
-                    "id": 96
-                }
-            }
-        },
-        "ACUnSTEER": {
-            "id": 1,
-            "messages": {
-                "HV_VOLTAGE": {
-                    "id": 769
-                },
-                "HV_CURRENT": {
-                    "id": 801
-                },
-                "HV_TEMP": {
-                    "id": 833
-                },
-                "HV_ERROR": {
-                    "id": 257
-                }
-            }
-        },
-        "BMS_HV": {
-            "id": 2,
-            "messages": {
-                "SET_TS_STATUS": {
-                    "id": 2
-                }
-            }
-        },
-        "STEER": {
-            "id": 3,
-            "messages": {
                 "TLM_STATUS": {
-                    "id": 259
+                    "id": 256
                 },
                 "CAR_STATUS": {
-                    "id": 3
+                    "id": 0
                 }
             }
         },
         "TLM": {
-            "id": 4,
+            "id": 1,
             "messages": {
                 "SET_TLM_STATUS": {
-                    "id": 260
+                    "id": 257
+                }
+            }
+        },
+        "ACUnSTEER": {
+            "id": 2,
+            "messages": {
+                "HV_VOLTAGE": {
+                    "id": 770
+                },
+                "HV_CURRENT": {
+                    "id": 802
+                },
+                "HV_TEMP": {
+                    "id": 834
+                },
+                "HV_ERROR": {
+                    "id": 258
+                }
+            }
+        },
+        "ACU": {
+            "id": 3,
+            "messages": {
+                "TS_STATUS": {
+                    "id": 3
+                },
+                "STEER_STATUS": {
+                    "id": 35
+                },
+                "SET_CAR_STATUS": {
+                    "id": 67
+                },
+                "GET_CAR_STATUS": {
+                    "id": 99
+                }
+            }
+        },
+        "BMS_HV": {
+            "id": 4,
+            "messages": {
+                "SET_TS_STATUS": {
+                    "id": 4
                 }
             }
         }

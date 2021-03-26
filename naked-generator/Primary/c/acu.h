@@ -67,16 +67,19 @@ enum Car_Status_Set __is_packed {
 typedef struct __is_packed {
 	Ts_Status ts_status;
 } TS_STATUS;
+static_assert(sizeof(TS_STATUS) == 1, "struct size mismatch");
 
 typedef struct __is_packed {
 	Traction_Control traction_control;
 	Map map;
 	bool radio_on;
 } STEER_STATUS;
+static_assert(sizeof(STEER_STATUS) == 3, "struct size mismatch");
 
 typedef struct __is_packed {
 	Car_Status_Set car_status_set;
 } SET_CAR_STATUS;
+static_assert(sizeof(SET_CAR_STATUS) == 1, "struct size mismatch");
 
 void serialize_TS_STATUS(TS_STATUS* ts_status, uint8_t* buffer, size_t buf_len);
 void serialize_STEER_STATUS(STEER_STATUS* steer_status, uint8_t* buffer, size_t buf_len);

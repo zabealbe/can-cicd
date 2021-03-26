@@ -41,12 +41,14 @@ typedef struct __is_packed {
 	uint16_t ang_rate_y;
 	uint16_t ang_rate_z;
 } IMU_ANGULAR_RATE;
+static_assert(sizeof(IMU_ANGULAR_RATE) == 6, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t accel_x;
 	uint16_t accel_y;
 	uint16_t accel_z;
 } IMU_ACCELERATION;
+static_assert(sizeof(IMU_ACCELERATION) == 6, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel1;
@@ -54,6 +56,7 @@ typedef struct __is_packed {
 	uint16_t channel3;
 	uint16_t channel4;
 } IRTS_FL_0;
+static_assert(sizeof(IRTS_FL_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel5;
@@ -61,6 +64,7 @@ typedef struct __is_packed {
 	uint16_t channel7;
 	uint16_t channel8;
 } IRTS_FL_1;
+static_assert(sizeof(IRTS_FL_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel9;
@@ -68,6 +72,7 @@ typedef struct __is_packed {
 	uint16_t channel11;
 	uint16_t channel12;
 } IRTS_FL_2;
+static_assert(sizeof(IRTS_FL_2) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel13;
@@ -75,6 +80,7 @@ typedef struct __is_packed {
 	uint16_t channel15;
 	uint16_t channel16;
 } IRTS_FL_3;
+static_assert(sizeof(IRTS_FL_3) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel1;
@@ -82,6 +88,7 @@ typedef struct __is_packed {
 	uint16_t channel3;
 	uint16_t channel4;
 } IRTS_FR_0;
+static_assert(sizeof(IRTS_FR_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel5;
@@ -89,6 +96,7 @@ typedef struct __is_packed {
 	uint16_t channel7;
 	uint16_t channel8;
 } IRTS_FR_1;
+static_assert(sizeof(IRTS_FR_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel9;
@@ -96,6 +104,7 @@ typedef struct __is_packed {
 	uint16_t channel11;
 	uint16_t channel12;
 } IRTS_FR_2;
+static_assert(sizeof(IRTS_FR_2) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel13;
@@ -103,6 +112,7 @@ typedef struct __is_packed {
 	uint16_t channel15;
 	uint16_t channel16;
 } IRTS_FR_3;
+static_assert(sizeof(IRTS_FR_3) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel1;
@@ -110,6 +120,7 @@ typedef struct __is_packed {
 	uint16_t channel3;
 	uint16_t channel4;
 } IRTS_RL_0;
+static_assert(sizeof(IRTS_RL_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel5;
@@ -117,6 +128,7 @@ typedef struct __is_packed {
 	uint16_t channel7;
 	uint16_t channel8;
 } IRTS_RL_1;
+static_assert(sizeof(IRTS_RL_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel9;
@@ -124,6 +136,7 @@ typedef struct __is_packed {
 	uint16_t channel11;
 	uint16_t channel12;
 } IRTS_RL_2;
+static_assert(sizeof(IRTS_RL_2) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel13;
@@ -131,6 +144,7 @@ typedef struct __is_packed {
 	uint16_t channel15;
 	uint16_t channel16;
 } IRTS_RL_3;
+static_assert(sizeof(IRTS_RL_3) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel1;
@@ -138,6 +152,7 @@ typedef struct __is_packed {
 	uint16_t channel3;
 	uint16_t channel4;
 } IRTS_RR_0;
+static_assert(sizeof(IRTS_RR_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel5;
@@ -145,6 +160,7 @@ typedef struct __is_packed {
 	uint16_t channel7;
 	uint16_t channel8;
 } IRTS_RR_1;
+static_assert(sizeof(IRTS_RR_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel9;
@@ -152,6 +168,7 @@ typedef struct __is_packed {
 	uint16_t channel11;
 	uint16_t channel12;
 } IRTS_RR_2;
+static_assert(sizeof(IRTS_RR_2) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t channel13;
@@ -159,6 +176,7 @@ typedef struct __is_packed {
 	uint16_t channel15;
 	uint16_t channel16;
 } IRTS_RR_3;
+static_assert(sizeof(IRTS_RR_3) == 8, "struct size mismatch");
 
 void serialize_IMU_ANGULAR_RATE(IMU_ANGULAR_RATE* imu_angular_rate, uint8_t* buffer, size_t buf_len);
 void serialize_IMU_ACCELERATION(IMU_ACCELERATION* imu_acceleration, uint8_t* buffer, size_t buf_len);

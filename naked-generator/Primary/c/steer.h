@@ -72,12 +72,14 @@ typedef struct __is_packed {
 	uint8_t driver;
 	uint8_t circuit;
 } TLM_STATUS;
+static_assert(sizeof(TLM_STATUS) == 4, "struct size mismatch");
 
 typedef struct __is_packed {
 	Car_Status car_status;
 	Inverter_Status: Inverter_L Inverter_status: inverter_l;
 	Inverter_Status: Inverter_R Inverter_status: inverter_r;
 } CAR_STATUS;
+static_assert(sizeof(CAR_STATUS) == 3, "struct size mismatch");
 
 void serialize_TLM_STATUS(TLM_STATUS* tlm_status, uint8_t* buffer, size_t buf_len);
 void serialize_CAR_STATUS(CAR_STATUS* car_status, uint8_t* buffer, size_t buf_len);

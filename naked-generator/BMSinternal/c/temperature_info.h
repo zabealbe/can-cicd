@@ -46,6 +46,7 @@ typedef struct __is_packed {
 	uint8_t temperature6;
 	uint8_t temperature7;
 } TEMPERATURES_CB0_0;
+static_assert(sizeof(TEMPERATURES_CB0_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature8;
@@ -57,11 +58,13 @@ typedef struct __is_packed {
 	uint8_t temperature14;
 	uint8_t temperature15;
 } TEMPERATURES_CB0_1;
+static_assert(sizeof(TEMPERATURES_CB0_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature16;
 	uint8_t temperature17;
 } TEMPERATURES_CB0_2;
+static_assert(sizeof(TEMPERATURES_CB0_2) == 2, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature0;
@@ -73,6 +76,7 @@ typedef struct __is_packed {
 	uint8_t temperature6;
 	uint8_t temperature7;
 } TEMPERATURES_CB1_0;
+static_assert(sizeof(TEMPERATURES_CB1_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature8;
@@ -84,6 +88,7 @@ typedef struct __is_packed {
 	uint8_t temperature14;
 	uint8_t temperature15;
 } TEMPERATURES_CB1_1;
+static_assert(sizeof(TEMPERATURES_CB1_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature16;
@@ -91,6 +96,7 @@ typedef struct __is_packed {
 	uint8_t max_temperature;
 	uint8_t min_temperature;
 } TEMPERATURES_CB1_2;
+static_assert(sizeof(TEMPERATURES_CB1_2) == 4, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature0;
@@ -102,6 +108,7 @@ typedef struct __is_packed {
 	uint8_t temperature6;
 	uint8_t temperature7;
 } TEMPERATURES_CB2_0;
+static_assert(sizeof(TEMPERATURES_CB2_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature8;
@@ -113,6 +120,7 @@ typedef struct __is_packed {
 	uint8_t temperature14;
 	uint8_t temperature15;
 } TEMPERATURES_CB2_1;
+static_assert(sizeof(TEMPERATURES_CB2_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature16;
@@ -120,6 +128,7 @@ typedef struct __is_packed {
 	uint8_t max_temperature;
 	uint8_t min_temperature;
 } TEMPERATURES_CB2_2;
+static_assert(sizeof(TEMPERATURES_CB2_2) == 4, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature0;
@@ -131,6 +140,7 @@ typedef struct __is_packed {
 	uint8_t temperature6;
 	uint8_t temperature7;
 } TEMPERATURES_CB3_0;
+static_assert(sizeof(TEMPERATURES_CB3_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature8;
@@ -142,6 +152,7 @@ typedef struct __is_packed {
 	uint8_t temperature14;
 	uint8_t temperature15;
 } TEMPERATURES_CB3_1;
+static_assert(sizeof(TEMPERATURES_CB3_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature16;
@@ -149,6 +160,7 @@ typedef struct __is_packed {
 	uint8_t max_temperature;
 	uint8_t min_temperature;
 } TEMPERATURES_CB3_2;
+static_assert(sizeof(TEMPERATURES_CB3_2) == 4, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature0;
@@ -160,6 +172,7 @@ typedef struct __is_packed {
 	uint8_t temperature6;
 	uint8_t temperature7;
 } TEMPERATURES_CB4_0;
+static_assert(sizeof(TEMPERATURES_CB4_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature8;
@@ -171,6 +184,7 @@ typedef struct __is_packed {
 	uint8_t temperature14;
 	uint8_t temperature15;
 } TEMPERATURES_CB4_1;
+static_assert(sizeof(TEMPERATURES_CB4_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature16;
@@ -178,6 +192,7 @@ typedef struct __is_packed {
 	uint8_t max_temperature;
 	uint8_t min_temperature;
 } TEMPERATURES_CB4_2;
+static_assert(sizeof(TEMPERATURES_CB4_2) == 4, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature0;
@@ -189,6 +204,7 @@ typedef struct __is_packed {
 	uint8_t temperature6;
 	uint8_t temperature7;
 } TEMPERATURES_CB5_0;
+static_assert(sizeof(TEMPERATURES_CB5_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature8;
@@ -200,6 +216,7 @@ typedef struct __is_packed {
 	uint8_t temperature14;
 	uint8_t temperature15;
 } TEMPERATURES_CB5_1;
+static_assert(sizeof(TEMPERATURES_CB5_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t temperature16;
@@ -207,6 +224,7 @@ typedef struct __is_packed {
 	uint8_t max_temperature;
 	uint8_t min_temperature;
 } TEMPERATURES_CB5_2;
+static_assert(sizeof(TEMPERATURES_CB5_2) == 4, "struct size mismatch");
 
 void serialize_TEMPERATURES_CB0_0(TEMPERATURES_CB0_0* temperatures_cb0_0, uint8_t* buffer, size_t buf_len);
 void serialize_TEMPERATURES_CB0_1(TEMPERATURES_CB0_1* temperatures_cb0_1, uint8_t* buffer, size_t buf_len);

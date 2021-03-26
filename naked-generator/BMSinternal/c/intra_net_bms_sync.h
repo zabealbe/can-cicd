@@ -39,11 +39,13 @@
 typedef struct __is_packed {
 	uint32_t time;
 } MASTER_SYNC;
+static_assert(sizeof(MASTER_SYNC) == 4, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t sender_cellboard;
 	uint32_t time;
 } CELLBOARD_TOKEN;
+static_assert(sizeof(CELLBOARD_TOKEN) == 5, "struct size mismatch");
 
 void serialize_MASTER_SYNC(MASTER_SYNC* master_sync, uint8_t* buffer, size_t buf_len);
 void serialize_CELLBOARD_TOKEN(CELLBOARD_TOKEN* cellboard_token, uint8_t* buffer, size_t buf_len);

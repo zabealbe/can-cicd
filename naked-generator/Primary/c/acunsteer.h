@@ -42,23 +42,27 @@ typedef struct __is_packed {
 	uint16_t max_cell_voltage;
 	uint16_t min_cell_voltage;
 } HV_VOLTAGE;
+static_assert(sizeof(HV_VOLTAGE) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t current;
 	int8_t power;
 } HV_CURRENT;
+static_assert(sizeof(HV_CURRENT) == 3, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t average_temp;
 	uint16_t max_temp;
 	uint16_t min_temp;
 } HV_TEMP;
+static_assert(sizeof(HV_TEMP) == 6, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint8_t error_code;
 	uint8_t error_index;
 	uint8_t active;
 } HV_ERROR;
+static_assert(sizeof(HV_ERROR) == 3, "struct size mismatch");
 
 void serialize_HV_VOLTAGE(HV_VOLTAGE* hv_voltage, uint8_t* buffer, size_t buf_len);
 void serialize_HV_CURRENT(HV_CURRENT* hv_current, uint8_t* buffer, size_t buf_len);

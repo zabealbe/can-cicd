@@ -42,6 +42,7 @@ typedef struct __is_packed {
 	uint16_t voltage2;
 	uint16_t voltage3;
 } VOLTAGES_CB0_0;
+static_assert(sizeof(VOLTAGES_CB0_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage4;
@@ -49,6 +50,7 @@ typedef struct __is_packed {
 	uint16_t voltage6;
 	uint16_t voltage7;
 } VOLTAGES_CB0_1;
+static_assert(sizeof(VOLTAGES_CB0_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage8;
@@ -56,6 +58,7 @@ typedef struct __is_packed {
 	uint16_t voltage10;
 	uint16_t voltage11;
 } VOLTAGES_CB0_2;
+static_assert(sizeof(VOLTAGES_CB0_2) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage12;
@@ -63,6 +66,7 @@ typedef struct __is_packed {
 	uint16_t voltage14;
 	uint16_t voltage15;
 } VOLTAGES_CB0_3;
+static_assert(sizeof(VOLTAGES_CB0_3) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage16;
@@ -70,6 +74,7 @@ typedef struct __is_packed {
 	uint16_t max_voltage;
 	uint16_t min_voltage;
 } VOLTAGES_CB0_4;
+static_assert(sizeof(VOLTAGES_CB0_4) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage0;
@@ -77,6 +82,7 @@ typedef struct __is_packed {
 	uint16_t voltage2;
 	uint16_t voltage3;
 } VOLTAGES_CB1_0;
+static_assert(sizeof(VOLTAGES_CB1_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage4;
@@ -84,6 +90,7 @@ typedef struct __is_packed {
 	uint16_t voltage6;
 	uint16_t voltage7;
 } VOLTAGES_CB1_1;
+static_assert(sizeof(VOLTAGES_CB1_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage8;
@@ -91,6 +98,7 @@ typedef struct __is_packed {
 	uint16_t voltage10;
 	uint16_t voltage11;
 } VOLTAGES_CB1_2;
+static_assert(sizeof(VOLTAGES_CB1_2) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage12;
@@ -98,6 +106,7 @@ typedef struct __is_packed {
 	uint16_t voltage14;
 	uint16_t voltage15;
 } VOLTAGES_CB1_3;
+static_assert(sizeof(VOLTAGES_CB1_3) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage16;
@@ -105,6 +114,7 @@ typedef struct __is_packed {
 	uint16_t max_voltage;
 	uint16_t min_voltage;
 } VOLTAGES_CB1_4;
+static_assert(sizeof(VOLTAGES_CB1_4) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage0;
@@ -112,6 +122,7 @@ typedef struct __is_packed {
 	uint16_t voltage2;
 	uint16_t voltage3;
 } VOLTAGES_CB2_0;
+static_assert(sizeof(VOLTAGES_CB2_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage4;
@@ -119,6 +130,7 @@ typedef struct __is_packed {
 	uint16_t voltage6;
 	uint16_t voltage7;
 } VOLTAGES_CB2_1;
+static_assert(sizeof(VOLTAGES_CB2_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage8;
@@ -126,6 +138,7 @@ typedef struct __is_packed {
 	uint16_t voltage10;
 	uint16_t voltage11;
 } VOLTAGES_CB2_2;
+static_assert(sizeof(VOLTAGES_CB2_2) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage12;
@@ -133,6 +146,7 @@ typedef struct __is_packed {
 	uint16_t voltage14;
 	uint16_t voltage15;
 } VOLTAGES_CB2_3;
+static_assert(sizeof(VOLTAGES_CB2_3) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage16;
@@ -140,6 +154,7 @@ typedef struct __is_packed {
 	uint16_t max_voltage;
 	uint16_t min_voltage;
 } VOLTAGES_CB2_4;
+static_assert(sizeof(VOLTAGES_CB2_4) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage0;
@@ -147,6 +162,7 @@ typedef struct __is_packed {
 	uint16_t voltage2;
 	uint16_t voltage3;
 } VOLTAGES_CB3_0;
+static_assert(sizeof(VOLTAGES_CB3_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage4;
@@ -154,6 +170,7 @@ typedef struct __is_packed {
 	uint16_t voltage6;
 	uint16_t voltage7;
 } VOLTAGES_CB3_1;
+static_assert(sizeof(VOLTAGES_CB3_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage8;
@@ -161,6 +178,7 @@ typedef struct __is_packed {
 	uint16_t voltage10;
 	uint16_t voltage11;
 } VOLTAGES_CB3_2;
+static_assert(sizeof(VOLTAGES_CB3_2) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage12;
@@ -168,6 +186,7 @@ typedef struct __is_packed {
 	uint16_t voltage14;
 	uint16_t voltage15;
 } VOLTAGES_CB3_3;
+static_assert(sizeof(VOLTAGES_CB3_3) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage16;
@@ -175,6 +194,7 @@ typedef struct __is_packed {
 	uint16_t max_voltage;
 	uint16_t min_voltage;
 } VOLTAGES_CB3_4;
+static_assert(sizeof(VOLTAGES_CB3_4) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage0;
@@ -182,6 +202,7 @@ typedef struct __is_packed {
 	uint16_t voltage2;
 	uint16_t voltage3;
 } VOLTAGES_CB4_0;
+static_assert(sizeof(VOLTAGES_CB4_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage4;
@@ -189,6 +210,7 @@ typedef struct __is_packed {
 	uint16_t voltage6;
 	uint16_t voltage7;
 } VOLTAGES_CB4_1;
+static_assert(sizeof(VOLTAGES_CB4_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage8;
@@ -196,6 +218,7 @@ typedef struct __is_packed {
 	uint16_t voltage10;
 	uint16_t voltage11;
 } VOLTAGES_CB4_2;
+static_assert(sizeof(VOLTAGES_CB4_2) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage12;
@@ -203,6 +226,7 @@ typedef struct __is_packed {
 	uint16_t voltage14;
 	uint16_t voltage15;
 } VOLTAGES_CB4_3;
+static_assert(sizeof(VOLTAGES_CB4_3) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage16;
@@ -210,6 +234,7 @@ typedef struct __is_packed {
 	uint16_t max_voltage;
 	uint16_t min_voltage;
 } VOLTAGES_CB4_4;
+static_assert(sizeof(VOLTAGES_CB4_4) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage0;
@@ -217,6 +242,7 @@ typedef struct __is_packed {
 	uint16_t voltage2;
 	uint16_t voltage3;
 } VOLTAGES_CB5_0;
+static_assert(sizeof(VOLTAGES_CB5_0) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage4;
@@ -224,6 +250,7 @@ typedef struct __is_packed {
 	uint16_t voltage6;
 	uint16_t voltage7;
 } VOLTAGES_CB5_1;
+static_assert(sizeof(VOLTAGES_CB5_1) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage8;
@@ -231,6 +258,7 @@ typedef struct __is_packed {
 	uint16_t voltage10;
 	uint16_t voltage11;
 } VOLTAGES_CB5_2;
+static_assert(sizeof(VOLTAGES_CB5_2) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage12;
@@ -238,6 +266,7 @@ typedef struct __is_packed {
 	uint16_t voltage14;
 	uint16_t voltage15;
 } VOLTAGES_CB5_3;
+static_assert(sizeof(VOLTAGES_CB5_3) == 8, "struct size mismatch");
 
 typedef struct __is_packed {
 	uint16_t voltage16;
@@ -245,6 +274,7 @@ typedef struct __is_packed {
 	uint16_t max_voltage;
 	uint16_t min_voltage;
 } VOLTAGES_CB5_4;
+static_assert(sizeof(VOLTAGES_CB5_4) == 8, "struct size mismatch");
 
 void serialize_VOLTAGES_CB0_0(VOLTAGES_CB0_0* voltages_cb0_0, uint8_t* buffer, size_t buf_len);
 void serialize_VOLTAGES_CB0_1(VOLTAGES_CB0_1* voltages_cb0_1, uint8_t* buffer, size_t buf_len);

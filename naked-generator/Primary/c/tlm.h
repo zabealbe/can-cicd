@@ -54,6 +54,7 @@ typedef struct __is_packed {
 	uint8_t driver;
 	uint8_t circuit;
 } SET_TLM_STATUS;
+static_assert(sizeof(SET_TLM_STATUS) == 4, "struct size mismatch");
 
 void serialize_SET_TLM_STATUS(SET_TLM_STATUS* set_tlm_status, uint8_t* buffer, size_t buf_len);
 

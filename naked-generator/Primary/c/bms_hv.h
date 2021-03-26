@@ -44,6 +44,7 @@ enum Ts_Status_Set __is_packed {
 typedef struct __is_packed {
 	Ts_Status_Set ts_status_set;
 } SET_TS_STATUS;
+static_assert(sizeof(SET_TS_STATUS) == 1, "struct size mismatch");
 
 void serialize_SET_TS_STATUS(SET_TS_STATUS* set_ts_status, uint8_t* buffer, size_t buf_len);
 
