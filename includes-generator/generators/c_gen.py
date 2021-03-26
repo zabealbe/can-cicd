@@ -1,20 +1,22 @@
+from lib.network import Network
 from config import config as c
 
 
-def generate_ids_include(topics, namespace, network_version):
+def generate_ids_include(network: Network):
     filename = c.C_IDS_INCLUDE.split("/")[-1].split(".")[0]
     
     header = ""
-    header += f"#ifndef {namespace}_{filename.upper()}_H\n"
-    header += f"#define {namespace}_{filename.upper()}_H\n\n"
-    header += "#define NETWORK_VERSION {0:}f\n\n".format(network_version)
-    for topic_name, topic in topics.items():
+    header += f"#ifndef {network.name}_{filename.upper()}_H\n"
+    header += f"#define {network.name}_{filename.upper()}_H\n\n"
+    header += "#define NETWORK_VERSION {0:}f\n\n".format(network.version)
+    for topic_name, topic_id in network.get_topics().items():
+        topic_messages = network.get_messages_by_topic(topic_name)
         header += f"/* TOPIC {topic_name} */\n"
-        if topic_name != "FIXED_IDS":
+        if topic_id is not None:
             header += f"#define TOPIC_{topic_name}_MASK 0b{0b00000011111:>011b}\n"
-            header += f"#define TOPIC_{topic_name}_FILTER 0b{topic['id']:>011b}\n"
-        for message_name, message in topic["messages"].items():
-            header += f"#define ID_{message_name} 0b{message['id']:>011b}\n"
+            header += f"#define TOPIC_{topic_name}_FILTER 0b{topic_id:>011b}\n"
+        for message_name, message_contents in topic_messages.items():
+            header += f"#define ID_{message_name} 0b{message_contents['id']:>011b}\n"
         header += "\n"
     header += "#endif\n"
 

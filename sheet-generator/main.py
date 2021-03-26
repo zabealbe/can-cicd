@@ -47,14 +47,15 @@ def main():
         writer = csv.writer(out)
         writer.writerow(columns)
         for network in networks:
-            tot += len(network.contents)
-            for message in network.contents:
+            for message_name, message_contents in network.get_messages().items():
+                tot += 1
                 # Cleaning message dict and adding network column
-                message.pop("fixed_id", None)
-                message["network"] = network.name
+                message_contents.pop("fixed_id", None)
+                message_contents["name"] = message_name
+                message_contents["network"] = network.name
                 
                 cols = [""] * len(columns)
-                for i, (key, value) in enumerate(message.items()):
+                for i, (key, value) in enumerate(message_contents.items()):
                     cols[columns.index(key)] = re.sub(r"\[|]|'|{|}|\"", "", str(value))
                 writer.writerow(cols)
 

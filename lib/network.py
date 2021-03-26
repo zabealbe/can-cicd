@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 from lib.utils import *
 
 
@@ -14,7 +16,8 @@ class Network:
         self.path = None
         self.ids_path = None
         self.name = name
-        self.contents = []
+        self.messages = {}
+        self.topics = {}
         self.name_index = {}
         self.version = None
         self.max_payload_size = None
@@ -29,28 +32,33 @@ class Network:
         self.path = path
         network = load_json(self.path, validation_schema)
 
-        self.contents = network["messages"]
         self.version = network["network_version"]
         self.max_payload_size = network["max_payload_size"]
 
-        for i, m in enumerate(self.contents):
-            self.name_index[m["name"]] = i
-        
-        for m in self.contents:
-            if "topic" not in m:
-                m["topic"] = "FIXED_IDS"
-
+        for message in network["messages"]:
+            message_name = message.pop("name")
+            if "topic" in message:
+                self.topics[message["topic"]] = None
+            else:
+                self.topics["FIXED_IDS"] = None
+                message["topic"] = "FIXED_IDS"
+            self.messages[message_name] = message
+                
     def load_ids(self, path: str, validation_schema: str = None):
         self.ids_path = path
         network_ids = load_json(self.ids_path)#, validation_schema) # TODO: fix
         assert network_ids["network_version"] == self.version, \
             f"Version mismatch between {self.path} and {self.ids_path}"
 
-        for m in self.contents:
-            if "fixed_id" in m:  # skipping if message has already a fixed id
-                m["topic"] = "FIXED_IDS"
-            topic = m["topic"]
-            m["id"] = network_ids["topics"][topic]["messages"][m["name"]]["id"]
+        for topic_name, topic_contents in sorted(network_ids["topics"].items()): 
+            # sorted() NEEDED for consistency across runs
+            if "id" in topic_contents:
+                self.topics[topic_name] = topic_contents["id"]
+            else:
+                self.topics[topic_name] = None
+            for message_name, message_contents in sorted(topic_contents["messages"].items()): 
+                # sorted() NEEDED for consistency across runs
+                self.messages[message_name]["id"] = message_contents["id"]
 
     def merge_with(self, network: 'Network'):
         if isinstance(network, Network):
@@ -66,56 +74,52 @@ class Network:
                             raise Exception("Found two incompatible messages with same name {0} in networks {1}, {2}"
                                             .format(m1['name'], self.name, network.name))
                     print("Messages found to be the same, the merge will continue")
-            self.contents += network.contents
+            self.messages += network.contents
         else:
             raise Exception("Parameter network isn't a Network instance")
         self.name = self.name + "_" + network.name
 
-    def get_all_messages(self):
-        return self.contents
+    def get_messages(self) -> {}:
+        return self.messages
 
-    def get_topics(self):
-        topics = set()
-        for m in self.contents:
-            if "topic" in m:
-                topics.add(m["topic"])
-        return sorted(topics)  # NEEDED for IDs consistency across runs
+    def get_topics(self) -> {}:
+        return self.topics
 
     def get_messages_by_topic(self, topic):
         """
             Very resource-heavy, can be optimized with index
         """
-        messages = []
-        for m in self.contents:
-            if "topic" in m and m["topic"] == topic:  # This also filters messages with fixed id
-                messages.append(m)  # because topic field can't be present if fixed_id is
-
+        messages = {}
+        for message_name, message_contents in self.messages.items():
+            if message_contents["topic"] != topic:
+                continue
+            messages[message_name] = message_contents
+            
         return messages
 
-    def get_messages_with_fixed_id(self):
+    def get_messages_with_fixed_id(self) -> {}:
         """
             Very resource-heavy, can be optimized with index
         """
-        messages = []
-        for m in self.contents:
-            if "fixed_id" in m:
-                messages.append(m)
+        messages = {}
+        for message_name, message_contents in self.messages.items():
+            if "fixed_id" in message_contents:
+                messages[message_name] = message_contents
 
         return messages
 
-    def get_reserved_ids(self):
+    def get_reserved_ids(self) -> {}:
         """
             Very resource-heavy, can be optimized with index
         """
         ids = {}
-        for m in self.get_messages_with_fixed_id():
-            ids[m["fixed_id"]] = m
+        for message_name, message_contents in self.get_messages_with_fixed_id().items():
+            ids[message_name] = message_contents["fixed_id"]
 
         return ids
 
-    def get_message_by_name(self, name):
+    def get_message_id(self, name) -> {}:
         try:
-            message = self.contents[self.name_index[name]]
+            return self.messages[name]
         except KeyError:
             return {}
-        return message

@@ -3,11 +3,11 @@ from lib.utils import *
 from config import config as c
 
 
-def get_message_schema(message):
-    schema = "struct {0} {{\n".format(message["name"])
+def get_message_schema(message_name, message_payload):
+    schema = "struct {0} {{\n".format(message_name)
     enum = ""
     payload_size = 0  # in bytes
-    for item, value in message["contents"].items():
+    for item, value in message_payload.items():
         field_name = item.lower()
         field_value = value
         if isinstance(value, list):  # is enum
@@ -33,13 +33,13 @@ def get_message_schema(message):
 
 def get_schema(network):
     schema = ""
-    for m in network.get_all_messages():
-        if len(m["contents"]) == 0:  # skip empty messages
+    for message_name, message_contents in network.get_messages().items():
+        if len(message_contents["contents"]) == 0:  # skip empty messages
             continue
-        message_schema, payload_size = get_message_schema(m)
+        message_schema, payload_size = get_message_schema(message_name, message_contents["contents"])
         assert payload_size <= network.max_payload_size, \
             f"Payload max size of {network.max_payload_size} bytes for network '{network.name}'" \
-            f" is exceeded by {m['name']}"
+            f" is exceeded by {message_name}"
         schema += "{0}\n\n".format(message_schema)
 
     stripped_schema = ""

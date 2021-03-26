@@ -1,0 +1,28 @@
+{
+	"type": "object",
+	"properties": {
+	    "network_version": {
+	        "type": "number",
+	        "minimum": 0,
+	        "maximum": 65535
+	    },
+		"messages": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string",
+						"pattern": "^[A-Z][A-Z0-9_]*$"
+					},
+                    "description": {
+						"type": "string"
+                    }
+				},
+				"required": ["name"],
+                "additionalProperties": true
+			}
+		}
+	},
+    "additionalProperties": true
+}

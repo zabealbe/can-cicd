@@ -16,68 +16,80 @@ MAX_PRIORITY = 7
 MESSAGES_PER_PRIORITY = int(2 ** MESSAGE_BITS / (MAX_PRIORITY + 1))
 
 
-def generate_message_ids(topic, messages, blacklist=None):
+def generate_ids(network: Network, blacklist=None):
     """
         generates consecutive ids for each item based on the priority (higher priority = lower id)
         returns [(name, id), ... ]
     """
-
-    msg_ids = []
-    scoped_msg_ids = []
-    items_count = [0] * (MAX_PRIORITY + 1)  # keeps track of how many items are present in each priority level
-    for item_name, item_priority in zip(
-        [tm['name'] for tm in messages],  # messages names ["A", "B", ... ]
-        [tm['priority'] for tm in messages]  # messages priorities [0, 0, 4, ... ] (dont have to be unique)
-    ):
-        if item_priority > MAX_PRIORITY:
-            raise Exception(
-                f"Priority assigned to {item_name} is outside of the allowed range (0-{MAX_PRIORITY})"
-                .format(MESSAGE_BITS)
-            )
-
-        item_id = items_count[item_priority]
-        
-        while True:
-            items_count[item_priority] += 1
-            start = MESSAGES_PER_PRIORITY * (MAX_PRIORITY - item_priority)
-            if item_id >= MESSAGES_PER_PRIORITY:
-                raise Exception(
-                    f"You exceeded the maximum messages per priority level per topic! ({MESSAGES_PER_PRIORITY})"
-                    .format(MESSAGE_BITS)
-                )
-            scoped_id = item_id + start
-            global_id = (scoped_id << TOPIC_BITS) + topic
-            
-            if global_id not in blacklist:
-                break
-            item_id += 1  # If can't use ID, try next one
-
-        scoped_msg_ids.append({
-            "name": item_name,
-            "id": scoped_id
-        })
-        msg_ids.append({
-            "name": item_name,
-            "id": global_id
-        })
-
-    if len(messages) >= 2 ** MESSAGE_BITS:
+    
+    if len(network.get_messages()) >= 2 ** MESSAGE_BITS:
         raise Exception(
             "Oops, you can't have more than {0} messages per topic!, maybe its time to rework the software?"
             .format(MESSAGE_BITS)
         )
 
-    if __debug__:
-        for g, s in zip(msg_ids, scoped_msg_ids):
-            print(f"{s['name']:<16}\tbin  int\n\t"
-                  f"topic:  {topic:>011b}  {topic}\n\t"
-                  f"scoped: {s['id']:>011b}  {s['id']}\n\t"
-                  f"global: {g['id']:>011b}  {g['id']}")
+    ids = {}
+    for topic_name, topic_id in generate_topics_id(network).items():
+        if topic_name == "FIXED_IDS":
+            continue
+            
+        msg_ids, scoped_msg_ids = generate_messages_id(
+            network.get_messages_by_topic(topic_name), 
+            topic_id,
+            blacklist)
+    
+        if __debug__:
+            for (g_name, g_contents), (s_name, s_contents) in zip(msg_ids.items(), scoped_msg_ids.items()):
+                print(f"{s_name:<16}\tbin  int\n\t"
+                      f"topic:  {topic_id:>011b}  {topic_id}\n\t"
+                      f"scoped: {s_contents['id']:>011b}  {s_contents['id']}\n\t"
+                      f"global: {g_contents['id']:>011b}  {g_contents['id']}")
+        
+        ids[topic_name] = {
+            "id": topic_id,
+            "messages": msg_ids
+        }
+        
+    return ids
 
-    return msg_ids
+
+def generate_messages_id(topic_messages, topic_id, blacklist=None):
+    msg_ids = {}
+    scoped_msg_ids = {}
+    items_count = [0] * (MAX_PRIORITY + 1)  # keeps track of how many items are present in each priority level
+    for message_name, message_contents in topic_messages.items():
+        message_priority = message_contents["priority"]
+
+        if message_priority > MAX_PRIORITY:
+            raise Exception(
+                f"Priority assigned to {message_name} is outside of the allowed range (0-{MAX_PRIORITY})"
+                    .format(MESSAGE_BITS)
+            )
+
+        item_id = items_count[message_priority]
+
+        while True:
+            items_count[message_priority] += 1
+            start = MESSAGES_PER_PRIORITY * (MAX_PRIORITY - message_priority)
+            if item_id >= MESSAGES_PER_PRIORITY:
+                raise Exception(
+                    f"You exceeded the maximum messages per priority level per topic! ({MESSAGES_PER_PRIORITY})"
+                        .format(MESSAGE_BITS)
+                )
+            scoped_id = item_id + start
+            global_id = (scoped_id << TOPIC_BITS) + topic_id
+
+            if global_id not in blacklist:
+                break
+            item_id += 1  # If can't use ID, try next one
+
+        scoped_msg_ids[message_name] = {"id": scoped_id}
+        msg_ids[message_name] = ({"id": global_id})
+
+    return msg_ids, scoped_msg_ids
 
 
-def generate_topic_ids(network, blacklist=None):  # TODO: implement blacklist for topics
+def generate_topics_id(network: Network, blacklist=None):  # TODO: implement blacklist for topics
     ids = {}
     for i, t in enumerate(network.get_topics()):
         ids[t] = i
@@ -89,6 +101,15 @@ def generate_topic_ids(network, blacklist=None):  # TODO: implement blacklist fo
     if __debug__:
         print("Assigned topic ids:", ids)
 
+    return ids
+
+
+def generate_fixed_ids(network: Network):
+    ids = {}
+    for message_name, message_contents in network.get_messages_with_fixed_id().items():
+        ids[message_name] = {
+            "id": message_contents["fixed_id"]
+        }
     return ids
 
 
@@ -119,42 +140,19 @@ def main():
     print("")
     for n in networks:
         print("====== Id generation for network {0} ======".format(n.name))
-        topic_ids = generate_topic_ids(n)
         reserved_ids = n.get_reserved_ids().keys()
-
-        topics = {}
-        for topic, topic_id in topic_ids.items():
-            if topic == "FIXED_IDS":
-                break
-                
-            if __debug__:
-                print("TOPIC {0}".format(topic))
-
-            # Generating IDs
-            message_ids = {}
-            for m in generate_message_ids(topic_ids[topic], n.get_messages_by_topic(topic), blacklist=reserved_ids):
-                message_ids[m["name"]] = {
-                    "id": m["id"]
-                }
-            topics[topic] = {
-                "id": topic_id,
-                "messages": message_ids
-            }
+        
+        # Generating IDs
+        ids = generate_ids(n, blacklist=reserved_ids)
             
         # Adding fixed IDs
-        message_fixed_ids = {}
-        for m in n.get_messages_with_fixed_id():
-            message_fixed_ids[m["name"]] = {
-                "id": m["fixed_id"]
-            }
-        if message_fixed_ids:  # Don't create the topic unless there is at least one fixed id
-            topics["FIXED_IDS"] = {
-                "messages": message_fixed_ids
-            }
+        fixed_ids = generate_fixed_ids(n)
+        if fixed_ids:  # Don't create the topic unless there is at least one fixed id
+            ids["FIXED_IDS"] = {"messages": fixed_ids}
             
         output = {
             "network_version": n.version,
-            "topics": topics
+            "topics": ids
         }
             
         output_file = c.OUTPUT_FILE.replace("[network]", n.name)
