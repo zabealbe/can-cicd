@@ -13,8 +13,13 @@ def generate_ids_include(network: Network):
             header += f"TOPIC_{topic_name}_FILTER = 0b{topic_id:>011b}\n"
         else:
             print(network.get_topics())
-        for message_name, message in topic_messages.items():
-            header += "ID_{0} = 0b{1:>011b}\n".format(message_name, message["id"])
+        for message_name, message_contents in topic_messages.items():
+            if "description" in message_contents:
+                header += '"""\n'
+                for line in message_contents["description"].split("\n"):
+                    header += f"{line}\n"
+                header += '"""\n'
+            header += f"ID_{message_name} = 0b{message_contents['id']:>011b}\n"
         header += "\n"
 
     return header

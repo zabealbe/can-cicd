@@ -16,6 +16,11 @@ def generate_ids_include(network: Network):
             header += f"#define TOPIC_{topic_name}_MASK 0b{0b00000011111:>011b}\n"
             header += f"#define TOPIC_{topic_name}_FILTER 0b{topic_id:>011b}\n"
         for message_name, message_contents in topic_messages.items():
+            if "description" in message_contents:
+                header += "/*\n"
+                for line in message_contents["description"].split("\n"):
+                    header += f"* {line}\n"
+                header += "*/\n"
             header += f"#define ID_{message_name} 0b{message_contents['id']:>011b}\n"
         header += "\n"
     header += "#endif\n"
