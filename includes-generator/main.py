@@ -58,14 +58,14 @@ def main():
         output_path = c.OUTPUT_DIR.replace("[network]", n.name)
         print(n.path)
         
-        create_subtree(os.path.dirname(output_path))
+        create_subtree(output_path)
         
         generate_id_includes(n, output_path)
         print(f"Generated id includes in {output_path}\n")
 
     # CAN config
     for network_name, path in parse_network_multipath(c.CANCONFIG_FILE).items():
-        output_file = c.OUTPUT_DIR.replace("[network]", network_name)
+        output_path = c.OUTPUT_DIR.replace("[network]", network_name)
         print(path)
 
         canconfig_file = load_json(path, c.CANCONFIG_FILE_VALIDATION_SCHEMA)
@@ -73,10 +73,10 @@ def main():
         canconfig_version = float(canconfig_file["canconfig_version"])
         print(f"Loaded can configuration from {path}")
 
-        create_subtree(os.path.dirname(output_file))
+        create_subtree(output_path)
 
-        generate_canconfig_includes(canconfig, canconfig_version, network_name, output_file)
-        print(f"Generated canconfig includes in {output_file}\n")
+        generate_canconfig_includes(canconfig, canconfig_version, network_name, output_path)
+        print(f"Generated canconfig includes in {output_path}\n")
 
     '''
         with open(config.FLATBUF_SCHEMA_FILE) as flatbuf_schema:

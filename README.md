@@ -6,7 +6,7 @@ and the interactions with the bus itself
 :open_file_folder: project root\
   ├ :open_file_folder: [id-generator](id-generator)\
   ├ :open_file_folder: [flatbuf-generator](flatbuf-generator)\
-  ├ :open_file_folder: [naked-generator](naked-generator)
+  ├ :open_file_folder: [naked-generator](naked-generator)\
   ├ :open_file_folder: [includes-generator](includes-generator)\
   └ :open_file_folder: [sheet-generator](sheet-generator)
 
