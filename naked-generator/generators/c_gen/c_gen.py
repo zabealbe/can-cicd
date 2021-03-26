@@ -33,15 +33,20 @@ class Generator(G):
         for struct_name, struct in self.schema["structs"].items():
             # code_h += "#pragma pack(1)\n"  # Align to 1 byte
             code_h += f"typedef struct __is_packed {{\n"
+            struct_size = 0
             for index, (field_name, field) in enumerate(struct.items()):
                 if "struct" in field:
                     continue
 
                 field = field.split(":", 1)
-                type_func = self.types[field[0]][1]
+                
+                type_func = self.types[field[0]][1]  # specific action for type
+                struct_size += self.types[field[0]][0]  # adding type size
+                
                 field_class = type_func() if len(field) == 1 else type_func().format(field[1])
                 code_h += f"\t{field_class} {field_name};\n"
-            code_h += f"}} {struct_name};\n\n"
+            code_h += f"}} {struct_name};\n"
+            code_h += f"static_assert(sizeof({struct_name}) == {struct_size}, \"struct size mismatch\");\n\n"
 
         """
         Serializer(s)
