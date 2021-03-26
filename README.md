@@ -6,6 +6,7 @@ and the interactions with the bus itself
 :open_file_folder: project root\
   ├ :open_file_folder: [id-generator](id-generator)\
   ├ :open_file_folder: [flatbuf-generator](flatbuf-generator)\
+  ├ :open_file_folder: [naked-generator](naked-generator)
   ├ :open_file_folder: [includes-generator](includes-generator)\
   └ :open_file_folder: [sheet-generator](sheet-generator)
 
@@ -49,11 +50,14 @@ The json structure is as follows:
 **Description and constraints you have to follow:**
 <details><summary>SHOW</summary>
 
-**Avoid message name conflicts across different networks**\
-If you plan to have two different messages in two separate networks with the same name you **can't** use the merge function on those two networks.
-On the other hand if the two messages are **identical**, meaning that they are actually the same message but used on multiple networks you may merge them.
-___
-    
+###Fields for each message in "messages" array
+Keywords used:
++ **Required**: this field must be present
++ **Required by**: indicates that the field must be present if the specified submodule is used
++ **Used by**: indicates that the field can either be present or omitted and that is used by the
+  specified submodule
++ **Not required**: the field can be omitted
+---
 ```yaml
 "name": string
 ```
@@ -103,6 +107,15 @@ This field indicates the receiving device(s), **can be more than one**.\
 The characters you should use are all UPPERCASE letters and "_".
 If there is more than one receiving device insert each one as a different array element.\
 If there is only one receiving device use an array with a single element.
+___
+
+```yaml
+"description": string
+```
+Used by: [includes-generator](includes-generator)
+
+This field contains a description for the message, the description will be included as a comment
+in the generated files.
 ___
 
 ```yaml
