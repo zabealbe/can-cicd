@@ -2,17 +2,16 @@ from generators.gen import Generator as G
 from config import config as c
 from pathlib import Path
 from lib import utils
-
+import pprint
 
 class Generator(G):
     def __init__(self, schema, types, endianness: str, skeleton_file_h: str, skeleton_file_c: str):
-        self.schema = schema
         self.types = types
         self.skeleton_file_h = skeleton_file_h
         self.skeleton_file_c = skeleton_file_c
 
-        super(Generator, self).__init__(types, endianness)
-
+        super(Generator, self).__init__(schema, types, endianness)
+            
     def generate_h(self, output_file):
         code_h = ""
 
@@ -30,23 +29,33 @@ class Generator(G):
         Struct(s)
         """
         code_h += "\n"
-        for struct_name, struct in self.schema["structs"].items():
-            # code_h += "#pragma pack(1)\n"  # Align to 1 byte
+        for struct_name, struct_contents in self.schema["structs"].items():
             code_h += f"typedef struct __is_packed {{\n"
             struct_size = 0
-            for index, (field_name, field) in enumerate(struct.items()):
+            for index, (field_name, field) in enumerate(struct_contents.items()):
                 if "struct" in field:
                     continue
 
-                field = field.split(":", 1)
+                # Adding ':' to have always at least 2 array elements
+                field = (field + ":").split(":")
                 
-                type_func = self.types[field[0]][1]  # specific action for type
                 struct_size += self.types[field[0]][0]  # adding type size
+                type_func = self.types[field[0]][2]  # specific format string for type
                 
-                field_class = type_func() if len(field) == 1 else type_func().format(field[1])
-                code_h += f"\t{field_class} {field_name};\n"
+                field_class = type_func().format(
+                    type_name=field[0],
+                    enum_name=field[1],
+                    field_index=index
+                )
+                
+                code_h += f"\t{field_class};\n"
             code_h += f"}} {struct_name};\n"
             code_h += f"static_assert(sizeof({struct_name}) == {struct_size}, \"struct size mismatch\");\n\n"
+            
+            if __debug__:
+                print(f"Generated struct {struct_name}")
+                print("{0}\n".format('\t' +  # Pretty print or something, idk I'm ugly
+                                     str(struct_contents).replace(', ', ',\n\t').replace('{', '').replace('}', '')))
 
         """
         Serializer(s)
@@ -110,49 +119,53 @@ class Generator(G):
             f.write(self.generate_c(filename))
 
     @staticmethod
+    def add_padding():
+        return "int8_t __unused_padding_{field_index}"
+
+    @staticmethod
     def add_bool():
-        return "bool"
+        return "bool {type_name}"
 
     @staticmethod
     def add_int8():
-        return "int8_t"
+        return "int8_t {type_name}"
 
     @staticmethod
     def add_int16():
-        return "int16_t"
+        return "int16_t {type_name}"
 
     @staticmethod
     def add_int32():
-        return "int32_t"
+        return "int32_t {type_name}"
 
     @staticmethod
     def add_int64():
-        return "int64_t"
+        return "int64_t {type_name}"
 
     @staticmethod
     def add_uint8():
-        return "uint8_t"
+        return "uint8_t {type_name}"
 
     @staticmethod
     def add_uint16():
-        return "uint16_t"
+        return "uint16_t {type_name}"
 
     @staticmethod
     def add_uint32():
-        return "uint32_t"
+        return "uint32_t {type_name}"
 
     @staticmethod
     def add_uint64():
-        return "uint64_t"
+        return "uint64_t {type_name}"
 
     @staticmethod
     def add_float32():
-        return "float"
+        return "float {type_name}"
 
     @staticmethod
     def add_float64():
-        return "double"
+        return "double {type_name}"
 
     @staticmethod
     def add_enum():
-        return "{0}"
+        return "{enum_name}"

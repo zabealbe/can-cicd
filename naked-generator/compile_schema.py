@@ -8,23 +8,25 @@ from generators.c_gen.c_gen import Generator as GeneratorC
 """
 This dictionary is used by the generators to call a specific action when one of these types is encountered
 """
-types = {  # "type": ("bytes_size", "parsing_function")   
-    "bool": (1, Generator.add_bool),
+types = {  # "type": ("bytes_size", "align to n bytes", "parsing_function")  
+    "padding": (1, 1, Generator.add_padding),
 
-    "uint8": (1, Generator.add_uint8),
-    "uint16": (2, Generator.add_uint16),
-    "uint32": (4, Generator.add_uint32),
-    "uint64": (8, Generator.add_uint64),
+    "bool": (1, 1, Generator.add_bool),
+    
+    "uint8": (1, 1, Generator.add_uint8),
+    "uint16": (2, 2, Generator.add_uint16),
+    "uint32": (4, 4, Generator.add_uint32),
+    "uint64": (8, 8, Generator.add_uint64),
 
-    "int8": (1, Generator.add_int8),
-    "int16": (2, Generator.add_int16),
-    "int32": (4, Generator.add_int32),
-    "int64": (8, Generator.add_int64),
+    "int8": (1, 1, Generator.add_int8),
+    "int16": (2, 2, Generator.add_int16),
+    "int32": (4, 4, Generator.add_int32),
+    "int64": (8, 8, Generator.add_int64),
 
-    "float32": (4, Generator.add_float32),
-    "float64": (8, Generator.add_float64),
+    "float32": (4, 4, Generator.add_float32),
+    "float64": (8, 8, Generator.add_float64),
 
-    "enum": (1, Generator.add_enum),
+    "enum": (1, 1, Generator.add_enum)
 }
 
 

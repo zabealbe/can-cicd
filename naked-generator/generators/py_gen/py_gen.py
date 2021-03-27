@@ -5,11 +5,9 @@ from enum import Enum
 
 class Generator(G):
     def __init__(self, schema, types, endianness: str, skeleton_file_py: str):
-        self.schema = schema
-        self.types = types
         self.skeleton_file_py = skeleton_file_py
         
-        super(Generator, self).__init__(types, endianness)
+        super(Generator, self).__init__(schema, types, endianness)
         
     def generate_header(self):
         code = ""
@@ -26,7 +24,7 @@ class Generator(G):
                 if "struct" in field_type:
                     continue
                 code += f"{field_name} "
-                schema += self.types[field_type.split(":", 1)[0]][1]()
+                schema += self.types[field_type.split(":", 1)[0]][2]()
             code = code[:-1] + "')\n"  # Removing last whitespace
             code += f"{struct_name}_schema = '{schema}'"
             code += "\n\n"
@@ -57,9 +55,11 @@ class Generator(G):
         code = self.generate_header()
         code += self.generate_serializer()
         code += self.generate_deserializer()
-        if __debug__:
-            print(code)
         return code
+    
+    @staticmethod
+    def add_padding():
+        return "PADDING"
     
     @staticmethod
     def add_bool():

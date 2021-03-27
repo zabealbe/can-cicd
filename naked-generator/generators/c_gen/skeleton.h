@@ -3,6 +3,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <assert.h>
 
 /*
 * TODO: document
@@ -32,8 +33,8 @@
 #endif
 
 // assert float is 32bit and double is 64bit because not defined in the standard
-// assert(sizeof(float) == 4) TODO: preprocessor
-// assert(sizeof(double) == 8) TODO: preprocessor
+static_assert(sizeof(float) == 4, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPECTED SIZE FOR 'float' OF 4 BYTES **")
+static_assert(sizeof(double) == 8, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPECTED SIZE FOR 'double' OF 8 BYTES **")
 
 {code}
 #endif
