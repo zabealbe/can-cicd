@@ -50,7 +50,7 @@ class Generator(G):
                 
                 code_h += f"\t{field_class};\n"
             code_h += f"}} {struct_name};\n"
-            code_h += f"static_assert(sizeof({struct_name}) == {struct_size}, \"struct size mismatch\");\n\n"
+            code_h += f"__NAKED_STATIC_ASSERT(sizeof({struct_name}) == {struct_size}); //, \"struct size mismatch\");\n\n"
             
             if __debug__:
                 print(f"Generated struct {struct_name}")
