@@ -1,8 +1,5 @@
 from generators.gen import Generator as G
-from config import config as c
-from pathlib import Path
 from lib import utils
-import pprint
 
 class Generator(G):
     def __init__(self, schema, types, endianness: str, skeleton_file_h: str, skeleton_file_c: str):
@@ -20,10 +17,10 @@ class Generator(G):
         """
         for enum_name, enum in self.schema["enums"].items():
             code_h += "\n"
-            code_h += f"enum {enum_name} __is_packed {{\n"
+            code_h += f"typedef enum __is_packed {{\n"
             for index, item in enumerate(enum):
                 code_h += f"\t{enum_name}_{item},\n"
-            code_h += f"}};\n"
+            code_h += f"}} {enum_name};\n"
 
         """
         Struct(s)
@@ -43,14 +40,14 @@ class Generator(G):
                 type_func = self.types[field[0]][2]  # specific format string for type
                 
                 field_class = type_func().format(
-                    type_name=field[0],
+                    field_name=field_name,
                     enum_name=field[1],
                     field_index=index
                 )
                 
                 code_h += f"\t{field_class};\n"
             code_h += f"}} {struct_name};\n"
-            code_h += f"__NAKED_STATIC_ASSERT(sizeof({struct_name}) == {struct_size}); //, \"struct size mismatch\");\n\n"
+            code_h += f"static_assert(sizeof({struct_name}) == {struct_size}, \"struct size mismatch\");\n\n"
             
             if __debug__:
                 print(f"Generated struct {struct_name}")
@@ -88,7 +85,7 @@ class Generator(G):
         for struct_name, struct in self.schema["structs"].items():
             code_c += f"void serialize_{struct_name}({struct_name}* {struct_name.lower()}, uint8_t* buffer, size_t buf_len) {{\n"
             code_c += f"\tassert(buf_len >= sizeof({struct_name}));\n"
-            code_c += f"\tmemcpy(buffer, {struct_name.lower()}, sizeof(STEER_STATUS));\n"
+            code_c += f"\tmemcpy(buffer, {struct_name.lower()}, sizeof({struct_name}));\n"
             code_c += "}\n"
         code_c += "\n"
 
@@ -98,7 +95,7 @@ class Generator(G):
         for struct_name, struct in self.schema["structs"].items():
             code_c += f"void deserialize_{struct_name}(uint8_t* buffer, size_t buf_len, {struct_name}* {struct_name.lower()}) {{\n"
             code_c += f"\tassert(buf_len >= sizeof({struct_name}));\n"
-            code_c += f"\tmemcpy({struct_name.lower()}, buffer, sizeof(STEER_STATUS));\n"
+            code_c += f"\tmemcpy({struct_name.lower()}, buffer, sizeof({struct_name}));\n"
             code_c += "}\n"
 
         """
@@ -124,48 +121,48 @@ class Generator(G):
 
     @staticmethod
     def add_bool():
-        return "bool {type_name}"
+        return "bool {field_name}"
 
     @staticmethod
     def add_int8():
-        return "int8_t {type_name}"
+        return "int8_t {field_name}"
 
     @staticmethod
     def add_int16():
-        return "int16_t {type_name}"
+        return "int16_t {field_name}"
 
     @staticmethod
     def add_int32():
-        return "int32_t {type_name}"
+        return "int32_t {field_name}"
 
     @staticmethod
     def add_int64():
-        return "int64_t {type_name}"
+        return "int64_t {field_name}"
 
     @staticmethod
     def add_uint8():
-        return "uint8_t {type_name}"
+        return "uint8_t {field_name}"
 
     @staticmethod
     def add_uint16():
-        return "uint16_t {type_name}"
+        return "uint16_t {field_name}"
 
     @staticmethod
     def add_uint32():
-        return "uint32_t {type_name}"
+        return "uint32_t {field_name}"
 
     @staticmethod
     def add_uint64():
-        return "uint64_t {type_name}"
+        return "uint64_t {field_name}"
 
     @staticmethod
     def add_float32():
-        return "float {type_name}"
+        return "float {field_name}"
 
     @staticmethod
     def add_float64():
-        return "double {type_name}"
+        return "double {field_name}"
 
     @staticmethod
     def add_enum():
-        return "{enum_name}"
+        return "{enum_name} {field_name}"

@@ -1,7 +1,4 @@
-from pathlib import Path
 from generators.gen import Generator as G
-from enum import Enum
-
 
 class Generator(G):
     def __init__(self, schema, types, endianness: str, skeleton_file_py: str):

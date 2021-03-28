@@ -35,26 +35,25 @@ def compile_schema():
     
     for network_name, schema_path in paths.items():
         schema = utils.load_json(schema_path)
-        for file_schema in schema:
-            output_file = file_schema["output_file"]
+        output_file = network_name
+        
+        if True:
+            # Run for python
+            py_gen = GeneratorPY(schema, types, c.ENDIANNESS, "generators/py_gen/skeleton.py")
+            a = py_gen.generate_all()
+
+            output_path = f"{os.path.dirname(schema_path)}/py"
+            utils.create_subtree(output_path)
+            with open(f"{output_path}/{output_file}.py", "w") as f:
+                f.write(a)
+
+        if True:
+            # Run for c
+            output_path = f"{os.path.dirname(schema_path)}/c"
+            utils.create_subtree(output_path)
             
-            if True:
-                # Run for python
-                py_gen = GeneratorPY(file_schema, types, c.ENDIANNESS, "generators/py_gen/skeleton.py")
-                a = py_gen.generate_all()
-    
-                output_path = f"{os.path.dirname(schema_path)}/py"
-                utils.create_subtree(output_path)
-                with open(f"{output_path}/{output_file}.py", "w") as f:
-                    f.write(a)
-    
-            if True:
-                # Run for c
-                output_path = f"{os.path.dirname(schema_path)}/c"
-                utils.create_subtree(output_path)
-                
-                c_gen = GeneratorC(file_schema, types, c.ENDIANNESS, "generators/c_gen/skeleton.h", "generators/c_gen/skeleton.c")
-                c_gen.generate(output_path, output_file)
+            c_gen = GeneratorC(schema, types, c.ENDIANNESS, "generators/c_gen/skeleton.h", "generators/c_gen/skeleton.c")
+            c_gen.generate(output_path, output_file)
 
 
 if __name__ == "__main__":
