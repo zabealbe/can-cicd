@@ -32,11 +32,8 @@ def parse_network_multipath(multipath):
         p = multipath.split("[network]")
         for d in os.scandir(p[0]):
             path = f"{d.path}{p[1]}"
-            """
-            if os.path.isfile(path):
+            if os.path.exists(path):
                 paths[d.name] = path
-            """
-            paths[d.name] = path
     else:
         Exception()
 

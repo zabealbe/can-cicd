@@ -33,6 +33,7 @@ types = {  # "type": ("bytes_size", "align to n bytes", "parsing_function")
 def compile_schema():
     paths = utils.parse_network_multipath(c.SCHEMA_LOCATION)
     
+    print("====== Schemas compilation ======")
     for network_name, schema_path in paths.items():
         schema = utils.load_json(schema_path)
         output_file = network_name
@@ -43,10 +44,12 @@ def compile_schema():
             a = py_gen.generate_all()
 
             output_path = f"{os.path.dirname(schema_path)}/py"
+            output_file_path = f"{output_path}/{output_file}.py"
             utils.create_subtree(output_path)
-            with open(f"{output_path}/{output_file}.py", "w") as f:
+            with open(output_file_path, "w") as f:
                 f.write(a)
-
+            print(f"Compiled schema in Python for {network_name} to {output_path}")            
+            
         if True:
             # Run for c
             output_path = f"{os.path.dirname(schema_path)}/c"
@@ -54,7 +57,8 @@ def compile_schema():
             
             c_gen = GeneratorC(schema, types, c.ENDIANNESS, "generators/c_gen/skeleton.h", "generators/c_gen/skeleton.c")
             c_gen.generate(output_path, output_file)
-
+            
+            print(f"Compiled schema in C for {network_name} to {output_path}")
 
 if __name__ == "__main__":
     compile_schema()

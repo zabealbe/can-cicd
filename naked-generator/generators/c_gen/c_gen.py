@@ -50,9 +50,7 @@ class Generator(G):
             code_h += f"static_assert(sizeof({struct_name}) == {struct_size}, \"struct size mismatch\");\n\n"
             
             if __debug__:
-                print(f"Generated struct {struct_name}")
-                print("{0}\n".format('\t' +  # Pretty print or something, idk I'm ugly
-                                     str(struct_contents).replace(', ', ',\n\t').replace('{', '').replace('}', '')))
+                print(f"Compiled struct {struct_name} {struct_contents}")
 
         """
         Serializer(s)

@@ -47,9 +47,6 @@ def generate_schema_from_network(network):
             if struct:  # Don't allow empty structs
                 schema["structs"][message_name] = struct
         
-    if __debug__:
-        print(schema)
-        
     return schema
 
 
@@ -78,6 +75,7 @@ def generate_schema():
         with open(output_file_path, "w") as f:
             json.dump(schema, f, indent=4)
         print(f"Generated schema for {network.name} in {output_file_path}")
+    print("\n")
 
 
 if __name__ == "__main__":

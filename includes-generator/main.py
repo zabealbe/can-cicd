@@ -59,7 +59,7 @@ def main():
         print(n.path)
         
         create_subtree(output_path)
-        
+
         generate_id_includes(n, output_path)
         print(f"Generated id includes in {output_path}\n")
 
