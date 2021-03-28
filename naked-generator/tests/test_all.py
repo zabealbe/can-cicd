@@ -26,7 +26,7 @@ puts("SUCCESS!\\n");
 COMPILE_AND_RUN = """
 CURR_DIR=$(pwd)
 cd {output_dir}
-gcc -std=gnu11 -pedantic $CURR_DIR/{input_file} -o {output_file} {headers} -lm && \\
+gcc -std=c11 -pedantic $CURR_DIR/{input_file} -o {output_file} {headers} -lm && \\
 chmod +x {output_file} && \\
 ./{output_file}
 """

@@ -7,19 +7,12 @@
 #include <stdio.h>
 
 /*
-*   Assert macro
-*   macro for static assertion
-*   source: https://en.wikipedia.org/wiki/Assertion_(software_development)#Static_assertions
+*   STDC Version check
+*   check if STDC version is greater or equal than the minimum version required
 */
-
-/*
-*   Packed macro
-*   macro for packed structs on multiple compilers
-*/
-#if defined(__MINGW32__)
-    #define __is_packed       __attribute__((__gcc_struct__, __packed__, __aligned__(1)))
-#else
-    #define __is_packed       __attribute__((__packed__, __aligned__(1)))
+#define NAKED_STDC_MIN_VERSION 201112L
+#if __STDC_VERSION__ < NAKED_STDC_MIN_VERSION
+    #error "** STDC VERSION NOT SUPPORTED **"
 #endif
 
 /*
@@ -48,6 +41,16 @@
 // assert float is 32bit and double is 64bit because not defined in the standard
 static_assert(sizeof(float) == 4,"** THIS ARCHITECTURE DOESN'T MATCH THE EXPECTED SIZE FOR 'float' OF 4 BYTES **");
 static_assert(sizeof(double) == 8, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPECTED SIZE FOR 'double' OF 8 BYTES **");
+
+/*
+*   Packed macro
+*   macro for packed structs on multiple compilers
+*/
+#if defined(__MINGW32__)
+    #define __is_packed       __attribute__((__gcc_struct__, __packed__, __aligned__(1)))
+#else
+    #define __is_packed       __attribute__((__packed__, __aligned__(1)))
+#endif
 
 {code}
 #endif
