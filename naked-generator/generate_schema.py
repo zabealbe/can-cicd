@@ -26,29 +26,31 @@ types = {  # "type": ("bytes_size", "parsing_function")
 
 
 def generate_schema_from_network(network):
-    schemas = []
+    schema = {
+        "enums": {},
+        "structs": {}
+    }
     for topic_name, _ in network.get_topics().items():
-        schema = {
-            "output_file": topic_name.lower(),
-            "enums": {},
-            "structs": {}
-        }
         for message_name, message_contents in network.get_messages_by_topic(topic_name).items():
             struct = {}
             for field_name, field in message_contents["contents"].items():
                 if isinstance(field, list):
-                    enum_name = field_name.title()
+                    if ":" in field_name:  # Named enum
+                        enum_name = field_name.split(":")[0].strip().title()
+                        field_name = field_name.split(":")[1].strip()
+                    else:
+                        enum_name = field_name.title()
+                    
                     schema["enums"][enum_name] = field
                     field = f"enum:{enum_name}"
                 struct[field_name] = field
             if struct:  # Don't allow empty structs
                 schema["structs"][message_name] = struct
-        schemas.append(schema)
         
     if __debug__:
         print(schema)
         
-    return schemas
+    return schema
 
 
 def generate_schema():
