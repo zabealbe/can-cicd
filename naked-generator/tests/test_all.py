@@ -20,7 +20,7 @@ printf("Deserialized\\n\\t{format_string}\\n",{parameters});
 """
 COMPARE_BUFFER = """
 assert(memcmp(&{original_struct}, {deserialized_struct}, sizeof({struct_name})) == 0);
-puts("Success!\\n\\n");
+puts("SUCCESS!\\n");
 """
 
 COMPILE_AND_RUN = """
@@ -72,8 +72,17 @@ def generate_format_string(field_types):
             format_string += "%f "
         # Float64
         elif "float64" == value:
-            format_string += "%d "
-        # Enum, Bool, Ints
+            format_string += "%lf "
+        # Ints
+        elif "8_t" in value:
+            format_string += "%hh" + ("u " if "uint" in value else "d ")
+        elif "16_t" in value:
+            format_string += "%" + ("u " if "uint" in value else "d ")
+        elif "32_t" in value:
+            format_string += "%l" + ("u " if "uint" in value else "d ")
+        elif "64_t" in value:
+            format_string += "%ll" + ("u " if "uint" in value else "d ")
+        # Enum, Bool
         else:
             format_string += "%d "
     return format_string.strip()
