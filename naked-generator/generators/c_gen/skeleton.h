@@ -20,7 +20,7 @@
 *   static check for supported endianness
 */
 #ifndef __NAKED_ENDIAN_ORDER
-    #define __NAKED_ENDIAN_ORDER ('ABCD')
+    #define __NAKED_ENDIAN_ORDER 1094861636L // "ABCD"
 #endif
 #if !defined(__NAKED_LITTLE_ENDIAN) && !defined(__NAKED_BIG_ENDIAN) && !defined(__NAKED_PDP_ENDIAN)
     #if __NAKED_ENDIAN_ORDER==0x41424344UL 
@@ -47,9 +47,9 @@ static_assert(sizeof(double) == 8, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPEC
 *   macro for packed structs on multiple compilers
 */
 #if defined(__MINGW32__)
-    #define __is_packed       __attribute__((__gcc_struct__, __packed__, __aligned__(1)))
+    #define __is_packed __attribute__((__gcc_struct__, __packed__)) // , __aligned__(1)))
 #else
-    #define __is_packed       __attribute__((__packed__, __aligned__(1)))
+    #define __is_packed __attribute__((__packed__)) // , __aligned__(1)))
 #endif
 
 {code}
