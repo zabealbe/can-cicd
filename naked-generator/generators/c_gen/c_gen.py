@@ -49,8 +49,10 @@ class Generator(G):
             code_h += f"}} {struct_name};\n"
             code_h += f"static_assert(sizeof({struct_name}) == {struct_size}, \"struct size mismatch\");\n\n"
             
+            """
             if __debug__:
                 print(f"Compiled struct {struct_name} {struct_contents}")
+            """
 
         """
         Serializer(s)

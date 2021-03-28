@@ -59,6 +59,9 @@ def compile_schema():
             c_gen.generate(output_path, output_file)
             
             print(f"Compiled schema in C for {network_name} to {output_path}")
+            
+        print()
+
 
 if __name__ == "__main__":
     compile_schema()

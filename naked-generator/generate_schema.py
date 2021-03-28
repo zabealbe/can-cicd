@@ -75,7 +75,7 @@ def generate_schema():
         with open(output_file_path, "w") as f:
             json.dump(schema, f, indent=4)
         print(f"Generated schema for {network.name} in {output_file_path}")
-    print("\n")
+    print("")
 
 
 if __name__ == "__main__":
