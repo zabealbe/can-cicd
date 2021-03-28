@@ -1,4 +1,5 @@
 from jsonschema import validate
+import subprocess
 import errno
 import json
 import os
@@ -47,3 +48,17 @@ def remove_trailing_slash(path: str):
         return path[:-1]
     else:
         return path
+    
+    
+def run_command(command, verbose=False):
+    if verbose:
+        print(f"running '{command}'")
+    process = subprocess.Popen(
+        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
+    )
+    process.wait()
+
+    code = process.returncode
+
+    out, out_err = process.communicate()
+    return out.decode("utf-8"), out_err.decode("utf-8"), code

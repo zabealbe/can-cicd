@@ -1,4 +1,6 @@
 import random
+import sys
+
 from lib.utils import *
 import sanitized_config as c
 from datetime import datetime
@@ -21,10 +23,12 @@ assert(memcmp(&{original_struct}, {deserialized_struct}, sizeof({struct_name})) 
 puts("Success!\\n\\n");
 """
 
-COMPILE = """
+COMPILE_AND_RUN = """
 CURR_DIR=$(pwd)
 cd {output_dir}
-gcc -std=gnu11 -pedantic $CURR_DIR/{input_file} -o {output_file} {headers} -lm
+gcc -std=gnu11 -pedantic $CURR_DIR/{input_file} -o {output_file} {headers} -lm && \\
+chmod +x {output_file} && \\
+./{output_file}
 """
 
 
@@ -181,12 +185,16 @@ def main():
         with open(output_file_path, "w") as output_file:
             output_file.write(skeleton_c.format(includes=includes, code=code.strip()))
 
-        os.system(COMPILE.format(
+        stdout, stderr, err_code = run_command(COMPILE_AND_RUN.format(
             input_file=output_file_path,
             output_dir=output_dir,
-            output_file="test_all", 
+            output_file="test_all",
             headers=source_paths))
 
+        print(stdout)
+        print(stderr, file=sys.stderr)
+        exit(err_code)
+                
 
 if __name__ == "__main__":
     main()
