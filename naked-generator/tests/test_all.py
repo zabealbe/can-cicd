@@ -132,8 +132,8 @@ def main():
         skeleton_c = f.read()
         
     paths = parse_network_multipath(f"{c.OUTPUT_DIR}/[network]")
-    
     for network_name, network_path in paths.items():
+        print(f"====== GENERATING C TESTS FOR {network_name}  ======")
         code = ""
         includes = ""
 
@@ -185,6 +185,7 @@ def main():
         with open(output_file_path, "w") as output_file:
             output_file.write(skeleton_c.format(includes=includes, code=code.strip()))
 
+        print(f"====== RUNNING C TESTS FOR {network_name}  ======")
         stdout, stderr, err_code = run_command(COMPILE_AND_RUN.format(
             input_file=output_file_path,
             output_dir=output_dir,
@@ -193,7 +194,8 @@ def main():
 
         print(stdout)
         print(stderr, file=sys.stderr)
-        exit(err_code)
+        if err_code:
+            exit(err_code)
                 
 
 if __name__ == "__main__":
