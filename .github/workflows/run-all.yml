@@ -43,6 +43,8 @@ jobs:
         cd naked-generator
         python main.py
         mkdir -p /tmp/workspace/naked-generator/ && cp -R out/* /tmp/workspace/naked-generator/
+        # TESTS
+        python -m tests.test_all
     - name: Run Includes generator
       run: |
         cd includes-generator
