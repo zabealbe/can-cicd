@@ -55,7 +55,14 @@ def compile_schema():
             output_path = f"{os.path.dirname(schema_path)}/c"
             utils.create_subtree(output_path)
             
-            c_gen = GeneratorC(schema, types, c.ENDIANNESS, "generators/c_gen/skeleton.h", "generators/c_gen/skeleton.c")
+            c_gen = GeneratorC(
+                schema, 
+                types, 
+                c.ENDIANNESS, 
+                "generators/c_gen/skeleton.h", 
+                "generators/c_gen/skeleton.c",
+                prefix=network_name
+            )
             c_gen.generate(output_path, output_file)
             
             print(f"Compiled schema in C for {network_name} to {output_path}")

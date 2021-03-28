@@ -1,4 +1,4 @@
-# CAN CI-CD
+# CAN CICD
 The purpose of this project is to manage **any** can network, the data flowing throught it, its serialization/deserialization
 and the interactions with the bus itself
 

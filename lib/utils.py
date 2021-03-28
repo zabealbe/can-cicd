@@ -50,12 +50,11 @@ def remove_trailing_slash(path: str):
 def run_command(command, verbose=False):
     if verbose:
         print(f"running '{command}'")
-    process = subprocess.Popen(
+    process = subprocess.run(
         command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
     )
-    process.wait()
 
     code = process.returncode
 
-    out, out_err = process.communicate()
+    out, out_err = (process.stdout, process.stderr)
     return out.decode("utf-8"), out_err.decode("utf-8"), code

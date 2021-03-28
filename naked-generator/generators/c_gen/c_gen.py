@@ -1,9 +1,10 @@
 from generators.gen import Generator as G
 from lib import utils
 
+
 class Generator(G):
-    def __init__(self, schema, types, endianness: str, skeleton_file_h: str, skeleton_file_c: str):
-        self.types = types
+    def __init__(self, schema, types, endianness: str, skeleton_file_h: str, skeleton_file_c: str, prefix: str = ""):
+        self.prefix = prefix
         self.skeleton_file_h = skeleton_file_h
         self.skeleton_file_c = skeleton_file_c
 
@@ -19,8 +20,8 @@ class Generator(G):
             code_h += "\n"
             code_h += f"typedef enum __is_packed {{\n"
             for index, item in enumerate(enum):
-                code_h += f"\t{enum_name}_{item},\n"
-            code_h += f"}} {enum_name};\n"
+                code_h += f"\t{self.prefix}_{enum_name}_{item},\n"
+            code_h += f"}} {self.prefix}_{enum_name};\n"
 
         """
         Struct(s)
@@ -46,26 +47,21 @@ class Generator(G):
                 )
                 
                 code_h += f"\t{field_class};\n"
-            code_h += f"}} {struct_name};\n"
+            code_h += f"}} {self.prefix}_{struct_name};\n"
             code_h += f"static_assert(sizeof({struct_name}) == {struct_size}, \"struct size mismatch\");\n\n"
-            
-            """
-            if __debug__:
-                print(f"Compiled struct {struct_name} {struct_contents}")
-            """
 
         """
         Serializer(s)
         """
         for struct_name, struct in self.schema["structs"].items():
-            code_h += f"void serialize_{struct_name}({struct_name}* {struct_name.lower()}, uint8_t* buffer, size_t buf_len);\n"
+            code_h += f"void serialize_{self.prefix}_{struct_name}({struct_name}* {struct_name.lower()}, uint8_t* buffer, size_t buf_len);\n"
         code_h += "\n"
         
         """
         Deserializer(s)
         """
         for struct_name, struct in self.schema["structs"].items():
-            code_h += f"void deserialize_{struct_name}(uint8_t* buffer, size_t buf_len, {struct_name}* {struct_name.lower()});\n"
+            code_h += f"void deserialize_{self.prefix}_{struct_name}(uint8_t* buffer, size_t buf_len, {struct_name}* {struct_name.lower()});\n"
 
         """
         Building from skeleton
@@ -83,7 +79,7 @@ class Generator(G):
         Serializer(s)
         """
         for struct_name, struct in self.schema["structs"].items():
-            code_c += f"void serialize_{struct_name}({struct_name}* {struct_name.lower()}, uint8_t* buffer, size_t buf_len) {{\n"
+            code_c += f"void serialize_{self.prefix}_{struct_name}({struct_name}* {struct_name.lower()}, uint8_t* buffer, size_t buf_len) {{\n"
             code_c += f"\tassert(buf_len >= sizeof({struct_name}));\n"
             code_c += f"\tmemcpy(buffer, {struct_name.lower()}, sizeof({struct_name}));\n"
             code_c += "}\n"
@@ -93,7 +89,7 @@ class Generator(G):
         Deserializer(s)
         """
         for struct_name, struct in self.schema["structs"].items():
-            code_c += f"void deserialize_{struct_name}(uint8_t* buffer, size_t buf_len, {struct_name}* {struct_name.lower()}) {{\n"
+            code_c += f"void deserialize_{self.prefix}_{struct_name}(uint8_t* buffer, size_t buf_len, {struct_name}* {struct_name.lower()}) {{\n"
             code_c += f"\tassert(buf_len >= sizeof({struct_name}));\n"
             code_c += f"\tmemcpy({struct_name.lower()}, buffer, sizeof({struct_name}));\n"
             code_c += "}\n"

@@ -69,35 +69,38 @@ def generate_format_string(field_types):
     for value in field_types:
         # Float32
         if "float32" == value:
-            format_string += "%f "
+            format_string += "%lf "
         # Float64
         elif "float64" == value:
             format_string += "%lf "
         # Ints
-        elif "8_t" in value:
-            format_string += "%hh" + ("u " if "uint" in value else "d ")
-        elif "16_t" in value:
-            format_string += "%" + ("u " if "uint" in value else "d ")
-        elif "32_t" in value:
-            format_string += "%l" + ("u " if "uint" in value else "d ")
-        elif "64_t" in value:
-            format_string += "%ll" + ("u " if "uint" in value else "d ")
+        elif "uint" in value:
+            format_string += "%llu "
+        elif "int" in value:
+            format_string += "%lld "
         # Enum, Bool
         else:
-            format_string += "%d "
+            format_string += "%lld "
     return format_string.strip()
 
 
-def generate_read_struct(struct_instance_name, field_names, is_pointer):
+def generate_read_struct(struct_instance_name, field_names, field_types, is_pointer):
     if is_pointer:
         select = "->"
     else:
         select = "."
     
     read_struct = ""
-    for field_name in field_names:
-        read_struct += f"{struct_instance_name}{select}{field_name}, "
-    
+    for field_name, field_type in zip(field_names, field_types):
+        if field_type in ["uint8_t", "uint16_t", "uint32_t", "uint64_t"]:
+            cast = "(long long unsigned int)"
+        elif field_type in ["int8_t", "int16_t", "int32_t", "int64_t"]:
+            cast = "(long long int)"
+        elif field_type in ["float32", "float64"]:
+            cast = "(double)"
+        else:
+            cast = "(long long int)"
+        read_struct += f"{cast}{struct_instance_name}{select}{field_name}, "
     return read_struct[:-2]  # Remove last comma
 
 
@@ -169,7 +172,7 @@ def main():
                     buffer_name=f"buffer_{struct_name.lower()}",
                     struct_data="{" + struct_data + "}",
                     format_string=generate_format_string(struct_field_types),
-                    parameters=generate_read_struct(struct_name.lower() + "_s", struct_field_names, False),
+                    parameters=generate_read_struct(struct_name.lower() + "_s", struct_field_names, struct_field_types, False),
                     field_types=struct_field_types
                 )
                 code_t += READ_BUFFER.format(
@@ -177,7 +180,7 @@ def main():
                     buffer_name=f"buffer_{struct_name.lower()}",
                     variable_name=struct_name.lower() + "_d",
                     format_string=generate_format_string(struct_field_types),
-                    parameters=generate_read_struct(struct_name.lower() + "_d", struct_field_names, True)
+                    parameters=generate_read_struct(struct_name.lower() + "_d", struct_field_names, struct_field_types, True)
                 )
                 code_t += COMPARE_BUFFER.format(
                     original_struct=struct_name.lower() + "_s",
@@ -193,19 +196,23 @@ def main():
         create_subtree(output_dir)
         with open(output_file_path, "w") as output_file:
             output_file.write(skeleton_c.format(includes=includes, code=code.strip()))
+        print(f"DONE\n\n")
 
         print(f"====== RUNNING C TESTS FOR {network_name}  ======")
         stdout, stderr, err_code = run_command(COMPILE_AND_RUN.format(
             input_file=output_file_path,
             output_dir=output_dir,
             output_file="test_all",
-            headers=source_paths))
+            headers=source_paths),
+            verbose=True
+        )
 
-        print(stdout)
+        print(stdout.strip())
         print(stderr, file=sys.stderr)
         if err_code:
             exit(err_code)
+        print(f"DONE\n\n")
                 
-
+                
 if __name__ == "__main__":
     main()
