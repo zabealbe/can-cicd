@@ -1,6 +1,18 @@
 {
     "network_version": 1.2,
     "max_payload_size": 8,
+    "enums": {
+        "Race_type": ["ACCELERATION", "SKIDPAD", "AUTOCROSS", "ENDURANCE", "ENDURANCE"],
+        "Tlm_status": ["ON", "OFF"],
+        "Ts_status": ["OFF", "PRECHARGE", "ON", "FATAL"],
+        "Traction_control": ["OFF", "SLIP_CONTROL", "TORQUE_VECTORING", "COMPLETE"],
+        "Map": ["R", "D20", "D40", "D60", "D80", "D100"],
+        "Car_status": ["IDLE", "SETUP", "RUN"],
+        "Inverter_status": ["OFF", "IDLE", "ON"]
+    },
+    "bitsets": {
+        
+    },
     "messages": [
         {
             "name": "TLM_STATUS",
@@ -9,8 +21,8 @@
             "sending": ["TLM"],
             "receiving": ["STEER"],
             "contents": {
-                "tlm_status": ["ON", "OFF"],
-                "race_type": ["ACCELERATION", "SKIDPAD", "AUTOCROSS", "ENDURANCE"],
+                "tlm_status": "Tlm_status",
+                "race_type": "Race_type",
                 "driver": "uint8",
                 "circuit": "uint8"
             }
@@ -21,8 +33,8 @@
             "sending": ["STEER"],
             "receiving": ["TLM"],
             "contents": {
-                "tlm_status": ["ON", "OFF"],
-                "race_type": ["ACCELERATION", "SKIDPAD", "AUTOCROSS", "ENDURANCE"],
+                "tlm_status": "Tlm_status",
+                "race_type": "Race_type",
                 "driver": "uint8",
                 "circuit": "uint8"
             }
@@ -77,7 +89,7 @@
             "sending": ["BMS_HV"],
             "receiving": ["ACU"],
             "contents": {
-                "ts_status": ["OFF", "PRECHARGE", "ON", "FATAL"]
+                "ts_status": "Ts_status"
             }
         },{
             "name": "SET_TS_STATUS",
@@ -86,7 +98,7 @@
             "sending": ["ACU"],
             "receiving": ["BMS_HV"],
             "contents": {
-                "ts_status_set": ["OFF", "ON"]
+                "ts_status_set": "Ts_status"
             }
         },{
             "name": "STEER_STATUS",
@@ -95,8 +107,8 @@
             "sending": ["STEER"],
             "receiving": ["ACU"],
             "contents": {
-                "traction_control": ["OFF", "SLIP_CONTROL", "TORQUE_VECTORING", "COMPLETE"],
-                "map": ["R", "D20", "D40", "D60", "D80", "D100"],
+                "traction_control": "Traction_control",
+                "map": "Map",
                 "radio_on": "bool"
             }
         },{
@@ -106,7 +118,7 @@
             "sending": ["STEER"],
             "receiving": ["ACU"],
             "contents": {
-                "car_status_set": ["IDLE", "RUN"]
+                "car_status_set": "Car_status"
             }
         },{
             "name": "GET_CAR_STATUS",
@@ -123,9 +135,9 @@
             "sending": ["ACU"],
             "receiving": ["STEER"],
             "contents": {
-                "car_status": ["IDLE", "SETUP", "RUN"],
-                "Inverter_status: inverter_l": ["OFF", "IDLE", "ON"],
-                "Inverter_status: inverter_r": ["OFF", "IDLE", "ON"]
+                "car_status": "Car_status",
+                "inverter_l": "Inverter_status",
+                "inverter_r": "Inverter_status"
             }
         }
     ]
