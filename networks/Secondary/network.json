@@ -1,8 +1,58 @@
 {
-    "network_version": 0,
+    "network_version": 1,
     "max_payload_size": 8,
+    "enums": {
+        "pedals_range_sync_state_enum": ["MAX_START","MAX_END","MIN_START", "MIN_END"],
+        "pedals_range_pedal_enum": ["ACCELERATOR","BRAKE","ALL"]
+    },
+    "bitsets": {
+        "pcu_warnings_bitset" : ["PCU_IMPLAUSIBILITY_WARNING","PCU_CAN_SEND_MESSAGE_MISS"],
+        "pcu_fatal_errors_bitset" : ["PCU_IMPLAUSIBILITY_ERROR","PCU_STM_INTERNAL_ERROR"]
+        
+    },
     "messages": [
         {
+            "name": "SET_PEDALS_RANGE",
+            "topic": "PEDALS",
+            "priority": 3,
+            "sending": ["STEER"],
+            "receiving": ["PCU"],
+            "description":"Syncronization message from Steering Wheel to Pedals Control Unit. Message semantic: (start|end) set of (max|min) value for (accelerator|brake|all) pedal.",
+            "contents": {
+                "sync_state": "pedals_range_sync_state_enum",
+                "pedal": "pedals_range_pedal_enum"
+            }
+        },{
+            "name": "ACCELERATOR_PEDAL_VAL",
+            "topic": "PEDALS",
+            "priority": 7,
+            "sending": ["PCU"],
+            "receiving": ["ECU,TLM"],
+            "description":"Accelerator Pedal potentiometer Value. Average of 2 sensors normalized from 0 to 255, linear, 8bit total, unsigned.",
+            "contents": {
+                "level":"uint8"
+            }
+        },{
+            "name": "BRAKE_PEDAL_VAL",
+            "topic": "PEDALS",
+            "priority": 7,
+            "sending": ["PCU"],
+            "receiving": ["ECU,TLM"],
+            "description":"Brake Pedal pressure sensor Value. Normalized from 0 to 255, linear, 8bit total, unsigned.",
+            "contents": {
+                "level":"uint8"
+            }
+        },{
+           "name": "PCU_STATUS",
+            "topic": "PEDALS",
+            "sending": ["PCU"],
+            "receiving": ["ECU,TLM"],
+            "description": "Status of the PCU: contains impending warnings and active fatal errors. Warings could vanish but fatal errors do not reset, instead they additively increase.",
+            "contents": {
+                "pcu_warnings":"pcu_warnings_bitset",
+                "pcu_fatal_errors":"pcu_fatal_errors_bitset"
+            }
+        },{
            "name": "IMU_ANGULAR_RATE",
             "fixed_id": 1260,
             "sending": ["IMU"],
