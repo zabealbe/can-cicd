@@ -15,12 +15,16 @@ class {{ enum["name"] }}(Enum):
 {% set struct_name = struct["name"] %}
 {% set endianness_prefix = "<" if endianness == "little" else ">" %}
 # {{ struct_name }}
-{{ struct_name }} = namedtuple("{{ struct_name }}", "{{ ' '.join(struct["items"].keys()) }}")
-{{ struct_name }}_schema = "{{ endianness_prefix }}{{ format_string(struct["items"]) }}"
-
-def serialize_{{ struct_name }}(struct: {{ struct_name }}) -> bytes:
-    return pack({{ struct_name }}, *tuple(struct))
-
-def deserialize_{{ struct_name }}(buffer: bytes) -> {{ struct_name }}:
-    return {{ struct_name }}._make(unpack({{ struct_name }}_schema, buffer))
+class {{ struct_name }}:
+    {% set parameters = ", ".join(fill_padding(struct["items"].keys())) -%}
+    tuple = namedtuple("{{ struct_name }}", "{{ parameters.replace("0x00, ", "") }}", rename=True)
+    schema = "{{ endianness_prefix }}{{ format_string(struct["items"]) }}"
+    
+    @staticmethod
+    def serialize({{ parameters.replace("0x00, ", "") }}) -> bytes:
+        return pack({{ struct_name }}.schema, {{ parameters }})
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "{{ struct_name }}":
+        return {{ struct_name }}.tuple._make(unpack({{ struct_name }}.schema, buffer))
 {% endfor -%}
