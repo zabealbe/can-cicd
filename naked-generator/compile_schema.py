@@ -14,22 +14,22 @@ def compile_schema():
         schema = Schema(schema_path)
         output_file = network_name
         
-        if False:
+        if True:
             # Run for python
-            py_gen = GeneratorPY(schema, types, c.ENDIANNESS, "generators/py_gen/skeleton.py")
-            a = py_gen.generate_all()
-
             output_path = f"{os.path.dirname(schema_path)}/py"
-            output_file_path = f"{output_path}/{output_file}.py"
-            utils.create_subtree(output_path)
-            with open(output_file_path, "w") as f:
-                f.write(a)
+
+            py_gen = GeneratorPY(
+                schema, 
+                c.ENDIANNESS, 
+                "generators/py_gen/skeleton.py.j2"
+            )
+            py_gen.generate(output_path, output_file)
+
             print(f"Compiled schema in Python for {network_name} to {output_path}")            
             
         if True:
             # Run for c
             output_path = f"{os.path.dirname(schema_path)}/c"
-            utils.create_subtree(output_path)
             
             c_gen = GeneratorC(
                 schema, 

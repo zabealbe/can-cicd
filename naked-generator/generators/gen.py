@@ -4,7 +4,7 @@ import copy
 
 class Generator(abc.ABC):
     def __init__(self, schema, endianness):
-        self.schema = copy.copy(schema)
+        self.schema = copy.deepcopy(schema)
         
         if endianness != "little" and endianness != "big":
             raise ValueError(f"Endianness parameter must be either 'little' or 'big', got {endianness}")
@@ -12,7 +12,6 @@ class Generator(abc.ABC):
         
         self.types = self.schema.types
         for type_name, type_tuple in self.types.items():
-            print("ADDED", type_name, type_tuple)
             self.types[type_name] = (
                 type_tuple[0],
                 type_tuple[1]

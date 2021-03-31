@@ -39,10 +39,11 @@ class Schema:
         for enum_name, enum_items in schema["enums"].items():
             enum = {
                 "name": enum_name,
-                "items": enum_items
+                "items": [(item_name, item_index) for item_index, item_name in enumerate(enum_items)]
             }
             self.enums.append(enum)
             self.types[enum_name] = (1, 1)
+        print(self.get_enums())
         
     def get_structs(self):
         return self.structs
