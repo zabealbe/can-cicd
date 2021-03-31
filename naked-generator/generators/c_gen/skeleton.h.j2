@@ -55,8 +55,8 @@ static_assert(sizeof(double) == 8, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPEC
 {% for enum in enums %}
 typedef enum __is_packed {
     {%- set prefix_enum = namespace + "_" + enum["name"] %}
-    {%- for item in enum["items"] %}
-    {{ prefix_enum }}_{{ item }},
+    {%- for item_name, item_value in enum["items"] %}
+    {{ prefix_enum }}_{{ item_name }} = {{ item_value }},
     {%- endfor %}
 } {{ prefix_enum }};
 {% endfor -%}
