@@ -31,6 +31,7 @@ jobs:
     - name: Run Flatbuf generator
       run: |
         cd flatbuf-generator
+        pip install -r requirements.txt
         python generate_schema.py
         wget -O flatc https://raw.githubusercontent.com/zabealbe/flatc-musl/main/versions/flatc_v1.12.0
         wget -O flatcc https://raw.githubusercontent.com/zabealbe/flatc-musl/main/versions/flatcc_v0.6.0
@@ -41,6 +42,7 @@ jobs:
     - name: Naked generator
       run: |
         cd naked-generator
+        pip install -r requirements.txt
         python main.py
         mkdir -p /tmp/workspace/naked-generator/ && cp -R out/* /tmp/workspace/naked-generator/
         # TESTS
@@ -48,11 +50,13 @@ jobs:
     - name: Run Includes generator
       run: |
         cd includes-generator
+        pip install -r requirements.txt
         python main.py
         mkdir -p /tmp/workspace/includes-generator/ && cp -R out/* /tmp/workspace/includes-generator/
     - name: Sheet generator
       run: |
         cd sheet-generator
+        pip install -r requirements.txt
         python main.py
         mkdir -p /tmp/workspace/sheet-generator/ && cp -R out/* /tmp/workspace/sheet-generator/
     - name: Include external tools
