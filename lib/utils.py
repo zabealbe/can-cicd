@@ -58,3 +58,7 @@ def run_command(command, verbose=False):
 
     out, out_err = (process.stdout, process.stderr)
     return out.decode("utf-8"), out_err.decode("utf-8"), code
+
+
+def indent(string, amount):
+    return " " * amount + string.replace("\n", "\n" + " " * amount)

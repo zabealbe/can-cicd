@@ -1,5 +1,6 @@
 from generators.gen import Generator as G
 
+
 class Generator(G):
     def __init__(self, schema, types, endianness: str, skeleton_file_py: str):
         self.skeleton_file_py = skeleton_file_py
@@ -8,6 +9,7 @@ class Generator(G):
         
     def generate_header(self):
         code = ""
+        
         for enum_name, enum in self.schema["enums"].items():
             code += f"class {enum_name}(Enum):\n"
             for index, item in enumerate(enum):
@@ -28,7 +30,7 @@ class Generator(G):
         code += "\n"
         
         with open(self.skeleton_file_py) as f:
-            schema_py = f.read().format(code=code)
+            schema_py = f.read().format(code=code.replace("\t", " "*4))
         
         return schema_py
 

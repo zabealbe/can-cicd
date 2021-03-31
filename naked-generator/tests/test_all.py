@@ -48,14 +48,11 @@ def find_structs(header_file):
 
         if inside_struct:
             if "}" in line:
-                struct.split(";")
-
                 struct_name = line.replace("} ", "").replace(";", "")
-                struct_field_types = [x.split(" ")[0].strip() for x in struct.split(";") if x]
-                struct_field_names = [x.split(" ")[1].strip() for x in struct.split(";") if x]
+                struct_field_types = [x.strip().split(" ")[0].strip() for x in struct.split(";") if x]
+                struct_field_names = [x.strip().split(" ")[1].strip() for x in struct.split(";") if x]
                 
                 structs.append((struct_name, struct_field_types, struct_field_names))
-                
                 # Clean
                 inside_struct = False
                 struct = ""
@@ -187,9 +184,7 @@ def main():
                     deserialized_struct=struct_name.lower() + "_d",
                     struct_name=struct_name
                 )
-
-                for code_line in code_t.split("\n"):
-                    code += f"\t{code_line}\n"            
+                code += indent(code_t, 4)         
         
         output_dir = f"{c.OUTPUT_DIR}/{network_name}/tests"
         output_file_path = f"{output_dir}/test_all.c"

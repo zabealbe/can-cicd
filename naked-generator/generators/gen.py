@@ -1,44 +1,45 @@
 import abc
+import copy
 
 
 class Generator(abc.ABC):
-    def __init__(self, schema, types, endianness):
-        self.schema = schema
+    def __init__(self, schema, endianness):
+        self.schema = copy.copy(schema)
         
         if endianness != "little" and endianness != "big":
             raise ValueError(f"Endianness parameter must be either 'little' or 'big', got {endianness}")
         self.endianness = endianness
         
-        self.types = {}
-        for type_name, type_tuple in types.items():
+        self.types = self.schema.types
+        for type_name, type_tuple in self.types.items():
+            print("ADDED", type_name, type_tuple)
             self.types[type_name] = (
                 type_tuple[0],
-                type_tuple[1],
-                self.__class__.__dict__[type_tuple[2].__name__].__func__
+                type_tuple[1]
             )
         
         # Ordering struct fields by alignment size
-        for struct_name, struct_contents in self.schema["structs"].items():
-            sorted_struct = dict(self.sorted_alignment(struct_contents.items()))
+        for struct in self.schema.get_structs():
+            struct_items = struct["items"]
+            sorted_struct = dict(self.sorted_alignment(struct_items.items()))
 
             struct_size = 0
-            padded_struct = {}
-            for field_name, field in sorted_struct.items():
-                type_name = field.split(":", 1)[0]
-                type_size = self.types[type_name][0]
-                type_align = self.types[type_name][1]  # type alignment
+            padded_items = {}
+            for item_name, item_type in sorted_struct.items():
+                type_size = self.types[item_type][0]
+                type_align = self.types[item_type][1]  # type alignment
                 
                 # Aligning
                 padding = (type_size - struct_size) % type_align
                 for i in range(0, padding):
-                    padded_struct[f"__unused_padding_{struct_size}"] = f"padding:{padding}"
+                    padded_items[f"__unused_padding_{struct_size}"] = "padding"
                     struct_size += 1
                 
                 struct_size += type_size  # adding type size
-                padded_struct[field_name] = field
-                
-            self.schema["structs"][struct_name] = padded_struct
-
+                padded_items[item_name] = item_type
+            struct["size"] = struct_size
+            struct["items"] = padded_items
+            
     def sorted_alignment(self, items):
         """
         Orders struct fields based on type alignment
@@ -46,73 +47,75 @@ class Generator(abc.ABC):
         """
 
         def order_struct(item):
-            type_name = item[1].split(":")[0]
+            type_name = item[1]
             type_align = self.types[type_name][1]
             return type_align
 
         return sorted(items, key=order_struct)
 
+    """
     @staticmethod
     @abc.abstractmethod
-    def add_padding(self):
+    def add_padding():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def add_bool(self):
+    def add_bool():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def add_int8(self):
+    def add_int8():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def add_int16(self):
+    def add_int16():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def add_int32(self):
+    def add_int32():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def add_int64(self):
+    def add_int64():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def add_uint8(self):
+    def add_uint8():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def add_uint16(self):
+    def add_uint16():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def add_uint32(self):
+    def add_uint32():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def add_uint64(self):
+    def add_uint64():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def add_float32(self):
+    def add_float32():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def add_float64(self):
+    def add_float64():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def add_enum(self):
+    def add_enum():
         pass
+    """
