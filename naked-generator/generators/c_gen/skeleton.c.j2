@@ -1,0 +1,17 @@
+#include <string.h>
+#include <assert.h>
+#include <stdio.h>
+
+#include "{{ filename }}.h"
+{% for struct in structs %}
+{% set prefix_struct = namespace + "_" +struct["name"] %}
+/* {{ prefix_struct }} */
+void serialize_{{ prefix_struct }}({{ prefix_struct }}* {{ struct["name"].lower() }}, uint8_t* buffer, size_t buf_len) {
+	assert(buf_len >= sizeof({{ prefix_struct }}));
+	memcpy(buffer, {{ struct["name"].lower() }}, sizeof({{ prefix_struct }}));
+} 
+void deserialize_{{ prefix_struct }}(uint8_t* buffer, size_t buf_len, {{ prefix_struct }}* {{ struct["name"].lower() }}) {
+	assert(buf_len >= sizeof({{ prefix_struct }}));
+	memcpy({{ struct["name"].lower() }}, buffer, sizeof({{ prefix_struct }}));
+}
+{% endfor -%}
