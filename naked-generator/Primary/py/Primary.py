@@ -61,121 +61,154 @@ class Ts_Status_Set(Enum):
 
 
 # TLM_STATUS
-TLM_STATUS = namedtuple("TLM_STATUS", "tlm_status race_type driver circuit", rename=True)
-TLM_STATUS_schema = "<bbBB"
-
-def serialize_TLM_STATUS(struct: TLM_STATUS) -> bytes:
-    return pack(TLM_STATUS_schema, *tuple(struct))
-
-def deserialize_TLM_STATUS(buffer: bytes) -> TLM_STATUS:
-    return TLM_STATUS._make(unpack(TLM_STATUS_schema, buffer))
+class TLM_STATUS:
+    tuple = namedtuple("TLM_STATUS", "tlm_status, race_type, driver, circuit", rename=True)
+    schema = "<bbBB"
+    
+    @staticmethod
+    def serialize(tlm_status, race_type, driver, circuit) -> bytes:
+        return pack(TLM_STATUS.schema, tlm_status, race_type, driver, circuit)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "TLM_STATUS":
+        return TLM_STATUS.tuple._make(unpack(TLM_STATUS.schema, buffer))
 
 
 # CAR_STATUS
-CAR_STATUS = namedtuple("CAR_STATUS", "car_status inverter_l inverter_r", rename=True)
-CAR_STATUS_schema = "<bbb"
-
-def serialize_CAR_STATUS(struct: CAR_STATUS) -> bytes:
-    return pack(CAR_STATUS_schema, *tuple(struct))
-
-def deserialize_CAR_STATUS(buffer: bytes) -> CAR_STATUS:
-    return CAR_STATUS._make(unpack(CAR_STATUS_schema, buffer))
+class CAR_STATUS:
+    tuple = namedtuple("CAR_STATUS", "car_status, inverter_l, inverter_r", rename=True)
+    schema = "<bbb"
+    
+    @staticmethod
+    def serialize(car_status, inverter_l, inverter_r) -> bytes:
+        return pack(CAR_STATUS.schema, car_status, inverter_l, inverter_r)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "CAR_STATUS":
+        return CAR_STATUS.tuple._make(unpack(CAR_STATUS.schema, buffer))
 
 
 # SET_TLM_STATUS
-SET_TLM_STATUS = namedtuple("SET_TLM_STATUS", "tlm_status race_type driver circuit", rename=True)
-SET_TLM_STATUS_schema = "<bbBB"
-
-def serialize_SET_TLM_STATUS(struct: SET_TLM_STATUS) -> bytes:
-    return pack(SET_TLM_STATUS_schema, *tuple(struct))
-
-def deserialize_SET_TLM_STATUS(buffer: bytes) -> SET_TLM_STATUS:
-    return SET_TLM_STATUS._make(unpack(SET_TLM_STATUS_schema, buffer))
+class SET_TLM_STATUS:
+    tuple = namedtuple("SET_TLM_STATUS", "tlm_status, race_type, driver, circuit", rename=True)
+    schema = "<bbBB"
+    
+    @staticmethod
+    def serialize(tlm_status, race_type, driver, circuit) -> bytes:
+        return pack(SET_TLM_STATUS.schema, tlm_status, race_type, driver, circuit)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "SET_TLM_STATUS":
+        return SET_TLM_STATUS.tuple._make(unpack(SET_TLM_STATUS.schema, buffer))
 
 
 # HV_VOLTAGE
-HV_VOLTAGE = namedtuple("HV_VOLTAGE", "pack_voltage bus_voltage max_cell_voltage min_cell_voltage", rename=True)
-HV_VOLTAGE_schema = "<HHHH"
-
-def serialize_HV_VOLTAGE(struct: HV_VOLTAGE) -> bytes:
-    return pack(HV_VOLTAGE_schema, *tuple(struct))
-
-def deserialize_HV_VOLTAGE(buffer: bytes) -> HV_VOLTAGE:
-    return HV_VOLTAGE._make(unpack(HV_VOLTAGE_schema, buffer))
+class HV_VOLTAGE:
+    tuple = namedtuple("HV_VOLTAGE", "pack_voltage, bus_voltage, max_cell_voltage, min_cell_voltage", rename=True)
+    schema = "<HHHH"
+    
+    @staticmethod
+    def serialize(pack_voltage, bus_voltage, max_cell_voltage, min_cell_voltage) -> bytes:
+        return pack(HV_VOLTAGE.schema, pack_voltage, bus_voltage, max_cell_voltage, min_cell_voltage)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "HV_VOLTAGE":
+        return HV_VOLTAGE.tuple._make(unpack(HV_VOLTAGE.schema, buffer))
 
 
 # HV_CURRENT
-HV_CURRENT = namedtuple("HV_CURRENT", "power __unused_padding_1 current", rename=True)
-HV_CURRENT_schema = "<bcH"
-
-def serialize_HV_CURRENT(struct: HV_CURRENT) -> bytes:
-    return pack(HV_CURRENT_schema, *tuple(struct))
-
-def deserialize_HV_CURRENT(buffer: bytes) -> HV_CURRENT:
-    return HV_CURRENT._make(unpack(HV_CURRENT_schema, buffer))
+class HV_CURRENT:
+    tuple = namedtuple("HV_CURRENT", "power, current", rename=True)
+    schema = "<bcH"
+    
+    @staticmethod
+    def serialize(power, current) -> bytes:
+        return pack(HV_CURRENT.schema, power, 0x00, current)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "HV_CURRENT":
+        return HV_CURRENT.tuple._make(unpack(HV_CURRENT.schema, buffer))
 
 
 # HV_TEMP
-HV_TEMP = namedtuple("HV_TEMP", "average_temp max_temp min_temp", rename=True)
-HV_TEMP_schema = "<HHH"
-
-def serialize_HV_TEMP(struct: HV_TEMP) -> bytes:
-    return pack(HV_TEMP_schema, *tuple(struct))
-
-def deserialize_HV_TEMP(buffer: bytes) -> HV_TEMP:
-    return HV_TEMP._make(unpack(HV_TEMP_schema, buffer))
+class HV_TEMP:
+    tuple = namedtuple("HV_TEMP", "average_temp, max_temp, min_temp", rename=True)
+    schema = "<HHH"
+    
+    @staticmethod
+    def serialize(average_temp, max_temp, min_temp) -> bytes:
+        return pack(HV_TEMP.schema, average_temp, max_temp, min_temp)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "HV_TEMP":
+        return HV_TEMP.tuple._make(unpack(HV_TEMP.schema, buffer))
 
 
 # HV_ERROR
-HV_ERROR = namedtuple("HV_ERROR", "error_code error_index active", rename=True)
-HV_ERROR_schema = "<BBB"
-
-def serialize_HV_ERROR(struct: HV_ERROR) -> bytes:
-    return pack(HV_ERROR_schema, *tuple(struct))
-
-def deserialize_HV_ERROR(buffer: bytes) -> HV_ERROR:
-    return HV_ERROR._make(unpack(HV_ERROR_schema, buffer))
+class HV_ERROR:
+    tuple = namedtuple("HV_ERROR", "error_code, error_index, active", rename=True)
+    schema = "<BBB"
+    
+    @staticmethod
+    def serialize(error_code, error_index, active) -> bytes:
+        return pack(HV_ERROR.schema, error_code, error_index, active)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "HV_ERROR":
+        return HV_ERROR.tuple._make(unpack(HV_ERROR.schema, buffer))
 
 
 # TS_STATUS
-TS_STATUS = namedtuple("TS_STATUS", "ts_status", rename=True)
-TS_STATUS_schema = "<b"
-
-def serialize_TS_STATUS(struct: TS_STATUS) -> bytes:
-    return pack(TS_STATUS_schema, *tuple(struct))
-
-def deserialize_TS_STATUS(buffer: bytes) -> TS_STATUS:
-    return TS_STATUS._make(unpack(TS_STATUS_schema, buffer))
+class TS_STATUS:
+    tuple = namedtuple("TS_STATUS", "ts_status", rename=True)
+    schema = "<b"
+    
+    @staticmethod
+    def serialize(ts_status) -> bytes:
+        return pack(TS_STATUS.schema, ts_status)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "TS_STATUS":
+        return TS_STATUS.tuple._make(unpack(TS_STATUS.schema, buffer))
 
 
 # STEER_STATUS
-STEER_STATUS = namedtuple("STEER_STATUS", "traction_control map radio_on", rename=True)
-STEER_STATUS_schema = "<bb?"
-
-def serialize_STEER_STATUS(struct: STEER_STATUS) -> bytes:
-    return pack(STEER_STATUS_schema, *tuple(struct))
-
-def deserialize_STEER_STATUS(buffer: bytes) -> STEER_STATUS:
-    return STEER_STATUS._make(unpack(STEER_STATUS_schema, buffer))
+class STEER_STATUS:
+    tuple = namedtuple("STEER_STATUS", "traction_control, map, radio_on", rename=True)
+    schema = "<bb?"
+    
+    @staticmethod
+    def serialize(traction_control, map, radio_on) -> bytes:
+        return pack(STEER_STATUS.schema, traction_control, map, radio_on)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "STEER_STATUS":
+        return STEER_STATUS.tuple._make(unpack(STEER_STATUS.schema, buffer))
 
 
 # SET_CAR_STATUS
-SET_CAR_STATUS = namedtuple("SET_CAR_STATUS", "car_status_set", rename=True)
-SET_CAR_STATUS_schema = "<b"
-
-def serialize_SET_CAR_STATUS(struct: SET_CAR_STATUS) -> bytes:
-    return pack(SET_CAR_STATUS_schema, *tuple(struct))
-
-def deserialize_SET_CAR_STATUS(buffer: bytes) -> SET_CAR_STATUS:
-    return SET_CAR_STATUS._make(unpack(SET_CAR_STATUS_schema, buffer))
+class SET_CAR_STATUS:
+    tuple = namedtuple("SET_CAR_STATUS", "car_status_set", rename=True)
+    schema = "<b"
+    
+    @staticmethod
+    def serialize(car_status_set) -> bytes:
+        return pack(SET_CAR_STATUS.schema, car_status_set)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "SET_CAR_STATUS":
+        return SET_CAR_STATUS.tuple._make(unpack(SET_CAR_STATUS.schema, buffer))
 
 
 # SET_TS_STATUS
-SET_TS_STATUS = namedtuple("SET_TS_STATUS", "ts_status_set", rename=True)
-SET_TS_STATUS_schema = "<b"
-
-def serialize_SET_TS_STATUS(struct: SET_TS_STATUS) -> bytes:
-    return pack(SET_TS_STATUS_schema, *tuple(struct))
-
-def deserialize_SET_TS_STATUS(buffer: bytes) -> SET_TS_STATUS:
-    return SET_TS_STATUS._make(unpack(SET_TS_STATUS_schema, buffer))
+class SET_TS_STATUS:
+    tuple = namedtuple("SET_TS_STATUS", "ts_status_set", rename=True)
+    schema = "<b"
+    
+    @staticmethod
+    def serialize(ts_status_set) -> bytes:
+        return pack(SET_TS_STATUS.schema, ts_status_set)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "SET_TS_STATUS":
+        return SET_TS_STATUS.tuple._make(unpack(SET_TS_STATUS.schema, buffer))
