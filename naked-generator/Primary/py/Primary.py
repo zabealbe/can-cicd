@@ -62,7 +62,7 @@ class Ts_Status_Set(Enum):
 
 # TLM_STATUS
 TLM_STATUS = namedtuple("TLM_STATUS", "tlm_status race_type driver circuit")
-TLM_STATUS_schema = "<ccBB"
+TLM_STATUS_schema = "<bbBB"
 
 def serialize_TLM_STATUS(struct: TLM_STATUS) -> bytes:
     return pack(TLM_STATUS, *tuple(struct))
@@ -73,7 +73,7 @@ def deserialize_TLM_STATUS(buffer: bytes) -> TLM_STATUS:
 
 # CAR_STATUS
 CAR_STATUS = namedtuple("CAR_STATUS", "car_status inverter_l inverter_r")
-CAR_STATUS_schema = "<ccc"
+CAR_STATUS_schema = "<bbb"
 
 def serialize_CAR_STATUS(struct: CAR_STATUS) -> bytes:
     return pack(CAR_STATUS, *tuple(struct))
@@ -84,7 +84,7 @@ def deserialize_CAR_STATUS(buffer: bytes) -> CAR_STATUS:
 
 # SET_TLM_STATUS
 SET_TLM_STATUS = namedtuple("SET_TLM_STATUS", "tlm_status race_type driver circuit")
-SET_TLM_STATUS_schema = "<ccBB"
+SET_TLM_STATUS_schema = "<bbBB"
 
 def serialize_SET_TLM_STATUS(struct: SET_TLM_STATUS) -> bytes:
     return pack(SET_TLM_STATUS, *tuple(struct))
@@ -106,7 +106,7 @@ def deserialize_HV_VOLTAGE(buffer: bytes) -> HV_VOLTAGE:
 
 # HV_CURRENT
 HV_CURRENT = namedtuple("HV_CURRENT", "power __unused_padding_1 current")
-HV_CURRENT_schema = "<ccH"
+HV_CURRENT_schema = "<bcH"
 
 def serialize_HV_CURRENT(struct: HV_CURRENT) -> bytes:
     return pack(HV_CURRENT, *tuple(struct))
@@ -139,7 +139,7 @@ def deserialize_HV_ERROR(buffer: bytes) -> HV_ERROR:
 
 # TS_STATUS
 TS_STATUS = namedtuple("TS_STATUS", "ts_status")
-TS_STATUS_schema = "<c"
+TS_STATUS_schema = "<b"
 
 def serialize_TS_STATUS(struct: TS_STATUS) -> bytes:
     return pack(TS_STATUS, *tuple(struct))
@@ -150,7 +150,7 @@ def deserialize_TS_STATUS(buffer: bytes) -> TS_STATUS:
 
 # STEER_STATUS
 STEER_STATUS = namedtuple("STEER_STATUS", "traction_control map radio_on")
-STEER_STATUS_schema = "<cc?"
+STEER_STATUS_schema = "<bb?"
 
 def serialize_STEER_STATUS(struct: STEER_STATUS) -> bytes:
     return pack(STEER_STATUS, *tuple(struct))
@@ -161,7 +161,7 @@ def deserialize_STEER_STATUS(buffer: bytes) -> STEER_STATUS:
 
 # SET_CAR_STATUS
 SET_CAR_STATUS = namedtuple("SET_CAR_STATUS", "car_status_set")
-SET_CAR_STATUS_schema = "<c"
+SET_CAR_STATUS_schema = "<b"
 
 def serialize_SET_CAR_STATUS(struct: SET_CAR_STATUS) -> bytes:
     return pack(SET_CAR_STATUS, *tuple(struct))
@@ -172,7 +172,7 @@ def deserialize_SET_CAR_STATUS(buffer: bytes) -> SET_CAR_STATUS:
 
 # SET_TS_STATUS
 SET_TS_STATUS = namedtuple("SET_TS_STATUS", "ts_status_set")
-SET_TS_STATUS_schema = "<c"
+SET_TS_STATUS_schema = "<b"
 
 def serialize_SET_TS_STATUS(struct: SET_TS_STATUS) -> bytes:
     return pack(SET_TS_STATUS, *tuple(struct))
