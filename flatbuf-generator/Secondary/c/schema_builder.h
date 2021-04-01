@@ -17,6 +17,82 @@
 #define flatbuffers_extension ".bin"
 #endif
 
+#define __Sync_State_formal_args , Sync_State_enum_t v0
+#define __Sync_State_call_args , v0
+__flatbuffers_build_scalar(flatbuffers_, Sync_State, Sync_State_enum_t)
+#define __Pedal_formal_args , Pedal_enum_t v0
+#define __Pedal_call_args , v0
+__flatbuffers_build_scalar(flatbuffers_, Pedal, Pedal_enum_t)
+
+#define __SET_PEDALS_RANGE_formal_args , Sync_State_enum_t v0, Pedal_enum_t v1
+#define __SET_PEDALS_RANGE_call_args , v0, v1
+static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_assign(SET_PEDALS_RANGE_t *p, Sync_State_enum_t v0, Pedal_enum_t v1)
+{ p->sync_state = v0; p->pedal = v1;
+  return p; }
+static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_copy(SET_PEDALS_RANGE_t *p, const SET_PEDALS_RANGE_t *p2)
+{ p->sync_state = p2->sync_state; p->pedal = p2->pedal;
+  return p; }
+static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_assign_to_pe(SET_PEDALS_RANGE_t *p, Sync_State_enum_t v0, Pedal_enum_t v1)
+{ p->sync_state = v0; p->pedal = v1;
+  return p; }
+static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_copy_to_pe(SET_PEDALS_RANGE_t *p, const SET_PEDALS_RANGE_t *p2)
+{ p->sync_state = p2->sync_state; p->pedal = p2->pedal;
+  return p; }
+static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_assign_from_pe(SET_PEDALS_RANGE_t *p, Sync_State_enum_t v0, Pedal_enum_t v1)
+{ p->sync_state = v0; p->pedal = v1;
+  return p; }
+static inline SET_PEDALS_RANGE_t *SET_PEDALS_RANGE_copy_from_pe(SET_PEDALS_RANGE_t *p, const SET_PEDALS_RANGE_t *p2)
+{ p->sync_state = p2->sync_state; p->pedal = p2->pedal;
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, SET_PEDALS_RANGE, 2, 1, SET_PEDALS_RANGE_file_identifier, SET_PEDALS_RANGE_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, SET_PEDALS_RANGE, SET_PEDALS_RANGE_t)
+
+#define __ACCELERATOR_PEDAL_VAL_formal_args , uint8_t v0
+#define __ACCELERATOR_PEDAL_VAL_call_args , v0
+static inline ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_assign(ACCELERATOR_PEDAL_VAL_t *p, uint8_t v0)
+{ p->level = v0;
+  return p; }
+static inline ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_copy(ACCELERATOR_PEDAL_VAL_t *p, const ACCELERATOR_PEDAL_VAL_t *p2)
+{ p->level = p2->level;
+  return p; }
+static inline ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_assign_to_pe(ACCELERATOR_PEDAL_VAL_t *p, uint8_t v0)
+{ p->level = v0;
+  return p; }
+static inline ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_copy_to_pe(ACCELERATOR_PEDAL_VAL_t *p, const ACCELERATOR_PEDAL_VAL_t *p2)
+{ p->level = p2->level;
+  return p; }
+static inline ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_assign_from_pe(ACCELERATOR_PEDAL_VAL_t *p, uint8_t v0)
+{ p->level = v0;
+  return p; }
+static inline ACCELERATOR_PEDAL_VAL_t *ACCELERATOR_PEDAL_VAL_copy_from_pe(ACCELERATOR_PEDAL_VAL_t *p, const ACCELERATOR_PEDAL_VAL_t *p2)
+{ p->level = p2->level;
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, ACCELERATOR_PEDAL_VAL, 1, 1, ACCELERATOR_PEDAL_VAL_file_identifier, ACCELERATOR_PEDAL_VAL_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, ACCELERATOR_PEDAL_VAL, ACCELERATOR_PEDAL_VAL_t)
+
+#define __BRAKE_PEDAL_VAL_formal_args , uint8_t v0
+#define __BRAKE_PEDAL_VAL_call_args , v0
+static inline BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_assign(BRAKE_PEDAL_VAL_t *p, uint8_t v0)
+{ p->level = v0;
+  return p; }
+static inline BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_copy(BRAKE_PEDAL_VAL_t *p, const BRAKE_PEDAL_VAL_t *p2)
+{ p->level = p2->level;
+  return p; }
+static inline BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_assign_to_pe(BRAKE_PEDAL_VAL_t *p, uint8_t v0)
+{ p->level = v0;
+  return p; }
+static inline BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_copy_to_pe(BRAKE_PEDAL_VAL_t *p, const BRAKE_PEDAL_VAL_t *p2)
+{ p->level = p2->level;
+  return p; }
+static inline BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_assign_from_pe(BRAKE_PEDAL_VAL_t *p, uint8_t v0)
+{ p->level = v0;
+  return p; }
+static inline BRAKE_PEDAL_VAL_t *BRAKE_PEDAL_VAL_copy_from_pe(BRAKE_PEDAL_VAL_t *p, const BRAKE_PEDAL_VAL_t *p2)
+{ p->level = p2->level;
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, BRAKE_PEDAL_VAL, 1, 1, BRAKE_PEDAL_VAL_file_identifier, BRAKE_PEDAL_VAL_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, BRAKE_PEDAL_VAL, BRAKE_PEDAL_VAL_t)
+
 #define __IMU_ANGULAR_RATE_formal_args , uint16_t v0, uint16_t v1, uint16_t v2
 #define __IMU_ANGULAR_RATE_call_args , v0, v1, v2
 static inline IMU_ANGULAR_RATE_t *IMU_ANGULAR_RATE_assign(IMU_ANGULAR_RATE_t *p, uint16_t v0, uint16_t v1, uint16_t v2)

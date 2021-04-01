@@ -1,5 +1,21 @@
 NETWORK_VERSION = 0
 
+# TOPIC PEDALS
+TOPIC_PEDALS_MASK = 0b00000011111
+TOPIC_PEDALS_FILTER = 0b00000000000
+"""
+Syncronization message from Steering Wheel to Pedals Control Unit. Message semantic: (start|end) set of (max|min) value for (accelerator|brake|all) pedal.
+"""
+ID_SET_PEDALS_RANGE = 0b10000000000
+"""
+Accelerator Pedal potentiometer Value. Average of 2 sensors normalized from 0 to 255, linear, 8bit total, unsigned.
+"""
+ID_ACCELERATOR_PEDAL_VAL = 0b00000000000
+"""
+Brake Pedal pressure sensor Value. Normalized from 0 to 255, linear, 8bit total, unsigned.
+"""
+ID_BRAKE_PEDAL_VAL = 0b00000100000
+
 # TOPIC FIXED_IDS
 """
 Inertial Measurement Unit [x,y,z]-axis angular rate value. 0.01dps per bit, Big-Endian, 16bit Total, signed

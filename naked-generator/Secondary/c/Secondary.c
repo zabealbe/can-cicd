@@ -5,6 +5,39 @@
 #include "Secondary.h"
 
 
+/* Secondary_SET_PEDALS_RANGE */
+void serialize_Secondary_SET_PEDALS_RANGE(Secondary_SET_PEDALS_RANGE* set_pedals_range, uint8_t* buffer, size_t buf_len) {
+	assert(buf_len >= sizeof(Secondary_SET_PEDALS_RANGE));
+	memcpy(buffer, set_pedals_range, sizeof(Secondary_SET_PEDALS_RANGE));
+} 
+void deserialize_Secondary_SET_PEDALS_RANGE(uint8_t* buffer, size_t buf_len, Secondary_SET_PEDALS_RANGE* set_pedals_range) {
+	assert(buf_len >= sizeof(Secondary_SET_PEDALS_RANGE));
+	memcpy(set_pedals_range, buffer, sizeof(Secondary_SET_PEDALS_RANGE));
+}
+
+
+/* Secondary_ACCELERATOR_PEDAL_VAL */
+void serialize_Secondary_ACCELERATOR_PEDAL_VAL(Secondary_ACCELERATOR_PEDAL_VAL* accelerator_pedal_val, uint8_t* buffer, size_t buf_len) {
+	assert(buf_len >= sizeof(Secondary_ACCELERATOR_PEDAL_VAL));
+	memcpy(buffer, accelerator_pedal_val, sizeof(Secondary_ACCELERATOR_PEDAL_VAL));
+} 
+void deserialize_Secondary_ACCELERATOR_PEDAL_VAL(uint8_t* buffer, size_t buf_len, Secondary_ACCELERATOR_PEDAL_VAL* accelerator_pedal_val) {
+	assert(buf_len >= sizeof(Secondary_ACCELERATOR_PEDAL_VAL));
+	memcpy(accelerator_pedal_val, buffer, sizeof(Secondary_ACCELERATOR_PEDAL_VAL));
+}
+
+
+/* Secondary_BRAKE_PEDAL_VAL */
+void serialize_Secondary_BRAKE_PEDAL_VAL(Secondary_BRAKE_PEDAL_VAL* brake_pedal_val, uint8_t* buffer, size_t buf_len) {
+	assert(buf_len >= sizeof(Secondary_BRAKE_PEDAL_VAL));
+	memcpy(buffer, brake_pedal_val, sizeof(Secondary_BRAKE_PEDAL_VAL));
+} 
+void deserialize_Secondary_BRAKE_PEDAL_VAL(uint8_t* buffer, size_t buf_len, Secondary_BRAKE_PEDAL_VAL* brake_pedal_val) {
+	assert(buf_len >= sizeof(Secondary_BRAKE_PEDAL_VAL));
+	memcpy(brake_pedal_val, buffer, sizeof(Secondary_BRAKE_PEDAL_VAL));
+}
+
+
 /* Secondary_IMU_ANGULAR_RATE */
 void serialize_Secondary_IMU_ANGULAR_RATE(Secondary_IMU_ANGULAR_RATE* imu_angular_rate, uint8_t* buffer, size_t buf_len) {
 	assert(buf_len >= sizeof(Secondary_IMU_ANGULAR_RATE));

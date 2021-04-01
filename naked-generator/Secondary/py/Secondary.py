@@ -3,6 +3,61 @@ from struct import pack, unpack
 from collections import namedtuple
 
 
+class Sync_State(Enum):
+    MAX_START = 0
+    MAX_END = 1
+    MIN_START = 2
+    MIN_END = 3
+
+
+class Pedal(Enum):
+    ACCELERATOR = 0
+    BRAKE = 1
+    ALL = 2
+
+
+# SET_PEDALS_RANGE
+class SET_PEDALS_RANGE:
+    tuple = namedtuple("SET_PEDALS_RANGE", "sync_state, pedal", rename=True)
+    schema = "<bb"
+    
+    @staticmethod
+    def serialize(sync_state, pedal) -> bytes:
+        return pack(SET_PEDALS_RANGE.schema, sync_state, pedal)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "SET_PEDALS_RANGE":
+        return SET_PEDALS_RANGE.tuple._make(unpack(SET_PEDALS_RANGE.schema, buffer))
+
+
+# ACCELERATOR_PEDAL_VAL
+class ACCELERATOR_PEDAL_VAL:
+    tuple = namedtuple("ACCELERATOR_PEDAL_VAL", "level", rename=True)
+    schema = "<B"
+    
+    @staticmethod
+    def serialize(level) -> bytes:
+        return pack(ACCELERATOR_PEDAL_VAL.schema, level)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "ACCELERATOR_PEDAL_VAL":
+        return ACCELERATOR_PEDAL_VAL.tuple._make(unpack(ACCELERATOR_PEDAL_VAL.schema, buffer))
+
+
+# BRAKE_PEDAL_VAL
+class BRAKE_PEDAL_VAL:
+    tuple = namedtuple("BRAKE_PEDAL_VAL", "level", rename=True)
+    schema = "<B"
+    
+    @staticmethod
+    def serialize(level) -> bytes:
+        return pack(BRAKE_PEDAL_VAL.schema, level)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "BRAKE_PEDAL_VAL":
+        return BRAKE_PEDAL_VAL.tuple._make(unpack(BRAKE_PEDAL_VAL.schema, buffer))
+
+
 # IMU_ANGULAR_RATE
 class IMU_ANGULAR_RATE:
     tuple = namedtuple("IMU_ANGULAR_RATE", "ang_rate_x, ang_rate_y, ang_rate_z", rename=True)

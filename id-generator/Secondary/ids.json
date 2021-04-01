@@ -1,6 +1,20 @@
 {
     "network_version": 0,
     "topics": {
+        "PEDALS": {
+            "id": 0,
+            "messages": {
+                "SET_PEDALS_RANGE": {
+                    "id": 1024
+                },
+                "ACCELERATOR_PEDAL_VAL": {
+                    "id": 0
+                },
+                "BRAKE_PEDAL_VAL": {
+                    "id": 32
+                }
+            }
+        },
         "FIXED_IDS": {
             "messages": {
                 "IMU_ANGULAR_RATE": {

@@ -1,6 +1,28 @@
 {
-    "enums": {},
+    "enums": {
+        "Sync_State": [
+            "MAX_START",
+            "MAX_END",
+            "MIN_START",
+            "MIN_END"
+        ],
+        "Pedal": [
+            "ACCELERATOR",
+            "BRAKE",
+            "ALL"
+        ]
+    },
     "structs": {
+        "SET_PEDALS_RANGE": {
+            "sync_state": "Sync_State",
+            "pedal": "Pedal"
+        },
+        "ACCELERATOR_PEDAL_VAL": {
+            "level": "uint8"
+        },
+        "BRAKE_PEDAL_VAL": {
+            "level": "uint8"
+        },
         "IMU_ANGULAR_RATE": {
             "ang_rate_x": "uint16",
             "ang_rate_y": "uint16",

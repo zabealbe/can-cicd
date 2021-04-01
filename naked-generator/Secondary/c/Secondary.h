@@ -53,6 +53,50 @@ static_assert(sizeof(double) == 8, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPEC
 #endif
     
 
+typedef enum __is_packed {
+    Secondary_Sync_State_MAX_START = 0,
+    Secondary_Sync_State_MAX_END = 1,
+    Secondary_Sync_State_MIN_START = 2,
+    Secondary_Sync_State_MIN_END = 3,
+} Secondary_Sync_State;
+
+typedef enum __is_packed {
+    Secondary_Pedal_ACCELERATOR = 0,
+    Secondary_Pedal_BRAKE = 1,
+    Secondary_Pedal_ALL = 2,
+} Secondary_Pedal;
+
+
+/* Secondary_SET_PEDALS_RANGE */
+typedef struct __is_packed {
+    Secondary_Sync_State sync_state;
+    Secondary_Pedal pedal;
+} Secondary_SET_PEDALS_RANGE;
+static_assert(sizeof(Secondary_SET_PEDALS_RANGE) == 2, "struct size mismatch");
+    
+void serialize_Secondary_SET_PEDALS_RANGE(Secondary_SET_PEDALS_RANGE* set_pedals_range, uint8_t* buffer, size_t buf_len);
+void deserialize_Secondary_SET_PEDALS_RANGE(uint8_t* buffer, size_t buf_len, Secondary_SET_PEDALS_RANGE* set_pedals_range);
+
+
+/* Secondary_ACCELERATOR_PEDAL_VAL */
+typedef struct __is_packed {
+    uint8_t level;
+} Secondary_ACCELERATOR_PEDAL_VAL;
+static_assert(sizeof(Secondary_ACCELERATOR_PEDAL_VAL) == 1, "struct size mismatch");
+    
+void serialize_Secondary_ACCELERATOR_PEDAL_VAL(Secondary_ACCELERATOR_PEDAL_VAL* accelerator_pedal_val, uint8_t* buffer, size_t buf_len);
+void deserialize_Secondary_ACCELERATOR_PEDAL_VAL(uint8_t* buffer, size_t buf_len, Secondary_ACCELERATOR_PEDAL_VAL* accelerator_pedal_val);
+
+
+/* Secondary_BRAKE_PEDAL_VAL */
+typedef struct __is_packed {
+    uint8_t level;
+} Secondary_BRAKE_PEDAL_VAL;
+static_assert(sizeof(Secondary_BRAKE_PEDAL_VAL) == 1, "struct size mismatch");
+    
+void serialize_Secondary_BRAKE_PEDAL_VAL(Secondary_BRAKE_PEDAL_VAL* brake_pedal_val, uint8_t* buffer, size_t buf_len);
+void deserialize_Secondary_BRAKE_PEDAL_VAL(uint8_t* buffer, size_t buf_len, Secondary_BRAKE_PEDAL_VAL* brake_pedal_val);
+
 
 /* Secondary_IMU_ANGULAR_RATE */
 typedef struct __is_packed {

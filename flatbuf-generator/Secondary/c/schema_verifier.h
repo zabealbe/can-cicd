@@ -10,6 +10,66 @@
 #include "../../../external/flatcc/flatcc_prologue.h"
 
 
+static inline int SET_PEDALS_RANGE_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, SET_PEDALS_RANGE_identifier, 2, 1);
+}
+
+static inline int SET_PEDALS_RANGE_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, SET_PEDALS_RANGE_type_hash, 2, 1);
+}
+
+static inline int SET_PEDALS_RANGE_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 2, 1);
+}
+
+static inline int SET_PEDALS_RANGE_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 2, 1);
+}
+
+static inline int ACCELERATOR_PEDAL_VAL_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, ACCELERATOR_PEDAL_VAL_identifier, 1, 1);
+}
+
+static inline int ACCELERATOR_PEDAL_VAL_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, ACCELERATOR_PEDAL_VAL_type_hash, 1, 1);
+}
+
+static inline int ACCELERATOR_PEDAL_VAL_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 1, 1);
+}
+
+static inline int ACCELERATOR_PEDAL_VAL_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 1, 1);
+}
+
+static inline int BRAKE_PEDAL_VAL_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, BRAKE_PEDAL_VAL_identifier, 1, 1);
+}
+
+static inline int BRAKE_PEDAL_VAL_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, BRAKE_PEDAL_VAL_type_hash, 1, 1);
+}
+
+static inline int BRAKE_PEDAL_VAL_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 1, 1);
+}
+
+static inline int BRAKE_PEDAL_VAL_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 1, 1);
+}
+
 static inline int IMU_ANGULAR_RATE_verify_as_root(const void *buf, size_t bufsiz)
 {
     return flatcc_verify_struct_as_root(buf, bufsiz, IMU_ANGULAR_RATE_identifier, 6, 2);
