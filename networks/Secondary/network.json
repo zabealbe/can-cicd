@@ -3,6 +3,37 @@
     "max_payload_size": 8,
     "messages": [
         {
+            "name": "SET_PEDALS_RANGE",
+            "topic": "PEDALS",
+            "priority": 3,
+            "sending": ["STEER"],
+            "receiving": ["PCU"],
+            "description":"Syncronization message from Steering Wheel to Pedals Control Unit. Message semantic: (start|end) set of (max|min) value for (accelerator|brake|all) pedal.",
+            "contents": {
+                "sync_state": ["MAX_START","MAX_END","MIN_START","MIN_END"],
+                "pedal": ["ACCELERATOR","BRAKE","ALL"]
+            }
+        },{
+            "name": "ACCELERATOR_PEDAL_VAL",
+            "topic": "PEDALS",
+            "priority": 7,
+            "sending": ["PCU"],
+            "receiving": ["ECU,TLM"],
+            "description":"Accelerator Pedal potentiometer Value. Average of 2 sensors normalized from 0 to 255, linear, 8bit total, unsigned.",
+            "contents": {
+                "level":"uint8"
+            }
+        },{
+            "name": "BRAKE_PEDAL_VAL",
+            "topic": "PEDALS",
+            "priority": 7,
+            "sending": ["PCU"],
+            "receiving": ["ECU,TLM"],
+            "description":"Brake Pedal pressure sensor Value. Normalized from 0 to 255, linear, 8bit total, unsigned.",
+            "contents": {
+                "level":"uint8"
+            }
+        },{
            "name": "IMU_ANGULAR_RATE",
             "fixed_id": 1260,
             "sending": ["IMU"],
