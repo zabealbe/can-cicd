@@ -62,3 +62,9 @@ def run_command(command, verbose=False):
 
 def indent(string, amount):
     return " " * amount + string.replace("\n", "\n" + " " * amount)
+
+def to_camel_case(string: str, delimiter=" "):
+    return "".join([x.capitalize() for x in string.split(delimiter)])
+
+def to_snake_case(string: str, delimiter=" "):
+    return "".join([x.capitalize() for x in string.split(delimiter)])
