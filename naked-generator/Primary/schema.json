@@ -1,53 +1,80 @@
 {
-    "enums": {
-        "Tlm_Status": [
-            "ON",
-            "OFF"
-        ],
-        "Race_Type": [
-            "ACCELERATION",
-            "SKIDPAD",
-            "AUTOCROSS",
-            "ENDURANCE"
-        ],
-        "Car_Status": [
-            "IDLE",
-            "SETUP",
-            "RUN"
-        ],
-        "Inverter_Status": [
-            "OFF",
-            "IDLE",
-            "ON"
-        ],
-        "Ts_Status": [
-            "OFF",
-            "PRECHARGE",
-            "ON",
-            "FATAL"
-        ],
-        "Traction_Control": [
-            "OFF",
-            "SLIP_CONTROL",
-            "TORQUE_VECTORING",
-            "COMPLETE"
-        ],
-        "Map": [
-            "R",
-            "D20",
-            "D40",
-            "D60",
-            "D80",
-            "D100"
-        ],
-        "Car_Status_Set": [
-            "IDLE",
-            "RUN"
-        ],
-        "Ts_Status_Set": [
-            "OFF",
-            "ON"
-        ]
+    "types": {
+        "Tlm_Status": {
+            "type": "enum",
+            "items": [
+                "ON",
+                "OFF"
+            ]
+        },
+        "Race_Type": {
+            "type": "enum",
+            "items": [
+                "ACCELERATION",
+                "SKIDPAD",
+                "AUTOCROSS",
+                "ENDURANCE"
+            ]
+        },
+        "Car_Status": {
+            "type": "enum",
+            "items": [
+                "IDLE",
+                "SETUP",
+                "RUN"
+            ]
+        },
+        "Inverter_Status": {
+            "type": "enum",
+            "items": [
+                "OFF",
+                "IDLE",
+                "ON"
+            ]
+        },
+        "Ts_Status": {
+            "type": "enum",
+            "items": [
+                "OFF",
+                "PRECHARGE",
+                "ON",
+                "FATAL"
+            ]
+        },
+        "Traction_Control": {
+            "type": "enum",
+            "items": [
+                "OFF",
+                "SLIP_CONTROL",
+                "TORQUE_VECTORING",
+                "COMPLETE"
+            ]
+        },
+        "Map": {
+            "type": "enum",
+            "items": [
+                "R",
+                "D20",
+                "D40",
+                "D60",
+                "D80",
+                "D100"
+            ]
+        },
+        "Car_Status_Set": {
+            "type": "enum",
+            "items": [
+                "IDLE",
+                "RUN"
+            ]
+        },
+        "Ts_Status_Set": {
+            "type": "enum",
+            "items": [
+                "OFF",
+                "ON"
+            ]
+        }
     },
     "structs": {
         "TLM_STATUS": {

@@ -53,7 +53,6 @@ static_assert(sizeof(double) == 8, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPEC
 #endif
     
 
-
 /* BMSinternal_VOLTAGES_CB0_0 */
 typedef struct __is_packed {
     uint16_t voltage0;
@@ -63,9 +62,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB0_0;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB0_0) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB0_0(BMSinternal_VOLTAGES_CB0_0* voltages_cb0_0, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB0_0(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB0_0* voltages_cb0_0);
-
+void serialize_BMSinternal_VOLTAGES_CB0_0(uint16_t voltage0, uint16_t voltage1, uint16_t voltage2, uint16_t voltage3, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB0_0(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB0_0* bmsinternal_voltages_cb0_0);
 
 /* BMSinternal_VOLTAGES_CB0_1 */
 typedef struct __is_packed {
@@ -76,9 +74,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB0_1;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB0_1) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB0_1(BMSinternal_VOLTAGES_CB0_1* voltages_cb0_1, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB0_1(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB0_1* voltages_cb0_1);
-
+void serialize_BMSinternal_VOLTAGES_CB0_1(uint16_t voltage4, uint16_t voltage5, uint16_t voltage6, uint16_t voltage7, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB0_1(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB0_1* bmsinternal_voltages_cb0_1);
 
 /* BMSinternal_VOLTAGES_CB0_2 */
 typedef struct __is_packed {
@@ -89,9 +86,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB0_2;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB0_2) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB0_2(BMSinternal_VOLTAGES_CB0_2* voltages_cb0_2, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB0_2(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB0_2* voltages_cb0_2);
-
+void serialize_BMSinternal_VOLTAGES_CB0_2(uint16_t voltage8, uint16_t voltage9, uint16_t voltage10, uint16_t voltage11, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB0_2(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB0_2* bmsinternal_voltages_cb0_2);
 
 /* BMSinternal_VOLTAGES_CB0_3 */
 typedef struct __is_packed {
@@ -102,9 +98,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB0_3;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB0_3) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB0_3(BMSinternal_VOLTAGES_CB0_3* voltages_cb0_3, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB0_3(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB0_3* voltages_cb0_3);
-
+void serialize_BMSinternal_VOLTAGES_CB0_3(uint16_t voltage12, uint16_t voltage13, uint16_t voltage14, uint16_t voltage15, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB0_3(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB0_3* bmsinternal_voltages_cb0_3);
 
 /* BMSinternal_VOLTAGES_CB0_4 */
 typedef struct __is_packed {
@@ -115,9 +110,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB0_4;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB0_4) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB0_4(BMSinternal_VOLTAGES_CB0_4* voltages_cb0_4, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB0_4(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB0_4* voltages_cb0_4);
-
+void serialize_BMSinternal_VOLTAGES_CB0_4(uint16_t voltage16, uint16_t voltage17, uint16_t max_voltage, uint16_t min_voltage, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB0_4(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB0_4* bmsinternal_voltages_cb0_4);
 
 /* BMSinternal_VOLTAGES_CB1_0 */
 typedef struct __is_packed {
@@ -128,9 +122,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB1_0;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB1_0) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB1_0(BMSinternal_VOLTAGES_CB1_0* voltages_cb1_0, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB1_0(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB1_0* voltages_cb1_0);
-
+void serialize_BMSinternal_VOLTAGES_CB1_0(uint16_t voltage0, uint16_t voltage1, uint16_t voltage2, uint16_t voltage3, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB1_0(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB1_0* bmsinternal_voltages_cb1_0);
 
 /* BMSinternal_VOLTAGES_CB1_1 */
 typedef struct __is_packed {
@@ -141,9 +134,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB1_1;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB1_1) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB1_1(BMSinternal_VOLTAGES_CB1_1* voltages_cb1_1, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB1_1(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB1_1* voltages_cb1_1);
-
+void serialize_BMSinternal_VOLTAGES_CB1_1(uint16_t voltage4, uint16_t voltage5, uint16_t voltage6, uint16_t voltage7, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB1_1(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB1_1* bmsinternal_voltages_cb1_1);
 
 /* BMSinternal_VOLTAGES_CB1_2 */
 typedef struct __is_packed {
@@ -154,9 +146,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB1_2;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB1_2) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB1_2(BMSinternal_VOLTAGES_CB1_2* voltages_cb1_2, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB1_2(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB1_2* voltages_cb1_2);
-
+void serialize_BMSinternal_VOLTAGES_CB1_2(uint16_t voltage8, uint16_t voltage9, uint16_t voltage10, uint16_t voltage11, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB1_2(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB1_2* bmsinternal_voltages_cb1_2);
 
 /* BMSinternal_VOLTAGES_CB1_3 */
 typedef struct __is_packed {
@@ -167,9 +158,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB1_3;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB1_3) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB1_3(BMSinternal_VOLTAGES_CB1_3* voltages_cb1_3, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB1_3(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB1_3* voltages_cb1_3);
-
+void serialize_BMSinternal_VOLTAGES_CB1_3(uint16_t voltage12, uint16_t voltage13, uint16_t voltage14, uint16_t voltage15, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB1_3(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB1_3* bmsinternal_voltages_cb1_3);
 
 /* BMSinternal_VOLTAGES_CB1_4 */
 typedef struct __is_packed {
@@ -180,9 +170,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB1_4;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB1_4) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB1_4(BMSinternal_VOLTAGES_CB1_4* voltages_cb1_4, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB1_4(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB1_4* voltages_cb1_4);
-
+void serialize_BMSinternal_VOLTAGES_CB1_4(uint16_t voltage16, uint16_t voltage17, uint16_t max_voltage, uint16_t min_voltage, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB1_4(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB1_4* bmsinternal_voltages_cb1_4);
 
 /* BMSinternal_VOLTAGES_CB2_0 */
 typedef struct __is_packed {
@@ -193,9 +182,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB2_0;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB2_0) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB2_0(BMSinternal_VOLTAGES_CB2_0* voltages_cb2_0, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB2_0(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB2_0* voltages_cb2_0);
-
+void serialize_BMSinternal_VOLTAGES_CB2_0(uint16_t voltage0, uint16_t voltage1, uint16_t voltage2, uint16_t voltage3, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB2_0(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB2_0* bmsinternal_voltages_cb2_0);
 
 /* BMSinternal_VOLTAGES_CB2_1 */
 typedef struct __is_packed {
@@ -206,9 +194,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB2_1;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB2_1) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB2_1(BMSinternal_VOLTAGES_CB2_1* voltages_cb2_1, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB2_1(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB2_1* voltages_cb2_1);
-
+void serialize_BMSinternal_VOLTAGES_CB2_1(uint16_t voltage4, uint16_t voltage5, uint16_t voltage6, uint16_t voltage7, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB2_1(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB2_1* bmsinternal_voltages_cb2_1);
 
 /* BMSinternal_VOLTAGES_CB2_2 */
 typedef struct __is_packed {
@@ -219,9 +206,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB2_2;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB2_2) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB2_2(BMSinternal_VOLTAGES_CB2_2* voltages_cb2_2, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB2_2(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB2_2* voltages_cb2_2);
-
+void serialize_BMSinternal_VOLTAGES_CB2_2(uint16_t voltage8, uint16_t voltage9, uint16_t voltage10, uint16_t voltage11, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB2_2(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB2_2* bmsinternal_voltages_cb2_2);
 
 /* BMSinternal_VOLTAGES_CB2_3 */
 typedef struct __is_packed {
@@ -232,9 +218,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB2_3;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB2_3) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB2_3(BMSinternal_VOLTAGES_CB2_3* voltages_cb2_3, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB2_3(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB2_3* voltages_cb2_3);
-
+void serialize_BMSinternal_VOLTAGES_CB2_3(uint16_t voltage12, uint16_t voltage13, uint16_t voltage14, uint16_t voltage15, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB2_3(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB2_3* bmsinternal_voltages_cb2_3);
 
 /* BMSinternal_VOLTAGES_CB2_4 */
 typedef struct __is_packed {
@@ -245,9 +230,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB2_4;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB2_4) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB2_4(BMSinternal_VOLTAGES_CB2_4* voltages_cb2_4, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB2_4(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB2_4* voltages_cb2_4);
-
+void serialize_BMSinternal_VOLTAGES_CB2_4(uint16_t voltage16, uint16_t voltage17, uint16_t max_voltage, uint16_t min_voltage, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB2_4(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB2_4* bmsinternal_voltages_cb2_4);
 
 /* BMSinternal_VOLTAGES_CB3_0 */
 typedef struct __is_packed {
@@ -258,9 +242,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB3_0;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB3_0) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB3_0(BMSinternal_VOLTAGES_CB3_0* voltages_cb3_0, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB3_0(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB3_0* voltages_cb3_0);
-
+void serialize_BMSinternal_VOLTAGES_CB3_0(uint16_t voltage0, uint16_t voltage1, uint16_t voltage2, uint16_t voltage3, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB3_0(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB3_0* bmsinternal_voltages_cb3_0);
 
 /* BMSinternal_VOLTAGES_CB3_1 */
 typedef struct __is_packed {
@@ -271,9 +254,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB3_1;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB3_1) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB3_1(BMSinternal_VOLTAGES_CB3_1* voltages_cb3_1, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB3_1(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB3_1* voltages_cb3_1);
-
+void serialize_BMSinternal_VOLTAGES_CB3_1(uint16_t voltage4, uint16_t voltage5, uint16_t voltage6, uint16_t voltage7, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB3_1(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB3_1* bmsinternal_voltages_cb3_1);
 
 /* BMSinternal_VOLTAGES_CB3_2 */
 typedef struct __is_packed {
@@ -284,9 +266,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB3_2;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB3_2) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB3_2(BMSinternal_VOLTAGES_CB3_2* voltages_cb3_2, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB3_2(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB3_2* voltages_cb3_2);
-
+void serialize_BMSinternal_VOLTAGES_CB3_2(uint16_t voltage8, uint16_t voltage9, uint16_t voltage10, uint16_t voltage11, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB3_2(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB3_2* bmsinternal_voltages_cb3_2);
 
 /* BMSinternal_VOLTAGES_CB3_3 */
 typedef struct __is_packed {
@@ -297,9 +278,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB3_3;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB3_3) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB3_3(BMSinternal_VOLTAGES_CB3_3* voltages_cb3_3, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB3_3(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB3_3* voltages_cb3_3);
-
+void serialize_BMSinternal_VOLTAGES_CB3_3(uint16_t voltage12, uint16_t voltage13, uint16_t voltage14, uint16_t voltage15, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB3_3(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB3_3* bmsinternal_voltages_cb3_3);
 
 /* BMSinternal_VOLTAGES_CB3_4 */
 typedef struct __is_packed {
@@ -310,9 +290,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB3_4;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB3_4) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB3_4(BMSinternal_VOLTAGES_CB3_4* voltages_cb3_4, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB3_4(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB3_4* voltages_cb3_4);
-
+void serialize_BMSinternal_VOLTAGES_CB3_4(uint16_t voltage16, uint16_t voltage17, uint16_t max_voltage, uint16_t min_voltage, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB3_4(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB3_4* bmsinternal_voltages_cb3_4);
 
 /* BMSinternal_VOLTAGES_CB4_0 */
 typedef struct __is_packed {
@@ -323,9 +302,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB4_0;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB4_0) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB4_0(BMSinternal_VOLTAGES_CB4_0* voltages_cb4_0, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB4_0(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB4_0* voltages_cb4_0);
-
+void serialize_BMSinternal_VOLTAGES_CB4_0(uint16_t voltage0, uint16_t voltage1, uint16_t voltage2, uint16_t voltage3, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB4_0(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB4_0* bmsinternal_voltages_cb4_0);
 
 /* BMSinternal_VOLTAGES_CB4_1 */
 typedef struct __is_packed {
@@ -336,9 +314,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB4_1;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB4_1) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB4_1(BMSinternal_VOLTAGES_CB4_1* voltages_cb4_1, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB4_1(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB4_1* voltages_cb4_1);
-
+void serialize_BMSinternal_VOLTAGES_CB4_1(uint16_t voltage4, uint16_t voltage5, uint16_t voltage6, uint16_t voltage7, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB4_1(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB4_1* bmsinternal_voltages_cb4_1);
 
 /* BMSinternal_VOLTAGES_CB4_2 */
 typedef struct __is_packed {
@@ -349,9 +326,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB4_2;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB4_2) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB4_2(BMSinternal_VOLTAGES_CB4_2* voltages_cb4_2, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB4_2(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB4_2* voltages_cb4_2);
-
+void serialize_BMSinternal_VOLTAGES_CB4_2(uint16_t voltage8, uint16_t voltage9, uint16_t voltage10, uint16_t voltage11, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB4_2(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB4_2* bmsinternal_voltages_cb4_2);
 
 /* BMSinternal_VOLTAGES_CB4_3 */
 typedef struct __is_packed {
@@ -362,9 +338,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB4_3;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB4_3) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB4_3(BMSinternal_VOLTAGES_CB4_3* voltages_cb4_3, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB4_3(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB4_3* voltages_cb4_3);
-
+void serialize_BMSinternal_VOLTAGES_CB4_3(uint16_t voltage12, uint16_t voltage13, uint16_t voltage14, uint16_t voltage15, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB4_3(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB4_3* bmsinternal_voltages_cb4_3);
 
 /* BMSinternal_VOLTAGES_CB4_4 */
 typedef struct __is_packed {
@@ -375,9 +350,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB4_4;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB4_4) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB4_4(BMSinternal_VOLTAGES_CB4_4* voltages_cb4_4, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB4_4(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB4_4* voltages_cb4_4);
-
+void serialize_BMSinternal_VOLTAGES_CB4_4(uint16_t voltage16, uint16_t voltage17, uint16_t max_voltage, uint16_t min_voltage, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB4_4(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB4_4* bmsinternal_voltages_cb4_4);
 
 /* BMSinternal_VOLTAGES_CB5_0 */
 typedef struct __is_packed {
@@ -388,9 +362,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB5_0;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB5_0) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB5_0(BMSinternal_VOLTAGES_CB5_0* voltages_cb5_0, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB5_0(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB5_0* voltages_cb5_0);
-
+void serialize_BMSinternal_VOLTAGES_CB5_0(uint16_t voltage0, uint16_t voltage1, uint16_t voltage2, uint16_t voltage3, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB5_0(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB5_0* bmsinternal_voltages_cb5_0);
 
 /* BMSinternal_VOLTAGES_CB5_1 */
 typedef struct __is_packed {
@@ -401,9 +374,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB5_1;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB5_1) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB5_1(BMSinternal_VOLTAGES_CB5_1* voltages_cb5_1, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB5_1(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB5_1* voltages_cb5_1);
-
+void serialize_BMSinternal_VOLTAGES_CB5_1(uint16_t voltage4, uint16_t voltage5, uint16_t voltage6, uint16_t voltage7, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB5_1(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB5_1* bmsinternal_voltages_cb5_1);
 
 /* BMSinternal_VOLTAGES_CB5_2 */
 typedef struct __is_packed {
@@ -414,9 +386,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB5_2;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB5_2) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB5_2(BMSinternal_VOLTAGES_CB5_2* voltages_cb5_2, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB5_2(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB5_2* voltages_cb5_2);
-
+void serialize_BMSinternal_VOLTAGES_CB5_2(uint16_t voltage8, uint16_t voltage9, uint16_t voltage10, uint16_t voltage11, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB5_2(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB5_2* bmsinternal_voltages_cb5_2);
 
 /* BMSinternal_VOLTAGES_CB5_3 */
 typedef struct __is_packed {
@@ -427,9 +398,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB5_3;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB5_3) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB5_3(BMSinternal_VOLTAGES_CB5_3* voltages_cb5_3, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB5_3(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB5_3* voltages_cb5_3);
-
+void serialize_BMSinternal_VOLTAGES_CB5_3(uint16_t voltage12, uint16_t voltage13, uint16_t voltage14, uint16_t voltage15, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB5_3(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB5_3* bmsinternal_voltages_cb5_3);
 
 /* BMSinternal_VOLTAGES_CB5_4 */
 typedef struct __is_packed {
@@ -440,9 +410,8 @@ typedef struct __is_packed {
 } BMSinternal_VOLTAGES_CB5_4;
 static_assert(sizeof(BMSinternal_VOLTAGES_CB5_4) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_VOLTAGES_CB5_4(BMSinternal_VOLTAGES_CB5_4* voltages_cb5_4, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_VOLTAGES_CB5_4(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB5_4* voltages_cb5_4);
-
+void serialize_BMSinternal_VOLTAGES_CB5_4(uint16_t voltage16, uint16_t voltage17, uint16_t max_voltage, uint16_t min_voltage, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_VOLTAGES_CB5_4(uint8_t* buffer, size_t buf_len, BMSinternal_VOLTAGES_CB5_4* bmsinternal_voltages_cb5_4);
 
 /* BMSinternal_TEMPERATURES_CB0_0 */
 typedef struct __is_packed {
@@ -457,9 +426,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB0_0;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB0_0) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB0_0(BMSinternal_TEMPERATURES_CB0_0* temperatures_cb0_0, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB0_0(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB0_0* temperatures_cb0_0);
-
+void serialize_BMSinternal_TEMPERATURES_CB0_0(uint8_t temperature0, uint8_t temperature1, uint8_t temperature2, uint8_t temperature3, uint8_t temperature4, uint8_t temperature5, uint8_t temperature6, uint8_t temperature7, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB0_0(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB0_0* bmsinternal_temperatures_cb0_0);
 
 /* BMSinternal_TEMPERATURES_CB0_1 */
 typedef struct __is_packed {
@@ -474,9 +442,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB0_1;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB0_1) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB0_1(BMSinternal_TEMPERATURES_CB0_1* temperatures_cb0_1, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB0_1(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB0_1* temperatures_cb0_1);
-
+void serialize_BMSinternal_TEMPERATURES_CB0_1(uint8_t temperature8, uint8_t temperature9, uint8_t temperature10, uint8_t temperature11, uint8_t temperature12, uint8_t temperature13, uint8_t temperature14, uint8_t temperature15, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB0_1(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB0_1* bmsinternal_temperatures_cb0_1);
 
 /* BMSinternal_TEMPERATURES_CB0_2 */
 typedef struct __is_packed {
@@ -485,9 +452,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB0_2;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB0_2) == 2, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB0_2(BMSinternal_TEMPERATURES_CB0_2* temperatures_cb0_2, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB0_2(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB0_2* temperatures_cb0_2);
-
+void serialize_BMSinternal_TEMPERATURES_CB0_2(uint8_t temperature16, uint8_t temperature17, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB0_2(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB0_2* bmsinternal_temperatures_cb0_2);
 
 /* BMSinternal_TEMPERATURES_CB1_0 */
 typedef struct __is_packed {
@@ -502,9 +468,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB1_0;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB1_0) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB1_0(BMSinternal_TEMPERATURES_CB1_0* temperatures_cb1_0, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB1_0(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB1_0* temperatures_cb1_0);
-
+void serialize_BMSinternal_TEMPERATURES_CB1_0(uint8_t temperature0, uint8_t temperature1, uint8_t temperature2, uint8_t temperature3, uint8_t temperature4, uint8_t temperature5, uint8_t temperature6, uint8_t temperature7, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB1_0(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB1_0* bmsinternal_temperatures_cb1_0);
 
 /* BMSinternal_TEMPERATURES_CB1_1 */
 typedef struct __is_packed {
@@ -519,9 +484,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB1_1;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB1_1) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB1_1(BMSinternal_TEMPERATURES_CB1_1* temperatures_cb1_1, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB1_1(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB1_1* temperatures_cb1_1);
-
+void serialize_BMSinternal_TEMPERATURES_CB1_1(uint8_t temperature8, uint8_t temperature9, uint8_t temperature10, uint8_t temperature11, uint8_t temperature12, uint8_t temperature13, uint8_t temperature14, uint8_t temperature15, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB1_1(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB1_1* bmsinternal_temperatures_cb1_1);
 
 /* BMSinternal_TEMPERATURES_CB1_2 */
 typedef struct __is_packed {
@@ -532,9 +496,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB1_2;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB1_2) == 4, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB1_2(BMSinternal_TEMPERATURES_CB1_2* temperatures_cb1_2, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB1_2(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB1_2* temperatures_cb1_2);
-
+void serialize_BMSinternal_TEMPERATURES_CB1_2(uint8_t temperature16, uint8_t temperature17, uint8_t max_temperature, uint8_t min_temperature, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB1_2(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB1_2* bmsinternal_temperatures_cb1_2);
 
 /* BMSinternal_TEMPERATURES_CB2_0 */
 typedef struct __is_packed {
@@ -549,9 +512,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB2_0;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB2_0) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB2_0(BMSinternal_TEMPERATURES_CB2_0* temperatures_cb2_0, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB2_0(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB2_0* temperatures_cb2_0);
-
+void serialize_BMSinternal_TEMPERATURES_CB2_0(uint8_t temperature0, uint8_t temperature1, uint8_t temperature2, uint8_t temperature3, uint8_t temperature4, uint8_t temperature5, uint8_t temperature6, uint8_t temperature7, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB2_0(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB2_0* bmsinternal_temperatures_cb2_0);
 
 /* BMSinternal_TEMPERATURES_CB2_1 */
 typedef struct __is_packed {
@@ -566,9 +528,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB2_1;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB2_1) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB2_1(BMSinternal_TEMPERATURES_CB2_1* temperatures_cb2_1, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB2_1(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB2_1* temperatures_cb2_1);
-
+void serialize_BMSinternal_TEMPERATURES_CB2_1(uint8_t temperature8, uint8_t temperature9, uint8_t temperature10, uint8_t temperature11, uint8_t temperature12, uint8_t temperature13, uint8_t temperature14, uint8_t temperature15, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB2_1(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB2_1* bmsinternal_temperatures_cb2_1);
 
 /* BMSinternal_TEMPERATURES_CB2_2 */
 typedef struct __is_packed {
@@ -579,9 +540,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB2_2;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB2_2) == 4, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB2_2(BMSinternal_TEMPERATURES_CB2_2* temperatures_cb2_2, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB2_2(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB2_2* temperatures_cb2_2);
-
+void serialize_BMSinternal_TEMPERATURES_CB2_2(uint8_t temperature16, uint8_t temperature17, uint8_t max_temperature, uint8_t min_temperature, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB2_2(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB2_2* bmsinternal_temperatures_cb2_2);
 
 /* BMSinternal_TEMPERATURES_CB3_0 */
 typedef struct __is_packed {
@@ -596,9 +556,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB3_0;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB3_0) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB3_0(BMSinternal_TEMPERATURES_CB3_0* temperatures_cb3_0, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB3_0(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB3_0* temperatures_cb3_0);
-
+void serialize_BMSinternal_TEMPERATURES_CB3_0(uint8_t temperature0, uint8_t temperature1, uint8_t temperature2, uint8_t temperature3, uint8_t temperature4, uint8_t temperature5, uint8_t temperature6, uint8_t temperature7, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB3_0(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB3_0* bmsinternal_temperatures_cb3_0);
 
 /* BMSinternal_TEMPERATURES_CB3_1 */
 typedef struct __is_packed {
@@ -613,9 +572,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB3_1;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB3_1) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB3_1(BMSinternal_TEMPERATURES_CB3_1* temperatures_cb3_1, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB3_1(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB3_1* temperatures_cb3_1);
-
+void serialize_BMSinternal_TEMPERATURES_CB3_1(uint8_t temperature8, uint8_t temperature9, uint8_t temperature10, uint8_t temperature11, uint8_t temperature12, uint8_t temperature13, uint8_t temperature14, uint8_t temperature15, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB3_1(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB3_1* bmsinternal_temperatures_cb3_1);
 
 /* BMSinternal_TEMPERATURES_CB3_2 */
 typedef struct __is_packed {
@@ -626,9 +584,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB3_2;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB3_2) == 4, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB3_2(BMSinternal_TEMPERATURES_CB3_2* temperatures_cb3_2, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB3_2(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB3_2* temperatures_cb3_2);
-
+void serialize_BMSinternal_TEMPERATURES_CB3_2(uint8_t temperature16, uint8_t temperature17, uint8_t max_temperature, uint8_t min_temperature, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB3_2(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB3_2* bmsinternal_temperatures_cb3_2);
 
 /* BMSinternal_TEMPERATURES_CB4_0 */
 typedef struct __is_packed {
@@ -643,9 +600,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB4_0;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB4_0) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB4_0(BMSinternal_TEMPERATURES_CB4_0* temperatures_cb4_0, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB4_0(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB4_0* temperatures_cb4_0);
-
+void serialize_BMSinternal_TEMPERATURES_CB4_0(uint8_t temperature0, uint8_t temperature1, uint8_t temperature2, uint8_t temperature3, uint8_t temperature4, uint8_t temperature5, uint8_t temperature6, uint8_t temperature7, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB4_0(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB4_0* bmsinternal_temperatures_cb4_0);
 
 /* BMSinternal_TEMPERATURES_CB4_1 */
 typedef struct __is_packed {
@@ -660,9 +616,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB4_1;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB4_1) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB4_1(BMSinternal_TEMPERATURES_CB4_1* temperatures_cb4_1, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB4_1(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB4_1* temperatures_cb4_1);
-
+void serialize_BMSinternal_TEMPERATURES_CB4_1(uint8_t temperature8, uint8_t temperature9, uint8_t temperature10, uint8_t temperature11, uint8_t temperature12, uint8_t temperature13, uint8_t temperature14, uint8_t temperature15, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB4_1(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB4_1* bmsinternal_temperatures_cb4_1);
 
 /* BMSinternal_TEMPERATURES_CB4_2 */
 typedef struct __is_packed {
@@ -673,9 +628,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB4_2;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB4_2) == 4, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB4_2(BMSinternal_TEMPERATURES_CB4_2* temperatures_cb4_2, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB4_2(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB4_2* temperatures_cb4_2);
-
+void serialize_BMSinternal_TEMPERATURES_CB4_2(uint8_t temperature16, uint8_t temperature17, uint8_t max_temperature, uint8_t min_temperature, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB4_2(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB4_2* bmsinternal_temperatures_cb4_2);
 
 /* BMSinternal_TEMPERATURES_CB5_0 */
 typedef struct __is_packed {
@@ -690,9 +644,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB5_0;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB5_0) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB5_0(BMSinternal_TEMPERATURES_CB5_0* temperatures_cb5_0, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB5_0(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB5_0* temperatures_cb5_0);
-
+void serialize_BMSinternal_TEMPERATURES_CB5_0(uint8_t temperature0, uint8_t temperature1, uint8_t temperature2, uint8_t temperature3, uint8_t temperature4, uint8_t temperature5, uint8_t temperature6, uint8_t temperature7, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB5_0(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB5_0* bmsinternal_temperatures_cb5_0);
 
 /* BMSinternal_TEMPERATURES_CB5_1 */
 typedef struct __is_packed {
@@ -707,9 +660,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB5_1;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB5_1) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB5_1(BMSinternal_TEMPERATURES_CB5_1* temperatures_cb5_1, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB5_1(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB5_1* temperatures_cb5_1);
-
+void serialize_BMSinternal_TEMPERATURES_CB5_1(uint8_t temperature8, uint8_t temperature9, uint8_t temperature10, uint8_t temperature11, uint8_t temperature12, uint8_t temperature13, uint8_t temperature14, uint8_t temperature15, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB5_1(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB5_1* bmsinternal_temperatures_cb5_1);
 
 /* BMSinternal_TEMPERATURES_CB5_2 */
 typedef struct __is_packed {
@@ -720,9 +672,8 @@ typedef struct __is_packed {
 } BMSinternal_TEMPERATURES_CB5_2;
 static_assert(sizeof(BMSinternal_TEMPERATURES_CB5_2) == 4, "struct size mismatch");
     
-void serialize_BMSinternal_TEMPERATURES_CB5_2(BMSinternal_TEMPERATURES_CB5_2* temperatures_cb5_2, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_TEMPERATURES_CB5_2(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB5_2* temperatures_cb5_2);
-
+void serialize_BMSinternal_TEMPERATURES_CB5_2(uint8_t temperature16, uint8_t temperature17, uint8_t max_temperature, uint8_t min_temperature, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_TEMPERATURES_CB5_2(uint8_t* buffer, size_t buf_len, BMSinternal_TEMPERATURES_CB5_2* bmsinternal_temperatures_cb5_2);
 
 /* BMSinternal_MASTER_SYNC */
 typedef struct __is_packed {
@@ -730,20 +681,19 @@ typedef struct __is_packed {
 } BMSinternal_MASTER_SYNC;
 static_assert(sizeof(BMSinternal_MASTER_SYNC) == 4, "struct size mismatch");
     
-void serialize_BMSinternal_MASTER_SYNC(BMSinternal_MASTER_SYNC* master_sync, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_MASTER_SYNC(uint8_t* buffer, size_t buf_len, BMSinternal_MASTER_SYNC* master_sync);
-
+void serialize_BMSinternal_MASTER_SYNC(uint32_t time, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_MASTER_SYNC(uint8_t* buffer, size_t buf_len, BMSinternal_MASTER_SYNC* bmsinternal_master_sync);
 
 /* BMSinternal_CELLBOARD_TOKEN */
 typedef struct __is_packed {
     uint8_t sender_cellboard;
-    int8_t __unused_padding_1;
-    int8_t __unused_padding_2;
-    int8_t __unused_padding_3;
+    uint8_t __unused_padding_1;
+    uint8_t __unused_padding_2;
+    uint8_t __unused_padding_3;
     uint32_t time;
 } BMSinternal_CELLBOARD_TOKEN;
 static_assert(sizeof(BMSinternal_CELLBOARD_TOKEN) == 8, "struct size mismatch");
     
-void serialize_BMSinternal_CELLBOARD_TOKEN(BMSinternal_CELLBOARD_TOKEN* cellboard_token, uint8_t* buffer, size_t buf_len);
-void deserialize_BMSinternal_CELLBOARD_TOKEN(uint8_t* buffer, size_t buf_len, BMSinternal_CELLBOARD_TOKEN* cellboard_token);
+void serialize_BMSinternal_CELLBOARD_TOKEN(uint8_t sender_cellboard, uint32_t time, uint8_t* buffer, size_t buf_len);
+void deserialize_BMSinternal_CELLBOARD_TOKEN(uint8_t* buffer, size_t buf_len, BMSinternal_CELLBOARD_TOKEN* bmsinternal_cellboard_token);
 #endif

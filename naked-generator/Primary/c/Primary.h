@@ -54,6 +54,19 @@ static_assert(sizeof(double) == 8, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPEC
     
 
 typedef enum __is_packed {
+    Primary_Secondary_Sync_State_MAX_START = 0,
+    Primary_Secondary_Sync_State_MAX_END = 1,
+    Primary_Secondary_Sync_State_MIN_START = 2,
+    Primary_Secondary_Sync_State_MIN_END = 3,
+} Primary_Secondary_Sync_State;
+
+typedef enum __is_packed {
+    Primary_Secondary_Pedal_ACCELERATOR = 0,
+    Primary_Secondary_Pedal_BRAKE = 1,
+    Primary_Secondary_Pedal_ALL = 2,
+} Primary_Secondary_Pedal;
+
+typedef enum __is_packed {
     Primary_Tlm_Status_ON = 0,
     Primary_Tlm_Status_OFF = 1,
 } Primary_Tlm_Status;
@@ -110,7 +123,6 @@ typedef enum __is_packed {
     Primary_Ts_Status_Set_ON = 1,
 } Primary_Ts_Status_Set;
 
-
 /* Primary_TLM_STATUS */
 typedef struct __is_packed {
     Primary_Tlm_Status tlm_status;
@@ -120,9 +132,8 @@ typedef struct __is_packed {
 } Primary_TLM_STATUS;
 static_assert(sizeof(Primary_TLM_STATUS) == 4, "struct size mismatch");
     
-void serialize_Primary_TLM_STATUS(Primary_TLM_STATUS* tlm_status, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_TLM_STATUS(uint8_t* buffer, size_t buf_len, Primary_TLM_STATUS* tlm_status);
-
+void serialize_Primary_TLM_STATUS(Primary_Tlm_Status tlm_status, Primary_Race_Type race_type, uint8_t driver, uint8_t circuit, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_TLM_STATUS(uint8_t* buffer, size_t buf_len, Primary_TLM_STATUS* primary_tlm_status);
 
 /* Primary_CAR_STATUS */
 typedef struct __is_packed {
@@ -132,9 +143,8 @@ typedef struct __is_packed {
 } Primary_CAR_STATUS;
 static_assert(sizeof(Primary_CAR_STATUS) == 3, "struct size mismatch");
     
-void serialize_Primary_CAR_STATUS(Primary_CAR_STATUS* car_status, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_CAR_STATUS(uint8_t* buffer, size_t buf_len, Primary_CAR_STATUS* car_status);
-
+void serialize_Primary_CAR_STATUS(Primary_Car_Status car_status, Primary_Inverter_Status inverter_l, Primary_Inverter_Status inverter_r, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_CAR_STATUS(uint8_t* buffer, size_t buf_len, Primary_CAR_STATUS* primary_car_status);
 
 /* Primary_SET_TLM_STATUS */
 typedef struct __is_packed {
@@ -145,9 +155,8 @@ typedef struct __is_packed {
 } Primary_SET_TLM_STATUS;
 static_assert(sizeof(Primary_SET_TLM_STATUS) == 4, "struct size mismatch");
     
-void serialize_Primary_SET_TLM_STATUS(Primary_SET_TLM_STATUS* set_tlm_status, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_SET_TLM_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_TLM_STATUS* set_tlm_status);
-
+void serialize_Primary_SET_TLM_STATUS(Primary_Tlm_Status tlm_status, Primary_Race_Type race_type, uint8_t driver, uint8_t circuit, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_SET_TLM_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_TLM_STATUS* primary_set_tlm_status);
 
 /* Primary_HV_VOLTAGE */
 typedef struct __is_packed {
@@ -158,21 +167,19 @@ typedef struct __is_packed {
 } Primary_HV_VOLTAGE;
 static_assert(sizeof(Primary_HV_VOLTAGE) == 8, "struct size mismatch");
     
-void serialize_Primary_HV_VOLTAGE(Primary_HV_VOLTAGE* hv_voltage, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_HV_VOLTAGE(uint8_t* buffer, size_t buf_len, Primary_HV_VOLTAGE* hv_voltage);
-
+void serialize_Primary_HV_VOLTAGE(uint16_t pack_voltage, uint16_t bus_voltage, uint16_t max_cell_voltage, uint16_t min_cell_voltage, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_HV_VOLTAGE(uint8_t* buffer, size_t buf_len, Primary_HV_VOLTAGE* primary_hv_voltage);
 
 /* Primary_HV_CURRENT */
 typedef struct __is_packed {
     int8_t power;
-    int8_t __unused_padding_1;
+    uint8_t __unused_padding_1;
     uint16_t current;
 } Primary_HV_CURRENT;
 static_assert(sizeof(Primary_HV_CURRENT) == 4, "struct size mismatch");
     
-void serialize_Primary_HV_CURRENT(Primary_HV_CURRENT* hv_current, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_HV_CURRENT(uint8_t* buffer, size_t buf_len, Primary_HV_CURRENT* hv_current);
-
+void serialize_Primary_HV_CURRENT(int8_t power, uint16_t current, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_HV_CURRENT(uint8_t* buffer, size_t buf_len, Primary_HV_CURRENT* primary_hv_current);
 
 /* Primary_HV_TEMP */
 typedef struct __is_packed {
@@ -182,9 +189,8 @@ typedef struct __is_packed {
 } Primary_HV_TEMP;
 static_assert(sizeof(Primary_HV_TEMP) == 6, "struct size mismatch");
     
-void serialize_Primary_HV_TEMP(Primary_HV_TEMP* hv_temp, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_HV_TEMP(uint8_t* buffer, size_t buf_len, Primary_HV_TEMP* hv_temp);
-
+void serialize_Primary_HV_TEMP(uint16_t average_temp, uint16_t max_temp, uint16_t min_temp, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_HV_TEMP(uint8_t* buffer, size_t buf_len, Primary_HV_TEMP* primary_hv_temp);
 
 /* Primary_HV_ERROR */
 typedef struct __is_packed {
@@ -194,9 +200,8 @@ typedef struct __is_packed {
 } Primary_HV_ERROR;
 static_assert(sizeof(Primary_HV_ERROR) == 3, "struct size mismatch");
     
-void serialize_Primary_HV_ERROR(Primary_HV_ERROR* hv_error, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_HV_ERROR(uint8_t* buffer, size_t buf_len, Primary_HV_ERROR* hv_error);
-
+void serialize_Primary_HV_ERROR(uint8_t error_code, uint8_t error_index, uint8_t active, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_HV_ERROR(uint8_t* buffer, size_t buf_len, Primary_HV_ERROR* primary_hv_error);
 
 /* Primary_TS_STATUS */
 typedef struct __is_packed {
@@ -204,9 +209,8 @@ typedef struct __is_packed {
 } Primary_TS_STATUS;
 static_assert(sizeof(Primary_TS_STATUS) == 1, "struct size mismatch");
     
-void serialize_Primary_TS_STATUS(Primary_TS_STATUS* ts_status, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_TS_STATUS(uint8_t* buffer, size_t buf_len, Primary_TS_STATUS* ts_status);
-
+void serialize_Primary_TS_STATUS(Primary_Ts_Status ts_status, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_TS_STATUS(uint8_t* buffer, size_t buf_len, Primary_TS_STATUS* primary_ts_status);
 
 /* Primary_STEER_STATUS */
 typedef struct __is_packed {
@@ -216,9 +220,8 @@ typedef struct __is_packed {
 } Primary_STEER_STATUS;
 static_assert(sizeof(Primary_STEER_STATUS) == 3, "struct size mismatch");
     
-void serialize_Primary_STEER_STATUS(Primary_STEER_STATUS* steer_status, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_STEER_STATUS(uint8_t* buffer, size_t buf_len, Primary_STEER_STATUS* steer_status);
-
+void serialize_Primary_STEER_STATUS(Primary_Traction_Control traction_control, Primary_Map map, bool radio_on, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_STEER_STATUS(uint8_t* buffer, size_t buf_len, Primary_STEER_STATUS* primary_steer_status);
 
 /* Primary_SET_CAR_STATUS */
 typedef struct __is_packed {
@@ -226,9 +229,8 @@ typedef struct __is_packed {
 } Primary_SET_CAR_STATUS;
 static_assert(sizeof(Primary_SET_CAR_STATUS) == 1, "struct size mismatch");
     
-void serialize_Primary_SET_CAR_STATUS(Primary_SET_CAR_STATUS* set_car_status, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_SET_CAR_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_CAR_STATUS* set_car_status);
-
+void serialize_Primary_SET_CAR_STATUS(Primary_Car_Status_Set car_status_set, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_SET_CAR_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_CAR_STATUS* primary_set_car_status);
 
 /* Primary_SET_TS_STATUS */
 typedef struct __is_packed {
@@ -236,6 +238,6 @@ typedef struct __is_packed {
 } Primary_SET_TS_STATUS;
 static_assert(sizeof(Primary_SET_TS_STATUS) == 1, "struct size mismatch");
     
-void serialize_Primary_SET_TS_STATUS(Primary_SET_TS_STATUS* set_ts_status, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_SET_TS_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_TS_STATUS* set_ts_status);
+void serialize_Primary_SET_TS_STATUS(Primary_Ts_Status_Set ts_status_set, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_SET_TS_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_TS_STATUS* primary_set_ts_status);
 #endif

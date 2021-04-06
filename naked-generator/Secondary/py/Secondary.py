@@ -15,296 +15,275 @@ class Pedal(Enum):
     BRAKE = 1
     ALL = 2
 
-
-# SET_PEDALS_RANGE
-class SET_PEDALS_RANGE:
-    tuple = namedtuple("SET_PEDALS_RANGE", "sync_state, pedal", rename=True)
+# SetPedalsRange
+class SetPedalsRange:
+    struct = namedtuple("SetPedalsRange_struct", "sync_state, pedal", rename=True)
     schema = "<bb"
     
     @staticmethod
     def serialize(sync_state, pedal) -> bytes:
-        return pack(SET_PEDALS_RANGE.schema, sync_state, pedal)
+        return pack(SetPedalsRange.schema, sync_state, pedal)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "SET_PEDALS_RANGE":
-        return SET_PEDALS_RANGE.tuple._make(unpack(SET_PEDALS_RANGE.schema, buffer))
+    def deserialize(buffer: bytes) -> "SetPedalsRange.struct":
+        return SetPedalsRange.struct._make(unpack(SetPedalsRange.schema, buffer))
 
-
-# ACCELERATOR_PEDAL_VAL
-class ACCELERATOR_PEDAL_VAL:
-    tuple = namedtuple("ACCELERATOR_PEDAL_VAL", "level", rename=True)
-    schema = "<B"
-    
-    @staticmethod
-    def serialize(level) -> bytes:
-        return pack(ACCELERATOR_PEDAL_VAL.schema, level)
-    
-    @staticmethod
-    def deserialize(buffer: bytes) -> "ACCELERATOR_PEDAL_VAL":
-        return ACCELERATOR_PEDAL_VAL.tuple._make(unpack(ACCELERATOR_PEDAL_VAL.schema, buffer))
-
-
-# BRAKE_PEDAL_VAL
-class BRAKE_PEDAL_VAL:
-    tuple = namedtuple("BRAKE_PEDAL_VAL", "level", rename=True)
-    schema = "<B"
+# AcceleratorPedalVal
+class AcceleratorPedalVal:
+    struct = namedtuple("AcceleratorPedalVal_struct", "level", rename=True)
+    schema = "<b"
     
     @staticmethod
     def serialize(level) -> bytes:
-        return pack(BRAKE_PEDAL_VAL.schema, level)
+        return pack(AcceleratorPedalVal.schema, level)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "BRAKE_PEDAL_VAL":
-        return BRAKE_PEDAL_VAL.tuple._make(unpack(BRAKE_PEDAL_VAL.schema, buffer))
+    def deserialize(buffer: bytes) -> "AcceleratorPedalVal.struct":
+        return AcceleratorPedalVal.struct._make(unpack(AcceleratorPedalVal.schema, buffer))
 
+# BrakePedalVal
+class BrakePedalVal:
+    struct = namedtuple("BrakePedalVal_struct", "level", rename=True)
+    schema = "<b"
+    
+    @staticmethod
+    def serialize(level) -> bytes:
+        return pack(BrakePedalVal.schema, level)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "BrakePedalVal.struct":
+        return BrakePedalVal.struct._make(unpack(BrakePedalVal.schema, buffer))
 
-# IMU_ANGULAR_RATE
-class IMU_ANGULAR_RATE:
-    tuple = namedtuple("IMU_ANGULAR_RATE", "ang_rate_x, ang_rate_y, ang_rate_z", rename=True)
-    schema = "<HHH"
+# ImuAngularRate
+class ImuAngularRate:
+    struct = namedtuple("ImuAngularRate_struct", "ang_rate_x, ang_rate_y, ang_rate_z", rename=True)
+    schema = "<bbb"
     
     @staticmethod
     def serialize(ang_rate_x, ang_rate_y, ang_rate_z) -> bytes:
-        return pack(IMU_ANGULAR_RATE.schema, ang_rate_x, ang_rate_y, ang_rate_z)
+        return pack(ImuAngularRate.schema, ang_rate_x, ang_rate_y, ang_rate_z)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IMU_ANGULAR_RATE":
-        return IMU_ANGULAR_RATE.tuple._make(unpack(IMU_ANGULAR_RATE.schema, buffer))
+    def deserialize(buffer: bytes) -> "ImuAngularRate.struct":
+        return ImuAngularRate.struct._make(unpack(ImuAngularRate.schema, buffer))
 
-
-# IMU_ACCELERATION
-class IMU_ACCELERATION:
-    tuple = namedtuple("IMU_ACCELERATION", "accel_x, accel_y, accel_z", rename=True)
-    schema = "<HHH"
+# ImuAcceleration
+class ImuAcceleration:
+    struct = namedtuple("ImuAcceleration_struct", "accel_x, accel_y, accel_z", rename=True)
+    schema = "<bbb"
     
     @staticmethod
     def serialize(accel_x, accel_y, accel_z) -> bytes:
-        return pack(IMU_ACCELERATION.schema, accel_x, accel_y, accel_z)
+        return pack(ImuAcceleration.schema, accel_x, accel_y, accel_z)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IMU_ACCELERATION":
-        return IMU_ACCELERATION.tuple._make(unpack(IMU_ACCELERATION.schema, buffer))
+    def deserialize(buffer: bytes) -> "ImuAcceleration.struct":
+        return ImuAcceleration.struct._make(unpack(ImuAcceleration.schema, buffer))
 
-
-# IRTS_FL_0
-class IRTS_FL_0:
-    tuple = namedtuple("IRTS_FL_0", "channel1, channel2, channel3, channel4", rename=True)
-    schema = "<HHHH"
+# IrtsFl0
+class IrtsFl0:
+    struct = namedtuple("IrtsFl0_struct", "channel1, channel2, channel3, channel4", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel1, channel2, channel3, channel4) -> bytes:
-        return pack(IRTS_FL_0.schema, channel1, channel2, channel3, channel4)
+        return pack(IrtsFl0.schema, channel1, channel2, channel3, channel4)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_FL_0":
-        return IRTS_FL_0.tuple._make(unpack(IRTS_FL_0.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsFl0.struct":
+        return IrtsFl0.struct._make(unpack(IrtsFl0.schema, buffer))
 
-
-# IRTS_FL_1
-class IRTS_FL_1:
-    tuple = namedtuple("IRTS_FL_1", "channel5, channel6, channel7, channel8", rename=True)
-    schema = "<HHHH"
+# IrtsFl1
+class IrtsFl1:
+    struct = namedtuple("IrtsFl1_struct", "channel5, channel6, channel7, channel8", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel5, channel6, channel7, channel8) -> bytes:
-        return pack(IRTS_FL_1.schema, channel5, channel6, channel7, channel8)
+        return pack(IrtsFl1.schema, channel5, channel6, channel7, channel8)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_FL_1":
-        return IRTS_FL_1.tuple._make(unpack(IRTS_FL_1.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsFl1.struct":
+        return IrtsFl1.struct._make(unpack(IrtsFl1.schema, buffer))
 
-
-# IRTS_FL_2
-class IRTS_FL_2:
-    tuple = namedtuple("IRTS_FL_2", "channel9, channel10, channel11, channel12", rename=True)
-    schema = "<HHHH"
+# IrtsFl2
+class IrtsFl2:
+    struct = namedtuple("IrtsFl2_struct", "channel9, channel10, channel11, channel12", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel9, channel10, channel11, channel12) -> bytes:
-        return pack(IRTS_FL_2.schema, channel9, channel10, channel11, channel12)
+        return pack(IrtsFl2.schema, channel9, channel10, channel11, channel12)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_FL_2":
-        return IRTS_FL_2.tuple._make(unpack(IRTS_FL_2.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsFl2.struct":
+        return IrtsFl2.struct._make(unpack(IrtsFl2.schema, buffer))
 
-
-# IRTS_FL_3
-class IRTS_FL_3:
-    tuple = namedtuple("IRTS_FL_3", "channel13, channel14, channel15, channel16", rename=True)
-    schema = "<HHHH"
+# IrtsFl3
+class IrtsFl3:
+    struct = namedtuple("IrtsFl3_struct", "channel13, channel14, channel15, channel16", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel13, channel14, channel15, channel16) -> bytes:
-        return pack(IRTS_FL_3.schema, channel13, channel14, channel15, channel16)
+        return pack(IrtsFl3.schema, channel13, channel14, channel15, channel16)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_FL_3":
-        return IRTS_FL_3.tuple._make(unpack(IRTS_FL_3.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsFl3.struct":
+        return IrtsFl3.struct._make(unpack(IrtsFl3.schema, buffer))
 
-
-# IRTS_FR_0
-class IRTS_FR_0:
-    tuple = namedtuple("IRTS_FR_0", "channel1, channel2, channel3, channel4", rename=True)
-    schema = "<HHHH"
+# IrtsFr0
+class IrtsFr0:
+    struct = namedtuple("IrtsFr0_struct", "channel1, channel2, channel3, channel4", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel1, channel2, channel3, channel4) -> bytes:
-        return pack(IRTS_FR_0.schema, channel1, channel2, channel3, channel4)
+        return pack(IrtsFr0.schema, channel1, channel2, channel3, channel4)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_FR_0":
-        return IRTS_FR_0.tuple._make(unpack(IRTS_FR_0.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsFr0.struct":
+        return IrtsFr0.struct._make(unpack(IrtsFr0.schema, buffer))
 
-
-# IRTS_FR_1
-class IRTS_FR_1:
-    tuple = namedtuple("IRTS_FR_1", "channel5, channel6, channel7, channel8", rename=True)
-    schema = "<HHHH"
+# IrtsFr1
+class IrtsFr1:
+    struct = namedtuple("IrtsFr1_struct", "channel5, channel6, channel7, channel8", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel5, channel6, channel7, channel8) -> bytes:
-        return pack(IRTS_FR_1.schema, channel5, channel6, channel7, channel8)
+        return pack(IrtsFr1.schema, channel5, channel6, channel7, channel8)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_FR_1":
-        return IRTS_FR_1.tuple._make(unpack(IRTS_FR_1.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsFr1.struct":
+        return IrtsFr1.struct._make(unpack(IrtsFr1.schema, buffer))
 
-
-# IRTS_FR_2
-class IRTS_FR_2:
-    tuple = namedtuple("IRTS_FR_2", "channel9, channel10, channel11, channel12", rename=True)
-    schema = "<HHHH"
+# IrtsFr2
+class IrtsFr2:
+    struct = namedtuple("IrtsFr2_struct", "channel9, channel10, channel11, channel12", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel9, channel10, channel11, channel12) -> bytes:
-        return pack(IRTS_FR_2.schema, channel9, channel10, channel11, channel12)
+        return pack(IrtsFr2.schema, channel9, channel10, channel11, channel12)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_FR_2":
-        return IRTS_FR_2.tuple._make(unpack(IRTS_FR_2.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsFr2.struct":
+        return IrtsFr2.struct._make(unpack(IrtsFr2.schema, buffer))
 
-
-# IRTS_FR_3
-class IRTS_FR_3:
-    tuple = namedtuple("IRTS_FR_3", "channel13, channel14, channel15, channel16", rename=True)
-    schema = "<HHHH"
+# IrtsFr3
+class IrtsFr3:
+    struct = namedtuple("IrtsFr3_struct", "channel13, channel14, channel15, channel16", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel13, channel14, channel15, channel16) -> bytes:
-        return pack(IRTS_FR_3.schema, channel13, channel14, channel15, channel16)
+        return pack(IrtsFr3.schema, channel13, channel14, channel15, channel16)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_FR_3":
-        return IRTS_FR_3.tuple._make(unpack(IRTS_FR_3.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsFr3.struct":
+        return IrtsFr3.struct._make(unpack(IrtsFr3.schema, buffer))
 
-
-# IRTS_RL_0
-class IRTS_RL_0:
-    tuple = namedtuple("IRTS_RL_0", "channel1, channel2, channel3, channel4", rename=True)
-    schema = "<HHHH"
+# IrtsRl0
+class IrtsRl0:
+    struct = namedtuple("IrtsRl0_struct", "channel1, channel2, channel3, channel4", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel1, channel2, channel3, channel4) -> bytes:
-        return pack(IRTS_RL_0.schema, channel1, channel2, channel3, channel4)
+        return pack(IrtsRl0.schema, channel1, channel2, channel3, channel4)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_RL_0":
-        return IRTS_RL_0.tuple._make(unpack(IRTS_RL_0.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsRl0.struct":
+        return IrtsRl0.struct._make(unpack(IrtsRl0.schema, buffer))
 
-
-# IRTS_RL_1
-class IRTS_RL_1:
-    tuple = namedtuple("IRTS_RL_1", "channel5, channel6, channel7, channel8", rename=True)
-    schema = "<HHHH"
+# IrtsRl1
+class IrtsRl1:
+    struct = namedtuple("IrtsRl1_struct", "channel5, channel6, channel7, channel8", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel5, channel6, channel7, channel8) -> bytes:
-        return pack(IRTS_RL_1.schema, channel5, channel6, channel7, channel8)
+        return pack(IrtsRl1.schema, channel5, channel6, channel7, channel8)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_RL_1":
-        return IRTS_RL_1.tuple._make(unpack(IRTS_RL_1.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsRl1.struct":
+        return IrtsRl1.struct._make(unpack(IrtsRl1.schema, buffer))
 
-
-# IRTS_RL_2
-class IRTS_RL_2:
-    tuple = namedtuple("IRTS_RL_2", "channel9, channel10, channel11, channel12", rename=True)
-    schema = "<HHHH"
+# IrtsRl2
+class IrtsRl2:
+    struct = namedtuple("IrtsRl2_struct", "channel9, channel10, channel11, channel12", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel9, channel10, channel11, channel12) -> bytes:
-        return pack(IRTS_RL_2.schema, channel9, channel10, channel11, channel12)
+        return pack(IrtsRl2.schema, channel9, channel10, channel11, channel12)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_RL_2":
-        return IRTS_RL_2.tuple._make(unpack(IRTS_RL_2.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsRl2.struct":
+        return IrtsRl2.struct._make(unpack(IrtsRl2.schema, buffer))
 
-
-# IRTS_RL_3
-class IRTS_RL_3:
-    tuple = namedtuple("IRTS_RL_3", "channel13, channel14, channel15, channel16", rename=True)
-    schema = "<HHHH"
+# IrtsRl3
+class IrtsRl3:
+    struct = namedtuple("IrtsRl3_struct", "channel13, channel14, channel15, channel16", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel13, channel14, channel15, channel16) -> bytes:
-        return pack(IRTS_RL_3.schema, channel13, channel14, channel15, channel16)
+        return pack(IrtsRl3.schema, channel13, channel14, channel15, channel16)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_RL_3":
-        return IRTS_RL_3.tuple._make(unpack(IRTS_RL_3.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsRl3.struct":
+        return IrtsRl3.struct._make(unpack(IrtsRl3.schema, buffer))
 
-
-# IRTS_RR_0
-class IRTS_RR_0:
-    tuple = namedtuple("IRTS_RR_0", "channel1, channel2, channel3, channel4", rename=True)
-    schema = "<HHHH"
+# IrtsRr0
+class IrtsRr0:
+    struct = namedtuple("IrtsRr0_struct", "channel1, channel2, channel3, channel4", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel1, channel2, channel3, channel4) -> bytes:
-        return pack(IRTS_RR_0.schema, channel1, channel2, channel3, channel4)
+        return pack(IrtsRr0.schema, channel1, channel2, channel3, channel4)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_RR_0":
-        return IRTS_RR_0.tuple._make(unpack(IRTS_RR_0.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsRr0.struct":
+        return IrtsRr0.struct._make(unpack(IrtsRr0.schema, buffer))
 
-
-# IRTS_RR_1
-class IRTS_RR_1:
-    tuple = namedtuple("IRTS_RR_1", "channel5, channel6, channel7, channel8", rename=True)
-    schema = "<HHHH"
+# IrtsRr1
+class IrtsRr1:
+    struct = namedtuple("IrtsRr1_struct", "channel5, channel6, channel7, channel8", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel5, channel6, channel7, channel8) -> bytes:
-        return pack(IRTS_RR_1.schema, channel5, channel6, channel7, channel8)
+        return pack(IrtsRr1.schema, channel5, channel6, channel7, channel8)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_RR_1":
-        return IRTS_RR_1.tuple._make(unpack(IRTS_RR_1.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsRr1.struct":
+        return IrtsRr1.struct._make(unpack(IrtsRr1.schema, buffer))
 
-
-# IRTS_RR_2
-class IRTS_RR_2:
-    tuple = namedtuple("IRTS_RR_2", "channel9, channel10, channel11, channel12", rename=True)
-    schema = "<HHHH"
+# IrtsRr2
+class IrtsRr2:
+    struct = namedtuple("IrtsRr2_struct", "channel9, channel10, channel11, channel12", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel9, channel10, channel11, channel12) -> bytes:
-        return pack(IRTS_RR_2.schema, channel9, channel10, channel11, channel12)
+        return pack(IrtsRr2.schema, channel9, channel10, channel11, channel12)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_RR_2":
-        return IRTS_RR_2.tuple._make(unpack(IRTS_RR_2.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsRr2.struct":
+        return IrtsRr2.struct._make(unpack(IrtsRr2.schema, buffer))
 
-
-# IRTS_RR_3
-class IRTS_RR_3:
-    tuple = namedtuple("IRTS_RR_3", "channel13, channel14, channel15, channel16", rename=True)
-    schema = "<HHHH"
+# IrtsRr3
+class IrtsRr3:
+    struct = namedtuple("IrtsRr3_struct", "channel13, channel14, channel15, channel16", rename=True)
+    schema = "<bbbb"
     
     @staticmethod
     def serialize(channel13, channel14, channel15, channel16) -> bytes:
-        return pack(IRTS_RR_3.schema, channel13, channel14, channel15, channel16)
+        return pack(IrtsRr3.schema, channel13, channel14, channel15, channel16)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "IRTS_RR_3":
-        return IRTS_RR_3.tuple._make(unpack(IRTS_RR_3.schema, buffer))
+    def deserialize(buffer: bytes) -> "IrtsRr3.struct":
+        return IrtsRr3.struct._make(unpack(IrtsRr3.schema, buffer))

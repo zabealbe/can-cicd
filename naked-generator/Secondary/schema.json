@@ -1,16 +1,22 @@
 {
-    "enums": {
-        "Sync_State": [
-            "MAX_START",
-            "MAX_END",
-            "MIN_START",
-            "MIN_END"
-        ],
-        "Pedal": [
-            "ACCELERATOR",
-            "BRAKE",
-            "ALL"
-        ]
+    "types": {
+        "Sync_State": {
+            "type": "enum",
+            "items": [
+                "MAX_START",
+                "MAX_END",
+                "MIN_START",
+                "MIN_END"
+            ]
+        },
+        "Pedal": {
+            "type": "enum",
+            "items": [
+                "ACCELERATOR",
+                "BRAKE",
+                "ALL"
+            ]
+        }
     },
     "structs": {
         "SET_PEDALS_RANGE": {
