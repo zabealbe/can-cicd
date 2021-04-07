@@ -74,7 +74,7 @@ class Ts_Status_Set(Enum):
 
 # TlmStatus
 class TlmStatus:
-    struct = namedtuple("TlmStatus_struct", "tlm_status, race_type, driver, circuit", rename=True)
+    struct = namedtuple("TlmStatus_struct", "tlm_status race_type driver circuit", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -87,7 +87,7 @@ class TlmStatus:
 
 # CarStatus
 class CarStatus:
-    struct = namedtuple("CarStatus_struct", "car_status, inverter_l, inverter_r", rename=True)
+    struct = namedtuple("CarStatus_struct", "car_status inverter_l inverter_r", rename=True)
     schema = "<bbb"
     
     @staticmethod
@@ -100,7 +100,7 @@ class CarStatus:
 
 # SetTlmStatus
 class SetTlmStatus:
-    struct = namedtuple("SetTlmStatus_struct", "tlm_status, race_type, driver, circuit", rename=True)
+    struct = namedtuple("SetTlmStatus_struct", "tlm_status race_type driver circuit", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -113,7 +113,7 @@ class SetTlmStatus:
 
 # HvVoltage
 class HvVoltage:
-    struct = namedtuple("HvVoltage_struct", "pack_voltage, bus_voltage, max_cell_voltage, min_cell_voltage", rename=True)
+    struct = namedtuple("HvVoltage_struct", "pack_voltage bus_voltage max_cell_voltage min_cell_voltage", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -126,7 +126,7 @@ class HvVoltage:
 
 # HvCurrent
 class HvCurrent:
-    struct = namedtuple("HvCurrent_struct", "power, current", rename=True)
+    struct = namedtuple("HvCurrent_struct", "power __unused_padding_1 current", rename=True)
     schema = "<bbb"
     
     @staticmethod
@@ -139,7 +139,7 @@ class HvCurrent:
 
 # HvTemp
 class HvTemp:
-    struct = namedtuple("HvTemp_struct", "average_temp, max_temp, min_temp", rename=True)
+    struct = namedtuple("HvTemp_struct", "average_temp max_temp min_temp", rename=True)
     schema = "<bbb"
     
     @staticmethod
@@ -152,7 +152,7 @@ class HvTemp:
 
 # HvError
 class HvError:
-    struct = namedtuple("HvError_struct", "error_code, error_index, active", rename=True)
+    struct = namedtuple("HvError_struct", "error_code error_index active", rename=True)
     schema = "<bbb"
     
     @staticmethod
@@ -178,7 +178,7 @@ class TsStatus:
 
 # SteerStatus
 class SteerStatus:
-    struct = namedtuple("SteerStatus_struct", "traction_control, map, radio_on", rename=True)
+    struct = namedtuple("SteerStatus_struct", "traction_control map radio_on", rename=True)
     schema = "<bbb"
     
     @staticmethod

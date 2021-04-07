@@ -4,7 +4,7 @@ from collections import namedtuple
 
 # VoltagesCb00
 class VoltagesCb00:
-    struct = namedtuple("VoltagesCb00_struct", "voltage0, voltage1, voltage2, voltage3", rename=True)
+    struct = namedtuple("VoltagesCb00_struct", "voltage0 voltage1 voltage2 voltage3", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -17,7 +17,7 @@ class VoltagesCb00:
 
 # VoltagesCb01
 class VoltagesCb01:
-    struct = namedtuple("VoltagesCb01_struct", "voltage4, voltage5, voltage6, voltage7", rename=True)
+    struct = namedtuple("VoltagesCb01_struct", "voltage4 voltage5 voltage6 voltage7", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -30,7 +30,7 @@ class VoltagesCb01:
 
 # VoltagesCb02
 class VoltagesCb02:
-    struct = namedtuple("VoltagesCb02_struct", "voltage8, voltage9, voltage10, voltage11", rename=True)
+    struct = namedtuple("VoltagesCb02_struct", "voltage8 voltage9 voltage10 voltage11", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -43,7 +43,7 @@ class VoltagesCb02:
 
 # VoltagesCb03
 class VoltagesCb03:
-    struct = namedtuple("VoltagesCb03_struct", "voltage12, voltage13, voltage14, voltage15", rename=True)
+    struct = namedtuple("VoltagesCb03_struct", "voltage12 voltage13 voltage14 voltage15", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -56,7 +56,7 @@ class VoltagesCb03:
 
 # VoltagesCb04
 class VoltagesCb04:
-    struct = namedtuple("VoltagesCb04_struct", "voltage16, voltage17, max_voltage, min_voltage", rename=True)
+    struct = namedtuple("VoltagesCb04_struct", "voltage16 voltage17 max_voltage min_voltage", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -69,7 +69,7 @@ class VoltagesCb04:
 
 # VoltagesCb10
 class VoltagesCb10:
-    struct = namedtuple("VoltagesCb10_struct", "voltage0, voltage1, voltage2, voltage3", rename=True)
+    struct = namedtuple("VoltagesCb10_struct", "voltage0 voltage1 voltage2 voltage3", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -82,7 +82,7 @@ class VoltagesCb10:
 
 # VoltagesCb11
 class VoltagesCb11:
-    struct = namedtuple("VoltagesCb11_struct", "voltage4, voltage5, voltage6, voltage7", rename=True)
+    struct = namedtuple("VoltagesCb11_struct", "voltage4 voltage5 voltage6 voltage7", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -95,7 +95,7 @@ class VoltagesCb11:
 
 # VoltagesCb12
 class VoltagesCb12:
-    struct = namedtuple("VoltagesCb12_struct", "voltage8, voltage9, voltage10, voltage11", rename=True)
+    struct = namedtuple("VoltagesCb12_struct", "voltage8 voltage9 voltage10 voltage11", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -108,7 +108,7 @@ class VoltagesCb12:
 
 # VoltagesCb13
 class VoltagesCb13:
-    struct = namedtuple("VoltagesCb13_struct", "voltage12, voltage13, voltage14, voltage15", rename=True)
+    struct = namedtuple("VoltagesCb13_struct", "voltage12 voltage13 voltage14 voltage15", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -121,7 +121,7 @@ class VoltagesCb13:
 
 # VoltagesCb14
 class VoltagesCb14:
-    struct = namedtuple("VoltagesCb14_struct", "voltage16, voltage17, max_voltage, min_voltage", rename=True)
+    struct = namedtuple("VoltagesCb14_struct", "voltage16 voltage17 max_voltage min_voltage", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -134,7 +134,7 @@ class VoltagesCb14:
 
 # VoltagesCb20
 class VoltagesCb20:
-    struct = namedtuple("VoltagesCb20_struct", "voltage0, voltage1, voltage2, voltage3", rename=True)
+    struct = namedtuple("VoltagesCb20_struct", "voltage0 voltage1 voltage2 voltage3", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -147,7 +147,7 @@ class VoltagesCb20:
 
 # VoltagesCb21
 class VoltagesCb21:
-    struct = namedtuple("VoltagesCb21_struct", "voltage4, voltage5, voltage6, voltage7", rename=True)
+    struct = namedtuple("VoltagesCb21_struct", "voltage4 voltage5 voltage6 voltage7", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -160,7 +160,7 @@ class VoltagesCb21:
 
 # VoltagesCb22
 class VoltagesCb22:
-    struct = namedtuple("VoltagesCb22_struct", "voltage8, voltage9, voltage10, voltage11", rename=True)
+    struct = namedtuple("VoltagesCb22_struct", "voltage8 voltage9 voltage10 voltage11", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -173,7 +173,7 @@ class VoltagesCb22:
 
 # VoltagesCb23
 class VoltagesCb23:
-    struct = namedtuple("VoltagesCb23_struct", "voltage12, voltage13, voltage14, voltage15", rename=True)
+    struct = namedtuple("VoltagesCb23_struct", "voltage12 voltage13 voltage14 voltage15", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -186,7 +186,7 @@ class VoltagesCb23:
 
 # VoltagesCb24
 class VoltagesCb24:
-    struct = namedtuple("VoltagesCb24_struct", "voltage16, voltage17, max_voltage, min_voltage", rename=True)
+    struct = namedtuple("VoltagesCb24_struct", "voltage16 voltage17 max_voltage min_voltage", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -199,7 +199,7 @@ class VoltagesCb24:
 
 # VoltagesCb30
 class VoltagesCb30:
-    struct = namedtuple("VoltagesCb30_struct", "voltage0, voltage1, voltage2, voltage3", rename=True)
+    struct = namedtuple("VoltagesCb30_struct", "voltage0 voltage1 voltage2 voltage3", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -212,7 +212,7 @@ class VoltagesCb30:
 
 # VoltagesCb31
 class VoltagesCb31:
-    struct = namedtuple("VoltagesCb31_struct", "voltage4, voltage5, voltage6, voltage7", rename=True)
+    struct = namedtuple("VoltagesCb31_struct", "voltage4 voltage5 voltage6 voltage7", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -225,7 +225,7 @@ class VoltagesCb31:
 
 # VoltagesCb32
 class VoltagesCb32:
-    struct = namedtuple("VoltagesCb32_struct", "voltage8, voltage9, voltage10, voltage11", rename=True)
+    struct = namedtuple("VoltagesCb32_struct", "voltage8 voltage9 voltage10 voltage11", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -238,7 +238,7 @@ class VoltagesCb32:
 
 # VoltagesCb33
 class VoltagesCb33:
-    struct = namedtuple("VoltagesCb33_struct", "voltage12, voltage13, voltage14, voltage15", rename=True)
+    struct = namedtuple("VoltagesCb33_struct", "voltage12 voltage13 voltage14 voltage15", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -251,7 +251,7 @@ class VoltagesCb33:
 
 # VoltagesCb34
 class VoltagesCb34:
-    struct = namedtuple("VoltagesCb34_struct", "voltage16, voltage17, max_voltage, min_voltage", rename=True)
+    struct = namedtuple("VoltagesCb34_struct", "voltage16 voltage17 max_voltage min_voltage", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -264,7 +264,7 @@ class VoltagesCb34:
 
 # VoltagesCb40
 class VoltagesCb40:
-    struct = namedtuple("VoltagesCb40_struct", "voltage0, voltage1, voltage2, voltage3", rename=True)
+    struct = namedtuple("VoltagesCb40_struct", "voltage0 voltage1 voltage2 voltage3", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -277,7 +277,7 @@ class VoltagesCb40:
 
 # VoltagesCb41
 class VoltagesCb41:
-    struct = namedtuple("VoltagesCb41_struct", "voltage4, voltage5, voltage6, voltage7", rename=True)
+    struct = namedtuple("VoltagesCb41_struct", "voltage4 voltage5 voltage6 voltage7", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -290,7 +290,7 @@ class VoltagesCb41:
 
 # VoltagesCb42
 class VoltagesCb42:
-    struct = namedtuple("VoltagesCb42_struct", "voltage8, voltage9, voltage10, voltage11", rename=True)
+    struct = namedtuple("VoltagesCb42_struct", "voltage8 voltage9 voltage10 voltage11", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -303,7 +303,7 @@ class VoltagesCb42:
 
 # VoltagesCb43
 class VoltagesCb43:
-    struct = namedtuple("VoltagesCb43_struct", "voltage12, voltage13, voltage14, voltage15", rename=True)
+    struct = namedtuple("VoltagesCb43_struct", "voltage12 voltage13 voltage14 voltage15", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -316,7 +316,7 @@ class VoltagesCb43:
 
 # VoltagesCb44
 class VoltagesCb44:
-    struct = namedtuple("VoltagesCb44_struct", "voltage16, voltage17, max_voltage, min_voltage", rename=True)
+    struct = namedtuple("VoltagesCb44_struct", "voltage16 voltage17 max_voltage min_voltage", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -329,7 +329,7 @@ class VoltagesCb44:
 
 # VoltagesCb50
 class VoltagesCb50:
-    struct = namedtuple("VoltagesCb50_struct", "voltage0, voltage1, voltage2, voltage3", rename=True)
+    struct = namedtuple("VoltagesCb50_struct", "voltage0 voltage1 voltage2 voltage3", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -342,7 +342,7 @@ class VoltagesCb50:
 
 # VoltagesCb51
 class VoltagesCb51:
-    struct = namedtuple("VoltagesCb51_struct", "voltage4, voltage5, voltage6, voltage7", rename=True)
+    struct = namedtuple("VoltagesCb51_struct", "voltage4 voltage5 voltage6 voltage7", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -355,7 +355,7 @@ class VoltagesCb51:
 
 # VoltagesCb52
 class VoltagesCb52:
-    struct = namedtuple("VoltagesCb52_struct", "voltage8, voltage9, voltage10, voltage11", rename=True)
+    struct = namedtuple("VoltagesCb52_struct", "voltage8 voltage9 voltage10 voltage11", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -368,7 +368,7 @@ class VoltagesCb52:
 
 # VoltagesCb53
 class VoltagesCb53:
-    struct = namedtuple("VoltagesCb53_struct", "voltage12, voltage13, voltage14, voltage15", rename=True)
+    struct = namedtuple("VoltagesCb53_struct", "voltage12 voltage13 voltage14 voltage15", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -381,7 +381,7 @@ class VoltagesCb53:
 
 # VoltagesCb54
 class VoltagesCb54:
-    struct = namedtuple("VoltagesCb54_struct", "voltage16, voltage17, max_voltage, min_voltage", rename=True)
+    struct = namedtuple("VoltagesCb54_struct", "voltage16 voltage17 max_voltage min_voltage", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -394,7 +394,7 @@ class VoltagesCb54:
 
 # TemperaturesCb00
 class TemperaturesCb00:
-    struct = namedtuple("TemperaturesCb00_struct", "temperature0, temperature1, temperature2, temperature3, temperature4, temperature5, temperature6, temperature7", rename=True)
+    struct = namedtuple("TemperaturesCb00_struct", "temperature0 temperature1 temperature2 temperature3 temperature4 temperature5 temperature6 temperature7", rename=True)
     schema = "<bbbbbbbb"
     
     @staticmethod
@@ -407,7 +407,7 @@ class TemperaturesCb00:
 
 # TemperaturesCb01
 class TemperaturesCb01:
-    struct = namedtuple("TemperaturesCb01_struct", "temperature8, temperature9, temperature10, temperature11, temperature12, temperature13, temperature14, temperature15", rename=True)
+    struct = namedtuple("TemperaturesCb01_struct", "temperature8 temperature9 temperature10 temperature11 temperature12 temperature13 temperature14 temperature15", rename=True)
     schema = "<bbbbbbbb"
     
     @staticmethod
@@ -420,7 +420,7 @@ class TemperaturesCb01:
 
 # TemperaturesCb02
 class TemperaturesCb02:
-    struct = namedtuple("TemperaturesCb02_struct", "temperature16, temperature17", rename=True)
+    struct = namedtuple("TemperaturesCb02_struct", "temperature16 temperature17", rename=True)
     schema = "<bb"
     
     @staticmethod
@@ -433,7 +433,7 @@ class TemperaturesCb02:
 
 # TemperaturesCb10
 class TemperaturesCb10:
-    struct = namedtuple("TemperaturesCb10_struct", "temperature0, temperature1, temperature2, temperature3, temperature4, temperature5, temperature6, temperature7", rename=True)
+    struct = namedtuple("TemperaturesCb10_struct", "temperature0 temperature1 temperature2 temperature3 temperature4 temperature5 temperature6 temperature7", rename=True)
     schema = "<bbbbbbbb"
     
     @staticmethod
@@ -446,7 +446,7 @@ class TemperaturesCb10:
 
 # TemperaturesCb11
 class TemperaturesCb11:
-    struct = namedtuple("TemperaturesCb11_struct", "temperature8, temperature9, temperature10, temperature11, temperature12, temperature13, temperature14, temperature15", rename=True)
+    struct = namedtuple("TemperaturesCb11_struct", "temperature8 temperature9 temperature10 temperature11 temperature12 temperature13 temperature14 temperature15", rename=True)
     schema = "<bbbbbbbb"
     
     @staticmethod
@@ -459,7 +459,7 @@ class TemperaturesCb11:
 
 # TemperaturesCb12
 class TemperaturesCb12:
-    struct = namedtuple("TemperaturesCb12_struct", "temperature16, temperature17, max_temperature, min_temperature", rename=True)
+    struct = namedtuple("TemperaturesCb12_struct", "temperature16 temperature17 max_temperature min_temperature", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -472,7 +472,7 @@ class TemperaturesCb12:
 
 # TemperaturesCb20
 class TemperaturesCb20:
-    struct = namedtuple("TemperaturesCb20_struct", "temperature0, temperature1, temperature2, temperature3, temperature4, temperature5, temperature6, temperature7", rename=True)
+    struct = namedtuple("TemperaturesCb20_struct", "temperature0 temperature1 temperature2 temperature3 temperature4 temperature5 temperature6 temperature7", rename=True)
     schema = "<bbbbbbbb"
     
     @staticmethod
@@ -485,7 +485,7 @@ class TemperaturesCb20:
 
 # TemperaturesCb21
 class TemperaturesCb21:
-    struct = namedtuple("TemperaturesCb21_struct", "temperature8, temperature9, temperature10, temperature11, temperature12, temperature13, temperature14, temperature15", rename=True)
+    struct = namedtuple("TemperaturesCb21_struct", "temperature8 temperature9 temperature10 temperature11 temperature12 temperature13 temperature14 temperature15", rename=True)
     schema = "<bbbbbbbb"
     
     @staticmethod
@@ -498,7 +498,7 @@ class TemperaturesCb21:
 
 # TemperaturesCb22
 class TemperaturesCb22:
-    struct = namedtuple("TemperaturesCb22_struct", "temperature16, temperature17, max_temperature, min_temperature", rename=True)
+    struct = namedtuple("TemperaturesCb22_struct", "temperature16 temperature17 max_temperature min_temperature", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -511,7 +511,7 @@ class TemperaturesCb22:
 
 # TemperaturesCb30
 class TemperaturesCb30:
-    struct = namedtuple("TemperaturesCb30_struct", "temperature0, temperature1, temperature2, temperature3, temperature4, temperature5, temperature6, temperature7", rename=True)
+    struct = namedtuple("TemperaturesCb30_struct", "temperature0 temperature1 temperature2 temperature3 temperature4 temperature5 temperature6 temperature7", rename=True)
     schema = "<bbbbbbbb"
     
     @staticmethod
@@ -524,7 +524,7 @@ class TemperaturesCb30:
 
 # TemperaturesCb31
 class TemperaturesCb31:
-    struct = namedtuple("TemperaturesCb31_struct", "temperature8, temperature9, temperature10, temperature11, temperature12, temperature13, temperature14, temperature15", rename=True)
+    struct = namedtuple("TemperaturesCb31_struct", "temperature8 temperature9 temperature10 temperature11 temperature12 temperature13 temperature14 temperature15", rename=True)
     schema = "<bbbbbbbb"
     
     @staticmethod
@@ -537,7 +537,7 @@ class TemperaturesCb31:
 
 # TemperaturesCb32
 class TemperaturesCb32:
-    struct = namedtuple("TemperaturesCb32_struct", "temperature16, temperature17, max_temperature, min_temperature", rename=True)
+    struct = namedtuple("TemperaturesCb32_struct", "temperature16 temperature17 max_temperature min_temperature", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -550,7 +550,7 @@ class TemperaturesCb32:
 
 # TemperaturesCb40
 class TemperaturesCb40:
-    struct = namedtuple("TemperaturesCb40_struct", "temperature0, temperature1, temperature2, temperature3, temperature4, temperature5, temperature6, temperature7", rename=True)
+    struct = namedtuple("TemperaturesCb40_struct", "temperature0 temperature1 temperature2 temperature3 temperature4 temperature5 temperature6 temperature7", rename=True)
     schema = "<bbbbbbbb"
     
     @staticmethod
@@ -563,7 +563,7 @@ class TemperaturesCb40:
 
 # TemperaturesCb41
 class TemperaturesCb41:
-    struct = namedtuple("TemperaturesCb41_struct", "temperature8, temperature9, temperature10, temperature11, temperature12, temperature13, temperature14, temperature15", rename=True)
+    struct = namedtuple("TemperaturesCb41_struct", "temperature8 temperature9 temperature10 temperature11 temperature12 temperature13 temperature14 temperature15", rename=True)
     schema = "<bbbbbbbb"
     
     @staticmethod
@@ -576,7 +576,7 @@ class TemperaturesCb41:
 
 # TemperaturesCb42
 class TemperaturesCb42:
-    struct = namedtuple("TemperaturesCb42_struct", "temperature16, temperature17, max_temperature, min_temperature", rename=True)
+    struct = namedtuple("TemperaturesCb42_struct", "temperature16 temperature17 max_temperature min_temperature", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -589,7 +589,7 @@ class TemperaturesCb42:
 
 # TemperaturesCb50
 class TemperaturesCb50:
-    struct = namedtuple("TemperaturesCb50_struct", "temperature0, temperature1, temperature2, temperature3, temperature4, temperature5, temperature6, temperature7", rename=True)
+    struct = namedtuple("TemperaturesCb50_struct", "temperature0 temperature1 temperature2 temperature3 temperature4 temperature5 temperature6 temperature7", rename=True)
     schema = "<bbbbbbbb"
     
     @staticmethod
@@ -602,7 +602,7 @@ class TemperaturesCb50:
 
 # TemperaturesCb51
 class TemperaturesCb51:
-    struct = namedtuple("TemperaturesCb51_struct", "temperature8, temperature9, temperature10, temperature11, temperature12, temperature13, temperature14, temperature15", rename=True)
+    struct = namedtuple("TemperaturesCb51_struct", "temperature8 temperature9 temperature10 temperature11 temperature12 temperature13 temperature14 temperature15", rename=True)
     schema = "<bbbbbbbb"
     
     @staticmethod
@@ -615,7 +615,7 @@ class TemperaturesCb51:
 
 # TemperaturesCb52
 class TemperaturesCb52:
-    struct = namedtuple("TemperaturesCb52_struct", "temperature16, temperature17, max_temperature, min_temperature", rename=True)
+    struct = namedtuple("TemperaturesCb52_struct", "temperature16 temperature17 max_temperature min_temperature", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -641,7 +641,7 @@ class MasterSync:
 
 # CellboardToken
 class CellboardToken:
-    struct = namedtuple("CellboardToken_struct", "sender_cellboard, time", rename=True)
+    struct = namedtuple("CellboardToken_struct", "sender_cellboard __unused_padding_1 __unused_padding_2 __unused_padding_3 time", rename=True)
     schema = "<bbbbb"
     
     @staticmethod

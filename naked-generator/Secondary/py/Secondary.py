@@ -17,7 +17,7 @@ class Pedal(Enum):
 
 # SetPedalsRange
 class SetPedalsRange:
-    struct = namedtuple("SetPedalsRange_struct", "sync_state, pedal", rename=True)
+    struct = namedtuple("SetPedalsRange_struct", "sync_state pedal", rename=True)
     schema = "<bb"
     
     @staticmethod
@@ -56,7 +56,7 @@ class BrakePedalVal:
 
 # ImuAngularRate
 class ImuAngularRate:
-    struct = namedtuple("ImuAngularRate_struct", "ang_rate_x, ang_rate_y, ang_rate_z", rename=True)
+    struct = namedtuple("ImuAngularRate_struct", "ang_rate_x ang_rate_y ang_rate_z", rename=True)
     schema = "<bbb"
     
     @staticmethod
@@ -69,7 +69,7 @@ class ImuAngularRate:
 
 # ImuAcceleration
 class ImuAcceleration:
-    struct = namedtuple("ImuAcceleration_struct", "accel_x, accel_y, accel_z", rename=True)
+    struct = namedtuple("ImuAcceleration_struct", "accel_x accel_y accel_z", rename=True)
     schema = "<bbb"
     
     @staticmethod
@@ -82,7 +82,7 @@ class ImuAcceleration:
 
 # IrtsFl0
 class IrtsFl0:
-    struct = namedtuple("IrtsFl0_struct", "channel1, channel2, channel3, channel4", rename=True)
+    struct = namedtuple("IrtsFl0_struct", "channel1 channel2 channel3 channel4", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -95,7 +95,7 @@ class IrtsFl0:
 
 # IrtsFl1
 class IrtsFl1:
-    struct = namedtuple("IrtsFl1_struct", "channel5, channel6, channel7, channel8", rename=True)
+    struct = namedtuple("IrtsFl1_struct", "channel5 channel6 channel7 channel8", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -108,7 +108,7 @@ class IrtsFl1:
 
 # IrtsFl2
 class IrtsFl2:
-    struct = namedtuple("IrtsFl2_struct", "channel9, channel10, channel11, channel12", rename=True)
+    struct = namedtuple("IrtsFl2_struct", "channel9 channel10 channel11 channel12", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -121,7 +121,7 @@ class IrtsFl2:
 
 # IrtsFl3
 class IrtsFl3:
-    struct = namedtuple("IrtsFl3_struct", "channel13, channel14, channel15, channel16", rename=True)
+    struct = namedtuple("IrtsFl3_struct", "channel13 channel14 channel15 channel16", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -134,7 +134,7 @@ class IrtsFl3:
 
 # IrtsFr0
 class IrtsFr0:
-    struct = namedtuple("IrtsFr0_struct", "channel1, channel2, channel3, channel4", rename=True)
+    struct = namedtuple("IrtsFr0_struct", "channel1 channel2 channel3 channel4", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -147,7 +147,7 @@ class IrtsFr0:
 
 # IrtsFr1
 class IrtsFr1:
-    struct = namedtuple("IrtsFr1_struct", "channel5, channel6, channel7, channel8", rename=True)
+    struct = namedtuple("IrtsFr1_struct", "channel5 channel6 channel7 channel8", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -160,7 +160,7 @@ class IrtsFr1:
 
 # IrtsFr2
 class IrtsFr2:
-    struct = namedtuple("IrtsFr2_struct", "channel9, channel10, channel11, channel12", rename=True)
+    struct = namedtuple("IrtsFr2_struct", "channel9 channel10 channel11 channel12", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -173,7 +173,7 @@ class IrtsFr2:
 
 # IrtsFr3
 class IrtsFr3:
-    struct = namedtuple("IrtsFr3_struct", "channel13, channel14, channel15, channel16", rename=True)
+    struct = namedtuple("IrtsFr3_struct", "channel13 channel14 channel15 channel16", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -186,7 +186,7 @@ class IrtsFr3:
 
 # IrtsRl0
 class IrtsRl0:
-    struct = namedtuple("IrtsRl0_struct", "channel1, channel2, channel3, channel4", rename=True)
+    struct = namedtuple("IrtsRl0_struct", "channel1 channel2 channel3 channel4", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -199,7 +199,7 @@ class IrtsRl0:
 
 # IrtsRl1
 class IrtsRl1:
-    struct = namedtuple("IrtsRl1_struct", "channel5, channel6, channel7, channel8", rename=True)
+    struct = namedtuple("IrtsRl1_struct", "channel5 channel6 channel7 channel8", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -212,7 +212,7 @@ class IrtsRl1:
 
 # IrtsRl2
 class IrtsRl2:
-    struct = namedtuple("IrtsRl2_struct", "channel9, channel10, channel11, channel12", rename=True)
+    struct = namedtuple("IrtsRl2_struct", "channel9 channel10 channel11 channel12", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -225,7 +225,7 @@ class IrtsRl2:
 
 # IrtsRl3
 class IrtsRl3:
-    struct = namedtuple("IrtsRl3_struct", "channel13, channel14, channel15, channel16", rename=True)
+    struct = namedtuple("IrtsRl3_struct", "channel13 channel14 channel15 channel16", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -238,7 +238,7 @@ class IrtsRl3:
 
 # IrtsRr0
 class IrtsRr0:
-    struct = namedtuple("IrtsRr0_struct", "channel1, channel2, channel3, channel4", rename=True)
+    struct = namedtuple("IrtsRr0_struct", "channel1 channel2 channel3 channel4", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -251,7 +251,7 @@ class IrtsRr0:
 
 # IrtsRr1
 class IrtsRr1:
-    struct = namedtuple("IrtsRr1_struct", "channel5, channel6, channel7, channel8", rename=True)
+    struct = namedtuple("IrtsRr1_struct", "channel5 channel6 channel7 channel8", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -264,7 +264,7 @@ class IrtsRr1:
 
 # IrtsRr2
 class IrtsRr2:
-    struct = namedtuple("IrtsRr2_struct", "channel9, channel10, channel11, channel12", rename=True)
+    struct = namedtuple("IrtsRr2_struct", "channel9 channel10 channel11 channel12", rename=True)
     schema = "<bbbb"
     
     @staticmethod
@@ -277,7 +277,7 @@ class IrtsRr2:
 
 # IrtsRr3
 class IrtsRr3:
-    struct = namedtuple("IrtsRr3_struct", "channel13, channel14, channel15, channel16", rename=True)
+    struct = namedtuple("IrtsRr3_struct", "channel13 channel14 channel15 channel16", rename=True)
     schema = "<bbbb"
     
     @staticmethod
