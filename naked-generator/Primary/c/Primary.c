@@ -4,6 +4,17 @@
 
 #include "Primary.h"
 
+/* Primary_TIMESTAMP */
+void serialize_Primary_TIMESTAMP(uint32_t timestamp, uint8_t* buffer, size_t buf_len) {
+    Primary_TIMESTAMP primary_timestamp = { timestamp };
+	assert(buf_len >= sizeof(Primary_TIMESTAMP));
+	memcpy(buffer, &primary_timestamp, sizeof(Primary_TIMESTAMP));
+} 
+void deserialize_Primary_TIMESTAMP(uint8_t* buffer, size_t buf_len, Primary_TIMESTAMP* primary_timestamp) {
+	assert(buf_len >= sizeof(Primary_TIMESTAMP));
+	memcpy(primary_timestamp, buffer, sizeof(Primary_TIMESTAMP));
+}
+
 /* Primary_TLM_STATUS */
 void serialize_Primary_TLM_STATUS(Primary_Tlm_Status tlm_status, Primary_Race_Type race_type, uint8_t driver, uint8_t circuit, uint8_t* buffer, size_t buf_len) {
     Primary_TLM_STATUS primary_tlm_status = { tlm_status, race_type, driver, circuit };
@@ -49,8 +60,8 @@ void deserialize_Primary_HV_VOLTAGE(uint8_t* buffer, size_t buf_len, Primary_HV_
 }
 
 /* Primary_HV_CURRENT */
-void serialize_Primary_HV_CURRENT(int8_t power, uint16_t current, uint8_t* buffer, size_t buf_len) {
-    Primary_HV_CURRENT primary_hv_current = { power, 0x00, current };
+void serialize_Primary_HV_CURRENT(uint16_t current, int16_t power, uint8_t* buffer, size_t buf_len) {
+    Primary_HV_CURRENT primary_hv_current = { current, power };
 	assert(buf_len >= sizeof(Primary_HV_CURRENT));
 	memcpy(buffer, &primary_hv_current, sizeof(Primary_HV_CURRENT));
 } 
@@ -79,6 +90,50 @@ void serialize_Primary_HV_ERROR(uint8_t error_code, uint8_t error_index, uint8_t
 void deserialize_Primary_HV_ERROR(uint8_t* buffer, size_t buf_len, Primary_HV_ERROR* primary_hv_error) {
 	assert(buf_len >= sizeof(Primary_HV_ERROR));
 	memcpy(primary_hv_error, buffer, sizeof(Primary_HV_ERROR));
+}
+
+/* Primary_LV_CURRENT */
+void serialize_Primary_LV_CURRENT(uint8_t current, uint8_t* buffer, size_t buf_len) {
+    Primary_LV_CURRENT primary_lv_current = { current };
+	assert(buf_len >= sizeof(Primary_LV_CURRENT));
+	memcpy(buffer, &primary_lv_current, sizeof(Primary_LV_CURRENT));
+} 
+void deserialize_Primary_LV_CURRENT(uint8_t* buffer, size_t buf_len, Primary_LV_CURRENT* primary_lv_current) {
+	assert(buf_len >= sizeof(Primary_LV_CURRENT));
+	memcpy(primary_lv_current, buffer, sizeof(Primary_LV_CURRENT));
+}
+
+/* Primary_LV_VOLTAGE */
+void serialize_Primary_LV_VOLTAGE(uint8_t voltage_1, uint8_t voltage_2, uint8_t voltage_3, uint8_t voltage_4, uint16_t total_voltage, uint8_t* buffer, size_t buf_len) {
+    Primary_LV_VOLTAGE primary_lv_voltage = { voltage_1, voltage_2, voltage_3, voltage_4, total_voltage };
+	assert(buf_len >= sizeof(Primary_LV_VOLTAGE));
+	memcpy(buffer, &primary_lv_voltage, sizeof(Primary_LV_VOLTAGE));
+} 
+void deserialize_Primary_LV_VOLTAGE(uint8_t* buffer, size_t buf_len, Primary_LV_VOLTAGE* primary_lv_voltage) {
+	assert(buf_len >= sizeof(Primary_LV_VOLTAGE));
+	memcpy(primary_lv_voltage, buffer, sizeof(Primary_LV_VOLTAGE));
+}
+
+/* Primary_LV_TEMPERATURE */
+void serialize_Primary_LV_TEMPERATURE(uint8_t dcdc_temperature, uint16_t battery_temperature, uint8_t* buffer, size_t buf_len) {
+    Primary_LV_TEMPERATURE primary_lv_temperature = { dcdc_temperature, 0x00, battery_temperature };
+	assert(buf_len >= sizeof(Primary_LV_TEMPERATURE));
+	memcpy(buffer, &primary_lv_temperature, sizeof(Primary_LV_TEMPERATURE));
+} 
+void deserialize_Primary_LV_TEMPERATURE(uint8_t* buffer, size_t buf_len, Primary_LV_TEMPERATURE* primary_lv_temperature) {
+	assert(buf_len >= sizeof(Primary_LV_TEMPERATURE));
+	memcpy(primary_lv_temperature, buffer, sizeof(Primary_LV_TEMPERATURE));
+}
+
+/* Primary_COOLING_STATUS */
+void serialize_Primary_COOLING_STATUS(uint8_t hv_fan_speed, uint8_t lv_fan_speed, uint8_t pump_speed, uint8_t* buffer, size_t buf_len) {
+    Primary_COOLING_STATUS primary_cooling_status = { hv_fan_speed, lv_fan_speed, pump_speed };
+	assert(buf_len >= sizeof(Primary_COOLING_STATUS));
+	memcpy(buffer, &primary_cooling_status, sizeof(Primary_COOLING_STATUS));
+} 
+void deserialize_Primary_COOLING_STATUS(uint8_t* buffer, size_t buf_len, Primary_COOLING_STATUS* primary_cooling_status) {
+	assert(buf_len >= sizeof(Primary_COOLING_STATUS));
+	memcpy(primary_cooling_status, buffer, sizeof(Primary_COOLING_STATUS));
 }
 
 /* Primary_TS_STATUS */

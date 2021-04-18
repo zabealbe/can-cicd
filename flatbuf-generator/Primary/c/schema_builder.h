@@ -45,6 +45,29 @@ __flatbuffers_build_scalar(flatbuffers_, Car_Status, Car_Status_enum_t)
 #define __Inverter_Status_call_args , v0
 __flatbuffers_build_scalar(flatbuffers_, Inverter_Status, Inverter_Status_enum_t)
 
+#define __TIMESTAMP_formal_args , uint32_t v0
+#define __TIMESTAMP_call_args , v0
+static inline TIMESTAMP_t *TIMESTAMP_assign(TIMESTAMP_t *p, uint32_t v0)
+{ p->timestamp = v0;
+  return p; }
+static inline TIMESTAMP_t *TIMESTAMP_copy(TIMESTAMP_t *p, const TIMESTAMP_t *p2)
+{ p->timestamp = p2->timestamp;
+  return p; }
+static inline TIMESTAMP_t *TIMESTAMP_assign_to_pe(TIMESTAMP_t *p, uint32_t v0)
+{ flatbuffers_uint32_assign_to_pe(&p->timestamp, v0);
+  return p; }
+static inline TIMESTAMP_t *TIMESTAMP_copy_to_pe(TIMESTAMP_t *p, const TIMESTAMP_t *p2)
+{ flatbuffers_uint32_copy_to_pe(&p->timestamp, &p2->timestamp);
+  return p; }
+static inline TIMESTAMP_t *TIMESTAMP_assign_from_pe(TIMESTAMP_t *p, uint32_t v0)
+{ flatbuffers_uint32_assign_from_pe(&p->timestamp, v0);
+  return p; }
+static inline TIMESTAMP_t *TIMESTAMP_copy_from_pe(TIMESTAMP_t *p, const TIMESTAMP_t *p2)
+{ flatbuffers_uint32_copy_from_pe(&p->timestamp, &p2->timestamp);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, TIMESTAMP, 4, 4, TIMESTAMP_file_identifier, TIMESTAMP_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, TIMESTAMP, TIMESTAMP_t)
+
 #define __TLM_STATUS_formal_args , Tlm_Status_enum_t v0, Race_Type_enum_t v1, uint8_t v2, uint8_t v3
 #define __TLM_STATUS_call_args , v0, v1, v2, v3
 static inline TLM_STATUS_t *TLM_STATUS_assign(TLM_STATUS_t *p, Tlm_Status_enum_t v0, Race_Type_enum_t v1, uint8_t v2, uint8_t v3)
@@ -114,25 +137,25 @@ static inline HV_VOLTAGE_t *HV_VOLTAGE_copy_from_pe(HV_VOLTAGE_t *p, const HV_VO
 __flatbuffers_build_struct(flatbuffers_, HV_VOLTAGE, 8, 2, HV_VOLTAGE_file_identifier, HV_VOLTAGE_type_identifier)
 __flatbuffers_define_fixed_array_primitives(flatbuffers_, HV_VOLTAGE, HV_VOLTAGE_t)
 
-#define __HV_CURRENT_formal_args , uint16_t v0, int8_t v1
+#define __HV_CURRENT_formal_args , uint16_t v0, int16_t v1
 #define __HV_CURRENT_call_args , v0, v1
-static inline HV_CURRENT_t *HV_CURRENT_assign(HV_CURRENT_t *p, uint16_t v0, int8_t v1)
+static inline HV_CURRENT_t *HV_CURRENT_assign(HV_CURRENT_t *p, uint16_t v0, int16_t v1)
 { p->current = v0; p->power = v1;
   return p; }
 static inline HV_CURRENT_t *HV_CURRENT_copy(HV_CURRENT_t *p, const HV_CURRENT_t *p2)
 { p->current = p2->current; p->power = p2->power;
   return p; }
-static inline HV_CURRENT_t *HV_CURRENT_assign_to_pe(HV_CURRENT_t *p, uint16_t v0, int8_t v1)
-{ flatbuffers_uint16_assign_to_pe(&p->current, v0); p->power = v1;
+static inline HV_CURRENT_t *HV_CURRENT_assign_to_pe(HV_CURRENT_t *p, uint16_t v0, int16_t v1)
+{ flatbuffers_uint16_assign_to_pe(&p->current, v0); flatbuffers_int16_assign_to_pe(&p->power, v1);
   return p; }
 static inline HV_CURRENT_t *HV_CURRENT_copy_to_pe(HV_CURRENT_t *p, const HV_CURRENT_t *p2)
-{ flatbuffers_uint16_copy_to_pe(&p->current, &p2->current); p->power = p2->power;
+{ flatbuffers_uint16_copy_to_pe(&p->current, &p2->current); flatbuffers_int16_copy_to_pe(&p->power, &p2->power);
   return p; }
-static inline HV_CURRENT_t *HV_CURRENT_assign_from_pe(HV_CURRENT_t *p, uint16_t v0, int8_t v1)
-{ flatbuffers_uint16_assign_from_pe(&p->current, v0); p->power = v1;
+static inline HV_CURRENT_t *HV_CURRENT_assign_from_pe(HV_CURRENT_t *p, uint16_t v0, int16_t v1)
+{ flatbuffers_uint16_assign_from_pe(&p->current, v0); flatbuffers_int16_assign_from_pe(&p->power, v1);
   return p; }
 static inline HV_CURRENT_t *HV_CURRENT_copy_from_pe(HV_CURRENT_t *p, const HV_CURRENT_t *p2)
-{ flatbuffers_uint16_copy_from_pe(&p->current, &p2->current); p->power = p2->power;
+{ flatbuffers_uint16_copy_from_pe(&p->current, &p2->current); flatbuffers_int16_copy_from_pe(&p->power, &p2->power);
   return p; }
 __flatbuffers_build_struct(flatbuffers_, HV_CURRENT, 4, 2, HV_CURRENT_file_identifier, HV_CURRENT_type_identifier)
 __flatbuffers_define_fixed_array_primitives(flatbuffers_, HV_CURRENT, HV_CURRENT_t)
@@ -297,6 +320,109 @@ static inline CAR_STATUS_t *CAR_STATUS_copy_from_pe(CAR_STATUS_t *p, const CAR_S
   return p; }
 __flatbuffers_build_struct(flatbuffers_, CAR_STATUS, 3, 1, CAR_STATUS_file_identifier, CAR_STATUS_type_identifier)
 __flatbuffers_define_fixed_array_primitives(flatbuffers_, CAR_STATUS, CAR_STATUS_t)
+
+#define __LV_CURRENT_formal_args , uint8_t v0
+#define __LV_CURRENT_call_args , v0
+static inline LV_CURRENT_t *LV_CURRENT_assign(LV_CURRENT_t *p, uint8_t v0)
+{ p->current = v0;
+  return p; }
+static inline LV_CURRENT_t *LV_CURRENT_copy(LV_CURRENT_t *p, const LV_CURRENT_t *p2)
+{ p->current = p2->current;
+  return p; }
+static inline LV_CURRENT_t *LV_CURRENT_assign_to_pe(LV_CURRENT_t *p, uint8_t v0)
+{ p->current = v0;
+  return p; }
+static inline LV_CURRENT_t *LV_CURRENT_copy_to_pe(LV_CURRENT_t *p, const LV_CURRENT_t *p2)
+{ p->current = p2->current;
+  return p; }
+static inline LV_CURRENT_t *LV_CURRENT_assign_from_pe(LV_CURRENT_t *p, uint8_t v0)
+{ p->current = v0;
+  return p; }
+static inline LV_CURRENT_t *LV_CURRENT_copy_from_pe(LV_CURRENT_t *p, const LV_CURRENT_t *p2)
+{ p->current = p2->current;
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, LV_CURRENT, 1, 1, LV_CURRENT_file_identifier, LV_CURRENT_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, LV_CURRENT, LV_CURRENT_t)
+
+#define __LV_VOLTAGE_formal_args ,\
+  uint16_t v0, uint8_t v1, uint8_t v2, uint8_t v3, uint8_t v4
+#define __LV_VOLTAGE_call_args ,\
+  v0, v1, v2, v3, v4
+static inline LV_VOLTAGE_t *LV_VOLTAGE_assign(LV_VOLTAGE_t *p,
+  uint16_t v0, uint8_t v1, uint8_t v2, uint8_t v3, uint8_t v4)
+{ p->total_voltage = v0; p->voltage_1 = v1; p->voltage_2 = v2; p->voltage_3 = v3;
+  p->voltage_4 = v4;
+  return p; }
+static inline LV_VOLTAGE_t *LV_VOLTAGE_copy(LV_VOLTAGE_t *p, const LV_VOLTAGE_t *p2)
+{ p->total_voltage = p2->total_voltage; p->voltage_1 = p2->voltage_1; p->voltage_2 = p2->voltage_2; p->voltage_3 = p2->voltage_3;
+  p->voltage_4 = p2->voltage_4;
+  return p; }
+static inline LV_VOLTAGE_t *LV_VOLTAGE_assign_to_pe(LV_VOLTAGE_t *p,
+  uint16_t v0, uint8_t v1, uint8_t v2, uint8_t v3, uint8_t v4)
+{ flatbuffers_uint16_assign_to_pe(&p->total_voltage, v0); p->voltage_1 = v1; p->voltage_2 = v2; p->voltage_3 = v3;
+  p->voltage_4 = v4;
+  return p; }
+static inline LV_VOLTAGE_t *LV_VOLTAGE_copy_to_pe(LV_VOLTAGE_t *p, const LV_VOLTAGE_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->total_voltage, &p2->total_voltage); p->voltage_1 = p2->voltage_1; p->voltage_2 = p2->voltage_2; p->voltage_3 = p2->voltage_3;
+  p->voltage_4 = p2->voltage_4;
+  return p; }
+static inline LV_VOLTAGE_t *LV_VOLTAGE_assign_from_pe(LV_VOLTAGE_t *p,
+  uint16_t v0, uint8_t v1, uint8_t v2, uint8_t v3, uint8_t v4)
+{ flatbuffers_uint16_assign_from_pe(&p->total_voltage, v0); p->voltage_1 = v1; p->voltage_2 = v2; p->voltage_3 = v3;
+  p->voltage_4 = v4;
+  return p; }
+static inline LV_VOLTAGE_t *LV_VOLTAGE_copy_from_pe(LV_VOLTAGE_t *p, const LV_VOLTAGE_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->total_voltage, &p2->total_voltage); p->voltage_1 = p2->voltage_1; p->voltage_2 = p2->voltage_2; p->voltage_3 = p2->voltage_3;
+  p->voltage_4 = p2->voltage_4;
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, LV_VOLTAGE, 6, 2, LV_VOLTAGE_file_identifier, LV_VOLTAGE_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, LV_VOLTAGE, LV_VOLTAGE_t)
+
+#define __LV_TEMPERATURE_formal_args , uint16_t v0, uint8_t v1
+#define __LV_TEMPERATURE_call_args , v0, v1
+static inline LV_TEMPERATURE_t *LV_TEMPERATURE_assign(LV_TEMPERATURE_t *p, uint16_t v0, uint8_t v1)
+{ p->battery_temperature = v0; p->dcdc_temperature = v1;
+  return p; }
+static inline LV_TEMPERATURE_t *LV_TEMPERATURE_copy(LV_TEMPERATURE_t *p, const LV_TEMPERATURE_t *p2)
+{ p->battery_temperature = p2->battery_temperature; p->dcdc_temperature = p2->dcdc_temperature;
+  return p; }
+static inline LV_TEMPERATURE_t *LV_TEMPERATURE_assign_to_pe(LV_TEMPERATURE_t *p, uint16_t v0, uint8_t v1)
+{ flatbuffers_uint16_assign_to_pe(&p->battery_temperature, v0); p->dcdc_temperature = v1;
+  return p; }
+static inline LV_TEMPERATURE_t *LV_TEMPERATURE_copy_to_pe(LV_TEMPERATURE_t *p, const LV_TEMPERATURE_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->battery_temperature, &p2->battery_temperature); p->dcdc_temperature = p2->dcdc_temperature;
+  return p; }
+static inline LV_TEMPERATURE_t *LV_TEMPERATURE_assign_from_pe(LV_TEMPERATURE_t *p, uint16_t v0, uint8_t v1)
+{ flatbuffers_uint16_assign_from_pe(&p->battery_temperature, v0); p->dcdc_temperature = v1;
+  return p; }
+static inline LV_TEMPERATURE_t *LV_TEMPERATURE_copy_from_pe(LV_TEMPERATURE_t *p, const LV_TEMPERATURE_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->battery_temperature, &p2->battery_temperature); p->dcdc_temperature = p2->dcdc_temperature;
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, LV_TEMPERATURE, 4, 2, LV_TEMPERATURE_file_identifier, LV_TEMPERATURE_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, LV_TEMPERATURE, LV_TEMPERATURE_t)
+
+#define __COOLING_STATUS_formal_args , uint8_t v0, uint8_t v1, uint8_t v2
+#define __COOLING_STATUS_call_args , v0, v1, v2
+static inline COOLING_STATUS_t *COOLING_STATUS_assign(COOLING_STATUS_t *p, uint8_t v0, uint8_t v1, uint8_t v2)
+{ p->hv_fan_speed = v0; p->lv_fan_speed = v1; p->pump_speed = v2;
+  return p; }
+static inline COOLING_STATUS_t *COOLING_STATUS_copy(COOLING_STATUS_t *p, const COOLING_STATUS_t *p2)
+{ p->hv_fan_speed = p2->hv_fan_speed; p->lv_fan_speed = p2->lv_fan_speed; p->pump_speed = p2->pump_speed;
+  return p; }
+static inline COOLING_STATUS_t *COOLING_STATUS_assign_to_pe(COOLING_STATUS_t *p, uint8_t v0, uint8_t v1, uint8_t v2)
+{ p->hv_fan_speed = v0; p->lv_fan_speed = v1; p->pump_speed = v2;
+  return p; }
+static inline COOLING_STATUS_t *COOLING_STATUS_copy_to_pe(COOLING_STATUS_t *p, const COOLING_STATUS_t *p2)
+{ p->hv_fan_speed = p2->hv_fan_speed; p->lv_fan_speed = p2->lv_fan_speed; p->pump_speed = p2->pump_speed;
+  return p; }
+static inline COOLING_STATUS_t *COOLING_STATUS_assign_from_pe(COOLING_STATUS_t *p, uint8_t v0, uint8_t v1, uint8_t v2)
+{ p->hv_fan_speed = v0; p->lv_fan_speed = v1; p->pump_speed = v2;
+  return p; }
+static inline COOLING_STATUS_t *COOLING_STATUS_copy_from_pe(COOLING_STATUS_t *p, const COOLING_STATUS_t *p2)
+{ p->hv_fan_speed = p2->hv_fan_speed; p->lv_fan_speed = p2->lv_fan_speed; p->pump_speed = p2->pump_speed;
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, COOLING_STATUS, 3, 1, COOLING_STATUS_file_identifier, COOLING_STATUS_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, COOLING_STATUS, COOLING_STATUS_t)
 
 #include "../../../external/flatcc/flatcc_epilogue.h"
 #endif /* SCHEMA_BUILDER_H */

@@ -1,64 +1,84 @@
 {
     "network_version": 1.2,
     "topics": {
-        "STEER": {
+        "BROADCAST": {
             "id": 0,
             "messages": {
+                "TIMESTAMP": {
+                    "id": 1536
+                }
+            }
+        },
+        "STEER": {
+            "id": 1,
+            "messages": {
                 "TLM_STATUS": {
-                    "id": 256
+                    "id": 257
                 },
                 "CAR_STATUS": {
-                    "id": 0
+                    "id": 1
                 }
             }
         },
         "TLM": {
-            "id": 1,
-            "messages": {
-                "SET_TLM_STATUS": {
-                    "id": 257
-                }
-            }
-        },
-        "ACUnSTEER": {
             "id": 2,
             "messages": {
-                "HV_VOLTAGE": {
-                    "id": 770
-                },
-                "HV_CURRENT": {
-                    "id": 802
-                },
-                "HV_TEMP": {
-                    "id": 834
-                },
-                "HV_ERROR": {
+                "SET_TLM_STATUS": {
                     "id": 258
                 }
             }
         },
-        "ACU": {
+        "ACUnSTEER": {
             "id": 3,
             "messages": {
+                "HV_VOLTAGE": {
+                    "id": 771
+                },
+                "HV_CURRENT": {
+                    "id": 803
+                },
+                "HV_TEMP": {
+                    "id": 835
+                },
+                "HV_ERROR": {
+                    "id": 259
+                },
+                "LV_CURRENT": {
+                    "id": 867
+                },
+                "LV_VOLTAGE": {
+                    "id": 899
+                },
+                "LV_TEMPERATURE": {
+                    "id": 931
+                },
+                "COOLING_STATUS": {
+                    "id": 963
+                }
+            }
+        },
+        "ACU": {
+            "id": 4,
+            "messages": {
                 "TS_STATUS": {
-                    "id": 3
+                    "id": 4
                 },
                 "STEER_STATUS": {
-                    "id": 35
+                    "id": 36
                 },
                 "SET_CAR_STATUS": {
-                    "id": 67
+                    "id": 68
                 },
                 "GET_CAR_STATUS": {
-                    "id": 99
+                    "id": 100
                 }
             }
         },
         "BMS_HV": {
-            "id": 4,
+            "id": 5,
             "messages": {
                 "SET_TS_STATUS": {
-                    "id": 4
+                    "id": 5
                 }
             }
         }

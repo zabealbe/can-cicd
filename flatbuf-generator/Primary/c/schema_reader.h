@@ -18,6 +18,11 @@
 #define flatbuffers_extension ".bin"
 #endif
 
+typedef struct TIMESTAMP TIMESTAMP_t;
+typedef const TIMESTAMP_t *TIMESTAMP_struct_t;
+typedef TIMESTAMP_t *TIMESTAMP_mutable_struct_t;
+typedef const TIMESTAMP_t *TIMESTAMP_vec_t;
+typedef TIMESTAMP_t *TIMESTAMP_mutable_vec_t;
 typedef struct TLM_STATUS TLM_STATUS_t;
 typedef const TLM_STATUS_t *TLM_STATUS_struct_t;
 typedef TLM_STATUS_t *TLM_STATUS_mutable_struct_t;
@@ -73,7 +78,36 @@ typedef const CAR_STATUS_t *CAR_STATUS_struct_t;
 typedef CAR_STATUS_t *CAR_STATUS_mutable_struct_t;
 typedef const CAR_STATUS_t *CAR_STATUS_vec_t;
 typedef CAR_STATUS_t *CAR_STATUS_mutable_vec_t;
+typedef struct LV_CURRENT LV_CURRENT_t;
+typedef const LV_CURRENT_t *LV_CURRENT_struct_t;
+typedef LV_CURRENT_t *LV_CURRENT_mutable_struct_t;
+typedef const LV_CURRENT_t *LV_CURRENT_vec_t;
+typedef LV_CURRENT_t *LV_CURRENT_mutable_vec_t;
+typedef struct LV_VOLTAGE LV_VOLTAGE_t;
+typedef const LV_VOLTAGE_t *LV_VOLTAGE_struct_t;
+typedef LV_VOLTAGE_t *LV_VOLTAGE_mutable_struct_t;
+typedef const LV_VOLTAGE_t *LV_VOLTAGE_vec_t;
+typedef LV_VOLTAGE_t *LV_VOLTAGE_mutable_vec_t;
+typedef struct LV_TEMPERATURE LV_TEMPERATURE_t;
+typedef const LV_TEMPERATURE_t *LV_TEMPERATURE_struct_t;
+typedef LV_TEMPERATURE_t *LV_TEMPERATURE_mutable_struct_t;
+typedef const LV_TEMPERATURE_t *LV_TEMPERATURE_vec_t;
+typedef LV_TEMPERATURE_t *LV_TEMPERATURE_mutable_vec_t;
+typedef struct COOLING_STATUS COOLING_STATUS_t;
+typedef const COOLING_STATUS_t *COOLING_STATUS_struct_t;
+typedef COOLING_STATUS_t *COOLING_STATUS_mutable_struct_t;
+typedef const COOLING_STATUS_t *COOLING_STATUS_vec_t;
+typedef COOLING_STATUS_t *COOLING_STATUS_mutable_vec_t;
 
+#ifndef TIMESTAMP_file_identifier
+#define TIMESTAMP_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use TIMESTAMP_file_identifier */
+#ifndef TIMESTAMP_identifier
+#define TIMESTAMP_identifier flatbuffers_identifier
+#endif
+#define TIMESTAMP_type_hash ((flatbuffers_thash_t)0x3ec4ad43)
+#define TIMESTAMP_type_identifier "\x43\xad\xc4\x3e"
 #ifndef TLM_STATUS_file_identifier
 #define TLM_STATUS_file_identifier flatbuffers_identifier
 #endif
@@ -173,6 +207,42 @@ typedef CAR_STATUS_t *CAR_STATUS_mutable_vec_t;
 #endif
 #define CAR_STATUS_type_hash ((flatbuffers_thash_t)0xcad66a64)
 #define CAR_STATUS_type_identifier "\x64\x6a\xd6\xca"
+#ifndef LV_CURRENT_file_identifier
+#define LV_CURRENT_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use LV_CURRENT_file_identifier */
+#ifndef LV_CURRENT_identifier
+#define LV_CURRENT_identifier flatbuffers_identifier
+#endif
+#define LV_CURRENT_type_hash ((flatbuffers_thash_t)0x702f376d)
+#define LV_CURRENT_type_identifier "\x6d\x37\x2f\x70"
+#ifndef LV_VOLTAGE_file_identifier
+#define LV_VOLTAGE_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use LV_VOLTAGE_file_identifier */
+#ifndef LV_VOLTAGE_identifier
+#define LV_VOLTAGE_identifier flatbuffers_identifier
+#endif
+#define LV_VOLTAGE_type_hash ((flatbuffers_thash_t)0x58a1f32e)
+#define LV_VOLTAGE_type_identifier "\x2e\xf3\xa1\x58"
+#ifndef LV_TEMPERATURE_file_identifier
+#define LV_TEMPERATURE_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use LV_TEMPERATURE_file_identifier */
+#ifndef LV_TEMPERATURE_identifier
+#define LV_TEMPERATURE_identifier flatbuffers_identifier
+#endif
+#define LV_TEMPERATURE_type_hash ((flatbuffers_thash_t)0xfb1fbc62)
+#define LV_TEMPERATURE_type_identifier "\x62\xbc\x1f\xfb"
+#ifndef COOLING_STATUS_file_identifier
+#define COOLING_STATUS_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use COOLING_STATUS_file_identifier */
+#ifndef COOLING_STATUS_identifier
+#define COOLING_STATUS_identifier flatbuffers_identifier
+#endif
+#define COOLING_STATUS_type_hash ((flatbuffers_thash_t)0xae335c7b)
+#define COOLING_STATUS_type_identifier "\x7b\x5c\x33\xae"
 
 typedef int8_t Tlm_Status_enum_t;
 __flatbuffers_define_integer_type(Tlm_Status, Tlm_Status_enum_t, 8)
@@ -418,6 +488,22 @@ static inline int Inverter_Status_is_known_value(Inverter_Status_enum_t value)
 }
 
 
+struct TIMESTAMP {
+    alignas(4) uint32_t timestamp;
+};
+static_assert(sizeof(TIMESTAMP_t) == 4, "struct size mismatch");
+
+static inline const TIMESTAMP_t *TIMESTAMP__const_ptr_add(const TIMESTAMP_t *p, size_t i) { return p + i; }
+static inline TIMESTAMP_t *TIMESTAMP__ptr_add(TIMESTAMP_t *p, size_t i) { return p + i; }
+static inline TIMESTAMP_struct_t TIMESTAMP_vec_at(TIMESTAMP_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t TIMESTAMP__size(void) { return 4; }
+static inline size_t TIMESTAMP_vec_len(TIMESTAMP_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(TIMESTAMP)
+
+__flatbuffers_define_struct_scalar_field(TIMESTAMP, timestamp, flatbuffers_uint32, uint32_t)
+
 struct TLM_STATUS {
     alignas(1) Tlm_Status_enum_t tlm_status;
     alignas(1) Race_Type_enum_t race_type;
@@ -486,7 +572,7 @@ __flatbuffers_define_struct_scalar_field(HV_VOLTAGE, min_cell_voltage, flatbuffe
 
 struct HV_CURRENT {
     alignas(2) uint16_t current;
-    alignas(1) int8_t power;
+    alignas(2) int16_t power;
 };
 static_assert(sizeof(HV_CURRENT_t) == 4, "struct size mismatch");
 
@@ -500,7 +586,7 @@ __flatbuffers_vec_len(vec)
 __flatbuffers_struct_as_root(HV_CURRENT)
 
 __flatbuffers_define_struct_scalar_field(HV_CURRENT, current, flatbuffers_uint16, uint16_t)
-__flatbuffers_define_struct_scalar_field(HV_CURRENT, power, flatbuffers_int8, int8_t)
+__flatbuffers_define_struct_scalar_field(HV_CURRENT, power, flatbuffers_int16, int16_t)
 
 struct HV_TEMP {
     alignas(2) uint16_t average_temp;
@@ -629,6 +715,84 @@ __flatbuffers_struct_as_root(CAR_STATUS)
 __flatbuffers_define_struct_scalar_field(CAR_STATUS, car_status, Car_Status, Car_Status_enum_t)
 __flatbuffers_define_struct_scalar_field(CAR_STATUS, inverter_l, Inverter_Status, Inverter_Status_enum_t)
 __flatbuffers_define_struct_scalar_field(CAR_STATUS, inverter_r, Inverter_Status, Inverter_Status_enum_t)
+
+struct LV_CURRENT {
+    alignas(1) uint8_t current;
+};
+static_assert(sizeof(LV_CURRENT_t) == 1, "struct size mismatch");
+
+static inline const LV_CURRENT_t *LV_CURRENT__const_ptr_add(const LV_CURRENT_t *p, size_t i) { return p + i; }
+static inline LV_CURRENT_t *LV_CURRENT__ptr_add(LV_CURRENT_t *p, size_t i) { return p + i; }
+static inline LV_CURRENT_struct_t LV_CURRENT_vec_at(LV_CURRENT_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t LV_CURRENT__size(void) { return 1; }
+static inline size_t LV_CURRENT_vec_len(LV_CURRENT_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(LV_CURRENT)
+
+__flatbuffers_define_struct_scalar_field(LV_CURRENT, current, flatbuffers_uint8, uint8_t)
+
+struct LV_VOLTAGE {
+    alignas(2) uint16_t total_voltage;
+    alignas(1) uint8_t voltage_1;
+    alignas(1) uint8_t voltage_2;
+    alignas(1) uint8_t voltage_3;
+    alignas(1) uint8_t voltage_4;
+};
+static_assert(sizeof(LV_VOLTAGE_t) == 6, "struct size mismatch");
+
+static inline const LV_VOLTAGE_t *LV_VOLTAGE__const_ptr_add(const LV_VOLTAGE_t *p, size_t i) { return p + i; }
+static inline LV_VOLTAGE_t *LV_VOLTAGE__ptr_add(LV_VOLTAGE_t *p, size_t i) { return p + i; }
+static inline LV_VOLTAGE_struct_t LV_VOLTAGE_vec_at(LV_VOLTAGE_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t LV_VOLTAGE__size(void) { return 6; }
+static inline size_t LV_VOLTAGE_vec_len(LV_VOLTAGE_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(LV_VOLTAGE)
+
+__flatbuffers_define_struct_scalar_field(LV_VOLTAGE, total_voltage, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(LV_VOLTAGE, voltage_1, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(LV_VOLTAGE, voltage_2, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(LV_VOLTAGE, voltage_3, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(LV_VOLTAGE, voltage_4, flatbuffers_uint8, uint8_t)
+
+struct LV_TEMPERATURE {
+    alignas(2) uint16_t battery_temperature;
+    alignas(1) uint8_t dcdc_temperature;
+};
+static_assert(sizeof(LV_TEMPERATURE_t) == 4, "struct size mismatch");
+
+static inline const LV_TEMPERATURE_t *LV_TEMPERATURE__const_ptr_add(const LV_TEMPERATURE_t *p, size_t i) { return p + i; }
+static inline LV_TEMPERATURE_t *LV_TEMPERATURE__ptr_add(LV_TEMPERATURE_t *p, size_t i) { return p + i; }
+static inline LV_TEMPERATURE_struct_t LV_TEMPERATURE_vec_at(LV_TEMPERATURE_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t LV_TEMPERATURE__size(void) { return 4; }
+static inline size_t LV_TEMPERATURE_vec_len(LV_TEMPERATURE_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(LV_TEMPERATURE)
+
+__flatbuffers_define_struct_scalar_field(LV_TEMPERATURE, battery_temperature, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(LV_TEMPERATURE, dcdc_temperature, flatbuffers_uint8, uint8_t)
+
+struct COOLING_STATUS {
+    alignas(1) uint8_t hv_fan_speed;
+    alignas(1) uint8_t lv_fan_speed;
+    alignas(1) uint8_t pump_speed;
+};
+static_assert(sizeof(COOLING_STATUS_t) == 3, "struct size mismatch");
+
+static inline const COOLING_STATUS_t *COOLING_STATUS__const_ptr_add(const COOLING_STATUS_t *p, size_t i) { return p + i; }
+static inline COOLING_STATUS_t *COOLING_STATUS__ptr_add(COOLING_STATUS_t *p, size_t i) { return p + i; }
+static inline COOLING_STATUS_struct_t COOLING_STATUS_vec_at(COOLING_STATUS_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t COOLING_STATUS__size(void) { return 3; }
+static inline size_t COOLING_STATUS_vec_len(COOLING_STATUS_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(COOLING_STATUS)
+
+__flatbuffers_define_struct_scalar_field(COOLING_STATUS, hv_fan_speed, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(COOLING_STATUS, lv_fan_speed, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(COOLING_STATUS, pump_speed, flatbuffers_uint8, uint8_t)
 
 
 

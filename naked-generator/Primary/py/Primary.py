@@ -72,6 +72,19 @@ class Ts_Status_Set(Enum):
     OFF = 0
     ON = 1
 
+# Timestamp
+class Timestamp:
+    struct = namedtuple("Timestamp_struct", "timestamp", rename=True)
+    schema = "<b"
+    
+    @staticmethod
+    def serialize(timestamp) -> bytes:
+        return pack(Timestamp.schema, timestamp)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "Timestamp.struct":
+        return Timestamp.struct._make(unpack(Timestamp.schema, buffer))
+
 # TlmStatus
 class TlmStatus:
     struct = namedtuple("TlmStatus_struct", "tlm_status race_type driver circuit", rename=True)
@@ -126,12 +139,12 @@ class HvVoltage:
 
 # HvCurrent
 class HvCurrent:
-    struct = namedtuple("HvCurrent_struct", "power __unused_padding_1 current", rename=True)
-    schema = "<bbb"
+    struct = namedtuple("HvCurrent_struct", "current power", rename=True)
+    schema = "<bb"
     
     @staticmethod
-    def serialize(power, current) -> bytes:
-        return pack(HvCurrent.schema, power, 0x00, current)
+    def serialize(current, power) -> bytes:
+        return pack(HvCurrent.schema, current, power)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "HvCurrent.struct":
@@ -162,6 +175,58 @@ class HvError:
     @staticmethod
     def deserialize(buffer: bytes) -> "HvError.struct":
         return HvError.struct._make(unpack(HvError.schema, buffer))
+
+# LvCurrent
+class LvCurrent:
+    struct = namedtuple("LvCurrent_struct", "current", rename=True)
+    schema = "<b"
+    
+    @staticmethod
+    def serialize(current) -> bytes:
+        return pack(LvCurrent.schema, current)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "LvCurrent.struct":
+        return LvCurrent.struct._make(unpack(LvCurrent.schema, buffer))
+
+# LvVoltage
+class LvVoltage:
+    struct = namedtuple("LvVoltage_struct", "voltage_1 voltage_2 voltage_3 voltage_4 total_voltage", rename=True)
+    schema = "<bbbbb"
+    
+    @staticmethod
+    def serialize(voltage_1, voltage_2, voltage_3, voltage_4, total_voltage) -> bytes:
+        return pack(LvVoltage.schema, voltage_1, voltage_2, voltage_3, voltage_4, total_voltage)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "LvVoltage.struct":
+        return LvVoltage.struct._make(unpack(LvVoltage.schema, buffer))
+
+# LvTemperature
+class LvTemperature:
+    struct = namedtuple("LvTemperature_struct", "dcdc_temperature __unused_padding_1 battery_temperature", rename=True)
+    schema = "<bbb"
+    
+    @staticmethod
+    def serialize(dcdc_temperature, battery_temperature) -> bytes:
+        return pack(LvTemperature.schema, dcdc_temperature, 0x00, battery_temperature)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "LvTemperature.struct":
+        return LvTemperature.struct._make(unpack(LvTemperature.schema, buffer))
+
+# CoolingStatus
+class CoolingStatus:
+    struct = namedtuple("CoolingStatus_struct", "hv_fan_speed lv_fan_speed pump_speed", rename=True)
+    schema = "<bbb"
+    
+    @staticmethod
+    def serialize(hv_fan_speed, lv_fan_speed, pump_speed) -> bytes:
+        return pack(CoolingStatus.schema, hv_fan_speed, lv_fan_speed, pump_speed)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "CoolingStatus.struct":
+        return CoolingStatus.struct._make(unpack(CoolingStatus.schema, buffer))
 
 # TsStatus
 class TsStatus:

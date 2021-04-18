@@ -10,6 +10,26 @@
 #include "../../../external/flatcc/flatcc_prologue.h"
 
 
+static inline int TIMESTAMP_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, TIMESTAMP_identifier, 4, 4);
+}
+
+static inline int TIMESTAMP_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, TIMESTAMP_type_hash, 4, 4);
+}
+
+static inline int TIMESTAMP_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 4, 4);
+}
+
+static inline int TIMESTAMP_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 4, 4);
+}
+
 static inline int TLM_STATUS_verify_as_root(const void *buf, size_t bufsiz)
 {
     return flatcc_verify_struct_as_root(buf, bufsiz, TLM_STATUS_identifier, 4, 1);
@@ -226,6 +246,86 @@ static inline int CAR_STATUS_verify_as_root_with_type_hash(const void *buf, size
 }
 
 static inline int CAR_STATUS_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 3, 1);
+}
+
+static inline int LV_CURRENT_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, LV_CURRENT_identifier, 1, 1);
+}
+
+static inline int LV_CURRENT_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, LV_CURRENT_type_hash, 1, 1);
+}
+
+static inline int LV_CURRENT_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 1, 1);
+}
+
+static inline int LV_CURRENT_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 1, 1);
+}
+
+static inline int LV_VOLTAGE_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, LV_VOLTAGE_identifier, 6, 2);
+}
+
+static inline int LV_VOLTAGE_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, LV_VOLTAGE_type_hash, 6, 2);
+}
+
+static inline int LV_VOLTAGE_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 6, 2);
+}
+
+static inline int LV_VOLTAGE_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 6, 2);
+}
+
+static inline int LV_TEMPERATURE_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, LV_TEMPERATURE_identifier, 4, 2);
+}
+
+static inline int LV_TEMPERATURE_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, LV_TEMPERATURE_type_hash, 4, 2);
+}
+
+static inline int LV_TEMPERATURE_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 4, 2);
+}
+
+static inline int LV_TEMPERATURE_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 4, 2);
+}
+
+static inline int COOLING_STATUS_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, COOLING_STATUS_identifier, 3, 1);
+}
+
+static inline int COOLING_STATUS_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, COOLING_STATUS_type_hash, 3, 1);
+}
+
+static inline int COOLING_STATUS_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 3, 1);
+}
+
+static inline int COOLING_STATUS_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
 {
     return flatcc_verify_struct_as_root(buf, bufsiz, fid, 3, 1);
 }

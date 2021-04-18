@@ -123,6 +123,15 @@ typedef enum __is_packed {
     Primary_Ts_Status_Set_ON = 1,
 } Primary_Ts_Status_Set;
 
+/* Primary_TIMESTAMP */
+typedef struct __is_packed {
+    uint32_t timestamp;
+} Primary_TIMESTAMP;
+static_assert(sizeof(Primary_TIMESTAMP) == 4, "struct size mismatch");
+    
+void serialize_Primary_TIMESTAMP(uint32_t timestamp, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_TIMESTAMP(uint8_t* buffer, size_t buf_len, Primary_TIMESTAMP* primary_timestamp);
+
 /* Primary_TLM_STATUS */
 typedef struct __is_packed {
     Primary_Tlm_Status tlm_status;
@@ -172,13 +181,12 @@ void deserialize_Primary_HV_VOLTAGE(uint8_t* buffer, size_t buf_len, Primary_HV_
 
 /* Primary_HV_CURRENT */
 typedef struct __is_packed {
-    int8_t power;
-    uint8_t __unused_padding_1;
     uint16_t current;
+    int16_t power;
 } Primary_HV_CURRENT;
 static_assert(sizeof(Primary_HV_CURRENT) == 4, "struct size mismatch");
     
-void serialize_Primary_HV_CURRENT(int8_t power, uint16_t current, uint8_t* buffer, size_t buf_len);
+void serialize_Primary_HV_CURRENT(uint16_t current, int16_t power, uint8_t* buffer, size_t buf_len);
 void deserialize_Primary_HV_CURRENT(uint8_t* buffer, size_t buf_len, Primary_HV_CURRENT* primary_hv_current);
 
 /* Primary_HV_TEMP */
@@ -202,6 +210,50 @@ static_assert(sizeof(Primary_HV_ERROR) == 3, "struct size mismatch");
     
 void serialize_Primary_HV_ERROR(uint8_t error_code, uint8_t error_index, uint8_t active, uint8_t* buffer, size_t buf_len);
 void deserialize_Primary_HV_ERROR(uint8_t* buffer, size_t buf_len, Primary_HV_ERROR* primary_hv_error);
+
+/* Primary_LV_CURRENT */
+typedef struct __is_packed {
+    uint8_t current;
+} Primary_LV_CURRENT;
+static_assert(sizeof(Primary_LV_CURRENT) == 1, "struct size mismatch");
+    
+void serialize_Primary_LV_CURRENT(uint8_t current, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_LV_CURRENT(uint8_t* buffer, size_t buf_len, Primary_LV_CURRENT* primary_lv_current);
+
+/* Primary_LV_VOLTAGE */
+typedef struct __is_packed {
+    uint8_t voltage_1;
+    uint8_t voltage_2;
+    uint8_t voltage_3;
+    uint8_t voltage_4;
+    uint16_t total_voltage;
+} Primary_LV_VOLTAGE;
+static_assert(sizeof(Primary_LV_VOLTAGE) == 6, "struct size mismatch");
+    
+void serialize_Primary_LV_VOLTAGE(uint8_t voltage_1, uint8_t voltage_2, uint8_t voltage_3, uint8_t voltage_4, uint16_t total_voltage, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_LV_VOLTAGE(uint8_t* buffer, size_t buf_len, Primary_LV_VOLTAGE* primary_lv_voltage);
+
+/* Primary_LV_TEMPERATURE */
+typedef struct __is_packed {
+    uint8_t dcdc_temperature;
+    uint8_t __unused_padding_1;
+    uint16_t battery_temperature;
+} Primary_LV_TEMPERATURE;
+static_assert(sizeof(Primary_LV_TEMPERATURE) == 4, "struct size mismatch");
+    
+void serialize_Primary_LV_TEMPERATURE(uint8_t dcdc_temperature, uint16_t battery_temperature, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_LV_TEMPERATURE(uint8_t* buffer, size_t buf_len, Primary_LV_TEMPERATURE* primary_lv_temperature);
+
+/* Primary_COOLING_STATUS */
+typedef struct __is_packed {
+    uint8_t hv_fan_speed;
+    uint8_t lv_fan_speed;
+    uint8_t pump_speed;
+} Primary_COOLING_STATUS;
+static_assert(sizeof(Primary_COOLING_STATUS) == 3, "struct size mismatch");
+    
+void serialize_Primary_COOLING_STATUS(uint8_t hv_fan_speed, uint8_t lv_fan_speed, uint8_t pump_speed, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_COOLING_STATUS(uint8_t* buffer, size_t buf_len, Primary_COOLING_STATUS* primary_cooling_status);
 
 /* Primary_TS_STATUS */
 typedef struct __is_packed {
