@@ -2,7 +2,7 @@
 NETWORK_FILE = "../networks/[network]/network.json"
 NETWORK_FILE_VALIDATION_SCHEMA = "config/network_schema_sheetgenerator.json"
 
-NETWORK_IDS_FILE = "../id-generator/out/[network]/ids.json"
+NETWORK_IDS_FILE = "../id_generator/out/[network]/ids.json"
 NETWORK_IDS_FILE_VALIDATION_SCHEMA = "config/network_ids_schema_sheetgenerator.json"
 
 # OUTPUT FILES
