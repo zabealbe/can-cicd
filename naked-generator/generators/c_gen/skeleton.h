@@ -1,5 +1,5 @@
-#ifndef {{ filename.upper() }}_H
-#define {{ filename.upper() }}_H
+#ifndef {filename_caps}_H
+#define {filename_caps}_H
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -34,7 +34,7 @@
     #endif
 #endif
 
-#ifndef __NAKED_{{ endianness_tag }}
+#ifndef __NAKED_{endianness}
     #error "** HARDWARE ENDIANNESS NOT SUPPORTED **"
 #endif
 
@@ -51,26 +51,6 @@ static_assert(sizeof(double) == 8, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPEC
 #else
     #define __is_packed __attribute__((__packed__)) // , __aligned__(1)))
 #endif
-    
-{% for enum in enums %}
-typedef enum __is_packed {
-    {%- for item_name, item_value in enum.items %}
-    {{ enum.name }}_{{ item_name }} = {{ item_value }},
-    {%- endfor %}
-} {{ enum.name }};
-{% endfor -%}
 
-{% for struct in structs %}
-/* {{ struct.name }} */
-typedef struct __is_packed {
-    {%- for item_name, c_type in zip(struct.fields.keys(), c_types(struct)) %}
-    {{ c_type }} {{ item_name }};
-    {%- endfor %}
-} {{ struct.name }};
-static_assert(sizeof({{ struct.name }}) == {{ struct.size_bytes }}, "struct size mismatch");
-    
-void serialize_{{ struct.name }}({{ ", ".join(parameters(struct)) }}, uint8_t* buffer, size_t buf_len);
-void deserialize_{{ struct.name }}(uint8_t* buffer, size_t buf_len, {{ struct.name }}* {{ struct.name.lower() }});
-{% endfor -%}
-
+{code}
 #endif

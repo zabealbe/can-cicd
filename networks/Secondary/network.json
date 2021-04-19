@@ -8,6 +8,7 @@
     "bitsets": {
         "pcu_warnings_bitset" : ["PCU_IMPLAUSIBILITY_WARNING","PCU_CAN_SEND_MESSAGE_MISS"],
         "pcu_fatal_errors_bitset" : ["PCU_IMPLAUSIBILITY_ERROR","PCU_STM_INTERNAL_ERROR"]
+        
     },
     "messages": [
         {

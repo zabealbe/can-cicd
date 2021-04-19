@@ -15,16 +15,6 @@
     },
     "messages": [
         {
-            "name": "TIMESTAMP",
-            "topic": "BROADCAST",
-            "priority": 1,
-            "sending": ["TLM"],
-            "receiving": ["STEER","BMS_HV","BMS_LV","ECU","PEDALS"],
-            "contents": {
-                "timestamp": "uint32"
-            }
-        },
-        {
             "name": "TLM_STATUS",
             "topic": "STEER",
             "priority": 6,
@@ -68,7 +58,7 @@
             "receiving": ["ACU", "STEER"],
             "contents": {
                 "current": "uint16",
-                "power": "int16"
+                "power": "int8"
             }
         },{
             "name": "HV_TEMP",
@@ -97,7 +87,7 @@
             "topic": "ACU",
             "priority": 7,
             "sending": ["BMS_HV"],
-            "receiving": ["ACU", "STEER"],
+            "receiving": ["ACU"],
             "contents": {
                 "ts_status": "Ts_status"
             }
@@ -148,49 +138,6 @@
                 "car_status": "Car_status",
                 "inverter_l": "Inverter_status",
                 "inverter_r": "Inverter_status"
-            }
-        },{
-            "name": "LV_CURRENT",
-            "topic": "ACUnSTEER",
-            "priority": 4,
-            "sending": ["BMS_LV"],
-            "receiving": ["ACU", "STEER"],
-            "contents": {
-                "current": "uint8"
-            }
-        },{
-            "name": "LV_VOLTAGE",
-            "topic": "ACUnSTEER",
-            "priority": 4,
-            "sending": ["BMS_LV"],
-            "receiving": ["ACU", "STEER"],
-            "contents": {
-                "total_voltage": "uint16",
-                "voltage_1": "uint8",
-                "voltage_2": "uint8",
-                "voltage_3": "uint8",
-                "voltage_4": "uint8"
-            }
-        },{
-            "name": "LV_TEMPERATURE",
-            "topic": "ACUnSTEER",
-            "priority": 4,
-            "sending": ["BMS_LV"],
-            "receiving": ["ACU", "STEER"],
-            "contents": {
-                "battery_temperature": "uint16",
-                "dcdc_temperature": "uint8"
-            }
-        },{
-            "name": "COOLING_STATUS",
-            "topic": "ACUnSTEER",
-            "priority": 4,
-            "sending": ["BMS_LV"],
-            "receiving": ["ACU", "STEER"],
-            "contents": {
-                "hv_fan_speed": "uint8",
-                "lv_fan_speed": "uint8",
-                "pump_speed": "uint8"
             }
         }
     ]

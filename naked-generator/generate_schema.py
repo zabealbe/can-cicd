@@ -1,10 +1,33 @@
 from lib.utils import *
 from lib.network import Network
 import sanitized_config as c
+from generators.gen import Generator
+from generators.py_gen.py_gen import Generator as GeneratorPY
+from generators.c_gen.c_gen import Generator as GeneratorC
+
+types = {  # "type": ("bytes_size", "parsing_function")
+    "bool": (1, Generator.add_bool),
+
+    "uint8": (1, Generator.add_uint8),
+    "uint16": (2, Generator.add_uint16),
+    "uint32": (4, Generator.add_uint32),
+    "uint64": (8, Generator.add_uint64),
+
+    "int8": (1, Generator.add_int8),
+    "int16": (2, Generator.add_int16),
+    "int32": (4, Generator.add_int32),
+    "int64": (8, Generator.add_int64),
+
+    "float32": (4, Generator.add_float32),
+    "float64": (8, Generator.add_float64),
+
+    "enum": (1, Generator.add_enum),
+}
+
 
 def generate_schema_from_network(network):
     schema = {
-        "types": {},
+        "enums": {},
         "structs": {}
     }
     for topic_name, _ in network.get_topics().items():
@@ -18,11 +41,8 @@ def generate_schema_from_network(network):
                     else:
                         enum_name = field_name.title()
                     
-                    schema["types"][enum_name] = {
-                        "type": "enum",
-                        "items": field
-                    }
-                    field = enum_name
+                    schema["enums"][enum_name] = field
+                    field = f"enum:{enum_name}"
                 struct[field_name] = field
             if struct:  # Don't allow empty structs
                 schema["structs"][message_name] = struct
