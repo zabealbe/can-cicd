@@ -1,0 +1,29 @@
+#include <assert.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "{{ filename }}.h"
+
+int main() {
+{% for struct in structs %}
+/* {{ struct.name }} */
+    printf("{{ struct.name }}:\n");
+    {% set buffer_name = "buffer_" + struct.name.lower() -%}
+    uint8_t* {{ buffer_name }} = (uint8_t*)malloc(sizeof({{ struct.name }}));
+    
+    {% set struct_name_s = struct.name.lower() + "_s" -%}
+    {{ struct.name }} {{ struct_name_s }} = { {{ ", ".join(random_values(struct)) }} };
+    serialize_{{ struct.name }}({{ read_struct(struct, struct_name_s, ".") }}, {{ buffer_name }}, sizeof({{ struct.name }}));
+    printf("\tSerialized\n\t{{ format_string(struct) }}\n", {{ read_struct(struct, struct_name_s, ".")}});
+    
+    {% set struct_name_d = struct.name.lower() + "_d" -%}
+    {{ struct.name }}* {{ struct_name_d }} = ({{ struct.name }}*)malloc(sizeof({{ struct.name }}));
+    deserialize_{{ struct.name }}({{ buffer_name }}, sizeof({{ struct.name }}), {{ struct_name_d }});
+    printf("\tDeserialized\n\t{{ format_string(struct) }}\n", {{ read_struct(struct, struct_name_d, "->") }});
+    
+    assert(memcmp(&{{ struct_name_s }}, {{ struct_name_d }}, sizeof({{ struct.name }})) == 0);
+    puts("SUCCESS!\n");
+        
+{% endfor -%}
+}

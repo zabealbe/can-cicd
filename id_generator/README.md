@@ -3,7 +3,7 @@ This subproject manages the id generation for all the messages on the CANbus
 # How to use
 ### [Configure your networks](../README.md#how-to-use)
 ### Configure config.py
-:open_file_folder: [id-generator](/id-generator)\
+:open_file_folder: [id_generator](/id_generator)\
 └ :open_file_folder: [config](config)\
 &nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: [config.py](config/config.py)
 
@@ -32,19 +32,19 @@ OUTPUT_FILE is the generated messages ids file, the syntax is as any other path,
 
 Installing pip packages
 ```console
-$ cd id-generator
+$ cd id_generator
 $ pip install -r requirements.txt
 ```
 
 ### Run it!
-Running id-generator
+Running id_generator
 ```console
-$ cd id-generator
+$ cd id_generator
 $ python main.py
 ```
 
 Generated files:\
-:open_file_folder: [id-generator](id-generator)\
+:open_file_folder: [id_generator](id_generator)\
 └ :open_file_folder: out\
 &nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [network name]\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ :page_with_curl: ids.json

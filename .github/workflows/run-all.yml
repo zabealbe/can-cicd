@@ -24,37 +24,41 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run ID generator
       run: |
-        cd id-generator
+        cd id_generator
         pip install -r requirements.txt
         python main.py
-        mkdir -p /tmp/workspace/id-generator/ && cp -R out/* /tmp/workspace/id-generator/
+        mkdir -p /tmp/workspace/id_generator/ && cp -R out/* /tmp/workspace/id_generator/
     - name: Run Flatbuf generator
       run: |
-        cd flatbuf-generator
+        cd flatbuf_generator
+        pip install -r requirements.txt
         python generate_schema.py
         wget -O flatc https://raw.githubusercontent.com/zabealbe/flatc-musl/main/versions/flatc_v1.12.0
         wget -O flatcc https://raw.githubusercontent.com/zabealbe/flatc-musl/main/versions/flatcc_v0.6.0
         chmod +x flatc
         chmod +x flatcc
         python compile_schema.py --flatc ./flatc --flatcc ./flatcc --flatcc-lib-path ../../../external/flatcc
-        mkdir -p /tmp/workspace/flatbuf-generator/ && cp -R out/* /tmp/workspace/flatbuf-generator/
+        mkdir -p /tmp/workspace/flatbuf_generator/ && cp -R out/* /tmp/workspace/flatbuf_generator/
     - name: Naked generator
       run: |
-        cd naked-generator
+        cd naked_generator
+        pip install -r requirements.txt
         python main.py
-        mkdir -p /tmp/workspace/naked-generator/ && cp -R out/* /tmp/workspace/naked-generator/
+        mkdir -p /tmp/workspace/naked_generator/ && cp -R out/* /tmp/workspace/naked_generator/
         # TESTS
         python -m tests.test_all
     - name: Run Includes generator
       run: |
-        cd includes-generator
+        cd includes_generator
+        pip install -r requirements.txt
         python main.py
-        mkdir -p /tmp/workspace/includes-generator/ && cp -R out/* /tmp/workspace/includes-generator/
+        mkdir -p /tmp/workspace/includes_generator/ && cp -R out/* /tmp/workspace/includes_generator/
     - name: Sheet generator
       run: |
-        cd sheet-generator
+        cd sheet_generator
+        pip install -r requirements.txt
         python main.py
-        mkdir -p /tmp/workspace/sheet-generator/ && cp -R out/* /tmp/workspace/sheet-generator/
+        mkdir -p /tmp/workspace/sheet_generator/ && cp -R out/* /tmp/workspace/sheet_generator/
     - name: Include external tools
       run: |
         # flatcc
@@ -68,7 +72,7 @@ jobs:
         ## remove useless stdlib include with flatcc
         rm -r /tmp/workspace/external/flatcc/portable/include
         
-        cp flatbuf-generator/fix_flatcc.py /tmp/workspace/external/
+        cp flatbuf_generator/fix_flatcc.py /tmp/workspace/external/
         cd /tmp/workspace/external/
         python fix_flatcc.py ./flatcc
         rm fix_flatcc.py

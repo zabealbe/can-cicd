@@ -48,14 +48,11 @@ def find_structs(header_file):
 
         if inside_struct:
             if "}" in line:
-                struct.split(";")
-
                 struct_name = line.replace("} ", "").replace(";", "")
-                struct_field_types = [x.split(" ")[0].strip() for x in struct.split(";") if x]
-                struct_field_names = [x.split(" ")[1].strip() for x in struct.split(";") if x]
+                struct_field_types = [x.strip().split(" ")[0].strip() for x in struct.split(";") if x]
+                struct_field_names = [x.strip().split(" ")[1].strip() for x in struct.split(";") if x]
                 
                 structs.append((struct_name, struct_field_types, struct_field_names))
-                
                 # Clean
                 inside_struct = False
                 struct = ""
@@ -145,64 +142,26 @@ def main():
         
     paths = parse_network_multipath(f"{c.OUTPUT_DIR}/[network]")
     for network_name, network_path in paths.items():
-        print(f"====== GENERATING C TESTS FOR {network_name}  ======")
-        code = ""
         includes = ""
 
         headers_dir = f"{network_path}/c"
         source_paths = ""
 
         for header_name in [x for x in os.listdir(headers_dir) if ".h" in x]:
-            header_path = f"{headers_dir}/{header_name}"
-            include_path = f"../c/{header_name}"
+            include_path = f"{header_name}"
             
             source_paths += include_path.replace(".h", ".c") + " "
             includes += f"#include \"{include_path}\"\n"
                         
-            with open(header_path, "r") as h:
-                header = h.read()
-              
-            for struct_name, struct_field_types, struct_field_names in find_structs(header):
-                struct_data = generate_struct_values(struct_field_types)
-                struct_data = ",".join([str(x) for x in struct_data])
-                
-                code_t = WRITE_BUFFER.format(
-                    struct_name=struct_name,
-                    variable_name=struct_name.lower() + "_s",
-                    buffer_name=f"buffer_{struct_name.lower()}",
-                    struct_data="{" + struct_data + "}",
-                    format_string=generate_format_string(struct_field_types),
-                    parameters=generate_read_struct(struct_name.lower() + "_s", struct_field_names, struct_field_types, False),
-                    field_types=struct_field_types
-                )
-                code_t += READ_BUFFER.format(
-                    struct_name=struct_name,
-                    buffer_name=f"buffer_{struct_name.lower()}",
-                    variable_name=struct_name.lower() + "_d",
-                    format_string=generate_format_string(struct_field_types),
-                    parameters=generate_read_struct(struct_name.lower() + "_d", struct_field_names, struct_field_types, True)
-                )
-                code_t += COMPARE_BUFFER.format(
-                    original_struct=struct_name.lower() + "_s",
-                    deserialized_struct=struct_name.lower() + "_d",
-                    struct_name=struct_name
-                )
-
-                for code_line in code_t.split("\n"):
-                    code += f"\t{code_line}\n"            
-        
-        output_dir = f"{c.OUTPUT_DIR}/{network_name}/tests"
-        output_file_path = f"{output_dir}/test_all.c"
+        output_dir = f"{c.OUTPUT_DIR}/{network_name}/c"
+        output_file_path = f"{output_dir}/test.c"
         create_subtree(output_dir)
-        with open(output_file_path, "w") as output_file:
-            output_file.write(skeleton_c.format(includes=includes, code=code.strip()))
-        print(f"DONE\n\n")
-
+        
         print(f"====== RUNNING C TESTS FOR {network_name}  ======")
         stdout, stderr, err_code = run_command(COMPILE_AND_RUN.format(
             input_file=output_file_path,
             output_dir=output_dir,
-            output_file="test_all",
+            output_file="test",
             headers=source_paths),
             verbose=True
         )

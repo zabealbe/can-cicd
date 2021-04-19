@@ -4,11 +4,11 @@ and the interactions with the bus itself
 
 ## Subprojects
 :open_file_folder: project root\
-  ├ :open_file_folder: [id-generator](id-generator)\
-  ├ :open_file_folder: [flatbuf-generator](flatbuf-generator)\
-  ├ :open_file_folder: [naked-generator](naked-generator)\
-  ├ :open_file_folder: [includes-generator](includes-generator)\
-  └ :open_file_folder: [sheet-generator](sheet-generator)
+  ├ :open_file_folder: [id_generator](id_generator)\
+  ├ :open_file_folder: [flatbuf_generator](flatbuf_generator)\
+  ├ :open_file_folder: [naked_generator](naked_generator)\
+  ├ :open_file_folder: [includes_generator](includes_generator)\
+  └ :open_file_folder: [sheet_generator](sheet_generator)
 
 # How to Use
 Before running any of the subprojects you will need to do the following:
@@ -69,7 +69,7 @@ ___
 ```yaml
 "topic": string
 ```
-Required by: [id-generator](id-generator)
+Required by: [id_generator](id_generator)
 
 This field can be the same across **at most 64 messages**, meaning a topic can contain at most 64 messages.
 The characters you should use are all UPPERCASE letters and "_", additionally it can't be named FIXED_IDS as it is
@@ -81,7 +81,7 @@ ___
 ```yaml
 "priority": int
 ```
-Required by: [id-generator](id-generator)
+Required by: [id_generator](id_generator)
 
 This field can can be an **integer from 0 to 7**, the higher the value the more important the message.
 You can have **at most 8 messages** with the same combination of **priority and topic**, if you have more you must create a new topic or assign a different priority to some of them.
@@ -126,7 +126,7 @@ ___
 }
 ```
 
-Required by: [flatbuf-generator](flatbuf-generator)
+Required by: [flatbuf_generator](flatbuf_generator)
 
 
 This field describes the message's payload, can be left empty. The overall size can be **at most 8 bytes**.\
