@@ -3,7 +3,8 @@
 #include <stdio.h>
 
 #include "{{ filename }}.h"
-{% for struct in structs %}
+
+{% for struct in structs -%}
 /* {{ struct.name }} */
 void serialize_{{ struct.name }}({{ ", ".join(parameters(struct)) }}, uint8_t* buffer, size_t buf_len) {
     {{ struct.name }} {{ struct.name.lower() }} = { {{ ", ".join(fill_padding(struct)) }} };

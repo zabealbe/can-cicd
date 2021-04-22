@@ -37,7 +37,7 @@ class Schema:
                         items = custom_type["items"]
                         types[type_name] = Enum(type_name, items)
                     elif type_class == "bitset":
-                        items = []
+                        items = custom_type["items"]
                         types[type_name] = BitSet(type_name, items)
                     
             self.__structs = []
@@ -157,15 +157,28 @@ class Enum(Type):
             name = enum name
             items = [ITEM_NAME, ...]
         """
-        
+
         self.name = name
         self.items = [(item_name, item_index) for item_index, item_name in enumerate(items)]
         self.range = (-128, 127)
         self.precision = 1
-        
+
         super(Enum, self).__init__(1, 1, 8, 1)
-        
-        
+
+class BitSet(Type):
+    def __init__(self, name, items):
+        """
+            name = enum name
+            items = [ITEM_NAME, ...]
+        """
+
+        self.name = name
+        self.range = (-128, 128)
+        self.precision = 1
+        self.items = [(item_name, item_index) for item_index, item_name in enumerate(items)]
+
+        super(BitSet, self).__init__(1, 1, 8, 1)
+
 class Number(Type):
     def __init__(self, range, precision):
         """
@@ -208,19 +221,6 @@ class Bool(Type):
 
         super(Bool, self).__init__(1, 1, 1, 1)
         
-
-class BitSet:
-    def __init__(self, name, items):
-        """
-            name = enum name
-            items = [ITEM_NAME, ...]
-        """
-
-        self.name = name
-        self.items = [(item_name, item_index) for item_index, item_name in enumerate(items)]
-
-        super(BitSet, self).__init__(1, 1, 8, 1)
-
 """
     There is only 1 instance per type, if you modify a type, e.g. the name, the change will propagate
 """

@@ -23,21 +23,21 @@ def generate(schema, prefix, output_path: str, filename: str):
         output_path:
         filename:
     """
-    structs, enums = __parse_schema(copy.copy(schema), prefix)
+    structs, enums, bitsets = __parse_schema(copy.copy(schema), prefix)
     
     utils.create_subtree(output_path)
 
     with open(f"{output_path}/{filename}.h", "w") as f:
-        f.write(__generate_h(structs, enums, filename))
+        f.write(__generate_h(structs, enums, bitsets, filename))
 
     with open(f"{output_path}/{filename}.c", "w") as f:
-        f.write(__generate_c(structs, enums, filename))
+        f.write(__generate_c(structs, enums, bitsets, filename))
         
     with open(f"{output_path}/test.c", "w") as f:
-        f.write(__generate_test_c(structs, enums, filename))
+        f.write(__generate_test_c(structs, enums, bitsets, filename))
 
 
-def __generate_h(structs, enums, filename):
+def __generate_h(structs, enums, bitsets, filename):
     """
     Generates C header file
     """
@@ -48,6 +48,7 @@ def __generate_h(structs, enums, filename):
     code = j2.Template(template_h).render(
         structs=structs,
         enums=enums,
+        bitsets=bitsets,
         endianness_tag=endianness_tag,
         filename=filename,
         zip=zip,
@@ -59,7 +60,7 @@ def __generate_h(structs, enums, filename):
     return code
 
 
-def __generate_c(structs, enums, filename):
+def __generate_c(structs, enums, bitsets, filename):
     """
     Generates C source file
     """
@@ -69,6 +70,7 @@ def __generate_c(structs, enums, filename):
     code = j2.Template(template_c).render(
         structs=structs,
         enums=enums,
+        bitsets=bitsets,
         filename=filename,
         
         parameters=__parameters,
@@ -78,7 +80,7 @@ def __generate_c(structs, enums, filename):
     return code
 
 
-def __generate_test_c(structs, enums, filename):
+def __generate_test_c(structs, enums, bitsets, filename):
     """
     Generates C source file for tests
     """
@@ -88,6 +90,7 @@ def __generate_test_c(structs, enums, filename):
     code = j2.Template(test_template_c).render(
         structs=structs,
         enums=enums,
+        bitsets=bitsets,
         filename=filename,
         
         read_struct=__read_struct,
@@ -116,11 +119,16 @@ def __parse_schema(schema, prefix):
     Returns:
         The structs and other custom types distilled from the schema
     """
+    bitsets = []
     enums = []
     for type_name, custom_type in schema.get_types().items():
         if isinstance(custom_type, s.Enum):
             custom_type.name = f"{prefix}_{custom_type.name}"
             enums.append(custom_type)
+
+        if isinstance(custom_type, s.BitSet):
+            custom_type.name = f"{prefix}_{custom_type.name}"
+            bitsets.append(custom_type)
 
     # Adding fields used for rendering
     structs = []
@@ -128,7 +136,7 @@ def __parse_schema(schema, prefix):
         struct.name = f"{prefix}_{struct.name}"
         structs.append(struct)
             
-    return structs, enums
+    return structs, enums, bitsets
 
 def __fill_padding(struct):
     new_items = []
@@ -179,6 +187,9 @@ def __c_type_name(item_type):
                 return "float"
         
     elif isinstance(item_type, s.Enum):
+        return item_type.name
+    
+    elif isinstance(item_type, s.BitSet):
         return item_type.name
 
 def __format_string(struct):

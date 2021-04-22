@@ -1,6 +1,21 @@
 {
     "network_version": 1.2,
     "max_payload_size": 8,
+    "types": {
+        "Hv_Flags": {
+            "type": "bitset",
+            "items": [
+                "LTC_PEC_ERROR",
+                "CELL_UNDER_VOLTAGE",
+                "CELL_OVER_VOLTAGE",
+                "CELL_OVER_TEMPERATURE",
+                "OVER_CURRENT",
+                "ADC_INIT",
+                "ADC_TIMEOUT",
+                "FEEDBACK"
+            ]
+        }
+    },
     "messages": [
         {
             "name": "TIMESTAMP",
@@ -76,9 +91,8 @@
             "sending": ["BMS_HV"],
             "receiving": ["ACU", "STEER"],
             "contents": {
-                "error_code": "uint8",
-                "error_index": "uint8",
-                "active": "uint8"
+                "warnings": "Hv_Flags",
+                "errors": "Hv_Flags"
             }
         },{
             "name": "TS_STATUS",

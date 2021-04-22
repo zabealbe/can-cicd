@@ -51,7 +51,15 @@ static_assert(sizeof(double) == 8, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPEC
 #else
     #define __is_packed __attribute__((__packed__)) // , __aligned__(1)))
 #endif
-    
+
+{% for bitset in bitsets %}
+typedef struct {
+    {%- for item_name, _ in bitset.items %}
+    bool {{ item_name }}: 1;
+    {%- endfor %}
+} {{ bitset.name }};
+{% endfor -%}
+
 {% for enum in enums %}
 typedef enum __is_packed {
     {%- for item_name, item_value in enum.items %}
