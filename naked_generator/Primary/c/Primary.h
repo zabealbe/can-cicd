@@ -54,19 +54,6 @@ static_assert(sizeof(double) == 8, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPEC
     
 
 typedef enum __is_packed {
-    Primary_Secondary_Sync_State_MAX_START = 0,
-    Primary_Secondary_Sync_State_MAX_END = 1,
-    Primary_Secondary_Sync_State_MIN_START = 2,
-    Primary_Secondary_Sync_State_MIN_END = 3,
-} Primary_Secondary_Sync_State;
-
-typedef enum __is_packed {
-    Primary_Secondary_Pedal_ACCELERATOR = 0,
-    Primary_Secondary_Pedal_BRAKE = 1,
-    Primary_Secondary_Pedal_ALL = 2,
-} Primary_Secondary_Pedal;
-
-typedef enum __is_packed {
     Primary_Tlm_Status_ON = 0,
     Primary_Tlm_Status_OFF = 1,
 } Primary_Tlm_Status;
@@ -98,6 +85,11 @@ typedef enum __is_packed {
 } Primary_Ts_Status;
 
 typedef enum __is_packed {
+    Primary_Ts_Status_Set_OFF = 0,
+    Primary_Ts_Status_Set_ON = 1,
+} Primary_Ts_Status_Set;
+
+typedef enum __is_packed {
     Primary_Traction_Control_OFF = 0,
     Primary_Traction_Control_SLIP_CONTROL = 1,
     Primary_Traction_Control_TORQUE_VECTORING = 2,
@@ -119,9 +111,11 @@ typedef enum __is_packed {
 } Primary_Car_Status_Set;
 
 typedef enum __is_packed {
-    Primary_Ts_Status_Set_OFF = 0,
-    Primary_Ts_Status_Set_ON = 1,
-} Primary_Ts_Status_Set;
+    Primary_Status_CHG_OFF = 0,
+    Primary_Status_CHG_TC = 1,
+    Primary_Status_CHG_CC = 2,
+    Primary_Status_CHG_CV = 3,
+} Primary_Status;
 
 /* Primary_TIMESTAMP */
 typedef struct __is_packed {
@@ -211,6 +205,44 @@ static_assert(sizeof(Primary_HV_ERROR) == 3, "struct size mismatch");
 void serialize_Primary_HV_ERROR(uint8_t error_code, uint8_t error_index, uint8_t active, uint8_t* buffer, size_t buf_len);
 void deserialize_Primary_HV_ERROR(uint8_t* buffer, size_t buf_len, Primary_HV_ERROR* primary_hv_error);
 
+/* Primary_TS_STATUS */
+typedef struct __is_packed {
+    Primary_Ts_Status ts_status;
+} Primary_TS_STATUS;
+static_assert(sizeof(Primary_TS_STATUS) == 1, "struct size mismatch");
+    
+void serialize_Primary_TS_STATUS(Primary_Ts_Status ts_status, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_TS_STATUS(uint8_t* buffer, size_t buf_len, Primary_TS_STATUS* primary_ts_status);
+
+/* Primary_SET_TS_STATUS */
+typedef struct __is_packed {
+    Primary_Ts_Status_Set ts_status_set;
+} Primary_SET_TS_STATUS;
+static_assert(sizeof(Primary_SET_TS_STATUS) == 1, "struct size mismatch");
+    
+void serialize_Primary_SET_TS_STATUS(Primary_Ts_Status_Set ts_status_set, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_SET_TS_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_TS_STATUS* primary_set_ts_status);
+
+/* Primary_STEER_STATUS */
+typedef struct __is_packed {
+    Primary_Traction_Control traction_control;
+    Primary_Map map;
+    bool radio_on;
+} Primary_STEER_STATUS;
+static_assert(sizeof(Primary_STEER_STATUS) == 3, "struct size mismatch");
+    
+void serialize_Primary_STEER_STATUS(Primary_Traction_Control traction_control, Primary_Map map, bool radio_on, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_STEER_STATUS(uint8_t* buffer, size_t buf_len, Primary_STEER_STATUS* primary_steer_status);
+
+/* Primary_SET_CAR_STATUS */
+typedef struct __is_packed {
+    Primary_Car_Status_Set car_status_set;
+} Primary_SET_CAR_STATUS;
+static_assert(sizeof(Primary_SET_CAR_STATUS) == 1, "struct size mismatch");
+    
+void serialize_Primary_SET_CAR_STATUS(Primary_Car_Status_Set car_status_set, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_SET_CAR_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_CAR_STATUS* primary_set_car_status);
+
 /* Primary_LV_CURRENT */
 typedef struct __is_packed {
     uint8_t current;
@@ -255,41 +287,69 @@ static_assert(sizeof(Primary_COOLING_STATUS) == 3, "struct size mismatch");
 void serialize_Primary_COOLING_STATUS(uint8_t hv_fan_speed, uint8_t lv_fan_speed, uint8_t pump_speed, uint8_t* buffer, size_t buf_len);
 void deserialize_Primary_COOLING_STATUS(uint8_t* buffer, size_t buf_len, Primary_COOLING_STATUS* primary_cooling_status);
 
-/* Primary_TS_STATUS */
+/* Primary_HV_CELLS_VOLTAGE */
 typedef struct __is_packed {
-    Primary_Ts_Status ts_status;
-} Primary_TS_STATUS;
-static_assert(sizeof(Primary_TS_STATUS) == 1, "struct size mismatch");
+    uint8_t cell_index;
+    uint8_t __unused_padding_1;
+    uint16_t voltage_0;
+    uint16_t voltage_1;
+    uint16_t voltage_2;
+} Primary_HV_CELLS_VOLTAGE;
+static_assert(sizeof(Primary_HV_CELLS_VOLTAGE) == 8, "struct size mismatch");
     
-void serialize_Primary_TS_STATUS(Primary_Ts_Status ts_status, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_TS_STATUS(uint8_t* buffer, size_t buf_len, Primary_TS_STATUS* primary_ts_status);
+void serialize_Primary_HV_CELLS_VOLTAGE(uint8_t cell_index, uint16_t voltage_0, uint16_t voltage_1, uint16_t voltage_2, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_HV_CELLS_VOLTAGE(uint8_t* buffer, size_t buf_len, Primary_HV_CELLS_VOLTAGE* primary_hv_cells_voltage);
 
-/* Primary_STEER_STATUS */
+/* Primary_HV_CELLS_TEMP */
 typedef struct __is_packed {
-    Primary_Traction_Control traction_control;
-    Primary_Map map;
-    bool radio_on;
-} Primary_STEER_STATUS;
-static_assert(sizeof(Primary_STEER_STATUS) == 3, "struct size mismatch");
+    uint8_t cell_index;
+    uint8_t temp_0;
+    uint8_t temp_1;
+    uint8_t temp_2;
+    uint8_t temp_3;
+    uint8_t temp_4;
+    uint8_t temp_5;
+    uint8_t temp_6;
+} Primary_HV_CELLS_TEMP;
+static_assert(sizeof(Primary_HV_CELLS_TEMP) == 8, "struct size mismatch");
     
-void serialize_Primary_STEER_STATUS(Primary_Traction_Control traction_control, Primary_Map map, bool radio_on, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_STEER_STATUS(uint8_t* buffer, size_t buf_len, Primary_STEER_STATUS* primary_steer_status);
+void serialize_Primary_HV_CELLS_TEMP(uint8_t cell_index, uint8_t temp_0, uint8_t temp_1, uint8_t temp_2, uint8_t temp_3, uint8_t temp_4, uint8_t temp_5, uint8_t temp_6, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_HV_CELLS_TEMP(uint8_t* buffer, size_t buf_len, Primary_HV_CELLS_TEMP* primary_hv_cells_temp);
 
-/* Primary_SET_CAR_STATUS */
+/* Primary_SET_CHG_POWER */
 typedef struct __is_packed {
-    Primary_Car_Status_Set car_status_set;
-} Primary_SET_CAR_STATUS;
-static_assert(sizeof(Primary_SET_CAR_STATUS) == 1, "struct size mismatch");
+    uint16_t current;
+    uint16_t voltage;
+} Primary_SET_CHG_POWER;
+static_assert(sizeof(Primary_SET_CHG_POWER) == 4, "struct size mismatch");
     
-void serialize_Primary_SET_CAR_STATUS(Primary_Car_Status_Set car_status_set, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_SET_CAR_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_CAR_STATUS* primary_set_car_status);
+void serialize_Primary_SET_CHG_POWER(uint16_t current, uint16_t voltage, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_SET_CHG_POWER(uint8_t* buffer, size_t buf_len, Primary_SET_CHG_POWER* primary_set_chg_power);
 
-/* Primary_SET_TS_STATUS */
+/* Primary_CHG_STATUS */
 typedef struct __is_packed {
-    Primary_Ts_Status_Set ts_status_set;
-} Primary_SET_TS_STATUS;
-static_assert(sizeof(Primary_SET_TS_STATUS) == 1, "struct size mismatch");
+    Primary_Status status;
+} Primary_CHG_STATUS;
+static_assert(sizeof(Primary_CHG_STATUS) == 1, "struct size mismatch");
     
-void serialize_Primary_SET_TS_STATUS(Primary_Ts_Status_Set ts_status_set, uint8_t* buffer, size_t buf_len);
-void deserialize_Primary_SET_TS_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_TS_STATUS* primary_set_ts_status);
+void serialize_Primary_CHG_STATUS(Primary_Status status, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_CHG_STATUS(uint8_t* buffer, size_t buf_len, Primary_CHG_STATUS* primary_chg_status);
+
+/* Primary_SET_CHG_STATUS */
+typedef struct __is_packed {
+    Primary_Status status;
+} Primary_SET_CHG_STATUS;
+static_assert(sizeof(Primary_SET_CHG_STATUS) == 1, "struct size mismatch");
+    
+void serialize_Primary_SET_CHG_STATUS(Primary_Status status, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_SET_CHG_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_CHG_STATUS* primary_set_chg_status);
+
+/* Primary_CHG_SETTINGS */
+typedef struct __is_packed {
+    uint8_t v_cutoff;
+} Primary_CHG_SETTINGS;
+static_assert(sizeof(Primary_CHG_SETTINGS) == 1, "struct size mismatch");
+    
+void serialize_Primary_CHG_SETTINGS(uint8_t v_cutoff, uint8_t* buffer, size_t buf_len);
+void deserialize_Primary_CHG_SETTINGS(uint8_t* buffer, size_t buf_len, Primary_CHG_SETTINGS* primary_chg_settings);
 #endif

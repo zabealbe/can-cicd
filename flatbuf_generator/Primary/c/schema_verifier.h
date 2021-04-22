@@ -330,5 +330,125 @@ static inline int COOLING_STATUS_verify_as_root_with_identifier(const void *buf,
     return flatcc_verify_struct_as_root(buf, bufsiz, fid, 3, 1);
 }
 
+static inline int HV_CELLS_VOLTAGE_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, HV_CELLS_VOLTAGE_identifier, 8, 2);
+}
+
+static inline int HV_CELLS_VOLTAGE_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, HV_CELLS_VOLTAGE_type_hash, 8, 2);
+}
+
+static inline int HV_CELLS_VOLTAGE_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 8, 2);
+}
+
+static inline int HV_CELLS_VOLTAGE_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 8, 2);
+}
+
+static inline int HV_CELLS_TEMP_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, HV_CELLS_TEMP_identifier, 8, 1);
+}
+
+static inline int HV_CELLS_TEMP_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, HV_CELLS_TEMP_type_hash, 8, 1);
+}
+
+static inline int HV_CELLS_TEMP_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 8, 1);
+}
+
+static inline int HV_CELLS_TEMP_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 8, 1);
+}
+
+static inline int SET_CHG_POWER_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, SET_CHG_POWER_identifier, 4, 2);
+}
+
+static inline int SET_CHG_POWER_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, SET_CHG_POWER_type_hash, 4, 2);
+}
+
+static inline int SET_CHG_POWER_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 4, 2);
+}
+
+static inline int SET_CHG_POWER_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 4, 2);
+}
+
+static inline int CHG_STATUS_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, CHG_STATUS_identifier, 1, 1);
+}
+
+static inline int CHG_STATUS_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, CHG_STATUS_type_hash, 1, 1);
+}
+
+static inline int CHG_STATUS_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 1, 1);
+}
+
+static inline int CHG_STATUS_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 1, 1);
+}
+
+static inline int SET_CHG_STATUS_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, SET_CHG_STATUS_identifier, 1, 1);
+}
+
+static inline int SET_CHG_STATUS_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, SET_CHG_STATUS_type_hash, 1, 1);
+}
+
+static inline int SET_CHG_STATUS_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 1, 1);
+}
+
+static inline int SET_CHG_STATUS_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 1, 1);
+}
+
+static inline int CHG_SETTINGS_verify_as_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, CHG_SETTINGS_identifier, 1, 1);
+}
+
+static inline int CHG_SETTINGS_verify_as_typed_root(const void *buf, size_t bufsiz)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, CHG_SETTINGS_type_hash, 1, 1);
+}
+
+static inline int CHG_SETTINGS_verify_as_root_with_type_hash(const void *buf, size_t bufsiz, flatbuffers_thash_t thash)
+{
+    return flatcc_verify_struct_as_typed_root(buf, bufsiz, thash, 1, 1);
+}
+
+static inline int CHG_SETTINGS_verify_as_root_with_identifier(const void *buf, size_t bufsiz, const char *fid)
+{
+    return flatcc_verify_struct_as_root(buf, bufsiz, fid, 1, 1);
+}
+
 #include "../../../external/flatcc/flatcc_epilogue.h"
 #endif /* SCHEMA_VERIFIER_H */

@@ -96,4 +96,40 @@ struct COOLING_STATUS {
 	pump_speed: uint8;
 }
 
+struct HV_CELLS_VOLTAGE {
+	cell_index: uint8;
+	voltage_0: uint16;
+	voltage_1: uint16;
+	voltage_2: uint16;
+}
+
+struct HV_CELLS_TEMP {
+	cell_index: uint8;
+	temp_0: uint8;
+	temp_1: uint8;
+	temp_2: uint8;
+	temp_3: uint8;
+	temp_4: uint8;
+	temp_5: uint8;
+	temp_6: uint8;
+}
+
+struct SET_CHG_POWER {
+	current: uint16;
+	voltage: uint16;
+}
+
+enum Status : byte { CHG_OFF, CHG_TC, CHG_CC, CHG_CV }
+struct CHG_STATUS {
+	status: Status;
+}
+
+struct SET_CHG_STATUS {
+	status: Status;
+}
+
+struct CHG_SETTINGS {
+	v_cutoff: uint8;
+}
+
 

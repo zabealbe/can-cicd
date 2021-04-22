@@ -28,7 +28,7 @@
                 }
             }
         },
-        "ACUnSTEER": {
+        "ACUnSTEERnCART": {
             "id": 3,
             "messages": {
                 "HV_VOLTAGE": {
@@ -43,42 +43,70 @@
                 "HV_ERROR": {
                     "id": 259
                 },
-                "LV_CURRENT": {
-                    "id": 867
-                },
-                "LV_VOLTAGE": {
-                    "id": 899
-                },
-                "LV_TEMPERATURE": {
-                    "id": 931
-                },
-                "COOLING_STATUS": {
-                    "id": 963
-                }
-            }
-        },
-        "ACU": {
-            "id": 4,
-            "messages": {
                 "TS_STATUS": {
-                    "id": 4
-                },
-                "STEER_STATUS": {
-                    "id": 36
-                },
-                "SET_CAR_STATUS": {
-                    "id": 68
-                },
-                "GET_CAR_STATUS": {
-                    "id": 100
+                    "id": 3
                 }
             }
         },
         "BMS_HV": {
-            "id": 5,
+            "id": 4,
             "messages": {
                 "SET_TS_STATUS": {
+                    "id": 4
+                }
+            }
+        },
+        "ACU": {
+            "id": 5,
+            "messages": {
+                "STEER_STATUS": {
                     "id": 5
+                },
+                "SET_CAR_STATUS": {
+                    "id": 37
+                },
+                "GET_CAR_STATUS": {
+                    "id": 69
+                }
+            }
+        },
+        "ACUnSTEER": {
+            "id": 6,
+            "messages": {
+                "LV_CURRENT": {
+                    "id": 774
+                },
+                "LV_VOLTAGE": {
+                    "id": 806
+                },
+                "LV_TEMPERATURE": {
+                    "id": 838
+                },
+                "COOLING_STATUS": {
+                    "id": 870
+                }
+            }
+        },
+        "HANDCART": {
+            "id": 7,
+            "messages": {
+                "HV_CELLS_VOLTAGE": {
+                    "id": 519
+                },
+                "HV_CELLS_TEMP": {
+                    "id": 551
+                },
+                "SET_CHG_POWER": {
+                    "id": 263
+                },
+                "CHG_STATUS": {
+                    "id": 7
+                },
+                "SET_CHG_STATUS": {
+                    "id": 39
+                },
+                "CHG_SETTINGS": {
+                    "id": 71
                 }
             }
         }

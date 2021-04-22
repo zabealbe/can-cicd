@@ -41,6 +41,13 @@
                 "FATAL"
             ]
         },
+        "Ts_Status_Set": {
+            "type": "enum",
+            "items": [
+                "OFF",
+                "ON"
+            ]
+        },
         "Traction_Control": {
             "type": "enum",
             "items": [
@@ -68,11 +75,13 @@
                 "RUN"
             ]
         },
-        "Ts_Status_Set": {
+        "Status": {
             "type": "enum",
             "items": [
-                "OFF",
-                "ON"
+                "CHG_OFF",
+                "CHG_TC",
+                "CHG_CC",
+                "CHG_CV"
             ]
         }
     },
@@ -117,6 +126,20 @@
             "error_index": "uint8",
             "active": "uint8"
         },
+        "TS_STATUS": {
+            "ts_status": "Ts_Status"
+        },
+        "SET_TS_STATUS": {
+            "ts_status_set": "Ts_Status_Set"
+        },
+        "STEER_STATUS": {
+            "traction_control": "Traction_Control",
+            "map": "Map",
+            "radio_on": "bool"
+        },
+        "SET_CAR_STATUS": {
+            "car_status_set": "Car_Status_Set"
+        },
         "LV_CURRENT": {
             "current": "uint8"
         },
@@ -136,19 +159,34 @@
             "lv_fan_speed": "uint8",
             "pump_speed": "uint8"
         },
-        "TS_STATUS": {
-            "ts_status": "Ts_Status"
+        "HV_CELLS_VOLTAGE": {
+            "cell_index": "uint8",
+            "voltage_0": "uint16",
+            "voltage_1": "uint16",
+            "voltage_2": "uint16"
         },
-        "STEER_STATUS": {
-            "traction_control": "Traction_Control",
-            "map": "Map",
-            "radio_on": "bool"
+        "HV_CELLS_TEMP": {
+            "cell_index": "uint8",
+            "temp_0": "uint8",
+            "temp_1": "uint8",
+            "temp_2": "uint8",
+            "temp_3": "uint8",
+            "temp_4": "uint8",
+            "temp_5": "uint8",
+            "temp_6": "uint8"
         },
-        "SET_CAR_STATUS": {
-            "car_status_set": "Car_Status_Set"
+        "SET_CHG_POWER": {
+            "current": "uint16",
+            "voltage": "uint16"
         },
-        "SET_TS_STATUS": {
-            "ts_status_set": "Ts_Status_Set"
+        "CHG_STATUS": {
+            "status": "Status"
+        },
+        "SET_CHG_STATUS": {
+            "status": "Status"
+        },
+        "CHG_SETTINGS": {
+            "v_cutoff": "uint8"
         }
     }
 }

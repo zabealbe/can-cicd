@@ -98,6 +98,36 @@ typedef const COOLING_STATUS_t *COOLING_STATUS_struct_t;
 typedef COOLING_STATUS_t *COOLING_STATUS_mutable_struct_t;
 typedef const COOLING_STATUS_t *COOLING_STATUS_vec_t;
 typedef COOLING_STATUS_t *COOLING_STATUS_mutable_vec_t;
+typedef struct HV_CELLS_VOLTAGE HV_CELLS_VOLTAGE_t;
+typedef const HV_CELLS_VOLTAGE_t *HV_CELLS_VOLTAGE_struct_t;
+typedef HV_CELLS_VOLTAGE_t *HV_CELLS_VOLTAGE_mutable_struct_t;
+typedef const HV_CELLS_VOLTAGE_t *HV_CELLS_VOLTAGE_vec_t;
+typedef HV_CELLS_VOLTAGE_t *HV_CELLS_VOLTAGE_mutable_vec_t;
+typedef struct HV_CELLS_TEMP HV_CELLS_TEMP_t;
+typedef const HV_CELLS_TEMP_t *HV_CELLS_TEMP_struct_t;
+typedef HV_CELLS_TEMP_t *HV_CELLS_TEMP_mutable_struct_t;
+typedef const HV_CELLS_TEMP_t *HV_CELLS_TEMP_vec_t;
+typedef HV_CELLS_TEMP_t *HV_CELLS_TEMP_mutable_vec_t;
+typedef struct SET_CHG_POWER SET_CHG_POWER_t;
+typedef const SET_CHG_POWER_t *SET_CHG_POWER_struct_t;
+typedef SET_CHG_POWER_t *SET_CHG_POWER_mutable_struct_t;
+typedef const SET_CHG_POWER_t *SET_CHG_POWER_vec_t;
+typedef SET_CHG_POWER_t *SET_CHG_POWER_mutable_vec_t;
+typedef struct CHG_STATUS CHG_STATUS_t;
+typedef const CHG_STATUS_t *CHG_STATUS_struct_t;
+typedef CHG_STATUS_t *CHG_STATUS_mutable_struct_t;
+typedef const CHG_STATUS_t *CHG_STATUS_vec_t;
+typedef CHG_STATUS_t *CHG_STATUS_mutable_vec_t;
+typedef struct SET_CHG_STATUS SET_CHG_STATUS_t;
+typedef const SET_CHG_STATUS_t *SET_CHG_STATUS_struct_t;
+typedef SET_CHG_STATUS_t *SET_CHG_STATUS_mutable_struct_t;
+typedef const SET_CHG_STATUS_t *SET_CHG_STATUS_vec_t;
+typedef SET_CHG_STATUS_t *SET_CHG_STATUS_mutable_vec_t;
+typedef struct CHG_SETTINGS CHG_SETTINGS_t;
+typedef const CHG_SETTINGS_t *CHG_SETTINGS_struct_t;
+typedef CHG_SETTINGS_t *CHG_SETTINGS_mutable_struct_t;
+typedef const CHG_SETTINGS_t *CHG_SETTINGS_vec_t;
+typedef CHG_SETTINGS_t *CHG_SETTINGS_mutable_vec_t;
 
 #ifndef TIMESTAMP_file_identifier
 #define TIMESTAMP_file_identifier flatbuffers_identifier
@@ -243,6 +273,60 @@ typedef COOLING_STATUS_t *COOLING_STATUS_mutable_vec_t;
 #endif
 #define COOLING_STATUS_type_hash ((flatbuffers_thash_t)0xae335c7b)
 #define COOLING_STATUS_type_identifier "\x7b\x5c\x33\xae"
+#ifndef HV_CELLS_VOLTAGE_file_identifier
+#define HV_CELLS_VOLTAGE_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use HV_CELLS_VOLTAGE_file_identifier */
+#ifndef HV_CELLS_VOLTAGE_identifier
+#define HV_CELLS_VOLTAGE_identifier flatbuffers_identifier
+#endif
+#define HV_CELLS_VOLTAGE_type_hash ((flatbuffers_thash_t)0x65311768)
+#define HV_CELLS_VOLTAGE_type_identifier "\x68\x17\x31\x65"
+#ifndef HV_CELLS_TEMP_file_identifier
+#define HV_CELLS_TEMP_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use HV_CELLS_TEMP_file_identifier */
+#ifndef HV_CELLS_TEMP_identifier
+#define HV_CELLS_TEMP_identifier flatbuffers_identifier
+#endif
+#define HV_CELLS_TEMP_type_hash ((flatbuffers_thash_t)0xb98acf70)
+#define HV_CELLS_TEMP_type_identifier "\x70\xcf\x8a\xb9"
+#ifndef SET_CHG_POWER_file_identifier
+#define SET_CHG_POWER_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use SET_CHG_POWER_file_identifier */
+#ifndef SET_CHG_POWER_identifier
+#define SET_CHG_POWER_identifier flatbuffers_identifier
+#endif
+#define SET_CHG_POWER_type_hash ((flatbuffers_thash_t)0x7c8dab6e)
+#define SET_CHG_POWER_type_identifier "\x6e\xab\x8d\x7c"
+#ifndef CHG_STATUS_file_identifier
+#define CHG_STATUS_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use CHG_STATUS_file_identifier */
+#ifndef CHG_STATUS_identifier
+#define CHG_STATUS_identifier flatbuffers_identifier
+#endif
+#define CHG_STATUS_type_hash ((flatbuffers_thash_t)0x7ceefe86)
+#define CHG_STATUS_type_identifier "\x86\xfe\xee\x7c"
+#ifndef SET_CHG_STATUS_file_identifier
+#define SET_CHG_STATUS_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use SET_CHG_STATUS_file_identifier */
+#ifndef SET_CHG_STATUS_identifier
+#define SET_CHG_STATUS_identifier flatbuffers_identifier
+#endif
+#define SET_CHG_STATUS_type_hash ((flatbuffers_thash_t)0xa97d7557)
+#define SET_CHG_STATUS_type_identifier "\x57\x75\x7d\xa9"
+#ifndef CHG_SETTINGS_file_identifier
+#define CHG_SETTINGS_file_identifier flatbuffers_identifier
+#endif
+/* deprecated, use CHG_SETTINGS_file_identifier */
+#ifndef CHG_SETTINGS_identifier
+#define CHG_SETTINGS_identifier flatbuffers_identifier
+#endif
+#define CHG_SETTINGS_type_hash ((flatbuffers_thash_t)0x1191d021)
+#define CHG_SETTINGS_type_identifier "\x21\xd0\x91\x11"
 
 typedef int8_t Tlm_Status_enum_t;
 __flatbuffers_define_integer_type(Tlm_Status, Tlm_Status_enum_t, 8)
@@ -483,6 +567,35 @@ static inline int Inverter_Status_is_known_value(Inverter_Status_enum_t value)
     case Inverter_Status_OFF: return 1;
     case Inverter_Status_IDLE: return 1;
     case Inverter_Status_ON: return 1;
+    default: return 0;
+    }
+}
+
+typedef int8_t Status_enum_t;
+__flatbuffers_define_integer_type(Status, Status_enum_t, 8)
+#define Status_CHG_OFF ((Status_enum_t)INT8_C(0))
+#define Status_CHG_TC ((Status_enum_t)INT8_C(1))
+#define Status_CHG_CC ((Status_enum_t)INT8_C(2))
+#define Status_CHG_CV ((Status_enum_t)INT8_C(3))
+
+static inline const char *Status_name(Status_enum_t value)
+{
+    switch (value) {
+    case Status_CHG_OFF: return "CHG_OFF";
+    case Status_CHG_TC: return "CHG_TC";
+    case Status_CHG_CC: return "CHG_CC";
+    case Status_CHG_CV: return "CHG_CV";
+    default: return "";
+    }
+}
+
+static inline int Status_is_known_value(Status_enum_t value)
+{
+    switch (value) {
+    case Status_CHG_OFF: return 1;
+    case Status_CHG_TC: return 1;
+    case Status_CHG_CC: return 1;
+    case Status_CHG_CV: return 1;
     default: return 0;
     }
 }
@@ -793,6 +906,124 @@ __flatbuffers_struct_as_root(COOLING_STATUS)
 __flatbuffers_define_struct_scalar_field(COOLING_STATUS, hv_fan_speed, flatbuffers_uint8, uint8_t)
 __flatbuffers_define_struct_scalar_field(COOLING_STATUS, lv_fan_speed, flatbuffers_uint8, uint8_t)
 __flatbuffers_define_struct_scalar_field(COOLING_STATUS, pump_speed, flatbuffers_uint8, uint8_t)
+
+struct HV_CELLS_VOLTAGE {
+    alignas(2) uint8_t cell_index;
+    alignas(2) uint16_t voltage_0;
+    alignas(2) uint16_t voltage_1;
+    alignas(2) uint16_t voltage_2;
+};
+static_assert(sizeof(HV_CELLS_VOLTAGE_t) == 8, "struct size mismatch");
+
+static inline const HV_CELLS_VOLTAGE_t *HV_CELLS_VOLTAGE__const_ptr_add(const HV_CELLS_VOLTAGE_t *p, size_t i) { return p + i; }
+static inline HV_CELLS_VOLTAGE_t *HV_CELLS_VOLTAGE__ptr_add(HV_CELLS_VOLTAGE_t *p, size_t i) { return p + i; }
+static inline HV_CELLS_VOLTAGE_struct_t HV_CELLS_VOLTAGE_vec_at(HV_CELLS_VOLTAGE_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t HV_CELLS_VOLTAGE__size(void) { return 8; }
+static inline size_t HV_CELLS_VOLTAGE_vec_len(HV_CELLS_VOLTAGE_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(HV_CELLS_VOLTAGE)
+
+__flatbuffers_define_struct_scalar_field(HV_CELLS_VOLTAGE, cell_index, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(HV_CELLS_VOLTAGE, voltage_0, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(HV_CELLS_VOLTAGE, voltage_1, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(HV_CELLS_VOLTAGE, voltage_2, flatbuffers_uint16, uint16_t)
+
+struct HV_CELLS_TEMP {
+    alignas(1) uint8_t cell_index;
+    alignas(1) uint8_t temp_0;
+    alignas(1) uint8_t temp_1;
+    alignas(1) uint8_t temp_2;
+    alignas(1) uint8_t temp_3;
+    alignas(1) uint8_t temp_4;
+    alignas(1) uint8_t temp_5;
+    alignas(1) uint8_t temp_6;
+};
+static_assert(sizeof(HV_CELLS_TEMP_t) == 8, "struct size mismatch");
+
+static inline const HV_CELLS_TEMP_t *HV_CELLS_TEMP__const_ptr_add(const HV_CELLS_TEMP_t *p, size_t i) { return p + i; }
+static inline HV_CELLS_TEMP_t *HV_CELLS_TEMP__ptr_add(HV_CELLS_TEMP_t *p, size_t i) { return p + i; }
+static inline HV_CELLS_TEMP_struct_t HV_CELLS_TEMP_vec_at(HV_CELLS_TEMP_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t HV_CELLS_TEMP__size(void) { return 8; }
+static inline size_t HV_CELLS_TEMP_vec_len(HV_CELLS_TEMP_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(HV_CELLS_TEMP)
+
+__flatbuffers_define_struct_scalar_field(HV_CELLS_TEMP, cell_index, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(HV_CELLS_TEMP, temp_0, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(HV_CELLS_TEMP, temp_1, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(HV_CELLS_TEMP, temp_2, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(HV_CELLS_TEMP, temp_3, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(HV_CELLS_TEMP, temp_4, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(HV_CELLS_TEMP, temp_5, flatbuffers_uint8, uint8_t)
+__flatbuffers_define_struct_scalar_field(HV_CELLS_TEMP, temp_6, flatbuffers_uint8, uint8_t)
+
+struct SET_CHG_POWER {
+    alignas(2) uint16_t current;
+    alignas(2) uint16_t voltage;
+};
+static_assert(sizeof(SET_CHG_POWER_t) == 4, "struct size mismatch");
+
+static inline const SET_CHG_POWER_t *SET_CHG_POWER__const_ptr_add(const SET_CHG_POWER_t *p, size_t i) { return p + i; }
+static inline SET_CHG_POWER_t *SET_CHG_POWER__ptr_add(SET_CHG_POWER_t *p, size_t i) { return p + i; }
+static inline SET_CHG_POWER_struct_t SET_CHG_POWER_vec_at(SET_CHG_POWER_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t SET_CHG_POWER__size(void) { return 4; }
+static inline size_t SET_CHG_POWER_vec_len(SET_CHG_POWER_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(SET_CHG_POWER)
+
+__flatbuffers_define_struct_scalar_field(SET_CHG_POWER, current, flatbuffers_uint16, uint16_t)
+__flatbuffers_define_struct_scalar_field(SET_CHG_POWER, voltage, flatbuffers_uint16, uint16_t)
+
+struct CHG_STATUS {
+    alignas(1) Status_enum_t status;
+};
+static_assert(sizeof(CHG_STATUS_t) == 1, "struct size mismatch");
+
+static inline const CHG_STATUS_t *CHG_STATUS__const_ptr_add(const CHG_STATUS_t *p, size_t i) { return p + i; }
+static inline CHG_STATUS_t *CHG_STATUS__ptr_add(CHG_STATUS_t *p, size_t i) { return p + i; }
+static inline CHG_STATUS_struct_t CHG_STATUS_vec_at(CHG_STATUS_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t CHG_STATUS__size(void) { return 1; }
+static inline size_t CHG_STATUS_vec_len(CHG_STATUS_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(CHG_STATUS)
+
+__flatbuffers_define_struct_scalar_field(CHG_STATUS, status, Status, Status_enum_t)
+
+struct SET_CHG_STATUS {
+    alignas(1) Status_enum_t status;
+};
+static_assert(sizeof(SET_CHG_STATUS_t) == 1, "struct size mismatch");
+
+static inline const SET_CHG_STATUS_t *SET_CHG_STATUS__const_ptr_add(const SET_CHG_STATUS_t *p, size_t i) { return p + i; }
+static inline SET_CHG_STATUS_t *SET_CHG_STATUS__ptr_add(SET_CHG_STATUS_t *p, size_t i) { return p + i; }
+static inline SET_CHG_STATUS_struct_t SET_CHG_STATUS_vec_at(SET_CHG_STATUS_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t SET_CHG_STATUS__size(void) { return 1; }
+static inline size_t SET_CHG_STATUS_vec_len(SET_CHG_STATUS_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(SET_CHG_STATUS)
+
+__flatbuffers_define_struct_scalar_field(SET_CHG_STATUS, status, Status, Status_enum_t)
+
+struct CHG_SETTINGS {
+    alignas(1) uint8_t v_cutoff;
+};
+static_assert(sizeof(CHG_SETTINGS_t) == 1, "struct size mismatch");
+
+static inline const CHG_SETTINGS_t *CHG_SETTINGS__const_ptr_add(const CHG_SETTINGS_t *p, size_t i) { return p + i; }
+static inline CHG_SETTINGS_t *CHG_SETTINGS__ptr_add(CHG_SETTINGS_t *p, size_t i) { return p + i; }
+static inline CHG_SETTINGS_struct_t CHG_SETTINGS_vec_at(CHG_SETTINGS_vec_t vec, size_t i)
+__flatbuffers_struct_vec_at(vec, i)
+static inline size_t CHG_SETTINGS__size(void) { return 1; }
+static inline size_t CHG_SETTINGS_vec_len(CHG_SETTINGS_vec_t vec)
+__flatbuffers_vec_len(vec)
+__flatbuffers_struct_as_root(CHG_SETTINGS)
+
+__flatbuffers_define_struct_scalar_field(CHG_SETTINGS, v_cutoff, flatbuffers_uint8, uint8_t)
 
 
 

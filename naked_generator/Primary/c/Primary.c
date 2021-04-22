@@ -92,6 +92,50 @@ void deserialize_Primary_HV_ERROR(uint8_t* buffer, size_t buf_len, Primary_HV_ER
 	memcpy(primary_hv_error, buffer, sizeof(Primary_HV_ERROR));
 }
 
+/* Primary_TS_STATUS */
+void serialize_Primary_TS_STATUS(Primary_Ts_Status ts_status, uint8_t* buffer, size_t buf_len) {
+    Primary_TS_STATUS primary_ts_status = { ts_status };
+	assert(buf_len >= sizeof(Primary_TS_STATUS));
+	memcpy(buffer, &primary_ts_status, sizeof(Primary_TS_STATUS));
+} 
+void deserialize_Primary_TS_STATUS(uint8_t* buffer, size_t buf_len, Primary_TS_STATUS* primary_ts_status) {
+	assert(buf_len >= sizeof(Primary_TS_STATUS));
+	memcpy(primary_ts_status, buffer, sizeof(Primary_TS_STATUS));
+}
+
+/* Primary_SET_TS_STATUS */
+void serialize_Primary_SET_TS_STATUS(Primary_Ts_Status_Set ts_status_set, uint8_t* buffer, size_t buf_len) {
+    Primary_SET_TS_STATUS primary_set_ts_status = { ts_status_set };
+	assert(buf_len >= sizeof(Primary_SET_TS_STATUS));
+	memcpy(buffer, &primary_set_ts_status, sizeof(Primary_SET_TS_STATUS));
+} 
+void deserialize_Primary_SET_TS_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_TS_STATUS* primary_set_ts_status) {
+	assert(buf_len >= sizeof(Primary_SET_TS_STATUS));
+	memcpy(primary_set_ts_status, buffer, sizeof(Primary_SET_TS_STATUS));
+}
+
+/* Primary_STEER_STATUS */
+void serialize_Primary_STEER_STATUS(Primary_Traction_Control traction_control, Primary_Map map, bool radio_on, uint8_t* buffer, size_t buf_len) {
+    Primary_STEER_STATUS primary_steer_status = { traction_control, map, radio_on };
+	assert(buf_len >= sizeof(Primary_STEER_STATUS));
+	memcpy(buffer, &primary_steer_status, sizeof(Primary_STEER_STATUS));
+} 
+void deserialize_Primary_STEER_STATUS(uint8_t* buffer, size_t buf_len, Primary_STEER_STATUS* primary_steer_status) {
+	assert(buf_len >= sizeof(Primary_STEER_STATUS));
+	memcpy(primary_steer_status, buffer, sizeof(Primary_STEER_STATUS));
+}
+
+/* Primary_SET_CAR_STATUS */
+void serialize_Primary_SET_CAR_STATUS(Primary_Car_Status_Set car_status_set, uint8_t* buffer, size_t buf_len) {
+    Primary_SET_CAR_STATUS primary_set_car_status = { car_status_set };
+	assert(buf_len >= sizeof(Primary_SET_CAR_STATUS));
+	memcpy(buffer, &primary_set_car_status, sizeof(Primary_SET_CAR_STATUS));
+} 
+void deserialize_Primary_SET_CAR_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_CAR_STATUS* primary_set_car_status) {
+	assert(buf_len >= sizeof(Primary_SET_CAR_STATUS));
+	memcpy(primary_set_car_status, buffer, sizeof(Primary_SET_CAR_STATUS));
+}
+
 /* Primary_LV_CURRENT */
 void serialize_Primary_LV_CURRENT(uint8_t current, uint8_t* buffer, size_t buf_len) {
     Primary_LV_CURRENT primary_lv_current = { current };
@@ -136,46 +180,68 @@ void deserialize_Primary_COOLING_STATUS(uint8_t* buffer, size_t buf_len, Primary
 	memcpy(primary_cooling_status, buffer, sizeof(Primary_COOLING_STATUS));
 }
 
-/* Primary_TS_STATUS */
-void serialize_Primary_TS_STATUS(Primary_Ts_Status ts_status, uint8_t* buffer, size_t buf_len) {
-    Primary_TS_STATUS primary_ts_status = { ts_status };
-	assert(buf_len >= sizeof(Primary_TS_STATUS));
-	memcpy(buffer, &primary_ts_status, sizeof(Primary_TS_STATUS));
+/* Primary_HV_CELLS_VOLTAGE */
+void serialize_Primary_HV_CELLS_VOLTAGE(uint8_t cell_index, uint16_t voltage_0, uint16_t voltage_1, uint16_t voltage_2, uint8_t* buffer, size_t buf_len) {
+    Primary_HV_CELLS_VOLTAGE primary_hv_cells_voltage = { cell_index, 0x00, voltage_0, voltage_1, voltage_2 };
+	assert(buf_len >= sizeof(Primary_HV_CELLS_VOLTAGE));
+	memcpy(buffer, &primary_hv_cells_voltage, sizeof(Primary_HV_CELLS_VOLTAGE));
 } 
-void deserialize_Primary_TS_STATUS(uint8_t* buffer, size_t buf_len, Primary_TS_STATUS* primary_ts_status) {
-	assert(buf_len >= sizeof(Primary_TS_STATUS));
-	memcpy(primary_ts_status, buffer, sizeof(Primary_TS_STATUS));
+void deserialize_Primary_HV_CELLS_VOLTAGE(uint8_t* buffer, size_t buf_len, Primary_HV_CELLS_VOLTAGE* primary_hv_cells_voltage) {
+	assert(buf_len >= sizeof(Primary_HV_CELLS_VOLTAGE));
+	memcpy(primary_hv_cells_voltage, buffer, sizeof(Primary_HV_CELLS_VOLTAGE));
 }
 
-/* Primary_STEER_STATUS */
-void serialize_Primary_STEER_STATUS(Primary_Traction_Control traction_control, Primary_Map map, bool radio_on, uint8_t* buffer, size_t buf_len) {
-    Primary_STEER_STATUS primary_steer_status = { traction_control, map, radio_on };
-	assert(buf_len >= sizeof(Primary_STEER_STATUS));
-	memcpy(buffer, &primary_steer_status, sizeof(Primary_STEER_STATUS));
+/* Primary_HV_CELLS_TEMP */
+void serialize_Primary_HV_CELLS_TEMP(uint8_t cell_index, uint8_t temp_0, uint8_t temp_1, uint8_t temp_2, uint8_t temp_3, uint8_t temp_4, uint8_t temp_5, uint8_t temp_6, uint8_t* buffer, size_t buf_len) {
+    Primary_HV_CELLS_TEMP primary_hv_cells_temp = { cell_index, temp_0, temp_1, temp_2, temp_3, temp_4, temp_5, temp_6 };
+	assert(buf_len >= sizeof(Primary_HV_CELLS_TEMP));
+	memcpy(buffer, &primary_hv_cells_temp, sizeof(Primary_HV_CELLS_TEMP));
 } 
-void deserialize_Primary_STEER_STATUS(uint8_t* buffer, size_t buf_len, Primary_STEER_STATUS* primary_steer_status) {
-	assert(buf_len >= sizeof(Primary_STEER_STATUS));
-	memcpy(primary_steer_status, buffer, sizeof(Primary_STEER_STATUS));
+void deserialize_Primary_HV_CELLS_TEMP(uint8_t* buffer, size_t buf_len, Primary_HV_CELLS_TEMP* primary_hv_cells_temp) {
+	assert(buf_len >= sizeof(Primary_HV_CELLS_TEMP));
+	memcpy(primary_hv_cells_temp, buffer, sizeof(Primary_HV_CELLS_TEMP));
 }
 
-/* Primary_SET_CAR_STATUS */
-void serialize_Primary_SET_CAR_STATUS(Primary_Car_Status_Set car_status_set, uint8_t* buffer, size_t buf_len) {
-    Primary_SET_CAR_STATUS primary_set_car_status = { car_status_set };
-	assert(buf_len >= sizeof(Primary_SET_CAR_STATUS));
-	memcpy(buffer, &primary_set_car_status, sizeof(Primary_SET_CAR_STATUS));
+/* Primary_SET_CHG_POWER */
+void serialize_Primary_SET_CHG_POWER(uint16_t current, uint16_t voltage, uint8_t* buffer, size_t buf_len) {
+    Primary_SET_CHG_POWER primary_set_chg_power = { current, voltage };
+	assert(buf_len >= sizeof(Primary_SET_CHG_POWER));
+	memcpy(buffer, &primary_set_chg_power, sizeof(Primary_SET_CHG_POWER));
 } 
-void deserialize_Primary_SET_CAR_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_CAR_STATUS* primary_set_car_status) {
-	assert(buf_len >= sizeof(Primary_SET_CAR_STATUS));
-	memcpy(primary_set_car_status, buffer, sizeof(Primary_SET_CAR_STATUS));
+void deserialize_Primary_SET_CHG_POWER(uint8_t* buffer, size_t buf_len, Primary_SET_CHG_POWER* primary_set_chg_power) {
+	assert(buf_len >= sizeof(Primary_SET_CHG_POWER));
+	memcpy(primary_set_chg_power, buffer, sizeof(Primary_SET_CHG_POWER));
 }
 
-/* Primary_SET_TS_STATUS */
-void serialize_Primary_SET_TS_STATUS(Primary_Ts_Status_Set ts_status_set, uint8_t* buffer, size_t buf_len) {
-    Primary_SET_TS_STATUS primary_set_ts_status = { ts_status_set };
-	assert(buf_len >= sizeof(Primary_SET_TS_STATUS));
-	memcpy(buffer, &primary_set_ts_status, sizeof(Primary_SET_TS_STATUS));
+/* Primary_CHG_STATUS */
+void serialize_Primary_CHG_STATUS(Primary_Status status, uint8_t* buffer, size_t buf_len) {
+    Primary_CHG_STATUS primary_chg_status = { status };
+	assert(buf_len >= sizeof(Primary_CHG_STATUS));
+	memcpy(buffer, &primary_chg_status, sizeof(Primary_CHG_STATUS));
 } 
-void deserialize_Primary_SET_TS_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_TS_STATUS* primary_set_ts_status) {
-	assert(buf_len >= sizeof(Primary_SET_TS_STATUS));
-	memcpy(primary_set_ts_status, buffer, sizeof(Primary_SET_TS_STATUS));
+void deserialize_Primary_CHG_STATUS(uint8_t* buffer, size_t buf_len, Primary_CHG_STATUS* primary_chg_status) {
+	assert(buf_len >= sizeof(Primary_CHG_STATUS));
+	memcpy(primary_chg_status, buffer, sizeof(Primary_CHG_STATUS));
+}
+
+/* Primary_SET_CHG_STATUS */
+void serialize_Primary_SET_CHG_STATUS(Primary_Status status, uint8_t* buffer, size_t buf_len) {
+    Primary_SET_CHG_STATUS primary_set_chg_status = { status };
+	assert(buf_len >= sizeof(Primary_SET_CHG_STATUS));
+	memcpy(buffer, &primary_set_chg_status, sizeof(Primary_SET_CHG_STATUS));
+} 
+void deserialize_Primary_SET_CHG_STATUS(uint8_t* buffer, size_t buf_len, Primary_SET_CHG_STATUS* primary_set_chg_status) {
+	assert(buf_len >= sizeof(Primary_SET_CHG_STATUS));
+	memcpy(primary_set_chg_status, buffer, sizeof(Primary_SET_CHG_STATUS));
+}
+
+/* Primary_CHG_SETTINGS */
+void serialize_Primary_CHG_SETTINGS(uint8_t v_cutoff, uint8_t* buffer, size_t buf_len) {
+    Primary_CHG_SETTINGS primary_chg_settings = { v_cutoff };
+	assert(buf_len >= sizeof(Primary_CHG_SETTINGS));
+	memcpy(buffer, &primary_chg_settings, sizeof(Primary_CHG_SETTINGS));
+} 
+void deserialize_Primary_CHG_SETTINGS(uint8_t* buffer, size_t buf_len, Primary_CHG_SETTINGS* primary_chg_settings) {
+	assert(buf_len >= sizeof(Primary_CHG_SETTINGS));
+	memcpy(primary_chg_settings, buffer, sizeof(Primary_CHG_SETTINGS));
 }

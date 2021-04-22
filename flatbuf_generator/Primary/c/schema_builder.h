@@ -44,6 +44,9 @@ __flatbuffers_build_scalar(flatbuffers_, Car_Status, Car_Status_enum_t)
 #define __Inverter_Status_formal_args , Inverter_Status_enum_t v0
 #define __Inverter_Status_call_args , v0
 __flatbuffers_build_scalar(flatbuffers_, Inverter_Status, Inverter_Status_enum_t)
+#define __Status_formal_args , Status_enum_t v0
+#define __Status_call_args , v0
+__flatbuffers_build_scalar(flatbuffers_, Status, Status_enum_t)
 
 #define __TIMESTAMP_formal_args , uint32_t v0
 #define __TIMESTAMP_call_args , v0
@@ -423,6 +426,160 @@ static inline COOLING_STATUS_t *COOLING_STATUS_copy_from_pe(COOLING_STATUS_t *p,
   return p; }
 __flatbuffers_build_struct(flatbuffers_, COOLING_STATUS, 3, 1, COOLING_STATUS_file_identifier, COOLING_STATUS_type_identifier)
 __flatbuffers_define_fixed_array_primitives(flatbuffers_, COOLING_STATUS, COOLING_STATUS_t)
+
+#define __HV_CELLS_VOLTAGE_formal_args , uint8_t v0, uint16_t v1, uint16_t v2, uint16_t v3
+#define __HV_CELLS_VOLTAGE_call_args , v0, v1, v2, v3
+static inline HV_CELLS_VOLTAGE_t *HV_CELLS_VOLTAGE_assign(HV_CELLS_VOLTAGE_t *p, uint8_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->cell_index = v0; p->voltage_0 = v1; p->voltage_1 = v2; p->voltage_2 = v3;
+  return p; }
+static inline HV_CELLS_VOLTAGE_t *HV_CELLS_VOLTAGE_copy(HV_CELLS_VOLTAGE_t *p, const HV_CELLS_VOLTAGE_t *p2)
+{ p->cell_index = p2->cell_index; p->voltage_0 = p2->voltage_0; p->voltage_1 = p2->voltage_1; p->voltage_2 = p2->voltage_2;
+  return p; }
+static inline HV_CELLS_VOLTAGE_t *HV_CELLS_VOLTAGE_assign_to_pe(HV_CELLS_VOLTAGE_t *p, uint8_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->cell_index = v0; flatbuffers_uint16_assign_to_pe(&p->voltage_0, v1); flatbuffers_uint16_assign_to_pe(&p->voltage_1, v2); flatbuffers_uint16_assign_to_pe(&p->voltage_2, v3);
+  return p; }
+static inline HV_CELLS_VOLTAGE_t *HV_CELLS_VOLTAGE_copy_to_pe(HV_CELLS_VOLTAGE_t *p, const HV_CELLS_VOLTAGE_t *p2)
+{ p->cell_index = p2->cell_index; flatbuffers_uint16_copy_to_pe(&p->voltage_0, &p2->voltage_0); flatbuffers_uint16_copy_to_pe(&p->voltage_1, &p2->voltage_1); flatbuffers_uint16_copy_to_pe(&p->voltage_2, &p2->voltage_2);
+  return p; }
+static inline HV_CELLS_VOLTAGE_t *HV_CELLS_VOLTAGE_assign_from_pe(HV_CELLS_VOLTAGE_t *p, uint8_t v0, uint16_t v1, uint16_t v2, uint16_t v3)
+{ p->cell_index = v0; flatbuffers_uint16_assign_from_pe(&p->voltage_0, v1); flatbuffers_uint16_assign_from_pe(&p->voltage_1, v2); flatbuffers_uint16_assign_from_pe(&p->voltage_2, v3);
+  return p; }
+static inline HV_CELLS_VOLTAGE_t *HV_CELLS_VOLTAGE_copy_from_pe(HV_CELLS_VOLTAGE_t *p, const HV_CELLS_VOLTAGE_t *p2)
+{ p->cell_index = p2->cell_index; flatbuffers_uint16_copy_from_pe(&p->voltage_0, &p2->voltage_0); flatbuffers_uint16_copy_from_pe(&p->voltage_1, &p2->voltage_1); flatbuffers_uint16_copy_from_pe(&p->voltage_2, &p2->voltage_2);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, HV_CELLS_VOLTAGE, 8, 2, HV_CELLS_VOLTAGE_file_identifier, HV_CELLS_VOLTAGE_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, HV_CELLS_VOLTAGE, HV_CELLS_VOLTAGE_t)
+
+#define __HV_CELLS_TEMP_formal_args ,\
+  uint8_t v0, uint8_t v1, uint8_t v2, uint8_t v3,\
+  uint8_t v4, uint8_t v5, uint8_t v6, uint8_t v7
+#define __HV_CELLS_TEMP_call_args ,\
+  v0, v1, v2, v3,\
+  v4, v5, v6, v7
+static inline HV_CELLS_TEMP_t *HV_CELLS_TEMP_assign(HV_CELLS_TEMP_t *p,
+  uint8_t v0, uint8_t v1, uint8_t v2, uint8_t v3,
+  uint8_t v4, uint8_t v5, uint8_t v6, uint8_t v7)
+{ p->cell_index = v0; p->temp_0 = v1; p->temp_1 = v2; p->temp_2 = v3;
+  p->temp_3 = v4; p->temp_4 = v5; p->temp_5 = v6; p->temp_6 = v7;
+  return p; }
+static inline HV_CELLS_TEMP_t *HV_CELLS_TEMP_copy(HV_CELLS_TEMP_t *p, const HV_CELLS_TEMP_t *p2)
+{ p->cell_index = p2->cell_index; p->temp_0 = p2->temp_0; p->temp_1 = p2->temp_1; p->temp_2 = p2->temp_2;
+  p->temp_3 = p2->temp_3; p->temp_4 = p2->temp_4; p->temp_5 = p2->temp_5; p->temp_6 = p2->temp_6;
+  return p; }
+static inline HV_CELLS_TEMP_t *HV_CELLS_TEMP_assign_to_pe(HV_CELLS_TEMP_t *p,
+  uint8_t v0, uint8_t v1, uint8_t v2, uint8_t v3,
+  uint8_t v4, uint8_t v5, uint8_t v6, uint8_t v7)
+{ p->cell_index = v0; p->temp_0 = v1; p->temp_1 = v2; p->temp_2 = v3;
+  p->temp_3 = v4; p->temp_4 = v5; p->temp_5 = v6; p->temp_6 = v7;
+  return p; }
+static inline HV_CELLS_TEMP_t *HV_CELLS_TEMP_copy_to_pe(HV_CELLS_TEMP_t *p, const HV_CELLS_TEMP_t *p2)
+{ p->cell_index = p2->cell_index; p->temp_0 = p2->temp_0; p->temp_1 = p2->temp_1; p->temp_2 = p2->temp_2;
+  p->temp_3 = p2->temp_3; p->temp_4 = p2->temp_4; p->temp_5 = p2->temp_5; p->temp_6 = p2->temp_6;
+  return p; }
+static inline HV_CELLS_TEMP_t *HV_CELLS_TEMP_assign_from_pe(HV_CELLS_TEMP_t *p,
+  uint8_t v0, uint8_t v1, uint8_t v2, uint8_t v3,
+  uint8_t v4, uint8_t v5, uint8_t v6, uint8_t v7)
+{ p->cell_index = v0; p->temp_0 = v1; p->temp_1 = v2; p->temp_2 = v3;
+  p->temp_3 = v4; p->temp_4 = v5; p->temp_5 = v6; p->temp_6 = v7;
+  return p; }
+static inline HV_CELLS_TEMP_t *HV_CELLS_TEMP_copy_from_pe(HV_CELLS_TEMP_t *p, const HV_CELLS_TEMP_t *p2)
+{ p->cell_index = p2->cell_index; p->temp_0 = p2->temp_0; p->temp_1 = p2->temp_1; p->temp_2 = p2->temp_2;
+  p->temp_3 = p2->temp_3; p->temp_4 = p2->temp_4; p->temp_5 = p2->temp_5; p->temp_6 = p2->temp_6;
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, HV_CELLS_TEMP, 8, 1, HV_CELLS_TEMP_file_identifier, HV_CELLS_TEMP_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, HV_CELLS_TEMP, HV_CELLS_TEMP_t)
+
+#define __SET_CHG_POWER_formal_args , uint16_t v0, uint16_t v1
+#define __SET_CHG_POWER_call_args , v0, v1
+static inline SET_CHG_POWER_t *SET_CHG_POWER_assign(SET_CHG_POWER_t *p, uint16_t v0, uint16_t v1)
+{ p->current = v0; p->voltage = v1;
+  return p; }
+static inline SET_CHG_POWER_t *SET_CHG_POWER_copy(SET_CHG_POWER_t *p, const SET_CHG_POWER_t *p2)
+{ p->current = p2->current; p->voltage = p2->voltage;
+  return p; }
+static inline SET_CHG_POWER_t *SET_CHG_POWER_assign_to_pe(SET_CHG_POWER_t *p, uint16_t v0, uint16_t v1)
+{ flatbuffers_uint16_assign_to_pe(&p->current, v0); flatbuffers_uint16_assign_to_pe(&p->voltage, v1);
+  return p; }
+static inline SET_CHG_POWER_t *SET_CHG_POWER_copy_to_pe(SET_CHG_POWER_t *p, const SET_CHG_POWER_t *p2)
+{ flatbuffers_uint16_copy_to_pe(&p->current, &p2->current); flatbuffers_uint16_copy_to_pe(&p->voltage, &p2->voltage);
+  return p; }
+static inline SET_CHG_POWER_t *SET_CHG_POWER_assign_from_pe(SET_CHG_POWER_t *p, uint16_t v0, uint16_t v1)
+{ flatbuffers_uint16_assign_from_pe(&p->current, v0); flatbuffers_uint16_assign_from_pe(&p->voltage, v1);
+  return p; }
+static inline SET_CHG_POWER_t *SET_CHG_POWER_copy_from_pe(SET_CHG_POWER_t *p, const SET_CHG_POWER_t *p2)
+{ flatbuffers_uint16_copy_from_pe(&p->current, &p2->current); flatbuffers_uint16_copy_from_pe(&p->voltage, &p2->voltage);
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, SET_CHG_POWER, 4, 2, SET_CHG_POWER_file_identifier, SET_CHG_POWER_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, SET_CHG_POWER, SET_CHG_POWER_t)
+
+#define __CHG_STATUS_formal_args , Status_enum_t v0
+#define __CHG_STATUS_call_args , v0
+static inline CHG_STATUS_t *CHG_STATUS_assign(CHG_STATUS_t *p, Status_enum_t v0)
+{ p->status = v0;
+  return p; }
+static inline CHG_STATUS_t *CHG_STATUS_copy(CHG_STATUS_t *p, const CHG_STATUS_t *p2)
+{ p->status = p2->status;
+  return p; }
+static inline CHG_STATUS_t *CHG_STATUS_assign_to_pe(CHG_STATUS_t *p, Status_enum_t v0)
+{ p->status = v0;
+  return p; }
+static inline CHG_STATUS_t *CHG_STATUS_copy_to_pe(CHG_STATUS_t *p, const CHG_STATUS_t *p2)
+{ p->status = p2->status;
+  return p; }
+static inline CHG_STATUS_t *CHG_STATUS_assign_from_pe(CHG_STATUS_t *p, Status_enum_t v0)
+{ p->status = v0;
+  return p; }
+static inline CHG_STATUS_t *CHG_STATUS_copy_from_pe(CHG_STATUS_t *p, const CHG_STATUS_t *p2)
+{ p->status = p2->status;
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, CHG_STATUS, 1, 1, CHG_STATUS_file_identifier, CHG_STATUS_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, CHG_STATUS, CHG_STATUS_t)
+
+#define __SET_CHG_STATUS_formal_args , Status_enum_t v0
+#define __SET_CHG_STATUS_call_args , v0
+static inline SET_CHG_STATUS_t *SET_CHG_STATUS_assign(SET_CHG_STATUS_t *p, Status_enum_t v0)
+{ p->status = v0;
+  return p; }
+static inline SET_CHG_STATUS_t *SET_CHG_STATUS_copy(SET_CHG_STATUS_t *p, const SET_CHG_STATUS_t *p2)
+{ p->status = p2->status;
+  return p; }
+static inline SET_CHG_STATUS_t *SET_CHG_STATUS_assign_to_pe(SET_CHG_STATUS_t *p, Status_enum_t v0)
+{ p->status = v0;
+  return p; }
+static inline SET_CHG_STATUS_t *SET_CHG_STATUS_copy_to_pe(SET_CHG_STATUS_t *p, const SET_CHG_STATUS_t *p2)
+{ p->status = p2->status;
+  return p; }
+static inline SET_CHG_STATUS_t *SET_CHG_STATUS_assign_from_pe(SET_CHG_STATUS_t *p, Status_enum_t v0)
+{ p->status = v0;
+  return p; }
+static inline SET_CHG_STATUS_t *SET_CHG_STATUS_copy_from_pe(SET_CHG_STATUS_t *p, const SET_CHG_STATUS_t *p2)
+{ p->status = p2->status;
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, SET_CHG_STATUS, 1, 1, SET_CHG_STATUS_file_identifier, SET_CHG_STATUS_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, SET_CHG_STATUS, SET_CHG_STATUS_t)
+
+#define __CHG_SETTINGS_formal_args , uint8_t v0
+#define __CHG_SETTINGS_call_args , v0
+static inline CHG_SETTINGS_t *CHG_SETTINGS_assign(CHG_SETTINGS_t *p, uint8_t v0)
+{ p->v_cutoff = v0;
+  return p; }
+static inline CHG_SETTINGS_t *CHG_SETTINGS_copy(CHG_SETTINGS_t *p, const CHG_SETTINGS_t *p2)
+{ p->v_cutoff = p2->v_cutoff;
+  return p; }
+static inline CHG_SETTINGS_t *CHG_SETTINGS_assign_to_pe(CHG_SETTINGS_t *p, uint8_t v0)
+{ p->v_cutoff = v0;
+  return p; }
+static inline CHG_SETTINGS_t *CHG_SETTINGS_copy_to_pe(CHG_SETTINGS_t *p, const CHG_SETTINGS_t *p2)
+{ p->v_cutoff = p2->v_cutoff;
+  return p; }
+static inline CHG_SETTINGS_t *CHG_SETTINGS_assign_from_pe(CHG_SETTINGS_t *p, uint8_t v0)
+{ p->v_cutoff = v0;
+  return p; }
+static inline CHG_SETTINGS_t *CHG_SETTINGS_copy_from_pe(CHG_SETTINGS_t *p, const CHG_SETTINGS_t *p2)
+{ p->v_cutoff = p2->v_cutoff;
+  return p; }
+__flatbuffers_build_struct(flatbuffers_, CHG_SETTINGS, 1, 1, CHG_SETTINGS_file_identifier, CHG_SETTINGS_type_identifier)
+__flatbuffers_define_fixed_array_primitives(flatbuffers_, CHG_SETTINGS, CHG_SETTINGS_t)
 
 #include "../../../external/flatcc/flatcc_epilogue.h"
 #endif /* SCHEMA_BUILDER_H */
