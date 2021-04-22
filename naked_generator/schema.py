@@ -19,8 +19,32 @@ import abc
     }
 """
 
+"""
+    There is only 1 instance per type, if you modify a type, e.g. the name, the change will propagate
+"""
+types = {}
+
 class Schema:
     def __init__(self, path: str = None, validation_schema: str = None, pack_structs: bool = False):
+        global types
+        types = {
+            "padding": Number((0, 2 ** 8 - 1), 1),
+        
+            "bool": Bool(),
+        
+            "uint8": Number((0, 2 ** 8 - 1), 1),
+            "uint16": Number((0, 2 ** 16 - 1), 1),
+            "uint32": Number((0, 2 ** 32 - 1), 1),
+            "uint64": Number((0, 2 ** 64 - 1), 1),
+        
+            "int8": Number((-2 ** 4, 2 ** 4 - 1), 1),
+            "int16": Number((-2 ** 8, 2 ** 8 - 1), 1),
+            "int32": Number((-2 ** 16, 2 ** 16 - 1), 1),
+            "int64": Number((-2 ** 32, 2 ** 32 - 1), 1),
+        
+            "float32": Number((-2 ** 32, 2 ** 32 - 1), 0.001),
+            "float64": Number((-2 ** 32, 2 ** 32 - 1), 0.001)
+        }
         with Logger.push_context(f"In file {path}\n\t{{message}}"):
             self.path = path
             schema = utils.load_json(self.path, validation_schema)
@@ -36,9 +60,6 @@ class Schema:
                     elif type_class == "enum":
                         items = custom_type["items"]
                         types[type_name] = Enum(type_name, items)
-                    elif type_class == "bitset":
-                        items = []
-                        types[type_name] = BitSet(type_name, items)
                     
             self.__structs = []
             for struct_name, struct_fields in schema["structs"].items():  
@@ -207,38 +228,3 @@ class Bool(Type):
         self.precision = 1
 
         super(Bool, self).__init__(1, 1, 1, 1)
-        
-
-class BitSet:
-    def __init__(self, name, items):
-        """
-            name = enum name
-            items = [ITEM_NAME, ...]
-        """
-
-        self.name = name
-        self.items = [(item_name, item_index) for item_index, item_name in enumerate(items)]
-
-        super(BitSet, self).__init__(1, 1, 8, 1)
-
-"""
-    There is only 1 instance per type, if you modify a type, e.g. the name, the change will propagate
-"""
-types = {
-    "padding": Number((0, 2 ** 8 - 1), 1),
-
-    "bool": Bool(),
-
-    "uint8": Number((0, 2 ** 8 - 1), 1),
-    "uint16": Number((0, 2 ** 16 - 1), 1),
-    "uint32": Number((0, 2 ** 32 - 1), 1),
-    "uint64": Number((0, 2 ** 64 - 1), 1),
-
-    "int8": Number((-2 ** 4, 2 ** 4 - 1), 1),
-    "int16": Number((-2 ** 8, 2 ** 8 - 1), 1),
-    "int32": Number((-2 ** 16, 2 ** 16 - 1), 1),
-    "int64": Number((-2 ** 32, 2 ** 32 - 1), 1),
-
-    "float32": Number((-2 ** 32, 2 ** 32 - 1), 0.001),
-    "float64": Number((-2 ** 32, 2 ** 32 - 1), 0.001)
-}
