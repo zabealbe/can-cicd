@@ -418,7 +418,9 @@
             "contents": {
                 "status": [
                     "CHG_OFF",
-                    "CHG_ON"
+                    "CHG_TC",
+                    "CHG_CC",
+                    "CHG_CV"
                 ]
             }
         },
