@@ -28,17 +28,6 @@ jobs:
         pip install -r requirements.txt
         python main.py
         mkdir -p /tmp/workspace/id_generator/ && cp -R out/* /tmp/workspace/id_generator/
-    - name: Run Flatbuf generator
-      run: |
-        cd flatbuf_generator
-        pip install -r requirements.txt
-        python generate_schema.py
-        wget -O flatc https://raw.githubusercontent.com/zabealbe/flatc-musl/main/versions/flatc_v1.12.0
-        wget -O flatcc https://raw.githubusercontent.com/zabealbe/flatc-musl/main/versions/flatcc_v0.6.0
-        chmod +x flatc
-        chmod +x flatcc
-        python compile_schema.py --flatc ./flatc --flatcc ./flatcc --flatcc-lib-path ../../../external/flatcc
-        mkdir -p /tmp/workspace/flatbuf_generator/ && cp -R out/* /tmp/workspace/flatbuf_generator/
     - name: Naked generator
       run: |
         cd naked_generator
