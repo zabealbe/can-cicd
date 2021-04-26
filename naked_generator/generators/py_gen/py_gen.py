@@ -9,15 +9,15 @@ __TEST_TEMPLATE_PY = os.path.dirname(__file__) + "/template.py.j2"
 
 
 def generate(schema, output_path: str, filename: str):
-    structs, enums = __parse_schema(schema)
+    structs, enums, bitsets = __parse_schema(schema)
 
     utils.create_subtree(output_path)
     print(output_path)
     with open(f"{output_path}/{filename}.py", "w") as f:
-        f.write(__generate_py(structs, enums))
+        f.write(__generate_py(structs, enums, bitsets))
 
 
-def __generate_py(structs, enums):
+def __generate_py(structs, enums, bitsets):
     endianness_tag = "<" if c.IS_LITTLE_ENDIAN else ">"
     with open(__TEST_TEMPLATE_PY, "r") as f:
         skeleton_py = f.read()
@@ -25,6 +25,7 @@ def __generate_py(structs, enums):
     code = j2.Template(skeleton_py).render(
         structs=structs,
         enums=enums,
+        bitsets=bitsets,
         format_string=__to_schema,
         endianness_tag=endianness_tag,
         fill_padding=__fill_padding
@@ -57,11 +58,15 @@ def __parse_schema(schema):
         structs.append(new_struct)
 
     enums = []
+    bitsets = []
     for type_name, custom_type in schema.get_types().items():
         if isinstance(custom_type, s.Enum):
             enums.append(custom_type)
 
-    return structs, enums
+        if isinstance(custom_type, s.BitSet):
+            bitsets.append(custom_type)
+            
+    return structs, enums, bitsets
 
 
 def __fill_padding(items):

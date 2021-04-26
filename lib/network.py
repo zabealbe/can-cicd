@@ -17,6 +17,7 @@ class Network:
         self.ids_path = None
         self.name = name
         self.messages = {}
+        self.types = {}
         self.topics = {}
         self.name_index = {}
         self.version = None
@@ -35,6 +36,8 @@ class Network:
         self.version = network["network_version"]
         self.max_payload_size = network["max_payload_size"]
 
+        self.types = network["types"] if "types" in network else {}
+        
         for message in network["messages"]:
             message_name = message.pop("name")
             if "topic" in message:
@@ -123,3 +126,6 @@ class Network:
             return self.messages[name]
         except KeyError:
             return {}
+        
+    def get_types(self):
+        return self.types

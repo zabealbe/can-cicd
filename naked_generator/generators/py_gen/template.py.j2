@@ -2,15 +2,24 @@ from enum import Enum
 from struct import pack, unpack
 from collections import namedtuple
 
+{%- for bitset in bitsets %}
+
+class {{ bitset.name }}:
+    {%- for item_name, item_value in bitset.items %}
+    {{ item_name }} = {{ "0b{:b}".format(item_value) }}
+    {%- endfor %}
+
+{%- endfor %}
+
 {%- for enum in enums %}
-
-
+    
 class {{ enum.name }}(Enum):
     {%- for item_name, item_value in enum.items %}
     {{ item_name }} = {{ item_value }}
     {%- endfor %}
-
+    
 {%- endfor %}
+
 {% for struct in structs -%}
 {%- set class_name = struct.name %}
 # {{ class_name }}

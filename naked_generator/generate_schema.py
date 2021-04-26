@@ -8,6 +8,7 @@ def generate_schema_from_network(network):
         "structs": {}
     }
     for topic_name, _ in network.get_topics().items():
+        schema["types"] = network.get_types()
         for message_name, message_contents in network.get_messages_by_topic(topic_name).items():
             struct = {}
             for field_name, field in message_contents["contents"].items():
