@@ -52,12 +52,28 @@ static_assert(sizeof(double) == 8, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPEC
     #define __is_packed __attribute__((__packed__)) // , __aligned__(1)))
 #endif
 
-{% for bitset in bitsets %}
-typedef struct {
-    {%- for item_name, _ in bitset.items %}
-    bool {{ item_name }}: 1;
+#define setBit(bitset, index, value) \
+do { \
+    bitset[index/8] &= ~( 1 << index % 8); \
+    bitset[index/8] |=  (value << index % 8); \
+} while(0);
+#define flipBit(bitset, index) (bitset[index/8] ^= (1 << index % 8) )
+#define getBit(bitset, index)  (bitset[index/8] &  (1 << index % 8) )
+
+{% for bitset in bitsets -%}
+typedef uint8_t {{ bitset.name }}[{{ bitset.size_bytes }}];
+#define {{ bitset.name }}_default { {{ ','.join(['0']*bitset.size_bytes) }} }
+    {% for item_name, item_value in bitset.items %}
+#define {{ bitset.name }}_{{ item_name }} {{ item_value }}
     {%- endfor %}
-} {{ bitset.name }};
+{% endfor -%}
+
+{% for enum in enums %}
+typedef enum __is_packed {
+    {%- for item_name, item_value in enum.items %}
+    {{ enum.name }}_{{ item_name }} = {{ item_value }},
+    {%- endfor %}
+} {{ enum.name }};
 {% endfor -%}
 
 {% for enum in enums %}
@@ -77,7 +93,7 @@ typedef struct __is_packed {
 } {{ struct.name }};
 static_assert(sizeof({{ struct.name }}) == {{ struct.size_bytes }}, "struct size mismatch");
     
-void serialize_{{ struct.name }}({{ ", ".join(parameters(struct)) }}, uint8_t* buffer, size_t buf_len);
+void serialize_{{ struct.name }}(uint8_t* buffer, size_t buf_len, {{ ", ".join(parameters(struct)) }});
 void deserialize_{{ struct.name }}(uint8_t* buffer, size_t buf_len, {{ struct.name }}* {{ struct.name.lower() }});
 {% endfor -%}
 

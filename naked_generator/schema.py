@@ -50,6 +50,7 @@ class Schema:
     
     def get_types(self):
         return types
+    
 
 class Type(abc.ABC):
     def __init__(self, size_bytes, size_bytes_packed, size_bits, alignment):

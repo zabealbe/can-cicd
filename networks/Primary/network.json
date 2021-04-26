@@ -85,8 +85,8 @@
                 "min_temp": "uint16"
             }
         },{
-            "name": "HV_ERROR",
-            "topic": "ACUnSTEER",
+            "name": "HV_ERRORS",
+            "topic": "ACUnSTEERnCART",
             "priority": 6,
             "sending": ["BMS_HV"],
             "receiving": ["ACU", "STEER"],
