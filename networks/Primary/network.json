@@ -21,8 +21,16 @@
             "name": "TIMESTAMP",
             "topic": "BROADCAST",
             "priority": 1,
-            "sending": ["TLM"],
-            "receiving": ["STEER","BMS_HV","BMS_LV","ECU","PEDALS"],
+            "sending": [
+                "TLM"
+            ],
+            "receiving": [
+                "STEER",
+                "BMS_HV",
+                "BMS_LV",
+                "ECU",
+                "PEDALS"
+            ],
             "contents": {
                 "timestamp": "uint32"
             }
@@ -31,54 +39,100 @@
             "name": "TLM_STATUS",
             "topic": "STEER",
             "priority": 6,
-            "sending": ["TLM"],
-            "receiving": ["STEER"],
+            "sending": [
+                "TLM"
+            ],
+            "receiving": [
+                "STEER"
+            ],
             "contents": {
-                "tlm_status": ["ON", "OFF"],
-                "race_type": ["ACCELERATION", "SKIDPAD", "AUTOCROSS", "ENDURANCE"],
+                "tlm_status": [
+                    "ON",
+                    "OFF"
+                ],
+                "race_type": [
+                    "ACCELERATION",
+                    "SKIDPAD",
+                    "AUTOCROSS",
+                    "ENDURANCE"
+                ],
                 "driver": "uint8",
                 "circuit": "uint8"
             }
-        },{
+        },
+        {
             "name": "SET_TLM_STATUS",
             "topic": "TLM",
             "priority": 6,
-            "sending": ["STEER"],
-            "receiving": ["TLM"],
+            "sending": [
+                "STEER"
+            ],
+            "receiving": [
+                "TLM"
+            ],
             "contents": {
-                "tlm_status": ["ON", "OFF"],
-                "race_type": ["ACCELERATION", "SKIDPAD", "AUTOCROSS", "ENDURANCE"],
+                "tlm_status": [
+                    "ON",
+                    "OFF"
+                ],
+                "race_type": [
+                    "ACCELERATION",
+                    "SKIDPAD",
+                    "AUTOCROSS",
+                    "ENDURANCE"
+                ],
                 "driver": "uint8",
                 "circuit": "uint8"
             }
-        },{
+        },
+        {
             "name": "HV_VOLTAGE",
-            "topic": "ACUnSTEER",
+            "topic": "ACUnSTEERnCART",
             "priority": 4,
-            "sending": ["BMS_HV"],
-            "receiving": ["ACU", "STEER"],
+            "sending": [
+                "BMS_HV"
+            ],
+            "receiving": [
+                "ACU",
+                "STEER",
+                "HANDCART"
+            ],
             "contents": {
                 "pack_voltage": "uint16",
                 "bus_voltage": "uint16",
                 "max_cell_voltage": "uint16",
                 "min_cell_voltage": "uint16"
             }
-        },{
+        },
+        {
             "name": "HV_CURRENT",
-            "topic": "ACUnSTEER",
+            "topic": "ACUnSTEERnCART",
             "priority": 4,
-            "sending": ["BMS_HV"],
-            "receiving": ["ACU", "STEER"],
+            "sending": [
+                "BMS_HV"
+            ],
+            "receiving": [
+                "ACU",
+                "STEER",
+                "HANDCART"
+            ],
             "contents": {
                 "current": "uint16",
                 "power": "int16"
             }
-        },{
+        },
+        {
             "name": "HV_TEMP",
-            "topic": "ACUnSTEER",
+            "topic": "ACUnSTEERnCART",
             "priority": 4,
-            "sending": ["BMS_HV"],
-            "receiving": ["ACU", "STEER"],
+            "sending": [
+                "BMS_HV"
+            ],
+            "receiving": [
+                "ACU",
+                "STEER",
+                "HANDCART"
+            ],
             "contents": {
                 "average_temp": "uint16",
                 "max_temp": "uint16",
@@ -88,84 +142,169 @@
             "name": "HV_ERRORS",
             "topic": "ACUnSTEERnCART",
             "priority": 6,
-            "sending": ["BMS_HV"],
-            "receiving": ["ACU", "STEER"],
+            "sending": [
+                "BMS_HV"
+            ],
+            "receiving": [
+                "ACU",
+                "STEER",
+                "HANDCART"
+            ],
             "contents": {
                 "warnings": "Hv_Flags",
                 "errors": "Hv_Flags"
             }
-        },{
+        },
+        {
             "name": "TS_STATUS",
-            "topic": "ACU",
+            "topic": "ACUnSTEERnCART",
             "priority": 7,
-            "sending": ["BMS_HV"],
-            "receiving": ["ACU", "STEER"],
+            "sending": [
+                "BMS_HV"
+            ],
+            "receiving": [
+                "ACU",
+                "STEER",
+                "HANDCART"
+            ],
             "contents": {
-                "ts_status": ["OFF", "PRECHARGE", "ON", "FATAL"]
+                "ts_status": [
+                    "OFF",
+                    "PRECHARGE",
+                    "ON",
+                    "FATAL"
+                ]
             }
-        },{
+        },
+        {
             "name": "SET_TS_STATUS",
             "topic": "BMS_HV",
             "priority": 7,
-            "sending": ["ACU"],
-            "receiving": ["BMS_HV"],
+            "sending": [
+                "ACU",
+                "HANDCART"
+            ],
+            "receiving": [
+                "BMS_HV"
+            ],
             "contents": {
-                "ts_status_set": ["OFF", "ON"]
+                "ts_status_set": [
+                    "OFF",
+                    "ON"
+                ]
             }
-        },{
+        },
+        {
             "name": "STEER_STATUS",
             "topic": "ACU",
             "priority": 7,
-            "sending": ["STEER"],
-            "receiving": ["ACU"],
+            "sending": [
+                "STEER"
+            ],
+            "receiving": [
+                "ACU"
+            ],
             "contents": {
-                "traction_control": ["OFF", "SLIP_CONTROL", "TORQUE_VECTORING", "COMPLETE"],
-                "map": ["R", "D20", "D40", "D60", "D80", "D100"],
+                "traction_control": [
+                    "OFF",
+                    "SLIP_CONTROL",
+                    "TORQUE_VECTORING",
+                    "COMPLETE"
+                ],
+                "map": [
+                    "R",
+                    "D20",
+                    "D40",
+                    "D60",
+                    "D80",
+                    "D100"
+                ],
                 "radio_on": "bool"
             }
-        },{
+        },
+        {
             "name": "SET_CAR_STATUS",
             "topic": "ACU",
             "priority": 7,
-            "sending": ["STEER"],
-            "receiving": ["ACU"],
+            "sending": [
+                "STEER"
+            ],
+            "receiving": [
+                "ACU"
+            ],
             "contents": {
-                "car_status_set": ["IDLE", "RUN"]
+                "car_status_set": [
+                    "IDLE",
+                    "RUN"
+                ]
             }
-        },{
+        },
+        {
             "name": "GET_CAR_STATUS",
             "topic": "ACU",
             "priority": 7,
-            "sending": ["STEER"],
-            "receiving": ["ACU"],
-            "contents": {
-            }
-        },{
+            "sending": [
+                "STEER"
+            ],
+            "receiving": [
+                "ACU"
+            ],
+            "contents": {}
+        },
+        {
             "name": "CAR_STATUS",
             "topic": "STEER",
             "priority": 7,
-            "sending": ["ACU"],
-            "receiving": ["STEER"],
+            "sending": [
+                "ACU"
+            ],
+            "receiving": [
+                "STEER"
+            ],
             "contents": {
-                "car_status": ["IDLE", "SETUP", "RUN"],
-                "Inverter_status: inverter_l": ["OFF", "IDLE", "ON"],
-                "Inverter_status: inverter_r": ["OFF", "IDLE", "ON"]
+                "car_status": [
+                    "IDLE",
+                    "SETUP",
+                    "RUN"
+                ],
+                "Inverter_status: inverter_l": [
+                    "OFF",
+                    "IDLE",
+                    "ON"
+                ],
+                "Inverter_status: inverter_r": [
+                    "OFF",
+                    "IDLE",
+                    "ON"
+                ]
             }
-        },{
+        },
+        {
             "name": "LV_CURRENT",
             "topic": "ACUnSTEER",
             "priority": 4,
-            "sending": ["BMS_LV"],
-            "receiving": ["ACU", "STEER"],
+            "sending": [
+                "BMS_LV"
+            ],
+            "receiving": [
+                "ACU",
+                "STEER"
+            ],
             "contents": {
                 "current": "uint8"
             }
-        },{
+        },
+        {
             "name": "LV_VOLTAGE",
             "topic": "ACUnSTEER",
             "priority": 4,
-            "sending": ["BMS_LV"],
-            "receiving": ["ACU", "STEER"],
+            "sending": [
+                "BMS_LV"
+            ],
+            "receiving": [
+                "ACU",
+                "STEER"
+            ],
             "contents": {
                 "total_voltage": "uint16",
                 "voltage_1": "uint8",
@@ -173,26 +312,143 @@
                 "voltage_3": "uint8",
                 "voltage_4": "uint8"
             }
-        },{
+        },
+        {
             "name": "LV_TEMPERATURE",
             "topic": "ACUnSTEER",
             "priority": 4,
-            "sending": ["BMS_LV"],
-            "receiving": ["ACU", "STEER"],
+            "sending": [
+                "BMS_LV"
+            ],
+            "receiving": [
+                "ACU",
+                "STEER"
+            ],
             "contents": {
                 "battery_temperature": "uint16",
                 "dcdc_temperature": "uint8"
             }
-        },{
+        },
+        {
             "name": "COOLING_STATUS",
             "topic": "ACUnSTEER",
             "priority": 4,
-            "sending": ["BMS_LV"],
-            "receiving": ["ACU", "STEER"],
+            "sending": [
+                "BMS_LV"
+            ],
+            "receiving": [
+                "ACU",
+                "STEER"
+            ],
             "contents": {
                 "hv_fan_speed": "uint8",
                 "lv_fan_speed": "uint8",
                 "pump_speed": "uint8"
+            }
+        },
+        {
+            "name": "HV_CELLS_VOLTAGE",
+            "topic": "HANDCART",
+            "priority": 5,
+            "sending": [
+                "BMS_HV"
+            ],
+            "receiving": [
+                "HANDCART"
+            ],
+            "contents": {
+                "cell_index": "uint8",
+                "voltage_0": "uint16",
+                "voltage_1": "uint16",
+                "voltage_2": "uint16"
+            }
+        },
+        {
+            "name": "HV_CELLS_TEMP",
+            "topic": "HANDCART",
+            "priority": 5,
+            "sending": [
+                "BMS_HV"
+            ],
+            "receiving": [
+                "HANDCART"
+            ],
+            "contents": {
+                "cell_index": "uint8",
+                "temp_0": "uint8",
+                "temp_1": "uint8",
+                "temp_2": "uint8",
+                "temp_3": "uint8",
+                "temp_4": "uint8",
+                "temp_5": "uint8",
+                "temp_6": "uint8"
+            }
+        },
+        {
+            "name": "SET_CHG_POWER",
+            "topic": "HANDCART",
+            "priority": 6,
+            "sending": [
+                "BMS_HV"
+            ],
+            "receiving": [
+                "HANDCART"
+            ],
+            "contents": {
+                "current": "uint16",
+                "voltage": "uint16"
+            }
+        },
+        {
+            "name": "CHG_STATUS",
+            "topic": "HANDCART",
+            "priority": 7,
+            "sending": [
+                "BMS_HV"
+            ],
+            "receiving": [
+                "HANDCART"
+            ],
+            "contents": {
+                "status": [
+                    "CHG_OFF",
+                    "CHG_TC",
+                    "CHG_CC",
+                    "CHG_CV"
+                ]
+            }
+        },
+        {
+            "name": "SET_CHG_STATUS",
+            "topic": "HANDCART",
+            "priority": 7,
+            "sending": [
+                "HANDCART"
+            ],
+            "receiving": [
+                "BMS_HV"
+            ],
+            "contents": {
+                "status": [
+                    "CHG_OFF",
+                    "CHG_TC",
+                    "CHG_CC",
+                    "CHG_CV"
+                ]
+            }
+        },
+        {
+            "name": "CHG_SETTINGS",
+            "topic": "HANDCART",
+            "priority": 7,
+            "sending": [
+                "HANDCART"
+            ],
+            "receiving": [
+                "BMS_HV"
+            ],
+            "contents": {
+                "v_cutoff": "uint8"
             }
         }
     ]
