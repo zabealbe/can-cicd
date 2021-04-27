@@ -1,5 +1,34 @@
 {
     "types": {
+        "Hv_Errors": {
+            "type": "bitset",
+            "items": [
+                "LTC_PEC_ERROR",
+                "CELL_UNDER_VOLTAGE",
+                "CELL_OVER_VOLTAGE",
+                "CELL_OVER_TEMPERATURE",
+                "OVER_CURRENT",
+                "ADC_INIT",
+                "ADC_TIMEOUT",
+                "FEEDBACK"
+            ]
+        },
+        "Hv_Warnings": {
+            "type": "bitset",
+            "items": [
+                "LTC_PEC_ERROR",
+                "CELL_UNDER_VOLTAGE",
+                "CELL_OVER_VOLTAGE",
+                "CELL_OVER_TEMPERATURE",
+                "OVER_CURRENT",
+                "ADC_INIT",
+                "ADC_TIMEOUT",
+                "FEEDBACK",
+                "FEEDBACK2",
+                "FEEDBACK4",
+                "FEEDBACK1"
+            ]
+        },
         "Tlm_Status": {
             "type": "enum",
             "items": [
@@ -121,10 +150,9 @@
             "max_temp": "uint16",
             "min_temp": "uint16"
         },
-        "HV_ERROR": {
-            "error_code": "uint8",
-            "error_index": "uint8",
-            "active": "uint8"
+        "HV_ERRORS": {
+            "warnings": "Hv_Errors",
+            "errors": "Hv_Warnings"
         },
         "TS_STATUS": {
             "ts_status": "Ts_Status"

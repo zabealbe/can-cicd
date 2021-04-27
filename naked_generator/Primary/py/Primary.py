@@ -2,50 +2,65 @@ from enum import Enum
 from struct import pack, unpack
 from collections import namedtuple
 
+class Hv_Errors:
+    LTC_PEC_ERROR = 0b0
+    CELL_UNDER_VOLTAGE = 0b1
+    CELL_OVER_VOLTAGE = 0b10
+    CELL_OVER_TEMPERATURE = 0b11
+    OVER_CURRENT = 0b100
+    ADC_INIT = 0b101
+    ADC_TIMEOUT = 0b110
+    FEEDBACK = 0b111
 
+class Hv_Warnings:
+    LTC_PEC_ERROR = 0b0
+    CELL_UNDER_VOLTAGE = 0b1
+    CELL_OVER_VOLTAGE = 0b10
+    CELL_OVER_TEMPERATURE = 0b11
+    OVER_CURRENT = 0b100
+    ADC_INIT = 0b101
+    ADC_TIMEOUT = 0b110
+    FEEDBACK = 0b111
+    FEEDBACK2 = 0b1000
+    FEEDBACK4 = 0b1001
+    FEEDBACK1 = 0b1010
+    
 class Tlm_Status(Enum):
     ON = 0
     OFF = 1
-
-
+    
 class Race_Type(Enum):
     ACCELERATION = 0
     SKIDPAD = 1
     AUTOCROSS = 2
     ENDURANCE = 3
-
-
+    
 class Car_Status(Enum):
     IDLE = 0
     SETUP = 1
     RUN = 2
-
-
+    
 class Inverter_Status(Enum):
     OFF = 0
     IDLE = 1
     ON = 2
-
-
+    
 class Ts_Status(Enum):
     OFF = 0
     PRECHARGE = 1
     ON = 2
     FATAL = 3
-
-
+    
 class Ts_Status_Set(Enum):
     OFF = 0
     ON = 1
-
-
+    
 class Traction_Control(Enum):
     OFF = 0
     SLIP_CONTROL = 1
     TORQUE_VECTORING = 2
     COMPLETE = 3
-
-
+    
 class Map(Enum):
     R = 0
     D20 = 1
@@ -53,18 +68,17 @@ class Map(Enum):
     D60 = 3
     D80 = 4
     D100 = 5
-
-
+    
 class Car_Status_Set(Enum):
     IDLE = 0
     RUN = 1
-
-
+    
 class Status(Enum):
     CHG_OFF = 0
     CHG_TC = 1
     CHG_CC = 2
     CHG_CV = 3
+
 
 # Timestamp
 class Timestamp:
@@ -157,18 +171,18 @@ class HvTemp:
     def deserialize(buffer: bytes) -> "HvTemp.struct":
         return HvTemp.struct._make(unpack(HvTemp.schema, buffer))
 
-# HvError
-class HvError:
-    struct = namedtuple("HvError_struct", "error_code error_index active", rename=True)
-    schema = "<bbb"
+# HvErrors
+class HvErrors:
+    struct = namedtuple("HvErrors_struct", "warnings errors", rename=True)
+    schema = "<bb"
     
     @staticmethod
-    def serialize(error_code, error_index, active) -> bytes:
-        return pack(HvError.schema, error_code, error_index, active)
+    def serialize(warnings, errors) -> bytes:
+        return pack(HvErrors.schema, warnings, errors)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "HvError.struct":
-        return HvError.struct._make(unpack(HvError.schema, buffer))
+    def deserialize(buffer: bytes) -> "HvErrors.struct":
+        return HvErrors.struct._make(unpack(HvErrors.schema, buffer))
 
 # TsStatus
 class TsStatus:

@@ -2,6 +2,7 @@ from enum import Enum
 from struct import pack, unpack
 from collections import namedtuple
 
+
 # VoltagesCb00
 class VoltagesCb00:
     struct = namedtuple("VoltagesCb00_struct", "voltage0 voltage1 voltage2 voltage3", rename=True)

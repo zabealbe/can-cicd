@@ -51,7 +51,15 @@ static_assert(sizeof(double) == 8, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPEC
 #else
     #define __is_packed __attribute__((__packed__)) // , __aligned__(1)))
 #endif
-    
+
+#define setBit(bitset, index, value) \
+do { \
+    bitset[index/8] &= ~( 1 << index % 8); \
+    bitset[index/8] |=  (value << index % 8); \
+} while(0);
+#define flipBit(bitset, index) (bitset[index/8] ^= (1 << index % 8) )
+#define getBit(bitset, index)  (bitset[index/8] &  (1 << index % 8) )
+
 
 typedef enum __is_packed {
     Secondary_Sync_State_MAX_START = 0,
@@ -73,7 +81,7 @@ typedef struct __is_packed {
 } Secondary_SET_PEDALS_RANGE;
 static_assert(sizeof(Secondary_SET_PEDALS_RANGE) == 2, "struct size mismatch");
     
-void serialize_Secondary_SET_PEDALS_RANGE(Secondary_Sync_State sync_state, Secondary_Pedal pedal, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_SET_PEDALS_RANGE(uint8_t* buffer, size_t buf_len, Secondary_Sync_State sync_state, Secondary_Pedal pedal);
 void deserialize_Secondary_SET_PEDALS_RANGE(uint8_t* buffer, size_t buf_len, Secondary_SET_PEDALS_RANGE* secondary_set_pedals_range);
 
 /* Secondary_ACCELERATOR_PEDAL_VAL */
@@ -82,7 +90,7 @@ typedef struct __is_packed {
 } Secondary_ACCELERATOR_PEDAL_VAL;
 static_assert(sizeof(Secondary_ACCELERATOR_PEDAL_VAL) == 1, "struct size mismatch");
     
-void serialize_Secondary_ACCELERATOR_PEDAL_VAL(uint8_t level, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_ACCELERATOR_PEDAL_VAL(uint8_t* buffer, size_t buf_len, uint8_t level);
 void deserialize_Secondary_ACCELERATOR_PEDAL_VAL(uint8_t* buffer, size_t buf_len, Secondary_ACCELERATOR_PEDAL_VAL* secondary_accelerator_pedal_val);
 
 /* Secondary_BRAKE_PEDAL_VAL */
@@ -91,7 +99,7 @@ typedef struct __is_packed {
 } Secondary_BRAKE_PEDAL_VAL;
 static_assert(sizeof(Secondary_BRAKE_PEDAL_VAL) == 1, "struct size mismatch");
     
-void serialize_Secondary_BRAKE_PEDAL_VAL(uint8_t level, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_BRAKE_PEDAL_VAL(uint8_t* buffer, size_t buf_len, uint8_t level);
 void deserialize_Secondary_BRAKE_PEDAL_VAL(uint8_t* buffer, size_t buf_len, Secondary_BRAKE_PEDAL_VAL* secondary_brake_pedal_val);
 
 /* Secondary_IMU_ANGULAR_RATE */
@@ -102,7 +110,7 @@ typedef struct __is_packed {
 } Secondary_IMU_ANGULAR_RATE;
 static_assert(sizeof(Secondary_IMU_ANGULAR_RATE) == 6, "struct size mismatch");
     
-void serialize_Secondary_IMU_ANGULAR_RATE(uint16_t ang_rate_x, uint16_t ang_rate_y, uint16_t ang_rate_z, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IMU_ANGULAR_RATE(uint8_t* buffer, size_t buf_len, uint16_t ang_rate_x, uint16_t ang_rate_y, uint16_t ang_rate_z);
 void deserialize_Secondary_IMU_ANGULAR_RATE(uint8_t* buffer, size_t buf_len, Secondary_IMU_ANGULAR_RATE* secondary_imu_angular_rate);
 
 /* Secondary_IMU_ACCELERATION */
@@ -113,7 +121,7 @@ typedef struct __is_packed {
 } Secondary_IMU_ACCELERATION;
 static_assert(sizeof(Secondary_IMU_ACCELERATION) == 6, "struct size mismatch");
     
-void serialize_Secondary_IMU_ACCELERATION(uint16_t accel_x, uint16_t accel_y, uint16_t accel_z, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IMU_ACCELERATION(uint8_t* buffer, size_t buf_len, uint16_t accel_x, uint16_t accel_y, uint16_t accel_z);
 void deserialize_Secondary_IMU_ACCELERATION(uint8_t* buffer, size_t buf_len, Secondary_IMU_ACCELERATION* secondary_imu_acceleration);
 
 /* Secondary_IRTS_FL_0 */
@@ -125,7 +133,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_FL_0;
 static_assert(sizeof(Secondary_IRTS_FL_0) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_FL_0(uint16_t channel1, uint16_t channel2, uint16_t channel3, uint16_t channel4, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_FL_0(uint8_t* buffer, size_t buf_len, uint16_t channel1, uint16_t channel2, uint16_t channel3, uint16_t channel4);
 void deserialize_Secondary_IRTS_FL_0(uint8_t* buffer, size_t buf_len, Secondary_IRTS_FL_0* secondary_irts_fl_0);
 
 /* Secondary_IRTS_FL_1 */
@@ -137,7 +145,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_FL_1;
 static_assert(sizeof(Secondary_IRTS_FL_1) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_FL_1(uint16_t channel5, uint16_t channel6, uint16_t channel7, uint16_t channel8, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_FL_1(uint8_t* buffer, size_t buf_len, uint16_t channel5, uint16_t channel6, uint16_t channel7, uint16_t channel8);
 void deserialize_Secondary_IRTS_FL_1(uint8_t* buffer, size_t buf_len, Secondary_IRTS_FL_1* secondary_irts_fl_1);
 
 /* Secondary_IRTS_FL_2 */
@@ -149,7 +157,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_FL_2;
 static_assert(sizeof(Secondary_IRTS_FL_2) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_FL_2(uint16_t channel9, uint16_t channel10, uint16_t channel11, uint16_t channel12, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_FL_2(uint8_t* buffer, size_t buf_len, uint16_t channel9, uint16_t channel10, uint16_t channel11, uint16_t channel12);
 void deserialize_Secondary_IRTS_FL_2(uint8_t* buffer, size_t buf_len, Secondary_IRTS_FL_2* secondary_irts_fl_2);
 
 /* Secondary_IRTS_FL_3 */
@@ -161,7 +169,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_FL_3;
 static_assert(sizeof(Secondary_IRTS_FL_3) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_FL_3(uint16_t channel13, uint16_t channel14, uint16_t channel15, uint16_t channel16, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_FL_3(uint8_t* buffer, size_t buf_len, uint16_t channel13, uint16_t channel14, uint16_t channel15, uint16_t channel16);
 void deserialize_Secondary_IRTS_FL_3(uint8_t* buffer, size_t buf_len, Secondary_IRTS_FL_3* secondary_irts_fl_3);
 
 /* Secondary_IRTS_FR_0 */
@@ -173,7 +181,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_FR_0;
 static_assert(sizeof(Secondary_IRTS_FR_0) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_FR_0(uint16_t channel1, uint16_t channel2, uint16_t channel3, uint16_t channel4, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_FR_0(uint8_t* buffer, size_t buf_len, uint16_t channel1, uint16_t channel2, uint16_t channel3, uint16_t channel4);
 void deserialize_Secondary_IRTS_FR_0(uint8_t* buffer, size_t buf_len, Secondary_IRTS_FR_0* secondary_irts_fr_0);
 
 /* Secondary_IRTS_FR_1 */
@@ -185,7 +193,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_FR_1;
 static_assert(sizeof(Secondary_IRTS_FR_1) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_FR_1(uint16_t channel5, uint16_t channel6, uint16_t channel7, uint16_t channel8, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_FR_1(uint8_t* buffer, size_t buf_len, uint16_t channel5, uint16_t channel6, uint16_t channel7, uint16_t channel8);
 void deserialize_Secondary_IRTS_FR_1(uint8_t* buffer, size_t buf_len, Secondary_IRTS_FR_1* secondary_irts_fr_1);
 
 /* Secondary_IRTS_FR_2 */
@@ -197,7 +205,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_FR_2;
 static_assert(sizeof(Secondary_IRTS_FR_2) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_FR_2(uint16_t channel9, uint16_t channel10, uint16_t channel11, uint16_t channel12, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_FR_2(uint8_t* buffer, size_t buf_len, uint16_t channel9, uint16_t channel10, uint16_t channel11, uint16_t channel12);
 void deserialize_Secondary_IRTS_FR_2(uint8_t* buffer, size_t buf_len, Secondary_IRTS_FR_2* secondary_irts_fr_2);
 
 /* Secondary_IRTS_FR_3 */
@@ -209,7 +217,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_FR_3;
 static_assert(sizeof(Secondary_IRTS_FR_3) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_FR_3(uint16_t channel13, uint16_t channel14, uint16_t channel15, uint16_t channel16, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_FR_3(uint8_t* buffer, size_t buf_len, uint16_t channel13, uint16_t channel14, uint16_t channel15, uint16_t channel16);
 void deserialize_Secondary_IRTS_FR_3(uint8_t* buffer, size_t buf_len, Secondary_IRTS_FR_3* secondary_irts_fr_3);
 
 /* Secondary_IRTS_RL_0 */
@@ -221,7 +229,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_RL_0;
 static_assert(sizeof(Secondary_IRTS_RL_0) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_RL_0(uint16_t channel1, uint16_t channel2, uint16_t channel3, uint16_t channel4, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_RL_0(uint8_t* buffer, size_t buf_len, uint16_t channel1, uint16_t channel2, uint16_t channel3, uint16_t channel4);
 void deserialize_Secondary_IRTS_RL_0(uint8_t* buffer, size_t buf_len, Secondary_IRTS_RL_0* secondary_irts_rl_0);
 
 /* Secondary_IRTS_RL_1 */
@@ -233,7 +241,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_RL_1;
 static_assert(sizeof(Secondary_IRTS_RL_1) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_RL_1(uint16_t channel5, uint16_t channel6, uint16_t channel7, uint16_t channel8, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_RL_1(uint8_t* buffer, size_t buf_len, uint16_t channel5, uint16_t channel6, uint16_t channel7, uint16_t channel8);
 void deserialize_Secondary_IRTS_RL_1(uint8_t* buffer, size_t buf_len, Secondary_IRTS_RL_1* secondary_irts_rl_1);
 
 /* Secondary_IRTS_RL_2 */
@@ -245,7 +253,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_RL_2;
 static_assert(sizeof(Secondary_IRTS_RL_2) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_RL_2(uint16_t channel9, uint16_t channel10, uint16_t channel11, uint16_t channel12, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_RL_2(uint8_t* buffer, size_t buf_len, uint16_t channel9, uint16_t channel10, uint16_t channel11, uint16_t channel12);
 void deserialize_Secondary_IRTS_RL_2(uint8_t* buffer, size_t buf_len, Secondary_IRTS_RL_2* secondary_irts_rl_2);
 
 /* Secondary_IRTS_RL_3 */
@@ -257,7 +265,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_RL_3;
 static_assert(sizeof(Secondary_IRTS_RL_3) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_RL_3(uint16_t channel13, uint16_t channel14, uint16_t channel15, uint16_t channel16, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_RL_3(uint8_t* buffer, size_t buf_len, uint16_t channel13, uint16_t channel14, uint16_t channel15, uint16_t channel16);
 void deserialize_Secondary_IRTS_RL_3(uint8_t* buffer, size_t buf_len, Secondary_IRTS_RL_3* secondary_irts_rl_3);
 
 /* Secondary_IRTS_RR_0 */
@@ -269,7 +277,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_RR_0;
 static_assert(sizeof(Secondary_IRTS_RR_0) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_RR_0(uint16_t channel1, uint16_t channel2, uint16_t channel3, uint16_t channel4, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_RR_0(uint8_t* buffer, size_t buf_len, uint16_t channel1, uint16_t channel2, uint16_t channel3, uint16_t channel4);
 void deserialize_Secondary_IRTS_RR_0(uint8_t* buffer, size_t buf_len, Secondary_IRTS_RR_0* secondary_irts_rr_0);
 
 /* Secondary_IRTS_RR_1 */
@@ -281,7 +289,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_RR_1;
 static_assert(sizeof(Secondary_IRTS_RR_1) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_RR_1(uint16_t channel5, uint16_t channel6, uint16_t channel7, uint16_t channel8, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_RR_1(uint8_t* buffer, size_t buf_len, uint16_t channel5, uint16_t channel6, uint16_t channel7, uint16_t channel8);
 void deserialize_Secondary_IRTS_RR_1(uint8_t* buffer, size_t buf_len, Secondary_IRTS_RR_1* secondary_irts_rr_1);
 
 /* Secondary_IRTS_RR_2 */
@@ -293,7 +301,7 @@ typedef struct __is_packed {
 } Secondary_IRTS_RR_2;
 static_assert(sizeof(Secondary_IRTS_RR_2) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_RR_2(uint16_t channel9, uint16_t channel10, uint16_t channel11, uint16_t channel12, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_RR_2(uint8_t* buffer, size_t buf_len, uint16_t channel9, uint16_t channel10, uint16_t channel11, uint16_t channel12);
 void deserialize_Secondary_IRTS_RR_2(uint8_t* buffer, size_t buf_len, Secondary_IRTS_RR_2* secondary_irts_rr_2);
 
 /* Secondary_IRTS_RR_3 */
@@ -305,6 +313,6 @@ typedef struct __is_packed {
 } Secondary_IRTS_RR_3;
 static_assert(sizeof(Secondary_IRTS_RR_3) == 8, "struct size mismatch");
     
-void serialize_Secondary_IRTS_RR_3(uint16_t channel13, uint16_t channel14, uint16_t channel15, uint16_t channel16, uint8_t* buffer, size_t buf_len);
+void serialize_Secondary_IRTS_RR_3(uint8_t* buffer, size_t buf_len, uint16_t channel13, uint16_t channel14, uint16_t channel15, uint16_t channel16);
 void deserialize_Secondary_IRTS_RR_3(uint8_t* buffer, size_t buf_len, Secondary_IRTS_RR_3* secondary_irts_rr_3);
 #endif

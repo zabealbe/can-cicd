@@ -40,7 +40,7 @@
                 "HV_TEMP": {
                     "id": 835
                 },
-                "HV_ERROR": {
+                "HV_ERRORS": {
                     "id": 259
                 },
                 "TS_STATUS": {

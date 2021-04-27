@@ -1,19 +1,18 @@
 from enum import Enum
 from struct import pack, unpack
 from collections import namedtuple
-
-
+    
 class Sync_State(Enum):
     MAX_START = 0
     MAX_END = 1
     MIN_START = 2
     MIN_END = 3
-
-
+    
 class Pedal(Enum):
     ACCELERATOR = 0
     BRAKE = 1
     ALL = 2
+
 
 # SetPedalsRange
 class SetPedalsRange:

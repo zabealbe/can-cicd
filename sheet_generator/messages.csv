@@ -5,7 +5,7 @@ SET_TLM_STATUS,258,Primary,TLM,6,STEER,TLM,"tlm_status: ON, OFF, race_type: ACCE
 HV_VOLTAGE,771,Primary,ACUnSTEERnCART,4,BMS_HV,"ACU, STEER, HANDCART","pack_voltage: uint16, bus_voltage: uint16, max_cell_voltage: uint16, min_cell_voltage: uint16",
 HV_CURRENT,803,Primary,ACUnSTEERnCART,4,BMS_HV,"ACU, STEER, HANDCART","current: uint16, power: int16",
 HV_TEMP,835,Primary,ACUnSTEERnCART,4,BMS_HV,"ACU, STEER, HANDCART","average_temp: uint16, max_temp: uint16, min_temp: uint16",
-HV_ERROR,259,Primary,ACUnSTEERnCART,6,BMS_HV,"ACU, STEER, HANDCART","error_code: uint8, error_index: uint8, active: uint8",
+HV_ERRORS,259,Primary,ACUnSTEERnCART,6,BMS_HV,"ACU, STEER, HANDCART","warnings: Hv_Errors, errors: Hv_Warnings",
 TS_STATUS,3,Primary,ACUnSTEERnCART,7,BMS_HV,"ACU, STEER, HANDCART","ts_status: OFF, PRECHARGE, ON, FATAL",
 SET_TS_STATUS,4,Primary,BMS_HV,7,"ACU, HANDCART",BMS_HV,"ts_status_set: OFF, ON",
 STEER_STATUS,5,Primary,ACU,7,STEER,ACU,"traction_control: OFF, SLIP_CONTROL, TORQUE_VECTORING, COMPLETE, map: R, D20, D40, D60, D80, D100, radio_on: bool",
