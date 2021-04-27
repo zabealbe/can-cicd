@@ -28,7 +28,7 @@ class Schema:
     def __init__(self, path: str = None, validation_schema: str = None, pack_structs: bool = False):
         global types
         types = {
-            "padding": Number((0, 2 ** 8 - 1), 1),
+            "padding": Padding(),
         
             "bool": Bool(),
         
@@ -198,11 +198,11 @@ class BitSet(Type):
         """
 
         self.name = name
-        self.range = (-128, 128)
         self.precision = 1
         self.items = [(item_name, item_index) for item_index, item_name in enumerate(items)]
 
-        super(BitSet, self).__init__(1, 1, 8, 1)
+        size = math.ceil(len(items) / 8)
+        super(BitSet, self).__init__(size, size, len(items), 1)
 
 class Number(Type):
     def __init__(self, range, precision):
@@ -234,6 +234,9 @@ class Number(Type):
         
         super(Number, self).__init__(needed_bytes, needed_bytes_packed, needed_bits, needed_bytes)
 
+class Padding(Type):
+    def __init__(self):
+        super(Padding, self).__init__(1, 1, 8, 1)
 
 class Bool(Type):
     def __init__(self):

@@ -14,7 +14,7 @@ int main() {
     
     {% set struct_name_s = struct.name.lower() + "_s" -%}
     {{ struct.name }} {{ struct_name_s }} = { {{ ", ".join(random_values(struct)) }} };
-    serialize_{{ struct.name }}({{ read_struct(struct, struct_name_s, ".") }}, {{ buffer_name }}, sizeof({{ struct.name }}));
+    serialize_{{ struct.name }}({{ buffer_name }}, sizeof({{ struct.name }}), {{ struct_name_s + "." + ", {}.".format(struct_name_s).join(fields(struct)) }});
     printf("\tSerialized\n\t{{ format_string(struct) }}\n", {{ read_struct(struct, struct_name_s, ".")}});
     
     {% set struct_name_d = struct.name.lower() + "_d" -%}

@@ -2,7 +2,7 @@
     "network_version": 1.2,
     "max_payload_size": 8,
     "types": {
-        "Hv_Flags": {
+        "Hv_Errors": {
             "type": "bitset",
             "items": [
                 "LTC_PEC_ERROR",
@@ -13,6 +13,22 @@
                 "ADC_INIT",
                 "ADC_TIMEOUT",
                 "FEEDBACK"
+            ]
+        },
+        "Hv_Warnings": {
+            "type": "bitset",
+            "items": [
+                "LTC_PEC_ERROR",
+                "CELL_UNDER_VOLTAGE",
+                "CELL_OVER_VOLTAGE",
+                "CELL_OVER_TEMPERATURE",
+                "OVER_CURRENT",
+                "ADC_INIT",
+                "ADC_TIMEOUT",
+                "FEEDBACK",
+                "FEEDBACK2",
+                "FEEDBACK4",
+                "FEEDBACK1"
             ]
         }
     },
@@ -151,8 +167,8 @@
                 "HANDCART"
             ],
             "contents": {
-                "warnings": "Hv_Flags",
-                "errors": "Hv_Flags"
+                "warnings": "Hv_Errors",
+                "errors": "Hv_Warnings"
             }
         },
         {

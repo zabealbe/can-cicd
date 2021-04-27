@@ -6,7 +6,7 @@
 
 {% for struct in structs -%}
 /* {{ struct.name }} */
-void serialize_{{ struct.name }}({{ ", ".join(parameters(struct)) }}, uint8_t* buffer, size_t buf_len) {
+void serialize_{{ struct.name }}(uint8_t* buffer, size_t buf_len, {{ ", ".join(parameters(struct)) }}) {
     {{ struct.name }} {{ struct.name.lower() }} = { {{ ", ".join(fill_padding(struct)) }} };
 	assert(buf_len >= sizeof({{ struct.name }}));
 	memcpy(buffer, &{{ struct.name.lower() }}, sizeof({{ struct.name }}));

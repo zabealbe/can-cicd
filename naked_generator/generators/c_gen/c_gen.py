@@ -95,7 +95,8 @@ def __generate_test_c(structs, enums, bitsets, filename):
         
         read_struct=__read_struct,
         format_string=__format_string,
-        random_values=__random_values
+        random_values=__random_values,
+        fields=__fields
     )
 
     return code
@@ -140,23 +141,36 @@ def __parse_schema(schema, prefix):
 
 def __fill_padding(struct):
     new_items = []
-    for item_name, _ in struct.fields.items():
-        if "padding" in item_name:
+    for item_name, item_type in struct.fields.items():
+        if isinstance(item_type, s.Padding):
             new_items.append("0x00")
+        elif isinstance(item_type, s.BitSet):
+            new_items.append("{" + ", ".join([f"{item_name}[{i}]" for i in range(0, item_type.size_bytes)]) + "}")
         else:
             new_items.append(item_name)
     return new_items
 
+def __fields(struct):
+    return [field_name for field_name, field_type in struct.fields.items() if not isinstance(field_type, s.Padding)]
+
 def __parameters(struct):
     return [f"{field_c_type} {field_name}" 
-            for field_name, field_c_type 
-            in zip(struct.fields.keys(), __c_types(struct)) 
-            if "__" != field_name[0:2]]  # skip unused fields such as padding bytes
+            for (field_name, field_type), field_c_type 
+            in zip(struct.fields.items(), __c_types(struct)) 
+            if not isinstance(field_type, s.Padding)]  # skip unused fields such as padding bytes
 
 def __random_values(struct):
-    return [str(rd.randrange(*field_type.range, field_type.precision)) if "__" != field_name[0:2] else "0"
-            for field_name, field_type 
-            in struct.fields.items()]
+    values = []
+    for field_name, field_type in struct.fields.items():
+        if isinstance(field_type, s.Enum):
+            values.append(str(rd.randrange(*field_type.range)))
+        elif isinstance(field_type, s.BitSet):
+            values.append("{" + ", ".join([str(rd.randrange(0, 2**8)) for _ in range(0, field_type.size_bytes)]) + "}")
+        elif isinstance(field_type, s.Padding):
+            values.append("0")
+        else:
+            values.append(str(rd.randrange(*field_type.range, field_type.precision)))
+    return values
 
 def __c_types(struct):
     return [__c_type_name(field_type) for field_name, field_type in struct.fields.items()]
@@ -191,37 +205,59 @@ def __c_type_name(item_type):
     
     elif isinstance(item_type, s.BitSet):
         return item_type.name
+    
+    elif isinstance(item_type, s.Padding):
+        return "uint8_t"
 
 def __format_string(struct):
     format_string = ""
-    for c_type, type_name in zip(__c_types(struct), struct.fields.keys()):
-        if "__" == type_name[0:2]:
+    for field_c_type, (field_name, field_type) in zip(__c_types(struct), struct.fields.items()):
+        if isinstance(field_type, s.Padding):
             continue
-        # Float32
-        if "float32" == c_type:
-            format_string += "%lf "
-        # Float64
-        elif "float64" == c_type:
-            format_string += "%lf "
-        # Ints
-        elif "uint" in c_type:
-            format_string += "%llu "
-        elif "int" in c_type:
+        elif isinstance(field_type, s.Number):
+            # Float32
+            if "float32" == field_c_type:
+                format_string += "%lf "
+            # Float64
+            elif "float64" == field_c_type:
+                format_string += "%lf "
+            # Ints
+            elif "uint" in field_c_type:
+                format_string += "%llu "
+            elif "int" in field_c_type:
+                format_string += "%lld "
+            # Enum, Bool
+            else:
+                format_string += "%lld "
+        elif isinstance(field_type, s.Enum):
             format_string += "%lld "
-        # Enum, Bool
-        else:
-            format_string += "%lld "
+        elif isinstance(field_type, s.BitSet):
+            format_string += ".".join(["%hhx"] * field_type.size_bytes) + " "
+            
     return format_string.strip()
 
-def __read_struct(struct, instance_name="{instance_name}", selector="{selector}"):
+def __read_struct(struct, instance_name="{instance_name}", selector="{selector}", cast=True):
     read_fields = []
-    for field_name, cast in zip(struct.fields.keys(), __printf_cast(struct)):
-        if "__" == field_name[0:2]:
+    for (field_name, field_type), cast in zip(struct.fields.items(), __printf_cast(struct)):
+        if isinstance(field_type, s.Padding):
             continue
-        read_fields.append(f"{cast}{instance_name}{selector}{field_name}")
+        if isinstance(field_type, s.BitSet):
+            for i in range(0, field_type.size_bytes):
+                read_fields.append(f"{cast}{instance_name}{selector}{field_name}[{i}]")
+        else:
+            read_fields.append(f"{cast}{instance_name}{selector}{field_name}")
     return ", ".join(read_fields)
 
 def __printf_cast(struct):
-    return ["(long long int)" if x.range[0] < 0 else "(long long unsigned int)" 
-            for _, x 
-            in struct.fields.items()]
+    cast_fields = []
+    for item_type in struct.fields.values():
+        print(type(item_type))
+        if hasattr(item_type, "range"):
+            if item_type.range[0] < 0:
+                cast_fields.append("(long long int)")
+            else:
+                cast_fields.append("(long long unsigned int)")
+        elif isinstance(item_type, s.BitSet):
+            cast_fields.append("(char)")
+    print(cast_fields)
+    return cast_fields
