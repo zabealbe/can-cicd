@@ -1,0 +1,17 @@
+const byteify = require('byteify');
+{% for struct in structs %}
+function serialize{{ struct.name }}(data) {
+    return Uint8Array.from([
+    {%- for field_name, field_type in struct.fields.items() %}
+        ...byteify.serialize{{ js_type_name(field_type) }}(data.{{ field_name }}),
+    {%- endfor %}
+    ]);
+}
+function deserialize{{ struct.name }}(bytes) {
+    return {
+    {%- for range, (field_name, field_type) in zip(ranges(struct), struct.fields.items()) %}
+        {{ field_name }}: byteify.deserialize{{ js_type_name(field_type) }}(bytes.slice({{ "{0}, {1}".format(range[0], range[1]) }})),
+    {%- endfor %}
+    }
+}
+{% endfor %}
