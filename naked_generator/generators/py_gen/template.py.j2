@@ -4,10 +4,23 @@ from collections import namedtuple
 
 {%- for bitset in bitsets %}
 
-class {{ bitset.name }}:
+class {{ bitset.name }}:  # Bitset
     {%- for item_name, item_value in bitset.items %}
-    {{ item_name }} = {{ "0b{:b}".format(item_value) }}
+    {{ item_name }} = {{ item_value }}
     {%- endfor %}
+    
+    def __init__(self):
+        self.__bitset = bytearray({{ bitset.size_bytes }})
+    
+    def setBit(self, index, value):
+        self.__bitset[index/8] &= ~(1 << index % 8)
+        self.__bitset[index/8] |= (value << index % 8)
+    
+    def flipBit(self, index):
+        self.__bitset[int(index/8)] ^= 1 << index % 8
+    
+    def getBit(self, index) -> bool:
+        return self.__bitset[int(index/8)] & (1 << index % 8)
 
 {%- endfor %}
 
