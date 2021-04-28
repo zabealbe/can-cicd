@@ -33,8 +33,9 @@ class Hv_Warnings:  # Bitset
     OVER_CURRENT = 4
     ADC_INIT = 5
     ADC_TIMEOUT = 6
-    FEEDBACK_HARD = 7
-    FEEDBACK_SOFT = 8
+    INT_VOLTAGE_MISMATCH = 7
+    FEEDBACK_HARD = 8
+    FEEDBACK_SOFT = 9
     
     def __init__(self):
         self.__bitset = bytearray(2)

@@ -81,8 +81,9 @@ typedef uint8_t Primary_Hv_Warnings[2]; // bitset
 #define Primary_Hv_Warnings_OVER_CURRENT 4
 #define Primary_Hv_Warnings_ADC_INIT 5
 #define Primary_Hv_Warnings_ADC_TIMEOUT 6
-#define Primary_Hv_Warnings_FEEDBACK_HARD 7
-#define Primary_Hv_Warnings_FEEDBACK_SOFT 8
+#define Primary_Hv_Warnings_INT_VOLTAGE_MISMATCH 7
+#define Primary_Hv_Warnings_FEEDBACK_HARD 8
+#define Primary_Hv_Warnings_FEEDBACK_SOFT 9
 
 typedef enum __is_packed {
     Primary_Tlm_Status_ON = 0,

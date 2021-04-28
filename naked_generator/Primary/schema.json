@@ -23,6 +23,7 @@
                 "OVER_CURRENT",
                 "ADC_INIT",
                 "ADC_TIMEOUT",
+                "INT_VOLTAGE_MISMATCH",
                 "FEEDBACK_HARD",
                 "FEEDBACK_SOFT"
             ]
