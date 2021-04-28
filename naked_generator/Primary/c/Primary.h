@@ -70,7 +70,7 @@ typedef uint8_t Primary_Hv_Errors[1]; // bitset
 #define Primary_Hv_Errors_OVER_CURRENT 4
 #define Primary_Hv_Errors_ADC_INIT 5
 #define Primary_Hv_Errors_ADC_TIMEOUT 6
-#define Primary_Hv_Errors_FEEDBACK 7
+#define Primary_Hv_Errors_FEEDBACK_HARD 7
 
 typedef uint8_t Primary_Hv_Warnings[2]; // bitset
 #define Primary_Hv_Warnings_default { 0, 0 } // bitset filled with zeros
@@ -81,10 +81,8 @@ typedef uint8_t Primary_Hv_Warnings[2]; // bitset
 #define Primary_Hv_Warnings_OVER_CURRENT 4
 #define Primary_Hv_Warnings_ADC_INIT 5
 #define Primary_Hv_Warnings_ADC_TIMEOUT 6
-#define Primary_Hv_Warnings_FEEDBACK 7
-#define Primary_Hv_Warnings_FEEDBACK2 8
-#define Primary_Hv_Warnings_FEEDBACK4 9
-#define Primary_Hv_Warnings_FEEDBACK1 10
+#define Primary_Hv_Warnings_FEEDBACK_HARD 7
+#define Primary_Hv_Warnings_FEEDBACK_SOFT 8
 
 typedef enum __is_packed {
     Primary_Tlm_Status_ON = 0,

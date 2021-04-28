@@ -2,28 +2,52 @@ from enum import Enum
 from struct import pack, unpack
 from collections import namedtuple
 
-class Hv_Errors:
-    LTC_PEC_ERROR = 0b0
-    CELL_UNDER_VOLTAGE = 0b1
-    CELL_OVER_VOLTAGE = 0b10
-    CELL_OVER_TEMPERATURE = 0b11
-    OVER_CURRENT = 0b100
-    ADC_INIT = 0b101
-    ADC_TIMEOUT = 0b110
-    FEEDBACK = 0b111
+class Hv_Errors:  # Bitset
+    LTC_PEC_ERROR = 0
+    CELL_UNDER_VOLTAGE = 1
+    CELL_OVER_VOLTAGE = 2
+    CELL_OVER_TEMPERATURE = 3
+    OVER_CURRENT = 4
+    ADC_INIT = 5
+    ADC_TIMEOUT = 6
+    FEEDBACK_HARD = 7
+    
+    def __init__(self):
+        self.__bitset = bytearray(1)
+    
+    def setBit(self, index, value):
+        self.__bitset[index/8] &= ~(1 << index % 8)
+        self.__bitset[index/8] |= (value << index % 8)
+    
+    def flipBit(self, index):
+        self.__bitset[int(index/8)] ^= 1 << index % 8
+    
+    def getBit(self, index) -> bool:
+        return self.__bitset[int(index/8)] & (1 << index % 8)
 
-class Hv_Warnings:
-    LTC_PEC_ERROR = 0b0
-    CELL_UNDER_VOLTAGE = 0b1
-    CELL_OVER_VOLTAGE = 0b10
-    CELL_OVER_TEMPERATURE = 0b11
-    OVER_CURRENT = 0b100
-    ADC_INIT = 0b101
-    ADC_TIMEOUT = 0b110
-    FEEDBACK = 0b111
-    FEEDBACK2 = 0b1000
-    FEEDBACK4 = 0b1001
-    FEEDBACK1 = 0b1010
+class Hv_Warnings:  # Bitset
+    LTC_PEC_ERROR = 0
+    CELL_UNDER_VOLTAGE = 1
+    CELL_OVER_VOLTAGE = 2
+    CELL_OVER_TEMPERATURE = 3
+    OVER_CURRENT = 4
+    ADC_INIT = 5
+    ADC_TIMEOUT = 6
+    FEEDBACK_HARD = 7
+    FEEDBACK_SOFT = 8
+    
+    def __init__(self):
+        self.__bitset = bytearray(2)
+    
+    def setBit(self, index, value):
+        self.__bitset[index/8] &= ~(1 << index % 8)
+        self.__bitset[index/8] |= (value << index % 8)
+    
+    def flipBit(self, index):
+        self.__bitset[int(index/8)] ^= 1 << index % 8
+    
+    def getBit(self, index) -> bool:
+        return self.__bitset[int(index/8)] & (1 << index % 8)
     
 class Tlm_Status(Enum):
     ON = 0

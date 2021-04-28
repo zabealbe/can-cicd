@@ -10,7 +10,7 @@
                 "OVER_CURRENT",
                 "ADC_INIT",
                 "ADC_TIMEOUT",
-                "FEEDBACK"
+                "FEEDBACK_HARD"
             ]
         },
         "Hv_Warnings": {
@@ -23,10 +23,8 @@
                 "OVER_CURRENT",
                 "ADC_INIT",
                 "ADC_TIMEOUT",
-                "FEEDBACK",
-                "FEEDBACK2",
-                "FEEDBACK4",
-                "FEEDBACK1"
+                "FEEDBACK_HARD",
+                "FEEDBACK_SOFT"
             ]
         },
         "Tlm_Status": {
