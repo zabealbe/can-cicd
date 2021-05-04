@@ -8,7 +8,11 @@ def generate_ids_include(network: Network):
     header = ""
     header += f"#ifndef {network.name}_{filename.upper()}_H\n"
     header += f"#define {network.name}_{filename.upper()}_H\n\n"
+    
+    header += f"#ifndef NETWORK_VERSION\n"
     header += "#define NETWORK_VERSION {0:}f\n\n".format(network.version)
+    header += "#endif\n"
+    
     for topic_name, topic_id in network.get_topics().items():
         topic_messages = network.get_messages_by_topic(topic_name)
         header += f"/* TOPIC {topic_name} */\n"
