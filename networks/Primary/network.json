@@ -62,8 +62,8 @@
             ],
             "contents": {
                 "tlm_status": [
-                    "ON",
-                    "OFF"
+                    "OFF",
+                    "ON"
                 ],
                 "race_type": [
                     "ACCELERATION",
