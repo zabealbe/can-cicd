@@ -30,6 +30,17 @@ The json structure is as follows:
 {
     "network_version": decimal,
     "max_payload_size": integer,
+    "custom_types": {
+        "type1_name": {
+            "base_type": string,
+            ...
+        },
+        "type2_name": {
+            "base_type": string,
+            ...
+        },
+        ...
+    }
     "messages": [ 
     {
         "name": string,
@@ -50,7 +61,10 @@ The json structure is as follows:
 **Description and constraints you have to follow:**
 <details><summary>SHOW</summary>
 
-###Fields for each message in "messages" array
+###Fields for each custom type in "custom_types"
+TODO
+
+###Fields for each message in "messages"
 Keywords used:
 + **Required**: this field must be present
 + **Required by**: indicates that the field must be present if the specified submodule is used
