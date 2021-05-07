@@ -1,17 +1,12 @@
 from enum import Enum
+from abc import ABC
 from struct import pack, unpack
 from collections import namedtuple
 
-{%- for bitset in bitsets %}
+class Bitset(ABC):
+    def __init__(self, size_bytes):
+        self.__bitset = bytearray(size_bytes)
 
-class {{ bitset.name }}:  # Bitset
-    {%- for item_name, item_value in bitset.items %}
-    {{ item_name }} = {{ item_value }}
-    {%- endfor %}
-    
-    def __init__(self):
-        self.__bitset = bytearray({{ bitset.size_bytes }})
-    
     def setBit(self, index, value):
         self.__bitset[index/8] &= ~(1 << index % 8)
         self.__bitset[index/8] |= (value << index % 8)
@@ -21,6 +16,16 @@ class {{ bitset.name }}:  # Bitset
     
     def getBit(self, index) -> bool:
         return self.__bitset[int(index/8)] & (1 << index % 8)
+
+{%- for bitset in bitsets %}
+
+class {{ bitset.name }}(Bitset):
+    {%- for item_name, item_value in bitset.items %}
+    {{ item_name }} = {{ item_value }}
+    {%- endfor %}
+    
+    def __init__(self):
+        super().__init__({{ bitset.size_bytes }})
 
 {%- endfor %}
 
