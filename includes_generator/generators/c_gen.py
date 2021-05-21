@@ -39,7 +39,7 @@ def generate_canconfig_include(canconfig, canconfig_version, namespace):
     header = ""
     header += f"#ifndef {namespace}_{filename.upper()}_H\n"
     header += f"#define {namespace}_{filename.upper()}_H\n\n"
-    header += f"#define CANCONFIG_VERSION {canconfig_version}f\n\n"
+    header += f"#define CANCONFIG_{namespace}_VERSION {canconfig_version}f\n\n"
     for k, v in canconfig.items():
         if isinstance(v, dict):
             header += "\n"
