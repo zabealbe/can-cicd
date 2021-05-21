@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef {{ filename.upper() }}_H
 #define {{ filename.upper() }}_H
 
@@ -85,8 +89,12 @@ typedef struct __is_packed {
 } {{ struct.name }};
 static_assert(sizeof({{ struct.name }}) == {{ struct.size_bytes }}, "struct size mismatch");
     
-void serialize_{{ struct.name }}(uint8_t* buffer, size_t buf_len, {{ ", ".join(parameters(struct)) }});
-void deserialize_{{ struct.name }}(uint8_t* buffer, size_t buf_len, {{ struct.name }}* {{ struct.name.lower() }});
+size_t serialize_{{ struct.name }}(uint8_t* buffer, {{ ", ".join(parameters(struct)) }});
+size_t deserialize_{{ struct.name }}(uint8_t* buffer, {{ struct.name }}* {{ struct.name.lower() }});
 {% endfor -%}
 
+#endif
+
+#ifdef __cplusplus
+}
 #endif
