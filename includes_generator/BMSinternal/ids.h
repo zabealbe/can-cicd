@@ -1,7 +1,7 @@
 #ifndef BMSinternal_IDS_H
 #define BMSinternal_IDS_H
 
-#define NETWORK_VERSION 1f
+#define NETWORK_BMSinternal_VERSION 1f
 
 /* TOPIC VOLTAGE_INFO */
 #define TOPIC_VOLTAGE_INFO_MASK 0b00000011111

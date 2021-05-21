@@ -1,7 +1,7 @@
 #ifndef Secondary_IDS_H
 #define Secondary_IDS_H
 
-#define NETWORK_VERSION 0f
+#define NETWORK_Secondary_VERSION 0f
 
 /* TOPIC PEDALS */
 #define TOPIC_PEDALS_MASK 0b00000011111

@@ -1,6 +1,21 @@
 from enum import Enum
+from abc import ABC
 from struct import pack, unpack
 from collections import namedtuple
+
+class Bitset(ABC):
+    def __init__(self, size_bytes):
+        self.__bitset = bytearray(size_bytes)
+
+    def setBit(self, index, value):
+        self.__bitset[index/8] &= ~(1 << index % 8)
+        self.__bitset[index/8] |= (value << index % 8)
+    
+    def flipBit(self, index):
+        self.__bitset[int(index/8)] ^= 1 << index % 8
+    
+    def getBit(self, index) -> bool:
+        return self.__bitset[int(index/8)] & (1 << index % 8)
     
 class Sync_State(Enum):
     MAX_START = 0

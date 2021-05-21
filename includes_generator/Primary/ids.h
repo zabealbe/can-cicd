@@ -1,7 +1,7 @@
 #ifndef Primary_IDS_H
 #define Primary_IDS_H
 
-#define NETWORK_VERSION 1.2f
+#define NETWORK_Primary_VERSION 1.2f
 
 /* TOPIC BROADCAST */
 #define TOPIC_BROADCAST_MASK 0b00000011111

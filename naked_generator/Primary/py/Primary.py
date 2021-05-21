@@ -1,20 +1,12 @@
 from enum import Enum
+from abc import ABC
 from struct import pack, unpack
 from collections import namedtuple
 
-class Hv_Errors:  # Bitset
-    LTC_PEC_ERROR = 0
-    CELL_UNDER_VOLTAGE = 1
-    CELL_OVER_VOLTAGE = 2
-    CELL_OVER_TEMPERATURE = 3
-    OVER_CURRENT = 4
-    ADC_INIT = 5
-    ADC_TIMEOUT = 6
-    FEEDBACK_HARD = 7
-    
-    def __init__(self):
-        self.__bitset = bytearray(1)
-    
+class Bitset(ABC):
+    def __init__(self, size_bytes):
+        self.__bitset = bytearray(size_bytes)
+
     def setBit(self, index, value):
         self.__bitset[index/8] &= ~(1 << index % 8)
         self.__bitset[index/8] |= (value << index % 8)
@@ -25,7 +17,20 @@ class Hv_Errors:  # Bitset
     def getBit(self, index) -> bool:
         return self.__bitset[int(index/8)] & (1 << index % 8)
 
-class Hv_Warnings:  # Bitset
+class Hv_Errors(Bitset):
+    LTC_PEC_ERROR = 0
+    CELL_UNDER_VOLTAGE = 1
+    CELL_OVER_VOLTAGE = 2
+    CELL_OVER_TEMPERATURE = 3
+    OVER_CURRENT = 4
+    ADC_INIT = 5
+    ADC_TIMEOUT = 6
+    FEEDBACK_HARD = 7
+    
+    def __init__(self):
+        super().__init__(1)
+
+class Hv_Warnings(Bitset):
     LTC_PEC_ERROR = 0
     CELL_UNDER_VOLTAGE = 1
     CELL_OVER_VOLTAGE = 2
@@ -38,17 +43,7 @@ class Hv_Warnings:  # Bitset
     FEEDBACK_SOFT = 9
     
     def __init__(self):
-        self.__bitset = bytearray(2)
-    
-    def setBit(self, index, value):
-        self.__bitset[index/8] &= ~(1 << index % 8)
-        self.__bitset[index/8] |= (value << index % 8)
-    
-    def flipBit(self, index):
-        self.__bitset[int(index/8)] ^= 1 << index % 8
-    
-    def getBit(self, index) -> bool:
-        return self.__bitset[int(index/8)] & (1 << index % 8)
+        super().__init__(2)
     
 class Tlm_Status(Enum):
     ON = 0
