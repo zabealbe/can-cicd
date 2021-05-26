@@ -12,19 +12,6 @@
                 "OVER_CURRENT",
                 "ADC_INIT",
                 "ADC_TIMEOUT",
-                "FEEDBACK_HARD"
-            ]
-        },
-        "Hv_Warnings": {
-            "type": "bitset",
-            "items": [
-                "LTC_PEC_ERROR",
-                "CELL_UNDER_VOLTAGE",
-                "CELL_OVER_VOLTAGE",
-                "CELL_OVER_TEMPERATURE",
-                "OVER_CURRENT",
-                "ADC_INIT",
-                "ADC_TIMEOUT",
                 "INT_VOLTAGE_MISMATCH",
                 "FEEDBACK_HARD",
                 "FEEDBACK_SOFT"
@@ -167,7 +154,7 @@
             ],
             "contents": {
                 "warnings": "Hv_Errors",
-                "errors": "Hv_Warnings"
+                "errors": "Hv_Errors"
             }
         },
         {
