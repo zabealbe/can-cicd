@@ -113,8 +113,8 @@ function serializePrimaryHvErrors(data) {
 }
 function deserializePrimaryHvErrors(bytes) {
     return {
-        warnings: byteify.deserializeInt8(bytes.slice(0, 1)),
-        errors: byteify.deserializeInt8(bytes.slice(1, 3)),
+        warnings: byteify.deserializeInt8(bytes.slice(0, 2)),
+        errors: byteify.deserializeInt8(bytes.slice(2, 4)),
     }
 }
 

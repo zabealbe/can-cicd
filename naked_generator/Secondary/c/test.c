@@ -11,7 +11,7 @@ int main() {
     printf("Secondary_SET_PEDALS_RANGE:\n");
     uint8_t* buffer_secondary_set_pedals_range = (uint8_t*)malloc(sizeof(Secondary_SET_PEDALS_RANGE));
     
-    Secondary_SET_PEDALS_RANGE secondary_set_pedals_range_s = { -121, 91 };
+    Secondary_SET_PEDALS_RANGE secondary_set_pedals_range_s = { -39, -30 };
     serialize_Secondary_SET_PEDALS_RANGE(buffer_secondary_set_pedals_range, secondary_set_pedals_range_s.sync_state, secondary_set_pedals_range_s.pedal);
     printf("\tSerialized\n\t%lld %lld\n", (long long int)secondary_set_pedals_range_s.sync_state, (long long int)secondary_set_pedals_range_s.pedal);
     
@@ -27,7 +27,7 @@ int main() {
     printf("Secondary_ACCELERATOR_PEDAL_VAL:\n");
     uint8_t* buffer_secondary_accelerator_pedal_val = (uint8_t*)malloc(sizeof(Secondary_ACCELERATOR_PEDAL_VAL));
     
-    Secondary_ACCELERATOR_PEDAL_VAL secondary_accelerator_pedal_val_s = { 142 };
+    Secondary_ACCELERATOR_PEDAL_VAL secondary_accelerator_pedal_val_s = { 82 };
     serialize_Secondary_ACCELERATOR_PEDAL_VAL(buffer_secondary_accelerator_pedal_val, secondary_accelerator_pedal_val_s.level);
     printf("\tSerialized\n\t%llu\n", (long long unsigned int)secondary_accelerator_pedal_val_s.level);
     
@@ -43,7 +43,7 @@ int main() {
     printf("Secondary_BRAKE_PEDAL_VAL:\n");
     uint8_t* buffer_secondary_brake_pedal_val = (uint8_t*)malloc(sizeof(Secondary_BRAKE_PEDAL_VAL));
     
-    Secondary_BRAKE_PEDAL_VAL secondary_brake_pedal_val_s = { 89 };
+    Secondary_BRAKE_PEDAL_VAL secondary_brake_pedal_val_s = { 95 };
     serialize_Secondary_BRAKE_PEDAL_VAL(buffer_secondary_brake_pedal_val, secondary_brake_pedal_val_s.level);
     printf("\tSerialized\n\t%llu\n", (long long unsigned int)secondary_brake_pedal_val_s.level);
     
@@ -59,7 +59,7 @@ int main() {
     printf("Secondary_IMU_ANGULAR_RATE:\n");
     uint8_t* buffer_secondary_imu_angular_rate = (uint8_t*)malloc(sizeof(Secondary_IMU_ANGULAR_RATE));
     
-    Secondary_IMU_ANGULAR_RATE secondary_imu_angular_rate_s = { 25140, 21052, 24469 };
+    Secondary_IMU_ANGULAR_RATE secondary_imu_angular_rate_s = { 31593, 19800, 6970 };
     serialize_Secondary_IMU_ANGULAR_RATE(buffer_secondary_imu_angular_rate, secondary_imu_angular_rate_s.ang_rate_x, secondary_imu_angular_rate_s.ang_rate_y, secondary_imu_angular_rate_s.ang_rate_z);
     printf("\tSerialized\n\t%llu %llu %llu\n", (long long unsigned int)secondary_imu_angular_rate_s.ang_rate_x, (long long unsigned int)secondary_imu_angular_rate_s.ang_rate_y, (long long unsigned int)secondary_imu_angular_rate_s.ang_rate_z);
     
@@ -75,7 +75,7 @@ int main() {
     printf("Secondary_IMU_ACCELERATION:\n");
     uint8_t* buffer_secondary_imu_acceleration = (uint8_t*)malloc(sizeof(Secondary_IMU_ACCELERATION));
     
-    Secondary_IMU_ACCELERATION secondary_imu_acceleration_s = { 31593, 19800, 6970 };
+    Secondary_IMU_ACCELERATION secondary_imu_acceleration_s = { 20390, 63070, 57508 };
     serialize_Secondary_IMU_ACCELERATION(buffer_secondary_imu_acceleration, secondary_imu_acceleration_s.accel_x, secondary_imu_acceleration_s.accel_y, secondary_imu_acceleration_s.accel_z);
     printf("\tSerialized\n\t%llu %llu %llu\n", (long long unsigned int)secondary_imu_acceleration_s.accel_x, (long long unsigned int)secondary_imu_acceleration_s.accel_y, (long long unsigned int)secondary_imu_acceleration_s.accel_z);
     
@@ -91,7 +91,7 @@ int main() {
     printf("Secondary_IRTS_FL_0:\n");
     uint8_t* buffer_secondary_irts_fl_0 = (uint8_t*)malloc(sizeof(Secondary_IRTS_FL_0));
     
-    Secondary_IRTS_FL_0 secondary_irts_fl_0_s = { 20390, 63070, 57508, 47718 };
+    Secondary_IRTS_FL_0 secondary_irts_fl_0_s = { 47718, 64411, 12299, 57012 };
     serialize_Secondary_IRTS_FL_0(buffer_secondary_irts_fl_0, secondary_irts_fl_0_s.channel1, secondary_irts_fl_0_s.channel2, secondary_irts_fl_0_s.channel3, secondary_irts_fl_0_s.channel4);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_fl_0_s.channel1, (long long unsigned int)secondary_irts_fl_0_s.channel2, (long long unsigned int)secondary_irts_fl_0_s.channel3, (long long unsigned int)secondary_irts_fl_0_s.channel4);
     
@@ -107,7 +107,7 @@ int main() {
     printf("Secondary_IRTS_FL_1:\n");
     uint8_t* buffer_secondary_irts_fl_1 = (uint8_t*)malloc(sizeof(Secondary_IRTS_FL_1));
     
-    Secondary_IRTS_FL_1 secondary_irts_fl_1_s = { 64411, 12299, 57012, 3890 };
+    Secondary_IRTS_FL_1 secondary_irts_fl_1_s = { 3890, 6636, 22712, 38438 };
     serialize_Secondary_IRTS_FL_1(buffer_secondary_irts_fl_1, secondary_irts_fl_1_s.channel5, secondary_irts_fl_1_s.channel6, secondary_irts_fl_1_s.channel7, secondary_irts_fl_1_s.channel8);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_fl_1_s.channel5, (long long unsigned int)secondary_irts_fl_1_s.channel6, (long long unsigned int)secondary_irts_fl_1_s.channel7, (long long unsigned int)secondary_irts_fl_1_s.channel8);
     
@@ -123,7 +123,7 @@ int main() {
     printf("Secondary_IRTS_FL_2:\n");
     uint8_t* buffer_secondary_irts_fl_2 = (uint8_t*)malloc(sizeof(Secondary_IRTS_FL_2));
     
-    Secondary_IRTS_FL_2 secondary_irts_fl_2_s = { 6636, 22712, 38438, 32551 };
+    Secondary_IRTS_FL_2 secondary_irts_fl_2_s = { 32551, 15636, 22154, 49210 };
     serialize_Secondary_IRTS_FL_2(buffer_secondary_irts_fl_2, secondary_irts_fl_2_s.channel9, secondary_irts_fl_2_s.channel10, secondary_irts_fl_2_s.channel11, secondary_irts_fl_2_s.channel12);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_fl_2_s.channel9, (long long unsigned int)secondary_irts_fl_2_s.channel10, (long long unsigned int)secondary_irts_fl_2_s.channel11, (long long unsigned int)secondary_irts_fl_2_s.channel12);
     
@@ -139,7 +139,7 @@ int main() {
     printf("Secondary_IRTS_FL_3:\n");
     uint8_t* buffer_secondary_irts_fl_3 = (uint8_t*)malloc(sizeof(Secondary_IRTS_FL_3));
     
-    Secondary_IRTS_FL_3 secondary_irts_fl_3_s = { 15636, 22154, 49210, 23658 };
+    Secondary_IRTS_FL_3 secondary_irts_fl_3_s = { 23658, 10541, 7954, 19115 };
     serialize_Secondary_IRTS_FL_3(buffer_secondary_irts_fl_3, secondary_irts_fl_3_s.channel13, secondary_irts_fl_3_s.channel14, secondary_irts_fl_3_s.channel15, secondary_irts_fl_3_s.channel16);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_fl_3_s.channel13, (long long unsigned int)secondary_irts_fl_3_s.channel14, (long long unsigned int)secondary_irts_fl_3_s.channel15, (long long unsigned int)secondary_irts_fl_3_s.channel16);
     
@@ -155,7 +155,7 @@ int main() {
     printf("Secondary_IRTS_FR_0:\n");
     uint8_t* buffer_secondary_irts_fr_0 = (uint8_t*)malloc(sizeof(Secondary_IRTS_FR_0));
     
-    Secondary_IRTS_FR_0 secondary_irts_fr_0_s = { 10541, 7954, 19115, 55311 };
+    Secondary_IRTS_FR_0 secondary_irts_fr_0_s = { 55311, 24313, 9476, 23047 };
     serialize_Secondary_IRTS_FR_0(buffer_secondary_irts_fr_0, secondary_irts_fr_0_s.channel1, secondary_irts_fr_0_s.channel2, secondary_irts_fr_0_s.channel3, secondary_irts_fr_0_s.channel4);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_fr_0_s.channel1, (long long unsigned int)secondary_irts_fr_0_s.channel2, (long long unsigned int)secondary_irts_fr_0_s.channel3, (long long unsigned int)secondary_irts_fr_0_s.channel4);
     
@@ -171,7 +171,7 @@ int main() {
     printf("Secondary_IRTS_FR_1:\n");
     uint8_t* buffer_secondary_irts_fr_1 = (uint8_t*)malloc(sizeof(Secondary_IRTS_FR_1));
     
-    Secondary_IRTS_FR_1 secondary_irts_fr_1_s = { 24313, 9476, 23047, 46070 };
+    Secondary_IRTS_FR_1 secondary_irts_fr_1_s = { 46070, 52321, 30699, 50938 };
     serialize_Secondary_IRTS_FR_1(buffer_secondary_irts_fr_1, secondary_irts_fr_1_s.channel5, secondary_irts_fr_1_s.channel6, secondary_irts_fr_1_s.channel7, secondary_irts_fr_1_s.channel8);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_fr_1_s.channel5, (long long unsigned int)secondary_irts_fr_1_s.channel6, (long long unsigned int)secondary_irts_fr_1_s.channel7, (long long unsigned int)secondary_irts_fr_1_s.channel8);
     
@@ -187,7 +187,7 @@ int main() {
     printf("Secondary_IRTS_FR_2:\n");
     uint8_t* buffer_secondary_irts_fr_2 = (uint8_t*)malloc(sizeof(Secondary_IRTS_FR_2));
     
-    Secondary_IRTS_FR_2 secondary_irts_fr_2_s = { 52321, 30699, 50938, 53894 };
+    Secondary_IRTS_FR_2 secondary_irts_fr_2_s = { 53894, 21333, 8376, 44851 };
     serialize_Secondary_IRTS_FR_2(buffer_secondary_irts_fr_2, secondary_irts_fr_2_s.channel9, secondary_irts_fr_2_s.channel10, secondary_irts_fr_2_s.channel11, secondary_irts_fr_2_s.channel12);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_fr_2_s.channel9, (long long unsigned int)secondary_irts_fr_2_s.channel10, (long long unsigned int)secondary_irts_fr_2_s.channel11, (long long unsigned int)secondary_irts_fr_2_s.channel12);
     
@@ -203,7 +203,7 @@ int main() {
     printf("Secondary_IRTS_FR_3:\n");
     uint8_t* buffer_secondary_irts_fr_3 = (uint8_t*)malloc(sizeof(Secondary_IRTS_FR_3));
     
-    Secondary_IRTS_FR_3 secondary_irts_fr_3_s = { 21333, 8376, 44851, 19008 };
+    Secondary_IRTS_FR_3 secondary_irts_fr_3_s = { 19008, 20318, 50767, 12100 };
     serialize_Secondary_IRTS_FR_3(buffer_secondary_irts_fr_3, secondary_irts_fr_3_s.channel13, secondary_irts_fr_3_s.channel14, secondary_irts_fr_3_s.channel15, secondary_irts_fr_3_s.channel16);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_fr_3_s.channel13, (long long unsigned int)secondary_irts_fr_3_s.channel14, (long long unsigned int)secondary_irts_fr_3_s.channel15, (long long unsigned int)secondary_irts_fr_3_s.channel16);
     
@@ -219,7 +219,7 @@ int main() {
     printf("Secondary_IRTS_RL_0:\n");
     uint8_t* buffer_secondary_irts_rl_0 = (uint8_t*)malloc(sizeof(Secondary_IRTS_RL_0));
     
-    Secondary_IRTS_RL_0 secondary_irts_rl_0_s = { 20318, 50767, 12100, 16325 };
+    Secondary_IRTS_RL_0 secondary_irts_rl_0_s = { 16325, 65342, 51832, 44303 };
     serialize_Secondary_IRTS_RL_0(buffer_secondary_irts_rl_0, secondary_irts_rl_0_s.channel1, secondary_irts_rl_0_s.channel2, secondary_irts_rl_0_s.channel3, secondary_irts_rl_0_s.channel4);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_rl_0_s.channel1, (long long unsigned int)secondary_irts_rl_0_s.channel2, (long long unsigned int)secondary_irts_rl_0_s.channel3, (long long unsigned int)secondary_irts_rl_0_s.channel4);
     
@@ -235,7 +235,7 @@ int main() {
     printf("Secondary_IRTS_RL_1:\n");
     uint8_t* buffer_secondary_irts_rl_1 = (uint8_t*)malloc(sizeof(Secondary_IRTS_RL_1));
     
-    Secondary_IRTS_RL_1 secondary_irts_rl_1_s = { 65342, 51832, 44303, 5093 };
+    Secondary_IRTS_RL_1 secondary_irts_rl_1_s = { 5093, 20493, 10103, 55078 };
     serialize_Secondary_IRTS_RL_1(buffer_secondary_irts_rl_1, secondary_irts_rl_1_s.channel5, secondary_irts_rl_1_s.channel6, secondary_irts_rl_1_s.channel7, secondary_irts_rl_1_s.channel8);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_rl_1_s.channel5, (long long unsigned int)secondary_irts_rl_1_s.channel6, (long long unsigned int)secondary_irts_rl_1_s.channel7, (long long unsigned int)secondary_irts_rl_1_s.channel8);
     
@@ -251,7 +251,7 @@ int main() {
     printf("Secondary_IRTS_RL_2:\n");
     uint8_t* buffer_secondary_irts_rl_2 = (uint8_t*)malloc(sizeof(Secondary_IRTS_RL_2));
     
-    Secondary_IRTS_RL_2 secondary_irts_rl_2_s = { 20493, 10103, 55078, 47333 };
+    Secondary_IRTS_RL_2 secondary_irts_rl_2_s = { 47333, 27399, 54287, 39606 };
     serialize_Secondary_IRTS_RL_2(buffer_secondary_irts_rl_2, secondary_irts_rl_2_s.channel9, secondary_irts_rl_2_s.channel10, secondary_irts_rl_2_s.channel11, secondary_irts_rl_2_s.channel12);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_rl_2_s.channel9, (long long unsigned int)secondary_irts_rl_2_s.channel10, (long long unsigned int)secondary_irts_rl_2_s.channel11, (long long unsigned int)secondary_irts_rl_2_s.channel12);
     
@@ -267,7 +267,7 @@ int main() {
     printf("Secondary_IRTS_RL_3:\n");
     uint8_t* buffer_secondary_irts_rl_3 = (uint8_t*)malloc(sizeof(Secondary_IRTS_RL_3));
     
-    Secondary_IRTS_RL_3 secondary_irts_rl_3_s = { 27399, 54287, 39606, 63996 };
+    Secondary_IRTS_RL_3 secondary_irts_rl_3_s = { 63996, 59218, 54836, 33999 };
     serialize_Secondary_IRTS_RL_3(buffer_secondary_irts_rl_3, secondary_irts_rl_3_s.channel13, secondary_irts_rl_3_s.channel14, secondary_irts_rl_3_s.channel15, secondary_irts_rl_3_s.channel16);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_rl_3_s.channel13, (long long unsigned int)secondary_irts_rl_3_s.channel14, (long long unsigned int)secondary_irts_rl_3_s.channel15, (long long unsigned int)secondary_irts_rl_3_s.channel16);
     
@@ -283,7 +283,7 @@ int main() {
     printf("Secondary_IRTS_RR_0:\n");
     uint8_t* buffer_secondary_irts_rr_0 = (uint8_t*)malloc(sizeof(Secondary_IRTS_RR_0));
     
-    Secondary_IRTS_RR_0 secondary_irts_rr_0_s = { 59218, 54836, 33999, 42876 };
+    Secondary_IRTS_RR_0 secondary_irts_rr_0_s = { 42876, 62362, 49314, 33145 };
     serialize_Secondary_IRTS_RR_0(buffer_secondary_irts_rr_0, secondary_irts_rr_0_s.channel1, secondary_irts_rr_0_s.channel2, secondary_irts_rr_0_s.channel3, secondary_irts_rr_0_s.channel4);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_rr_0_s.channel1, (long long unsigned int)secondary_irts_rr_0_s.channel2, (long long unsigned int)secondary_irts_rr_0_s.channel3, (long long unsigned int)secondary_irts_rr_0_s.channel4);
     
@@ -299,7 +299,7 @@ int main() {
     printf("Secondary_IRTS_RR_1:\n");
     uint8_t* buffer_secondary_irts_rr_1 = (uint8_t*)malloc(sizeof(Secondary_IRTS_RR_1));
     
-    Secondary_IRTS_RR_1 secondary_irts_rr_1_s = { 62362, 49314, 33145, 47635 };
+    Secondary_IRTS_RR_1 secondary_irts_rr_1_s = { 47635, 12762, 23031, 8001 };
     serialize_Secondary_IRTS_RR_1(buffer_secondary_irts_rr_1, secondary_irts_rr_1_s.channel5, secondary_irts_rr_1_s.channel6, secondary_irts_rr_1_s.channel7, secondary_irts_rr_1_s.channel8);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_rr_1_s.channel5, (long long unsigned int)secondary_irts_rr_1_s.channel6, (long long unsigned int)secondary_irts_rr_1_s.channel7, (long long unsigned int)secondary_irts_rr_1_s.channel8);
     
@@ -315,7 +315,7 @@ int main() {
     printf("Secondary_IRTS_RR_2:\n");
     uint8_t* buffer_secondary_irts_rr_2 = (uint8_t*)malloc(sizeof(Secondary_IRTS_RR_2));
     
-    Secondary_IRTS_RR_2 secondary_irts_rr_2_s = { 12762, 23031, 8001, 27448 };
+    Secondary_IRTS_RR_2 secondary_irts_rr_2_s = { 27448, 52153, 14185, 27183 };
     serialize_Secondary_IRTS_RR_2(buffer_secondary_irts_rr_2, secondary_irts_rr_2_s.channel9, secondary_irts_rr_2_s.channel10, secondary_irts_rr_2_s.channel11, secondary_irts_rr_2_s.channel12);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_rr_2_s.channel9, (long long unsigned int)secondary_irts_rr_2_s.channel10, (long long unsigned int)secondary_irts_rr_2_s.channel11, (long long unsigned int)secondary_irts_rr_2_s.channel12);
     
@@ -331,7 +331,7 @@ int main() {
     printf("Secondary_IRTS_RR_3:\n");
     uint8_t* buffer_secondary_irts_rr_3 = (uint8_t*)malloc(sizeof(Secondary_IRTS_RR_3));
     
-    Secondary_IRTS_RR_3 secondary_irts_rr_3_s = { 52153, 14185, 27183, 36374 };
+    Secondary_IRTS_RR_3 secondary_irts_rr_3_s = { 36374, 53033, 36332, 59314 };
     serialize_Secondary_IRTS_RR_3(buffer_secondary_irts_rr_3, secondary_irts_rr_3_s.channel13, secondary_irts_rr_3_s.channel14, secondary_irts_rr_3_s.channel15, secondary_irts_rr_3_s.channel16);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)secondary_irts_rr_3_s.channel13, (long long unsigned int)secondary_irts_rr_3_s.channel14, (long long unsigned int)secondary_irts_rr_3_s.channel15, (long long unsigned int)secondary_irts_rr_3_s.channel16);
     

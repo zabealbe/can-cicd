@@ -123,13 +123,13 @@ int main() {
     printf("Primary_HV_ERRORS:\n");
     uint8_t* buffer_primary_hv_errors = (uint8_t*)malloc(sizeof(Primary_HV_ERRORS));
     
-    Primary_HV_ERRORS primary_hv_errors_s = { {41}, {32, 106} };
+    Primary_HV_ERRORS primary_hv_errors_s = { {41, 32}, {106, 38} };
     serialize_Primary_HV_ERRORS(buffer_primary_hv_errors, primary_hv_errors_s.warnings, primary_hv_errors_s.errors);
-    printf("\tSerialized\n\t%hhx %hhx.%hhx\n", (char)primary_hv_errors_s.warnings[0], (char)primary_hv_errors_s.errors[0], (char)primary_hv_errors_s.errors[1]);
+    printf("\tSerialized\n\t%hhx.%hhx %hhx.%hhx\n", (char)primary_hv_errors_s.warnings[0], (char)primary_hv_errors_s.warnings[1], (char)primary_hv_errors_s.errors[0], (char)primary_hv_errors_s.errors[1]);
     
     Primary_HV_ERRORS* primary_hv_errors_d = (Primary_HV_ERRORS*)malloc(sizeof(Primary_HV_ERRORS));
     deserialize_Primary_HV_ERRORS(buffer_primary_hv_errors, primary_hv_errors_d);
-    printf("\tDeserialized\n\t%hhx %hhx.%hhx\n", (char)primary_hv_errors_d->warnings[0], (char)primary_hv_errors_d->errors[0], (char)primary_hv_errors_d->errors[1]);
+    printf("\tDeserialized\n\t%hhx.%hhx %hhx.%hhx\n", (char)primary_hv_errors_d->warnings[0], (char)primary_hv_errors_d->warnings[1], (char)primary_hv_errors_d->errors[0], (char)primary_hv_errors_d->errors[1]);
     
     assert(memcmp(&primary_hv_errors_s, primary_hv_errors_d, sizeof(Primary_HV_ERRORS)) == 0);
     puts("SUCCESS!\n");
@@ -139,7 +139,7 @@ int main() {
     printf("Primary_TS_STATUS:\n");
     uint8_t* buffer_primary_ts_status = (uint8_t*)malloc(sizeof(Primary_TS_STATUS));
     
-    Primary_TS_STATUS primary_ts_status_s = { -109 };
+    Primary_TS_STATUS primary_ts_status_s = { 107 };
     serialize_Primary_TS_STATUS(buffer_primary_ts_status, primary_ts_status_s.ts_status);
     printf("\tSerialized\n\t%lld\n", (long long int)primary_ts_status_s.ts_status);
     
@@ -155,7 +155,7 @@ int main() {
     printf("Primary_SET_TS_STATUS:\n");
     uint8_t* buffer_primary_set_ts_status = (uint8_t*)malloc(sizeof(Primary_SET_TS_STATUS));
     
-    Primary_SET_TS_STATUS primary_set_ts_status_s = { 107 };
+    Primary_SET_TS_STATUS primary_set_ts_status_s = { -39 };
     serialize_Primary_SET_TS_STATUS(buffer_primary_set_ts_status, primary_set_ts_status_s.ts_status_set);
     printf("\tSerialized\n\t%lld\n", (long long int)primary_set_ts_status_s.ts_status_set);
     
@@ -171,7 +171,7 @@ int main() {
     printf("Primary_STEER_STATUS:\n");
     uint8_t* buffer_primary_steer_status = (uint8_t*)malloc(sizeof(Primary_STEER_STATUS));
     
-    Primary_STEER_STATUS primary_steer_status_s = { -39, 9, 0 };
+    Primary_STEER_STATUS primary_steer_status_s = { 9, -24, 0 };
     serialize_Primary_STEER_STATUS(buffer_primary_steer_status, primary_steer_status_s.traction_control, primary_steer_status_s.map, primary_steer_status_s.radio_on);
     printf("\tSerialized\n\t%lld %lld\n", (long long int)primary_steer_status_s.traction_control, (long long int)primary_steer_status_s.map, (long long unsigned int)primary_steer_status_s.radio_on);
     
@@ -187,7 +187,7 @@ int main() {
     printf("Primary_SET_CAR_STATUS:\n");
     uint8_t* buffer_primary_set_car_status = (uint8_t*)malloc(sizeof(Primary_SET_CAR_STATUS));
     
-    Primary_SET_CAR_STATUS primary_set_car_status_s = { 4 };
+    Primary_SET_CAR_STATUS primary_set_car_status_s = { -91 };
     serialize_Primary_SET_CAR_STATUS(buffer_primary_set_car_status, primary_set_car_status_s.car_status_set);
     printf("\tSerialized\n\t%lld\n", (long long int)primary_set_car_status_s.car_status_set);
     
@@ -203,7 +203,7 @@ int main() {
     printf("Primary_LV_CURRENT:\n");
     uint8_t* buffer_primary_lv_current = (uint8_t*)malloc(sizeof(Primary_LV_CURRENT));
     
-    Primary_LV_CURRENT primary_lv_current_s = { 191 };
+    Primary_LV_CURRENT primary_lv_current_s = { 95 };
     serialize_Primary_LV_CURRENT(buffer_primary_lv_current, primary_lv_current_s.current);
     printf("\tSerialized\n\t%llu\n", (long long unsigned int)primary_lv_current_s.current);
     
@@ -219,7 +219,7 @@ int main() {
     printf("Primary_LV_VOLTAGE:\n");
     uint8_t* buffer_primary_lv_voltage = (uint8_t*)malloc(sizeof(Primary_LV_VOLTAGE));
     
-    Primary_LV_VOLTAGE primary_lv_voltage_s = { 10, 37, 95, 190, 32281 };
+    Primary_LV_VOLTAGE primary_lv_voltage_s = { 190, 126, 21, 63, 45654 };
     serialize_Primary_LV_VOLTAGE(buffer_primary_lv_voltage, primary_lv_voltage_s.voltage_1, primary_lv_voltage_s.voltage_2, primary_lv_voltage_s.voltage_3, primary_lv_voltage_s.voltage_4, primary_lv_voltage_s.total_voltage);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu\n", (long long unsigned int)primary_lv_voltage_s.voltage_1, (long long unsigned int)primary_lv_voltage_s.voltage_2, (long long unsigned int)primary_lv_voltage_s.voltage_3, (long long unsigned int)primary_lv_voltage_s.voltage_4, (long long unsigned int)primary_lv_voltage_s.total_voltage);
     
@@ -235,7 +235,7 @@ int main() {
     printf("Primary_LV_TEMPERATURE:\n");
     uint8_t* buffer_primary_lv_temperature = (uint8_t*)malloc(sizeof(Primary_LV_TEMPERATURE));
     
-    Primary_LV_TEMPERATURE primary_lv_temperature_s = { 21, 0, 16151 };
+    Primary_LV_TEMPERATURE primary_lv_temperature_s = { 211, 0, 40558 };
     serialize_Primary_LV_TEMPERATURE(buffer_primary_lv_temperature, primary_lv_temperature_s.dcdc_temperature, primary_lv_temperature_s.battery_temperature);
     printf("\tSerialized\n\t%llu %llu\n", (long long unsigned int)primary_lv_temperature_s.dcdc_temperature);
     
@@ -251,7 +251,7 @@ int main() {
     printf("Primary_COOLING_STATUS:\n");
     uint8_t* buffer_primary_cooling_status = (uint8_t*)malloc(sizeof(Primary_COOLING_STATUS));
     
-    Primary_COOLING_STATUS primary_cooling_status_s = { 178, 211, 158 };
+    Primary_COOLING_STATUS primary_cooling_status_s = { 137, 253, 148 };
     serialize_Primary_COOLING_STATUS(buffer_primary_cooling_status, primary_cooling_status_s.hv_fan_speed, primary_cooling_status_s.lv_fan_speed, primary_cooling_status_s.pump_speed);
     printf("\tSerialized\n\t%llu %llu %llu\n", (long long unsigned int)primary_cooling_status_s.hv_fan_speed, (long long unsigned int)primary_cooling_status_s.lv_fan_speed, (long long unsigned int)primary_cooling_status_s.pump_speed);
     
@@ -267,7 +267,7 @@ int main() {
     printf("Primary_HV_CELLS_VOLTAGE:\n");
     uint8_t* buffer_primary_hv_cells_voltage = (uint8_t*)malloc(sizeof(Primary_HV_CELLS_VOLTAGE));
     
-    Primary_HV_CELLS_VOLTAGE primary_hv_cells_voltage_s = { 137, 0, 64905, 38045, 22412 };
+    Primary_HV_CELLS_VOLTAGE primary_hv_cells_voltage_s = { 87, 0, 45995, 11368, 54084 };
     serialize_Primary_HV_CELLS_VOLTAGE(buffer_primary_hv_cells_voltage, primary_hv_cells_voltage_s.cell_index, primary_hv_cells_voltage_s.voltage_0, primary_hv_cells_voltage_s.voltage_1, primary_hv_cells_voltage_s.voltage_2);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)primary_hv_cells_voltage_s.cell_index, (long long unsigned int)primary_hv_cells_voltage_s.voltage_0, (long long unsigned int)primary_hv_cells_voltage_s.voltage_1);
     
@@ -283,7 +283,7 @@ int main() {
     printf("Primary_HV_CELLS_TEMP:\n");
     uint8_t* buffer_primary_hv_cells_temp = (uint8_t*)malloc(sizeof(Primary_HV_CELLS_TEMP));
     
-    Primary_HV_CELLS_TEMP primary_hv_cells_temp_s = { 179, 44, 211, 207, 64, 205, 250, 2 };
+    Primary_HV_CELLS_TEMP primary_hv_cells_temp_s = { 207, 64, 205, 250, 2, 3, 23, 198 };
     serialize_Primary_HV_CELLS_TEMP(buffer_primary_hv_cells_temp, primary_hv_cells_temp_s.cell_index, primary_hv_cells_temp_s.temp_0, primary_hv_cells_temp_s.temp_1, primary_hv_cells_temp_s.temp_2, primary_hv_cells_temp_s.temp_3, primary_hv_cells_temp_s.temp_4, primary_hv_cells_temp_s.temp_5, primary_hv_cells_temp_s.temp_6);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu %llu %llu %llu\n", (long long unsigned int)primary_hv_cells_temp_s.cell_index, (long long unsigned int)primary_hv_cells_temp_s.temp_0, (long long unsigned int)primary_hv_cells_temp_s.temp_1, (long long unsigned int)primary_hv_cells_temp_s.temp_2, (long long unsigned int)primary_hv_cells_temp_s.temp_3, (long long unsigned int)primary_hv_cells_temp_s.temp_4, (long long unsigned int)primary_hv_cells_temp_s.temp_5, (long long unsigned int)primary_hv_cells_temp_s.temp_6);
     
@@ -299,7 +299,7 @@ int main() {
     printf("Primary_SET_CHG_POWER:\n");
     uint8_t* buffer_primary_set_chg_power = (uint8_t*)malloc(sizeof(Primary_SET_CHG_POWER));
     
-    Primary_SET_CHG_POWER primary_set_chg_power_s = { 768, 6108 };
+    Primary_SET_CHG_POWER primary_set_chg_power_s = { 36578, 48340 };
     serialize_Primary_SET_CHG_POWER(buffer_primary_set_chg_power, primary_set_chg_power_s.current, primary_set_chg_power_s.voltage);
     printf("\tSerialized\n\t%llu %llu\n", (long long unsigned int)primary_set_chg_power_s.current, (long long unsigned int)primary_set_chg_power_s.voltage);
     
@@ -315,7 +315,7 @@ int main() {
     printf("Primary_CHG_STATUS:\n");
     uint8_t* buffer_primary_chg_status = (uint8_t*)malloc(sizeof(Primary_CHG_STATUS));
     
-    Primary_CHG_STATUS primary_chg_status_s = { 70 };
+    Primary_CHG_STATUS primary_chg_status_s = { -121 };
     serialize_Primary_CHG_STATUS(buffer_primary_chg_status, primary_chg_status_s.status);
     printf("\tSerialized\n\t%lld\n", (long long int)primary_chg_status_s.status);
     
@@ -331,7 +331,7 @@ int main() {
     printf("Primary_SET_CHG_STATUS:\n");
     uint8_t* buffer_primary_set_chg_status = (uint8_t*)malloc(sizeof(Primary_SET_CHG_STATUS));
     
-    Primary_SET_CHG_STATUS primary_set_chg_status_s = { 14 };
+    Primary_SET_CHG_STATUS primary_set_chg_status_s = { 91 };
     serialize_Primary_SET_CHG_STATUS(buffer_primary_set_chg_status, primary_set_chg_status_s.status);
     printf("\tSerialized\n\t%lld\n", (long long int)primary_set_chg_status_s.status);
     
@@ -347,7 +347,7 @@ int main() {
     printf("Primary_CHG_SETTINGS:\n");
     uint8_t* buffer_primary_chg_settings = (uint8_t*)malloc(sizeof(Primary_CHG_SETTINGS));
     
-    Primary_CHG_SETTINGS primary_chg_settings_s = { 188 };
+    Primary_CHG_SETTINGS primary_chg_settings_s = { 142 };
     serialize_Primary_CHG_SETTINGS(buffer_primary_chg_settings, primary_chg_settings_s.v_cutoff);
     printf("\tSerialized\n\t%llu\n", (long long unsigned int)primary_chg_settings_s.v_cutoff);
     

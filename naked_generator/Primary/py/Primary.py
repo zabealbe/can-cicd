@@ -25,19 +25,6 @@ class Hv_Errors(Bitset):
     OVER_CURRENT = 4
     ADC_INIT = 5
     ADC_TIMEOUT = 6
-    FEEDBACK_HARD = 7
-    
-    def __init__(self):
-        super().__init__(1)
-
-class Hv_Warnings(Bitset):
-    LTC_PEC_ERROR = 0
-    CELL_UNDER_VOLTAGE = 1
-    CELL_OVER_VOLTAGE = 2
-    CELL_OVER_TEMPERATURE = 3
-    OVER_CURRENT = 4
-    ADC_INIT = 5
-    ADC_TIMEOUT = 6
     INT_VOLTAGE_MISMATCH = 7
     FEEDBACK_HARD = 8
     FEEDBACK_SOFT = 9

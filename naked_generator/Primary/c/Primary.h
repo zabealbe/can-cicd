@@ -65,8 +65,8 @@ do { \
 #define getBit(bitset, index)  (bitset[index/8] &  (1 << index % 8) )
 
 
-typedef uint8_t Primary_Hv_Errors[1]; // bitset
-#define Primary_Hv_Errors_default { 0 } // bitset filled with zeros
+typedef uint8_t Primary_Hv_Errors[2]; // bitset
+#define Primary_Hv_Errors_default { 0, 0 } // bitset filled with zeros
 #define Primary_Hv_Errors_LTC_PEC_ERROR 0
 #define Primary_Hv_Errors_CELL_UNDER_VOLTAGE 1
 #define Primary_Hv_Errors_CELL_OVER_VOLTAGE 2
@@ -74,20 +74,9 @@ typedef uint8_t Primary_Hv_Errors[1]; // bitset
 #define Primary_Hv_Errors_OVER_CURRENT 4
 #define Primary_Hv_Errors_ADC_INIT 5
 #define Primary_Hv_Errors_ADC_TIMEOUT 6
-#define Primary_Hv_Errors_FEEDBACK_HARD 7
-
-typedef uint8_t Primary_Hv_Warnings[2]; // bitset
-#define Primary_Hv_Warnings_default { 0, 0 } // bitset filled with zeros
-#define Primary_Hv_Warnings_LTC_PEC_ERROR 0
-#define Primary_Hv_Warnings_CELL_UNDER_VOLTAGE 1
-#define Primary_Hv_Warnings_CELL_OVER_VOLTAGE 2
-#define Primary_Hv_Warnings_CELL_OVER_TEMPERATURE 3
-#define Primary_Hv_Warnings_OVER_CURRENT 4
-#define Primary_Hv_Warnings_ADC_INIT 5
-#define Primary_Hv_Warnings_ADC_TIMEOUT 6
-#define Primary_Hv_Warnings_INT_VOLTAGE_MISMATCH 7
-#define Primary_Hv_Warnings_FEEDBACK_HARD 8
-#define Primary_Hv_Warnings_FEEDBACK_SOFT 9
+#define Primary_Hv_Errors_INT_VOLTAGE_MISMATCH 7
+#define Primary_Hv_Errors_FEEDBACK_HARD 8
+#define Primary_Hv_Errors_FEEDBACK_SOFT 9
 
 typedef enum __is_packed {
     Primary_Tlm_Status_ON = 0,
@@ -233,11 +222,11 @@ size_t deserialize_Primary_HV_TEMP(uint8_t* buffer, Primary_HV_TEMP* primary_hv_
 /* Primary_HV_ERRORS */
 typedef struct __is_packed {
     Primary_Hv_Errors warnings;
-    Primary_Hv_Warnings errors;
+    Primary_Hv_Errors errors;
 } Primary_HV_ERRORS;
-static_assert(sizeof(Primary_HV_ERRORS) == 3, "struct size mismatch");
+static_assert(sizeof(Primary_HV_ERRORS) == 4, "struct size mismatch");
     
-size_t serialize_Primary_HV_ERRORS(uint8_t* buffer, Primary_Hv_Errors warnings, Primary_Hv_Warnings errors);
+size_t serialize_Primary_HV_ERRORS(uint8_t* buffer, Primary_Hv_Errors warnings, Primary_Hv_Errors errors);
 size_t deserialize_Primary_HV_ERRORS(uint8_t* buffer, Primary_HV_ERRORS* primary_hv_errors);
 
 /* Primary_TS_STATUS */

@@ -89,8 +89,8 @@ size_t deserialize_Primary_HV_TEMP(uint8_t* buffer, Primary_HV_TEMP* primary_hv_
     return sizeof(Primary_HV_TEMP);
 }
 /* Primary_HV_ERRORS */
-size_t serialize_Primary_HV_ERRORS(uint8_t* buffer, Primary_Hv_Errors warnings, Primary_Hv_Warnings errors) {
-    Primary_HV_ERRORS primary_hv_errors = { {warnings[0]}, {errors[0], errors[1]} };
+size_t serialize_Primary_HV_ERRORS(uint8_t* buffer, Primary_Hv_Errors warnings, Primary_Hv_Errors errors) {
+    Primary_HV_ERRORS primary_hv_errors = { {warnings[0], warnings[1]}, {errors[0], errors[1]} };
 	// assert(buf_len >= sizeof(Primary_HV_ERRORS));
 	memcpy(buffer, &primary_hv_errors, sizeof(Primary_HV_ERRORS));
     return sizeof(Primary_HV_ERRORS);
