@@ -46,6 +46,24 @@ OUTPUT_DIR = "out/"
 ```
 OUTPUT_DIR is the directory where you will find the generated sources
 
+
+### Requirements
++  Python >=3.6
+
+### Run it!
+```console
+$ cd naked_generator
+$ python main.py
+```
+Generated files:\
+:open_file_folder: [naked_generator](naked_generator)\
+ └ :open_file_folder: out\
+&nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [network-folder]\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├ :open_file_folder: [c](generators/c_gen)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├ :open_file_folder: [py](generators/py_gen)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ :open_file_folder: [js](generators/js_gen)
+  
+
 # Internals
 Naked Generator is a zero overhead serialization library, meaning it does not add any metadata
 to the resulting binary data. For that reason it's ideal for payload size constrained data
