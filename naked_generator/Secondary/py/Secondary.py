@@ -16,12 +16,20 @@ class Bitset(ABC):
     
     def getBit(self, index) -> bool:
         return self.__bitset[int(index/8)] & (1 << index % 8)
+
+class pcu_flags(Bitset):
+    IMPLAUSIBILITY = 0
+    ADC_ERROR = 1
+    UART_ERROR = 2
+    CALIBRATION_INCOMPLETE = 3
+    CAN_ERROR = 4
+    
+    def __init__(self):
+        super().__init__(1)
     
 class Sync_State(Enum):
-    MAX_START = 0
-    MAX_END = 1
-    MIN_START = 2
-    MIN_END = 3
+    MAX_SET = 0
+    MIN_SET = 1
     
 class Pedal(Enum):
     ACCELERATOR = 0
@@ -41,6 +49,19 @@ class SetPedalsRange:
     @staticmethod
     def deserialize(buffer: bytes) -> "SetPedalsRange.struct":
         return SetPedalsRange.struct._make(unpack(SetPedalsRange.schema, buffer))
+
+# PedalsAdcRanges
+class PedalsAdcRanges:
+    struct = namedtuple("PedalsAdcRanges_struct", "brake_raw_adc_min brake_raw_adc_max accelerator_raw_adc_min accelerator_raw_adc_max", rename=True)
+    schema = "<bbbb"
+    
+    @staticmethod
+    def serialize(brake_raw_adc_min, brake_raw_adc_max, accelerator_raw_adc_min, accelerator_raw_adc_max) -> bytes:
+        return pack(PedalsAdcRanges.schema, brake_raw_adc_min, brake_raw_adc_max, accelerator_raw_adc_min, accelerator_raw_adc_max)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "PedalsAdcRanges.struct":
+        return PedalsAdcRanges.struct._make(unpack(PedalsAdcRanges.schema, buffer))
 
 # AcceleratorPedalVal
 class AcceleratorPedalVal:
@@ -67,6 +88,19 @@ class BrakePedalVal:
     @staticmethod
     def deserialize(buffer: bytes) -> "BrakePedalVal.struct":
         return BrakePedalVal.struct._make(unpack(BrakePedalVal.schema, buffer))
+
+# PcuStatus
+class PcuStatus:
+    struct = namedtuple("PcuStatus_struct", "warnings errors", rename=True)
+    schema = "<bb"
+    
+    @staticmethod
+    def serialize(warnings, errors) -> bytes:
+        return pack(PcuStatus.schema, warnings, errors)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "PcuStatus.struct":
+        return PcuStatus.struct._make(unpack(PcuStatus.schema, buffer))
 
 # ImuAngularRate
 class ImuAngularRate:

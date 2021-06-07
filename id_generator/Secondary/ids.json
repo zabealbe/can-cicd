@@ -7,11 +7,17 @@
                 "SET_PEDALS_RANGE": {
                     "id": 1024
                 },
+                "PEDALS_ADC_RANGES": {
+                    "id": 1056
+                },
                 "ACCELERATOR_PEDAL_VAL": {
                     "id": 0
                 },
                 "BRAKE_PEDAL_VAL": {
                     "id": 32
+                },
+                "PCU_STATUS": {
+                    "id": 512
                 }
             }
         },

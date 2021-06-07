@@ -1,12 +1,20 @@
 {
     "types": {
+        "pcu_flags": {
+            "type": "bitset",
+            "items": [
+                "IMPLAUSIBILITY",
+                "ADC_ERROR",
+                "UART_ERROR",
+                "CALIBRATION_INCOMPLETE",
+                "CAN_ERROR"
+            ]
+        },
         "Sync_State": {
             "type": "enum",
             "items": [
-                "MAX_START",
-                "MAX_END",
-                "MIN_START",
-                "MIN_END"
+                "MAX_SET",
+                "MIN_SET"
             ]
         },
         "Pedal": {
@@ -23,11 +31,21 @@
             "sync_state": "Sync_State",
             "pedal": "Pedal"
         },
+        "PEDALS_ADC_RANGES": {
+            "brake_raw_adc_min": "uint16",
+            "brake_raw_adc_max": "uint16",
+            "accelerator_raw_adc_min": "uint16",
+            "accelerator_raw_adc_max": "uint16"
+        },
         "ACCELERATOR_PEDAL_VAL": {
             "level": "uint8"
         },
         "BRAKE_PEDAL_VAL": {
             "level": "uint8"
+        },
+        "PCU_STATUS": {
+            "warnings": "pcu_flags",
+            "errors": "pcu_flags"
         },
         "IMU_ANGULAR_RATE": {
             "ang_rate_x": "uint16",

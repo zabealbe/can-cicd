@@ -65,11 +65,17 @@ do { \
 #define getBit(bitset, index)  (bitset[index/8] &  (1 << index % 8) )
 
 
+typedef uint8_t Secondary_pcu_flags[1]; // bitset
+#define Secondary_pcu_flags_default { 0 } // bitset filled with zeros
+#define Secondary_pcu_flags_IMPLAUSIBILITY 0
+#define Secondary_pcu_flags_ADC_ERROR 1
+#define Secondary_pcu_flags_UART_ERROR 2
+#define Secondary_pcu_flags_CALIBRATION_INCOMPLETE 3
+#define Secondary_pcu_flags_CAN_ERROR 4
+
 typedef enum __is_packed {
-    Secondary_Sync_State_MAX_START = 0,
-    Secondary_Sync_State_MAX_END = 1,
-    Secondary_Sync_State_MIN_START = 2,
-    Secondary_Sync_State_MIN_END = 3,
+    Secondary_Sync_State_MAX_SET = 0,
+    Secondary_Sync_State_MIN_SET = 1,
 } Secondary_Sync_State;
 
 typedef enum __is_packed {
@@ -88,6 +94,18 @@ static_assert(sizeof(Secondary_SET_PEDALS_RANGE) == 2, "struct size mismatch");
 size_t serialize_Secondary_SET_PEDALS_RANGE(uint8_t* buffer, Secondary_Sync_State sync_state, Secondary_Pedal pedal);
 size_t deserialize_Secondary_SET_PEDALS_RANGE(uint8_t* buffer, Secondary_SET_PEDALS_RANGE* secondary_set_pedals_range);
 
+/* Secondary_PEDALS_ADC_RANGES */
+typedef struct __is_packed {
+    uint16_t brake_raw_adc_min;
+    uint16_t brake_raw_adc_max;
+    uint16_t accelerator_raw_adc_min;
+    uint16_t accelerator_raw_adc_max;
+} Secondary_PEDALS_ADC_RANGES;
+static_assert(sizeof(Secondary_PEDALS_ADC_RANGES) == 8, "struct size mismatch");
+    
+size_t serialize_Secondary_PEDALS_ADC_RANGES(uint8_t* buffer, uint16_t brake_raw_adc_min, uint16_t brake_raw_adc_max, uint16_t accelerator_raw_adc_min, uint16_t accelerator_raw_adc_max);
+size_t deserialize_Secondary_PEDALS_ADC_RANGES(uint8_t* buffer, Secondary_PEDALS_ADC_RANGES* secondary_pedals_adc_ranges);
+
 /* Secondary_ACCELERATOR_PEDAL_VAL */
 typedef struct __is_packed {
     uint8_t level;
@@ -105,6 +123,16 @@ static_assert(sizeof(Secondary_BRAKE_PEDAL_VAL) == 1, "struct size mismatch");
     
 size_t serialize_Secondary_BRAKE_PEDAL_VAL(uint8_t* buffer, uint8_t level);
 size_t deserialize_Secondary_BRAKE_PEDAL_VAL(uint8_t* buffer, Secondary_BRAKE_PEDAL_VAL* secondary_brake_pedal_val);
+
+/* Secondary_PCU_STATUS */
+typedef struct __is_packed {
+    Secondary_pcu_flags warnings;
+    Secondary_pcu_flags errors;
+} Secondary_PCU_STATUS;
+static_assert(sizeof(Secondary_PCU_STATUS) == 2, "struct size mismatch");
+    
+size_t serialize_Secondary_PCU_STATUS(uint8_t* buffer, Secondary_pcu_flags warnings, Secondary_pcu_flags errors);
+size_t deserialize_Secondary_PCU_STATUS(uint8_t* buffer, Secondary_PCU_STATUS* secondary_pcu_status);
 
 /* Secondary_IMU_ANGULAR_RATE */
 typedef struct __is_packed {

@@ -13,6 +13,23 @@ function deserializeSecondarySetPedalsRange(bytes) {
     }
 }
 
+function serializeSecondaryPedalsAdcRanges(data) {
+    return Uint8Array.from([
+        ...byteify.serializeUint16(data.brake_raw_adc_min),
+        ...byteify.serializeUint16(data.brake_raw_adc_max),
+        ...byteify.serializeUint16(data.accelerator_raw_adc_min),
+        ...byteify.serializeUint16(data.accelerator_raw_adc_max),
+    ]);
+}
+function deserializeSecondaryPedalsAdcRanges(bytes) {
+    return {
+        brake_raw_adc_min: byteify.deserializeUint16(bytes.slice(0, 2)),
+        brake_raw_adc_max: byteify.deserializeUint16(bytes.slice(2, 4)),
+        accelerator_raw_adc_min: byteify.deserializeUint16(bytes.slice(4, 6)),
+        accelerator_raw_adc_max: byteify.deserializeUint16(bytes.slice(6, 8)),
+    }
+}
+
 function serializeSecondaryAcceleratorPedalVal(data) {
     return Uint8Array.from([
         ...byteify.serializeUint8(data.level),
@@ -32,6 +49,19 @@ function serializeSecondaryBrakePedalVal(data) {
 function deserializeSecondaryBrakePedalVal(bytes) {
     return {
         level: byteify.deserializeUint8(bytes.slice(0, 1)),
+    }
+}
+
+function serializeSecondaryPcuStatus(data) {
+    return Uint8Array.from([
+        ...byteify.serializeInt8(data.warnings),
+        ...byteify.serializeInt8(data.errors),
+    ]);
+}
+function deserializeSecondaryPcuStatus(bytes) {
+    return {
+        warnings: byteify.deserializeInt8(bytes.slice(0, 1)),
+        errors: byteify.deserializeInt8(bytes.slice(1, 2)),
     }
 }
 
