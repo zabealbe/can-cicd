@@ -1,6 +1,6 @@
 from lib.utils import *
 from lib.network import Network
-from generators import c_gen
+from generators.c_gen import c_gen
 from generators import py_gen
 import sanitized_config as c
 

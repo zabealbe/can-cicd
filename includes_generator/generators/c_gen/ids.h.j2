@@ -1,0 +1,25 @@
+#ifndef {{ network.name}}_IDS_H
+#define {{ network.name }}_IDS_H
+
+#define {{ network.name }}_VERSION {{ network.version }}f
+
+{%- for topic_name, topic_id in network.get_topics().items() %}
+{% set topic_messages = network.get_messages_by_topic(topic_name) %}
+/* TOPIC {{ topic_name }} */
+#define TOPIC_{{ topic_name }}_MASK 0b00000011111
+    {%- if topic_id is not sameas None %}
+#define TOPIC_{{ topic_name }}_FILTER 0b{{ "{0:>011b}".format(topic_id) }}
+    {%- endif %}
+    {%- for message_name, message_contents in topic_messages.items() %}
+        {%- if "description" in message_contents %}
+/*
+            {%- for line in message_contents["description"].split("\n") %}
+* {{ line }}
+            {%- endfor %}
+*/
+        {%- endif %}
+#define ID_{{ message_name }} 0b{{ "{0:>011b}".format(message_contents["id"]) }}
+    {%- endfor -%}
+{% endfor %}
+
+#endif

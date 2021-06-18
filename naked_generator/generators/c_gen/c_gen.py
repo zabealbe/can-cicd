@@ -13,7 +13,7 @@ __TEMPLATE_H = os.path.dirname(__file__) + "/template.h.j2"
 __TEST_TEMPLATE_C = os.path.dirname(__file__) + "/test_template.c.j2"
 
 
-def generate(schema, prefix, output_path: str, filename: str):
+def generate(schema, network_name, output_path: str, filename: str):
     """
     Generates the source files in the specified output path
     
@@ -23,21 +23,21 @@ def generate(schema, prefix, output_path: str, filename: str):
         output_path:
         filename:
     """
-    structs, enums, bitsets = __parse_schema(copy.copy(schema), prefix)
+    structs, enums, bitsets = __parse_schema(copy.copy(schema), network_name)
     
     utils.create_subtree(output_path)
 
     with open(f"{output_path}/{filename}.h", "w") as f:
-        f.write(__generate_h(structs, enums, bitsets, filename))
+        f.write(__generate_h(structs, enums, bitsets, network_name, filename))
 
     with open(f"{output_path}/{filename}.c", "w") as f:
-        f.write(__generate_c(structs, enums, bitsets, filename))
+        f.write(__generate_c(structs, enums, bitsets, network_name, filename))
         
     with open(f"{output_path}/test.c", "w") as f:
-        f.write(__generate_test_c(structs, enums, bitsets, filename))
+        f.write(__generate_test_c(structs, enums, bitsets, network_name, filename))
 
 
-def __generate_h(structs, enums, bitsets, filename):
+def __generate_h(structs, enums, bitsets, network_name, filename):
     """
     Generates C header file
     """
@@ -46,6 +46,8 @@ def __generate_h(structs, enums, bitsets, filename):
         template_h = f.read()
 
     code = j2.Template(template_h).render(
+        network_name=network_name,
+
         structs=structs,
         enums=enums,
         bitsets=bitsets,
@@ -60,7 +62,7 @@ def __generate_h(structs, enums, bitsets, filename):
     return code
 
 
-def __generate_c(structs, enums, bitsets, filename):
+def __generate_c(structs, enums, bitsets, network_name, filename):
     """
     Generates C source file
     """
@@ -68,6 +70,8 @@ def __generate_c(structs, enums, bitsets, filename):
         template_c = f.read()
 
     code = j2.Template(template_c).render(
+        network_name=network_name,
+
         structs=structs,
         enums=enums,
         bitsets=bitsets,
@@ -80,7 +84,7 @@ def __generate_c(structs, enums, bitsets, filename):
     return code
 
 
-def __generate_test_c(structs, enums, bitsets, filename):
+def __generate_test_c(structs, enums, bitsets, network_name, filename):
     """
     Generates C source file for tests
     """
@@ -88,6 +92,8 @@ def __generate_test_c(structs, enums, bitsets, filename):
         test_template_c = f.read()
 
     code = j2.Template(test_template_c).render(
+        network_name=network_name,
+        
         structs=structs,
         enums=enums,
         bitsets=bitsets,

@@ -20,7 +20,7 @@
             "priority": 3,
             "sending": ["STEER"],
             "receiving": ["PCU"],
-            "description":"Syncronization message from Steering Wheel to Pedals Control Unit for calibration purpose. Message semantic: sets (max|min) value for (accelerator|brake|all) pedal the moment PCU receives the message with the current read value.",
+            "description":"Syncronization message from Steering Wheel to Pedals Control Unit for calibration purpose.\nMessage semantic: sets (max|min) value for (accelerator|brake|all) pedal the moment PCU receives the message with the current read value.",
             "contents": {
                 "sync_state": ["MAX_SET","MIN_SET"],
                 "pedal": ["ACCELERATOR","BRAKE","ALL"]
@@ -71,7 +71,6 @@
                 "errors": "pcu_flags"
             }
         },
-        
         {
            "name": "IMU_ANGULAR_RATE",
             "fixed_id": 1260,
