@@ -3,6 +3,84 @@
 #include <stdio.h>
 
 #include "Primary.h"
+#include "../../../../includes_generator/out/Primary/ids.h"
+
+/*
+*   Utility functions
+*/
+void Primary_msgname_from_id(uint32_t msg_id, char buffer[static 255]) {
+    switch (msg_id) {
+        case ID_TIMESTAMP:
+            strcpy(buffer, "Primary_TIMESTAMP");
+            break;
+        case ID_TLM_STATUS:
+            strcpy(buffer, "Primary_TLM_STATUS");
+            break;
+        case ID_CAR_STATUS:
+            strcpy(buffer, "Primary_CAR_STATUS");
+            break;
+        case ID_SET_TLM_STATUS:
+            strcpy(buffer, "Primary_SET_TLM_STATUS");
+            break;
+        case ID_HV_VOLTAGE:
+            strcpy(buffer, "Primary_HV_VOLTAGE");
+            break;
+        case ID_HV_CURRENT:
+            strcpy(buffer, "Primary_HV_CURRENT");
+            break;
+        case ID_HV_TEMP:
+            strcpy(buffer, "Primary_HV_TEMP");
+            break;
+        case ID_HV_ERRORS:
+            strcpy(buffer, "Primary_HV_ERRORS");
+            break;
+        case ID_TS_STATUS:
+            strcpy(buffer, "Primary_TS_STATUS");
+            break;
+        case ID_SET_TS_STATUS:
+            strcpy(buffer, "Primary_SET_TS_STATUS");
+            break;
+        case ID_STEER_STATUS:
+            strcpy(buffer, "Primary_STEER_STATUS");
+            break;
+        case ID_SET_CAR_STATUS:
+            strcpy(buffer, "Primary_SET_CAR_STATUS");
+            break;
+        case ID_LV_CURRENT:
+            strcpy(buffer, "Primary_LV_CURRENT");
+            break;
+        case ID_LV_VOLTAGE:
+            strcpy(buffer, "Primary_LV_VOLTAGE");
+            break;
+        case ID_LV_TEMPERATURE:
+            strcpy(buffer, "Primary_LV_TEMPERATURE");
+            break;
+        case ID_COOLING_STATUS:
+            strcpy(buffer, "Primary_COOLING_STATUS");
+            break;
+        case ID_HV_CELLS_VOLTAGE:
+            strcpy(buffer, "Primary_HV_CELLS_VOLTAGE");
+            break;
+        case ID_HV_CELLS_TEMP:
+            strcpy(buffer, "Primary_HV_CELLS_TEMP");
+            break;
+        case ID_SET_CHG_POWER:
+            strcpy(buffer, "Primary_SET_CHG_POWER");
+            break;
+        case ID_CHG_STATUS:
+            strcpy(buffer, "Primary_CHG_STATUS");
+            break;
+        case ID_SET_CHG_STATUS:
+            strcpy(buffer, "Primary_SET_CHG_STATUS");
+            break;
+        case ID_CHG_SETTINGS:
+            strcpy(buffer, "Primary_CHG_SETTINGS");
+            break;
+        default:
+            strcpy(buffer, "unknown message id");
+    }
+}
+
 
 /* Primary_TIMESTAMP */
 size_t serialize_Primary_TIMESTAMP(uint8_t* buffer, uint32_t timestamp) {

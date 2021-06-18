@@ -3,6 +3,168 @@
 #include <stdio.h>
 
 #include "BMSinternal.h"
+#include "../../../../includes_generator/out/BMSinternal/ids.h"
+
+/*
+*   Utility functions
+*/
+void BMSinternal_msgname_from_id(uint32_t msg_id, char buffer[static 255]) {
+    switch (msg_id) {
+        case ID_VOLTAGES_CB0_0:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB0_0");
+            break;
+        case ID_VOLTAGES_CB0_1:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB0_1");
+            break;
+        case ID_VOLTAGES_CB0_2:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB0_2");
+            break;
+        case ID_VOLTAGES_CB0_3:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB0_3");
+            break;
+        case ID_VOLTAGES_CB0_4:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB0_4");
+            break;
+        case ID_VOLTAGES_CB1_0:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB1_0");
+            break;
+        case ID_VOLTAGES_CB1_1:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB1_1");
+            break;
+        case ID_VOLTAGES_CB1_2:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB1_2");
+            break;
+        case ID_VOLTAGES_CB1_3:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB1_3");
+            break;
+        case ID_VOLTAGES_CB1_4:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB1_4");
+            break;
+        case ID_VOLTAGES_CB2_0:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB2_0");
+            break;
+        case ID_VOLTAGES_CB2_1:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB2_1");
+            break;
+        case ID_VOLTAGES_CB2_2:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB2_2");
+            break;
+        case ID_VOLTAGES_CB2_3:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB2_3");
+            break;
+        case ID_VOLTAGES_CB2_4:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB2_4");
+            break;
+        case ID_VOLTAGES_CB3_0:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB3_0");
+            break;
+        case ID_VOLTAGES_CB3_1:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB3_1");
+            break;
+        case ID_VOLTAGES_CB3_2:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB3_2");
+            break;
+        case ID_VOLTAGES_CB3_3:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB3_3");
+            break;
+        case ID_VOLTAGES_CB3_4:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB3_4");
+            break;
+        case ID_VOLTAGES_CB4_0:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB4_0");
+            break;
+        case ID_VOLTAGES_CB4_1:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB4_1");
+            break;
+        case ID_VOLTAGES_CB4_2:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB4_2");
+            break;
+        case ID_VOLTAGES_CB4_3:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB4_3");
+            break;
+        case ID_VOLTAGES_CB4_4:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB4_4");
+            break;
+        case ID_VOLTAGES_CB5_0:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB5_0");
+            break;
+        case ID_VOLTAGES_CB5_1:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB5_1");
+            break;
+        case ID_VOLTAGES_CB5_2:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB5_2");
+            break;
+        case ID_VOLTAGES_CB5_3:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB5_3");
+            break;
+        case ID_VOLTAGES_CB5_4:
+            strcpy(buffer, "BMSinternal_VOLTAGES_CB5_4");
+            break;
+        case ID_TEMPERATURES_CB0_0:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB0_0");
+            break;
+        case ID_TEMPERATURES_CB0_1:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB0_1");
+            break;
+        case ID_TEMPERATURES_CB0_2:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB0_2");
+            break;
+        case ID_TEMPERATURES_CB1_0:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB1_0");
+            break;
+        case ID_TEMPERATURES_CB1_1:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB1_1");
+            break;
+        case ID_TEMPERATURES_CB1_2:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB1_2");
+            break;
+        case ID_TEMPERATURES_CB2_0:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB2_0");
+            break;
+        case ID_TEMPERATURES_CB2_1:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB2_1");
+            break;
+        case ID_TEMPERATURES_CB2_2:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB2_2");
+            break;
+        case ID_TEMPERATURES_CB3_0:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB3_0");
+            break;
+        case ID_TEMPERATURES_CB3_1:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB3_1");
+            break;
+        case ID_TEMPERATURES_CB3_2:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB3_2");
+            break;
+        case ID_TEMPERATURES_CB4_0:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB4_0");
+            break;
+        case ID_TEMPERATURES_CB4_1:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB4_1");
+            break;
+        case ID_TEMPERATURES_CB4_2:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB4_2");
+            break;
+        case ID_TEMPERATURES_CB5_0:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB5_0");
+            break;
+        case ID_TEMPERATURES_CB5_1:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB5_1");
+            break;
+        case ID_TEMPERATURES_CB5_2:
+            strcpy(buffer, "BMSinternal_TEMPERATURES_CB5_2");
+            break;
+        case ID_MASTER_SYNC:
+            strcpy(buffer, "BMSinternal_MASTER_SYNC");
+            break;
+        case ID_CELLBOARD_TOKEN:
+            strcpy(buffer, "BMSinternal_CELLBOARD_TOKEN");
+            break;
+        default:
+            strcpy(buffer, "unknown message id");
+    }
+}
+
 
 /* BMSinternal_VOLTAGES_CB0_0 */
 size_t serialize_BMSinternal_VOLTAGES_CB0_0(uint8_t* buffer, uint16_t voltage0, uint16_t voltage1, uint16_t voltage2, uint16_t voltage3) {

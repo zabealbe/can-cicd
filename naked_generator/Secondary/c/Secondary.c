@@ -3,6 +3,87 @@
 #include <stdio.h>
 
 #include "Secondary.h"
+#include "../../../../includes_generator/out/Secondary/ids.h"
+
+/*
+*   Utility functions
+*/
+void Secondary_msgname_from_id(uint32_t msg_id, char buffer[static 255]) {
+    switch (msg_id) {
+        case ID_SET_PEDALS_RANGE:
+            strcpy(buffer, "Secondary_SET_PEDALS_RANGE");
+            break;
+        case ID_PEDALS_ADC_RANGES:
+            strcpy(buffer, "Secondary_PEDALS_ADC_RANGES");
+            break;
+        case ID_ACCELERATOR_PEDAL_VAL:
+            strcpy(buffer, "Secondary_ACCELERATOR_PEDAL_VAL");
+            break;
+        case ID_BRAKE_PEDAL_VAL:
+            strcpy(buffer, "Secondary_BRAKE_PEDAL_VAL");
+            break;
+        case ID_PCU_STATUS:
+            strcpy(buffer, "Secondary_PCU_STATUS");
+            break;
+        case ID_IMU_ANGULAR_RATE:
+            strcpy(buffer, "Secondary_IMU_ANGULAR_RATE");
+            break;
+        case ID_IMU_ACCELERATION:
+            strcpy(buffer, "Secondary_IMU_ACCELERATION");
+            break;
+        case ID_IRTS_FL_0:
+            strcpy(buffer, "Secondary_IRTS_FL_0");
+            break;
+        case ID_IRTS_FL_1:
+            strcpy(buffer, "Secondary_IRTS_FL_1");
+            break;
+        case ID_IRTS_FL_2:
+            strcpy(buffer, "Secondary_IRTS_FL_2");
+            break;
+        case ID_IRTS_FL_3:
+            strcpy(buffer, "Secondary_IRTS_FL_3");
+            break;
+        case ID_IRTS_FR_0:
+            strcpy(buffer, "Secondary_IRTS_FR_0");
+            break;
+        case ID_IRTS_FR_1:
+            strcpy(buffer, "Secondary_IRTS_FR_1");
+            break;
+        case ID_IRTS_FR_2:
+            strcpy(buffer, "Secondary_IRTS_FR_2");
+            break;
+        case ID_IRTS_FR_3:
+            strcpy(buffer, "Secondary_IRTS_FR_3");
+            break;
+        case ID_IRTS_RL_0:
+            strcpy(buffer, "Secondary_IRTS_RL_0");
+            break;
+        case ID_IRTS_RL_1:
+            strcpy(buffer, "Secondary_IRTS_RL_1");
+            break;
+        case ID_IRTS_RL_2:
+            strcpy(buffer, "Secondary_IRTS_RL_2");
+            break;
+        case ID_IRTS_RL_3:
+            strcpy(buffer, "Secondary_IRTS_RL_3");
+            break;
+        case ID_IRTS_RR_0:
+            strcpy(buffer, "Secondary_IRTS_RR_0");
+            break;
+        case ID_IRTS_RR_1:
+            strcpy(buffer, "Secondary_IRTS_RR_1");
+            break;
+        case ID_IRTS_RR_2:
+            strcpy(buffer, "Secondary_IRTS_RR_2");
+            break;
+        case ID_IRTS_RR_3:
+            strcpy(buffer, "Secondary_IRTS_RR_3");
+            break;
+        default:
+            strcpy(buffer, "unknown message id");
+    }
+}
+
 
 /* Secondary_SET_PEDALS_RANGE */
 size_t serialize_Secondary_SET_PEDALS_RANGE(uint8_t* buffer, Secondary_Sync_State sync_state, Secondary_Pedal pedal) {
