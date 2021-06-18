@@ -28,20 +28,20 @@ jobs:
         pip install -r requirements.txt
         python main.py
         mkdir -p /tmp/workspace/id_generator/ && cp -R out/* /tmp/workspace/id_generator/
-    - name: Naked generator
-      run: |
-        cd naked_generator
-        pip install -r requirements.txt
-        python main.py
-        mkdir -p /tmp/workspace/naked_generator/ && cp -R out/* /tmp/workspace/naked_generator/
-        # TESTS
-        python -m tests.test_all
     - name: Run Includes generator
       run: |
         cd includes_generator
         pip install -r requirements.txt
         python main.py
         mkdir -p /tmp/workspace/includes_generator/ && cp -R out/* /tmp/workspace/includes_generator/
+    -   name: Naked generator
+        run: |
+            cd naked_generator
+            pip install -r requirements.txt
+            python main.py
+            mkdir -p /tmp/workspace/naked_generator/ && cp -R out/* /tmp/workspace/naked_generator/
+            # TESTS
+            python -m tests.test_all
     - name: Sheet generator
       run: |
         cd sheet_generator
