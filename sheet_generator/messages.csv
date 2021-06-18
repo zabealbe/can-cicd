@@ -72,7 +72,8 @@ SET_CHG_POWER,263,Primary,HANDCART,6,BMS_HV,HANDCART,"current: uint16, voltage: 
 CHG_STATUS,7,Primary,HANDCART,7,BMS_HV,HANDCART,"status: CHG_OFF, CHG_TC, CHG_CC, CHG_CV",
 SET_CHG_STATUS,39,Primary,HANDCART,7,HANDCART,BMS_HV,"status: CHG_OFF, CHG_TC, CHG_CC, CHG_CV",
 CHG_SETTINGS,71,Primary,HANDCART,7,HANDCART,BMS_HV,v_cutoff: uint8,
-SET_PEDALS_RANGE,1024,Secondary,PEDALS,3,STEER,PCU,"sync_state: MAX_SET, MIN_SET, pedal: ACCELERATOR, BRAKE, ALL",Syncronization message from Steering Wheel to Pedals Control Unit for calibration purpose. Message semantic: sets (max|min) value for (accelerator|brake|all) pedal the moment PCU receives the message with the current read value.
+SET_PEDALS_RANGE,1024,Secondary,PEDALS,3,STEER,PCU,"sync_state: MAX_SET, MIN_SET, pedal: ACCELERATOR, BRAKE, ALL","Syncronization message from Steering Wheel to Pedals Control Unit for calibration purpose.
+Message semantic: sets (max|min) value for (accelerator|brake|all) pedal the moment PCU receives the message with the current read value."
 PEDALS_ADC_RANGES,1056,Secondary,PEDALS,3,"ECU, PCU","PCU, ECU","brake_raw_adc_min: uint16, brake_raw_adc_max: uint16, accelerator_raw_adc_min: uint16, accelerator_raw_adc_max: uint16",This message contains ADC raw values used by PCU to set 0->255 range when sending pedals value. This message can be requested and sent either by PCU or ECU. If PCU requests this message then ECU responds with a value from a previous run. If ECU requests this message then PCU sends the current ranges. NOTE: ADC values have 12 bit resolution.
 ACCELERATOR_PEDAL_VAL,0,Secondary,PEDALS,7,PCU,"ECU,TLM",level: uint8,"Accelerator Pedal potentiometer Value. Average of 2 sensors normalized from 0 to 255, linear, 8bit total, unsigned."
 BRAKE_PEDAL_VAL,32,Secondary,PEDALS,7,PCU,"ECU,TLM",level: uint8,"Brake Pedal pressure sensor Value. Normalized from 0 to 255, linear, 8bit total, unsigned."

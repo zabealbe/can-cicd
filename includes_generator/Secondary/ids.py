@@ -4,7 +4,8 @@ NETWORK_VERSION = 0
 TOPIC_PEDALS_MASK = 0b00000011111
 TOPIC_PEDALS_FILTER = 0b00000000000
 """
-Syncronization message from Steering Wheel to Pedals Control Unit for calibration purpose. Message semantic: sets (max|min) value for (accelerator|brake|all) pedal the moment PCU receives the message with the current read value.
+Syncronization message from Steering Wheel to Pedals Control Unit for calibration purpose.
+Message semantic: sets (max|min) value for (accelerator|brake|all) pedal the moment PCU receives the message with the current read value.
 """
 ID_SET_PEDALS_RANGE = 0b10000000000
 """

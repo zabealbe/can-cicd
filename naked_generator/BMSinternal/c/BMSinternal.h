@@ -56,6 +56,10 @@ static_assert(sizeof(double) == 8, "** THIS ARCHITECTURE DOESN'T MATCH THE EXPEC
     #define __is_packed __attribute__((__packed__)) // , __aligned__(1)))
 #endif
 
+/*
+*   Bitset
+*   macros for read/write bitsets
+*/
 #define setBit(bitset, index, value) \
 do { \
     bitset[index/8] &= ~( 1 << index % 8); \
