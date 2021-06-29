@@ -8,7 +8,7 @@
 /*
 *   Utility functions
 */
-void Primary_msgname_from_id(uint32_t msg_id, char buffer[static 255]) {
+void Primary_msgname_from_id(uint32_t msg_id, char buffer[static 50]) {
     switch (msg_id) {
         case ID_TIMESTAMP:
             strcpy(buffer, "Primary_TIMESTAMP");

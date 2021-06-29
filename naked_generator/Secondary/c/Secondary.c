@@ -8,7 +8,7 @@
 /*
 *   Utility functions
 */
-void Secondary_msgname_from_id(uint32_t msg_id, char buffer[static 255]) {
+void Secondary_msgname_from_id(uint32_t msg_id, char buffer[static 50]) {
     switch (msg_id) {
         case ID_SET_PEDALS_RANGE:
             strcpy(buffer, "Secondary_SET_PEDALS_RANGE");

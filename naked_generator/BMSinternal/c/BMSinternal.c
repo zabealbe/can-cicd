@@ -8,7 +8,7 @@
 /*
 *   Utility functions
 */
-void BMSinternal_msgname_from_id(uint32_t msg_id, char buffer[static 255]) {
+void BMSinternal_msgname_from_id(uint32_t msg_id, char buffer[static 50]) {
     switch (msg_id) {
         case ID_VOLTAGES_CB0_0:
             strcpy(buffer, "BMSinternal_VOLTAGES_CB0_0");
