@@ -11,7 +11,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB0_0:\n");
     uint8_t* buffer_bmsinternal_voltages_cb0_0 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB0_0));
     
-    BMSinternal_VOLTAGES_CB0_0 bmsinternal_voltages_cb0_0_s = { 14340, 17620, 54339, 15141 };
+    BMSinternal_VOLTAGES_CB0_0 bmsinternal_voltages_cb0_0_s = { 62758, 44371, 32590, 41640 };
     serialize_BMSinternal_VOLTAGES_CB0_0(buffer_bmsinternal_voltages_cb0_0, bmsinternal_voltages_cb0_0_s.voltage0, bmsinternal_voltages_cb0_0_s.voltage1, bmsinternal_voltages_cb0_0_s.voltage2, bmsinternal_voltages_cb0_0_s.voltage3);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb0_0_s.voltage0, (long long unsigned int)bmsinternal_voltages_cb0_0_s.voltage1, (long long unsigned int)bmsinternal_voltages_cb0_0_s.voltage2, (long long unsigned int)bmsinternal_voltages_cb0_0_s.voltage3);
     
@@ -27,7 +27,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB0_1:\n");
     uint8_t* buffer_bmsinternal_voltages_cb0_1 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB0_1));
     
-    BMSinternal_VOLTAGES_CB0_1 bmsinternal_voltages_cb0_1_s = { 62888, 8870, 10483, 22990 };
+    BMSinternal_VOLTAGES_CB0_1 bmsinternal_voltages_cb0_1_s = { 6347, 64715, 28363, 5522 };
     serialize_BMSinternal_VOLTAGES_CB0_1(buffer_bmsinternal_voltages_cb0_1, bmsinternal_voltages_cb0_1_s.voltage4, bmsinternal_voltages_cb0_1_s.voltage5, bmsinternal_voltages_cb0_1_s.voltage6, bmsinternal_voltages_cb0_1_s.voltage7);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb0_1_s.voltage4, (long long unsigned int)bmsinternal_voltages_cb0_1_s.voltage5, (long long unsigned int)bmsinternal_voltages_cb0_1_s.voltage6, (long long unsigned int)bmsinternal_voltages_cb0_1_s.voltage7);
     
@@ -43,7 +43,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB0_2:\n");
     uint8_t* buffer_bmsinternal_voltages_cb0_2 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB0_2));
     
-    BMSinternal_VOLTAGES_CB0_2 bmsinternal_voltages_cb0_2_s = { 46411, 54156, 4536, 27517 };
+    BMSinternal_VOLTAGES_CB0_2 bmsinternal_voltages_cb0_2_s = { 37943, 53915, 49725, 42317 };
     serialize_BMSinternal_VOLTAGES_CB0_2(buffer_bmsinternal_voltages_cb0_2, bmsinternal_voltages_cb0_2_s.voltage8, bmsinternal_voltages_cb0_2_s.voltage9, bmsinternal_voltages_cb0_2_s.voltage10, bmsinternal_voltages_cb0_2_s.voltage11);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb0_2_s.voltage8, (long long unsigned int)bmsinternal_voltages_cb0_2_s.voltage9, (long long unsigned int)bmsinternal_voltages_cb0_2_s.voltage10, (long long unsigned int)bmsinternal_voltages_cb0_2_s.voltage11);
     
@@ -59,7 +59,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB0_3:\n");
     uint8_t* buffer_bmsinternal_voltages_cb0_3 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB0_3));
     
-    BMSinternal_VOLTAGES_CB0_3 bmsinternal_voltages_cb0_3_s = { 5484, 46744, 24104, 61123 };
+    BMSinternal_VOLTAGES_CB0_3 bmsinternal_voltages_cb0_3_s = { 45006, 32298, 63458, 30021 };
     serialize_BMSinternal_VOLTAGES_CB0_3(buffer_bmsinternal_voltages_cb0_3, bmsinternal_voltages_cb0_3_s.voltage12, bmsinternal_voltages_cb0_3_s.voltage13, bmsinternal_voltages_cb0_3_s.voltage14, bmsinternal_voltages_cb0_3_s.voltage15);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb0_3_s.voltage12, (long long unsigned int)bmsinternal_voltages_cb0_3_s.voltage13, (long long unsigned int)bmsinternal_voltages_cb0_3_s.voltage14, (long long unsigned int)bmsinternal_voltages_cb0_3_s.voltage15);
     
@@ -75,7 +75,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB0_4:\n");
     uint8_t* buffer_bmsinternal_voltages_cb0_4 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB0_4));
     
-    BMSinternal_VOLTAGES_CB0_4 bmsinternal_voltages_cb0_4_s = { 16664, 13437, 14273, 45750 };
+    BMSinternal_VOLTAGES_CB0_4 bmsinternal_voltages_cb0_4_s = { 59738, 48986, 50563, 46585 };
     serialize_BMSinternal_VOLTAGES_CB0_4(buffer_bmsinternal_voltages_cb0_4, bmsinternal_voltages_cb0_4_s.voltage16, bmsinternal_voltages_cb0_4_s.voltage17, bmsinternal_voltages_cb0_4_s.max_voltage, bmsinternal_voltages_cb0_4_s.min_voltage);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb0_4_s.voltage16, (long long unsigned int)bmsinternal_voltages_cb0_4_s.voltage17, (long long unsigned int)bmsinternal_voltages_cb0_4_s.max_voltage, (long long unsigned int)bmsinternal_voltages_cb0_4_s.min_voltage);
     
@@ -91,7 +91,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB1_0:\n");
     uint8_t* buffer_bmsinternal_voltages_cb1_0 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB1_0));
     
-    BMSinternal_VOLTAGES_CB1_0 bmsinternal_voltages_cb1_0_s = { 27081, 29170, 26961, 17711 };
+    BMSinternal_VOLTAGES_CB1_0 bmsinternal_voltages_cb1_0_s = { 65027, 29783, 38715, 54676 };
     serialize_BMSinternal_VOLTAGES_CB1_0(buffer_bmsinternal_voltages_cb1_0, bmsinternal_voltages_cb1_0_s.voltage0, bmsinternal_voltages_cb1_0_s.voltage1, bmsinternal_voltages_cb1_0_s.voltage2, bmsinternal_voltages_cb1_0_s.voltage3);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb1_0_s.voltage0, (long long unsigned int)bmsinternal_voltages_cb1_0_s.voltage1, (long long unsigned int)bmsinternal_voltages_cb1_0_s.voltage2, (long long unsigned int)bmsinternal_voltages_cb1_0_s.voltage3);
     
@@ -107,7 +107,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB1_1:\n");
     uint8_t* buffer_bmsinternal_voltages_cb1_1 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB1_1));
     
-    BMSinternal_VOLTAGES_CB1_1 bmsinternal_voltages_cb1_1_s = { 14903, 7568, 47017, 567 };
+    BMSinternal_VOLTAGES_CB1_1 bmsinternal_voltages_cb1_1_s = { 17927, 2296, 21730, 7609 };
     serialize_BMSinternal_VOLTAGES_CB1_1(buffer_bmsinternal_voltages_cb1_1, bmsinternal_voltages_cb1_1_s.voltage4, bmsinternal_voltages_cb1_1_s.voltage5, bmsinternal_voltages_cb1_1_s.voltage6, bmsinternal_voltages_cb1_1_s.voltage7);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb1_1_s.voltage4, (long long unsigned int)bmsinternal_voltages_cb1_1_s.voltage5, (long long unsigned int)bmsinternal_voltages_cb1_1_s.voltage6, (long long unsigned int)bmsinternal_voltages_cb1_1_s.voltage7);
     
@@ -123,7 +123,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB1_2:\n");
     uint8_t* buffer_bmsinternal_voltages_cb1_2 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB1_2));
     
-    BMSinternal_VOLTAGES_CB1_2 bmsinternal_voltages_cb1_2_s = { 57031, 51896, 63629, 53376 };
+    BMSinternal_VOLTAGES_CB1_2 bmsinternal_voltages_cb1_2_s = { 43906, 49986, 51888, 46131 };
     serialize_BMSinternal_VOLTAGES_CB1_2(buffer_bmsinternal_voltages_cb1_2, bmsinternal_voltages_cb1_2_s.voltage8, bmsinternal_voltages_cb1_2_s.voltage9, bmsinternal_voltages_cb1_2_s.voltage10, bmsinternal_voltages_cb1_2_s.voltage11);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb1_2_s.voltage8, (long long unsigned int)bmsinternal_voltages_cb1_2_s.voltage9, (long long unsigned int)bmsinternal_voltages_cb1_2_s.voltage10, (long long unsigned int)bmsinternal_voltages_cb1_2_s.voltage11);
     
@@ -139,7 +139,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB1_3:\n");
     uint8_t* buffer_bmsinternal_voltages_cb1_3 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB1_3));
     
-    BMSinternal_VOLTAGES_CB1_3 bmsinternal_voltages_cb1_3_s = { 16185, 5500, 41165, 39193 };
+    BMSinternal_VOLTAGES_CB1_3 bmsinternal_voltages_cb1_3_s = { 55257, 908, 35842, 25053 };
     serialize_BMSinternal_VOLTAGES_CB1_3(buffer_bmsinternal_voltages_cb1_3, bmsinternal_voltages_cb1_3_s.voltage12, bmsinternal_voltages_cb1_3_s.voltage13, bmsinternal_voltages_cb1_3_s.voltage14, bmsinternal_voltages_cb1_3_s.voltage15);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb1_3_s.voltage12, (long long unsigned int)bmsinternal_voltages_cb1_3_s.voltage13, (long long unsigned int)bmsinternal_voltages_cb1_3_s.voltage14, (long long unsigned int)bmsinternal_voltages_cb1_3_s.voltage15);
     
@@ -155,7 +155,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB1_4:\n");
     uint8_t* buffer_bmsinternal_voltages_cb1_4 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB1_4));
     
-    BMSinternal_VOLTAGES_CB1_4 bmsinternal_voltages_cb1_4_s = { 4325, 49251, 54201, 8210 };
+    BMSinternal_VOLTAGES_CB1_4 bmsinternal_voltages_cb1_4_s = { 60329, 13158, 11397, 54440 };
     serialize_BMSinternal_VOLTAGES_CB1_4(buffer_bmsinternal_voltages_cb1_4, bmsinternal_voltages_cb1_4_s.voltage16, bmsinternal_voltages_cb1_4_s.voltage17, bmsinternal_voltages_cb1_4_s.max_voltage, bmsinternal_voltages_cb1_4_s.min_voltage);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb1_4_s.voltage16, (long long unsigned int)bmsinternal_voltages_cb1_4_s.voltage17, (long long unsigned int)bmsinternal_voltages_cb1_4_s.max_voltage, (long long unsigned int)bmsinternal_voltages_cb1_4_s.min_voltage);
     
@@ -171,7 +171,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB2_0:\n");
     uint8_t* buffer_bmsinternal_voltages_cb2_0 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB2_0));
     
-    BMSinternal_VOLTAGES_CB2_0 bmsinternal_voltages_cb2_0_s = { 30820, 23273, 4000, 34194 };
+    BMSinternal_VOLTAGES_CB2_0 bmsinternal_voltages_cb2_0_s = { 52791, 27110, 46067, 32474 };
     serialize_BMSinternal_VOLTAGES_CB2_0(buffer_bmsinternal_voltages_cb2_0, bmsinternal_voltages_cb2_0_s.voltage0, bmsinternal_voltages_cb2_0_s.voltage1, bmsinternal_voltages_cb2_0_s.voltage2, bmsinternal_voltages_cb2_0_s.voltage3);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb2_0_s.voltage0, (long long unsigned int)bmsinternal_voltages_cb2_0_s.voltage1, (long long unsigned int)bmsinternal_voltages_cb2_0_s.voltage2, (long long unsigned int)bmsinternal_voltages_cb2_0_s.voltage3);
     
@@ -187,7 +187,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB2_1:\n");
     uint8_t* buffer_bmsinternal_voltages_cb2_1 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB2_1));
     
-    BMSinternal_VOLTAGES_CB2_1 bmsinternal_voltages_cb2_1_s = { 45128, 60174, 28166, 57937 };
+    BMSinternal_VOLTAGES_CB2_1 bmsinternal_voltages_cb2_1_s = { 19164, 27432, 55646, 3533 };
     serialize_BMSinternal_VOLTAGES_CB2_1(buffer_bmsinternal_voltages_cb2_1, bmsinternal_voltages_cb2_1_s.voltage4, bmsinternal_voltages_cb2_1_s.voltage5, bmsinternal_voltages_cb2_1_s.voltage6, bmsinternal_voltages_cb2_1_s.voltage7);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb2_1_s.voltage4, (long long unsigned int)bmsinternal_voltages_cb2_1_s.voltage5, (long long unsigned int)bmsinternal_voltages_cb2_1_s.voltage6, (long long unsigned int)bmsinternal_voltages_cb2_1_s.voltage7);
     
@@ -203,7 +203,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB2_2:\n");
     uint8_t* buffer_bmsinternal_voltages_cb2_2 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB2_2));
     
-    BMSinternal_VOLTAGES_CB2_2 bmsinternal_voltages_cb2_2_s = { 58804, 2386, 15006, 16534 };
+    BMSinternal_VOLTAGES_CB2_2 bmsinternal_voltages_cb2_2_s = { 32660, 1775, 4006, 36313 };
     serialize_BMSinternal_VOLTAGES_CB2_2(buffer_bmsinternal_voltages_cb2_2, bmsinternal_voltages_cb2_2_s.voltage8, bmsinternal_voltages_cb2_2_s.voltage9, bmsinternal_voltages_cb2_2_s.voltage10, bmsinternal_voltages_cb2_2_s.voltage11);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb2_2_s.voltage8, (long long unsigned int)bmsinternal_voltages_cb2_2_s.voltage9, (long long unsigned int)bmsinternal_voltages_cb2_2_s.voltage10, (long long unsigned int)bmsinternal_voltages_cb2_2_s.voltage11);
     
@@ -219,7 +219,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB2_3:\n");
     uint8_t* buffer_bmsinternal_voltages_cb2_3 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB2_3));
     
-    BMSinternal_VOLTAGES_CB2_3 bmsinternal_voltages_cb2_3_s = { 51734, 36479, 19408, 40485 };
+    BMSinternal_VOLTAGES_CB2_3 bmsinternal_voltages_cb2_3_s = { 37998, 48856, 41816, 38297 };
     serialize_BMSinternal_VOLTAGES_CB2_3(buffer_bmsinternal_voltages_cb2_3, bmsinternal_voltages_cb2_3_s.voltage12, bmsinternal_voltages_cb2_3_s.voltage13, bmsinternal_voltages_cb2_3_s.voltage14, bmsinternal_voltages_cb2_3_s.voltage15);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb2_3_s.voltage12, (long long unsigned int)bmsinternal_voltages_cb2_3_s.voltage13, (long long unsigned int)bmsinternal_voltages_cb2_3_s.voltage14, (long long unsigned int)bmsinternal_voltages_cb2_3_s.voltage15);
     
@@ -235,7 +235,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB2_4:\n");
     uint8_t* buffer_bmsinternal_voltages_cb2_4 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB2_4));
     
-    BMSinternal_VOLTAGES_CB2_4 bmsinternal_voltages_cb2_4_s = { 40511, 52025, 37652, 23803 };
+    BMSinternal_VOLTAGES_CB2_4 bmsinternal_voltages_cb2_4_s = { 2640, 16963, 32184, 12486 };
     serialize_BMSinternal_VOLTAGES_CB2_4(buffer_bmsinternal_voltages_cb2_4, bmsinternal_voltages_cb2_4_s.voltage16, bmsinternal_voltages_cb2_4_s.voltage17, bmsinternal_voltages_cb2_4_s.max_voltage, bmsinternal_voltages_cb2_4_s.min_voltage);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb2_4_s.voltage16, (long long unsigned int)bmsinternal_voltages_cb2_4_s.voltage17, (long long unsigned int)bmsinternal_voltages_cb2_4_s.max_voltage, (long long unsigned int)bmsinternal_voltages_cb2_4_s.min_voltage);
     
@@ -251,7 +251,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB3_0:\n");
     uint8_t* buffer_bmsinternal_voltages_cb3_0 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB3_0));
     
-    BMSinternal_VOLTAGES_CB3_0 bmsinternal_voltages_cb3_0_s = { 24547, 60352, 62981, 4680 };
+    BMSinternal_VOLTAGES_CB3_0 bmsinternal_voltages_cb3_0_s = { 41796, 52720, 24447, 22691 };
     serialize_BMSinternal_VOLTAGES_CB3_0(buffer_bmsinternal_voltages_cb3_0, bmsinternal_voltages_cb3_0_s.voltage0, bmsinternal_voltages_cb3_0_s.voltage1, bmsinternal_voltages_cb3_0_s.voltage2, bmsinternal_voltages_cb3_0_s.voltage3);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb3_0_s.voltage0, (long long unsigned int)bmsinternal_voltages_cb3_0_s.voltage1, (long long unsigned int)bmsinternal_voltages_cb3_0_s.voltage2, (long long unsigned int)bmsinternal_voltages_cb3_0_s.voltage3);
     
@@ -267,7 +267,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB3_1:\n");
     uint8_t* buffer_bmsinternal_voltages_cb3_1 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB3_1));
     
-    BMSinternal_VOLTAGES_CB3_1 bmsinternal_voltages_cb3_1_s = { 11173, 36279, 23686, 17014 };
+    BMSinternal_VOLTAGES_CB3_1 bmsinternal_voltages_cb3_1_s = { 19988, 21113, 8672, 16605 };
     serialize_BMSinternal_VOLTAGES_CB3_1(buffer_bmsinternal_voltages_cb3_1, bmsinternal_voltages_cb3_1_s.voltage4, bmsinternal_voltages_cb3_1_s.voltage5, bmsinternal_voltages_cb3_1_s.voltage6, bmsinternal_voltages_cb3_1_s.voltage7);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb3_1_s.voltage4, (long long unsigned int)bmsinternal_voltages_cb3_1_s.voltage5, (long long unsigned int)bmsinternal_voltages_cb3_1_s.voltage6, (long long unsigned int)bmsinternal_voltages_cb3_1_s.voltage7);
     
@@ -283,7 +283,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB3_2:\n");
     uint8_t* buffer_bmsinternal_voltages_cb3_2 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB3_2));
     
-    BMSinternal_VOLTAGES_CB3_2 bmsinternal_voltages_cb3_2_s = { 15365, 37730, 4654, 32339 };
+    BMSinternal_VOLTAGES_CB3_2 bmsinternal_voltages_cb3_2_s = { 25463, 29818, 59104, 6308 };
     serialize_BMSinternal_VOLTAGES_CB3_2(buffer_bmsinternal_voltages_cb3_2, bmsinternal_voltages_cb3_2_s.voltage8, bmsinternal_voltages_cb3_2_s.voltage9, bmsinternal_voltages_cb3_2_s.voltage10, bmsinternal_voltages_cb3_2_s.voltage11);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb3_2_s.voltage8, (long long unsigned int)bmsinternal_voltages_cb3_2_s.voltage9, (long long unsigned int)bmsinternal_voltages_cb3_2_s.voltage10, (long long unsigned int)bmsinternal_voltages_cb3_2_s.voltage11);
     
@@ -299,7 +299,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB3_3:\n");
     uint8_t* buffer_bmsinternal_voltages_cb3_3 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB3_3));
     
-    BMSinternal_VOLTAGES_CB3_3 bmsinternal_voltages_cb3_3_s = { 58729, 45549, 37992, 20550 };
+    BMSinternal_VOLTAGES_CB3_3 bmsinternal_voltages_cb3_3_s = { 10973, 42718, 8586, 56204 };
     serialize_BMSinternal_VOLTAGES_CB3_3(buffer_bmsinternal_voltages_cb3_3, bmsinternal_voltages_cb3_3_s.voltage12, bmsinternal_voltages_cb3_3_s.voltage13, bmsinternal_voltages_cb3_3_s.voltage14, bmsinternal_voltages_cb3_3_s.voltage15);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb3_3_s.voltage12, (long long unsigned int)bmsinternal_voltages_cb3_3_s.voltage13, (long long unsigned int)bmsinternal_voltages_cb3_3_s.voltage14, (long long unsigned int)bmsinternal_voltages_cb3_3_s.voltage15);
     
@@ -315,7 +315,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB3_4:\n");
     uint8_t* buffer_bmsinternal_voltages_cb3_4 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB3_4));
     
-    BMSinternal_VOLTAGES_CB3_4 bmsinternal_voltages_cb3_4_s = { 61758, 36528, 64057, 59343 };
+    BMSinternal_VOLTAGES_CB3_4 bmsinternal_voltages_cb3_4_s = { 30300, 47174, 42851, 861 };
     serialize_BMSinternal_VOLTAGES_CB3_4(buffer_bmsinternal_voltages_cb3_4, bmsinternal_voltages_cb3_4_s.voltage16, bmsinternal_voltages_cb3_4_s.voltage17, bmsinternal_voltages_cb3_4_s.max_voltage, bmsinternal_voltages_cb3_4_s.min_voltage);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb3_4_s.voltage16, (long long unsigned int)bmsinternal_voltages_cb3_4_s.voltage17, (long long unsigned int)bmsinternal_voltages_cb3_4_s.max_voltage, (long long unsigned int)bmsinternal_voltages_cb3_4_s.min_voltage);
     
@@ -331,7 +331,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB4_0:\n");
     uint8_t* buffer_bmsinternal_voltages_cb4_0 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB4_0));
     
-    BMSinternal_VOLTAGES_CB4_0 bmsinternal_voltages_cb4_0_s = { 54837, 23459, 5401, 38536 };
+    BMSinternal_VOLTAGES_CB4_0 bmsinternal_voltages_cb4_0_s = { 22272, 2679, 31961, 8804 };
     serialize_BMSinternal_VOLTAGES_CB4_0(buffer_bmsinternal_voltages_cb4_0, bmsinternal_voltages_cb4_0_s.voltage0, bmsinternal_voltages_cb4_0_s.voltage1, bmsinternal_voltages_cb4_0_s.voltage2, bmsinternal_voltages_cb4_0_s.voltage3);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb4_0_s.voltage0, (long long unsigned int)bmsinternal_voltages_cb4_0_s.voltage1, (long long unsigned int)bmsinternal_voltages_cb4_0_s.voltage2, (long long unsigned int)bmsinternal_voltages_cb4_0_s.voltage3);
     
@@ -347,7 +347,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB4_1:\n");
     uint8_t* buffer_bmsinternal_voltages_cb4_1 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB4_1));
     
-    BMSinternal_VOLTAGES_CB4_1 bmsinternal_voltages_cb4_1_s = { 23597, 14263, 56352, 27182 };
+    BMSinternal_VOLTAGES_CB4_1 bmsinternal_voltages_cb4_1_s = { 44183, 9381, 44311, 16295 };
     serialize_BMSinternal_VOLTAGES_CB4_1(buffer_bmsinternal_voltages_cb4_1, bmsinternal_voltages_cb4_1_s.voltage4, bmsinternal_voltages_cb4_1_s.voltage5, bmsinternal_voltages_cb4_1_s.voltage6, bmsinternal_voltages_cb4_1_s.voltage7);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb4_1_s.voltage4, (long long unsigned int)bmsinternal_voltages_cb4_1_s.voltage5, (long long unsigned int)bmsinternal_voltages_cb4_1_s.voltage6, (long long unsigned int)bmsinternal_voltages_cb4_1_s.voltage7);
     
@@ -363,7 +363,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB4_2:\n");
     uint8_t* buffer_bmsinternal_voltages_cb4_2 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB4_2));
     
-    BMSinternal_VOLTAGES_CB4_2 bmsinternal_voltages_cb4_2_s = { 12058, 13018, 19135, 58114 };
+    BMSinternal_VOLTAGES_CB4_2 bmsinternal_voltages_cb4_2_s = { 1253, 5488, 36691, 50652 };
     serialize_BMSinternal_VOLTAGES_CB4_2(buffer_bmsinternal_voltages_cb4_2, bmsinternal_voltages_cb4_2_s.voltage8, bmsinternal_voltages_cb4_2_s.voltage9, bmsinternal_voltages_cb4_2_s.voltage10, bmsinternal_voltages_cb4_2_s.voltage11);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb4_2_s.voltage8, (long long unsigned int)bmsinternal_voltages_cb4_2_s.voltage9, (long long unsigned int)bmsinternal_voltages_cb4_2_s.voltage10, (long long unsigned int)bmsinternal_voltages_cb4_2_s.voltage11);
     
@@ -379,7 +379,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB4_3:\n");
     uint8_t* buffer_bmsinternal_voltages_cb4_3 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB4_3));
     
-    BMSinternal_VOLTAGES_CB4_3 bmsinternal_voltages_cb4_3_s = { 61387, 43429, 15714, 54304 };
+    BMSinternal_VOLTAGES_CB4_3 bmsinternal_voltages_cb4_3_s = { 461, 56203, 19487, 56493 };
     serialize_BMSinternal_VOLTAGES_CB4_3(buffer_bmsinternal_voltages_cb4_3, bmsinternal_voltages_cb4_3_s.voltage12, bmsinternal_voltages_cb4_3_s.voltage13, bmsinternal_voltages_cb4_3_s.voltage14, bmsinternal_voltages_cb4_3_s.voltage15);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb4_3_s.voltage12, (long long unsigned int)bmsinternal_voltages_cb4_3_s.voltage13, (long long unsigned int)bmsinternal_voltages_cb4_3_s.voltage14, (long long unsigned int)bmsinternal_voltages_cb4_3_s.voltage15);
     
@@ -395,7 +395,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB4_4:\n");
     uint8_t* buffer_bmsinternal_voltages_cb4_4 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB4_4));
     
-    BMSinternal_VOLTAGES_CB4_4 bmsinternal_voltages_cb4_4_s = { 4996, 36194, 23113, 58738 };
+    BMSinternal_VOLTAGES_CB4_4 bmsinternal_voltages_cb4_4_s = { 34519, 45615, 65323, 61683 };
     serialize_BMSinternal_VOLTAGES_CB4_4(buffer_bmsinternal_voltages_cb4_4, bmsinternal_voltages_cb4_4_s.voltage16, bmsinternal_voltages_cb4_4_s.voltage17, bmsinternal_voltages_cb4_4_s.max_voltage, bmsinternal_voltages_cb4_4_s.min_voltage);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb4_4_s.voltage16, (long long unsigned int)bmsinternal_voltages_cb4_4_s.voltage17, (long long unsigned int)bmsinternal_voltages_cb4_4_s.max_voltage, (long long unsigned int)bmsinternal_voltages_cb4_4_s.min_voltage);
     
@@ -411,7 +411,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB5_0:\n");
     uint8_t* buffer_bmsinternal_voltages_cb5_0 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB5_0));
     
-    BMSinternal_VOLTAGES_CB5_0 bmsinternal_voltages_cb5_0_s = { 5453, 36230, 54485, 23378 };
+    BMSinternal_VOLTAGES_CB5_0 bmsinternal_voltages_cb5_0_s = { 8136, 64226, 24633, 7734 };
     serialize_BMSinternal_VOLTAGES_CB5_0(buffer_bmsinternal_voltages_cb5_0, bmsinternal_voltages_cb5_0_s.voltage0, bmsinternal_voltages_cb5_0_s.voltage1, bmsinternal_voltages_cb5_0_s.voltage2, bmsinternal_voltages_cb5_0_s.voltage3);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb5_0_s.voltage0, (long long unsigned int)bmsinternal_voltages_cb5_0_s.voltage1, (long long unsigned int)bmsinternal_voltages_cb5_0_s.voltage2, (long long unsigned int)bmsinternal_voltages_cb5_0_s.voltage3);
     
@@ -427,7 +427,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB5_1:\n");
     uint8_t* buffer_bmsinternal_voltages_cb5_1 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB5_1));
     
-    BMSinternal_VOLTAGES_CB5_1 bmsinternal_voltages_cb5_1_s = { 35508, 19503, 4846, 10468 };
+    BMSinternal_VOLTAGES_CB5_1 bmsinternal_voltages_cb5_1_s = { 9507, 54841, 25218, 15620 };
     serialize_BMSinternal_VOLTAGES_CB5_1(buffer_bmsinternal_voltages_cb5_1, bmsinternal_voltages_cb5_1_s.voltage4, bmsinternal_voltages_cb5_1_s.voltage5, bmsinternal_voltages_cb5_1_s.voltage6, bmsinternal_voltages_cb5_1_s.voltage7);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb5_1_s.voltage4, (long long unsigned int)bmsinternal_voltages_cb5_1_s.voltage5, (long long unsigned int)bmsinternal_voltages_cb5_1_s.voltage6, (long long unsigned int)bmsinternal_voltages_cb5_1_s.voltage7);
     
@@ -443,7 +443,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB5_2:\n");
     uint8_t* buffer_bmsinternal_voltages_cb5_2 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB5_2));
     
-    BMSinternal_VOLTAGES_CB5_2 bmsinternal_voltages_cb5_2_s = { 18557, 47516, 40440, 40639 };
+    BMSinternal_VOLTAGES_CB5_2 bmsinternal_voltages_cb5_2_s = { 22837, 7334, 44861, 23908 };
     serialize_BMSinternal_VOLTAGES_CB5_2(buffer_bmsinternal_voltages_cb5_2, bmsinternal_voltages_cb5_2_s.voltage8, bmsinternal_voltages_cb5_2_s.voltage9, bmsinternal_voltages_cb5_2_s.voltage10, bmsinternal_voltages_cb5_2_s.voltage11);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb5_2_s.voltage8, (long long unsigned int)bmsinternal_voltages_cb5_2_s.voltage9, (long long unsigned int)bmsinternal_voltages_cb5_2_s.voltage10, (long long unsigned int)bmsinternal_voltages_cb5_2_s.voltage11);
     
@@ -459,7 +459,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB5_3:\n");
     uint8_t* buffer_bmsinternal_voltages_cb5_3 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB5_3));
     
-    BMSinternal_VOLTAGES_CB5_3 bmsinternal_voltages_cb5_3_s = { 33920, 46858, 34417, 9901 };
+    BMSinternal_VOLTAGES_CB5_3 bmsinternal_voltages_cb5_3_s = { 3459, 7176, 22058, 5276 };
     serialize_BMSinternal_VOLTAGES_CB5_3(buffer_bmsinternal_voltages_cb5_3, bmsinternal_voltages_cb5_3_s.voltage12, bmsinternal_voltages_cb5_3_s.voltage13, bmsinternal_voltages_cb5_3_s.voltage14, bmsinternal_voltages_cb5_3_s.voltage15);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb5_3_s.voltage12, (long long unsigned int)bmsinternal_voltages_cb5_3_s.voltage13, (long long unsigned int)bmsinternal_voltages_cb5_3_s.voltage14, (long long unsigned int)bmsinternal_voltages_cb5_3_s.voltage15);
     
@@ -475,7 +475,7 @@ int main() {
     printf("BMSinternal_VOLTAGES_CB5_4:\n");
     uint8_t* buffer_bmsinternal_voltages_cb5_4 = (uint8_t*)malloc(sizeof(BMSinternal_VOLTAGES_CB5_4));
     
-    BMSinternal_VOLTAGES_CB5_4 bmsinternal_voltages_cb5_4_s = { 46181, 60937, 30229, 38997 };
+    BMSinternal_VOLTAGES_CB5_4 bmsinternal_voltages_cb5_4_s = { 9469, 5698, 53626, 5322 };
     serialize_BMSinternal_VOLTAGES_CB5_4(buffer_bmsinternal_voltages_cb5_4, bmsinternal_voltages_cb5_4_s.voltage16, bmsinternal_voltages_cb5_4_s.voltage17, bmsinternal_voltages_cb5_4_s.max_voltage, bmsinternal_voltages_cb5_4_s.min_voltage);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_voltages_cb5_4_s.voltage16, (long long unsigned int)bmsinternal_voltages_cb5_4_s.voltage17, (long long unsigned int)bmsinternal_voltages_cb5_4_s.max_voltage, (long long unsigned int)bmsinternal_voltages_cb5_4_s.min_voltage);
     
@@ -491,7 +491,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB0_0:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb0_0 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB0_0));
     
-    BMSinternal_TEMPERATURES_CB0_0 bmsinternal_temperatures_cb0_0_s = { 58, 193, 14, 223, 219, 10, 90, 128 };
+    BMSinternal_TEMPERATURES_CB0_0 bmsinternal_temperatures_cb0_0_s = { 157, 16, 53, 19, 235, 89, 137, 104 };
     serialize_BMSinternal_TEMPERATURES_CB0_0(buffer_bmsinternal_temperatures_cb0_0, bmsinternal_temperatures_cb0_0_s.temperature0, bmsinternal_temperatures_cb0_0_s.temperature1, bmsinternal_temperatures_cb0_0_s.temperature2, bmsinternal_temperatures_cb0_0_s.temperature3, bmsinternal_temperatures_cb0_0_s.temperature4, bmsinternal_temperatures_cb0_0_s.temperature5, bmsinternal_temperatures_cb0_0_s.temperature6, bmsinternal_temperatures_cb0_0_s.temperature7);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb0_0_s.temperature0, (long long unsigned int)bmsinternal_temperatures_cb0_0_s.temperature1, (long long unsigned int)bmsinternal_temperatures_cb0_0_s.temperature2, (long long unsigned int)bmsinternal_temperatures_cb0_0_s.temperature3, (long long unsigned int)bmsinternal_temperatures_cb0_0_s.temperature4, (long long unsigned int)bmsinternal_temperatures_cb0_0_s.temperature5, (long long unsigned int)bmsinternal_temperatures_cb0_0_s.temperature6, (long long unsigned int)bmsinternal_temperatures_cb0_0_s.temperature7);
     
@@ -507,7 +507,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB0_1:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb0_1 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB0_1));
     
-    BMSinternal_TEMPERATURES_CB0_1 bmsinternal_temperatures_cb0_1_s = { 249, 58, 79, 50, 106, 84, 170, 110 };
+    BMSinternal_TEMPERATURES_CB0_1 bmsinternal_temperatures_cb0_1_s = { 132, 191, 10, 37, 95, 190, 126, 21 };
     serialize_BMSinternal_TEMPERATURES_CB0_1(buffer_bmsinternal_temperatures_cb0_1, bmsinternal_temperatures_cb0_1_s.temperature8, bmsinternal_temperatures_cb0_1_s.temperature9, bmsinternal_temperatures_cb0_1_s.temperature10, bmsinternal_temperatures_cb0_1_s.temperature11, bmsinternal_temperatures_cb0_1_s.temperature12, bmsinternal_temperatures_cb0_1_s.temperature13, bmsinternal_temperatures_cb0_1_s.temperature14, bmsinternal_temperatures_cb0_1_s.temperature15);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb0_1_s.temperature8, (long long unsigned int)bmsinternal_temperatures_cb0_1_s.temperature9, (long long unsigned int)bmsinternal_temperatures_cb0_1_s.temperature10, (long long unsigned int)bmsinternal_temperatures_cb0_1_s.temperature11, (long long unsigned int)bmsinternal_temperatures_cb0_1_s.temperature12, (long long unsigned int)bmsinternal_temperatures_cb0_1_s.temperature13, (long long unsigned int)bmsinternal_temperatures_cb0_1_s.temperature14, (long long unsigned int)bmsinternal_temperatures_cb0_1_s.temperature15);
     
@@ -523,7 +523,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB0_2:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb0_2 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB0_2));
     
-    BMSinternal_TEMPERATURES_CB0_2 bmsinternal_temperatures_cb0_2_s = { 170, 23 };
+    BMSinternal_TEMPERATURES_CB0_2 bmsinternal_temperatures_cb0_2_s = { 63, 178 };
     serialize_BMSinternal_TEMPERATURES_CB0_2(buffer_bmsinternal_temperatures_cb0_2, bmsinternal_temperatures_cb0_2_s.temperature16, bmsinternal_temperatures_cb0_2_s.temperature17);
     printf("\tSerialized\n\t%llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb0_2_s.temperature16, (long long unsigned int)bmsinternal_temperatures_cb0_2_s.temperature17);
     
@@ -539,7 +539,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB1_0:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb1_0 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB1_0));
     
-    BMSinternal_TEMPERATURES_CB1_0 bmsinternal_temperatures_cb1_0_s = { 29, 187, 30, 55, 55, 8, 254, 245 };
+    BMSinternal_TEMPERATURES_CB1_0 bmsinternal_temperatures_cb1_0_s = { 211, 158, 137, 253, 148, 87, 179, 44 };
     serialize_BMSinternal_TEMPERATURES_CB1_0(buffer_bmsinternal_temperatures_cb1_0, bmsinternal_temperatures_cb1_0_s.temperature0, bmsinternal_temperatures_cb1_0_s.temperature1, bmsinternal_temperatures_cb1_0_s.temperature2, bmsinternal_temperatures_cb1_0_s.temperature3, bmsinternal_temperatures_cb1_0_s.temperature4, bmsinternal_temperatures_cb1_0_s.temperature5, bmsinternal_temperatures_cb1_0_s.temperature6, bmsinternal_temperatures_cb1_0_s.temperature7);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb1_0_s.temperature0, (long long unsigned int)bmsinternal_temperatures_cb1_0_s.temperature1, (long long unsigned int)bmsinternal_temperatures_cb1_0_s.temperature2, (long long unsigned int)bmsinternal_temperatures_cb1_0_s.temperature3, (long long unsigned int)bmsinternal_temperatures_cb1_0_s.temperature4, (long long unsigned int)bmsinternal_temperatures_cb1_0_s.temperature5, (long long unsigned int)bmsinternal_temperatures_cb1_0_s.temperature6, (long long unsigned int)bmsinternal_temperatures_cb1_0_s.temperature7);
     
@@ -555,7 +555,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB1_1:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb1_1 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB1_1));
     
-    BMSinternal_TEMPERATURES_CB1_1 bmsinternal_temperatures_cb1_1_s = { 173, 127, 162, 24, 252, 110, 21, 148 };
+    BMSinternal_TEMPERATURES_CB1_1 bmsinternal_temperatures_cb1_1_s = { 211, 207, 64, 205, 250, 2, 3, 23 };
     serialize_BMSinternal_TEMPERATURES_CB1_1(buffer_bmsinternal_temperatures_cb1_1, bmsinternal_temperatures_cb1_1_s.temperature8, bmsinternal_temperatures_cb1_1_s.temperature9, bmsinternal_temperatures_cb1_1_s.temperature10, bmsinternal_temperatures_cb1_1_s.temperature11, bmsinternal_temperatures_cb1_1_s.temperature12, bmsinternal_temperatures_cb1_1_s.temperature13, bmsinternal_temperatures_cb1_1_s.temperature14, bmsinternal_temperatures_cb1_1_s.temperature15);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb1_1_s.temperature8, (long long unsigned int)bmsinternal_temperatures_cb1_1_s.temperature9, (long long unsigned int)bmsinternal_temperatures_cb1_1_s.temperature10, (long long unsigned int)bmsinternal_temperatures_cb1_1_s.temperature11, (long long unsigned int)bmsinternal_temperatures_cb1_1_s.temperature12, (long long unsigned int)bmsinternal_temperatures_cb1_1_s.temperature13, (long long unsigned int)bmsinternal_temperatures_cb1_1_s.temperature14, (long long unsigned int)bmsinternal_temperatures_cb1_1_s.temperature15);
     
@@ -571,7 +571,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB1_2:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb1_2 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB1_2));
     
-    BMSinternal_TEMPERATURES_CB1_2 bmsinternal_temperatures_cb1_2_s = { 210, 194, 165, 175 };
+    BMSinternal_TEMPERATURES_CB1_2 bmsinternal_temperatures_cb1_2_s = { 198, 142, 188, 7 };
     serialize_BMSinternal_TEMPERATURES_CB1_2(buffer_bmsinternal_temperatures_cb1_2, bmsinternal_temperatures_cb1_2_s.temperature16, bmsinternal_temperatures_cb1_2_s.temperature17, bmsinternal_temperatures_cb1_2_s.max_temperature, bmsinternal_temperatures_cb1_2_s.min_temperature);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb1_2_s.temperature16, (long long unsigned int)bmsinternal_temperatures_cb1_2_s.temperature17, (long long unsigned int)bmsinternal_temperatures_cb1_2_s.max_temperature, (long long unsigned int)bmsinternal_temperatures_cb1_2_s.min_temperature);
     
@@ -587,7 +587,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB2_0:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb2_0 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB2_0));
     
-    BMSinternal_TEMPERATURES_CB2_0 bmsinternal_temperatures_cb2_0_s = { 126, 247, 117, 233, 191, 197, 181, 254 };
+    BMSinternal_TEMPERATURES_CB2_0 bmsinternal_temperatures_cb2_0_s = { 219, 142, 89, 98, 82, 95, 123, 77 };
     serialize_BMSinternal_TEMPERATURES_CB2_0(buffer_bmsinternal_temperatures_cb2_0, bmsinternal_temperatures_cb2_0_s.temperature0, bmsinternal_temperatures_cb2_0_s.temperature1, bmsinternal_temperatures_cb2_0_s.temperature2, bmsinternal_temperatures_cb2_0_s.temperature3, bmsinternal_temperatures_cb2_0_s.temperature4, bmsinternal_temperatures_cb2_0_s.temperature5, bmsinternal_temperatures_cb2_0_s.temperature6, bmsinternal_temperatures_cb2_0_s.temperature7);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb2_0_s.temperature0, (long long unsigned int)bmsinternal_temperatures_cb2_0_s.temperature1, (long long unsigned int)bmsinternal_temperatures_cb2_0_s.temperature2, (long long unsigned int)bmsinternal_temperatures_cb2_0_s.temperature3, (long long unsigned int)bmsinternal_temperatures_cb2_0_s.temperature4, (long long unsigned int)bmsinternal_temperatures_cb2_0_s.temperature5, (long long unsigned int)bmsinternal_temperatures_cb2_0_s.temperature6, (long long unsigned int)bmsinternal_temperatures_cb2_0_s.temperature7);
     
@@ -603,7 +603,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB2_1:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb2_1 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB2_1));
     
-    BMSinternal_TEMPERATURES_CB2_1 bmsinternal_temperatures_cb2_1_s = { 116, 151, 213, 70, 8, 84, 29, 171 };
+    BMSinternal_TEMPERATURES_CB2_1 bmsinternal_temperatures_cb2_1_s = { 27, 79, 246, 224, 186, 251, 48, 222 };
     serialize_BMSinternal_TEMPERATURES_CB2_1(buffer_bmsinternal_temperatures_cb2_1, bmsinternal_temperatures_cb2_1_s.temperature8, bmsinternal_temperatures_cb2_1_s.temperature9, bmsinternal_temperatures_cb2_1_s.temperature10, bmsinternal_temperatures_cb2_1_s.temperature11, bmsinternal_temperatures_cb2_1_s.temperature12, bmsinternal_temperatures_cb2_1_s.temperature13, bmsinternal_temperatures_cb2_1_s.temperature14, bmsinternal_temperatures_cb2_1_s.temperature15);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb2_1_s.temperature8, (long long unsigned int)bmsinternal_temperatures_cb2_1_s.temperature9, (long long unsigned int)bmsinternal_temperatures_cb2_1_s.temperature10, (long long unsigned int)bmsinternal_temperatures_cb2_1_s.temperature11, (long long unsigned int)bmsinternal_temperatures_cb2_1_s.temperature12, (long long unsigned int)bmsinternal_temperatures_cb2_1_s.temperature13, (long long unsigned int)bmsinternal_temperatures_cb2_1_s.temperature14, (long long unsigned int)bmsinternal_temperatures_cb2_1_s.temperature15);
     
@@ -619,7 +619,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB2_2:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb2_2 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB2_2));
     
-    BMSinternal_TEMPERATURES_CB2_2 bmsinternal_temperatures_cb2_2_s = { 195, 202, 180, 215 };
+    BMSinternal_TEMPERATURES_CB2_2 bmsinternal_temperatures_cb2_2_s = { 15, 25, 88, 150 };
     serialize_BMSinternal_TEMPERATURES_CB2_2(buffer_bmsinternal_temperatures_cb2_2, bmsinternal_temperatures_cb2_2_s.temperature16, bmsinternal_temperatures_cb2_2_s.temperature17, bmsinternal_temperatures_cb2_2_s.max_temperature, bmsinternal_temperatures_cb2_2_s.min_temperature);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb2_2_s.temperature16, (long long unsigned int)bmsinternal_temperatures_cb2_2_s.temperature17, (long long unsigned int)bmsinternal_temperatures_cb2_2_s.max_temperature, (long long unsigned int)bmsinternal_temperatures_cb2_2_s.min_temperature);
     
@@ -635,7 +635,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB3_0:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb3_0 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB3_0));
     
-    BMSinternal_TEMPERATURES_CB3_0 bmsinternal_temperatures_cb3_0_s = { 3, 140, 97, 235, 51, 44, 212, 206 };
+    BMSinternal_TEMPERATURES_CB3_0 bmsinternal_temperatures_cb3_0_s = { 127, 61, 86, 192, 92, 41, 31, 74 };
     serialize_BMSinternal_TEMPERATURES_CB3_0(buffer_bmsinternal_temperatures_cb3_0, bmsinternal_temperatures_cb3_0_s.temperature0, bmsinternal_temperatures_cb3_0_s.temperature1, bmsinternal_temperatures_cb3_0_s.temperature2, bmsinternal_temperatures_cb3_0_s.temperature3, bmsinternal_temperatures_cb3_0_s.temperature4, bmsinternal_temperatures_cb3_0_s.temperature5, bmsinternal_temperatures_cb3_0_s.temperature6, bmsinternal_temperatures_cb3_0_s.temperature7);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb3_0_s.temperature0, (long long unsigned int)bmsinternal_temperatures_cb3_0_s.temperature1, (long long unsigned int)bmsinternal_temperatures_cb3_0_s.temperature2, (long long unsigned int)bmsinternal_temperatures_cb3_0_s.temperature3, (long long unsigned int)bmsinternal_temperatures_cb3_0_s.temperature4, (long long unsigned int)bmsinternal_temperatures_cb3_0_s.temperature5, (long long unsigned int)bmsinternal_temperatures_cb3_0_s.temperature6, (long long unsigned int)bmsinternal_temperatures_cb3_0_s.temperature7);
     
@@ -651,7 +651,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB3_1:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb3_1 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB3_1));
     
-    BMSinternal_TEMPERATURES_CB3_1 bmsinternal_temperatures_cb3_1_s = { 105, 179, 126, 74, 107, 217, 13, 127 };
+    BMSinternal_TEMPERATURES_CB3_1 bmsinternal_temperatures_cb3_1_s = { 216, 94, 37, 90, 179, 204, 119, 198 };
     serialize_BMSinternal_TEMPERATURES_CB3_1(buffer_bmsinternal_temperatures_cb3_1, bmsinternal_temperatures_cb3_1_s.temperature8, bmsinternal_temperatures_cb3_1_s.temperature9, bmsinternal_temperatures_cb3_1_s.temperature10, bmsinternal_temperatures_cb3_1_s.temperature11, bmsinternal_temperatures_cb3_1_s.temperature12, bmsinternal_temperatures_cb3_1_s.temperature13, bmsinternal_temperatures_cb3_1_s.temperature14, bmsinternal_temperatures_cb3_1_s.temperature15);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb3_1_s.temperature8, (long long unsigned int)bmsinternal_temperatures_cb3_1_s.temperature9, (long long unsigned int)bmsinternal_temperatures_cb3_1_s.temperature10, (long long unsigned int)bmsinternal_temperatures_cb3_1_s.temperature11, (long long unsigned int)bmsinternal_temperatures_cb3_1_s.temperature12, (long long unsigned int)bmsinternal_temperatures_cb3_1_s.temperature13, (long long unsigned int)bmsinternal_temperatures_cb3_1_s.temperature14, (long long unsigned int)bmsinternal_temperatures_cb3_1_s.temperature15);
     
@@ -667,7 +667,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB3_2:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb3_2 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB3_2));
     
-    BMSinternal_TEMPERATURES_CB3_2 bmsinternal_temperatures_cb3_2_s = { 6, 15, 141, 148 };
+    BMSinternal_TEMPERATURES_CB3_2 bmsinternal_temperatures_cb3_2_s = { 210, 83, 32, 175 };
     serialize_BMSinternal_TEMPERATURES_CB3_2(buffer_bmsinternal_temperatures_cb3_2, bmsinternal_temperatures_cb3_2_s.temperature16, bmsinternal_temperatures_cb3_2_s.temperature17, bmsinternal_temperatures_cb3_2_s.max_temperature, bmsinternal_temperatures_cb3_2_s.min_temperature);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb3_2_s.temperature16, (long long unsigned int)bmsinternal_temperatures_cb3_2_s.temperature17, (long long unsigned int)bmsinternal_temperatures_cb3_2_s.max_temperature, (long long unsigned int)bmsinternal_temperatures_cb3_2_s.min_temperature);
     
@@ -683,7 +683,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB4_0:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb4_0 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB4_0));
     
-    BMSinternal_TEMPERATURES_CB4_0 bmsinternal_temperatures_cb4_0_s = { 190, 163, 149, 10, 66, 125, 48, 163 };
+    BMSinternal_TEMPERATURES_CB4_0 bmsinternal_temperatures_cb4_0_s = { 74, 79, 198, 47, 63, 202, 173, 19 };
     serialize_BMSinternal_TEMPERATURES_CB4_0(buffer_bmsinternal_temperatures_cb4_0, bmsinternal_temperatures_cb4_0_s.temperature0, bmsinternal_temperatures_cb4_0_s.temperature1, bmsinternal_temperatures_cb4_0_s.temperature2, bmsinternal_temperatures_cb4_0_s.temperature3, bmsinternal_temperatures_cb4_0_s.temperature4, bmsinternal_temperatures_cb4_0_s.temperature5, bmsinternal_temperatures_cb4_0_s.temperature6, bmsinternal_temperatures_cb4_0_s.temperature7);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb4_0_s.temperature0, (long long unsigned int)bmsinternal_temperatures_cb4_0_s.temperature1, (long long unsigned int)bmsinternal_temperatures_cb4_0_s.temperature2, (long long unsigned int)bmsinternal_temperatures_cb4_0_s.temperature3, (long long unsigned int)bmsinternal_temperatures_cb4_0_s.temperature4, (long long unsigned int)bmsinternal_temperatures_cb4_0_s.temperature5, (long long unsigned int)bmsinternal_temperatures_cb4_0_s.temperature6, (long long unsigned int)bmsinternal_temperatures_cb4_0_s.temperature7);
     
@@ -699,7 +699,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB4_1:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb4_1 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB4_1));
     
-    BMSinternal_TEMPERATURES_CB4_1 bmsinternal_temperatures_cb4_1_s = { 205, 95, 88, 78, 82, 33, 64, 99 };
+    BMSinternal_TEMPERATURES_CB4_1 bmsinternal_temperatures_cb4_1_s = { 80, 39, 215, 184, 107, 212, 154, 249 };
     serialize_BMSinternal_TEMPERATURES_CB4_1(buffer_bmsinternal_temperatures_cb4_1, bmsinternal_temperatures_cb4_1_s.temperature8, bmsinternal_temperatures_cb4_1_s.temperature9, bmsinternal_temperatures_cb4_1_s.temperature10, bmsinternal_temperatures_cb4_1_s.temperature11, bmsinternal_temperatures_cb4_1_s.temperature12, bmsinternal_temperatures_cb4_1_s.temperature13, bmsinternal_temperatures_cb4_1_s.temperature14, bmsinternal_temperatures_cb4_1_s.temperature15);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb4_1_s.temperature8, (long long unsigned int)bmsinternal_temperatures_cb4_1_s.temperature9, (long long unsigned int)bmsinternal_temperatures_cb4_1_s.temperature10, (long long unsigned int)bmsinternal_temperatures_cb4_1_s.temperature11, (long long unsigned int)bmsinternal_temperatures_cb4_1_s.temperature12, (long long unsigned int)bmsinternal_temperatures_cb4_1_s.temperature13, (long long unsigned int)bmsinternal_temperatures_cb4_1_s.temperature14, (long long unsigned int)bmsinternal_temperatures_cb4_1_s.temperature15);
     
@@ -715,7 +715,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB4_2:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb4_2 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB4_2));
     
-    BMSinternal_TEMPERATURES_CB4_2 bmsinternal_temperatures_cb4_2_s = { 116, 230, 24, 42 };
+    BMSinternal_TEMPERATURES_CB4_2 bmsinternal_temperatures_cb4_2_s = { 231, 214, 132, 167 };
     serialize_BMSinternal_TEMPERATURES_CB4_2(buffer_bmsinternal_temperatures_cb4_2, bmsinternal_temperatures_cb4_2_s.temperature16, bmsinternal_temperatures_cb4_2_s.temperature17, bmsinternal_temperatures_cb4_2_s.max_temperature, bmsinternal_temperatures_cb4_2_s.min_temperature);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb4_2_s.temperature16, (long long unsigned int)bmsinternal_temperatures_cb4_2_s.temperature17, (long long unsigned int)bmsinternal_temperatures_cb4_2_s.max_temperature, (long long unsigned int)bmsinternal_temperatures_cb4_2_s.min_temperature);
     
@@ -731,7 +731,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB5_0:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb5_0 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB5_0));
     
-    BMSinternal_TEMPERATURES_CB5_0 bmsinternal_temperatures_cb5_0_s = { 166, 33, 219, 118, 184, 167, 3, 87 };
+    BMSinternal_TEMPERATURES_CB5_0 bmsinternal_temperatures_cb5_0_s = { 243, 192, 129, 186, 49, 89, 31, 107 };
     serialize_BMSinternal_TEMPERATURES_CB5_0(buffer_bmsinternal_temperatures_cb5_0, bmsinternal_temperatures_cb5_0_s.temperature0, bmsinternal_temperatures_cb5_0_s.temperature1, bmsinternal_temperatures_cb5_0_s.temperature2, bmsinternal_temperatures_cb5_0_s.temperature3, bmsinternal_temperatures_cb5_0_s.temperature4, bmsinternal_temperatures_cb5_0_s.temperature5, bmsinternal_temperatures_cb5_0_s.temperature6, bmsinternal_temperatures_cb5_0_s.temperature7);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb5_0_s.temperature0, (long long unsigned int)bmsinternal_temperatures_cb5_0_s.temperature1, (long long unsigned int)bmsinternal_temperatures_cb5_0_s.temperature2, (long long unsigned int)bmsinternal_temperatures_cb5_0_s.temperature3, (long long unsigned int)bmsinternal_temperatures_cb5_0_s.temperature4, (long long unsigned int)bmsinternal_temperatures_cb5_0_s.temperature5, (long long unsigned int)bmsinternal_temperatures_cb5_0_s.temperature6, (long long unsigned int)bmsinternal_temperatures_cb5_0_s.temperature7);
     
@@ -747,7 +747,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB5_1:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb5_1 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB5_1));
     
-    BMSinternal_TEMPERATURES_CB5_1 bmsinternal_temperatures_cb5_1_s = { 10, 124, 34, 172, 36, 173, 63, 4 };
+    BMSinternal_TEMPERATURES_CB5_1 bmsinternal_temperatures_cb5_1_s = { 203, 55, 106, 142, 207, 141, 231, 107 };
     serialize_BMSinternal_TEMPERATURES_CB5_1(buffer_bmsinternal_temperatures_cb5_1, bmsinternal_temperatures_cb5_1_s.temperature8, bmsinternal_temperatures_cb5_1_s.temperature9, bmsinternal_temperatures_cb5_1_s.temperature10, bmsinternal_temperatures_cb5_1_s.temperature11, bmsinternal_temperatures_cb5_1_s.temperature12, bmsinternal_temperatures_cb5_1_s.temperature13, bmsinternal_temperatures_cb5_1_s.temperature14, bmsinternal_temperatures_cb5_1_s.temperature15);
     printf("\tSerialized\n\t%llu %llu %llu %llu %llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb5_1_s.temperature8, (long long unsigned int)bmsinternal_temperatures_cb5_1_s.temperature9, (long long unsigned int)bmsinternal_temperatures_cb5_1_s.temperature10, (long long unsigned int)bmsinternal_temperatures_cb5_1_s.temperature11, (long long unsigned int)bmsinternal_temperatures_cb5_1_s.temperature12, (long long unsigned int)bmsinternal_temperatures_cb5_1_s.temperature13, (long long unsigned int)bmsinternal_temperatures_cb5_1_s.temperature14, (long long unsigned int)bmsinternal_temperatures_cb5_1_s.temperature15);
     
@@ -763,7 +763,7 @@ int main() {
     printf("BMSinternal_TEMPERATURES_CB5_2:\n");
     uint8_t* buffer_bmsinternal_temperatures_cb5_2 = (uint8_t*)malloc(sizeof(BMSinternal_TEMPERATURES_CB5_2));
     
-    BMSinternal_TEMPERATURES_CB5_2 bmsinternal_temperatures_cb5_2_s = { 21, 143, 197, 1 };
+    BMSinternal_TEMPERATURES_CB5_2 bmsinternal_temperatures_cb5_2_s = { 202, 229, 241, 127 };
     serialize_BMSinternal_TEMPERATURES_CB5_2(buffer_bmsinternal_temperatures_cb5_2, bmsinternal_temperatures_cb5_2_s.temperature16, bmsinternal_temperatures_cb5_2_s.temperature17, bmsinternal_temperatures_cb5_2_s.max_temperature, bmsinternal_temperatures_cb5_2_s.min_temperature);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bmsinternal_temperatures_cb5_2_s.temperature16, (long long unsigned int)bmsinternal_temperatures_cb5_2_s.temperature17, (long long unsigned int)bmsinternal_temperatures_cb5_2_s.max_temperature, (long long unsigned int)bmsinternal_temperatures_cb5_2_s.min_temperature);
     
@@ -779,7 +779,7 @@ int main() {
     printf("BMSinternal_MASTER_SYNC:\n");
     uint8_t* buffer_bmsinternal_master_sync = (uint8_t*)malloc(sizeof(BMSinternal_MASTER_SYNC));
     
-    BMSinternal_MASTER_SYNC bmsinternal_master_sync_s = { 3683361767 };
+    BMSinternal_MASTER_SYNC bmsinternal_master_sync_s = { 2812171437 };
     serialize_BMSinternal_MASTER_SYNC(buffer_bmsinternal_master_sync, bmsinternal_master_sync_s.time);
     printf("\tSerialized\n\t%llu\n", (long long unsigned int)bmsinternal_master_sync_s.time);
     
@@ -795,7 +795,7 @@ int main() {
     printf("BMSinternal_CELLBOARD_TOKEN:\n");
     uint8_t* buffer_bmsinternal_cellboard_token = (uint8_t*)malloc(sizeof(BMSinternal_CELLBOARD_TOKEN));
     
-    BMSinternal_CELLBOARD_TOKEN bmsinternal_cellboard_token_s = { 76, 0, 0, 0, 3702345007 };
+    BMSinternal_CELLBOARD_TOKEN bmsinternal_cellboard_token_s = { 72, 0, 0, 0, 277460588 };
     serialize_BMSinternal_CELLBOARD_TOKEN(buffer_bmsinternal_cellboard_token, bmsinternal_cellboard_token_s.sender_cellboard, bmsinternal_cellboard_token_s.time);
     printf("\tSerialized\n\t%llu %llu\n", (long long unsigned int)bmsinternal_cellboard_token_s.sender_cellboard);
     
