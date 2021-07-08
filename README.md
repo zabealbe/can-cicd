@@ -221,4 +221,4 @@ named after each submodule.
 ### The manual way
 Any subproject is a standalone module. However some subprojects may have the specific job to generate configurations
 for other subprojects. Of course those files could be manually created but if you want to run the full CICD stack you
-must use the projects in the order [shown above](#subprojects).
+must use the projects in the **specific order** [shown above](#subprojects).
