@@ -15,8 +15,10 @@ def generate_id_includes(network, output_path):
         print(pygenerated, file=f)
 
 
-def generate_flatbuf_includes(flatbuf_schema):
-    pass
+def generate_utils_includes(network, output_path):
+    cgenerated = c_gen.generate_utils_include(network)
+    with open(f"{output_path}/{c.C_UTILS_INCLUDE}", "w+") as f:
+        print(cgenerated, file=f)
 
 
 def generate_canconfig_includes(canconfig, canconfig_version, network_name, output_path):
@@ -52,21 +54,28 @@ def main():
     print(f"{len(networks)} network(s) loaded")
     
     print("====== Includes generation ======")
-    
+
     # IDs & masks
     for n in networks:
         output_path = c.OUTPUT_DIR.replace("[network]", n.name)
-        print(n.path)
-        
+
         create_subtree(output_path)
 
         generate_id_includes(n, output_path)
         print(f"Generated id includes in {output_path}\n")
 
+    # Utils
+    for n in networks:
+        output_path = c.OUTPUT_DIR.replace("[network]", n.name)
+
+        create_subtree(output_path)
+
+        generate_utils_includes(n, output_path)
+        print(f"Generated utils includes in {output_path}\n")
+
     # CAN config
     for network_name, path in parse_network_multipath(c.CANCONFIG_FILE).items():
         output_path = c.OUTPUT_DIR.replace("[network]", network_name)
-        print(path)
 
         canconfig_file = load_json(path, c.CANCONFIG_FILE_VALIDATION_SCHEMA)
         canconfig = canconfig_file["canconfig"]

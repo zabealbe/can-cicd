@@ -15,6 +15,10 @@ OUTPUT_DIR = "./out/[network]/"
 C_IDS_INCLUDE = "ids.h"
 PY_IDS_INCLUDE = "ids.py"
 
+# Utility tools & functions
+C_UTILS_INCLUDE = "utils.h"
+PY_UTILS_INCLUDE = "utils.py"
+
 # CAN configuration
 C_CANCONFIG_INCLUDE = "can_config.h"
 PY_CANCONFIG_INCLUDE = "can_config.py"

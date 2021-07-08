@@ -4,6 +4,7 @@ from lib.network import Network
 from config import config as c
 
 __TEMPLATE_IDS_H = os.path.dirname(__file__) + "/ids.h.j2"
+__TEMPLATE_UTILS_H = os.path.dirname(__file__) + "/utils.h.j2"
 
 def generate_ids_include(network: Network):
     with open(__TEMPLATE_IDS_H, "r") as f:
@@ -15,9 +16,15 @@ def generate_ids_include(network: Network):
 
     return code
 
-def generate_flatbuf_include(flatbuf_schema):
-    output = ""
-    return output
+def generate_utils_include(network: Network):
+    with open(__TEMPLATE_UTILS_H, "r") as f:
+        utils_h = f.read()
+
+    code = j2.Template(utils_h).render(
+        network=network
+    )
+
+    return code
 
 
 def generate_canconfig_include(canconfig, canconfig_version, namespace):
