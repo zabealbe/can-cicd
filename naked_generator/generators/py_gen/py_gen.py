@@ -82,35 +82,37 @@ def __fill_padding(items):
 def __to_schema(items):
     format = ""
     for item_name, item_type in items.items():
-        if item_type == "bool":
-            format += "?"
-            
-        elif item_type == "int8":
+        size = item_type.size_bytes
+        if isinstance(item_type, s.Bool):
             format += "b"
-        elif item_type == "int16":
-            format += "h"
-        elif item_type == "int32":
-            format += "i"
-        elif item_type == "int64":
-            format += "q"
-
-        elif item_type == "uint8":
-            format += "B"
-        elif item_type == "uint16":
-            format += "H"
-        elif item_type == "uint32":
-            format += "I"
-        elif item_type == "uint64":
-            format += "Q"
-
-        elif item_type == "float32":
-            format += "f"
-        elif item_type == "float64":
-            format += "d"
-
-        elif item_type == "padding":
+        elif isinstance(item_type, s.Number) or isinstance(item_type, s.Enum) or isinstance(item_type, s.BitSet):
+            if item_type.precision >= 1:
+                if item_type.range[0] >= 0:
+                    if size <= 1:
+                        format += "b"
+                    elif size <= 2:
+                        format += "h"
+                    elif size <= 4:
+                        format += "i"
+                    elif size <= 8:
+                        format += "q"
+                else:
+                    if size <= 1:
+                        format += "B"
+                    elif size <= 2:
+                        format += "H"
+                    elif size <= 4:
+                        format += "I"
+                    elif size <= 8:
+                        format += "Q"
+            else:
+                if size >= 4:
+                    format += "d"
+                else:
+                    format += "f"
+        elif isinstance(item_type, s.Padding):
             format += "c"
-        
         else:
-            format += "b"
+            # TODO: handle better
+            raise NotImplementedError("Can't convert {item_type} to format for python's pack unpack functions")
     return format

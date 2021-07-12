@@ -163,7 +163,7 @@ class Struct(Type):
         
     def __sort(self):
         """
-        In place sorting of struct fields based on type size
+        In-place sorting of struct fields based on type size
             struct = [xx x xxxx x xxxx]
             sorted_struct = [x xx xxxx xxxx]
         """
@@ -200,6 +200,7 @@ class BitSet(Type):
         self.name = name
         self.precision = 1
         self.items = [(item_name, item_index) for item_index, item_name in enumerate(items)]
+        self.range = (0, 2**len(items)-1)
 
         size = math.ceil(len(items) / 8)
         super(BitSet, self).__init__(size, size, len(items), 1)
