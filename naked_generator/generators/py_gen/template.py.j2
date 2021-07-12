@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import IntEnum
 from abc import ABC
 from struct import pack, unpack
 from collections import namedtuple
@@ -31,7 +31,7 @@ class {{ bitset.name }}(Bitset):
 
 {%- for enum in enums %}
     
-class {{ enum.name }}(Enum):
+class {{ enum.name }}(IntEnum):
     {%- for item_name, item_value in enum.items %}
     {{ item_name }} = {{ item_value }}
     {%- endfor %}

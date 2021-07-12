@@ -257,7 +257,6 @@ def __read_struct(struct, instance_name="{instance_name}", selector="{selector}"
 def __printf_cast(struct):
     cast_fields = []
     for item_type in struct.fields.values():
-        print(type(item_type))
         if hasattr(item_type, "range"):
             if item_type.range[0] < 0:
                 cast_fields.append("(long long int)")
@@ -265,5 +264,4 @@ def __printf_cast(struct):
                 cast_fields.append("(long long unsigned int)")
         elif isinstance(item_type, s.BitSet):
             cast_fields.append("(char)")
-    print(cast_fields)
     return cast_fields
