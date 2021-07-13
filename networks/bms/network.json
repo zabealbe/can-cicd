@@ -1,0 +1,337 @@
+{
+    "network_version": 1,
+    "max_payload_size": 8,
+    "types": {
+        "errors": {
+            "type": "bitset",
+            "items": [
+                "LTC_COMM",
+                "TEMP_COMM"
+            ]
+        },
+        "balancing_status": [
+                "OFF",
+                "COMPUTE",
+                "DISCHARGE"
+        ],
+        "balancing_cells": {
+            "type": "bitset",
+            "items": [
+                "CELL0",
+                "CELL1",
+                "CELL2",
+                "CELL3",
+                "CELL4",
+                "CELL5",
+                "CELL6",
+                "CELL7",
+                "CELL8",
+                "CELL9",
+                "CELL10",
+                "CELL11",
+                "CELL12",
+                "CELL13",
+                "CELL14",
+                "CELL15",
+                "CELL16",
+                "CELL17",
+                "CELL18"
+            ]
+        }
+    },
+    
+    "messages": [
+        {
+            "name": "BOARD_STATUS",
+            "topic": "STATUS",
+            "priority": 4,
+            "sending": [
+                "CELLBOARD"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "errors": "errors",
+                "balancing_status": "balancing_status"
+            }
+        },
+	{
+            "name": "TEMP_STATS",
+            "topic": "TEMPERATURE_INFO",
+            "priority": 4,
+            "sending": [
+                "CELLBOARD"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+	      "board_id": "uint8",
+	      "average": "uint8",
+	      "max": "uint8",
+	      "min": "uint8"
+            }
+        },
+
+        {
+            "name": "BALANCING",
+            "topic": "BALANCING",
+            "priority": 4,
+            "sending": [
+                "MAINBOARD"
+            ],
+            "receiving": [
+                "CELLBOARD"
+            ],
+            "contents": {
+	      "board_id": "uint8",
+              "cells": "balancing_cells"
+            }
+        },
+        
+        {
+            "name": "VOLTAGES_CB0_0",
+            "topic": "VOLTAGE_INFO",
+            "priority": 3,
+            "sending": [
+                "CELLBOARD0"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "voltage0": "uint16",
+                "voltage1": "uint16",
+                "voltage2": "uint16",
+                "voltage3": "uint16"
+            }
+        },
+        {
+            "name": "VOLTAGES_CB0_1",
+            "topic": "VOLTAGE_INFO",
+            "priority": 4,
+            "sending": [
+                "CELLBOARD0"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "voltage4": "uint16",
+                "voltage5": "uint16",
+                "voltage6": "uint16",
+                "voltage7": "uint16"
+            }
+        },
+        {
+            "name": "VOLTAGES_CB0_2",
+            "topic": "VOLTAGE_INFO",
+            "priority": 5,
+            "sending": [
+                "CELLBOARD0"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "voltage8": "uint16",
+                "voltage9": "uint16",
+                "voltage10": "uint16",
+                "voltage11": "uint16"
+            }
+        },
+        {
+            "name": "VOLTAGES_CB0_3",
+            "topic": "VOLTAGE_INFO",
+            "priority": 6,
+            "sending": [
+                "CELLBOARD0"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "voltage12": "uint16",
+                "voltage13": "uint16",
+                "voltage14": "uint16",
+                "voltage15": "uint16"
+            }
+        },
+        {
+            "name": "VOLTAGES_CB0_4",
+            "topic": "VOLTAGE_INFO",
+            "priority": 7,
+            "sending": [
+                "CELLBOARD0"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "voltage16": "uint16",
+                "voltage17": "uint16",
+                "max_voltage": "uint16",
+                "min_voltage": "uint16"
+            }
+        },
+
+        {
+            "name": "TEMPERATURES_CB0_0",
+            "topic": "TEMPERATURE_INFO",
+            "priority": 3,
+            "sending": [
+                "CELLBOARD0"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "temperature0": "uint8",
+                "temperature1": "uint8",
+                "temperature2": "uint8",
+                "temperature3": "uint8",
+                "temperature4": "uint8",
+                "temperature5": "uint8",
+                "temperature6": "uint8",
+                "temperature7": "uint8"
+            }
+        },
+        {
+            "name": "TEMPERATURES_CB0_1",
+            "topic": "TEMPERATURE_INFO",
+            "priority": 4,
+            "sending": [
+                "CELLBOARD0"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "temperature8": "uint8",
+                "temperature9": "uint8",
+                "temperature10": "uint8",
+                "temperature11": "uint8",
+                "temperature12": "uint8",
+                "temperature13": "uint8",
+                "temperature14": "uint8",
+                "temperature15": "uint8"
+            }
+        },
+        {
+            "name": "TEMPERATURES_CB0_2",
+            "topic": "TEMPERATURE_INFO",
+            "priority": 5,
+            "sending": [
+                "CELLBOARD0"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "temperature16": "uint8",
+                "temperature17": "uint8"
+            }
+        },
+        {
+            "name": "VOLTAGES_CB1_0",
+            "topic": "VOLTAGE_INFO",
+            "priority": 3,
+            "sending": [
+                "CELLBOARD1"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "voltage0": "uint16",
+                "voltage1": "uint16",
+                "voltage2": "uint16",
+                "voltage3": "uint16"
+            }
+        },
+        {
+            "name": "VOLTAGES_CB1_1",
+            "topic": "VOLTAGE_INFO",
+            "priority": 4,
+            "sending": [
+                "CELLBOARD1"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "voltage4": "uint16",
+                "voltage5": "uint16",
+                "voltage6": "uint16",
+                "voltage7": "uint16"
+            }
+        },
+        {
+            "name": "VOLTAGES_CB1_2",
+            "topic": "VOLTAGE_INFO",
+            "priority": 5,
+            "sending": [
+                "CELLBOARD1"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "voltage8": "uint16",
+                "voltage9": "uint16",
+                "voltage10": "uint16",
+                "voltage11": "uint16"
+            }
+        },
+        {
+            "name": "VOLTAGES_CB1_3",
+            "topic": "VOLTAGE_INFO",
+            "priority": 6,
+            "sending": [
+                "CELLBOARD1"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "voltage12": "uint16",
+                "voltage13": "uint16",
+                "voltage14": "uint16",
+                "voltage15": "uint16"
+            }
+        },
+        {
+            "name": "VOLTAGES_CB1_4",
+            "topic": "VOLTAGE_INFO",
+            "priority": 7,
+            "sending": [
+                "CELLBOARD1"
+            ],
+            "receiving": [
+                "MAINBOARD"
+            ],
+            "contents": {
+                "voltage16": "uint16",
+                "voltage17": "uint16",
+                "max_voltage": "uint16",
+                "min_voltage": "uint16"
+            }
+        },
+
+        {
+            "name": "MASTER_SYNC",
+            "topic": "INTRA_NET_BMS_SYNC",
+            "priority": 0,
+            "sending": [
+                "MAINBOARD"
+            ],
+            "receiving": [
+                "CELLBOARD0","CELLBOARD1","CELLBOARD2","CELLBOARD3","CELLBOARD4","CELLBOARD5"
+            ],
+            "contents":{
+                "time":"uint32"
+            }
+        }
+    ]
+}
