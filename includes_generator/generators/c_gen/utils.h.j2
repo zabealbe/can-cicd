@@ -1,7 +1,9 @@
+#include <string.h>
+
 /*
 *   Utility functions
 */
-void {{ network_name }}_msgname_from_id(uint32_t msg_id, char buffer[static 50]) {
+void {{ network.name }}_msgname_from_id(uint32_t msg_id, char buffer[static 50]) {
     switch (msg_id) {
 {%- for message_name, message in network.get_messages().items() %}
         case {{ message.id }}:
