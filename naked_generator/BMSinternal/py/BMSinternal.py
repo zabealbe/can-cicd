@@ -1,27 +1,12 @@
-from enum import Enum
-from abc import ABC
+from enum import IntEnum, IntFlag
 from struct import pack, unpack
 from collections import namedtuple
-
-class Bitset(ABC):
-    def __init__(self, size_bytes):
-        self.__bitset = bytearray(size_bytes)
-
-    def setBit(self, index, value):
-        self.__bitset[index/8] &= ~(1 << index % 8)
-        self.__bitset[index/8] |= (value << index % 8)
-    
-    def flipBit(self, index):
-        self.__bitset[int(index/8)] ^= 1 << index % 8
-    
-    def getBit(self, index) -> bool:
-        return self.__bitset[int(index/8)] & (1 << index % 8)
 
 
 # VoltagesCb00
 class VoltagesCb00:
     struct = namedtuple("VoltagesCb00_struct", "voltage0 voltage1 voltage2 voltage3", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage0, voltage1, voltage2, voltage3) -> bytes:
@@ -34,7 +19,7 @@ class VoltagesCb00:
 # VoltagesCb01
 class VoltagesCb01:
     struct = namedtuple("VoltagesCb01_struct", "voltage4 voltage5 voltage6 voltage7", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage4, voltage5, voltage6, voltage7) -> bytes:
@@ -47,7 +32,7 @@ class VoltagesCb01:
 # VoltagesCb02
 class VoltagesCb02:
     struct = namedtuple("VoltagesCb02_struct", "voltage8 voltage9 voltage10 voltage11", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage8, voltage9, voltage10, voltage11) -> bytes:
@@ -60,7 +45,7 @@ class VoltagesCb02:
 # VoltagesCb03
 class VoltagesCb03:
     struct = namedtuple("VoltagesCb03_struct", "voltage12 voltage13 voltage14 voltage15", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage12, voltage13, voltage14, voltage15) -> bytes:
@@ -73,7 +58,7 @@ class VoltagesCb03:
 # VoltagesCb04
 class VoltagesCb04:
     struct = namedtuple("VoltagesCb04_struct", "voltage16 voltage17 max_voltage min_voltage", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage16, voltage17, max_voltage, min_voltage) -> bytes:
@@ -86,7 +71,7 @@ class VoltagesCb04:
 # VoltagesCb10
 class VoltagesCb10:
     struct = namedtuple("VoltagesCb10_struct", "voltage0 voltage1 voltage2 voltage3", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage0, voltage1, voltage2, voltage3) -> bytes:
@@ -99,7 +84,7 @@ class VoltagesCb10:
 # VoltagesCb11
 class VoltagesCb11:
     struct = namedtuple("VoltagesCb11_struct", "voltage4 voltage5 voltage6 voltage7", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage4, voltage5, voltage6, voltage7) -> bytes:
@@ -112,7 +97,7 @@ class VoltagesCb11:
 # VoltagesCb12
 class VoltagesCb12:
     struct = namedtuple("VoltagesCb12_struct", "voltage8 voltage9 voltage10 voltage11", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage8, voltage9, voltage10, voltage11) -> bytes:
@@ -125,7 +110,7 @@ class VoltagesCb12:
 # VoltagesCb13
 class VoltagesCb13:
     struct = namedtuple("VoltagesCb13_struct", "voltage12 voltage13 voltage14 voltage15", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage12, voltage13, voltage14, voltage15) -> bytes:
@@ -138,7 +123,7 @@ class VoltagesCb13:
 # VoltagesCb14
 class VoltagesCb14:
     struct = namedtuple("VoltagesCb14_struct", "voltage16 voltage17 max_voltage min_voltage", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage16, voltage17, max_voltage, min_voltage) -> bytes:
@@ -151,7 +136,7 @@ class VoltagesCb14:
 # VoltagesCb20
 class VoltagesCb20:
     struct = namedtuple("VoltagesCb20_struct", "voltage0 voltage1 voltage2 voltage3", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage0, voltage1, voltage2, voltage3) -> bytes:
@@ -164,7 +149,7 @@ class VoltagesCb20:
 # VoltagesCb21
 class VoltagesCb21:
     struct = namedtuple("VoltagesCb21_struct", "voltage4 voltage5 voltage6 voltage7", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage4, voltage5, voltage6, voltage7) -> bytes:
@@ -177,7 +162,7 @@ class VoltagesCb21:
 # VoltagesCb22
 class VoltagesCb22:
     struct = namedtuple("VoltagesCb22_struct", "voltage8 voltage9 voltage10 voltage11", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage8, voltage9, voltage10, voltage11) -> bytes:
@@ -190,7 +175,7 @@ class VoltagesCb22:
 # VoltagesCb23
 class VoltagesCb23:
     struct = namedtuple("VoltagesCb23_struct", "voltage12 voltage13 voltage14 voltage15", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage12, voltage13, voltage14, voltage15) -> bytes:
@@ -203,7 +188,7 @@ class VoltagesCb23:
 # VoltagesCb24
 class VoltagesCb24:
     struct = namedtuple("VoltagesCb24_struct", "voltage16 voltage17 max_voltage min_voltage", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage16, voltage17, max_voltage, min_voltage) -> bytes:
@@ -216,7 +201,7 @@ class VoltagesCb24:
 # VoltagesCb30
 class VoltagesCb30:
     struct = namedtuple("VoltagesCb30_struct", "voltage0 voltage1 voltage2 voltage3", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage0, voltage1, voltage2, voltage3) -> bytes:
@@ -229,7 +214,7 @@ class VoltagesCb30:
 # VoltagesCb31
 class VoltagesCb31:
     struct = namedtuple("VoltagesCb31_struct", "voltage4 voltage5 voltage6 voltage7", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage4, voltage5, voltage6, voltage7) -> bytes:
@@ -242,7 +227,7 @@ class VoltagesCb31:
 # VoltagesCb32
 class VoltagesCb32:
     struct = namedtuple("VoltagesCb32_struct", "voltage8 voltage9 voltage10 voltage11", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage8, voltage9, voltage10, voltage11) -> bytes:
@@ -255,7 +240,7 @@ class VoltagesCb32:
 # VoltagesCb33
 class VoltagesCb33:
     struct = namedtuple("VoltagesCb33_struct", "voltage12 voltage13 voltage14 voltage15", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage12, voltage13, voltage14, voltage15) -> bytes:
@@ -268,7 +253,7 @@ class VoltagesCb33:
 # VoltagesCb34
 class VoltagesCb34:
     struct = namedtuple("VoltagesCb34_struct", "voltage16 voltage17 max_voltage min_voltage", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage16, voltage17, max_voltage, min_voltage) -> bytes:
@@ -281,7 +266,7 @@ class VoltagesCb34:
 # VoltagesCb40
 class VoltagesCb40:
     struct = namedtuple("VoltagesCb40_struct", "voltage0 voltage1 voltage2 voltage3", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage0, voltage1, voltage2, voltage3) -> bytes:
@@ -294,7 +279,7 @@ class VoltagesCb40:
 # VoltagesCb41
 class VoltagesCb41:
     struct = namedtuple("VoltagesCb41_struct", "voltage4 voltage5 voltage6 voltage7", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage4, voltage5, voltage6, voltage7) -> bytes:
@@ -307,7 +292,7 @@ class VoltagesCb41:
 # VoltagesCb42
 class VoltagesCb42:
     struct = namedtuple("VoltagesCb42_struct", "voltage8 voltage9 voltage10 voltage11", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage8, voltage9, voltage10, voltage11) -> bytes:
@@ -320,7 +305,7 @@ class VoltagesCb42:
 # VoltagesCb43
 class VoltagesCb43:
     struct = namedtuple("VoltagesCb43_struct", "voltage12 voltage13 voltage14 voltage15", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage12, voltage13, voltage14, voltage15) -> bytes:
@@ -333,7 +318,7 @@ class VoltagesCb43:
 # VoltagesCb44
 class VoltagesCb44:
     struct = namedtuple("VoltagesCb44_struct", "voltage16 voltage17 max_voltage min_voltage", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage16, voltage17, max_voltage, min_voltage) -> bytes:
@@ -346,7 +331,7 @@ class VoltagesCb44:
 # VoltagesCb50
 class VoltagesCb50:
     struct = namedtuple("VoltagesCb50_struct", "voltage0 voltage1 voltage2 voltage3", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage0, voltage1, voltage2, voltage3) -> bytes:
@@ -359,7 +344,7 @@ class VoltagesCb50:
 # VoltagesCb51
 class VoltagesCb51:
     struct = namedtuple("VoltagesCb51_struct", "voltage4 voltage5 voltage6 voltage7", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage4, voltage5, voltage6, voltage7) -> bytes:
@@ -372,7 +357,7 @@ class VoltagesCb51:
 # VoltagesCb52
 class VoltagesCb52:
     struct = namedtuple("VoltagesCb52_struct", "voltage8 voltage9 voltage10 voltage11", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage8, voltage9, voltage10, voltage11) -> bytes:
@@ -385,7 +370,7 @@ class VoltagesCb52:
 # VoltagesCb53
 class VoltagesCb53:
     struct = namedtuple("VoltagesCb53_struct", "voltage12 voltage13 voltage14 voltage15", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage12, voltage13, voltage14, voltage15) -> bytes:
@@ -398,7 +383,7 @@ class VoltagesCb53:
 # VoltagesCb54
 class VoltagesCb54:
     struct = namedtuple("VoltagesCb54_struct", "voltage16 voltage17 max_voltage min_voltage", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(voltage16, voltage17, max_voltage, min_voltage) -> bytes:
@@ -645,7 +630,7 @@ class TemperaturesCb52:
 # MasterSync
 class MasterSync:
     struct = namedtuple("MasterSync_struct", "time", rename=True)
-    schema = "<b"
+    schema = "<i"
     
     @staticmethod
     def serialize(time) -> bytes:
@@ -658,7 +643,7 @@ class MasterSync:
 # CellboardToken
 class CellboardToken:
     struct = namedtuple("CellboardToken_struct", "sender_cellboard __unused_padding_1 __unused_padding_2 __unused_padding_3 time", rename=True)
-    schema = "<bbbbb"
+    schema = "<bccci"
     
     @staticmethod
     def serialize(sender_cellboard, time) -> bytes:

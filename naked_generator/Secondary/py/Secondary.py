@@ -1,37 +1,19 @@
-from enum import Enum
-from abc import ABC
+from enum import IntEnum, IntFlag
 from struct import pack, unpack
 from collections import namedtuple
 
-class Bitset(ABC):
-    def __init__(self, size_bytes):
-        self.__bitset = bytearray(size_bytes)
-
-    def setBit(self, index, value):
-        self.__bitset[index/8] &= ~(1 << index % 8)
-        self.__bitset[index/8] |= (value << index % 8)
+class pcu_flags(IntFlag):
+    IMPLAUSIBILITY = 1
+    ADC_ERROR = 2
+    UART_ERROR = 4
+    CALIBRATION_INCOMPLETE = 8
+    CAN_ERROR = 16
     
-    def flipBit(self, index):
-        self.__bitset[int(index/8)] ^= 1 << index % 8
-    
-    def getBit(self, index) -> bool:
-        return self.__bitset[int(index/8)] & (1 << index % 8)
-
-class pcu_flags(Bitset):
-    IMPLAUSIBILITY = 0
-    ADC_ERROR = 1
-    UART_ERROR = 2
-    CALIBRATION_INCOMPLETE = 3
-    CAN_ERROR = 4
-    
-    def __init__(self):
-        super().__init__(1)
-    
-class Sync_State(Enum):
+class Sync_State(IntEnum):
     MAX_SET = 0
     MIN_SET = 1
     
-class Pedal(Enum):
+class Pedal(IntEnum):
     ACCELERATOR = 0
     BRAKE = 1
     ALL = 2
@@ -40,7 +22,7 @@ class Pedal(Enum):
 # SetPedalsRange
 class SetPedalsRange:
     struct = namedtuple("SetPedalsRange_struct", "sync_state pedal", rename=True)
-    schema = "<bb"
+    schema = "<BB"
     
     @staticmethod
     def serialize(sync_state, pedal) -> bytes:
@@ -53,7 +35,7 @@ class SetPedalsRange:
 # PedalsAdcRanges
 class PedalsAdcRanges:
     struct = namedtuple("PedalsAdcRanges_struct", "brake_raw_adc_min brake_raw_adc_max accelerator_raw_adc_min accelerator_raw_adc_max", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(brake_raw_adc_min, brake_raw_adc_max, accelerator_raw_adc_min, accelerator_raw_adc_max) -> bytes:
@@ -105,7 +87,7 @@ class PcuStatus:
 # ImuAngularRate
 class ImuAngularRate:
     struct = namedtuple("ImuAngularRate_struct", "ang_rate_x ang_rate_y ang_rate_z", rename=True)
-    schema = "<bbb"
+    schema = "<hhh"
     
     @staticmethod
     def serialize(ang_rate_x, ang_rate_y, ang_rate_z) -> bytes:
@@ -118,7 +100,7 @@ class ImuAngularRate:
 # ImuAcceleration
 class ImuAcceleration:
     struct = namedtuple("ImuAcceleration_struct", "accel_x accel_y accel_z", rename=True)
-    schema = "<bbb"
+    schema = "<hhh"
     
     @staticmethod
     def serialize(accel_x, accel_y, accel_z) -> bytes:
@@ -131,7 +113,7 @@ class ImuAcceleration:
 # IrtsFl0
 class IrtsFl0:
     struct = namedtuple("IrtsFl0_struct", "channel1 channel2 channel3 channel4", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel1, channel2, channel3, channel4) -> bytes:
@@ -144,7 +126,7 @@ class IrtsFl0:
 # IrtsFl1
 class IrtsFl1:
     struct = namedtuple("IrtsFl1_struct", "channel5 channel6 channel7 channel8", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel5, channel6, channel7, channel8) -> bytes:
@@ -157,7 +139,7 @@ class IrtsFl1:
 # IrtsFl2
 class IrtsFl2:
     struct = namedtuple("IrtsFl2_struct", "channel9 channel10 channel11 channel12", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel9, channel10, channel11, channel12) -> bytes:
@@ -170,7 +152,7 @@ class IrtsFl2:
 # IrtsFl3
 class IrtsFl3:
     struct = namedtuple("IrtsFl3_struct", "channel13 channel14 channel15 channel16", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel13, channel14, channel15, channel16) -> bytes:
@@ -183,7 +165,7 @@ class IrtsFl3:
 # IrtsFr0
 class IrtsFr0:
     struct = namedtuple("IrtsFr0_struct", "channel1 channel2 channel3 channel4", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel1, channel2, channel3, channel4) -> bytes:
@@ -196,7 +178,7 @@ class IrtsFr0:
 # IrtsFr1
 class IrtsFr1:
     struct = namedtuple("IrtsFr1_struct", "channel5 channel6 channel7 channel8", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel5, channel6, channel7, channel8) -> bytes:
@@ -209,7 +191,7 @@ class IrtsFr1:
 # IrtsFr2
 class IrtsFr2:
     struct = namedtuple("IrtsFr2_struct", "channel9 channel10 channel11 channel12", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel9, channel10, channel11, channel12) -> bytes:
@@ -222,7 +204,7 @@ class IrtsFr2:
 # IrtsFr3
 class IrtsFr3:
     struct = namedtuple("IrtsFr3_struct", "channel13 channel14 channel15 channel16", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel13, channel14, channel15, channel16) -> bytes:
@@ -235,7 +217,7 @@ class IrtsFr3:
 # IrtsRl0
 class IrtsRl0:
     struct = namedtuple("IrtsRl0_struct", "channel1 channel2 channel3 channel4", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel1, channel2, channel3, channel4) -> bytes:
@@ -248,7 +230,7 @@ class IrtsRl0:
 # IrtsRl1
 class IrtsRl1:
     struct = namedtuple("IrtsRl1_struct", "channel5 channel6 channel7 channel8", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel5, channel6, channel7, channel8) -> bytes:
@@ -261,7 +243,7 @@ class IrtsRl1:
 # IrtsRl2
 class IrtsRl2:
     struct = namedtuple("IrtsRl2_struct", "channel9 channel10 channel11 channel12", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel9, channel10, channel11, channel12) -> bytes:
@@ -274,7 +256,7 @@ class IrtsRl2:
 # IrtsRl3
 class IrtsRl3:
     struct = namedtuple("IrtsRl3_struct", "channel13 channel14 channel15 channel16", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel13, channel14, channel15, channel16) -> bytes:
@@ -287,7 +269,7 @@ class IrtsRl3:
 # IrtsRr0
 class IrtsRr0:
     struct = namedtuple("IrtsRr0_struct", "channel1 channel2 channel3 channel4", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel1, channel2, channel3, channel4) -> bytes:
@@ -300,7 +282,7 @@ class IrtsRr0:
 # IrtsRr1
 class IrtsRr1:
     struct = namedtuple("IrtsRr1_struct", "channel5 channel6 channel7 channel8", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel5, channel6, channel7, channel8) -> bytes:
@@ -313,7 +295,7 @@ class IrtsRr1:
 # IrtsRr2
 class IrtsRr2:
     struct = namedtuple("IrtsRr2_struct", "channel9 channel10 channel11 channel12", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel9, channel10, channel11, channel12) -> bytes:
@@ -326,7 +308,7 @@ class IrtsRr2:
 # IrtsRr3
 class IrtsRr3:
     struct = namedtuple("IrtsRr3_struct", "channel13 channel14 channel15 channel16", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(channel13, channel14, channel15, channel16) -> bytes:

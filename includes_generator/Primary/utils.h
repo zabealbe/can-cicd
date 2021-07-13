@@ -1,7 +1,9 @@
+#include <string.h>
+
 /*
 *   Utility functions
 */
-void _msgname_from_id(uint32_t msg_id, char buffer[static 50]) {
+void Primary_msgname_from_id(uint32_t msg_id, char buffer[static 50]) {
     switch (msg_id) {
         case 1536:
             strcpy(buffer, "TIMESTAMP");

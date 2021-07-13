@@ -1,74 +1,56 @@
-from enum import Enum
-from abc import ABC
+from enum import IntEnum, IntFlag
 from struct import pack, unpack
 from collections import namedtuple
 
-class Bitset(ABC):
-    def __init__(self, size_bytes):
-        self.__bitset = bytearray(size_bytes)
-
-    def setBit(self, index, value):
-        self.__bitset[index/8] &= ~(1 << index % 8)
-        self.__bitset[index/8] |= (value << index % 8)
+class Hv_Errors(IntFlag):
+    LTC_PEC_ERROR = 1
+    CELL_UNDER_VOLTAGE = 2
+    CELL_OVER_VOLTAGE = 4
+    CELL_OVER_TEMPERATURE = 8
+    OVER_CURRENT = 16
+    ADC_INIT = 32
+    ADC_TIMEOUT = 64
+    INT_VOLTAGE_MISMATCH = 128
+    FEEDBACK_HARD = 256
+    FEEDBACK_SOFT = 512
     
-    def flipBit(self, index):
-        self.__bitset[int(index/8)] ^= 1 << index % 8
-    
-    def getBit(self, index) -> bool:
-        return self.__bitset[int(index/8)] & (1 << index % 8)
-
-class Hv_Errors(Bitset):
-    LTC_PEC_ERROR = 0
-    CELL_UNDER_VOLTAGE = 1
-    CELL_OVER_VOLTAGE = 2
-    CELL_OVER_TEMPERATURE = 3
-    OVER_CURRENT = 4
-    ADC_INIT = 5
-    ADC_TIMEOUT = 6
-    INT_VOLTAGE_MISMATCH = 7
-    FEEDBACK_HARD = 8
-    FEEDBACK_SOFT = 9
-    
-    def __init__(self):
-        super().__init__(2)
-    
-class Tlm_Status(Enum):
+class Tlm_Status(IntEnum):
     ON = 0
     OFF = 1
     
-class Race_Type(Enum):
+class Race_Type(IntEnum):
     ACCELERATION = 0
     SKIDPAD = 1
     AUTOCROSS = 2
     ENDURANCE = 3
     
-class Car_Status(Enum):
+class Car_Status(IntEnum):
     IDLE = 0
     SETUP = 1
     RUN = 2
     
-class Inverter_Status(Enum):
+class Inverter_Status(IntEnum):
     OFF = 0
     IDLE = 1
     ON = 2
     
-class Ts_Status(Enum):
+class Ts_Status(IntEnum):
     OFF = 0
     PRECHARGE = 1
     ON = 2
     FATAL = 3
     
-class Ts_Status_Set(Enum):
+class Ts_Status_Set(IntEnum):
     OFF = 0
     ON = 1
     
-class Traction_Control(Enum):
+class Traction_Control(IntEnum):
     OFF = 0
     SLIP_CONTROL = 1
     TORQUE_VECTORING = 2
     COMPLETE = 3
     
-class Map(Enum):
+class Map(IntEnum):
     R = 0
     D20 = 1
     D40 = 2
@@ -76,11 +58,11 @@ class Map(Enum):
     D80 = 4
     D100 = 5
     
-class Car_Status_Set(Enum):
+class Car_Status_Set(IntEnum):
     IDLE = 0
     RUN = 1
     
-class Status(Enum):
+class Status(IntEnum):
     CHG_OFF = 0
     CHG_TC = 1
     CHG_CC = 2
@@ -90,7 +72,7 @@ class Status(Enum):
 # Timestamp
 class Timestamp:
     struct = namedtuple("Timestamp_struct", "timestamp", rename=True)
-    schema = "<b"
+    schema = "<i"
     
     @staticmethod
     def serialize(timestamp) -> bytes:
@@ -103,7 +85,7 @@ class Timestamp:
 # TlmStatus
 class TlmStatus:
     struct = namedtuple("TlmStatus_struct", "tlm_status race_type driver circuit", rename=True)
-    schema = "<bbbb"
+    schema = "<BBbb"
     
     @staticmethod
     def serialize(tlm_status, race_type, driver, circuit) -> bytes:
@@ -116,7 +98,7 @@ class TlmStatus:
 # CarStatus
 class CarStatus:
     struct = namedtuple("CarStatus_struct", "car_status inverter_l inverter_r", rename=True)
-    schema = "<bbb"
+    schema = "<BBB"
     
     @staticmethod
     def serialize(car_status, inverter_l, inverter_r) -> bytes:
@@ -129,7 +111,7 @@ class CarStatus:
 # SetTlmStatus
 class SetTlmStatus:
     struct = namedtuple("SetTlmStatus_struct", "tlm_status race_type driver circuit", rename=True)
-    schema = "<bbbb"
+    schema = "<BBbb"
     
     @staticmethod
     def serialize(tlm_status, race_type, driver, circuit) -> bytes:
@@ -142,7 +124,7 @@ class SetTlmStatus:
 # HvVoltage
 class HvVoltage:
     struct = namedtuple("HvVoltage_struct", "pack_voltage bus_voltage max_cell_voltage min_cell_voltage", rename=True)
-    schema = "<bbbb"
+    schema = "<hhhh"
     
     @staticmethod
     def serialize(pack_voltage, bus_voltage, max_cell_voltage, min_cell_voltage) -> bytes:
@@ -155,7 +137,7 @@ class HvVoltage:
 # HvCurrent
 class HvCurrent:
     struct = namedtuple("HvCurrent_struct", "current power", rename=True)
-    schema = "<bb"
+    schema = "<hH"
     
     @staticmethod
     def serialize(current, power) -> bytes:
@@ -168,7 +150,7 @@ class HvCurrent:
 # HvTemp
 class HvTemp:
     struct = namedtuple("HvTemp_struct", "average_temp max_temp min_temp", rename=True)
-    schema = "<bbb"
+    schema = "<hhh"
     
     @staticmethod
     def serialize(average_temp, max_temp, min_temp) -> bytes:
@@ -181,7 +163,7 @@ class HvTemp:
 # HvErrors
 class HvErrors:
     struct = namedtuple("HvErrors_struct", "warnings errors", rename=True)
-    schema = "<bb"
+    schema = "<hh"
     
     @staticmethod
     def serialize(warnings, errors) -> bytes:
@@ -194,7 +176,7 @@ class HvErrors:
 # TsStatus
 class TsStatus:
     struct = namedtuple("TsStatus_struct", "ts_status", rename=True)
-    schema = "<b"
+    schema = "<B"
     
     @staticmethod
     def serialize(ts_status) -> bytes:
@@ -207,7 +189,7 @@ class TsStatus:
 # SetTsStatus
 class SetTsStatus:
     struct = namedtuple("SetTsStatus_struct", "ts_status_set", rename=True)
-    schema = "<b"
+    schema = "<B"
     
     @staticmethod
     def serialize(ts_status_set) -> bytes:
@@ -220,7 +202,7 @@ class SetTsStatus:
 # SteerStatus
 class SteerStatus:
     struct = namedtuple("SteerStatus_struct", "traction_control map radio_on", rename=True)
-    schema = "<bbb"
+    schema = "<BBb"
     
     @staticmethod
     def serialize(traction_control, map, radio_on) -> bytes:
@@ -233,7 +215,7 @@ class SteerStatus:
 # SetCarStatus
 class SetCarStatus:
     struct = namedtuple("SetCarStatus_struct", "car_status_set", rename=True)
-    schema = "<b"
+    schema = "<B"
     
     @staticmethod
     def serialize(car_status_set) -> bytes:
@@ -259,7 +241,7 @@ class LvCurrent:
 # LvVoltage
 class LvVoltage:
     struct = namedtuple("LvVoltage_struct", "voltage_1 voltage_2 voltage_3 voltage_4 total_voltage", rename=True)
-    schema = "<bbbbb"
+    schema = "<bbbbh"
     
     @staticmethod
     def serialize(voltage_1, voltage_2, voltage_3, voltage_4, total_voltage) -> bytes:
@@ -272,7 +254,7 @@ class LvVoltage:
 # LvTemperature
 class LvTemperature:
     struct = namedtuple("LvTemperature_struct", "dcdc_temperature __unused_padding_1 battery_temperature", rename=True)
-    schema = "<bbb"
+    schema = "<bch"
     
     @staticmethod
     def serialize(dcdc_temperature, battery_temperature) -> bytes:
@@ -298,7 +280,7 @@ class CoolingStatus:
 # HvCellsVoltage
 class HvCellsVoltage:
     struct = namedtuple("HvCellsVoltage_struct", "cell_index __unused_padding_1 voltage_0 voltage_1 voltage_2", rename=True)
-    schema = "<bbbbb"
+    schema = "<bchhh"
     
     @staticmethod
     def serialize(cell_index, voltage_0, voltage_1, voltage_2) -> bytes:
@@ -324,7 +306,7 @@ class HvCellsTemp:
 # SetChgPower
 class SetChgPower:
     struct = namedtuple("SetChgPower_struct", "current voltage", rename=True)
-    schema = "<bb"
+    schema = "<hh"
     
     @staticmethod
     def serialize(current, voltage) -> bytes:
@@ -337,7 +319,7 @@ class SetChgPower:
 # ChgStatus
 class ChgStatus:
     struct = namedtuple("ChgStatus_struct", "status", rename=True)
-    schema = "<b"
+    schema = "<B"
     
     @staticmethod
     def serialize(status) -> bytes:
@@ -350,7 +332,7 @@ class ChgStatus:
 # SetChgStatus
 class SetChgStatus:
     struct = namedtuple("SetChgStatus_struct", "status", rename=True)
-    schema = "<b"
+    schema = "<B"
     
     @staticmethod
     def serialize(status) -> bytes:

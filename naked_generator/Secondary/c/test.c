@@ -77,11 +77,11 @@ int main() {
     
     Secondary_PCU_STATUS secondary_pcu_status_s = { {35}, {214} };
     serialize_Secondary_PCU_STATUS(buffer_secondary_pcu_status, secondary_pcu_status_s.warnings, secondary_pcu_status_s.errors);
-    printf("\tSerialized\n\t%hhx %hhx\n", (char)secondary_pcu_status_s.warnings[0], (char)secondary_pcu_status_s.errors[0]);
+    printf("\tSerialized\n\t%hhx %hhx\n", (long long unsigned int)secondary_pcu_status_s.warnings[0], (long long unsigned int)secondary_pcu_status_s.errors[0]);
     
     Secondary_PCU_STATUS* secondary_pcu_status_d = (Secondary_PCU_STATUS*)malloc(sizeof(Secondary_PCU_STATUS));
     deserialize_Secondary_PCU_STATUS(buffer_secondary_pcu_status, secondary_pcu_status_d);
-    printf("\tDeserialized\n\t%hhx %hhx\n", (char)secondary_pcu_status_d->warnings[0], (char)secondary_pcu_status_d->errors[0]);
+    printf("\tDeserialized\n\t%hhx %hhx\n", (long long unsigned int)secondary_pcu_status_d->warnings[0], (long long unsigned int)secondary_pcu_status_d->errors[0]);
     
     assert(memcmp(&secondary_pcu_status_s, secondary_pcu_status_d, sizeof(Secondary_PCU_STATUS)) == 0);
     puts("SUCCESS!\n");

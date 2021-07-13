@@ -125,11 +125,11 @@ int main() {
     
     Primary_HV_ERRORS primary_hv_errors_s = { {182, 152}, {37, 81} };
     serialize_Primary_HV_ERRORS(buffer_primary_hv_errors, primary_hv_errors_s.warnings, primary_hv_errors_s.errors);
-    printf("\tSerialized\n\t%hhx.%hhx %hhx.%hhx\n", (char)primary_hv_errors_s.warnings[0], (char)primary_hv_errors_s.warnings[1], (char)primary_hv_errors_s.errors[0], (char)primary_hv_errors_s.errors[1]);
+    printf("\tSerialized\n\t%hhx.%hhx %hhx.%hhx\n", (long long unsigned int)primary_hv_errors_s.warnings[0], (long long unsigned int)primary_hv_errors_s.warnings[1], (long long unsigned int)primary_hv_errors_s.errors[0], (long long unsigned int)primary_hv_errors_s.errors[1]);
     
     Primary_HV_ERRORS* primary_hv_errors_d = (Primary_HV_ERRORS*)malloc(sizeof(Primary_HV_ERRORS));
     deserialize_Primary_HV_ERRORS(buffer_primary_hv_errors, primary_hv_errors_d);
-    printf("\tDeserialized\n\t%hhx.%hhx %hhx.%hhx\n", (char)primary_hv_errors_d->warnings[0], (char)primary_hv_errors_d->warnings[1], (char)primary_hv_errors_d->errors[0], (char)primary_hv_errors_d->errors[1]);
+    printf("\tDeserialized\n\t%hhx.%hhx %hhx.%hhx\n", (long long unsigned int)primary_hv_errors_d->warnings[0], (long long unsigned int)primary_hv_errors_d->warnings[1], (long long unsigned int)primary_hv_errors_d->errors[0], (long long unsigned int)primary_hv_errors_d->errors[1]);
     
     assert(memcmp(&primary_hv_errors_s, primary_hv_errors_d, sizeof(Primary_HV_ERRORS)) == 0);
     puts("SUCCESS!\n");
