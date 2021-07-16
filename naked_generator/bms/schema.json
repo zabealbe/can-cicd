@@ -1,0 +1,146 @@
+{
+    "types": {
+        "errors": {
+            "type": "bitset",
+            "items": [
+                "LTC_COMM",
+                "TEMP_COMM"
+            ]
+        },
+        "balancing_status": {
+            "type": "enum",
+            "items": [
+                "OFF",
+                "COMPUTE",
+                "DISCHARGE"
+            ]
+        },
+        "balancing_cells": {
+            "type": "bitset",
+            "items": [
+                "CELL0",
+                "CELL1",
+                "CELL2",
+                "CELL3",
+                "CELL4",
+                "CELL5",
+                "CELL6",
+                "CELL7",
+                "CELL8",
+                "CELL9",
+                "CELL10",
+                "CELL11",
+                "CELL12",
+                "CELL13",
+                "CELL14",
+                "CELL15",
+                "CELL16",
+                "CELL17",
+                "CELL18"
+            ]
+        }
+    },
+    "structs": {
+        "BOARD_STATUS": {
+            "errors": "errors",
+            "balancing_status": "balancing_status"
+        },
+        "TEMP_STATS": {
+            "board_id": "uint8",
+            "average": "uint8",
+            "max": "uint8",
+            "min": "uint8"
+        },
+        "TEMPERATURES_CB0_0": {
+            "temperature0": "uint8",
+            "temperature1": "uint8",
+            "temperature2": "uint8",
+            "temperature3": "uint8",
+            "temperature4": "uint8",
+            "temperature5": "uint8",
+            "temperature6": "uint8",
+            "temperature7": "uint8"
+        },
+        "TEMPERATURES_CB0_1": {
+            "temperature8": "uint8",
+            "temperature9": "uint8",
+            "temperature10": "uint8",
+            "temperature11": "uint8",
+            "temperature12": "uint8",
+            "temperature13": "uint8",
+            "temperature14": "uint8",
+            "temperature15": "uint8"
+        },
+        "TEMPERATURES_CB0_2": {
+            "temperature16": "uint8",
+            "temperature17": "uint8"
+        },
+        "BALANCING": {
+            "board_id": "uint8",
+            "cells": "balancing_cells"
+        },
+        "VOLTAGES_CB0_0": {
+            "voltage0": "uint16",
+            "voltage1": "uint16",
+            "voltage2": "uint16",
+            "voltage3": "uint16"
+        },
+        "VOLTAGES_CB0_1": {
+            "voltage4": "uint16",
+            "voltage5": "uint16",
+            "voltage6": "uint16",
+            "voltage7": "uint16"
+        },
+        "VOLTAGES_CB0_2": {
+            "voltage8": "uint16",
+            "voltage9": "uint16",
+            "voltage10": "uint16",
+            "voltage11": "uint16"
+        },
+        "VOLTAGES_CB0_3": {
+            "voltage12": "uint16",
+            "voltage13": "uint16",
+            "voltage14": "uint16",
+            "voltage15": "uint16"
+        },
+        "VOLTAGES_CB0_4": {
+            "voltage16": "uint16",
+            "voltage17": "uint16",
+            "max_voltage": "uint16",
+            "min_voltage": "uint16"
+        },
+        "VOLTAGES_CB1_0": {
+            "voltage0": "uint16",
+            "voltage1": "uint16",
+            "voltage2": "uint16",
+            "voltage3": "uint16"
+        },
+        "VOLTAGES_CB1_1": {
+            "voltage4": "uint16",
+            "voltage5": "uint16",
+            "voltage6": "uint16",
+            "voltage7": "uint16"
+        },
+        "VOLTAGES_CB1_2": {
+            "voltage8": "uint16",
+            "voltage9": "uint16",
+            "voltage10": "uint16",
+            "voltage11": "uint16"
+        },
+        "VOLTAGES_CB1_3": {
+            "voltage12": "uint16",
+            "voltage13": "uint16",
+            "voltage14": "uint16",
+            "voltage15": "uint16"
+        },
+        "VOLTAGES_CB1_4": {
+            "voltage16": "uint16",
+            "voltage17": "uint16",
+            "max_voltage": "uint16",
+            "min_voltage": "uint16"
+        },
+        "MASTER_SYNC": {
+            "time": "uint32"
+        }
+    }
+}

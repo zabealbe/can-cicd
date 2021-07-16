@@ -1,0 +1,81 @@
+{
+    "network_version": 1,
+    "topics": {
+        "STATUS": {
+            "id": 0,
+            "messages": {
+                "BOARD_STATUS": {
+                    "id": 768
+                }
+            }
+        },
+        "TEMPERATURE_INFO": {
+            "id": 1,
+            "messages": {
+                "TEMP_STATS": {
+                    "id": 769
+                },
+                "TEMPERATURES_CB0_0": {
+                    "id": 1025
+                },
+                "TEMPERATURES_CB0_1": {
+                    "id": 801
+                },
+                "TEMPERATURES_CB0_2": {
+                    "id": 513
+                }
+            }
+        },
+        "BALANCING": {
+            "id": 2,
+            "messages": {
+                "BALANCING": {
+                    "id": 770
+                }
+            }
+        },
+        "VOLTAGE_INFO": {
+            "id": 3,
+            "messages": {
+                "VOLTAGES_CB0_0": {
+                    "id": 1027
+                },
+                "VOLTAGES_CB0_1": {
+                    "id": 771
+                },
+                "VOLTAGES_CB0_2": {
+                    "id": 515
+                },
+                "VOLTAGES_CB0_3": {
+                    "id": 259
+                },
+                "VOLTAGES_CB0_4": {
+                    "id": 3
+                },
+                "VOLTAGES_CB1_0": {
+                    "id": 1059
+                },
+                "VOLTAGES_CB1_1": {
+                    "id": 803
+                },
+                "VOLTAGES_CB1_2": {
+                    "id": 547
+                },
+                "VOLTAGES_CB1_3": {
+                    "id": 291
+                },
+                "VOLTAGES_CB1_4": {
+                    "id": 35
+                }
+            }
+        },
+        "INTRA_NET_BMS_SYNC": {
+            "id": 4,
+            "messages": {
+                "MASTER_SYNC": {
+                    "id": 1796
+                }
+            }
+        }
+    }
+}
