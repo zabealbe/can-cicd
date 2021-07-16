@@ -9,11 +9,14 @@
                 "TEMP_COMM"
             ]
         },
-        "balancing_status": [
+        "balancing_status": {
+            "type": "enum",
+            "items": [
                 "OFF",
                 "COMPUTE",
                 "DISCHARGE"
-        ],
+            ]
+        },
         "balancing_cells": {
             "type": "bitset",
             "items": [
