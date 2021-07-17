@@ -19,9 +19,15 @@ def generate_ids_include(network: Network):
 def generate_utils_include(network: Network):
     with open(__TEMPLATE_UTILS_H, "r") as f:
         utils_h = f.read()
+    
+    msg_name_max_length = 1  # Minimum message name length must be at least 1
+    for message_name, _ in network.get_messages().items():
+        if len(message_name) > msg_name_max_length:
+            msg_name_max_length = len(message_name)
 
     code = j2.Template(utils_h).render(
-        network=network
+        network=network,
+        msg_name_max_length=msg_name_max_length
     )
 
     return code

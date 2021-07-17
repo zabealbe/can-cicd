@@ -1,9 +1,12 @@
 #include <string.h>
 
-/*
-*   Utility functions
-*/
-void {{ network.name }}_msgname_from_id(uint32_t msg_id, char buffer[static 50]) {
+void {{ network.name }}_msgname_from_id(uint32_t msg_id, char buffer[static {{ msg_name_max_length }}]) {
+    /*
+    *       Returns a string containing the name of the message having the specified id
+    *           Parameters:
+    *               msg_id: the id of the message
+    *               buffer: the pre allocated buffer where the message name will be returned
+    */
     switch (msg_id) {
 {%- for message_name, message in network.get_messages().items() %}
         case {{ message.id }}:
@@ -11,6 +14,6 @@ void {{ network.name }}_msgname_from_id(uint32_t msg_id, char buffer[static 50])
             break;
 {%- endfor %}
         default:
-            strcpy(buffer, "unknown message id");
+            strcpy(buffer, ""); // Unknown message
     }
 }
