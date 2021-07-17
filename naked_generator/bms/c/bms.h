@@ -159,365 +159,83 @@ static_assert(sizeof(bms_MASTER_SYNC) == 4, "struct size mismatch");
 size_t serialize_bms_MASTER_SYNC(uint8_t* buffer, uint32_t time);
 size_t deserialize_bms_MASTER_SYNC(uint8_t* buffer, bms_MASTER_SYNC* bms_master_sync);
 
-/* bms_VOLTAGES_00 */
+/* bms_VOLTAGES_0 */
 typedef struct __is_packed {
+    uint8_t board_index;
+    uint8_t __unused_padding_1;
     uint16_t voltage0;
     uint16_t voltage1;
     uint16_t voltage2;
-    uint16_t voltage3;
-} bms_VOLTAGES_00;
-static_assert(sizeof(bms_VOLTAGES_00) == 8, "struct size mismatch");
+} bms_VOLTAGES_0;
+static_assert(sizeof(bms_VOLTAGES_0) == 8, "struct size mismatch");
     
-size_t serialize_bms_VOLTAGES_00(uint8_t* buffer, uint16_t voltage0, uint16_t voltage1, uint16_t voltage2, uint16_t voltage3);
-size_t deserialize_bms_VOLTAGES_00(uint8_t* buffer, bms_VOLTAGES_00* bms_voltages_00);
+size_t serialize_bms_VOLTAGES_0(uint8_t* buffer, uint8_t board_index, uint16_t voltage0, uint16_t voltage1, uint16_t voltage2);
+size_t deserialize_bms_VOLTAGES_0(uint8_t* buffer, bms_VOLTAGES_0* bms_voltages_0);
 
-/* bms_VOLTAGES_01 */
+/* bms_VOLTAGES_1 */
 typedef struct __is_packed {
+    uint8_t board_index;
+    uint8_t __unused_padding_1;
+    uint16_t voltage3;
     uint16_t voltage4;
     uint16_t voltage5;
+} bms_VOLTAGES_1;
+static_assert(sizeof(bms_VOLTAGES_1) == 8, "struct size mismatch");
+    
+size_t serialize_bms_VOLTAGES_1(uint8_t* buffer, uint8_t board_index, uint16_t voltage3, uint16_t voltage4, uint16_t voltage5);
+size_t deserialize_bms_VOLTAGES_1(uint8_t* buffer, bms_VOLTAGES_1* bms_voltages_1);
+
+/* bms_VOLTAGES_2 */
+typedef struct __is_packed {
+    uint8_t board_index;
+    uint8_t __unused_padding_1;
     uint16_t voltage6;
     uint16_t voltage7;
-} bms_VOLTAGES_01;
-static_assert(sizeof(bms_VOLTAGES_01) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_01(uint8_t* buffer, uint16_t voltage4, uint16_t voltage5, uint16_t voltage6, uint16_t voltage7);
-size_t deserialize_bms_VOLTAGES_01(uint8_t* buffer, bms_VOLTAGES_01* bms_voltages_01);
-
-/* bms_VOLTAGES_02 */
-typedef struct __is_packed {
     uint16_t voltage8;
+} bms_VOLTAGES_2;
+static_assert(sizeof(bms_VOLTAGES_2) == 8, "struct size mismatch");
+    
+size_t serialize_bms_VOLTAGES_2(uint8_t* buffer, uint8_t board_index, uint16_t voltage6, uint16_t voltage7, uint16_t voltage8);
+size_t deserialize_bms_VOLTAGES_2(uint8_t* buffer, bms_VOLTAGES_2* bms_voltages_2);
+
+/* bms_VOLTAGES_3 */
+typedef struct __is_packed {
+    uint8_t board_index;
+    uint8_t __unused_padding_1;
     uint16_t voltage9;
     uint16_t voltage10;
     uint16_t voltage11;
-} bms_VOLTAGES_02;
-static_assert(sizeof(bms_VOLTAGES_02) == 8, "struct size mismatch");
+} bms_VOLTAGES_3;
+static_assert(sizeof(bms_VOLTAGES_3) == 8, "struct size mismatch");
     
-size_t serialize_bms_VOLTAGES_02(uint8_t* buffer, uint16_t voltage8, uint16_t voltage9, uint16_t voltage10, uint16_t voltage11);
-size_t deserialize_bms_VOLTAGES_02(uint8_t* buffer, bms_VOLTAGES_02* bms_voltages_02);
+size_t serialize_bms_VOLTAGES_3(uint8_t* buffer, uint8_t board_index, uint16_t voltage9, uint16_t voltage10, uint16_t voltage11);
+size_t deserialize_bms_VOLTAGES_3(uint8_t* buffer, bms_VOLTAGES_3* bms_voltages_3);
 
-/* bms_VOLTAGES_03 */
+/* bms_VOLTAGES_4 */
 typedef struct __is_packed {
+    uint8_t board_index;
+    uint8_t __unused_padding_1;
     uint16_t voltage12;
     uint16_t voltage13;
     uint16_t voltage14;
-    uint16_t voltage15;
-} bms_VOLTAGES_03;
-static_assert(sizeof(bms_VOLTAGES_03) == 8, "struct size mismatch");
+} bms_VOLTAGES_4;
+static_assert(sizeof(bms_VOLTAGES_4) == 8, "struct size mismatch");
     
-size_t serialize_bms_VOLTAGES_03(uint8_t* buffer, uint16_t voltage12, uint16_t voltage13, uint16_t voltage14, uint16_t voltage15);
-size_t deserialize_bms_VOLTAGES_03(uint8_t* buffer, bms_VOLTAGES_03* bms_voltages_03);
+size_t serialize_bms_VOLTAGES_4(uint8_t* buffer, uint8_t board_index, uint16_t voltage12, uint16_t voltage13, uint16_t voltage14);
+size_t deserialize_bms_VOLTAGES_4(uint8_t* buffer, bms_VOLTAGES_4* bms_voltages_4);
 
-/* bms_VOLTAGES_04 */
+/* bms_VOLTAGES_5 */
 typedef struct __is_packed {
+    uint8_t board_index;
+    uint8_t __unused_padding_1;
+    uint16_t voltage15;
     uint16_t voltage16;
     uint16_t voltage17;
-    uint16_t max_voltage;
-    uint16_t min_voltage;
-} bms_VOLTAGES_04;
-static_assert(sizeof(bms_VOLTAGES_04) == 8, "struct size mismatch");
+} bms_VOLTAGES_5;
+static_assert(sizeof(bms_VOLTAGES_5) == 8, "struct size mismatch");
     
-size_t serialize_bms_VOLTAGES_04(uint8_t* buffer, uint16_t voltage16, uint16_t voltage17, uint16_t max_voltage, uint16_t min_voltage);
-size_t deserialize_bms_VOLTAGES_04(uint8_t* buffer, bms_VOLTAGES_04* bms_voltages_04);
-
-/* bms_VOLTAGES_10 */
-typedef struct __is_packed {
-    uint16_t voltage0;
-    uint16_t voltage1;
-    uint16_t voltage2;
-    uint16_t voltage3;
-} bms_VOLTAGES_10;
-static_assert(sizeof(bms_VOLTAGES_10) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_10(uint8_t* buffer, uint16_t voltage0, uint16_t voltage1, uint16_t voltage2, uint16_t voltage3);
-size_t deserialize_bms_VOLTAGES_10(uint8_t* buffer, bms_VOLTAGES_10* bms_voltages_10);
-
-/* bms_VOLTAGES_11 */
-typedef struct __is_packed {
-    uint16_t voltage4;
-    uint16_t voltage5;
-    uint16_t voltage6;
-    uint16_t voltage7;
-} bms_VOLTAGES_11;
-static_assert(sizeof(bms_VOLTAGES_11) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_11(uint8_t* buffer, uint16_t voltage4, uint16_t voltage5, uint16_t voltage6, uint16_t voltage7);
-size_t deserialize_bms_VOLTAGES_11(uint8_t* buffer, bms_VOLTAGES_11* bms_voltages_11);
-
-/* bms_VOLTAGES_12 */
-typedef struct __is_packed {
-    uint16_t voltage8;
-    uint16_t voltage9;
-    uint16_t voltage10;
-    uint16_t voltage11;
-} bms_VOLTAGES_12;
-static_assert(sizeof(bms_VOLTAGES_12) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_12(uint8_t* buffer, uint16_t voltage8, uint16_t voltage9, uint16_t voltage10, uint16_t voltage11);
-size_t deserialize_bms_VOLTAGES_12(uint8_t* buffer, bms_VOLTAGES_12* bms_voltages_12);
-
-/* bms_VOLTAGES_13 */
-typedef struct __is_packed {
-    uint16_t voltage12;
-    uint16_t voltage13;
-    uint16_t voltage14;
-    uint16_t voltage15;
-} bms_VOLTAGES_13;
-static_assert(sizeof(bms_VOLTAGES_13) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_13(uint8_t* buffer, uint16_t voltage12, uint16_t voltage13, uint16_t voltage14, uint16_t voltage15);
-size_t deserialize_bms_VOLTAGES_13(uint8_t* buffer, bms_VOLTAGES_13* bms_voltages_13);
-
-/* bms_VOLTAGES_14 */
-typedef struct __is_packed {
-    uint16_t voltage16;
-    uint16_t voltage17;
-    uint16_t max_voltage;
-    uint16_t min_voltage;
-} bms_VOLTAGES_14;
-static_assert(sizeof(bms_VOLTAGES_14) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_14(uint8_t* buffer, uint16_t voltage16, uint16_t voltage17, uint16_t max_voltage, uint16_t min_voltage);
-size_t deserialize_bms_VOLTAGES_14(uint8_t* buffer, bms_VOLTAGES_14* bms_voltages_14);
-
-/* bms_VOLTAGES_20 */
-typedef struct __is_packed {
-    uint16_t voltage0;
-    uint16_t voltage1;
-    uint16_t voltage2;
-    uint16_t voltage3;
-} bms_VOLTAGES_20;
-static_assert(sizeof(bms_VOLTAGES_20) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_20(uint8_t* buffer, uint16_t voltage0, uint16_t voltage1, uint16_t voltage2, uint16_t voltage3);
-size_t deserialize_bms_VOLTAGES_20(uint8_t* buffer, bms_VOLTAGES_20* bms_voltages_20);
-
-/* bms_VOLTAGES_21 */
-typedef struct __is_packed {
-    uint16_t voltage4;
-    uint16_t voltage5;
-    uint16_t voltage6;
-    uint16_t voltage7;
-} bms_VOLTAGES_21;
-static_assert(sizeof(bms_VOLTAGES_21) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_21(uint8_t* buffer, uint16_t voltage4, uint16_t voltage5, uint16_t voltage6, uint16_t voltage7);
-size_t deserialize_bms_VOLTAGES_21(uint8_t* buffer, bms_VOLTAGES_21* bms_voltages_21);
-
-/* bms_VOLTAGES_22 */
-typedef struct __is_packed {
-    uint16_t voltage8;
-    uint16_t voltage9;
-    uint16_t voltage10;
-    uint16_t voltage11;
-} bms_VOLTAGES_22;
-static_assert(sizeof(bms_VOLTAGES_22) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_22(uint8_t* buffer, uint16_t voltage8, uint16_t voltage9, uint16_t voltage10, uint16_t voltage11);
-size_t deserialize_bms_VOLTAGES_22(uint8_t* buffer, bms_VOLTAGES_22* bms_voltages_22);
-
-/* bms_VOLTAGES_23 */
-typedef struct __is_packed {
-    uint16_t voltage12;
-    uint16_t voltage13;
-    uint16_t voltage14;
-    uint16_t voltage15;
-} bms_VOLTAGES_23;
-static_assert(sizeof(bms_VOLTAGES_23) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_23(uint8_t* buffer, uint16_t voltage12, uint16_t voltage13, uint16_t voltage14, uint16_t voltage15);
-size_t deserialize_bms_VOLTAGES_23(uint8_t* buffer, bms_VOLTAGES_23* bms_voltages_23);
-
-/* bms_VOLTAGES_24 */
-typedef struct __is_packed {
-    uint16_t voltage16;
-    uint16_t voltage17;
-    uint16_t max_voltage;
-    uint16_t min_voltage;
-} bms_VOLTAGES_24;
-static_assert(sizeof(bms_VOLTAGES_24) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_24(uint8_t* buffer, uint16_t voltage16, uint16_t voltage17, uint16_t max_voltage, uint16_t min_voltage);
-size_t deserialize_bms_VOLTAGES_24(uint8_t* buffer, bms_VOLTAGES_24* bms_voltages_24);
-
-/* bms_VOLTAGES_30 */
-typedef struct __is_packed {
-    uint16_t voltage0;
-    uint16_t voltage1;
-    uint16_t voltage2;
-    uint16_t voltage3;
-} bms_VOLTAGES_30;
-static_assert(sizeof(bms_VOLTAGES_30) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_30(uint8_t* buffer, uint16_t voltage0, uint16_t voltage1, uint16_t voltage2, uint16_t voltage3);
-size_t deserialize_bms_VOLTAGES_30(uint8_t* buffer, bms_VOLTAGES_30* bms_voltages_30);
-
-/* bms_VOLTAGES_31 */
-typedef struct __is_packed {
-    uint16_t voltage4;
-    uint16_t voltage5;
-    uint16_t voltage6;
-    uint16_t voltage7;
-} bms_VOLTAGES_31;
-static_assert(sizeof(bms_VOLTAGES_31) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_31(uint8_t* buffer, uint16_t voltage4, uint16_t voltage5, uint16_t voltage6, uint16_t voltage7);
-size_t deserialize_bms_VOLTAGES_31(uint8_t* buffer, bms_VOLTAGES_31* bms_voltages_31);
-
-/* bms_VOLTAGES_32 */
-typedef struct __is_packed {
-    uint16_t voltage8;
-    uint16_t voltage9;
-    uint16_t voltage10;
-    uint16_t voltage11;
-} bms_VOLTAGES_32;
-static_assert(sizeof(bms_VOLTAGES_32) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_32(uint8_t* buffer, uint16_t voltage8, uint16_t voltage9, uint16_t voltage10, uint16_t voltage11);
-size_t deserialize_bms_VOLTAGES_32(uint8_t* buffer, bms_VOLTAGES_32* bms_voltages_32);
-
-/* bms_VOLTAGES_33 */
-typedef struct __is_packed {
-    uint16_t voltage12;
-    uint16_t voltage13;
-    uint16_t voltage14;
-    uint16_t voltage15;
-} bms_VOLTAGES_33;
-static_assert(sizeof(bms_VOLTAGES_33) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_33(uint8_t* buffer, uint16_t voltage12, uint16_t voltage13, uint16_t voltage14, uint16_t voltage15);
-size_t deserialize_bms_VOLTAGES_33(uint8_t* buffer, bms_VOLTAGES_33* bms_voltages_33);
-
-/* bms_VOLTAGES_34 */
-typedef struct __is_packed {
-    uint16_t voltage16;
-    uint16_t voltage17;
-    uint16_t max_voltage;
-    uint16_t min_voltage;
-} bms_VOLTAGES_34;
-static_assert(sizeof(bms_VOLTAGES_34) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_34(uint8_t* buffer, uint16_t voltage16, uint16_t voltage17, uint16_t max_voltage, uint16_t min_voltage);
-size_t deserialize_bms_VOLTAGES_34(uint8_t* buffer, bms_VOLTAGES_34* bms_voltages_34);
-
-/* bms_VOLTAGES_40 */
-typedef struct __is_packed {
-    uint16_t voltage0;
-    uint16_t voltage1;
-    uint16_t voltage2;
-    uint16_t voltage3;
-} bms_VOLTAGES_40;
-static_assert(sizeof(bms_VOLTAGES_40) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_40(uint8_t* buffer, uint16_t voltage0, uint16_t voltage1, uint16_t voltage2, uint16_t voltage3);
-size_t deserialize_bms_VOLTAGES_40(uint8_t* buffer, bms_VOLTAGES_40* bms_voltages_40);
-
-/* bms_VOLTAGES_41 */
-typedef struct __is_packed {
-    uint16_t voltage4;
-    uint16_t voltage5;
-    uint16_t voltage6;
-    uint16_t voltage7;
-} bms_VOLTAGES_41;
-static_assert(sizeof(bms_VOLTAGES_41) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_41(uint8_t* buffer, uint16_t voltage4, uint16_t voltage5, uint16_t voltage6, uint16_t voltage7);
-size_t deserialize_bms_VOLTAGES_41(uint8_t* buffer, bms_VOLTAGES_41* bms_voltages_41);
-
-/* bms_VOLTAGES_42 */
-typedef struct __is_packed {
-    uint16_t voltage8;
-    uint16_t voltage9;
-    uint16_t voltage10;
-    uint16_t voltage11;
-} bms_VOLTAGES_42;
-static_assert(sizeof(bms_VOLTAGES_42) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_42(uint8_t* buffer, uint16_t voltage8, uint16_t voltage9, uint16_t voltage10, uint16_t voltage11);
-size_t deserialize_bms_VOLTAGES_42(uint8_t* buffer, bms_VOLTAGES_42* bms_voltages_42);
-
-/* bms_VOLTAGES_43 */
-typedef struct __is_packed {
-    uint16_t voltage12;
-    uint16_t voltage13;
-    uint16_t voltage14;
-    uint16_t voltage15;
-} bms_VOLTAGES_43;
-static_assert(sizeof(bms_VOLTAGES_43) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_43(uint8_t* buffer, uint16_t voltage12, uint16_t voltage13, uint16_t voltage14, uint16_t voltage15);
-size_t deserialize_bms_VOLTAGES_43(uint8_t* buffer, bms_VOLTAGES_43* bms_voltages_43);
-
-/* bms_VOLTAGES_44 */
-typedef struct __is_packed {
-    uint16_t voltage16;
-    uint16_t voltage17;
-    uint16_t max_voltage;
-    uint16_t min_voltage;
-} bms_VOLTAGES_44;
-static_assert(sizeof(bms_VOLTAGES_44) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_44(uint8_t* buffer, uint16_t voltage16, uint16_t voltage17, uint16_t max_voltage, uint16_t min_voltage);
-size_t deserialize_bms_VOLTAGES_44(uint8_t* buffer, bms_VOLTAGES_44* bms_voltages_44);
-
-/* bms_VOLTAGES_50 */
-typedef struct __is_packed {
-    uint16_t voltage0;
-    uint16_t voltage1;
-    uint16_t voltage2;
-    uint16_t voltage3;
-} bms_VOLTAGES_50;
-static_assert(sizeof(bms_VOLTAGES_50) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_50(uint8_t* buffer, uint16_t voltage0, uint16_t voltage1, uint16_t voltage2, uint16_t voltage3);
-size_t deserialize_bms_VOLTAGES_50(uint8_t* buffer, bms_VOLTAGES_50* bms_voltages_50);
-
-/* bms_VOLTAGES_51 */
-typedef struct __is_packed {
-    uint16_t voltage4;
-    uint16_t voltage5;
-    uint16_t voltage6;
-    uint16_t voltage7;
-} bms_VOLTAGES_51;
-static_assert(sizeof(bms_VOLTAGES_51) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_51(uint8_t* buffer, uint16_t voltage4, uint16_t voltage5, uint16_t voltage6, uint16_t voltage7);
-size_t deserialize_bms_VOLTAGES_51(uint8_t* buffer, bms_VOLTAGES_51* bms_voltages_51);
-
-/* bms_VOLTAGES_52 */
-typedef struct __is_packed {
-    uint16_t voltage8;
-    uint16_t voltage9;
-    uint16_t voltage10;
-    uint16_t voltage11;
-} bms_VOLTAGES_52;
-static_assert(sizeof(bms_VOLTAGES_52) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_52(uint8_t* buffer, uint16_t voltage8, uint16_t voltage9, uint16_t voltage10, uint16_t voltage11);
-size_t deserialize_bms_VOLTAGES_52(uint8_t* buffer, bms_VOLTAGES_52* bms_voltages_52);
-
-/* bms_VOLTAGES_53 */
-typedef struct __is_packed {
-    uint16_t voltage12;
-    uint16_t voltage13;
-    uint16_t voltage14;
-    uint16_t voltage15;
-} bms_VOLTAGES_53;
-static_assert(sizeof(bms_VOLTAGES_53) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_53(uint8_t* buffer, uint16_t voltage12, uint16_t voltage13, uint16_t voltage14, uint16_t voltage15);
-size_t deserialize_bms_VOLTAGES_53(uint8_t* buffer, bms_VOLTAGES_53* bms_voltages_53);
-
-/* bms_VOLTAGES_54 */
-typedef struct __is_packed {
-    uint16_t voltage16;
-    uint16_t voltage17;
-    uint16_t max_voltage;
-    uint16_t min_voltage;
-} bms_VOLTAGES_54;
-static_assert(sizeof(bms_VOLTAGES_54) == 8, "struct size mismatch");
-    
-size_t serialize_bms_VOLTAGES_54(uint8_t* buffer, uint16_t voltage16, uint16_t voltage17, uint16_t max_voltage, uint16_t min_voltage);
-size_t deserialize_bms_VOLTAGES_54(uint8_t* buffer, bms_VOLTAGES_54* bms_voltages_54);
+size_t serialize_bms_VOLTAGES_5(uint8_t* buffer, uint8_t board_index, uint16_t voltage15, uint16_t voltage16, uint16_t voltage17);
+size_t deserialize_bms_VOLTAGES_5(uint8_t* buffer, bms_VOLTAGES_5* bms_voltages_5);
 #endif
 
 #ifdef __cplusplus

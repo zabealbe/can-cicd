@@ -64,185 +64,41 @@
         "MASTER_SYNC": {
             "time": "uint32"
         },
-        "VOLTAGES_00": {
+        "VOLTAGES_0": {
+            "board_index": "uint8",
             "voltage0": "uint16",
             "voltage1": "uint16",
-            "voltage2": "uint16",
-            "voltage3": "uint16"
+            "voltage2": "uint16"
         },
-        "VOLTAGES_01": {
+        "VOLTAGES_1": {
+            "board_index": "uint8",
+            "voltage3": "uint16",
             "voltage4": "uint16",
-            "voltage5": "uint16",
-            "voltage6": "uint16",
-            "voltage7": "uint16"
+            "voltage5": "uint16"
         },
-        "VOLTAGES_02": {
-            "voltage8": "uint16",
+        "VOLTAGES_2": {
+            "board_index": "uint8",
+            "voltage6": "uint16",
+            "voltage7": "uint16",
+            "voltage8": "uint16"
+        },
+        "VOLTAGES_3": {
+            "board_index": "uint8",
             "voltage9": "uint16",
             "voltage10": "uint16",
             "voltage11": "uint16"
         },
-        "VOLTAGES_03": {
+        "VOLTAGES_4": {
+            "board_index": "uint8",
             "voltage12": "uint16",
             "voltage13": "uint16",
-            "voltage14": "uint16",
-            "voltage15": "uint16"
+            "voltage14": "uint16"
         },
-        "VOLTAGES_04": {
+        "VOLTAGES_5": {
+            "board_index": "uint8",
+            "voltage15": "uint16",
             "voltage16": "uint16",
-            "voltage17": "uint16",
-            "max_voltage": "uint16",
-            "min_voltage": "uint16"
-        },
-        "VOLTAGES_10": {
-            "voltage0": "uint16",
-            "voltage1": "uint16",
-            "voltage2": "uint16",
-            "voltage3": "uint16"
-        },
-        "VOLTAGES_11": {
-            "voltage4": "uint16",
-            "voltage5": "uint16",
-            "voltage6": "uint16",
-            "voltage7": "uint16"
-        },
-        "VOLTAGES_12": {
-            "voltage8": "uint16",
-            "voltage9": "uint16",
-            "voltage10": "uint16",
-            "voltage11": "uint16"
-        },
-        "VOLTAGES_13": {
-            "voltage12": "uint16",
-            "voltage13": "uint16",
-            "voltage14": "uint16",
-            "voltage15": "uint16"
-        },
-        "VOLTAGES_14": {
-            "voltage16": "uint16",
-            "voltage17": "uint16",
-            "max_voltage": "uint16",
-            "min_voltage": "uint16"
-        },
-        "VOLTAGES_20": {
-            "voltage0": "uint16",
-            "voltage1": "uint16",
-            "voltage2": "uint16",
-            "voltage3": "uint16"
-        },
-        "VOLTAGES_21": {
-            "voltage4": "uint16",
-            "voltage5": "uint16",
-            "voltage6": "uint16",
-            "voltage7": "uint16"
-        },
-        "VOLTAGES_22": {
-            "voltage8": "uint16",
-            "voltage9": "uint16",
-            "voltage10": "uint16",
-            "voltage11": "uint16"
-        },
-        "VOLTAGES_23": {
-            "voltage12": "uint16",
-            "voltage13": "uint16",
-            "voltage14": "uint16",
-            "voltage15": "uint16"
-        },
-        "VOLTAGES_24": {
-            "voltage16": "uint16",
-            "voltage17": "uint16",
-            "max_voltage": "uint16",
-            "min_voltage": "uint16"
-        },
-        "VOLTAGES_30": {
-            "voltage0": "uint16",
-            "voltage1": "uint16",
-            "voltage2": "uint16",
-            "voltage3": "uint16"
-        },
-        "VOLTAGES_31": {
-            "voltage4": "uint16",
-            "voltage5": "uint16",
-            "voltage6": "uint16",
-            "voltage7": "uint16"
-        },
-        "VOLTAGES_32": {
-            "voltage8": "uint16",
-            "voltage9": "uint16",
-            "voltage10": "uint16",
-            "voltage11": "uint16"
-        },
-        "VOLTAGES_33": {
-            "voltage12": "uint16",
-            "voltage13": "uint16",
-            "voltage14": "uint16",
-            "voltage15": "uint16"
-        },
-        "VOLTAGES_34": {
-            "voltage16": "uint16",
-            "voltage17": "uint16",
-            "max_voltage": "uint16",
-            "min_voltage": "uint16"
-        },
-        "VOLTAGES_40": {
-            "voltage0": "uint16",
-            "voltage1": "uint16",
-            "voltage2": "uint16",
-            "voltage3": "uint16"
-        },
-        "VOLTAGES_41": {
-            "voltage4": "uint16",
-            "voltage5": "uint16",
-            "voltage6": "uint16",
-            "voltage7": "uint16"
-        },
-        "VOLTAGES_42": {
-            "voltage8": "uint16",
-            "voltage9": "uint16",
-            "voltage10": "uint16",
-            "voltage11": "uint16"
-        },
-        "VOLTAGES_43": {
-            "voltage12": "uint16",
-            "voltage13": "uint16",
-            "voltage14": "uint16",
-            "voltage15": "uint16"
-        },
-        "VOLTAGES_44": {
-            "voltage16": "uint16",
-            "voltage17": "uint16",
-            "max_voltage": "uint16",
-            "min_voltage": "uint16"
-        },
-        "VOLTAGES_50": {
-            "voltage0": "uint16",
-            "voltage1": "uint16",
-            "voltage2": "uint16",
-            "voltage3": "uint16"
-        },
-        "VOLTAGES_51": {
-            "voltage4": "uint16",
-            "voltage5": "uint16",
-            "voltage6": "uint16",
-            "voltage7": "uint16"
-        },
-        "VOLTAGES_52": {
-            "voltage8": "uint16",
-            "voltage9": "uint16",
-            "voltage10": "uint16",
-            "voltage11": "uint16"
-        },
-        "VOLTAGES_53": {
-            "voltage12": "uint16",
-            "voltage13": "uint16",
-            "voltage14": "uint16",
-            "voltage15": "uint16"
-        },
-        "VOLTAGES_54": {
-            "voltage16": "uint16",
-            "voltage17": "uint16",
-            "max_voltage": "uint16",
-            "min_voltage": "uint16"
+            "voltage17": "uint16"
         }
     }
 }

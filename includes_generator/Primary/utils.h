@@ -1,9 +1,12 @@
 #include <string.h>
 
-/*
-*   Utility functions
-*/
-void Primary_msgname_from_id(uint32_t msg_id, char buffer[static 50]) {
+void Primary_msgname_from_id(uint32_t msg_id, char buffer[static 16]) {
+    /*
+    *       Returns a string containing the name of the message having the specified id
+    *           Parameters:
+    *               msg_id: the id of the message
+    *               buffer: the pre allocated buffer where the message name will be returned
+    */
     switch (msg_id) {
         case 1536:
             strcpy(buffer, "TIMESTAMP");
@@ -75,6 +78,6 @@ void Primary_msgname_from_id(uint32_t msg_id, char buffer[static 50]) {
             strcpy(buffer, "CHG_SETTINGS");
             break;
         default:
-            strcpy(buffer, "unknown message id");
+            strcpy(buffer, ""); // Unknown message
     }
 }

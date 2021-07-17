@@ -36,95 +36,23 @@
         "VOLTAGE_INFO": {
             "id": 4,
             "messages": {
-                "VOLTAGES_00": {
-                    "id": 1028
-                },
-                "VOLTAGES_01": {
-                    "id": 772
-                },
-                "VOLTAGES_02": {
+                "VOLTAGES_0": {
                     "id": 516
                 },
-                "VOLTAGES_03": {
-                    "id": 260
-                },
-                "VOLTAGES_04": {
-                    "id": 4
-                },
-                "VOLTAGES_10": {
-                    "id": 1060
-                },
-                "VOLTAGES_11": {
-                    "id": 804
-                },
-                "VOLTAGES_12": {
+                "VOLTAGES_1": {
                     "id": 548
                 },
-                "VOLTAGES_13": {
-                    "id": 292
-                },
-                "VOLTAGES_14": {
-                    "id": 36
-                },
-                "VOLTAGES_20": {
-                    "id": 1092
-                },
-                "VOLTAGES_21": {
-                    "id": 836
-                },
-                "VOLTAGES_22": {
+                "VOLTAGES_2": {
                     "id": 580
                 },
-                "VOLTAGES_23": {
-                    "id": 324
-                },
-                "VOLTAGES_24": {
-                    "id": 68
-                },
-                "VOLTAGES_30": {
-                    "id": 1124
-                },
-                "VOLTAGES_31": {
-                    "id": 868
-                },
-                "VOLTAGES_32": {
+                "VOLTAGES_3": {
                     "id": 612
                 },
-                "VOLTAGES_33": {
-                    "id": 356
-                },
-                "VOLTAGES_34": {
-                    "id": 100
-                },
-                "VOLTAGES_40": {
-                    "id": 1156
-                },
-                "VOLTAGES_41": {
-                    "id": 900
-                },
-                "VOLTAGES_42": {
+                "VOLTAGES_4": {
                     "id": 644
                 },
-                "VOLTAGES_43": {
-                    "id": 388
-                },
-                "VOLTAGES_44": {
-                    "id": 132
-                },
-                "VOLTAGES_50": {
-                    "id": 1188
-                },
-                "VOLTAGES_51": {
-                    "id": 932
-                },
-                "VOLTAGES_52": {
+                "VOLTAGES_5": {
                     "id": 676
-                },
-                "VOLTAGES_53": {
-                    "id": 420
-                },
-                "VOLTAGES_54": {
-                    "id": 164
                 }
             }
         }
