@@ -4,7 +4,12 @@ from collections import namedtuple
 
 class errors(IntFlag):
     LTC_COMM = 1
-    TEMP_COMM = 2
+    TEMP_COMM_0 = 2
+    TEMP_COMM_1 = 4
+    TEMP_COMM_2 = 8
+    TEMP_COMM_3 = 16
+    TEMP_COMM_4 = 32
+    TEMP_COMM_5 = 64
 
 class balancing_cells(IntFlag):
     CELL0 = 1

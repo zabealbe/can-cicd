@@ -4,7 +4,12 @@
             "type": "bitset",
             "items": [
                 "LTC_COMM",
-                "TEMP_COMM"
+                "TEMP_COMM_0",
+                "TEMP_COMM_1",
+                "TEMP_COMM_2",
+                "TEMP_COMM_3",
+                "TEMP_COMM_4",
+                "TEMP_COMM_5"
             ]
         },
         "balancing_status": {

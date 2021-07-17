@@ -82,7 +82,12 @@ extern "C" {
 typedef uint8_t bms_errors[1]; // bitset
 #define bms_errors_default { 0 } // bitset filled with zeros
 #define bms_errors_LTC_COMM 0
-#define bms_errors_TEMP_COMM 1
+#define bms_errors_TEMP_COMM_0 1
+#define bms_errors_TEMP_COMM_1 2
+#define bms_errors_TEMP_COMM_2 3
+#define bms_errors_TEMP_COMM_3 4
+#define bms_errors_TEMP_COMM_4 5
+#define bms_errors_TEMP_COMM_5 6
 
 typedef uint8_t bms_balancing_cells[3]; // bitset
 #define bms_balancing_cells_default { 0, 0, 0 } // bitset filled with zeros
