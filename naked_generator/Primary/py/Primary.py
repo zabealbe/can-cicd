@@ -2,6 +2,13 @@ from enum import IntEnum, IntFlag
 from struct import pack, unpack
 from collections import namedtuple
 
+class pcu_flags(IntFlag):
+    IMPLAUSIBILITY = 1
+    ADC_ERROR = 2
+    UART_ERROR = 4
+    CALIBRATION_INCOMPLETE = 8
+    CAN_ERROR = 16
+
 class Hv_Errors(IntFlag):
     LTC_PEC_ERROR = 1
     CELL_UNDER_VOLTAGE = 2
@@ -13,6 +20,15 @@ class Hv_Errors(IntFlag):
     INT_VOLTAGE_MISMATCH = 128
     FEEDBACK_HARD = 256
     FEEDBACK_SOFT = 512
+    
+class Sync_State(IntEnum):
+    MAX_SET = 0
+    MIN_SET = 1
+    
+class Pedal(IntEnum):
+    ACCELERATOR = 0
+    BRAKE = 1
+    ALL = 2
     
 class Tlm_Status(IntEnum):
     ON = 0
@@ -68,6 +84,71 @@ class Status(IntEnum):
     CHG_CC = 2
     CHG_CV = 3
 
+
+# SetPedalsRange
+class SetPedalsRange:
+    struct = namedtuple("SetPedalsRange_struct", "sync_state pedal", rename=True)
+    schema = "<BB"
+    
+    @staticmethod
+    def serialize(sync_state, pedal) -> bytes:
+        return pack(SetPedalsRange.schema, sync_state, pedal)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "SetPedalsRange.struct":
+        return SetPedalsRange.struct._make(unpack(SetPedalsRange.schema, buffer))
+
+# PedalsAdcRanges
+class PedalsAdcRanges:
+    struct = namedtuple("PedalsAdcRanges_struct", "brake_raw_adc_min brake_raw_adc_max accelerator_raw_adc_min accelerator_raw_adc_max", rename=True)
+    schema = "<hhhh"
+    
+    @staticmethod
+    def serialize(brake_raw_adc_min, brake_raw_adc_max, accelerator_raw_adc_min, accelerator_raw_adc_max) -> bytes:
+        return pack(PedalsAdcRanges.schema, brake_raw_adc_min, brake_raw_adc_max, accelerator_raw_adc_min, accelerator_raw_adc_max)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "PedalsAdcRanges.struct":
+        return PedalsAdcRanges.struct._make(unpack(PedalsAdcRanges.schema, buffer))
+
+# AcceleratorPedalVal
+class AcceleratorPedalVal:
+    struct = namedtuple("AcceleratorPedalVal_struct", "level", rename=True)
+    schema = "<b"
+    
+    @staticmethod
+    def serialize(level) -> bytes:
+        return pack(AcceleratorPedalVal.schema, level)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "AcceleratorPedalVal.struct":
+        return AcceleratorPedalVal.struct._make(unpack(AcceleratorPedalVal.schema, buffer))
+
+# BrakePedalVal
+class BrakePedalVal:
+    struct = namedtuple("BrakePedalVal_struct", "level", rename=True)
+    schema = "<b"
+    
+    @staticmethod
+    def serialize(level) -> bytes:
+        return pack(BrakePedalVal.schema, level)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "BrakePedalVal.struct":
+        return BrakePedalVal.struct._make(unpack(BrakePedalVal.schema, buffer))
+
+# PcuStatus
+class PcuStatus:
+    struct = namedtuple("PcuStatus_struct", "warnings errors", rename=True)
+    schema = "<bb"
+    
+    @staticmethod
+    def serialize(warnings, errors) -> bytes:
+        return pack(PcuStatus.schema, warnings, errors)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "PcuStatus.struct":
+        return PcuStatus.struct._make(unpack(PcuStatus.schema, buffer))
 
 # Timestamp
 class Timestamp:

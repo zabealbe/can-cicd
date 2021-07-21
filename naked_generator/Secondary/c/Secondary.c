@@ -4,66 +4,6 @@
 
 #include "Secondary.h"
 
-/* Secondary_SET_PEDALS_RANGE */
-size_t serialize_Secondary_SET_PEDALS_RANGE(uint8_t* buffer, Secondary_Sync_State sync_state, Secondary_Pedal pedal) {
-    Secondary_SET_PEDALS_RANGE secondary_set_pedals_range = { sync_state, pedal };
-	// assert(buf_len >= sizeof(Secondary_SET_PEDALS_RANGE));
-	memcpy(buffer, &secondary_set_pedals_range, sizeof(Secondary_SET_PEDALS_RANGE));
-    return sizeof(Secondary_SET_PEDALS_RANGE);
-} 
-size_t deserialize_Secondary_SET_PEDALS_RANGE(uint8_t* buffer, Secondary_SET_PEDALS_RANGE* secondary_set_pedals_range) {
-	// assert(buf_len >= sizeof(Secondary_SET_PEDALS_RANGE));
-	memcpy(secondary_set_pedals_range, buffer, sizeof(Secondary_SET_PEDALS_RANGE));
-    return sizeof(Secondary_SET_PEDALS_RANGE);
-}
-/* Secondary_PEDALS_ADC_RANGES */
-size_t serialize_Secondary_PEDALS_ADC_RANGES(uint8_t* buffer, uint16_t brake_raw_adc_min, uint16_t brake_raw_adc_max, uint16_t accelerator_raw_adc_min, uint16_t accelerator_raw_adc_max) {
-    Secondary_PEDALS_ADC_RANGES secondary_pedals_adc_ranges = { brake_raw_adc_min, brake_raw_adc_max, accelerator_raw_adc_min, accelerator_raw_adc_max };
-	// assert(buf_len >= sizeof(Secondary_PEDALS_ADC_RANGES));
-	memcpy(buffer, &secondary_pedals_adc_ranges, sizeof(Secondary_PEDALS_ADC_RANGES));
-    return sizeof(Secondary_PEDALS_ADC_RANGES);
-} 
-size_t deserialize_Secondary_PEDALS_ADC_RANGES(uint8_t* buffer, Secondary_PEDALS_ADC_RANGES* secondary_pedals_adc_ranges) {
-	// assert(buf_len >= sizeof(Secondary_PEDALS_ADC_RANGES));
-	memcpy(secondary_pedals_adc_ranges, buffer, sizeof(Secondary_PEDALS_ADC_RANGES));
-    return sizeof(Secondary_PEDALS_ADC_RANGES);
-}
-/* Secondary_ACCELERATOR_PEDAL_VAL */
-size_t serialize_Secondary_ACCELERATOR_PEDAL_VAL(uint8_t* buffer, uint8_t level) {
-    Secondary_ACCELERATOR_PEDAL_VAL secondary_accelerator_pedal_val = { level };
-	// assert(buf_len >= sizeof(Secondary_ACCELERATOR_PEDAL_VAL));
-	memcpy(buffer, &secondary_accelerator_pedal_val, sizeof(Secondary_ACCELERATOR_PEDAL_VAL));
-    return sizeof(Secondary_ACCELERATOR_PEDAL_VAL);
-} 
-size_t deserialize_Secondary_ACCELERATOR_PEDAL_VAL(uint8_t* buffer, Secondary_ACCELERATOR_PEDAL_VAL* secondary_accelerator_pedal_val) {
-	// assert(buf_len >= sizeof(Secondary_ACCELERATOR_PEDAL_VAL));
-	memcpy(secondary_accelerator_pedal_val, buffer, sizeof(Secondary_ACCELERATOR_PEDAL_VAL));
-    return sizeof(Secondary_ACCELERATOR_PEDAL_VAL);
-}
-/* Secondary_BRAKE_PEDAL_VAL */
-size_t serialize_Secondary_BRAKE_PEDAL_VAL(uint8_t* buffer, uint8_t level) {
-    Secondary_BRAKE_PEDAL_VAL secondary_brake_pedal_val = { level };
-	// assert(buf_len >= sizeof(Secondary_BRAKE_PEDAL_VAL));
-	memcpy(buffer, &secondary_brake_pedal_val, sizeof(Secondary_BRAKE_PEDAL_VAL));
-    return sizeof(Secondary_BRAKE_PEDAL_VAL);
-} 
-size_t deserialize_Secondary_BRAKE_PEDAL_VAL(uint8_t* buffer, Secondary_BRAKE_PEDAL_VAL* secondary_brake_pedal_val) {
-	// assert(buf_len >= sizeof(Secondary_BRAKE_PEDAL_VAL));
-	memcpy(secondary_brake_pedal_val, buffer, sizeof(Secondary_BRAKE_PEDAL_VAL));
-    return sizeof(Secondary_BRAKE_PEDAL_VAL);
-}
-/* Secondary_PCU_STATUS */
-size_t serialize_Secondary_PCU_STATUS(uint8_t* buffer, Secondary_pcu_flags warnings, Secondary_pcu_flags errors) {
-    Secondary_PCU_STATUS secondary_pcu_status = { {warnings[0]}, {errors[0]} };
-	// assert(buf_len >= sizeof(Secondary_PCU_STATUS));
-	memcpy(buffer, &secondary_pcu_status, sizeof(Secondary_PCU_STATUS));
-    return sizeof(Secondary_PCU_STATUS);
-} 
-size_t deserialize_Secondary_PCU_STATUS(uint8_t* buffer, Secondary_PCU_STATUS* secondary_pcu_status) {
-	// assert(buf_len >= sizeof(Secondary_PCU_STATUS));
-	memcpy(secondary_pcu_status, buffer, sizeof(Secondary_PCU_STATUS));
-    return sizeof(Secondary_PCU_STATUS);
-}
 /* Secondary_IMU_ANGULAR_RATE */
 size_t serialize_Secondary_IMU_ANGULAR_RATE(uint8_t* buffer, uint16_t ang_rate_x, uint16_t ang_rate_y, uint16_t ang_rate_z) {
     Secondary_IMU_ANGULAR_RATE secondary_imu_angular_rate = { ang_rate_x, ang_rate_y, ang_rate_z };

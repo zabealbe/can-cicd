@@ -4,6 +4,66 @@
 
 #include "Primary.h"
 
+/* Primary_SET_PEDALS_RANGE */
+size_t serialize_Primary_SET_PEDALS_RANGE(uint8_t* buffer, Primary_Sync_State sync_state, Primary_Pedal pedal) {
+    Primary_SET_PEDALS_RANGE primary_set_pedals_range = { sync_state, pedal };
+	// assert(buf_len >= sizeof(Primary_SET_PEDALS_RANGE));
+	memcpy(buffer, &primary_set_pedals_range, sizeof(Primary_SET_PEDALS_RANGE));
+    return sizeof(Primary_SET_PEDALS_RANGE);
+} 
+size_t deserialize_Primary_SET_PEDALS_RANGE(uint8_t* buffer, Primary_SET_PEDALS_RANGE* primary_set_pedals_range) {
+	// assert(buf_len >= sizeof(Primary_SET_PEDALS_RANGE));
+	memcpy(primary_set_pedals_range, buffer, sizeof(Primary_SET_PEDALS_RANGE));
+    return sizeof(Primary_SET_PEDALS_RANGE);
+}
+/* Primary_PEDALS_ADC_RANGES */
+size_t serialize_Primary_PEDALS_ADC_RANGES(uint8_t* buffer, uint16_t brake_raw_adc_min, uint16_t brake_raw_adc_max, uint16_t accelerator_raw_adc_min, uint16_t accelerator_raw_adc_max) {
+    Primary_PEDALS_ADC_RANGES primary_pedals_adc_ranges = { brake_raw_adc_min, brake_raw_adc_max, accelerator_raw_adc_min, accelerator_raw_adc_max };
+	// assert(buf_len >= sizeof(Primary_PEDALS_ADC_RANGES));
+	memcpy(buffer, &primary_pedals_adc_ranges, sizeof(Primary_PEDALS_ADC_RANGES));
+    return sizeof(Primary_PEDALS_ADC_RANGES);
+} 
+size_t deserialize_Primary_PEDALS_ADC_RANGES(uint8_t* buffer, Primary_PEDALS_ADC_RANGES* primary_pedals_adc_ranges) {
+	// assert(buf_len >= sizeof(Primary_PEDALS_ADC_RANGES));
+	memcpy(primary_pedals_adc_ranges, buffer, sizeof(Primary_PEDALS_ADC_RANGES));
+    return sizeof(Primary_PEDALS_ADC_RANGES);
+}
+/* Primary_ACCELERATOR_PEDAL_VAL */
+size_t serialize_Primary_ACCELERATOR_PEDAL_VAL(uint8_t* buffer, uint8_t level) {
+    Primary_ACCELERATOR_PEDAL_VAL primary_accelerator_pedal_val = { level };
+	// assert(buf_len >= sizeof(Primary_ACCELERATOR_PEDAL_VAL));
+	memcpy(buffer, &primary_accelerator_pedal_val, sizeof(Primary_ACCELERATOR_PEDAL_VAL));
+    return sizeof(Primary_ACCELERATOR_PEDAL_VAL);
+} 
+size_t deserialize_Primary_ACCELERATOR_PEDAL_VAL(uint8_t* buffer, Primary_ACCELERATOR_PEDAL_VAL* primary_accelerator_pedal_val) {
+	// assert(buf_len >= sizeof(Primary_ACCELERATOR_PEDAL_VAL));
+	memcpy(primary_accelerator_pedal_val, buffer, sizeof(Primary_ACCELERATOR_PEDAL_VAL));
+    return sizeof(Primary_ACCELERATOR_PEDAL_VAL);
+}
+/* Primary_BRAKE_PEDAL_VAL */
+size_t serialize_Primary_BRAKE_PEDAL_VAL(uint8_t* buffer, uint8_t level) {
+    Primary_BRAKE_PEDAL_VAL primary_brake_pedal_val = { level };
+	// assert(buf_len >= sizeof(Primary_BRAKE_PEDAL_VAL));
+	memcpy(buffer, &primary_brake_pedal_val, sizeof(Primary_BRAKE_PEDAL_VAL));
+    return sizeof(Primary_BRAKE_PEDAL_VAL);
+} 
+size_t deserialize_Primary_BRAKE_PEDAL_VAL(uint8_t* buffer, Primary_BRAKE_PEDAL_VAL* primary_brake_pedal_val) {
+	// assert(buf_len >= sizeof(Primary_BRAKE_PEDAL_VAL));
+	memcpy(primary_brake_pedal_val, buffer, sizeof(Primary_BRAKE_PEDAL_VAL));
+    return sizeof(Primary_BRAKE_PEDAL_VAL);
+}
+/* Primary_PCU_STATUS */
+size_t serialize_Primary_PCU_STATUS(uint8_t* buffer, Primary_pcu_flags warnings, Primary_pcu_flags errors) {
+    Primary_PCU_STATUS primary_pcu_status = { {warnings[0]}, {errors[0]} };
+	// assert(buf_len >= sizeof(Primary_PCU_STATUS));
+	memcpy(buffer, &primary_pcu_status, sizeof(Primary_PCU_STATUS));
+    return sizeof(Primary_PCU_STATUS);
+} 
+size_t deserialize_Primary_PCU_STATUS(uint8_t* buffer, Primary_PCU_STATUS* primary_pcu_status) {
+	// assert(buf_len >= sizeof(Primary_PCU_STATUS));
+	memcpy(primary_pcu_status, buffer, sizeof(Primary_PCU_STATUS));
+    return sizeof(Primary_PCU_STATUS);
+}
 /* Primary_TIMESTAMP */
 size_t serialize_Primary_TIMESTAMP(uint8_t* buffer, uint32_t timestamp) {
     Primary_TIMESTAMP primary_timestamp = { timestamp };

@@ -1,112 +1,132 @@
 {
     "network_version": 1.2,
     "topics": {
-        "BROADCAST": {
+        "PEDALS": {
             "id": 0,
             "messages": {
+                "SET_PEDALS_RANGE": {
+                    "id": 1024
+                },
+                "PEDALS_ADC_RANGES": {
+                    "id": 1056
+                },
+                "ACCELERATOR_PEDAL_VAL": {
+                    "id": 0
+                },
+                "BRAKE_PEDAL_VAL": {
+                    "id": 32
+                },
+                "PCU_STATUS": {
+                    "id": 512
+                }
+            }
+        },
+        "BROADCAST": {
+            "id": 1,
+            "messages": {
                 "TIMESTAMP": {
-                    "id": 1536
+                    "id": 1537
                 }
             }
         },
         "STEER": {
-            "id": 1,
+            "id": 2,
             "messages": {
                 "TLM_STATUS": {
-                    "id": 257
+                    "id": 258
                 },
                 "CAR_STATUS": {
-                    "id": 1
+                    "id": 2
                 }
             }
         },
         "TLM": {
-            "id": 2,
+            "id": 3,
             "messages": {
                 "SET_TLM_STATUS": {
-                    "id": 258
+                    "id": 259
                 }
             }
         },
         "ACUnSTEERnCART": {
-            "id": 3,
-            "messages": {
-                "HV_VOLTAGE": {
-                    "id": 771
-                },
-                "HV_CURRENT": {
-                    "id": 803
-                },
-                "HV_TEMP": {
-                    "id": 835
-                },
-                "HV_ERRORS": {
-                    "id": 259
-                },
-                "TS_STATUS": {
-                    "id": 3
-                }
-            }
-        },
-        "BMS_HV": {
             "id": 4,
             "messages": {
-                "SET_TS_STATUS": {
+                "HV_VOLTAGE": {
+                    "id": 772
+                },
+                "HV_CURRENT": {
+                    "id": 804
+                },
+                "HV_TEMP": {
+                    "id": 836
+                },
+                "HV_ERRORS": {
+                    "id": 260
+                },
+                "TS_STATUS": {
                     "id": 4
                 }
             }
         },
-        "ACU": {
+        "BMS_HV": {
             "id": 5,
             "messages": {
-                "STEER_STATUS": {
+                "SET_TS_STATUS": {
                     "id": 5
+                }
+            }
+        },
+        "ACU": {
+            "id": 6,
+            "messages": {
+                "STEER_STATUS": {
+                    "id": 6
                 },
                 "SET_CAR_STATUS": {
-                    "id": 37
+                    "id": 38
                 },
                 "GET_CAR_STATUS": {
-                    "id": 69
+                    "id": 70
                 }
             }
         },
         "ACUnSTEER": {
-            "id": 6,
+            "id": 7,
             "messages": {
                 "LV_CURRENT": {
-                    "id": 774
+                    "id": 775
                 },
                 "LV_VOLTAGE": {
-                    "id": 806
+                    "id": 807
                 },
                 "LV_TEMPERATURE": {
-                    "id": 838
+                    "id": 839
                 },
                 "COOLING_STATUS": {
-                    "id": 870
+                    "id": 871
                 }
             }
         },
         "HANDCART": {
-            "id": 7,
+            "id": 8,
             "messages": {
                 "HV_CELLS_VOLTAGE": {
-                    "id": 519
+                    "id": 520
                 },
                 "HV_CELLS_TEMP": {
-                    "id": 551
+                    "id": 552
                 },
                 "SET_CHG_POWER": {
-                    "id": 263
+                    "id": 264
                 },
                 "CHG_STATUS": {
-                    "id": 7
+                    "id": 8
                 },
                 "SET_CHG_STATUS": {
-                    "id": 39
+                    "id": 40
                 },
                 "CHG_SETTINGS": {
-                    "id": 71
+                    "id": 72
                 }
             }
         }

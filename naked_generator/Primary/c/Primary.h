@@ -79,6 +79,14 @@ extern "C" {
 #endif
 
 
+typedef uint8_t Primary_pcu_flags[1]; // bitset
+#define Primary_pcu_flags_default { 0 } // bitset filled with zeros
+#define Primary_pcu_flags_IMPLAUSIBILITY 0
+#define Primary_pcu_flags_ADC_ERROR 1
+#define Primary_pcu_flags_UART_ERROR 2
+#define Primary_pcu_flags_CALIBRATION_INCOMPLETE 3
+#define Primary_pcu_flags_CAN_ERROR 4
+
 typedef uint8_t Primary_Hv_Errors[2]; // bitset
 #define Primary_Hv_Errors_default { 0, 0 } // bitset filled with zeros
 #define Primary_Hv_Errors_LTC_PEC_ERROR 0
@@ -91,6 +99,17 @@ typedef uint8_t Primary_Hv_Errors[2]; // bitset
 #define Primary_Hv_Errors_INT_VOLTAGE_MISMATCH 7
 #define Primary_Hv_Errors_FEEDBACK_HARD 8
 #define Primary_Hv_Errors_FEEDBACK_SOFT 9
+
+typedef enum __is_packed {
+    Primary_Sync_State_MAX_SET = 0,
+    Primary_Sync_State_MIN_SET = 1,
+} Primary_Sync_State;
+
+typedef enum __is_packed {
+    Primary_Pedal_ACCELERATOR = 0,
+    Primary_Pedal_BRAKE = 1,
+    Primary_Pedal_ALL = 2,
+} Primary_Pedal;
 
 typedef enum __is_packed {
     Primary_Tlm_Status_ON = 0,
@@ -155,6 +174,56 @@ typedef enum __is_packed {
     Primary_Status_CHG_CC = 2,
     Primary_Status_CHG_CV = 3,
 } Primary_Status;
+
+/* Primary_SET_PEDALS_RANGE */
+typedef struct __is_packed {
+    Primary_Sync_State sync_state;
+    Primary_Pedal pedal;
+} Primary_SET_PEDALS_RANGE;
+static_assert(sizeof(Primary_SET_PEDALS_RANGE) == 2, "struct size mismatch");
+    
+size_t serialize_Primary_SET_PEDALS_RANGE(uint8_t* buffer, Primary_Sync_State sync_state, Primary_Pedal pedal);
+size_t deserialize_Primary_SET_PEDALS_RANGE(uint8_t* buffer, Primary_SET_PEDALS_RANGE* primary_set_pedals_range);
+
+/* Primary_PEDALS_ADC_RANGES */
+typedef struct __is_packed {
+    uint16_t brake_raw_adc_min;
+    uint16_t brake_raw_adc_max;
+    uint16_t accelerator_raw_adc_min;
+    uint16_t accelerator_raw_adc_max;
+} Primary_PEDALS_ADC_RANGES;
+static_assert(sizeof(Primary_PEDALS_ADC_RANGES) == 8, "struct size mismatch");
+    
+size_t serialize_Primary_PEDALS_ADC_RANGES(uint8_t* buffer, uint16_t brake_raw_adc_min, uint16_t brake_raw_adc_max, uint16_t accelerator_raw_adc_min, uint16_t accelerator_raw_adc_max);
+size_t deserialize_Primary_PEDALS_ADC_RANGES(uint8_t* buffer, Primary_PEDALS_ADC_RANGES* primary_pedals_adc_ranges);
+
+/* Primary_ACCELERATOR_PEDAL_VAL */
+typedef struct __is_packed {
+    uint8_t level;
+} Primary_ACCELERATOR_PEDAL_VAL;
+static_assert(sizeof(Primary_ACCELERATOR_PEDAL_VAL) == 1, "struct size mismatch");
+    
+size_t serialize_Primary_ACCELERATOR_PEDAL_VAL(uint8_t* buffer, uint8_t level);
+size_t deserialize_Primary_ACCELERATOR_PEDAL_VAL(uint8_t* buffer, Primary_ACCELERATOR_PEDAL_VAL* primary_accelerator_pedal_val);
+
+/* Primary_BRAKE_PEDAL_VAL */
+typedef struct __is_packed {
+    uint8_t level;
+} Primary_BRAKE_PEDAL_VAL;
+static_assert(sizeof(Primary_BRAKE_PEDAL_VAL) == 1, "struct size mismatch");
+    
+size_t serialize_Primary_BRAKE_PEDAL_VAL(uint8_t* buffer, uint8_t level);
+size_t deserialize_Primary_BRAKE_PEDAL_VAL(uint8_t* buffer, Primary_BRAKE_PEDAL_VAL* primary_brake_pedal_val);
+
+/* Primary_PCU_STATUS */
+typedef struct __is_packed {
+    Primary_pcu_flags warnings;
+    Primary_pcu_flags errors;
+} Primary_PCU_STATUS;
+static_assert(sizeof(Primary_PCU_STATUS) == 2, "struct size mismatch");
+    
+size_t serialize_Primary_PCU_STATUS(uint8_t* buffer, Primary_pcu_flags warnings, Primary_pcu_flags errors);
+size_t deserialize_Primary_PCU_STATUS(uint8_t* buffer, Primary_PCU_STATUS* primary_pcu_status);
 
 /* Primary_TIMESTAMP */
 typedef struct __is_packed {

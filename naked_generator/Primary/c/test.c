@@ -7,11 +7,91 @@
 
 int main() {
 
+/* Primary_SET_PEDALS_RANGE */
+    printf("Primary_SET_PEDALS_RANGE:\n");
+    uint8_t* buffer_primary_set_pedals_range = (uint8_t*)malloc(sizeof(Primary_SET_PEDALS_RANGE));
+    
+    Primary_SET_PEDALS_RANGE primary_set_pedals_range_s = { -110, -2 };
+    serialize_Primary_SET_PEDALS_RANGE(buffer_primary_set_pedals_range, primary_set_pedals_range_s.sync_state, primary_set_pedals_range_s.pedal);
+    printf("\tSerialized\n\t%lld %lld\n", (long long int)primary_set_pedals_range_s.sync_state, (long long int)primary_set_pedals_range_s.pedal);
+    
+    Primary_SET_PEDALS_RANGE* primary_set_pedals_range_d = (Primary_SET_PEDALS_RANGE*)malloc(sizeof(Primary_SET_PEDALS_RANGE));
+    deserialize_Primary_SET_PEDALS_RANGE(buffer_primary_set_pedals_range, primary_set_pedals_range_d);
+    printf("\tDeserialized\n\t%lld %lld\n", (long long int)primary_set_pedals_range_d->sync_state, (long long int)primary_set_pedals_range_d->pedal);
+    
+    assert(memcmp(&primary_set_pedals_range_s, primary_set_pedals_range_d, sizeof(Primary_SET_PEDALS_RANGE)) == 0);
+    puts("SUCCESS!\n");
+        
+
+/* Primary_PEDALS_ADC_RANGES */
+    printf("Primary_PEDALS_ADC_RANGES:\n");
+    uint8_t* buffer_primary_pedals_adc_ranges = (uint8_t*)malloc(sizeof(Primary_PEDALS_ADC_RANGES));
+    
+    Primary_PEDALS_ADC_RANGES primary_pedals_adc_ranges_s = { 58729, 45549, 37992, 20550 };
+    serialize_Primary_PEDALS_ADC_RANGES(buffer_primary_pedals_adc_ranges, primary_pedals_adc_ranges_s.brake_raw_adc_min, primary_pedals_adc_ranges_s.brake_raw_adc_max, primary_pedals_adc_ranges_s.accelerator_raw_adc_min, primary_pedals_adc_ranges_s.accelerator_raw_adc_max);
+    printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)primary_pedals_adc_ranges_s.brake_raw_adc_min, (long long unsigned int)primary_pedals_adc_ranges_s.brake_raw_adc_max, (long long unsigned int)primary_pedals_adc_ranges_s.accelerator_raw_adc_min, (long long unsigned int)primary_pedals_adc_ranges_s.accelerator_raw_adc_max);
+    
+    Primary_PEDALS_ADC_RANGES* primary_pedals_adc_ranges_d = (Primary_PEDALS_ADC_RANGES*)malloc(sizeof(Primary_PEDALS_ADC_RANGES));
+    deserialize_Primary_PEDALS_ADC_RANGES(buffer_primary_pedals_adc_ranges, primary_pedals_adc_ranges_d);
+    printf("\tDeserialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)primary_pedals_adc_ranges_d->brake_raw_adc_min, (long long unsigned int)primary_pedals_adc_ranges_d->brake_raw_adc_max, (long long unsigned int)primary_pedals_adc_ranges_d->accelerator_raw_adc_min, (long long unsigned int)primary_pedals_adc_ranges_d->accelerator_raw_adc_max);
+    
+    assert(memcmp(&primary_pedals_adc_ranges_s, primary_pedals_adc_ranges_d, sizeof(Primary_PEDALS_ADC_RANGES)) == 0);
+    puts("SUCCESS!\n");
+        
+
+/* Primary_ACCELERATOR_PEDAL_VAL */
+    printf("Primary_ACCELERATOR_PEDAL_VAL:\n");
+    uint8_t* buffer_primary_accelerator_pedal_val = (uint8_t*)malloc(sizeof(Primary_ACCELERATOR_PEDAL_VAL));
+    
+    Primary_ACCELERATOR_PEDAL_VAL primary_accelerator_pedal_val_s = { 241 };
+    serialize_Primary_ACCELERATOR_PEDAL_VAL(buffer_primary_accelerator_pedal_val, primary_accelerator_pedal_val_s.level);
+    printf("\tSerialized\n\t%llu\n", (long long unsigned int)primary_accelerator_pedal_val_s.level);
+    
+    Primary_ACCELERATOR_PEDAL_VAL* primary_accelerator_pedal_val_d = (Primary_ACCELERATOR_PEDAL_VAL*)malloc(sizeof(Primary_ACCELERATOR_PEDAL_VAL));
+    deserialize_Primary_ACCELERATOR_PEDAL_VAL(buffer_primary_accelerator_pedal_val, primary_accelerator_pedal_val_d);
+    printf("\tDeserialized\n\t%llu\n", (long long unsigned int)primary_accelerator_pedal_val_d->level);
+    
+    assert(memcmp(&primary_accelerator_pedal_val_s, primary_accelerator_pedal_val_d, sizeof(Primary_ACCELERATOR_PEDAL_VAL)) == 0);
+    puts("SUCCESS!\n");
+        
+
+/* Primary_BRAKE_PEDAL_VAL */
+    printf("Primary_BRAKE_PEDAL_VAL:\n");
+    uint8_t* buffer_primary_brake_pedal_val = (uint8_t*)malloc(sizeof(Primary_BRAKE_PEDAL_VAL));
+    
+    Primary_BRAKE_PEDAL_VAL primary_brake_pedal_val_s = { 142 };
+    serialize_Primary_BRAKE_PEDAL_VAL(buffer_primary_brake_pedal_val, primary_brake_pedal_val_s.level);
+    printf("\tSerialized\n\t%llu\n", (long long unsigned int)primary_brake_pedal_val_s.level);
+    
+    Primary_BRAKE_PEDAL_VAL* primary_brake_pedal_val_d = (Primary_BRAKE_PEDAL_VAL*)malloc(sizeof(Primary_BRAKE_PEDAL_VAL));
+    deserialize_Primary_BRAKE_PEDAL_VAL(buffer_primary_brake_pedal_val, primary_brake_pedal_val_d);
+    printf("\tDeserialized\n\t%llu\n", (long long unsigned int)primary_brake_pedal_val_d->level);
+    
+    assert(memcmp(&primary_brake_pedal_val_s, primary_brake_pedal_val_d, sizeof(Primary_BRAKE_PEDAL_VAL)) == 0);
+    puts("SUCCESS!\n");
+        
+
+/* Primary_PCU_STATUS */
+    printf("Primary_PCU_STATUS:\n");
+    uint8_t* buffer_primary_pcu_status = (uint8_t*)malloc(sizeof(Primary_PCU_STATUS));
+    
+    Primary_PCU_STATUS primary_pcu_status_s = { {183}, {42} };
+    serialize_Primary_PCU_STATUS(buffer_primary_pcu_status, primary_pcu_status_s.warnings, primary_pcu_status_s.errors);
+    printf("\tSerialized\n\t%hhx %hhx\n", (long long unsigned int)primary_pcu_status_s.warnings[0], (long long unsigned int)primary_pcu_status_s.errors[0]);
+    
+    Primary_PCU_STATUS* primary_pcu_status_d = (Primary_PCU_STATUS*)malloc(sizeof(Primary_PCU_STATUS));
+    deserialize_Primary_PCU_STATUS(buffer_primary_pcu_status, primary_pcu_status_d);
+    printf("\tDeserialized\n\t%hhx %hhx\n", (long long unsigned int)primary_pcu_status_d->warnings[0], (long long unsigned int)primary_pcu_status_d->errors[0]);
+    
+    assert(memcmp(&primary_pcu_status_s, primary_pcu_status_d, sizeof(Primary_PCU_STATUS)) == 0);
+    puts("SUCCESS!\n");
+        
+
 /* Primary_TIMESTAMP */
     printf("Primary_TIMESTAMP:\n");
     uint8_t* buffer_primary_timestamp = (uint8_t*)malloc(sizeof(Primary_TIMESTAMP));
     
-    Primary_TIMESTAMP primary_timestamp_s = { 353998841 };
+    Primary_TIMESTAMP primary_timestamp_s = { 2525501153 };
     serialize_Primary_TIMESTAMP(buffer_primary_timestamp, primary_timestamp_s.timestamp);
     printf("\tSerialized\n\t%llu\n", (long long unsigned int)primary_timestamp_s.timestamp);
     
@@ -27,7 +107,7 @@ int main() {
     printf("Primary_TLM_STATUS:\n");
     uint8_t* buffer_primary_tlm_status = (uint8_t*)malloc(sizeof(Primary_TLM_STATUS));
     
-    Primary_TLM_STATUS primary_tlm_status_s = { 22, -36, 55, 220 };
+    Primary_TLM_STATUS primary_tlm_status_s = { -36, -73, 220, 106 };
     serialize_Primary_TLM_STATUS(buffer_primary_tlm_status, primary_tlm_status_s.tlm_status, primary_tlm_status_s.race_type, primary_tlm_status_s.driver, primary_tlm_status_s.circuit);
     printf("\tSerialized\n\t%lld %lld %llu %llu\n", (long long int)primary_tlm_status_s.tlm_status, (long long int)primary_tlm_status_s.race_type, (long long unsigned int)primary_tlm_status_s.driver, (long long unsigned int)primary_tlm_status_s.circuit);
     
@@ -43,7 +123,7 @@ int main() {
     printf("Primary_CAR_STATUS:\n");
     uint8_t* buffer_primary_car_status = (uint8_t*)malloc(sizeof(Primary_CAR_STATUS));
     
-    Primary_CAR_STATUS primary_car_status_s = { -22, -81, -78 };
+    Primary_CAR_STATUS primary_car_status_s = { -81, -78, -54 };
     serialize_Primary_CAR_STATUS(buffer_primary_car_status, primary_car_status_s.car_status, primary_car_status_s.inverter_l, primary_car_status_s.inverter_r);
     printf("\tSerialized\n\t%lld %lld %lld\n", (long long int)primary_car_status_s.car_status, (long long int)primary_car_status_s.inverter_l, (long long int)primary_car_status_s.inverter_r);
     
@@ -59,7 +139,7 @@ int main() {
     printf("Primary_SET_TLM_STATUS:\n");
     uint8_t* buffer_primary_set_tlm_status = (uint8_t*)malloc(sizeof(Primary_SET_TLM_STATUS));
     
-    Primary_SET_TLM_STATUS primary_set_tlm_status_s = { -54, 99, 239, 169 };
+    Primary_SET_TLM_STATUS primary_set_tlm_status_s = { 99, 111, 169, 61 };
     serialize_Primary_SET_TLM_STATUS(buffer_primary_set_tlm_status, primary_set_tlm_status_s.tlm_status, primary_set_tlm_status_s.race_type, primary_set_tlm_status_s.driver, primary_set_tlm_status_s.circuit);
     printf("\tSerialized\n\t%lld %lld %llu %llu\n", (long long int)primary_set_tlm_status_s.tlm_status, (long long int)primary_set_tlm_status_s.race_type, (long long unsigned int)primary_set_tlm_status_s.driver, (long long unsigned int)primary_set_tlm_status_s.circuit);
     
@@ -75,7 +155,7 @@ int main() {
     printf("Primary_HV_VOLTAGE:\n");
     uint8_t* buffer_primary_hv_voltage = (uint8_t*)malloc(sizeof(Primary_HV_VOLTAGE));
     
-    Primary_HV_VOLTAGE primary_hv_voltage_s = { 15714, 54304, 4996, 36194 };
+    Primary_HV_VOLTAGE primary_hv_voltage_s = { 54304, 4996, 36194, 23113 };
     serialize_Primary_HV_VOLTAGE(buffer_primary_hv_voltage, primary_hv_voltage_s.pack_voltage, primary_hv_voltage_s.bus_voltage, primary_hv_voltage_s.max_cell_voltage, primary_hv_voltage_s.min_cell_voltage);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)primary_hv_voltage_s.pack_voltage, (long long unsigned int)primary_hv_voltage_s.bus_voltage, (long long unsigned int)primary_hv_voltage_s.max_cell_voltage, (long long unsigned int)primary_hv_voltage_s.min_cell_voltage);
     
@@ -91,7 +171,7 @@ int main() {
     printf("Primary_HV_CURRENT:\n");
     uint8_t* buffer_primary_hv_current = (uint8_t*)malloc(sizeof(Primary_HV_CURRENT));
     
-    Primary_HV_CURRENT primary_hv_current_s = { 23113, 202 };
+    Primary_HV_CURRENT primary_hv_current_s = { 58738, -214 };
     serialize_Primary_HV_CURRENT(buffer_primary_hv_current, primary_hv_current_s.current, primary_hv_current_s.power);
     printf("\tSerialized\n\t%llu %lld\n", (long long unsigned int)primary_hv_current_s.current, (long long int)primary_hv_current_s.power);
     
@@ -107,7 +187,7 @@ int main() {
     printf("Primary_HV_TEMP:\n");
     uint8_t* buffer_primary_hv_temp = (uint8_t*)malloc(sizeof(Primary_HV_TEMP));
     
-    Primary_HV_TEMP primary_hv_temp_s = { 5453, 36230, 54485 };
+    Primary_HV_TEMP primary_hv_temp_s = { 36230, 54485, 23378 };
     serialize_Primary_HV_TEMP(buffer_primary_hv_temp, primary_hv_temp_s.average_temp, primary_hv_temp_s.max_temp, primary_hv_temp_s.min_temp);
     printf("\tSerialized\n\t%llu %llu %llu\n", (long long unsigned int)primary_hv_temp_s.average_temp, (long long unsigned int)primary_hv_temp_s.max_temp, (long long unsigned int)primary_hv_temp_s.min_temp);
     
@@ -123,7 +203,7 @@ int main() {
     printf("Primary_HV_ERRORS:\n");
     uint8_t* buffer_primary_hv_errors = (uint8_t*)malloc(sizeof(Primary_HV_ERRORS));
     
-    Primary_HV_ERRORS primary_hv_errors_s = { {182, 152}, {37, 81} };
+    Primary_HV_ERRORS primary_hv_errors_s = { {152, 37}, {81, 144} };
     serialize_Primary_HV_ERRORS(buffer_primary_hv_errors, primary_hv_errors_s.warnings, primary_hv_errors_s.errors);
     printf("\tSerialized\n\t%hhx.%hhx %hhx.%hhx\n", (long long unsigned int)primary_hv_errors_s.warnings[0], (long long unsigned int)primary_hv_errors_s.warnings[1], (long long unsigned int)primary_hv_errors_s.errors[0], (long long unsigned int)primary_hv_errors_s.errors[1]);
     
@@ -139,7 +219,7 @@ int main() {
     printf("Primary_TS_STATUS:\n");
     uint8_t* buffer_primary_ts_status = (uint8_t*)malloc(sizeof(Primary_TS_STATUS));
     
-    Primary_TS_STATUS primary_ts_status_s = { -56 };
+    Primary_TS_STATUS primary_ts_status_s = { 57 };
     serialize_Primary_TS_STATUS(buffer_primary_ts_status, primary_ts_status_s.ts_status);
     printf("\tSerialized\n\t%lld\n", (long long int)primary_ts_status_s.ts_status);
     
@@ -155,7 +235,7 @@ int main() {
     printf("Primary_SET_TS_STATUS:\n");
     uint8_t* buffer_primary_set_ts_status = (uint8_t*)malloc(sizeof(Primary_SET_TS_STATUS));
     
-    Primary_SET_TS_STATUS primary_set_ts_status_s = { 57 };
+    Primary_SET_TS_STATUS primary_set_ts_status_s = { 29 };
     serialize_Primary_SET_TS_STATUS(buffer_primary_set_ts_status, primary_set_ts_status_s.ts_status_set);
     printf("\tSerialized\n\t%lld\n", (long long int)primary_set_ts_status_s.ts_status_set);
     
@@ -171,7 +251,7 @@ int main() {
     printf("Primary_STEER_STATUS:\n");
     uint8_t* buffer_primary_steer_status = (uint8_t*)malloc(sizeof(Primary_STEER_STATUS));
     
-    Primary_STEER_STATUS primary_steer_status_s = { 29, 30, 0 };
+    Primary_STEER_STATUS primary_steer_status_s = { 30, 4, 0 };
     serialize_Primary_STEER_STATUS(buffer_primary_steer_status, primary_steer_status_s.traction_control, primary_steer_status_s.map, primary_steer_status_s.radio_on);
     printf("\tSerialized\n\t%lld %lld\n", (long long int)primary_steer_status_s.traction_control, (long long int)primary_steer_status_s.map, (long long unsigned int)primary_steer_status_s.radio_on);
     

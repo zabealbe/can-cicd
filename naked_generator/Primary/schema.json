@@ -1,5 +1,15 @@
 {
     "types": {
+        "pcu_flags": {
+            "type": "bitset",
+            "items": [
+                "IMPLAUSIBILITY",
+                "ADC_ERROR",
+                "UART_ERROR",
+                "CALIBRATION_INCOMPLETE",
+                "CAN_ERROR"
+            ]
+        },
         "Hv_Errors": {
             "type": "bitset",
             "items": [
@@ -13,6 +23,21 @@
                 "INT_VOLTAGE_MISMATCH",
                 "FEEDBACK_HARD",
                 "FEEDBACK_SOFT"
+            ]
+        },
+        "Sync_State": {
+            "type": "enum",
+            "items": [
+                "MAX_SET",
+                "MIN_SET"
+            ]
+        },
+        "Pedal": {
+            "type": "enum",
+            "items": [
+                "ACCELERATOR",
+                "BRAKE",
+                "ALL"
             ]
         },
         "Tlm_Status": {
@@ -101,6 +126,26 @@
         }
     },
     "structs": {
+        "SET_PEDALS_RANGE": {
+            "sync_state": "Sync_State",
+            "pedal": "Pedal"
+        },
+        "PEDALS_ADC_RANGES": {
+            "brake_raw_adc_min": "uint16",
+            "brake_raw_adc_max": "uint16",
+            "accelerator_raw_adc_min": "uint16",
+            "accelerator_raw_adc_max": "uint16"
+        },
+        "ACCELERATOR_PEDAL_VAL": {
+            "level": "uint8"
+        },
+        "BRAKE_PEDAL_VAL": {
+            "level": "uint8"
+        },
+        "PCU_STATUS": {
+            "warnings": "pcu_flags",
+            "errors": "pcu_flags"
+        },
         "TIMESTAMP": {
             "timestamp": "uint32"
         },

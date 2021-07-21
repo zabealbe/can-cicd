@@ -1,10 +1,4 @@
 name,id,network,topic,priority,sending,receiving,contents,description
-SET_PEDALS_RANGE,1024,Secondary,PEDALS,3,STEER,PCU,"sync_state: MAX_SET, MIN_SET, pedal: ACCELERATOR, BRAKE, ALL","Syncronization message from Steering Wheel to Pedals Control Unit for calibration purpose.
-Message semantic: sets (max|min) value for (accelerator|brake|all) pedal the moment PCU receives the message with the current read value."
-PEDALS_ADC_RANGES,1056,Secondary,PEDALS,3,"ECU, PCU","PCU, ECU","brake_raw_adc_min: uint16, brake_raw_adc_max: uint16, accelerator_raw_adc_min: uint16, accelerator_raw_adc_max: uint16",This message contains ADC raw values used by PCU to set 0->255 range when sending pedals value. This message can be requested and sent either by PCU or ECU. If PCU requests this message then ECU responds with a value from a previous run. If ECU requests this message then PCU sends the current ranges. NOTE: ADC values have 12 bit resolution.
-ACCELERATOR_PEDAL_VAL,0,Secondary,PEDALS,7,PCU,"ECU,TLM",level: uint8,"Accelerator Pedal potentiometer Value. Average of 2 sensors normalized from 0 to 255, linear, 8bit total, unsigned."
-BRAKE_PEDAL_VAL,32,Secondary,PEDALS,7,PCU,"ECU,TLM",level: uint8,"Brake Pedal pressure sensor Value. Normalized from 0 to 255, linear, 8bit total, unsigned."
-PCU_STATUS,512,Secondary,PEDALS,5,PCU,"ECU,TLM,STEER","warnings: pcu_flags, errors: pcu_flags",PCU current status. Warnings and errors.
 IMU_ANGULAR_RATE,1260,Secondary,FIXED_IDS,,IMU,ECU,"ang_rate_x: uint16, ang_rate_y: uint16, ang_rate_z: uint16","Inertial Measurement Unit x,y,z-axis angular rate value. 0.01dps per bit, Big-Endian, 16bit Total, signed"
 IMU_ACCELERATION,1261,Secondary,FIXED_IDS,,IMU,ECU,"accel_x: uint16, accel_y: uint16, accel_z: uint16","Inertial Measurement Unit x,y,z-axis acceleration value. 0.01g per bit, Big-Endian, 16bit Total, signed"
 IRTS_FL_0,1460,Secondary,FIXED_IDS,,IRTS_FL,ECU,"channel1: uint16, channel2: uint16, channel3: uint16, channel4: uint16","Front Left wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
@@ -23,29 +17,35 @@ IRTS_RR_0,1472,Secondary,FIXED_IDS,,IRTS_RR,ECU,"channel1: uint16, channel2: uin
 IRTS_RR_1,1473,Secondary,FIXED_IDS,,IRTS_RR,ECU,"channel5: uint16, channel6: uint16, channel7: uint16, channel8: uint16","Rear Right wheel InfraRed Temperature Sensor data, channels 5 through 8. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
 IRTS_RR_2,1474,Secondary,FIXED_IDS,,IRTS_RR,ECU,"channel9: uint16, channel10: uint16, channel11: uint16, channel12: uint16","Rear Right wheel InfraRed Temperature Sensor data, channels 9 through 12. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
 IRTS_RR_3,1475,Secondary,FIXED_IDS,,IRTS_RR,ECU,"channel13: uint16, channel14: uint16, channel15: uint16, channel16: uint16","Rear Right wheel InfraRed Temperature Sensor data, channels 13 through 16. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."
-TIMESTAMP,1536,Primary,BROADCAST,1,TLM,"STEER, BMS_HV, BMS_LV, ECU, PEDALS",timestamp: uint32,
-TLM_STATUS,257,Primary,STEER,6,TLM,STEER,"tlm_status: OFF, ON, race_type: ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE, driver: uint8, circuit: uint8",
-SET_TLM_STATUS,258,Primary,TLM,6,STEER,TLM,"tlm_status: ON, OFF, race_type: ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE, driver: uint8, circuit: uint8",
-HV_VOLTAGE,771,Primary,ACUnSTEERnCART,4,BMS_HV,"ACU, STEER, HANDCART","pack_voltage: uint16, bus_voltage: uint16, max_cell_voltage: uint16, min_cell_voltage: uint16",
-HV_CURRENT,803,Primary,ACUnSTEERnCART,4,BMS_HV,"ACU, STEER, HANDCART","current: uint16, power: int16",
-HV_TEMP,835,Primary,ACUnSTEERnCART,4,BMS_HV,"ACU, STEER, HANDCART","average_temp: uint16, max_temp: uint16, min_temp: uint16",
-HV_ERRORS,259,Primary,ACUnSTEERnCART,6,BMS_HV,"ACU, STEER, HANDCART","warnings: Hv_Errors, errors: Hv_Errors",
-TS_STATUS,3,Primary,ACUnSTEERnCART,7,BMS_HV,"ACU, STEER, HANDCART","ts_status: OFF, PRECHARGE, ON, FATAL",
-SET_TS_STATUS,4,Primary,BMS_HV,7,"ACU, HANDCART",BMS_HV,"ts_status_set: OFF, ON",
-STEER_STATUS,5,Primary,ACU,7,STEER,ACU,"traction_control: OFF, SLIP_CONTROL, TORQUE_VECTORING, COMPLETE, map: R, D20, D40, D60, D80, D100, radio_on: bool",
-SET_CAR_STATUS,37,Primary,ACU,7,STEER,ACU,"car_status_set: IDLE, RUN",
-GET_CAR_STATUS,69,Primary,ACU,7,STEER,ACU,,
-CAR_STATUS,1,Primary,STEER,7,ACU,STEER,"car_status: IDLE, SETUP, RUN, Inverter_status: inverter_l: OFF, IDLE, ON, Inverter_status: inverter_r: OFF, IDLE, ON",
-LV_CURRENT,774,Primary,ACUnSTEER,4,BMS_LV,"ACU, STEER",current: uint8,
-LV_VOLTAGE,806,Primary,ACUnSTEER,4,BMS_LV,"ACU, STEER","total_voltage: uint16, voltage_1: uint8, voltage_2: uint8, voltage_3: uint8, voltage_4: uint8",
-LV_TEMPERATURE,838,Primary,ACUnSTEER,4,BMS_LV,"ACU, STEER","battery_temperature: uint16, dcdc_temperature: uint8",
-COOLING_STATUS,870,Primary,ACUnSTEER,4,BMS_LV,"ACU, STEER","hv_fan_speed: uint8, lv_fan_speed: uint8, pump_speed: uint8",
-HV_CELLS_VOLTAGE,519,Primary,HANDCART,5,BMS_HV,HANDCART,"cell_index: uint8, voltage_0: uint16, voltage_1: uint16, voltage_2: uint16",
-HV_CELLS_TEMP,551,Primary,HANDCART,5,BMS_HV,HANDCART,"cell_index: uint8, temp_0: uint8, temp_1: uint8, temp_2: uint8, temp_3: uint8, temp_4: uint8, temp_5: uint8, temp_6: uint8",
-SET_CHG_POWER,263,Primary,HANDCART,6,BMS_HV,HANDCART,"current: uint16, voltage: uint16",
-CHG_STATUS,7,Primary,HANDCART,7,BMS_HV,HANDCART,"status: CHG_OFF, CHG_TC, CHG_CC, CHG_CV",
-SET_CHG_STATUS,39,Primary,HANDCART,7,HANDCART,BMS_HV,"status: CHG_OFF, CHG_TC, CHG_CC, CHG_CV",
-CHG_SETTINGS,71,Primary,HANDCART,7,HANDCART,BMS_HV,v_cutoff: uint8,
+SET_PEDALS_RANGE,1024,Primary,PEDALS,3,STEER,PCU,"sync_state: MAX_SET, MIN_SET, pedal: ACCELERATOR, BRAKE, ALL","Syncronization message from Steering Wheel to Pedals Control Unit for calibration purpose.
+Message semantic: sets (max|min) value for (accelerator|brake|all) pedal the moment PCU receives the message with the current read value."
+PEDALS_ADC_RANGES,1056,Primary,PEDALS,3,"ECU, PCU","PCU, ECU","brake_raw_adc_min: uint16, brake_raw_adc_max: uint16, accelerator_raw_adc_min: uint16, accelerator_raw_adc_max: uint16",This message contains ADC raw values used by PCU to set 0->255 range when sending pedals value. This message can be requested and sent either by PCU or ECU. If PCU requests this message then ECU responds with a value from a previous run. If ECU requests this message then PCU sends the current ranges. NOTE: ADC values have 12 bit resolution.
+ACCELERATOR_PEDAL_VAL,0,Primary,PEDALS,7,PCU,"ECU,TLM",level: uint8,"Accelerator Pedal potentiometer Value. Average of 2 sensors normalized from 0 to 255, linear, 8bit total, unsigned."
+BRAKE_PEDAL_VAL,32,Primary,PEDALS,7,PCU,"ECU,TLM",level: uint8,"Brake Pedal pressure sensor Value. Normalized from 0 to 255, linear, 8bit total, unsigned."
+PCU_STATUS,512,Primary,PEDALS,5,PCU,"ECU,TLM,STEER","warnings: pcu_flags, errors: pcu_flags",PCU current status. Warnings and errors.
+TIMESTAMP,1537,Primary,BROADCAST,1,TLM,"STEER, BMS_HV, BMS_LV, ECU, PEDALS",timestamp: uint32,
+TLM_STATUS,258,Primary,STEER,6,TLM,STEER,"tlm_status: OFF, ON, race_type: ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE, driver: uint8, circuit: uint8",
+SET_TLM_STATUS,259,Primary,TLM,6,STEER,TLM,"tlm_status: ON, OFF, race_type: ACCELERATION, SKIDPAD, AUTOCROSS, ENDURANCE, driver: uint8, circuit: uint8",
+HV_VOLTAGE,772,Primary,ACUnSTEERnCART,4,BMS_HV,"ACU, STEER, HANDCART","pack_voltage: uint16, bus_voltage: uint16, max_cell_voltage: uint16, min_cell_voltage: uint16",
+HV_CURRENT,804,Primary,ACUnSTEERnCART,4,BMS_HV,"ACU, STEER, HANDCART","current: uint16, power: int16",
+HV_TEMP,836,Primary,ACUnSTEERnCART,4,BMS_HV,"ACU, STEER, HANDCART","average_temp: uint16, max_temp: uint16, min_temp: uint16",
+HV_ERRORS,260,Primary,ACUnSTEERnCART,6,BMS_HV,"ACU, STEER, HANDCART","warnings: Hv_Errors, errors: Hv_Errors",
+TS_STATUS,4,Primary,ACUnSTEERnCART,7,BMS_HV,"ACU, STEER, HANDCART","ts_status: OFF, PRECHARGE, ON, FATAL",
+SET_TS_STATUS,5,Primary,BMS_HV,7,"ACU, HANDCART",BMS_HV,"ts_status_set: OFF, ON",
+STEER_STATUS,6,Primary,ACU,7,STEER,ACU,"traction_control: OFF, SLIP_CONTROL, TORQUE_VECTORING, COMPLETE, map: R, D20, D40, D60, D80, D100, radio_on: bool",
+SET_CAR_STATUS,38,Primary,ACU,7,STEER,ACU,"car_status_set: IDLE, RUN",
+GET_CAR_STATUS,70,Primary,ACU,7,STEER,ACU,,
+CAR_STATUS,2,Primary,STEER,7,ACU,STEER,"car_status: IDLE, SETUP, RUN, Inverter_status: inverter_l: OFF, IDLE, ON, Inverter_status: inverter_r: OFF, IDLE, ON",
+LV_CURRENT,775,Primary,ACUnSTEER,4,BMS_LV,"ACU, STEER",current: uint8,
+LV_VOLTAGE,807,Primary,ACUnSTEER,4,BMS_LV,"ACU, STEER","total_voltage: uint16, voltage_1: uint8, voltage_2: uint8, voltage_3: uint8, voltage_4: uint8",
+LV_TEMPERATURE,839,Primary,ACUnSTEER,4,BMS_LV,"ACU, STEER","battery_temperature: uint16, dcdc_temperature: uint8",
+COOLING_STATUS,871,Primary,ACUnSTEER,4,BMS_LV,"ACU, STEER","hv_fan_speed: uint8, lv_fan_speed: uint8, pump_speed: uint8",
+HV_CELLS_VOLTAGE,520,Primary,HANDCART,5,BMS_HV,HANDCART,"cell_index: uint8, voltage_0: uint16, voltage_1: uint16, voltage_2: uint16",
+HV_CELLS_TEMP,552,Primary,HANDCART,5,BMS_HV,HANDCART,"cell_index: uint8, temp_0: uint8, temp_1: uint8, temp_2: uint8, temp_3: uint8, temp_4: uint8, temp_5: uint8, temp_6: uint8",
+SET_CHG_POWER,264,Primary,HANDCART,6,BMS_HV,HANDCART,"current: uint16, voltage: uint16",
+CHG_STATUS,8,Primary,HANDCART,7,BMS_HV,HANDCART,"status: CHG_OFF, CHG_TC, CHG_CC, CHG_CV",
+SET_CHG_STATUS,40,Primary,HANDCART,7,HANDCART,BMS_HV,"status: CHG_OFF, CHG_TC, CHG_CC, CHG_CV",
+CHG_SETTINGS,72,Primary,HANDCART,7,HANDCART,BMS_HV,v_cutoff: uint8,
 BOARD_STATUS,1536,bms,STATUS,1,"CELLBOARD0, CELLBOARD1, CELLBOARD2, CELLBOARD3, CELLBOARD4, CELLBOARD5",MAINBOARD,"board_index: uint8, errors: errors, balancing_status: balancing_status",
 TEMP_STATS,1281,bms,TEMPERATURE_INFO,2,"CELLBOARD0, CELLBOARD1, CELLBOARD2, CELLBOARD3, CELLBOARD4, CELLBOARD5",MAINBOARD,"board_index: uint8, average: uint8, max: uint8, min: uint8",
 BALANCING,1538,bms,BALANCING,1,MAINBOARD,"CELLBOARD0, CELLBOARD1, CELLBOARD2, CELLBOARD3, CELLBOARD4, CELLBOARD5","board_index: uint8, cells: balancing_cells",

@@ -1,5 +1,70 @@
 const byteify = require('byteify');
 
+function serializePrimarySetPedalsRange(data) {
+    return Uint8Array.from([
+        ...byteify.serializeInt8(data.sync_state),
+        ...byteify.serializeInt8(data.pedal),
+    ]);
+}
+function deserializePrimarySetPedalsRange(bytes) {
+    return {
+        sync_state: byteify.deserializeInt8(bytes.slice(0, 1)),
+        pedal: byteify.deserializeInt8(bytes.slice(1, 2)),
+    }
+}
+
+function serializePrimaryPedalsAdcRanges(data) {
+    return Uint8Array.from([
+        ...byteify.serializeUint16(data.brake_raw_adc_min),
+        ...byteify.serializeUint16(data.brake_raw_adc_max),
+        ...byteify.serializeUint16(data.accelerator_raw_adc_min),
+        ...byteify.serializeUint16(data.accelerator_raw_adc_max),
+    ]);
+}
+function deserializePrimaryPedalsAdcRanges(bytes) {
+    return {
+        brake_raw_adc_min: byteify.deserializeUint16(bytes.slice(0, 2)),
+        brake_raw_adc_max: byteify.deserializeUint16(bytes.slice(2, 4)),
+        accelerator_raw_adc_min: byteify.deserializeUint16(bytes.slice(4, 6)),
+        accelerator_raw_adc_max: byteify.deserializeUint16(bytes.slice(6, 8)),
+    }
+}
+
+function serializePrimaryAcceleratorPedalVal(data) {
+    return Uint8Array.from([
+        ...byteify.serializeUint8(data.level),
+    ]);
+}
+function deserializePrimaryAcceleratorPedalVal(bytes) {
+    return {
+        level: byteify.deserializeUint8(bytes.slice(0, 1)),
+    }
+}
+
+function serializePrimaryBrakePedalVal(data) {
+    return Uint8Array.from([
+        ...byteify.serializeUint8(data.level),
+    ]);
+}
+function deserializePrimaryBrakePedalVal(bytes) {
+    return {
+        level: byteify.deserializeUint8(bytes.slice(0, 1)),
+    }
+}
+
+function serializePrimaryPcuStatus(data) {
+    return Uint8Array.from([
+        ...byteify.serializeInt8(data.warnings),
+        ...byteify.serializeInt8(data.errors),
+    ]);
+}
+function deserializePrimaryPcuStatus(bytes) {
+    return {
+        warnings: byteify.deserializeInt8(bytes.slice(0, 1)),
+        errors: byteify.deserializeInt8(bytes.slice(1, 2)),
+    }
+}
+
 function serializePrimaryTimestamp(data) {
     return Uint8Array.from([
         ...byteify.serializeUint32(data.timestamp),

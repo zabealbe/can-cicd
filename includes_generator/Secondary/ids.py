@@ -1,30 +1,5 @@
 NETWORK_VERSION = 0
 
-# TOPIC PEDALS
-TOPIC_PEDALS_MASK = 0b00000011111
-TOPIC_PEDALS_FILTER = 0b00000000000
-"""
-Syncronization message from Steering Wheel to Pedals Control Unit for calibration purpose.
-Message semantic: sets (max|min) value for (accelerator|brake|all) pedal the moment PCU receives the message with the current read value.
-"""
-ID_SET_PEDALS_RANGE = 0b10000000000
-"""
-This message contains ADC raw values used by PCU to set 0->255 range when sending pedals value. This message can be requested and sent either by PCU or ECU. If PCU requests this message then ECU responds with a value from a previous run. If ECU requests this message then PCU sends the current ranges. NOTE: ADC values have 12 bit resolution.
-"""
-ID_PEDALS_ADC_RANGES = 0b10000100000
-"""
-Accelerator Pedal potentiometer Value. Average of 2 sensors normalized from 0 to 255, linear, 8bit total, unsigned.
-"""
-ID_ACCELERATOR_PEDAL_VAL = 0b00000000000
-"""
-Brake Pedal pressure sensor Value. Normalized from 0 to 255, linear, 8bit total, unsigned.
-"""
-ID_BRAKE_PEDAL_VAL = 0b00000100000
-"""
-PCU current status. Warnings and errors.
-"""
-ID_PCU_STATUS = 0b01000000000
-
 # TOPIC FIXED_IDS
 """
 Inertial Measurement Unit [x,y,z]-axis angular rate value. 0.01dps per bit, Big-Endian, 16bit Total, signed
