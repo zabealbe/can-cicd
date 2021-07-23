@@ -48,7 +48,7 @@
                 }
             }
         },
-        "ACUnSTEERnCART": {
+        "ECUnSTEERnCART": {
             "id": 4,
             "messages": {
                 "HV_VOLTAGE": {
@@ -76,7 +76,7 @@
                 }
             }
         },
-        "ACU": {
+        "ECU": {
             "id": 6,
             "messages": {
                 "STEER_STATUS": {
@@ -90,7 +90,7 @@
                 }
             }
         },
-        "ACUnSTEER": {
+        "ECUnSTEER": {
             "id": 7,
             "messages": {
                 "LV_CURRENT": {
