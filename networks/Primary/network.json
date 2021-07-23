@@ -35,13 +35,13 @@
             "priority": 3,
             "sending": [
                 "STEER",
-                "ACU"
+                "ECU"
             ],
             "receiving": [
                 "PCU",
-                "ACU"
+                "ECU"
             ],
-            "description": "Syncronization message from Steering Wheel or ACU to PCU for calibration purpose.\nMessage semantic: sets (max|min) value for accelerator pedal the moment PCU receives the message with the current read value.",
+            "description": "Syncronization message from Steering Wheel or ECU to PCU for calibration purpose.\nMessage semantic: sets (max|min) value for accelerator pedal the moment PCU receives the message with the current read value.",
             "contents": {
                 "sync_state": [
                     "MAX_SET",
@@ -185,13 +185,13 @@
         },
         {
             "name": "HV_VOLTAGE",
-            "topic": "ACUnSTEERnCART",
+            "topic": "ECUnSTEERnCART",
             "priority": 4,
             "sending": [
                 "BMS_HV"
             ],
             "receiving": [
-                "ACU",
+                "ECU",
                 "STEER",
                 "HANDCART"
             ],
@@ -204,13 +204,13 @@
         },
         {
             "name": "HV_CURRENT",
-            "topic": "ACUnSTEERnCART",
+            "topic": "ECUnSTEERnCART",
             "priority": 4,
             "sending": [
                 "BMS_HV"
             ],
             "receiving": [
-                "ACU",
+                "ECU",
                 "STEER",
                 "HANDCART"
             ],
@@ -221,13 +221,13 @@
         },
         {
             "name": "HV_TEMP",
-            "topic": "ACUnSTEERnCART",
+            "topic": "ECUnSTEERnCART",
             "priority": 4,
             "sending": [
                 "BMS_HV"
             ],
             "receiving": [
-                "ACU",
+                "ECU",
                 "STEER",
                 "HANDCART"
             ],
@@ -239,13 +239,13 @@
         },
         {
             "name": "HV_ERRORS",
-            "topic": "ACUnSTEERnCART",
+            "topic": "ECUnSTEERnCART",
             "priority": 6,
             "sending": [
                 "BMS_HV"
             ],
             "receiving": [
-                "ACU",
+                "ECU",
                 "STEER",
                 "HANDCART"
             ],
@@ -256,13 +256,13 @@
         },
         {
             "name": "TS_STATUS",
-            "topic": "ACUnSTEERnCART",
+            "topic": "ECUnSTEERnCART",
             "priority": 7,
             "sending": [
                 "BMS_HV"
             ],
             "receiving": [
-                "ACU",
+                "ECU",
                 "STEER",
                 "HANDCART"
             ],
@@ -280,7 +280,7 @@
             "topic": "BMS_HV",
             "priority": 7,
             "sending": [
-                "ACU",
+                "ECU",
                 "HANDCART"
             ],
             "receiving": [
@@ -295,13 +295,13 @@
         },
         {
             "name": "STEER_STATUS",
-            "topic": "ACU",
+            "topic": "ECU",
             "priority": 7,
             "sending": [
                 "STEER"
             ],
             "receiving": [
-                "ACU"
+                "ECU"
             ],
             "contents": {
                 "traction_control": [
@@ -323,13 +323,13 @@
         },
         {
             "name": "SET_CAR_STATUS",
-            "topic": "ACU",
+            "topic": "ECU",
             "priority": 7,
             "sending": [
                 "STEER"
             ],
             "receiving": [
-                "ACU"
+                "ECU"
             ],
             "contents": {
                 "car_status_set": [
@@ -340,13 +340,13 @@
         },
         {
             "name": "GET_CAR_STATUS",
-            "topic": "ACU",
+            "topic": "ECU",
             "priority": 7,
             "sending": [
                 "STEER"
             ],
             "receiving": [
-                "ACU"
+                "ECU"
             ],
             "contents": {}
         },
@@ -355,7 +355,7 @@
             "topic": "STEER",
             "priority": 7,
             "sending": [
-                "ACU"
+                "ECU"
             ],
             "receiving": [
                 "STEER"
@@ -380,13 +380,13 @@
         },
         {
             "name": "LV_CURRENT",
-            "topic": "ACUnSTEER",
+            "topic": "ECUnSTEER",
             "priority": 4,
             "sending": [
                 "BMS_LV"
             ],
             "receiving": [
-                "ACU",
+                "ECU",
                 "STEER"
             ],
             "contents": {
@@ -395,13 +395,13 @@
         },
         {
             "name": "LV_VOLTAGE",
-            "topic": "ACUnSTEER",
+            "topic": "ECUnSTEER",
             "priority": 4,
             "sending": [
                 "BMS_LV"
             ],
             "receiving": [
-                "ACU",
+                "ECU",
                 "STEER"
             ],
             "contents": {
@@ -414,13 +414,13 @@
         },
         {
             "name": "LV_TEMPERATURE",
-            "topic": "ACUnSTEER",
+            "topic": "ECUnSTEER",
             "priority": 4,
             "sending": [
                 "BMS_LV"
             ],
             "receiving": [
-                "ACU",
+                "ECU",
                 "STEER"
             ],
             "contents": {
@@ -430,13 +430,13 @@
         },
         {
             "name": "COOLING_STATUS",
-            "topic": "ACUnSTEER",
+            "topic": "ECUnSTEER",
             "priority": 4,
             "sending": [
                 "BMS_LV"
             ],
             "receiving": [
-                "ACU",
+                "ECU",
                 "STEER"
             ],
             "contents": {
