@@ -7,22 +7,22 @@
 #define TOPIC_PEDALS_MASK 0b00000011111
 #define TOPIC_PEDALS_FILTER 0b00000000000
 /*
-* Syncronization message from Steering Wheel to Pedals Control Unit for calibration purpose.
-* Message semantic: sets (max|min) value for (accelerator|brake|all) pedal the moment PCU receives the message with the current read value.
+* Syncronization message from Steering Wheel or ACU to PCU for calibration purpose.
+* Message semantic: sets (max|min) value for accelerator pedal the moment PCU receives the message with the current read value.
 */
-#define ID_SET_PEDALS_RANGE 0b10000000000
+#define ID_SET_ACCELERATOR_RANGE 0b10000000000
 /*
-* This message contains ADC raw values used by PCU to set 0->255 range when sending pedals value. This message can be requested and sent either by PCU or ECU. If PCU requests this message then ECU responds with a value from a previous run. If ECU requests this message then PCU sends the current ranges. NOTE: ADC values have 12 bit resolution.
+* This message contains accelarator ADC raw values used by PCU to set 0->255 range when sending accelerator value. This value is either sent by ECU or by PCU
 */
 #define ID_PEDALS_ADC_RANGES 0b10000100000
 /*
 * Accelerator Pedal potentiometer Value. Average of 2 sensors normalized from 0 to 255, linear, 8bit total, unsigned.
 */
-#define ID_ACCELERATOR_PEDAL_VAL 0b00000000000
+#define ID_ACCELERATOR_PEDAL_VAL 0b00100000000
 /*
 * Brake Pedal pressure sensor Value. Normalized from 0 to 255, linear, 8bit total, unsigned.
 */
-#define ID_BRAKE_PEDAL_VAL 0b00000100000
+#define ID_BRAKE_PEDAL_VAL 0b00100100000
 /*
 * PCU current status. Warnings and errors.
 */

@@ -1,32 +1,30 @@
 const byteify = require('byteify');
 
-function serializePrimarySetPedalsRange(data) {
+function serializePrimarySetAcceleratorRange(data) {
     return Uint8Array.from([
         ...byteify.serializeInt8(data.sync_state),
-        ...byteify.serializeInt8(data.pedal),
     ]);
 }
-function deserializePrimarySetPedalsRange(bytes) {
+function deserializePrimarySetAcceleratorRange(bytes) {
     return {
         sync_state: byteify.deserializeInt8(bytes.slice(0, 1)),
-        pedal: byteify.deserializeInt8(bytes.slice(1, 2)),
     }
 }
 
 function serializePrimaryPedalsAdcRanges(data) {
     return Uint8Array.from([
-        ...byteify.serializeUint16(data.brake_raw_adc_min),
-        ...byteify.serializeUint16(data.brake_raw_adc_max),
-        ...byteify.serializeUint16(data.accelerator_raw_adc_min),
-        ...byteify.serializeUint16(data.accelerator_raw_adc_max),
+        ...byteify.serializeUint16(data.accel1_raw_adc_min),
+        ...byteify.serializeUint16(data.accel1_raw_adc_max),
+        ...byteify.serializeUint16(data.accel2_raw_adc_min),
+        ...byteify.serializeUint16(data.accel2_raw_adc_max),
     ]);
 }
 function deserializePrimaryPedalsAdcRanges(bytes) {
     return {
-        brake_raw_adc_min: byteify.deserializeUint16(bytes.slice(0, 2)),
-        brake_raw_adc_max: byteify.deserializeUint16(bytes.slice(2, 4)),
-        accelerator_raw_adc_min: byteify.deserializeUint16(bytes.slice(4, 6)),
-        accelerator_raw_adc_max: byteify.deserializeUint16(bytes.slice(6, 8)),
+        accel1_raw_adc_min: byteify.deserializeUint16(bytes.slice(0, 2)),
+        accel1_raw_adc_max: byteify.deserializeUint16(bytes.slice(2, 4)),
+        accel2_raw_adc_min: byteify.deserializeUint16(bytes.slice(4, 6)),
+        accel2_raw_adc_max: byteify.deserializeUint16(bytes.slice(6, 8)),
     }
 }
 

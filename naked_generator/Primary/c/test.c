@@ -7,19 +7,19 @@
 
 int main() {
 
-/* Primary_SET_PEDALS_RANGE */
-    printf("Primary_SET_PEDALS_RANGE:\n");
-    uint8_t* buffer_primary_set_pedals_range = (uint8_t*)malloc(sizeof(Primary_SET_PEDALS_RANGE));
+/* Primary_SET_ACCELERATOR_RANGE */
+    printf("Primary_SET_ACCELERATOR_RANGE:\n");
+    uint8_t* buffer_primary_set_accelerator_range = (uint8_t*)malloc(sizeof(Primary_SET_ACCELERATOR_RANGE));
     
-    Primary_SET_PEDALS_RANGE primary_set_pedals_range_s = { -110, -2 };
-    serialize_Primary_SET_PEDALS_RANGE(buffer_primary_set_pedals_range, primary_set_pedals_range_s.sync_state, primary_set_pedals_range_s.pedal);
-    printf("\tSerialized\n\t%lld %lld\n", (long long int)primary_set_pedals_range_s.sync_state, (long long int)primary_set_pedals_range_s.pedal);
+    Primary_SET_ACCELERATOR_RANGE primary_set_accelerator_range_s = { -110 };
+    serialize_Primary_SET_ACCELERATOR_RANGE(buffer_primary_set_accelerator_range, primary_set_accelerator_range_s.sync_state);
+    printf("\tSerialized\n\t%lld\n", (long long int)primary_set_accelerator_range_s.sync_state);
     
-    Primary_SET_PEDALS_RANGE* primary_set_pedals_range_d = (Primary_SET_PEDALS_RANGE*)malloc(sizeof(Primary_SET_PEDALS_RANGE));
-    deserialize_Primary_SET_PEDALS_RANGE(buffer_primary_set_pedals_range, primary_set_pedals_range_d);
-    printf("\tDeserialized\n\t%lld %lld\n", (long long int)primary_set_pedals_range_d->sync_state, (long long int)primary_set_pedals_range_d->pedal);
+    Primary_SET_ACCELERATOR_RANGE* primary_set_accelerator_range_d = (Primary_SET_ACCELERATOR_RANGE*)malloc(sizeof(Primary_SET_ACCELERATOR_RANGE));
+    deserialize_Primary_SET_ACCELERATOR_RANGE(buffer_primary_set_accelerator_range, primary_set_accelerator_range_d);
+    printf("\tDeserialized\n\t%lld\n", (long long int)primary_set_accelerator_range_d->sync_state);
     
-    assert(memcmp(&primary_set_pedals_range_s, primary_set_pedals_range_d, sizeof(Primary_SET_PEDALS_RANGE)) == 0);
+    assert(memcmp(&primary_set_accelerator_range_s, primary_set_accelerator_range_d, sizeof(Primary_SET_ACCELERATOR_RANGE)) == 0);
     puts("SUCCESS!\n");
         
 
@@ -27,13 +27,13 @@ int main() {
     printf("Primary_PEDALS_ADC_RANGES:\n");
     uint8_t* buffer_primary_pedals_adc_ranges = (uint8_t*)malloc(sizeof(Primary_PEDALS_ADC_RANGES));
     
-    Primary_PEDALS_ADC_RANGES primary_pedals_adc_ranges_s = { 58729, 45549, 37992, 20550 };
-    serialize_Primary_PEDALS_ADC_RANGES(buffer_primary_pedals_adc_ranges, primary_pedals_adc_ranges_s.brake_raw_adc_min, primary_pedals_adc_ranges_s.brake_raw_adc_max, primary_pedals_adc_ranges_s.accelerator_raw_adc_min, primary_pedals_adc_ranges_s.accelerator_raw_adc_max);
-    printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)primary_pedals_adc_ranges_s.brake_raw_adc_min, (long long unsigned int)primary_pedals_adc_ranges_s.brake_raw_adc_max, (long long unsigned int)primary_pedals_adc_ranges_s.accelerator_raw_adc_min, (long long unsigned int)primary_pedals_adc_ranges_s.accelerator_raw_adc_max);
+    Primary_PEDALS_ADC_RANGES primary_pedals_adc_ranges_s = { 32339, 58729, 45549, 37992 };
+    serialize_Primary_PEDALS_ADC_RANGES(buffer_primary_pedals_adc_ranges, primary_pedals_adc_ranges_s.accel1_raw_adc_min, primary_pedals_adc_ranges_s.accel1_raw_adc_max, primary_pedals_adc_ranges_s.accel2_raw_adc_min, primary_pedals_adc_ranges_s.accel2_raw_adc_max);
+    printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)primary_pedals_adc_ranges_s.accel1_raw_adc_min, (long long unsigned int)primary_pedals_adc_ranges_s.accel1_raw_adc_max, (long long unsigned int)primary_pedals_adc_ranges_s.accel2_raw_adc_min, (long long unsigned int)primary_pedals_adc_ranges_s.accel2_raw_adc_max);
     
     Primary_PEDALS_ADC_RANGES* primary_pedals_adc_ranges_d = (Primary_PEDALS_ADC_RANGES*)malloc(sizeof(Primary_PEDALS_ADC_RANGES));
     deserialize_Primary_PEDALS_ADC_RANGES(buffer_primary_pedals_adc_ranges, primary_pedals_adc_ranges_d);
-    printf("\tDeserialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)primary_pedals_adc_ranges_d->brake_raw_adc_min, (long long unsigned int)primary_pedals_adc_ranges_d->brake_raw_adc_max, (long long unsigned int)primary_pedals_adc_ranges_d->accelerator_raw_adc_min, (long long unsigned int)primary_pedals_adc_ranges_d->accelerator_raw_adc_max);
+    printf("\tDeserialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)primary_pedals_adc_ranges_d->accel1_raw_adc_min, (long long unsigned int)primary_pedals_adc_ranges_d->accel1_raw_adc_max, (long long unsigned int)primary_pedals_adc_ranges_d->accel2_raw_adc_min, (long long unsigned int)primary_pedals_adc_ranges_d->accel2_raw_adc_max);
     
     assert(memcmp(&primary_pedals_adc_ranges_s, primary_pedals_adc_ranges_d, sizeof(Primary_PEDALS_ADC_RANGES)) == 0);
     puts("SUCCESS!\n");
@@ -43,7 +43,7 @@ int main() {
     printf("Primary_ACCELERATOR_PEDAL_VAL:\n");
     uint8_t* buffer_primary_accelerator_pedal_val = (uint8_t*)malloc(sizeof(Primary_ACCELERATOR_PEDAL_VAL));
     
-    Primary_ACCELERATOR_PEDAL_VAL primary_accelerator_pedal_val_s = { 241 };
+    Primary_ACCELERATOR_PEDAL_VAL primary_accelerator_pedal_val_s = { 80 };
     serialize_Primary_ACCELERATOR_PEDAL_VAL(buffer_primary_accelerator_pedal_val, primary_accelerator_pedal_val_s.level);
     printf("\tSerialized\n\t%llu\n", (long long unsigned int)primary_accelerator_pedal_val_s.level);
     
@@ -59,7 +59,7 @@ int main() {
     printf("Primary_BRAKE_PEDAL_VAL:\n");
     uint8_t* buffer_primary_brake_pedal_val = (uint8_t*)malloc(sizeof(Primary_BRAKE_PEDAL_VAL));
     
-    Primary_BRAKE_PEDAL_VAL primary_brake_pedal_val_s = { 142 };
+    Primary_BRAKE_PEDAL_VAL primary_brake_pedal_val_s = { 241 };
     serialize_Primary_BRAKE_PEDAL_VAL(buffer_primary_brake_pedal_val, primary_brake_pedal_val_s.level);
     printf("\tSerialized\n\t%llu\n", (long long unsigned int)primary_brake_pedal_val_s.level);
     

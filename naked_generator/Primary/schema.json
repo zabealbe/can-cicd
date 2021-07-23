@@ -32,14 +32,6 @@
                 "MIN_SET"
             ]
         },
-        "Pedal": {
-            "type": "enum",
-            "items": [
-                "ACCELERATOR",
-                "BRAKE",
-                "ALL"
-            ]
-        },
         "Tlm_Status": {
             "type": "enum",
             "items": [
@@ -126,15 +118,14 @@
         }
     },
     "structs": {
-        "SET_PEDALS_RANGE": {
-            "sync_state": "Sync_State",
-            "pedal": "Pedal"
+        "SET_ACCELERATOR_RANGE": {
+            "sync_state": "Sync_State"
         },
         "PEDALS_ADC_RANGES": {
-            "brake_raw_adc_min": "uint16",
-            "brake_raw_adc_max": "uint16",
-            "accelerator_raw_adc_min": "uint16",
-            "accelerator_raw_adc_max": "uint16"
+            "accel1_raw_adc_min": "uint16",
+            "accel1_raw_adc_max": "uint16",
+            "accel2_raw_adc_min": "uint16",
+            "accel2_raw_adc_max": "uint16"
         },
         "ACCELERATOR_PEDAL_VAL": {
             "level": "uint8"

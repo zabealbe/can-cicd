@@ -106,12 +106,6 @@ typedef enum __is_packed {
 } Primary_Sync_State;
 
 typedef enum __is_packed {
-    Primary_Pedal_ACCELERATOR = 0,
-    Primary_Pedal_BRAKE = 1,
-    Primary_Pedal_ALL = 2,
-} Primary_Pedal;
-
-typedef enum __is_packed {
     Primary_Tlm_Status_ON = 0,
     Primary_Tlm_Status_OFF = 1,
 } Primary_Tlm_Status;
@@ -175,26 +169,25 @@ typedef enum __is_packed {
     Primary_Status_CHG_CV = 3,
 } Primary_Status;
 
-/* Primary_SET_PEDALS_RANGE */
+/* Primary_SET_ACCELERATOR_RANGE */
 typedef struct __is_packed {
     Primary_Sync_State sync_state;
-    Primary_Pedal pedal;
-} Primary_SET_PEDALS_RANGE;
-static_assert(sizeof(Primary_SET_PEDALS_RANGE) == 2, "struct size mismatch");
+} Primary_SET_ACCELERATOR_RANGE;
+static_assert(sizeof(Primary_SET_ACCELERATOR_RANGE) == 1, "struct size mismatch");
     
-size_t serialize_Primary_SET_PEDALS_RANGE(uint8_t* buffer, Primary_Sync_State sync_state, Primary_Pedal pedal);
-size_t deserialize_Primary_SET_PEDALS_RANGE(uint8_t* buffer, Primary_SET_PEDALS_RANGE* primary_set_pedals_range);
+size_t serialize_Primary_SET_ACCELERATOR_RANGE(uint8_t* buffer, Primary_Sync_State sync_state);
+size_t deserialize_Primary_SET_ACCELERATOR_RANGE(uint8_t* buffer, Primary_SET_ACCELERATOR_RANGE* primary_set_accelerator_range);
 
 /* Primary_PEDALS_ADC_RANGES */
 typedef struct __is_packed {
-    uint16_t brake_raw_adc_min;
-    uint16_t brake_raw_adc_max;
-    uint16_t accelerator_raw_adc_min;
-    uint16_t accelerator_raw_adc_max;
+    uint16_t accel1_raw_adc_min;
+    uint16_t accel1_raw_adc_max;
+    uint16_t accel2_raw_adc_min;
+    uint16_t accel2_raw_adc_max;
 } Primary_PEDALS_ADC_RANGES;
 static_assert(sizeof(Primary_PEDALS_ADC_RANGES) == 8, "struct size mismatch");
     
-size_t serialize_Primary_PEDALS_ADC_RANGES(uint8_t* buffer, uint16_t brake_raw_adc_min, uint16_t brake_raw_adc_max, uint16_t accelerator_raw_adc_min, uint16_t accelerator_raw_adc_max);
+size_t serialize_Primary_PEDALS_ADC_RANGES(uint8_t* buffer, uint16_t accel1_raw_adc_min, uint16_t accel1_raw_adc_max, uint16_t accel2_raw_adc_min, uint16_t accel2_raw_adc_max);
 size_t deserialize_Primary_PEDALS_ADC_RANGES(uint8_t* buffer, Primary_PEDALS_ADC_RANGES* primary_pedals_adc_ranges);
 
 /* Primary_ACCELERATOR_PEDAL_VAL */

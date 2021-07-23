@@ -4,17 +4,17 @@
         "PEDALS": {
             "id": 0,
             "messages": {
-                "SET_PEDALS_RANGE": {
+                "SET_ACCELERATOR_RANGE": {
                     "id": 1024
                 },
                 "PEDALS_ADC_RANGES": {
                     "id": 1056
                 },
                 "ACCELERATOR_PEDAL_VAL": {
-                    "id": 0
+                    "id": 256
                 },
                 "BRAKE_PEDAL_VAL": {
-                    "id": 32
+                    "id": 288
                 },
                 "PCU_STATUS": {
                     "id": 512

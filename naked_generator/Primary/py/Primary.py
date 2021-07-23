@@ -25,11 +25,6 @@ class Sync_State(IntEnum):
     MAX_SET = 0
     MIN_SET = 1
     
-class Pedal(IntEnum):
-    ACCELERATOR = 0
-    BRAKE = 1
-    ALL = 2
-    
 class Tlm_Status(IntEnum):
     ON = 0
     OFF = 1
@@ -85,27 +80,27 @@ class Status(IntEnum):
     CHG_CV = 3
 
 
-# SetPedalsRange
-class SetPedalsRange:
-    struct = namedtuple("SetPedalsRange_struct", "sync_state pedal", rename=True)
-    schema = "<BB"
+# SetAcceleratorRange
+class SetAcceleratorRange:
+    struct = namedtuple("SetAcceleratorRange_struct", "sync_state", rename=True)
+    schema = "<B"
     
     @staticmethod
-    def serialize(sync_state, pedal) -> bytes:
-        return pack(SetPedalsRange.schema, sync_state, pedal)
+    def serialize(sync_state) -> bytes:
+        return pack(SetAcceleratorRange.schema, sync_state)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "SetPedalsRange.struct":
-        return SetPedalsRange.struct._make(unpack(SetPedalsRange.schema, buffer))
+    def deserialize(buffer: bytes) -> "SetAcceleratorRange.struct":
+        return SetAcceleratorRange.struct._make(unpack(SetAcceleratorRange.schema, buffer))
 
 # PedalsAdcRanges
 class PedalsAdcRanges:
-    struct = namedtuple("PedalsAdcRanges_struct", "brake_raw_adc_min brake_raw_adc_max accelerator_raw_adc_min accelerator_raw_adc_max", rename=True)
+    struct = namedtuple("PedalsAdcRanges_struct", "accel1_raw_adc_min accel1_raw_adc_max accel2_raw_adc_min accel2_raw_adc_max", rename=True)
     schema = "<hhhh"
     
     @staticmethod
-    def serialize(brake_raw_adc_min, brake_raw_adc_max, accelerator_raw_adc_min, accelerator_raw_adc_max) -> bytes:
-        return pack(PedalsAdcRanges.schema, brake_raw_adc_min, brake_raw_adc_max, accelerator_raw_adc_min, accelerator_raw_adc_max)
+    def serialize(accel1_raw_adc_min, accel1_raw_adc_max, accel2_raw_adc_min, accel2_raw_adc_max) -> bytes:
+        return pack(PedalsAdcRanges.schema, accel1_raw_adc_min, accel1_raw_adc_max, accel2_raw_adc_min, accel2_raw_adc_max)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "PedalsAdcRanges.struct":

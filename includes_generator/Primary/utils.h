@@ -9,15 +9,15 @@ void Primary_msgname_from_id(uint32_t msg_id, char buffer[static 21]) {
     */
     switch (msg_id) {
         case 1024:
-            strcpy(buffer, "SET_PEDALS_RANGE");
+            strcpy(buffer, "SET_ACCELERATOR_RANGE");
             break;
         case 1056:
             strcpy(buffer, "PEDALS_ADC_RANGES");
             break;
-        case 0:
+        case 256:
             strcpy(buffer, "ACCELERATOR_PEDAL_VAL");
             break;
-        case 32:
+        case 288:
             strcpy(buffer, "BRAKE_PEDAL_VAL");
             break;
         case 512:

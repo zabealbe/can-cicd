@@ -4,21 +4,21 @@
 
 #include "Primary.h"
 
-/* Primary_SET_PEDALS_RANGE */
-size_t serialize_Primary_SET_PEDALS_RANGE(uint8_t* buffer, Primary_Sync_State sync_state, Primary_Pedal pedal) {
-    Primary_SET_PEDALS_RANGE primary_set_pedals_range = { sync_state, pedal };
-	// assert(buf_len >= sizeof(Primary_SET_PEDALS_RANGE));
-	memcpy(buffer, &primary_set_pedals_range, sizeof(Primary_SET_PEDALS_RANGE));
-    return sizeof(Primary_SET_PEDALS_RANGE);
+/* Primary_SET_ACCELERATOR_RANGE */
+size_t serialize_Primary_SET_ACCELERATOR_RANGE(uint8_t* buffer, Primary_Sync_State sync_state) {
+    Primary_SET_ACCELERATOR_RANGE primary_set_accelerator_range = { sync_state };
+	// assert(buf_len >= sizeof(Primary_SET_ACCELERATOR_RANGE));
+	memcpy(buffer, &primary_set_accelerator_range, sizeof(Primary_SET_ACCELERATOR_RANGE));
+    return sizeof(Primary_SET_ACCELERATOR_RANGE);
 } 
-size_t deserialize_Primary_SET_PEDALS_RANGE(uint8_t* buffer, Primary_SET_PEDALS_RANGE* primary_set_pedals_range) {
-	// assert(buf_len >= sizeof(Primary_SET_PEDALS_RANGE));
-	memcpy(primary_set_pedals_range, buffer, sizeof(Primary_SET_PEDALS_RANGE));
-    return sizeof(Primary_SET_PEDALS_RANGE);
+size_t deserialize_Primary_SET_ACCELERATOR_RANGE(uint8_t* buffer, Primary_SET_ACCELERATOR_RANGE* primary_set_accelerator_range) {
+	// assert(buf_len >= sizeof(Primary_SET_ACCELERATOR_RANGE));
+	memcpy(primary_set_accelerator_range, buffer, sizeof(Primary_SET_ACCELERATOR_RANGE));
+    return sizeof(Primary_SET_ACCELERATOR_RANGE);
 }
 /* Primary_PEDALS_ADC_RANGES */
-size_t serialize_Primary_PEDALS_ADC_RANGES(uint8_t* buffer, uint16_t brake_raw_adc_min, uint16_t brake_raw_adc_max, uint16_t accelerator_raw_adc_min, uint16_t accelerator_raw_adc_max) {
-    Primary_PEDALS_ADC_RANGES primary_pedals_adc_ranges = { brake_raw_adc_min, brake_raw_adc_max, accelerator_raw_adc_min, accelerator_raw_adc_max };
+size_t serialize_Primary_PEDALS_ADC_RANGES(uint8_t* buffer, uint16_t accel1_raw_adc_min, uint16_t accel1_raw_adc_max, uint16_t accel2_raw_adc_min, uint16_t accel2_raw_adc_max) {
+    Primary_PEDALS_ADC_RANGES primary_pedals_adc_ranges = { accel1_raw_adc_min, accel1_raw_adc_max, accel2_raw_adc_min, accel2_raw_adc_max };
 	// assert(buf_len >= sizeof(Primary_PEDALS_ADC_RANGES));
 	memcpy(buffer, &primary_pedals_adc_ranges, sizeof(Primary_PEDALS_ADC_RANGES));
     return sizeof(Primary_PEDALS_ADC_RANGES);
