@@ -30,25 +30,22 @@
     },
     "messages": [
         {
-            "name": "SET_PEDALS_RANGE",
+            "name": "SET_ACCELERATOR_RANGE",
             "topic": "PEDALS",
             "priority": 3,
             "sending": [
-                "STEER"
+                "STEER",
+                "ACU"
             ],
             "receiving": [
-                "PCU"
+                "PCU",
+                "ACU"
             ],
-            "description": "Syncronization message from Steering Wheel to Pedals Control Unit for calibration purpose.\nMessage semantic: sets (max|min) value for (accelerator|brake|all) pedal the moment PCU receives the message with the current read value.",
+            "description": "Syncronization message from Steering Wheel or ACU to PCU for calibration purpose.\nMessage semantic: sets (max|min) value for accelerator pedal the moment PCU receives the message with the current read value.",
             "contents": {
                 "sync_state": [
                     "MAX_SET",
                     "MIN_SET"
-                ],
-                "pedal": [
-                    "ACCELERATOR",
-                    "BRAKE",
-                    "ALL"
                 ]
             }
         },
@@ -64,18 +61,18 @@
                 "PCU",
                 "ECU"
             ],
-            "description": "This message contains ADC raw values used by PCU to set 0->255 range when sending pedals value. This message can be requested and sent either by PCU or ECU. If PCU requests this message then ECU responds with a value from a previous run. If ECU requests this message then PCU sends the current ranges. NOTE: ADC values have 12 bit resolution.",
+            "description": "This message contains accelarator ADC raw values used by PCU to set 0->255 range when sending accelerator value. This value is either sent by ECU or by PCU",
             "contents": {
-                "brake_raw_adc_min": "uint16",
-                "brake_raw_adc_max": "uint16",
-                "accelerator_raw_adc_min": "uint16",
-                "accelerator_raw_adc_max": "uint16"
+                "accel1_raw_adc_min": "uint16",
+                "accel1_raw_adc_max": "uint16",
+                "accel2_raw_adc_min": "uint16",
+                "accel2_raw_adc_max": "uint16"
             }
         },
         {
             "name": "ACCELERATOR_PEDAL_VAL",
             "topic": "PEDALS",
-            "priority": 7,
+            "priority": 6,
             "sending": [
                 "PCU"
             ],
@@ -90,7 +87,7 @@
         {
             "name": "BRAKE_PEDAL_VAL",
             "topic": "PEDALS",
-            "priority": 7,
+            "priority": 6,
             "sending": [
                 "PCU"
             ],
