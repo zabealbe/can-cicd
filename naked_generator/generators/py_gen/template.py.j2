@@ -24,12 +24,12 @@ class {{ enum.name }}(IntEnum):
 {%- set class_name = struct.name %}
 # {{ class_name }}
 class {{ class_name }}:
-    {% set parameters = ", ".join(fill_padding(struct.fields.keys())) -%}
+    {% set parameters = ", ".join(fill_padding(struct.fields.keys())).replace("0x00, ", "") -%}
     struct = namedtuple("{{ class_name }}_struct", "{{ " ".join(struct.fields.keys()) }}", rename=True)
     schema = "{{ endianness_tag }}{{ format_string(struct.fields) }}"
     
     @staticmethod
-    def serialize({{ parameters.replace("0x00, ", "") }}) -> bytes:
+    def serialize({{ parameters }}) -> bytes:
         return pack({{ class_name }}.schema, {{ parameters }})
     
     @staticmethod

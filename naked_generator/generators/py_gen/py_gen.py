@@ -111,7 +111,7 @@ def __to_schema(items):
                 else:
                     format += "f"
         elif isinstance(item_type, s.Padding):
-            format += "c"
+            format += "X"
         else:
             # TODO: handle better
             raise NotImplementedError("Can't convert {item_type} to format for python's pack unpack functions")
