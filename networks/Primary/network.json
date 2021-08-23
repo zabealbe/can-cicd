@@ -147,15 +147,7 @@
                 "tlm_status": [
                     "OFF",
                     "ON"
-                ],
-                "race_type": [
-                    "ACCELERATION",
-                    "SKIDPAD",
-                    "AUTOCROSS",
-                    "ENDURANCE"
-                ],
-                "driver": "uint8",
-                "circuit": "uint8"
+                ]
             }
         },
         {
@@ -173,13 +165,13 @@
                     "ON",
                     "OFF"
                 ],
-                "race_type": [
+                "race": [
                     "ACCELERATION",
                     "SKIDPAD",
                     "AUTOCROSS",
                     "ENDURANCE"
                 ],
-                "driver": "uint8",
+                "pilot": "uint8",
                 "circuit": "uint8"
             }
         },
@@ -548,6 +540,289 @@
             ],
             "contents": {
                 "v_cutoff": "uint8"
+            }
+        },
+        {
+            "name": "INVERTER_RIGHT_SPEED",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "value": "uint16"
+            }
+        },
+        {
+            "name": "INVERTER_RIGHT_TEMPERATURE_IGBT",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "value": "uint16"
+            }
+        },
+        {
+            "name": "INVERTER_RIGHT_TEMPERATURE_MOTORS",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "value": "uint16"
+            }
+        },
+        {
+            "name": "INVERTER_RIGHT_TORQUE",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "value": "uint16"
+            }
+        },
+        {
+            "name": "INVERTER_LEFT_SPEED",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "value": "uint16"
+            }
+        },
+        {
+            "name": "INVERTER_LEFT_TEMPERATURE_IGBT",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "value": "uint16"
+            }
+        },
+        {
+            "name": "INVERTER_LEFT_TEMPERATURE_MOTORS",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "value": "uint16"
+            }
+        },
+        {
+            "name": "INVERTER_LEFT_TORQUE",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "value": "uint16"
+            }
+        },
+        {
+            "name": "BMS_LV_VALUE",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "temperature": "uint8",
+                "voltage": "uint8"
+            }
+        },
+        {
+            "name": "IMU_GYRO",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "x": "int16",
+                "y": "int16",
+                "z": "int16"
+            }
+        },
+        {
+            "name": "IMU_ACCEL",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "x": "int16",
+                "y": "int16",
+                "z": "int16"
+            }
+        },
+        {
+            "name": "FRONT_WHEELS_ENCODERS_SPEED_RADS",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "left": "int32",
+                "right": "int32"
+            }
+        },
+        {
+            "name": "FRONT_WHEELS_ENCODERS_ROTATION_AND_KM",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "rotations": "uint32",
+                "km": "uint32"
+            }
+        },
+        {
+            "name": "PEDALS_THROTTLE",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "value": "uint8"
+            }
+        },
+        {
+            "name": "PEDALS_BRAKE",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "is_breaking": "bool",
+                "pressure_front": "uint16",
+                "pressure_back": "uint16"
+            }
+        },
+        {
+            "name": "STEERING_WHEEL_ENCODER",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "value": "uint16"
+            }
+        },
+        {
+            "name": "STEERING_WHEEL_MANETTINI",
+            "topic": "TLM",
+            "priority": 6,
+            "sending": [
+                "STEER",
+                "TLM"
+            ],
+            "receiving": [
+                "TLM",
+                "STEER"
+            ],
+            "contents": {
+                "control": "uint8",
+                "cooling": "uint8",
+                "map": "uint8"
             }
         }
     ]
