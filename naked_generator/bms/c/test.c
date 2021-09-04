@@ -11,7 +11,7 @@ int main() {
     printf("bms_BOARD_STATUS:\n");
     uint8_t* buffer_bms_board_status = (uint8_t*)malloc(sizeof(bms_BOARD_STATUS));
     
-    bms_BOARD_STATUS bms_board_status_s = { 245, {254}, 34 };
+    bms_BOARD_STATUS bms_board_status_s = { 173, {254}, 34 };
     serialize_bms_BOARD_STATUS(buffer_bms_board_status, bms_board_status_s.board_index, bms_board_status_s.errors, bms_board_status_s.balancing_status);
     printf("\tSerialized\n\t%llu %hhx %lld\n", (long long unsigned int)bms_board_status_s.board_index, (long long unsigned int)bms_board_status_s.errors[0], (long long int)bms_board_status_s.balancing_status);
     

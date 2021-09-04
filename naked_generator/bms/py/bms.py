@@ -93,11 +93,11 @@ class MasterSync:
 # Voltages0
 class Voltages0:
     struct = namedtuple("Voltages0_struct", "board_index __unused_padding_1 voltage0 voltage1 voltage2", rename=True)
-    schema = "<bchhh"
+    schema = "<bXhhh"
     
     @staticmethod
     def serialize(board_index, voltage0, voltage1, voltage2) -> bytes:
-        return pack(Voltages0.schema, board_index, 0x00, voltage0, voltage1, voltage2)
+        return pack(Voltages0.schema, board_index, voltage0, voltage1, voltage2)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "Voltages0.struct":
@@ -106,11 +106,11 @@ class Voltages0:
 # Voltages1
 class Voltages1:
     struct = namedtuple("Voltages1_struct", "board_index __unused_padding_1 voltage3 voltage4 voltage5", rename=True)
-    schema = "<bchhh"
+    schema = "<bXhhh"
     
     @staticmethod
     def serialize(board_index, voltage3, voltage4, voltage5) -> bytes:
-        return pack(Voltages1.schema, board_index, 0x00, voltage3, voltage4, voltage5)
+        return pack(Voltages1.schema, board_index, voltage3, voltage4, voltage5)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "Voltages1.struct":
@@ -119,11 +119,11 @@ class Voltages1:
 # Voltages2
 class Voltages2:
     struct = namedtuple("Voltages2_struct", "board_index __unused_padding_1 voltage6 voltage7 voltage8", rename=True)
-    schema = "<bchhh"
+    schema = "<bXhhh"
     
     @staticmethod
     def serialize(board_index, voltage6, voltage7, voltage8) -> bytes:
-        return pack(Voltages2.schema, board_index, 0x00, voltage6, voltage7, voltage8)
+        return pack(Voltages2.schema, board_index, voltage6, voltage7, voltage8)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "Voltages2.struct":
@@ -132,11 +132,11 @@ class Voltages2:
 # Voltages3
 class Voltages3:
     struct = namedtuple("Voltages3_struct", "board_index __unused_padding_1 voltage9 voltage10 voltage11", rename=True)
-    schema = "<bchhh"
+    schema = "<bXhhh"
     
     @staticmethod
     def serialize(board_index, voltage9, voltage10, voltage11) -> bytes:
-        return pack(Voltages3.schema, board_index, 0x00, voltage9, voltage10, voltage11)
+        return pack(Voltages3.schema, board_index, voltage9, voltage10, voltage11)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "Voltages3.struct":
@@ -145,11 +145,11 @@ class Voltages3:
 # Voltages4
 class Voltages4:
     struct = namedtuple("Voltages4_struct", "board_index __unused_padding_1 voltage12 voltage13 voltage14", rename=True)
-    schema = "<bchhh"
+    schema = "<bXhhh"
     
     @staticmethod
     def serialize(board_index, voltage12, voltage13, voltage14) -> bytes:
-        return pack(Voltages4.schema, board_index, 0x00, voltage12, voltage13, voltage14)
+        return pack(Voltages4.schema, board_index, voltage12, voltage13, voltage14)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "Voltages4.struct":
@@ -158,11 +158,11 @@ class Voltages4:
 # Voltages5
 class Voltages5:
     struct = namedtuple("Voltages5_struct", "board_index __unused_padding_1 voltage15 voltage16 voltage17", rename=True)
-    schema = "<bchhh"
+    schema = "<bXhhh"
     
     @staticmethod
     def serialize(board_index, voltage15, voltage16, voltage17) -> bytes:
-        return pack(Voltages5.schema, board_index, 0x00, voltage15, voltage16, voltage17)
+        return pack(Voltages5.schema, board_index, voltage15, voltage16, voltage17)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "Voltages5.struct":

@@ -330,11 +330,11 @@ class LvVoltage:
 # LvTemperature
 class LvTemperature:
     struct = namedtuple("LvTemperature_struct", "dcdc_temperature __unused_padding_1 battery_temperature", rename=True)
-    schema = "<bch"
+    schema = "<bXh"
     
     @staticmethod
     def serialize(dcdc_temperature, battery_temperature) -> bytes:
-        return pack(LvTemperature.schema, dcdc_temperature, 0x00, battery_temperature)
+        return pack(LvTemperature.schema, dcdc_temperature, battery_temperature)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "LvTemperature.struct":
@@ -356,11 +356,11 @@ class CoolingStatus:
 # HvCellsVoltage
 class HvCellsVoltage:
     struct = namedtuple("HvCellsVoltage_struct", "cell_index __unused_padding_1 voltage_0 voltage_1 voltage_2", rename=True)
-    schema = "<bchhh"
+    schema = "<bXhhh"
     
     @staticmethod
     def serialize(cell_index, voltage_0, voltage_1, voltage_2) -> bytes:
-        return pack(HvCellsVoltage.schema, cell_index, 0x00, voltage_0, voltage_1, voltage_2)
+        return pack(HvCellsVoltage.schema, cell_index, voltage_0, voltage_1, voltage_2)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "HvCellsVoltage.struct":
