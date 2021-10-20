@@ -5,7 +5,6 @@ and the interactions with the bus itself
 ## Subprojects
 :open_file_folder: project root\
   ├ :open_file_folder: [id_generator](id_generator)\
-  ├ :open_file_folder: [flatbuf_generator](flatbuf_generator)\
   ├ :open_file_folder: [naked_generator](naked_generator)\
   ├ :open_file_folder: [includes_generator](includes_generator)\
   └ :open_file_folder: [sheet_generator](sheet_generator)
@@ -140,7 +139,7 @@ ___
 }
 ```
 
-Required by: [flatbuf_generator](flatbuf_generator)
+Required by: [naked_generator](naked_generator)
 
 
 This field describes the message's payload, can be left empty. The overall size can be **at most 8 bytes**.\
@@ -160,7 +159,7 @@ In addition you may also use an `enum` which has a size of 1 byte:
 }
 ```
 
-The complete syntax describes the flatbuffers enum type name and the actual field name.
+The complete syntax describes the enum type name and the actual field name.
 Enum name must start with an Uppercase letter and may contain lowercase letters, 
 numbers and "_".
 Enum type name and field name must be separated by ": ".\
@@ -170,7 +169,7 @@ by capitalizing the field name's first letter.
 `field1_name: [...]` will result in an enum called `Field1_name`.
 
 If the same enum (same name, same items) is used multiple times within the same message or across 
-different messages it will be represented by flatbuffers with a single enum type, however items differences will 
+different messages it will be represented with a single enum type, however items differences will 
 result in an error.
 </details>
 
