@@ -71,8 +71,8 @@ extern "C" {
     */
     #define setBit(bitset, index, value) \
     do { \
-        bitset[index/8] &= ~( 1 << index % 8); \
-        bitset[index/8] |=  (value << index % 8); \
+        (bitset)[(index)/8] &= ~( 1 << (index) % 8); \
+        (bitset)[(index)/8] |=  ((value) << (index) % 8); \
     } while(0);
     #define flipBit(bitset, index) ((bitset)[(index)/8] ^= (1 << (index) % 8) )
     #define getBit(bitset, index)  ((bitset)[(index)/8] &  (1 << (index) % 8) )
