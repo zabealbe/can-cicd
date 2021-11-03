@@ -48,23 +48,6 @@ jobs:
         pip install -r requirements.txt
         python main.py
         mkdir -p /tmp/workspace/sheet_generator/ && cp -R out/* /tmp/workspace/sheet_generator/
-    - name: Include external tools
-      run: |
-        # flatcc
-        wget -O /tmp/flatcv0.6.0.tar.gz https://github.com/dvidelabs/flatcc/archive/v0.6.0.tar.gz
-        tar -xvf /tmp/flatcv0.6.0.tar.gz flatcc-0.6.0/include flatcc-0.6.0/src/runtime
-
-        mkdir -p /tmp/workspace/external
-        cp -r flatcc-0.6.0/include/flatcc /tmp/workspace/external/
-        cp -r flatcc-0.6.0/src/runtime /tmp/workspace/external/flatcc/
-
-        ## remove useless stdlib include with flatcc
-        rm -r /tmp/workspace/external/flatcc/portable/include
-        
-        cp flatbuf_generator/fix_flatcc.py /tmp/workspace/external/
-        cd /tmp/workspace/external/
-        python fix_flatcc.py ./flatcc
-        rm fix_flatcc.py
     - uses: actions/checkout@v2
       with:
         ref: build
