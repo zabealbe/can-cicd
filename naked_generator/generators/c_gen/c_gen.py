@@ -175,7 +175,11 @@ def __random_values(struct):
         elif isinstance(field_type, s.Padding):
             values.append("0")
         else:
-            values.append(str(rd.randrange(*field_type.range, field_type.precision)))
+            f = 1 / field_type.precision
+            values.append(str(rd.randrange(
+                    field_type.range[0]*f, 
+                    field_type.range[1]*f, 
+                    field_type.precision*f)/f))
     return values
 
 def __c_types(struct):
