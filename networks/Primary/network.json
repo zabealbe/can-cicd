@@ -549,6 +549,52 @@
             "contents": {
                 "v_cutoff": "uint8"
             }
+        },
+        {
+            "name": "GPS_COORDS",
+            "topic": "TLM",
+            "priority": 4,
+            "description": "Coordinates received from GPS",
+            "sending": [
+                "TLM"
+            ],
+            "receiving": [
+                "STEER"
+            ],
+            "contents": {
+                "latitude": "float32",
+                "longitude": "float32"
+            }
+        },
+        {
+            "name": "GPS_TIME",
+            "topic": "TLM",
+            "priority": 4,
+            "description": "Time received from GPS",
+            "sending": [
+                "TLM"
+            ],
+            "receiving": [
+                "STEER"
+            ],
+            "contents": {
+                "time": "uint32"   
+            }
+        },
+        {
+            "name": "GPS_SPEED",
+            "topic": "TLM",
+            "priority": 3,
+            "description": "Speed received from GPS",
+            "sending": [
+                "TLM"
+            ],
+            "receiving": [
+                "STEER"
+            ],
+            "contents": {
+                "speed": "float32"    
+            }
         }
     ]
 }
