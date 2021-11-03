@@ -262,6 +262,34 @@ static_assert(sizeof(Primary_SET_TLM_STATUS) == 4, "struct size mismatch");
 size_t serialize_Primary_SET_TLM_STATUS(uint8_t* buffer, Primary_Tlm_Status tlm_status, Primary_Race_Type race_type, uint8_t driver, uint8_t circuit);
 size_t deserialize_Primary_SET_TLM_STATUS(uint8_t* buffer, Primary_SET_TLM_STATUS* primary_set_tlm_status);
 
+/* Primary_GPS_COORDS */
+typedef struct __is_packed {
+    double latitude;
+    double longitude;
+} Primary_GPS_COORDS;
+static_assert(sizeof(Primary_GPS_COORDS) == 16, "struct size mismatch");
+    
+size_t serialize_Primary_GPS_COORDS(uint8_t* buffer, double latitude, double longitude);
+size_t deserialize_Primary_GPS_COORDS(uint8_t* buffer, Primary_GPS_COORDS* primary_gps_coords);
+
+/* Primary_GPS_TIME */
+typedef struct __is_packed {
+    uint32_t time;
+} Primary_GPS_TIME;
+static_assert(sizeof(Primary_GPS_TIME) == 4, "struct size mismatch");
+    
+size_t serialize_Primary_GPS_TIME(uint8_t* buffer, uint32_t time);
+size_t deserialize_Primary_GPS_TIME(uint8_t* buffer, Primary_GPS_TIME* primary_gps_time);
+
+/* Primary_GPS_SPEED */
+typedef struct __is_packed {
+    double speed;
+} Primary_GPS_SPEED;
+static_assert(sizeof(Primary_GPS_SPEED) == 8, "struct size mismatch");
+    
+size_t serialize_Primary_GPS_SPEED(uint8_t* buffer, double speed);
+size_t deserialize_Primary_GPS_SPEED(uint8_t* buffer, Primary_GPS_SPEED* primary_gps_speed);
+
 /* Primary_HV_VOLTAGE */
 typedef struct __is_packed {
     uint16_t pack_voltage;

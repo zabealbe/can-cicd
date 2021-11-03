@@ -197,6 +197,45 @@ class SetTlmStatus:
     def deserialize(buffer: bytes) -> "SetTlmStatus.struct":
         return SetTlmStatus.struct._make(unpack(SetTlmStatus.schema, buffer))
 
+# GpsCoords
+class GpsCoords:
+    struct = namedtuple("GpsCoords_struct", "latitude longitude", rename=True)
+    schema = "<dd"
+    
+    @staticmethod
+    def serialize(latitude, longitude) -> bytes:
+        return pack(GpsCoords.schema, latitude, longitude)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "GpsCoords.struct":
+        return GpsCoords.struct._make(unpack(GpsCoords.schema, buffer))
+
+# GpsTime
+class GpsTime:
+    struct = namedtuple("GpsTime_struct", "time", rename=True)
+    schema = "<i"
+    
+    @staticmethod
+    def serialize(time) -> bytes:
+        return pack(GpsTime.schema, time)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "GpsTime.struct":
+        return GpsTime.struct._make(unpack(GpsTime.schema, buffer))
+
+# GpsSpeed
+class GpsSpeed:
+    struct = namedtuple("GpsSpeed_struct", "speed", rename=True)
+    schema = "<d"
+    
+    @staticmethod
+    def serialize(speed) -> bytes:
+        return pack(GpsSpeed.schema, speed)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "GpsSpeed.struct":
+        return GpsSpeed.struct._make(unpack(GpsSpeed.schema, buffer))
+
 # HvVoltage
 class HvVoltage:
     struct = namedtuple("HvVoltage_struct", "pack_voltage bus_voltage max_cell_voltage min_cell_voltage", rename=True)

@@ -112,6 +112,42 @@ size_t deserialize_Primary_SET_TLM_STATUS(uint8_t* buffer, Primary_SET_TLM_STATU
 	memcpy(primary_set_tlm_status, buffer, sizeof(Primary_SET_TLM_STATUS));
     return sizeof(Primary_SET_TLM_STATUS);
 }
+/* Primary_GPS_COORDS */
+size_t serialize_Primary_GPS_COORDS(uint8_t* buffer, double latitude, double longitude) {
+    Primary_GPS_COORDS primary_gps_coords = { latitude, longitude };
+	// assert(buf_len >= sizeof(Primary_GPS_COORDS));
+	memcpy(buffer, &primary_gps_coords, sizeof(Primary_GPS_COORDS));
+    return sizeof(Primary_GPS_COORDS);
+} 
+size_t deserialize_Primary_GPS_COORDS(uint8_t* buffer, Primary_GPS_COORDS* primary_gps_coords) {
+	// assert(buf_len >= sizeof(Primary_GPS_COORDS));
+	memcpy(primary_gps_coords, buffer, sizeof(Primary_GPS_COORDS));
+    return sizeof(Primary_GPS_COORDS);
+}
+/* Primary_GPS_TIME */
+size_t serialize_Primary_GPS_TIME(uint8_t* buffer, uint32_t time) {
+    Primary_GPS_TIME primary_gps_time = { time };
+	// assert(buf_len >= sizeof(Primary_GPS_TIME));
+	memcpy(buffer, &primary_gps_time, sizeof(Primary_GPS_TIME));
+    return sizeof(Primary_GPS_TIME);
+} 
+size_t deserialize_Primary_GPS_TIME(uint8_t* buffer, Primary_GPS_TIME* primary_gps_time) {
+	// assert(buf_len >= sizeof(Primary_GPS_TIME));
+	memcpy(primary_gps_time, buffer, sizeof(Primary_GPS_TIME));
+    return sizeof(Primary_GPS_TIME);
+}
+/* Primary_GPS_SPEED */
+size_t serialize_Primary_GPS_SPEED(uint8_t* buffer, double speed) {
+    Primary_GPS_SPEED primary_gps_speed = { speed };
+	// assert(buf_len >= sizeof(Primary_GPS_SPEED));
+	memcpy(buffer, &primary_gps_speed, sizeof(Primary_GPS_SPEED));
+    return sizeof(Primary_GPS_SPEED);
+} 
+size_t deserialize_Primary_GPS_SPEED(uint8_t* buffer, Primary_GPS_SPEED* primary_gps_speed) {
+	// assert(buf_len >= sizeof(Primary_GPS_SPEED));
+	memcpy(primary_gps_speed, buffer, sizeof(Primary_GPS_SPEED));
+    return sizeof(Primary_GPS_SPEED);
+}
 /* Primary_HV_VOLTAGE */
 size_t serialize_Primary_HV_VOLTAGE(uint8_t* buffer, uint16_t pack_voltage, uint16_t bus_voltage, uint16_t max_cell_voltage, uint16_t min_cell_voltage) {
     Primary_HV_VOLTAGE primary_hv_voltage = { pack_voltage, bus_voltage, max_cell_voltage, min_cell_voltage };

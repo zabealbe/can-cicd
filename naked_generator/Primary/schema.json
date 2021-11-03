@@ -157,6 +157,16 @@
             "driver": "uint8",
             "circuit": "uint8"
         },
+        "GPS_COORDS": {
+            "latitude": "float32",
+            "longitude": "float32"
+        },
+        "GPS_TIME": {
+            "time": "uint32"
+        },
+        "GPS_SPEED": {
+            "speed": "float32"
+        },
         "HV_VOLTAGE": {
             "pack_voltage": "uint16",
             "bus_voltage": "uint16",

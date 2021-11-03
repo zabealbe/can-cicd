@@ -43,6 +43,18 @@
 #define TOPIC_TLM_MASK 0b00000011111
 #define TOPIC_TLM_FILTER 0b00000000011
 #define ID_SET_TLM_STATUS 0b00100000011
+/*
+* Coordinates received from GPS
+*/
+#define ID_GPS_COORDS 0b01100000011
+/*
+* Time received from GPS
+*/
+#define ID_GPS_TIME 0b01100100011
+/*
+* Speed received from GPS
+*/
+#define ID_GPS_SPEED 0b10000000011
 
 /* TOPIC ECUnSTEERnCART */
 #define TOPIC_ECUnSTEERnCART_MASK 0b00000011111

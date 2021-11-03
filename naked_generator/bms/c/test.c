@@ -11,7 +11,7 @@ int main() {
     printf("bms_BOARD_STATUS:\n");
     uint8_t* buffer_bms_board_status = (uint8_t*)malloc(sizeof(bms_BOARD_STATUS));
     
-    bms_BOARD_STATUS bms_board_status_s = { 173, {254}, 34 };
+    bms_BOARD_STATUS bms_board_status_s = { 56.0, {137}, 84 };
     serialize_bms_BOARD_STATUS(buffer_bms_board_status, bms_board_status_s.board_index, bms_board_status_s.errors, bms_board_status_s.balancing_status);
     printf("\tSerialized\n\t%llu %hhx %lld\n", (long long unsigned int)bms_board_status_s.board_index, (long long unsigned int)bms_board_status_s.errors[0], (long long int)bms_board_status_s.balancing_status);
     
@@ -27,7 +27,7 @@ int main() {
     printf("bms_TEMP_STATS:\n");
     uint8_t* buffer_bms_temp_stats = (uint8_t*)malloc(sizeof(bms_TEMP_STATS));
     
-    bms_TEMP_STATS bms_temp_stats_s = { 24, 252, 110, 21 };
+    bms_TEMP_STATS bms_temp_stats_s = { 59.0, 245.0, 34.0, 40.0 };
     serialize_bms_TEMP_STATS(buffer_bms_temp_stats, bms_temp_stats_s.board_index, bms_temp_stats_s.average, bms_temp_stats_s.max, bms_temp_stats_s.min);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bms_temp_stats_s.board_index, (long long unsigned int)bms_temp_stats_s.average, (long long unsigned int)bms_temp_stats_s.max, (long long unsigned int)bms_temp_stats_s.min);
     
@@ -43,7 +43,7 @@ int main() {
     printf("bms_BALANCING:\n");
     uint8_t* buffer_bms_balancing = (uint8_t*)malloc(sizeof(bms_BALANCING));
     
-    bms_BALANCING bms_balancing_s = { 148, {252, 234, 232} };
+    bms_BALANCING bms_balancing_s = { 89.0, {35, 214, 42} };
     serialize_bms_BALANCING(buffer_bms_balancing, bms_balancing_s.board_index, bms_balancing_s.cells);
     printf("\tSerialized\n\t%llu %hhx.%hhx.%hhx\n", (long long unsigned int)bms_balancing_s.board_index, (long long unsigned int)bms_balancing_s.cells[0], (long long unsigned int)bms_balancing_s.cells[1], (long long unsigned int)bms_balancing_s.cells[2]);
     
@@ -59,7 +59,7 @@ int main() {
     printf("bms_MASTER_SYNC:\n");
     uint8_t* buffer_bms_master_sync = (uint8_t*)malloc(sizeof(bms_MASTER_SYNC));
     
-    bms_MASTER_SYNC bms_master_sync_s = { 2537276089 };
+    bms_MASTER_SYNC bms_master_sync_s = { 3063416796.0 };
     serialize_bms_MASTER_SYNC(buffer_bms_master_sync, bms_master_sync_s.time);
     printf("\tSerialized\n\t%llu\n", (long long unsigned int)bms_master_sync_s.time);
     
@@ -75,7 +75,7 @@ int main() {
     printf("bms_VOLTAGES_0:\n");
     uint8_t* buffer_bms_voltages_0 = (uint8_t*)malloc(sizeof(bms_VOLTAGES_0));
     
-    bms_VOLTAGES_0 bms_voltages_0_s = { 213, 0, 17927, 2296, 21730 };
+    bms_VOLTAGES_0 bms_voltages_0_s = { 94.0, 0, 61123.0, 16664.0, 13437.0 };
     serialize_bms_VOLTAGES_0(buffer_bms_voltages_0, bms_voltages_0_s.board_index, bms_voltages_0_s.voltage0, bms_voltages_0_s.voltage1, bms_voltages_0_s.voltage2);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bms_voltages_0_s.board_index, (long long unsigned int)bms_voltages_0_s.voltage0, (long long unsigned int)bms_voltages_0_s.voltage1);
     
@@ -91,7 +91,7 @@ int main() {
     printf("bms_VOLTAGES_1:\n");
     uint8_t* buffer_bms_voltages_1 = (uint8_t*)malloc(sizeof(bms_VOLTAGES_1));
     
-    bms_VOLTAGES_1 bms_voltages_1_s = { 29, 0, 43906, 49986, 51888 };
+    bms_VOLTAGES_1 bms_voltages_1_s = { 55.0, 0, 45750.0, 27081.0, 29170.0 };
     serialize_bms_VOLTAGES_1(buffer_bms_voltages_1, bms_voltages_1_s.board_index, bms_voltages_1_s.voltage3, bms_voltages_1_s.voltage4, bms_voltages_1_s.voltage5);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bms_voltages_1_s.board_index, (long long unsigned int)bms_voltages_1_s.voltage3, (long long unsigned int)bms_voltages_1_s.voltage4);
     
@@ -107,7 +107,7 @@ int main() {
     printf("bms_VOLTAGES_2:\n");
     uint8_t* buffer_bms_voltages_2 = (uint8_t*)malloc(sizeof(bms_VOLTAGES_2));
     
-    bms_VOLTAGES_2 bms_voltages_2_s = { 180, 0, 55257, 908, 35842 };
+    bms_VOLTAGES_2 bms_voltages_2_s = { 105.0, 0, 17711.0, 14903.0, 7568.0 };
     serialize_bms_VOLTAGES_2(buffer_bms_voltages_2, bms_voltages_2_s.board_index, bms_voltages_2_s.voltage6, bms_voltages_2_s.voltage7, bms_voltages_2_s.voltage8);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bms_voltages_2_s.board_index, (long long unsigned int)bms_voltages_2_s.voltage6, (long long unsigned int)bms_voltages_2_s.voltage7);
     
@@ -123,7 +123,7 @@ int main() {
     printf("bms_VOLTAGES_3:\n");
     uint8_t* buffer_bms_voltages_3 = (uint8_t*)malloc(sizeof(bms_VOLTAGES_3));
     
-    bms_VOLTAGES_3 bms_voltages_3_s = { 97, 0, 60329, 13158, 11397 };
+    bms_VOLTAGES_3 bms_voltages_3_s = { 183.0, 0, 567.0, 57031.0, 51896.0 };
     serialize_bms_VOLTAGES_3(buffer_bms_voltages_3, bms_voltages_3_s.board_index, bms_voltages_3_s.voltage9, bms_voltages_3_s.voltage10, bms_voltages_3_s.voltage11);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bms_voltages_3_s.board_index, (long long unsigned int)bms_voltages_3_s.voltage9, (long long unsigned int)bms_voltages_3_s.voltage10);
     
@@ -139,7 +139,7 @@ int main() {
     printf("bms_VOLTAGES_4:\n");
     uint8_t* buffer_bms_voltages_4 = (uint8_t*)malloc(sizeof(bms_VOLTAGES_4));
     
-    bms_VOLTAGES_4 bms_voltages_4_s = { 212, 0, 52791, 27110, 46067 };
+    bms_VOLTAGES_4 bms_voltages_4_s = { 248.0, 0, 53376.0, 16185.0, 5500.0 };
     serialize_bms_VOLTAGES_4(buffer_bms_voltages_4, bms_voltages_4_s.board_index, bms_voltages_4_s.voltage12, bms_voltages_4_s.voltage13, bms_voltages_4_s.voltage14);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bms_voltages_4_s.board_index, (long long unsigned int)bms_voltages_4_s.voltage12, (long long unsigned int)bms_voltages_4_s.voltage13);
     
@@ -155,7 +155,7 @@ int main() {
     printf("bms_VOLTAGES_5:\n");
     uint8_t* buffer_bms_voltages_5 = (uint8_t*)malloc(sizeof(bms_VOLTAGES_5));
     
-    bms_VOLTAGES_5 bms_voltages_5_s = { 126, 0, 19164, 27432, 55646 };
+    bms_VOLTAGES_5 bms_voltages_5_s = { 160.0, 0, 39193.0, 4325.0, 49251.0 };
     serialize_bms_VOLTAGES_5(buffer_bms_voltages_5, bms_voltages_5_s.board_index, bms_voltages_5_s.voltage15, bms_voltages_5_s.voltage16, bms_voltages_5_s.voltage17);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)bms_voltages_5_s.board_index, (long long unsigned int)bms_voltages_5_s.voltage15, (long long unsigned int)bms_voltages_5_s.voltage16);
     

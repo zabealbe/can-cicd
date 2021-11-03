@@ -123,6 +123,41 @@ function deserializePrimarySetTlmStatus(bytes) {
     }
 }
 
+function serializePrimaryGpsCoords(data) {
+    return Uint8Array.from([
+        ...byteify.serializeFloat64(data.latitude),
+        ...byteify.serializeFloat64(data.longitude),
+    ]);
+}
+function deserializePrimaryGpsCoords(bytes) {
+    return {
+        latitude: byteify.deserializeFloat64(bytes.slice(0, 8)),
+        longitude: byteify.deserializeFloat64(bytes.slice(8, 16)),
+    }
+}
+
+function serializePrimaryGpsTime(data) {
+    return Uint8Array.from([
+        ...byteify.serializeUint32(data.time),
+    ]);
+}
+function deserializePrimaryGpsTime(bytes) {
+    return {
+        time: byteify.deserializeUint32(bytes.slice(0, 4)),
+    }
+}
+
+function serializePrimaryGpsSpeed(data) {
+    return Uint8Array.from([
+        ...byteify.serializeFloat64(data.speed),
+    ]);
+}
+function deserializePrimaryGpsSpeed(bytes) {
+    return {
+        speed: byteify.deserializeFloat64(bytes.slice(0, 8)),
+    }
+}
+
 function serializePrimaryHvVoltage(data) {
     return Uint8Array.from([
         ...byteify.serializeUint16(data.pack_voltage),
