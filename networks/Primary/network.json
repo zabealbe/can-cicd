@@ -595,6 +595,22 @@
             "contents": {
                 "speed": "float32"    
             }
+        },
+        {
+            "name": "LAP_COUNT",
+            "topic": "LAPCOUNTER",
+            "priority": 3,
+            "description": "Lap counter and associated timestamp",
+            "sending": [
+                "TLM"
+            ],
+            "receiving": [
+                "STEER"
+            ],
+            "contents": {
+                "lap_count": "uint8",
+                "timestamp": "uint32"
+            }
         }
     ]
 }
