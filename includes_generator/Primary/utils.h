@@ -95,9 +95,6 @@ void Primary_msgname_from_id(uint32_t msg_id, char buffer[static 21]) {
         case 771:
             strcpy(buffer, "GPS_COORDS");
             break;
-        case 803:
-            strcpy(buffer, "GPS_TIME");
-            break;
         case 1027:
             strcpy(buffer, "GPS_SPEED");
             break;

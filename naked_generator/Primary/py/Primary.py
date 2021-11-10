@@ -210,23 +210,10 @@ class GpsCoords:
     def deserialize(buffer: bytes) -> "GpsCoords.struct":
         return GpsCoords.struct._make(unpack(GpsCoords.schema, buffer))
 
-# GpsTime
-class GpsTime:
-    struct = namedtuple("GpsTime_struct", "time", rename=True)
-    schema = "<i"
-    
-    @staticmethod
-    def serialize(time) -> bytes:
-        return pack(GpsTime.schema, time)
-    
-    @staticmethod
-    def deserialize(buffer: bytes) -> "GpsTime.struct":
-        return GpsTime.struct._make(unpack(GpsTime.schema, buffer))
-
 # GpsSpeed
 class GpsSpeed:
     struct = namedtuple("GpsSpeed_struct", "speed", rename=True)
-    schema = "<d"
+    schema = "<h"
     
     @staticmethod
     def serialize(speed) -> bytes:

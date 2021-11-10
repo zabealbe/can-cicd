@@ -161,11 +161,8 @@
             "latitude": "float32",
             "longitude": "float32"
         },
-        "GPS_TIME": {
-            "time": "uint32"
-        },
         "GPS_SPEED": {
-            "speed": "float32"
+            "speed": "uint16"
         },
         "HV_VOLTAGE": {
             "pack_voltage": "uint16",

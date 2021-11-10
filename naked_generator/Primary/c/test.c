@@ -167,33 +167,17 @@ int main() {
     puts("SUCCESS!\n");
         
 
-/* Primary_GPS_TIME */
-    printf("Primary_GPS_TIME:\n");
-    uint8_t* buffer_primary_gps_time = (uint8_t*)malloc(sizeof(Primary_GPS_TIME));
-    
-    Primary_GPS_TIME primary_gps_time_s = { 1552319183.0 };
-    serialize_Primary_GPS_TIME(buffer_primary_gps_time, primary_gps_time_s.time);
-    printf("\tSerialized\n\t%llu\n", (long long unsigned int)primary_gps_time_s.time);
-    
-    Primary_GPS_TIME* primary_gps_time_d = (Primary_GPS_TIME*)malloc(sizeof(Primary_GPS_TIME));
-    deserialize_Primary_GPS_TIME(buffer_primary_gps_time, primary_gps_time_d);
-    printf("\tDeserialized\n\t%llu\n", (long long unsigned int)primary_gps_time_d->time);
-    
-    assert(memcmp(&primary_gps_time_s, primary_gps_time_d, sizeof(Primary_GPS_TIME)) == 0);
-    puts("SUCCESS!\n");
-        
-
 /* Primary_GPS_SPEED */
     printf("Primary_GPS_SPEED:\n");
     uint8_t* buffer_primary_gps_speed = (uint8_t*)malloc(sizeof(Primary_GPS_SPEED));
     
-    Primary_GPS_SPEED primary_gps_speed_s = { -2232267934.998 };
+    Primary_GPS_SPEED primary_gps_speed_s = { 23686.0 };
     serialize_Primary_GPS_SPEED(buffer_primary_gps_speed, primary_gps_speed_s.speed);
-    printf("\tSerialized\n\t%lld\n", (long long int)primary_gps_speed_s.speed);
+    printf("\tSerialized\n\t%llu\n", (long long unsigned int)primary_gps_speed_s.speed);
     
     Primary_GPS_SPEED* primary_gps_speed_d = (Primary_GPS_SPEED*)malloc(sizeof(Primary_GPS_SPEED));
     deserialize_Primary_GPS_SPEED(buffer_primary_gps_speed, primary_gps_speed_d);
-    printf("\tDeserialized\n\t%lld\n", (long long int)primary_gps_speed_d->speed);
+    printf("\tDeserialized\n\t%llu\n", (long long unsigned int)primary_gps_speed_d->speed);
     
     assert(memcmp(&primary_gps_speed_s, primary_gps_speed_d, sizeof(Primary_GPS_SPEED)) == 0);
     puts("SUCCESS!\n");
@@ -203,7 +187,7 @@ int main() {
     printf("Primary_HV_VOLTAGE:\n");
     uint8_t* buffer_primary_hv_voltage = (uint8_t*)malloc(sizeof(Primary_HV_VOLTAGE));
     
-    Primary_HV_VOLTAGE primary_hv_voltage_s = { 37730.0, 4654.0, 32339.0, 58729.0 };
+    Primary_HV_VOLTAGE primary_hv_voltage_s = { 17014.0, 15365.0, 37730.0, 4654.0 };
     serialize_Primary_HV_VOLTAGE(buffer_primary_hv_voltage, primary_hv_voltage_s.pack_voltage, primary_hv_voltage_s.bus_voltage, primary_hv_voltage_s.max_cell_voltage, primary_hv_voltage_s.min_cell_voltage);
     printf("\tSerialized\n\t%llu %llu %llu %llu\n", (long long unsigned int)primary_hv_voltage_s.pack_voltage, (long long unsigned int)primary_hv_voltage_s.bus_voltage, (long long unsigned int)primary_hv_voltage_s.max_cell_voltage, (long long unsigned int)primary_hv_voltage_s.min_cell_voltage);
     
@@ -219,7 +203,7 @@ int main() {
     printf("Primary_HV_CURRENT:\n");
     uint8_t* buffer_primary_hv_current = (uint8_t*)malloc(sizeof(Primary_HV_CURRENT));
     
-    Primary_HV_CURRENT primary_hv_current_s = { 45549.0, 40.0 };
+    Primary_HV_CURRENT primary_hv_current_s = { 32339.0, 202.0 };
     serialize_Primary_HV_CURRENT(buffer_primary_hv_current, primary_hv_current_s.current, primary_hv_current_s.power);
     printf("\tSerialized\n\t%llu %lld\n", (long long unsigned int)primary_hv_current_s.current, (long long int)primary_hv_current_s.power);
     
@@ -235,7 +219,7 @@ int main() {
     printf("Primary_HV_TEMP:\n");
     uint8_t* buffer_primary_hv_temp = (uint8_t*)malloc(sizeof(Primary_HV_TEMP));
     
-    Primary_HV_TEMP primary_hv_temp_s = { 20550.0, 61758.0, 36528.0 };
+    Primary_HV_TEMP primary_hv_temp_s = { 45549.0, 37992.0, 20550.0 };
     serialize_Primary_HV_TEMP(buffer_primary_hv_temp, primary_hv_temp_s.average_temp, primary_hv_temp_s.max_temp, primary_hv_temp_s.min_temp);
     printf("\tSerialized\n\t%llu %llu %llu\n", (long long unsigned int)primary_hv_temp_s.average_temp, (long long unsigned int)primary_hv_temp_s.max_temp, (long long unsigned int)primary_hv_temp_s.min_temp);
     

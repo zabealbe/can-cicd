@@ -48,10 +48,6 @@
 */
 #define ID_GPS_COORDS 0b01100000011
 /*
-* Time received from GPS
-*/
-#define ID_GPS_TIME 0b01100100011
-/*
 * Speed received from GPS
 */
 #define ID_GPS_SPEED 0b10000000011

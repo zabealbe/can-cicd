@@ -49,9 +49,6 @@
                 "GPS_COORDS": {
                     "id": 771
                 },
-                "GPS_TIME": {
-                    "id": 803
-                },
                 "GPS_SPEED": {
                     "id": 1027
                 }

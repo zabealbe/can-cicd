@@ -39,8 +39,7 @@ CHG_STATUS,8,Primary,HANDCART,7,BMS_HV,HANDCART,"status: CHG_OFF, CHG_TC, CHG_CC
 SET_CHG_STATUS,40,Primary,HANDCART,7,HANDCART,BMS_HV,"status: CHG_OFF, CHG_TC, CHG_CC, CHG_CV",
 CHG_SETTINGS,72,Primary,HANDCART,7,HANDCART,BMS_HV,v_cutoff: uint8,
 GPS_COORDS,771,Primary,TLM,4,TLM,STEER,"latitude: float32, longitude: float32",Coordinates received from GPS
-GPS_TIME,803,Primary,TLM,4,TLM,STEER,time: uint32,Time received from GPS
-GPS_SPEED,1027,Primary,TLM,3,TLM,STEER,speed: float32,Speed received from GPS
+GPS_SPEED,1027,Primary,TLM,3,TLM,STEER,speed: uint16,Speed received from GPS
 IMU_ANGULAR_RATE,1260,Secondary,FIXED_IDS,,IMU,ECU,"ang_rate_x: uint16, ang_rate_y: uint16, ang_rate_z: uint16","Inertial Measurement Unit x,y,z-axis angular rate value. 0.01dps per bit, Big-Endian, 16bit Total, signed"
 IMU_ACCELERATION,1261,Secondary,FIXED_IDS,,IMU,ECU,"accel_x: uint16, accel_y: uint16, accel_z: uint16","Inertial Measurement Unit x,y,z-axis acceleration value. 0.01g per bit, Big-Endian, 16bit Total, signed"
 IRTS_FL_0,1460,Secondary,FIXED_IDS,,IRTS_FL,ECU,"channel1: uint16, channel2: uint16, channel3: uint16, channel4: uint16","Front Left wheel InfraRed Temperature Sensor data, channels 1 through 4. 0.1˚C per bit, -100˚C offset, Big-Endian, 16bit Total, unsigned."

@@ -136,25 +136,14 @@ function deserializePrimaryGpsCoords(bytes) {
     }
 }
 
-function serializePrimaryGpsTime(data) {
-    return Uint8Array.from([
-        ...byteify.serializeUint32(data.time),
-    ]);
-}
-function deserializePrimaryGpsTime(bytes) {
-    return {
-        time: byteify.deserializeUint32(bytes.slice(0, 4)),
-    }
-}
-
 function serializePrimaryGpsSpeed(data) {
     return Uint8Array.from([
-        ...byteify.serializeFloat64(data.speed),
+        ...byteify.serializeUint16(data.speed),
     ]);
 }
 function deserializePrimaryGpsSpeed(bytes) {
     return {
-        speed: byteify.deserializeFloat64(bytes.slice(0, 8)),
+        speed: byteify.deserializeUint16(bytes.slice(0, 2)),
     }
 }
 

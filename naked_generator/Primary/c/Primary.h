@@ -272,22 +272,13 @@ static_assert(sizeof(Primary_GPS_COORDS) == 16, "struct size mismatch");
 size_t serialize_Primary_GPS_COORDS(uint8_t* buffer, double latitude, double longitude);
 size_t deserialize_Primary_GPS_COORDS(uint8_t* buffer, Primary_GPS_COORDS* primary_gps_coords);
 
-/* Primary_GPS_TIME */
-typedef struct __is_packed {
-    uint32_t time;
-} Primary_GPS_TIME;
-static_assert(sizeof(Primary_GPS_TIME) == 4, "struct size mismatch");
-    
-size_t serialize_Primary_GPS_TIME(uint8_t* buffer, uint32_t time);
-size_t deserialize_Primary_GPS_TIME(uint8_t* buffer, Primary_GPS_TIME* primary_gps_time);
-
 /* Primary_GPS_SPEED */
 typedef struct __is_packed {
-    double speed;
+    uint16_t speed;
 } Primary_GPS_SPEED;
-static_assert(sizeof(Primary_GPS_SPEED) == 8, "struct size mismatch");
+static_assert(sizeof(Primary_GPS_SPEED) == 2, "struct size mismatch");
     
-size_t serialize_Primary_GPS_SPEED(uint8_t* buffer, double speed);
+size_t serialize_Primary_GPS_SPEED(uint8_t* buffer, uint16_t speed);
 size_t deserialize_Primary_GPS_SPEED(uint8_t* buffer, Primary_GPS_SPEED* primary_gps_speed);
 
 /* Primary_HV_VOLTAGE */

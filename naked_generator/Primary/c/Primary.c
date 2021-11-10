@@ -124,20 +124,8 @@ size_t deserialize_Primary_GPS_COORDS(uint8_t* buffer, Primary_GPS_COORDS* prima
 	memcpy(primary_gps_coords, buffer, sizeof(Primary_GPS_COORDS));
     return sizeof(Primary_GPS_COORDS);
 }
-/* Primary_GPS_TIME */
-size_t serialize_Primary_GPS_TIME(uint8_t* buffer, uint32_t time) {
-    Primary_GPS_TIME primary_gps_time = { time };
-	// assert(buf_len >= sizeof(Primary_GPS_TIME));
-	memcpy(buffer, &primary_gps_time, sizeof(Primary_GPS_TIME));
-    return sizeof(Primary_GPS_TIME);
-} 
-size_t deserialize_Primary_GPS_TIME(uint8_t* buffer, Primary_GPS_TIME* primary_gps_time) {
-	// assert(buf_len >= sizeof(Primary_GPS_TIME));
-	memcpy(primary_gps_time, buffer, sizeof(Primary_GPS_TIME));
-    return sizeof(Primary_GPS_TIME);
-}
 /* Primary_GPS_SPEED */
-size_t serialize_Primary_GPS_SPEED(uint8_t* buffer, double speed) {
+size_t serialize_Primary_GPS_SPEED(uint8_t* buffer, uint16_t speed) {
     Primary_GPS_SPEED primary_gps_speed = { speed };
 	// assert(buf_len >= sizeof(Primary_GPS_SPEED));
 	memcpy(buffer, &primary_gps_speed, sizeof(Primary_GPS_SPEED));
