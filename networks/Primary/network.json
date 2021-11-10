@@ -567,21 +567,6 @@
             }
         },
         {
-            "name": "GPS_TIME",
-            "topic": "TLM",
-            "priority": 4,
-            "description": "Time received from GPS",
-            "sending": [
-                "TLM"
-            ],
-            "receiving": [
-                "STEER"
-            ],
-            "contents": {
-                "time": "uint32"   
-            }
-        },
-        {
             "name": "GPS_SPEED",
             "topic": "TLM",
             "priority": 3,
@@ -593,7 +578,7 @@
                 "STEER"
             ],
             "contents": {
-                "speed": "float32"    
+                "speed": "uint16"    
             }
         }
     ]
