@@ -1,19 +1,49 @@
 {
-    "network_version": 1,
+    "network_version": 1.1,
     "topics": {
         "STATUS": {
             "id": 0,
             "messages": {
-                "BOARD_STATUS": {
+                "BOARD_STATUS_0": {
                     "id": 1536
+                },
+                "BOARD_STATUS_1": {
+                    "id": 1568
+                },
+                "BOARD_STATUS_2": {
+                    "id": 1600
+                },
+                "BOARD_STATUS_3": {
+                    "id": 1632
+                },
+                "BOARD_STATUS_4": {
+                    "id": 1664
+                },
+                "BOARD_STATUS_5": {
+                    "id": 1696
                 }
             }
         },
         "TEMPERATURE_INFO": {
             "id": 1,
             "messages": {
-                "TEMP_STATS": {
+                "TEMP_STATS_0": {
                     "id": 1281
+                },
+                "TEMP_STATS_1": {
+                    "id": 1313
+                },
+                "TEMP_STATS_2": {
+                    "id": 1345
+                },
+                "TEMP_STATS_3": {
+                    "id": 1377
+                },
+                "TEMP_STATS_4": {
+                    "id": 1409
+                },
+                "TEMP_STATS_5": {
+                    "id": 1441
                 }
             }
         },

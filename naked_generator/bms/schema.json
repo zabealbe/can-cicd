@@ -3,6 +3,7 @@
         "errors": {
             "type": "bitset",
             "items": [
+                "CAN_COMM",
                 "LTC_COMM",
                 "TEMP_COMM_0",
                 "TEMP_COMM_1",
@@ -46,16 +47,83 @@
         }
     },
     "structs": {
-        "BOARD_STATUS": {
-            "board_index": "uint8",
+        "BOARD_STATUS_0": {
             "errors": "errors",
             "balancing_status": "balancing_status"
         },
-        "TEMP_STATS": {
-            "board_index": "uint8",
-            "average": "uint8",
-            "max": "uint8",
-            "min": "uint8"
+        "BOARD_STATUS_1": {
+            "errors": "errors",
+            "balancing_status": "balancing_status"
+        },
+        "BOARD_STATUS_2": {
+            "errors": "errors",
+            "balancing_status": "balancing_status"
+        },
+        "BOARD_STATUS_3": {
+            "errors": "errors",
+            "balancing_status": "balancing_status"
+        },
+        "BOARD_STATUS_4": {
+            "errors": "errors",
+            "balancing_status": "balancing_status"
+        },
+        "BOARD_STATUS_5": {
+            "errors": "errors",
+            "balancing_status": "balancing_status"
+        },
+        "TEMP_STATS_0": {
+            "start_index": "uint8",
+            "temp0": "uint8",
+            "temp1": "uint8",
+            "temp2": "uint8",
+            "temp3": "uint8",
+            "temp4": "uint8",
+            "temp5": "uint8"
+        },
+        "TEMP_STATS_1": {
+            "start_index": "uint8",
+            "temp0": "uint8",
+            "temp1": "uint8",
+            "temp2": "uint8",
+            "temp3": "uint8",
+            "temp4": "uint8",
+            "temp5": "uint8"
+        },
+        "TEMP_STATS_2": {
+            "start_index": "uint8",
+            "temp0": "uint8",
+            "temp1": "uint8",
+            "temp2": "uint8",
+            "temp3": "uint8",
+            "temp4": "uint8",
+            "temp5": "uint8"
+        },
+        "TEMP_STATS_3": {
+            "start_index": "uint8",
+            "temp0": "uint8",
+            "temp1": "uint8",
+            "temp2": "uint8",
+            "temp3": "uint8",
+            "temp4": "uint8",
+            "temp5": "uint8"
+        },
+        "TEMP_STATS_4": {
+            "start_index": "uint8",
+            "temp0": "uint8",
+            "temp1": "uint8",
+            "temp2": "uint8",
+            "temp3": "uint8",
+            "temp4": "uint8",
+            "temp5": "uint8"
+        },
+        "TEMP_STATS_5": {
+            "start_index": "uint8",
+            "temp0": "uint8",
+            "temp1": "uint8",
+            "temp2": "uint8",
+            "temp3": "uint8",
+            "temp4": "uint8",
+            "temp5": "uint8"
         },
         "BALANCING": {
             "board_index": "uint8",
@@ -65,40 +133,40 @@
             "time": "uint32"
         },
         "VOLTAGES_0": {
-            "board_index": "uint8",
+            "start_index": "uint8",
             "voltage0": "uint16",
             "voltage1": "uint16",
             "voltage2": "uint16"
         },
         "VOLTAGES_1": {
-            "board_index": "uint8",
-            "voltage3": "uint16",
-            "voltage4": "uint16",
-            "voltage5": "uint16"
+            "start_index": "uint8",
+            "voltage0": "uint16",
+            "voltage1": "uint16",
+            "voltage2": "uint16"
         },
         "VOLTAGES_2": {
-            "board_index": "uint8",
-            "voltage6": "uint16",
-            "voltage7": "uint16",
-            "voltage8": "uint16"
+            "start_index": "uint8",
+            "voltage0": "uint16",
+            "voltage1": "uint16",
+            "voltage2": "uint16"
         },
         "VOLTAGES_3": {
-            "board_index": "uint8",
-            "voltage9": "uint16",
-            "voltage10": "uint16",
-            "voltage11": "uint16"
+            "start_index": "uint8",
+            "voltage0": "uint16",
+            "voltage1": "uint16",
+            "voltage2": "uint16"
         },
         "VOLTAGES_4": {
-            "board_index": "uint8",
-            "voltage12": "uint16",
-            "voltage13": "uint16",
-            "voltage14": "uint16"
+            "start_index": "uint8",
+            "voltage0": "uint16",
+            "voltage1": "uint16",
+            "voltage2": "uint16"
         },
         "VOLTAGES_5": {
-            "board_index": "uint8",
-            "voltage15": "uint16",
-            "voltage16": "uint16",
-            "voltage17": "uint16"
+            "start_index": "uint8",
+            "voltage0": "uint16",
+            "voltage1": "uint16",
+            "voltage2": "uint16"
         }
     }
 }

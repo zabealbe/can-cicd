@@ -3,13 +3,14 @@ from struct import pack, unpack
 from collections import namedtuple
 
 class errors(IntFlag):
-    LTC_COMM = 1
-    TEMP_COMM_0 = 2
-    TEMP_COMM_1 = 4
-    TEMP_COMM_2 = 8
-    TEMP_COMM_3 = 16
-    TEMP_COMM_4 = 32
-    TEMP_COMM_5 = 64
+    CAN_COMM = 1
+    LTC_COMM = 2
+    TEMP_COMM_0 = 4
+    TEMP_COMM_1 = 8
+    TEMP_COMM_2 = 16
+    TEMP_COMM_3 = 32
+    TEMP_COMM_4 = 64
+    TEMP_COMM_5 = 128
 
 class balancing_cells(IntFlag):
     CELL0 = 1
@@ -38,31 +39,161 @@ class balancing_status(IntEnum):
     DISCHARGE = 2
 
 
-# BoardStatus
-class BoardStatus:
-    struct = namedtuple("BoardStatus_struct", "board_index errors balancing_status", rename=True)
-    schema = "<bbB"
+# BoardStatus0
+class BoardStatus0:
+    struct = namedtuple("BoardStatus0_struct", "errors balancing_status", rename=True)
+    schema = "<bB"
     
     @staticmethod
-    def serialize(board_index, errors, balancing_status) -> bytes:
-        return pack(BoardStatus.schema, board_index, errors, balancing_status)
+    def serialize(errors, balancing_status) -> bytes:
+        return pack(BoardStatus0.schema, errors, balancing_status)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "BoardStatus.struct":
-        return BoardStatus.struct._make(unpack(BoardStatus.schema, buffer))
+    def deserialize(buffer: bytes) -> "BoardStatus0.struct":
+        return BoardStatus0.struct._make(unpack(BoardStatus0.schema, buffer))
 
-# TempStats
-class TempStats:
-    struct = namedtuple("TempStats_struct", "board_index average max min", rename=True)
-    schema = "<bbbb"
+# BoardStatus1
+class BoardStatus1:
+    struct = namedtuple("BoardStatus1_struct", "errors balancing_status", rename=True)
+    schema = "<bB"
     
     @staticmethod
-    def serialize(board_index, average, max, min) -> bytes:
-        return pack(TempStats.schema, board_index, average, max, min)
+    def serialize(errors, balancing_status) -> bytes:
+        return pack(BoardStatus1.schema, errors, balancing_status)
     
     @staticmethod
-    def deserialize(buffer: bytes) -> "TempStats.struct":
-        return TempStats.struct._make(unpack(TempStats.schema, buffer))
+    def deserialize(buffer: bytes) -> "BoardStatus1.struct":
+        return BoardStatus1.struct._make(unpack(BoardStatus1.schema, buffer))
+
+# BoardStatus2
+class BoardStatus2:
+    struct = namedtuple("BoardStatus2_struct", "errors balancing_status", rename=True)
+    schema = "<bB"
+    
+    @staticmethod
+    def serialize(errors, balancing_status) -> bytes:
+        return pack(BoardStatus2.schema, errors, balancing_status)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "BoardStatus2.struct":
+        return BoardStatus2.struct._make(unpack(BoardStatus2.schema, buffer))
+
+# BoardStatus3
+class BoardStatus3:
+    struct = namedtuple("BoardStatus3_struct", "errors balancing_status", rename=True)
+    schema = "<bB"
+    
+    @staticmethod
+    def serialize(errors, balancing_status) -> bytes:
+        return pack(BoardStatus3.schema, errors, balancing_status)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "BoardStatus3.struct":
+        return BoardStatus3.struct._make(unpack(BoardStatus3.schema, buffer))
+
+# BoardStatus4
+class BoardStatus4:
+    struct = namedtuple("BoardStatus4_struct", "errors balancing_status", rename=True)
+    schema = "<bB"
+    
+    @staticmethod
+    def serialize(errors, balancing_status) -> bytes:
+        return pack(BoardStatus4.schema, errors, balancing_status)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "BoardStatus4.struct":
+        return BoardStatus4.struct._make(unpack(BoardStatus4.schema, buffer))
+
+# BoardStatus5
+class BoardStatus5:
+    struct = namedtuple("BoardStatus5_struct", "errors balancing_status", rename=True)
+    schema = "<bB"
+    
+    @staticmethod
+    def serialize(errors, balancing_status) -> bytes:
+        return pack(BoardStatus5.schema, errors, balancing_status)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "BoardStatus5.struct":
+        return BoardStatus5.struct._make(unpack(BoardStatus5.schema, buffer))
+
+# TempStats0
+class TempStats0:
+    struct = namedtuple("TempStats0_struct", "start_index temp0 temp1 temp2 temp3 temp4 temp5", rename=True)
+    schema = "<bbbbbbb"
+    
+    @staticmethod
+    def serialize(start_index, temp0, temp1, temp2, temp3, temp4, temp5) -> bytes:
+        return pack(TempStats0.schema, start_index, temp0, temp1, temp2, temp3, temp4, temp5)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "TempStats0.struct":
+        return TempStats0.struct._make(unpack(TempStats0.schema, buffer))
+
+# TempStats1
+class TempStats1:
+    struct = namedtuple("TempStats1_struct", "start_index temp0 temp1 temp2 temp3 temp4 temp5", rename=True)
+    schema = "<bbbbbbb"
+    
+    @staticmethod
+    def serialize(start_index, temp0, temp1, temp2, temp3, temp4, temp5) -> bytes:
+        return pack(TempStats1.schema, start_index, temp0, temp1, temp2, temp3, temp4, temp5)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "TempStats1.struct":
+        return TempStats1.struct._make(unpack(TempStats1.schema, buffer))
+
+# TempStats2
+class TempStats2:
+    struct = namedtuple("TempStats2_struct", "start_index temp0 temp1 temp2 temp3 temp4 temp5", rename=True)
+    schema = "<bbbbbbb"
+    
+    @staticmethod
+    def serialize(start_index, temp0, temp1, temp2, temp3, temp4, temp5) -> bytes:
+        return pack(TempStats2.schema, start_index, temp0, temp1, temp2, temp3, temp4, temp5)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "TempStats2.struct":
+        return TempStats2.struct._make(unpack(TempStats2.schema, buffer))
+
+# TempStats3
+class TempStats3:
+    struct = namedtuple("TempStats3_struct", "start_index temp0 temp1 temp2 temp3 temp4 temp5", rename=True)
+    schema = "<bbbbbbb"
+    
+    @staticmethod
+    def serialize(start_index, temp0, temp1, temp2, temp3, temp4, temp5) -> bytes:
+        return pack(TempStats3.schema, start_index, temp0, temp1, temp2, temp3, temp4, temp5)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "TempStats3.struct":
+        return TempStats3.struct._make(unpack(TempStats3.schema, buffer))
+
+# TempStats4
+class TempStats4:
+    struct = namedtuple("TempStats4_struct", "start_index temp0 temp1 temp2 temp3 temp4 temp5", rename=True)
+    schema = "<bbbbbbb"
+    
+    @staticmethod
+    def serialize(start_index, temp0, temp1, temp2, temp3, temp4, temp5) -> bytes:
+        return pack(TempStats4.schema, start_index, temp0, temp1, temp2, temp3, temp4, temp5)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "TempStats4.struct":
+        return TempStats4.struct._make(unpack(TempStats4.schema, buffer))
+
+# TempStats5
+class TempStats5:
+    struct = namedtuple("TempStats5_struct", "start_index temp0 temp1 temp2 temp3 temp4 temp5", rename=True)
+    schema = "<bbbbbbb"
+    
+    @staticmethod
+    def serialize(start_index, temp0, temp1, temp2, temp3, temp4, temp5) -> bytes:
+        return pack(TempStats5.schema, start_index, temp0, temp1, temp2, temp3, temp4, temp5)
+    
+    @staticmethod
+    def deserialize(buffer: bytes) -> "TempStats5.struct":
+        return TempStats5.struct._make(unpack(TempStats5.schema, buffer))
 
 # Balancing
 class Balancing:
@@ -92,12 +223,12 @@ class MasterSync:
 
 # Voltages0
 class Voltages0:
-    struct = namedtuple("Voltages0_struct", "board_index __unused_padding_1 voltage0 voltage1 voltage2", rename=True)
+    struct = namedtuple("Voltages0_struct", "start_index __unused_padding_1 voltage0 voltage1 voltage2", rename=True)
     schema = "<bXhhh"
     
     @staticmethod
-    def serialize(board_index, voltage0, voltage1, voltage2) -> bytes:
-        return pack(Voltages0.schema, board_index, voltage0, voltage1, voltage2)
+    def serialize(start_index, voltage0, voltage1, voltage2) -> bytes:
+        return pack(Voltages0.schema, start_index, voltage0, voltage1, voltage2)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "Voltages0.struct":
@@ -105,12 +236,12 @@ class Voltages0:
 
 # Voltages1
 class Voltages1:
-    struct = namedtuple("Voltages1_struct", "board_index __unused_padding_1 voltage3 voltage4 voltage5", rename=True)
+    struct = namedtuple("Voltages1_struct", "start_index __unused_padding_1 voltage0 voltage1 voltage2", rename=True)
     schema = "<bXhhh"
     
     @staticmethod
-    def serialize(board_index, voltage3, voltage4, voltage5) -> bytes:
-        return pack(Voltages1.schema, board_index, voltage3, voltage4, voltage5)
+    def serialize(start_index, voltage0, voltage1, voltage2) -> bytes:
+        return pack(Voltages1.schema, start_index, voltage0, voltage1, voltage2)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "Voltages1.struct":
@@ -118,12 +249,12 @@ class Voltages1:
 
 # Voltages2
 class Voltages2:
-    struct = namedtuple("Voltages2_struct", "board_index __unused_padding_1 voltage6 voltage7 voltage8", rename=True)
+    struct = namedtuple("Voltages2_struct", "start_index __unused_padding_1 voltage0 voltage1 voltage2", rename=True)
     schema = "<bXhhh"
     
     @staticmethod
-    def serialize(board_index, voltage6, voltage7, voltage8) -> bytes:
-        return pack(Voltages2.schema, board_index, voltage6, voltage7, voltage8)
+    def serialize(start_index, voltage0, voltage1, voltage2) -> bytes:
+        return pack(Voltages2.schema, start_index, voltage0, voltage1, voltage2)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "Voltages2.struct":
@@ -131,12 +262,12 @@ class Voltages2:
 
 # Voltages3
 class Voltages3:
-    struct = namedtuple("Voltages3_struct", "board_index __unused_padding_1 voltage9 voltage10 voltage11", rename=True)
+    struct = namedtuple("Voltages3_struct", "start_index __unused_padding_1 voltage0 voltage1 voltage2", rename=True)
     schema = "<bXhhh"
     
     @staticmethod
-    def serialize(board_index, voltage9, voltage10, voltage11) -> bytes:
-        return pack(Voltages3.schema, board_index, voltage9, voltage10, voltage11)
+    def serialize(start_index, voltage0, voltage1, voltage2) -> bytes:
+        return pack(Voltages3.schema, start_index, voltage0, voltage1, voltage2)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "Voltages3.struct":
@@ -144,12 +275,12 @@ class Voltages3:
 
 # Voltages4
 class Voltages4:
-    struct = namedtuple("Voltages4_struct", "board_index __unused_padding_1 voltage12 voltage13 voltage14", rename=True)
+    struct = namedtuple("Voltages4_struct", "start_index __unused_padding_1 voltage0 voltage1 voltage2", rename=True)
     schema = "<bXhhh"
     
     @staticmethod
-    def serialize(board_index, voltage12, voltage13, voltage14) -> bytes:
-        return pack(Voltages4.schema, board_index, voltage12, voltage13, voltage14)
+    def serialize(start_index, voltage0, voltage1, voltage2) -> bytes:
+        return pack(Voltages4.schema, start_index, voltage0, voltage1, voltage2)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "Voltages4.struct":
@@ -157,12 +288,12 @@ class Voltages4:
 
 # Voltages5
 class Voltages5:
-    struct = namedtuple("Voltages5_struct", "board_index __unused_padding_1 voltage15 voltage16 voltage17", rename=True)
+    struct = namedtuple("Voltages5_struct", "start_index __unused_padding_1 voltage0 voltage1 voltage2", rename=True)
     schema = "<bXhhh"
     
     @staticmethod
-    def serialize(board_index, voltage15, voltage16, voltage17) -> bytes:
-        return pack(Voltages5.schema, board_index, voltage15, voltage16, voltage17)
+    def serialize(start_index, voltage0, voltage1, voltage2) -> bytes:
+        return pack(Voltages5.schema, start_index, voltage0, voltage1, voltage2)
     
     @staticmethod
     def deserialize(buffer: bytes) -> "Voltages5.struct":

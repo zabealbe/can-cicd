@@ -1,6 +1,6 @@
 #include <string.h>
 
-void bms_msgname_from_id(uint32_t msg_id, char buffer[static 12]) {
+void bms_msgname_from_id(uint32_t msg_id, char buffer[static 14]) {
     /*
     *       Returns a string containing the name of the message having the specified id
     *           Parameters:
@@ -9,10 +9,40 @@ void bms_msgname_from_id(uint32_t msg_id, char buffer[static 12]) {
     */
     switch (msg_id) {
         case 1536:
-            strcpy(buffer, "BOARD_STATUS");
+            strcpy(buffer, "BOARD_STATUS_0");
+            break;
+        case 1568:
+            strcpy(buffer, "BOARD_STATUS_1");
+            break;
+        case 1600:
+            strcpy(buffer, "BOARD_STATUS_2");
+            break;
+        case 1632:
+            strcpy(buffer, "BOARD_STATUS_3");
+            break;
+        case 1664:
+            strcpy(buffer, "BOARD_STATUS_4");
+            break;
+        case 1696:
+            strcpy(buffer, "BOARD_STATUS_5");
             break;
         case 1281:
-            strcpy(buffer, "TEMP_STATS");
+            strcpy(buffer, "TEMP_STATS_0");
+            break;
+        case 1313:
+            strcpy(buffer, "TEMP_STATS_1");
+            break;
+        case 1345:
+            strcpy(buffer, "TEMP_STATS_2");
+            break;
+        case 1377:
+            strcpy(buffer, "TEMP_STATS_3");
+            break;
+        case 1409:
+            strcpy(buffer, "TEMP_STATS_4");
+            break;
+        case 1441:
+            strcpy(buffer, "TEMP_STATS_5");
             break;
         case 1538:
             strcpy(buffer, "BALANCING");

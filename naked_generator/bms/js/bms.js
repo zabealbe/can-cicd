@@ -1,34 +1,218 @@
 const byteify = require('byteify');
 
-function serializeBmsBoardStatus(data) {
+function serializeBmsBoardStatus0(data) {
     return Uint8Array.from([
-        ...byteify.serializeUint8(data.board_index),
         ...byteify.serializeInt8(data.errors),
         ...byteify.serializeInt8(data.balancing_status),
     ]);
 }
-function deserializeBmsBoardStatus(bytes) {
+function deserializeBmsBoardStatus0(bytes) {
     return {
-        board_index: byteify.deserializeUint8(bytes.slice(0, 1)),
-        errors: byteify.deserializeInt8(bytes.slice(1, 2)),
-        balancing_status: byteify.deserializeInt8(bytes.slice(2, 3)),
+        errors: byteify.deserializeInt8(bytes.slice(0, 1)),
+        balancing_status: byteify.deserializeInt8(bytes.slice(1, 2)),
     }
 }
 
-function serializeBmsTempStats(data) {
+function serializeBmsBoardStatus1(data) {
     return Uint8Array.from([
-        ...byteify.serializeUint8(data.board_index),
-        ...byteify.serializeUint8(data.average),
-        ...byteify.serializeUint8(data.max),
-        ...byteify.serializeUint8(data.min),
+        ...byteify.serializeInt8(data.errors),
+        ...byteify.serializeInt8(data.balancing_status),
     ]);
 }
-function deserializeBmsTempStats(bytes) {
+function deserializeBmsBoardStatus1(bytes) {
     return {
-        board_index: byteify.deserializeUint8(bytes.slice(0, 1)),
-        average: byteify.deserializeUint8(bytes.slice(1, 2)),
-        max: byteify.deserializeUint8(bytes.slice(2, 3)),
-        min: byteify.deserializeUint8(bytes.slice(3, 4)),
+        errors: byteify.deserializeInt8(bytes.slice(0, 1)),
+        balancing_status: byteify.deserializeInt8(bytes.slice(1, 2)),
+    }
+}
+
+function serializeBmsBoardStatus2(data) {
+    return Uint8Array.from([
+        ...byteify.serializeInt8(data.errors),
+        ...byteify.serializeInt8(data.balancing_status),
+    ]);
+}
+function deserializeBmsBoardStatus2(bytes) {
+    return {
+        errors: byteify.deserializeInt8(bytes.slice(0, 1)),
+        balancing_status: byteify.deserializeInt8(bytes.slice(1, 2)),
+    }
+}
+
+function serializeBmsBoardStatus3(data) {
+    return Uint8Array.from([
+        ...byteify.serializeInt8(data.errors),
+        ...byteify.serializeInt8(data.balancing_status),
+    ]);
+}
+function deserializeBmsBoardStatus3(bytes) {
+    return {
+        errors: byteify.deserializeInt8(bytes.slice(0, 1)),
+        balancing_status: byteify.deserializeInt8(bytes.slice(1, 2)),
+    }
+}
+
+function serializeBmsBoardStatus4(data) {
+    return Uint8Array.from([
+        ...byteify.serializeInt8(data.errors),
+        ...byteify.serializeInt8(data.balancing_status),
+    ]);
+}
+function deserializeBmsBoardStatus4(bytes) {
+    return {
+        errors: byteify.deserializeInt8(bytes.slice(0, 1)),
+        balancing_status: byteify.deserializeInt8(bytes.slice(1, 2)),
+    }
+}
+
+function serializeBmsBoardStatus5(data) {
+    return Uint8Array.from([
+        ...byteify.serializeInt8(data.errors),
+        ...byteify.serializeInt8(data.balancing_status),
+    ]);
+}
+function deserializeBmsBoardStatus5(bytes) {
+    return {
+        errors: byteify.deserializeInt8(bytes.slice(0, 1)),
+        balancing_status: byteify.deserializeInt8(bytes.slice(1, 2)),
+    }
+}
+
+function serializeBmsTempStats0(data) {
+    return Uint8Array.from([
+        ...byteify.serializeUint8(data.start_index),
+        ...byteify.serializeUint8(data.temp0),
+        ...byteify.serializeUint8(data.temp1),
+        ...byteify.serializeUint8(data.temp2),
+        ...byteify.serializeUint8(data.temp3),
+        ...byteify.serializeUint8(data.temp4),
+        ...byteify.serializeUint8(data.temp5),
+    ]);
+}
+function deserializeBmsTempStats0(bytes) {
+    return {
+        start_index: byteify.deserializeUint8(bytes.slice(0, 1)),
+        temp0: byteify.deserializeUint8(bytes.slice(1, 2)),
+        temp1: byteify.deserializeUint8(bytes.slice(2, 3)),
+        temp2: byteify.deserializeUint8(bytes.slice(3, 4)),
+        temp3: byteify.deserializeUint8(bytes.slice(4, 5)),
+        temp4: byteify.deserializeUint8(bytes.slice(5, 6)),
+        temp5: byteify.deserializeUint8(bytes.slice(6, 7)),
+    }
+}
+
+function serializeBmsTempStats1(data) {
+    return Uint8Array.from([
+        ...byteify.serializeUint8(data.start_index),
+        ...byteify.serializeUint8(data.temp0),
+        ...byteify.serializeUint8(data.temp1),
+        ...byteify.serializeUint8(data.temp2),
+        ...byteify.serializeUint8(data.temp3),
+        ...byteify.serializeUint8(data.temp4),
+        ...byteify.serializeUint8(data.temp5),
+    ]);
+}
+function deserializeBmsTempStats1(bytes) {
+    return {
+        start_index: byteify.deserializeUint8(bytes.slice(0, 1)),
+        temp0: byteify.deserializeUint8(bytes.slice(1, 2)),
+        temp1: byteify.deserializeUint8(bytes.slice(2, 3)),
+        temp2: byteify.deserializeUint8(bytes.slice(3, 4)),
+        temp3: byteify.deserializeUint8(bytes.slice(4, 5)),
+        temp4: byteify.deserializeUint8(bytes.slice(5, 6)),
+        temp5: byteify.deserializeUint8(bytes.slice(6, 7)),
+    }
+}
+
+function serializeBmsTempStats2(data) {
+    return Uint8Array.from([
+        ...byteify.serializeUint8(data.start_index),
+        ...byteify.serializeUint8(data.temp0),
+        ...byteify.serializeUint8(data.temp1),
+        ...byteify.serializeUint8(data.temp2),
+        ...byteify.serializeUint8(data.temp3),
+        ...byteify.serializeUint8(data.temp4),
+        ...byteify.serializeUint8(data.temp5),
+    ]);
+}
+function deserializeBmsTempStats2(bytes) {
+    return {
+        start_index: byteify.deserializeUint8(bytes.slice(0, 1)),
+        temp0: byteify.deserializeUint8(bytes.slice(1, 2)),
+        temp1: byteify.deserializeUint8(bytes.slice(2, 3)),
+        temp2: byteify.deserializeUint8(bytes.slice(3, 4)),
+        temp3: byteify.deserializeUint8(bytes.slice(4, 5)),
+        temp4: byteify.deserializeUint8(bytes.slice(5, 6)),
+        temp5: byteify.deserializeUint8(bytes.slice(6, 7)),
+    }
+}
+
+function serializeBmsTempStats3(data) {
+    return Uint8Array.from([
+        ...byteify.serializeUint8(data.start_index),
+        ...byteify.serializeUint8(data.temp0),
+        ...byteify.serializeUint8(data.temp1),
+        ...byteify.serializeUint8(data.temp2),
+        ...byteify.serializeUint8(data.temp3),
+        ...byteify.serializeUint8(data.temp4),
+        ...byteify.serializeUint8(data.temp5),
+    ]);
+}
+function deserializeBmsTempStats3(bytes) {
+    return {
+        start_index: byteify.deserializeUint8(bytes.slice(0, 1)),
+        temp0: byteify.deserializeUint8(bytes.slice(1, 2)),
+        temp1: byteify.deserializeUint8(bytes.slice(2, 3)),
+        temp2: byteify.deserializeUint8(bytes.slice(3, 4)),
+        temp3: byteify.deserializeUint8(bytes.slice(4, 5)),
+        temp4: byteify.deserializeUint8(bytes.slice(5, 6)),
+        temp5: byteify.deserializeUint8(bytes.slice(6, 7)),
+    }
+}
+
+function serializeBmsTempStats4(data) {
+    return Uint8Array.from([
+        ...byteify.serializeUint8(data.start_index),
+        ...byteify.serializeUint8(data.temp0),
+        ...byteify.serializeUint8(data.temp1),
+        ...byteify.serializeUint8(data.temp2),
+        ...byteify.serializeUint8(data.temp3),
+        ...byteify.serializeUint8(data.temp4),
+        ...byteify.serializeUint8(data.temp5),
+    ]);
+}
+function deserializeBmsTempStats4(bytes) {
+    return {
+        start_index: byteify.deserializeUint8(bytes.slice(0, 1)),
+        temp0: byteify.deserializeUint8(bytes.slice(1, 2)),
+        temp1: byteify.deserializeUint8(bytes.slice(2, 3)),
+        temp2: byteify.deserializeUint8(bytes.slice(3, 4)),
+        temp3: byteify.deserializeUint8(bytes.slice(4, 5)),
+        temp4: byteify.deserializeUint8(bytes.slice(5, 6)),
+        temp5: byteify.deserializeUint8(bytes.slice(6, 7)),
+    }
+}
+
+function serializeBmsTempStats5(data) {
+    return Uint8Array.from([
+        ...byteify.serializeUint8(data.start_index),
+        ...byteify.serializeUint8(data.temp0),
+        ...byteify.serializeUint8(data.temp1),
+        ...byteify.serializeUint8(data.temp2),
+        ...byteify.serializeUint8(data.temp3),
+        ...byteify.serializeUint8(data.temp4),
+        ...byteify.serializeUint8(data.temp5),
+    ]);
+}
+function deserializeBmsTempStats5(bytes) {
+    return {
+        start_index: byteify.deserializeUint8(bytes.slice(0, 1)),
+        temp0: byteify.deserializeUint8(bytes.slice(1, 2)),
+        temp1: byteify.deserializeUint8(bytes.slice(2, 3)),
+        temp2: byteify.deserializeUint8(bytes.slice(3, 4)),
+        temp3: byteify.deserializeUint8(bytes.slice(4, 5)),
+        temp4: byteify.deserializeUint8(bytes.slice(5, 6)),
+        temp5: byteify.deserializeUint8(bytes.slice(6, 7)),
     }
 }
 
@@ -58,7 +242,7 @@ function deserializeBmsMasterSync(bytes) {
 
 function serializeBmsVoltages0(data) {
     return Uint8Array.from([
-        ...byteify.serializeUint8(data.board_index),
+        ...byteify.serializeUint8(data.start_index),
         ...byteify.serializeUInt8(data.__unused_padding_1),
         ...byteify.serializeUint16(data.voltage0),
         ...byteify.serializeUint16(data.voltage1),
@@ -67,7 +251,7 @@ function serializeBmsVoltages0(data) {
 }
 function deserializeBmsVoltages0(bytes) {
     return {
-        board_index: byteify.deserializeUint8(bytes.slice(0, 1)),
+        start_index: byteify.deserializeUint8(bytes.slice(0, 1)),
         __unused_padding_1: byteify.deserializeUInt8(bytes.slice(1, 2)),
         voltage0: byteify.deserializeUint16(bytes.slice(2, 4)),
         voltage1: byteify.deserializeUint16(bytes.slice(4, 6)),
@@ -77,95 +261,95 @@ function deserializeBmsVoltages0(bytes) {
 
 function serializeBmsVoltages1(data) {
     return Uint8Array.from([
-        ...byteify.serializeUint8(data.board_index),
+        ...byteify.serializeUint8(data.start_index),
         ...byteify.serializeUInt8(data.__unused_padding_1),
-        ...byteify.serializeUint16(data.voltage3),
-        ...byteify.serializeUint16(data.voltage4),
-        ...byteify.serializeUint16(data.voltage5),
+        ...byteify.serializeUint16(data.voltage0),
+        ...byteify.serializeUint16(data.voltage1),
+        ...byteify.serializeUint16(data.voltage2),
     ]);
 }
 function deserializeBmsVoltages1(bytes) {
     return {
-        board_index: byteify.deserializeUint8(bytes.slice(0, 1)),
+        start_index: byteify.deserializeUint8(bytes.slice(0, 1)),
         __unused_padding_1: byteify.deserializeUInt8(bytes.slice(1, 2)),
-        voltage3: byteify.deserializeUint16(bytes.slice(2, 4)),
-        voltage4: byteify.deserializeUint16(bytes.slice(4, 6)),
-        voltage5: byteify.deserializeUint16(bytes.slice(6, 8)),
+        voltage0: byteify.deserializeUint16(bytes.slice(2, 4)),
+        voltage1: byteify.deserializeUint16(bytes.slice(4, 6)),
+        voltage2: byteify.deserializeUint16(bytes.slice(6, 8)),
     }
 }
 
 function serializeBmsVoltages2(data) {
     return Uint8Array.from([
-        ...byteify.serializeUint8(data.board_index),
+        ...byteify.serializeUint8(data.start_index),
         ...byteify.serializeUInt8(data.__unused_padding_1),
-        ...byteify.serializeUint16(data.voltage6),
-        ...byteify.serializeUint16(data.voltage7),
-        ...byteify.serializeUint16(data.voltage8),
+        ...byteify.serializeUint16(data.voltage0),
+        ...byteify.serializeUint16(data.voltage1),
+        ...byteify.serializeUint16(data.voltage2),
     ]);
 }
 function deserializeBmsVoltages2(bytes) {
     return {
-        board_index: byteify.deserializeUint8(bytes.slice(0, 1)),
+        start_index: byteify.deserializeUint8(bytes.slice(0, 1)),
         __unused_padding_1: byteify.deserializeUInt8(bytes.slice(1, 2)),
-        voltage6: byteify.deserializeUint16(bytes.slice(2, 4)),
-        voltage7: byteify.deserializeUint16(bytes.slice(4, 6)),
-        voltage8: byteify.deserializeUint16(bytes.slice(6, 8)),
+        voltage0: byteify.deserializeUint16(bytes.slice(2, 4)),
+        voltage1: byteify.deserializeUint16(bytes.slice(4, 6)),
+        voltage2: byteify.deserializeUint16(bytes.slice(6, 8)),
     }
 }
 
 function serializeBmsVoltages3(data) {
     return Uint8Array.from([
-        ...byteify.serializeUint8(data.board_index),
+        ...byteify.serializeUint8(data.start_index),
         ...byteify.serializeUInt8(data.__unused_padding_1),
-        ...byteify.serializeUint16(data.voltage9),
-        ...byteify.serializeUint16(data.voltage10),
-        ...byteify.serializeUint16(data.voltage11),
+        ...byteify.serializeUint16(data.voltage0),
+        ...byteify.serializeUint16(data.voltage1),
+        ...byteify.serializeUint16(data.voltage2),
     ]);
 }
 function deserializeBmsVoltages3(bytes) {
     return {
-        board_index: byteify.deserializeUint8(bytes.slice(0, 1)),
+        start_index: byteify.deserializeUint8(bytes.slice(0, 1)),
         __unused_padding_1: byteify.deserializeUInt8(bytes.slice(1, 2)),
-        voltage9: byteify.deserializeUint16(bytes.slice(2, 4)),
-        voltage10: byteify.deserializeUint16(bytes.slice(4, 6)),
-        voltage11: byteify.deserializeUint16(bytes.slice(6, 8)),
+        voltage0: byteify.deserializeUint16(bytes.slice(2, 4)),
+        voltage1: byteify.deserializeUint16(bytes.slice(4, 6)),
+        voltage2: byteify.deserializeUint16(bytes.slice(6, 8)),
     }
 }
 
 function serializeBmsVoltages4(data) {
     return Uint8Array.from([
-        ...byteify.serializeUint8(data.board_index),
+        ...byteify.serializeUint8(data.start_index),
         ...byteify.serializeUInt8(data.__unused_padding_1),
-        ...byteify.serializeUint16(data.voltage12),
-        ...byteify.serializeUint16(data.voltage13),
-        ...byteify.serializeUint16(data.voltage14),
+        ...byteify.serializeUint16(data.voltage0),
+        ...byteify.serializeUint16(data.voltage1),
+        ...byteify.serializeUint16(data.voltage2),
     ]);
 }
 function deserializeBmsVoltages4(bytes) {
     return {
-        board_index: byteify.deserializeUint8(bytes.slice(0, 1)),
+        start_index: byteify.deserializeUint8(bytes.slice(0, 1)),
         __unused_padding_1: byteify.deserializeUInt8(bytes.slice(1, 2)),
-        voltage12: byteify.deserializeUint16(bytes.slice(2, 4)),
-        voltage13: byteify.deserializeUint16(bytes.slice(4, 6)),
-        voltage14: byteify.deserializeUint16(bytes.slice(6, 8)),
+        voltage0: byteify.deserializeUint16(bytes.slice(2, 4)),
+        voltage1: byteify.deserializeUint16(bytes.slice(4, 6)),
+        voltage2: byteify.deserializeUint16(bytes.slice(6, 8)),
     }
 }
 
 function serializeBmsVoltages5(data) {
     return Uint8Array.from([
-        ...byteify.serializeUint8(data.board_index),
+        ...byteify.serializeUint8(data.start_index),
         ...byteify.serializeUInt8(data.__unused_padding_1),
-        ...byteify.serializeUint16(data.voltage15),
-        ...byteify.serializeUint16(data.voltage16),
-        ...byteify.serializeUint16(data.voltage17),
+        ...byteify.serializeUint16(data.voltage0),
+        ...byteify.serializeUint16(data.voltage1),
+        ...byteify.serializeUint16(data.voltage2),
     ]);
 }
 function deserializeBmsVoltages5(bytes) {
     return {
-        board_index: byteify.deserializeUint8(bytes.slice(0, 1)),
+        start_index: byteify.deserializeUint8(bytes.slice(0, 1)),
         __unused_padding_1: byteify.deserializeUInt8(bytes.slice(1, 2)),
-        voltage15: byteify.deserializeUint16(bytes.slice(2, 4)),
-        voltage16: byteify.deserializeUint16(bytes.slice(4, 6)),
-        voltage17: byteify.deserializeUint16(bytes.slice(6, 8)),
+        voltage0: byteify.deserializeUint16(bytes.slice(2, 4)),
+        voltage1: byteify.deserializeUint16(bytes.slice(4, 6)),
+        voltage2: byteify.deserializeUint16(bytes.slice(6, 8)),
     }
 }
