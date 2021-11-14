@@ -264,12 +264,12 @@ size_t deserialize_Primary_SET_TLM_STATUS(uint8_t* buffer, Primary_SET_TLM_STATU
 
 /* Primary_GPS_COORDS */
 typedef struct __is_packed {
-    double latitude;
-    double longitude;
+    float latitude;
+    float longitude;
 } Primary_GPS_COORDS;
-static_assert(sizeof(Primary_GPS_COORDS) == 16, "struct size mismatch");
+static_assert(sizeof(Primary_GPS_COORDS) == 8, "struct size mismatch");
     
-size_t serialize_Primary_GPS_COORDS(uint8_t* buffer, double latitude, double longitude);
+size_t serialize_Primary_GPS_COORDS(uint8_t* buffer, float latitude, float longitude);
 size_t deserialize_Primary_GPS_COORDS(uint8_t* buffer, Primary_GPS_COORDS* primary_gps_coords);
 
 /* Primary_GPS_SPEED */

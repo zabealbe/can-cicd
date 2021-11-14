@@ -125,14 +125,14 @@ function deserializePrimarySetTlmStatus(bytes) {
 
 function serializePrimaryGpsCoords(data) {
     return Uint8Array.from([
-        ...byteify.serializeFloat64(data.latitude),
-        ...byteify.serializeFloat64(data.longitude),
+        ...byteify.serializeFloat32(data.latitude),
+        ...byteify.serializeFloat32(data.longitude),
     ]);
 }
 function deserializePrimaryGpsCoords(bytes) {
     return {
-        latitude: byteify.deserializeFloat64(bytes.slice(0, 8)),
-        longitude: byteify.deserializeFloat64(bytes.slice(8, 16)),
+        latitude: byteify.deserializeFloat32(bytes.slice(0, 4)),
+        longitude: byteify.deserializeFloat32(bytes.slice(4, 8)),
     }
 }
 

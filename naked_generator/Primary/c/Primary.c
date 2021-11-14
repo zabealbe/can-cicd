@@ -113,7 +113,7 @@ size_t deserialize_Primary_SET_TLM_STATUS(uint8_t* buffer, Primary_SET_TLM_STATU
     return sizeof(Primary_SET_TLM_STATUS);
 }
 /* Primary_GPS_COORDS */
-size_t serialize_Primary_GPS_COORDS(uint8_t* buffer, double latitude, double longitude) {
+size_t serialize_Primary_GPS_COORDS(uint8_t* buffer, float latitude, float longitude) {
     Primary_GPS_COORDS primary_gps_coords = { latitude, longitude };
 	// assert(buf_len >= sizeof(Primary_GPS_COORDS));
 	memcpy(buffer, &primary_gps_coords, sizeof(Primary_GPS_COORDS));

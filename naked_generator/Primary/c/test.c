@@ -155,7 +155,7 @@ int main() {
     printf("Primary_GPS_COORDS:\n");
     uint8_t* buffer_primary_gps_coords = (uint8_t*)malloc(sizeof(Primary_GPS_COORDS));
     
-    Primary_GPS_COORDS primary_gps_coords_s = { 260361400.548, 325193454.571 };
+    Primary_GPS_COORDS primary_gps_coords_s = { 131512381.668, 161984697.323 };
     serialize_Primary_GPS_COORDS(buffer_primary_gps_coords, primary_gps_coords_s.latitude, primary_gps_coords_s.longitude);
     printf("\tSerialized\n\t%lld %lld\n", (long long int)primary_gps_coords_s.latitude, (long long int)primary_gps_coords_s.longitude);
     
