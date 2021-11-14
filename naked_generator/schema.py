@@ -42,8 +42,8 @@ class Schema:
             "int32": Number((-2 ** 16, 2 ** 16 - 1), 1),
             "int64": Number((-2 ** 32, 2 ** 32 - 1), 1),
         
-            "float32": Number((-2 ** 32, 2 ** 32 - 1), 0.001),
-            "float64": Number((-2 ** 32, 2 ** 32 - 1), 0.001)
+            "float32": Number((-2 ** 31, 2 ** 31 - 1), 0.001), #TODO: conform to IEEE 754
+            "float64": Number((-2 ** 63, 2 ** 63 - 1), 0.001)
         }
         with Logger.push_context(f"In file {path}\n\t{{message}}"):
             self.path = path

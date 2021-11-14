@@ -205,7 +205,7 @@ def __c_type_name(item_type):
                 number_type += "int64"
             return number_type + "_t"
         else:
-            if size >= 4:
+            if size > 4:
                 return "double"  # TODO
             else:
                 return "float"
