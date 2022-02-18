@@ -2,6 +2,32 @@
 The purpose of this project is to manage **any** can network, the data flowing throught it, its serialization/deserialization
 and the interactions with the bus itself
 
+CAN CICD was born to solve the many issues regarding the CAN network arised from [Formula SAE](https://en.wikipedia.org/wiki/Formula_SAE)
+design competition.
+
+This project **fixes** the following problems:
+
++ Lack of a single source of truth for the CAN network description (hassle-free alternative to DBC files)
++ Human error during the development (deserialization errors, wrong bitrate, etc.)
++ Desynchronization between different nodes (ie. a message id has changed and the developer forgot to update the code)
++ Message loss due to conflicting ids or wrong id priority
++ Lack of visual representation of message definitions, useful during the development process
+
+Features:
++ Network description format:
+    + json-based, simple, hassle-free and powerful
+    + single source of truth
++ Automatic message ids generation:
+    + accounts for priority assigning **lower ids** to **higher priority** messages
+    + ids can be filtered by masking the least significant bits and filtering by **topic**
+    + generation of **masks** and **filters** based on the concept of **topic**, filter by the topics that your device has interest in
++ Automatic source code generation for c, c++, python and javascript:
+    + serialization/deserialization code generation with zero-copy zero-overhead
+    + header files with **constants** and **types**
+    + header files with **can configiration** such as bitrate, frequency, etc.
++ Spreadsheet generation:
+    + visual representation of the can networks with messages payloads, ids, topics, etc.
+
 ## Subprojects
 :open_file_folder: project root\
   ├ :open_file_folder: [id_generator](id_generator)\
@@ -10,9 +36,12 @@ and the interactions with the bus itself
   └ :open_file_folder: [sheet_generator](sheet_generator)
 
 # How to Use
-Before running any of the subprojects you will need to do the following:
+1. Fork [this template repo](https://github.com/zabealbe/can-cicd-forkme)
+2. Commit your customized network config files under **:open_file_folder:** [networks](https://github.com/zabealbe/can-cicd-forkme/networks)
+3. Push your commits on GitHub, sit back, relax and [the actions](https://github.com/zabealbe/can-cicd-forkme/.github/workflows/) will do the rest!
+4. Once finished a release will be generated, and you will find your freshly baked assets as **release files**. For usability the same files will be present under the branch **build**
 
-## Configure your network(s)
+## How to configure your network(s)
 ### Build the file tree
 Each network should have its own folder and files as shown below:\
 :open_file_folder: project root\
@@ -22,7 +51,7 @@ Each network should have its own folder and files as shown below:\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└:page_with_curl: canconfig.json
 
 ### Configure network.json
-This file contains the description of all the network's messages.\
+This file similarly to the DBC format contains the full network definition in a custom json format\
 \
 The json structure is as follows:
 ```yaml
@@ -175,8 +204,8 @@ result in an error.
 
 
 ### Configure canconfig.json
-This file contains the parameters required by can devices to properly connect to the interface,
-such as the clock frequency.\
+This file contains the parameters required by can devices to properly connect and communicate with the network,
+such as the clock frequency and the bitrate.\
 \
 The json structure is as follows:
 ```yaml
@@ -207,15 +236,7 @@ The json structure is as follows:
 
 
 ## Workflow
-This project can be used in a couple of ways, the first one being the coolest:
-### The automated way
-1. Fork [this template repo](https://github.com/zabealbe/can-cicd-custom)
-2. Commit your customized network config files under **:open_file_folder:** [networks](https://github.com/zabealbe/can-cicd-custom/networks)
-3. Push your commits on GitHub, sit back, relax and [the actions](https://github.com/zabealbe/can-cicd/blob/master/.github/workflows/) will do the rest!
-4. Once finished a release will be generated, and you will find your freshly baked assets as **release files**. For usability the same files will be present under the branch **build**
+Follow the steps described [here](#how-to-use) and use the newly forked repo as a submodule for your projects,
+the **branch build** will contain the generated files.
 
-
-### The manual way
-Any subproject can be run as a standalone module. However some subprojects may have the specific job to generate configurations
-for other subprojects. Of course those files could be manually created but if you want to run the full stack you
-must use the projects in the **specific order** [shown above](#subprojects).
+Alternatively you can manually download the assets from the generated release page.
