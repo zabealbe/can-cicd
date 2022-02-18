@@ -1,8 +1,4 @@
-from config.config import *
-from lib.utils import *
+from .config.config import *
 
 assert ENDIANNESS == "little" or ENDIANNESS == "big", "ENDIANNESS can be either 'little' or 'big'"
-ENDIANNESS = ENDIANNESS
 IS_LITTLE_ENDIAN = ENDIANNESS == "little"
-
-OUTPUT_DIR = remove_trailing_slash(OUTPUT_DIR)

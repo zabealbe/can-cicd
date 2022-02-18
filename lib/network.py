@@ -1,6 +1,6 @@
-from collections import OrderedDict
-
-from lib.utils import *
+import os
+import pathlib
+from . import utils
 
 
 def load_network(path):
@@ -11,7 +11,7 @@ def load_network(path):
 
 class Network:
     def __init__(self, name: str
-                 , path: str = None, validation_schema: str = None
+                 , path: pathlib.Path = None, validation_schema: str = None
                  , ids_path: str = None, ids_validation_schema: str = None):
         self.path = None
         self.ids_path = None
@@ -29,9 +29,9 @@ class Network:
         if ids_path:
             self.load_ids(ids_path, ids_validation_schema)
 
-    def load(self, path: str, validation_schema: str = None):
+    def load(self, path: pathlib.Path, validation_schema: str = None):
         self.path = path
-        network = load_json(self.path, validation_schema)
+        network = utils.load_json(self.path, validation_schema)
 
         self.version = network["network_version"]
         self.max_payload_size = network["max_payload_size"]
@@ -49,7 +49,7 @@ class Network:
                 
     def load_ids(self, path: str, validation_schema: str = None):
         self.ids_path = path
-        network_ids = load_json(self.ids_path)#, validation_schema) # TODO: fix
+        network_ids = utils.load_json(self.ids_path)#, validation_schema) # TODO: fix
         assert network_ids["network_version"] == self.version, \
             f"Version mismatch between {self.path} and {self.ids_path}"
 

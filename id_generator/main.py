@@ -1,9 +1,8 @@
-from collections import OrderedDict
-from lib.network import Network
-from config import config as c
-from lib import utils
+from .lib.network import Network
+from .config import config as c
+from .lib import utils
 import json
-import os
+import sys
 
 # xxxxxx xxxxx => can id has 11 bits
 # ^^^^^^       => bits for message id
@@ -114,32 +113,20 @@ def generate_fixed_ids(network: Network):
 
 
 def main():
-    print("====== Configuration ======")
+    print("====== id-generator ======")
     print("Max topics: {0}".format(2 ** TOPIC_BITS))
     print("Max messages per topic: {0}".format(2 ** MESSAGE_BITS))
     print("Priority range: {0}-{1}".format(0, MAX_PRIORITY))
     print("Max messages per priority per topic: {0}".format(int(2 ** MESSAGE_BITS / (MAX_PRIORITY + 1))))
     print("")
 
-    print("====== Networks loading ======")
-    paths = utils.parse_network_multipath(c.NETWORK_FILE)
-    networks = []
-    for network_name, path in paths.items():
-        if c.MERGE_NETWORKS and networks:
-            networks[0].merge_with(
-                Network(name=network_name, path=path, validation_schema=c.NETWORK_FILE_VALIDATION_SCHEMA)
-            )
-        else:
-            networks.append(
-                Network(name=network_name, path=path, validation_schema=c.NETWORK_FILE_VALIDATION_SCHEMA)
-            )
-        print("Loaded {0}".format(network_name))
+    networks_dir = utils.read_networks_arg(sys.argv)
+    networks = utils.load_networks(networks_dir, c.NETWORK_VALIDATION_SCHEMA)
 
-    print("{0} network(s) loaded".format(len(networks)))
+    print(f"{len(networks)} network(s) loaded\n")
 
-    print("")
     for n in networks:
-        print("====== Id generation for network {0} ======".format(n.name))
+        print(f"Generating ids for network {n.name}... ", end="")
         reserved_ids = n.get_reserved_ids().keys()
         
         # Generating IDs
@@ -155,15 +142,12 @@ def main():
             "topics": ids
         }
             
-        output_file = c.OUTPUT_FILE.replace("[network]", n.name)
-        print("Saving IDs to {0}".format(output_file))
+        output_file = c.OUTPUT_DIR / n.name / "ids.json"
+        print(f"done. Saving to {output_file}")
         
-        utils.create_subtree(os.path.dirname(output_file))
+        utils.create_subtree(c.OUTPUT_DIR.parent)
         with open(output_file, "w+") as f:
             json.dump(output, f, indent=4)
-            
-        print("")
-    print("done.")
 
 
 if __name__ == "__main__":

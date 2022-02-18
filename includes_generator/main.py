@@ -1,8 +1,9 @@
-from lib.utils import *
-from lib.network import Network
-from generators.c_gen import c_gen
-from generators import py_gen
-import sanitized_config as c
+from .generators.c_gen import c_gen
+from .generators.py_gen import py_gen
+from . import sanitized_config as c
+from .lib import utils
+import pathlib
+import sys
 
 
 def generate_id_includes(network, output_path):
@@ -32,66 +33,40 @@ def generate_canconfig_includes(canconfig, canconfig_version, network_name, outp
         
 
 def main():
-    network_paths = parse_network_multipath(c.NETWORK_FILE)
-    paths_ids = parse_network_multipath(c.NETWORK_IDS_FILE)
-    paths = [
-        (network_name, network_path, paths_ids[network_name]) for network_name, network_path in network_paths.items()
-    ]
+    print("====== includes-generator ======")
+    print("")
 
-    merge_networks = c.MERGE_NETWORKS
-    networks = []
-    for network_name, network_path, ids_path in paths:
-        network = Network(name=network_name,
-                          path=network_path, validation_schema=c.NETWORK_FILE_VALIDATION_SCHEMA,
-                          ids_path=ids_path, ids_validation_schema=c.NETWORK_IDS_FILE_VALIDATION_SCHEMA)
+    networks_dir = utils.read_networks_arg(sys.argv)
+    networks = utils.load_networks(networks_dir, c.NETWORK_VALIDATION_SCHEMA, c.NETWORK_IDS_DIR, c.NETWORK_IDS_VALIDATION_SCHEMA)
 
-        if merge_networks and networks:
-            networks[0].merge_with(network)
-        else:
-            networks.append(network)
-        print(f"Loaded {network_name}")
+    print(f"{len(networks)} network(s) loaded\n")
 
-    print(f"{len(networks)} network(s) loaded")
-    
-    print("====== Includes generation ======")
-
-    # IDs & masks
     for n in networks:
-        output_path = c.OUTPUT_DIR.replace("[network]", n.name)
+        print(f"Generating includes for network {n.name}")
+        output_dir = c.OUTPUT_DIR / pathlib.Path(n.name)
+        utils.create_subtree(output_dir)
 
-        create_subtree(output_path)
+        # IDs & masks
+        generate_id_includes(n, output_dir)
+        print(f"Generated id includes in {output_dir}")
 
-        generate_id_includes(n, output_path)
-        print(f"Generated id includes in {output_path}\n")
+        # Utils
+        generate_utils_includes(n, output_dir)
+        print(f"Generated utils includes in {output_dir}")
 
-    # Utils
-    for n in networks:
-        output_path = c.OUTPUT_DIR.replace("[network]", n.name)
-
-        create_subtree(output_path)
-
-        generate_utils_includes(n, output_path)
-        print(f"Generated utils includes in {output_path}\n")
-
-    # CAN config
-    for network_name, path in parse_network_multipath(c.CANCONFIG_FILE).items():
-        output_path = c.OUTPUT_DIR.replace("[network]", network_name)
-
-        canconfig_file = load_json(path, c.CANCONFIG_FILE_VALIDATION_SCHEMA)
+        # CAN config
+        # TODO: generalize n cleanup
+        canconfig_path = n.path.parent / "canconfig.json"
+        if not canconfig_path.exists():
+            continue
+        canconfig_file = utils.load_json(canconfig_path, c.CANCONFIG_VALIDATION_SCHEMA)
         canconfig = canconfig_file["canconfig"]
         canconfig_version = float(canconfig_file["canconfig_version"])
-        print(f"Loaded can configuration from {path}")
 
-        create_subtree(output_path)
+        generate_canconfig_includes(canconfig, canconfig_version, n.name, output_dir)
+        print(f"Generated canconfig includes in {output_dir}")
 
-        generate_canconfig_includes(canconfig, canconfig_version, network_name, output_path)
-        print(f"Generated canconfig includes in {output_path}\n")
-
-    '''
-        with open(config.FLATBUF_SCHEMA_FILE) as flatbuf_schema:
-            generate_flatbuf_includes(flatbuf_schema)
-        print("Loaded flatbuf schema from {0}".format(config.FLATBUF_SCHEMA_FILE))
-    '''
+        print("")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,12 @@
-from lib.utils import *
-from lib.network import Network
-import sanitized_config as c
+import pathlib
+
+from .lib import utils
+from . import sanitized_config as c
+from .schema import Schema
+import json
+import sys
+import os
+
 
 def generate_schema_from_network(network):
     schema = {
@@ -31,35 +37,31 @@ def generate_schema_from_network(network):
     return schema
 
 
-def generate_schema():
+def generate_schema(network, output_path: pathlib.Path):
+    output_file_path = output_path / "schema.json"
+    schema = generate_schema_from_network(network)
+
+    utils.create_subtree(output_path)
+    with open(output_file_path, "w") as f:
+        json.dump(schema, f, indent=4)
+    print(f"Generated schema for {network.name} in {output_file_path}")
+
+    return output_file_path
+
+
+def main():
     print("====== Networks loading ======")
-    paths = parse_network_multipath(c.NETWORK_FILE)
-    networks = []
-    for network_name, path in paths.items():
-        if c.MERGE_NETWORKS and networks:
-            networks[0].merge_with(
-                Network(name=network_name, path=path, network_name=c.NETWORK_FILE_VALIDATION_SCHEMA)
-            )
-        else:
-            networks.append(
-                Network(name=network_name, path=path, validation_schema=c.NETWORK_FILE_VALIDATION_SCHEMA)
-            )
-    print(f"{len(paths.keys())} network(s) loaded\n")
+    networks_dir = utils.read_networks_arg(sys.argv)
+    networks = utils.load_networks(networks_dir, c.NETWORK_VALIDATION_SCHEMA)
+    print(f"{len(networks)} network(s) loaded\n")
 
     print("====== Schemas generation ======")
     for network in networks:
-        output_path = f"{c.OUTPUT_DIR}/{network.name}"
-        output_file_path = f"{output_path}/schema.json"
-        schema = generate_schema_from_network(network)
-        
-        create_subtree(output_path)
-        with open(output_file_path, "w") as f:
-            json.dump(schema, f, indent=4)
-        print(f"Generated schema for {network.name} in {output_file_path}")
-    print("")
+        output_dir = c.OUTPUT_DIR / network.name
+        generate_schema(network, output_dir)
 
 
 if __name__ == "__main__":
-    generate_schema()
+    main()
 
 

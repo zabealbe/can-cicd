@@ -5,7 +5,6 @@ and the interactions with the bus itself
 ## Subprojects
 :open_file_folder: project root\
   ├ :open_file_folder: [id_generator](id_generator)\
-  ├ :open_file_folder: [flatbuf_generator](flatbuf_generator)\
   ├ :open_file_folder: [naked_generator](naked_generator)\
   ├ :open_file_folder: [includes_generator](includes_generator)\
   └ :open_file_folder: [sheet_generator](sheet_generator)
@@ -140,7 +139,7 @@ ___
 }
 ```
 
-Required by: [flatbuf_generator](flatbuf_generator)
+Required by: [naked_generator](naked_generator)
 
 
 This field describes the message's payload, can be left empty. The overall size can be **at most 8 bytes**.\
@@ -160,7 +159,7 @@ In addition you may also use an `enum` which has a size of 1 byte:
 }
 ```
 
-The complete syntax describes the flatbuffers enum type name and the actual field name.
+The complete syntax describes the enum type name and the actual field name.
 Enum name must start with an Uppercase letter and may contain lowercase letters, 
 numbers and "_".
 Enum type name and field name must be separated by ": ".\
@@ -170,7 +169,7 @@ by capitalizing the field name's first letter.
 `field1_name: [...]` will result in an enum called `Field1_name`.
 
 If the same enum (same name, same items) is used multiple times within the same message or across 
-different messages it will be represented by flatbuffers with a single enum type, however items differences will 
+different messages it will be represented with a single enum type, however items differences will 
 result in an error.
 </details>
 
@@ -210,15 +209,13 @@ The json structure is as follows:
 ## Workflow
 This project can be used in a couple of ways, the first one being the coolest:
 ### The automated way
-:open_file_folder: project root\
-  └ :open_file_folder: [networks](networks)
-  
+1. Fork [this template repo](https://github.com/zabealbe/can-cicd-custom)
+2. Commit your customized network config files under **:open_file_folder:** [networks](https://github.com/zabealbe/can-cicd-custom/networks)
+3. Push your commits on GitHub, sit back, relax and [the actions](https://github.com/zabealbe/can-cicd/blob/master/.github/workflows/) will do the rest!
+4. Once finished a release will be generated, and you will find your freshly baked assets as **release files**. For usability the same files will be present under the branch **build**
 
-Any **commit** to this directory will trigger GitHub's actions workflow as described in 
-[this file](.github/workflows/run-all.yml). You will find the generated files in the branch **build** under the **:open_file_folder:** folder 
-named after each submodule.
 
 ### The manual way
-Any subproject is a standalone module. However some subprojects may have the specific job to generate configurations
-for other subprojects. Of course those files could be manually created but if you want to run the full CICD stack you
+Any subproject can be run as a standalone module. However some subprojects may have the specific job to generate configurations
+for other subprojects. Of course those files could be manually created but if you want to run the full stack you
 must use the projects in the **specific order** [shown above](#subprojects).
