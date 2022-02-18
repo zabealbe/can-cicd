@@ -1,7 +1,8 @@
-from lib import utils
-from lib.logger import Logger
 import math
 import abc
+
+from .lib import utils
+from .lib.logger import Logger
 
 """
     struct format = {

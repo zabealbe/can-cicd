@@ -8,7 +8,5 @@ NETWORK_VALIDATION_SCHEMA = BASE_DIR / "config/network_schema_nakedgenerator.jso
 # Schema describing the data structure
 SCHEMA_LOCATION = BASE_DIR / "out/[network]/schema.json"
 
-OUTPUT_DIR = BASE_DIR / "out"
-
 # CUSTOMIZATION SETTINGS
 ENDIANNESS = "little"  # Can be either "little" or "big"

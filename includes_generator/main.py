@@ -30,29 +30,48 @@ def generate_canconfig_includes(canconfig, canconfig_version, network_name, outp
     pygenerated = py_gen.generate_canconfig_include(canconfig, canconfig_version)
     with open(f"{output_path}/{c.PY_CANCONFIG_INCLUDE}", "w+") as f:
         print(pygenerated, file=f)
-        
+
+
+def read_args(argv):
+    # TODO: standardize
+    if len(argv) != 4 or argv[1] in ["--help", "-h"]:
+        raise ValueError("Usage: python3 main.py <networks_path> <ids_path> <output_path>")
+
+    networks_dir = pathlib.Path(argv[1])
+    ids_dir = pathlib.Path(argv[2])
+    output_dir = pathlib.Path(argv[3])
+
+    if not networks_dir.exists() or not networks_dir.is_dir():
+        raise ValueError(f"Path {networks_dir} does not exist or it is not a directory")
+
+    if not ids_dir.exists() or not ids_dir.is_dir():
+        raise ValueError(f"Path {ids_dir} does not exist or it is not a directory")
+
+    if output_dir.is_file():
+        raise ValueError(f"Path {output_dir} is a file")
+
+    return networks_dir, ids_dir, output_dir
+
 
 def main():
     print("====== includes-generator ======")
     print("")
 
-    networks_dir = utils.read_networks_arg(sys.argv)
-    networks = utils.load_networks(networks_dir, c.NETWORK_VALIDATION_SCHEMA, c.NETWORK_IDS_DIR, c.NETWORK_IDS_VALIDATION_SCHEMA)
-
-    print(f"{len(networks)} network(s) loaded\n")
+    networks_dir, ids_dir, output_dir = read_args(sys.argv)
+    networks = utils.load_networks(networks_dir, c.NETWORK_VALIDATION_SCHEMA, ids_dir, c.NETWORK_IDS_VALIDATION_SCHEMA)
 
     for n in networks:
         print(f"Generating includes for network {n.name}")
-        output_dir = c.OUTPUT_DIR / pathlib.Path(n.name)
-        utils.create_subtree(output_dir)
+        output_dir_network = output_dir / n.name
+        utils.create_subtree(output_dir_network)
 
         # IDs & masks
-        generate_id_includes(n, output_dir)
-        print(f"Generated id includes in {output_dir}")
+        generate_id_includes(n, output_dir_network)
+        print(f"Generated id includes in {output_dir_network}")
 
         # Utils
-        generate_utils_includes(n, output_dir)
-        print(f"Generated utils includes in {output_dir}")
+        generate_utils_includes(n, output_dir_network)
+        print(f"Generated utils includes in {output_dir_network}")
 
         # CAN config
         # TODO: generalize n cleanup
@@ -63,8 +82,8 @@ def main():
         canconfig = canconfig_file["canconfig"]
         canconfig_version = float(canconfig_file["canconfig_version"])
 
-        generate_canconfig_includes(canconfig, canconfig_version, n.name, output_dir)
-        print(f"Generated canconfig includes in {output_dir}")
+        generate_canconfig_includes(canconfig, canconfig_version, n.name, output_dir_network)
+        print(f"Generated canconfig includes in {output_dir_network}")
 
         print("")
 

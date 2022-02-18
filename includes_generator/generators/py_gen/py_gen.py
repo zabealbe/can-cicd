@@ -1,4 +1,4 @@
-from lib.network import Network
+from ...lib.network import Network
 
 
 def generate_ids_include(network: Network):

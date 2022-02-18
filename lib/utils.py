@@ -92,15 +92,25 @@ def parse_network_multipath(multipath):
 
     return paths
 
-def read_networks_arg(argv):
-    if len(argv) != 2 or argv[1] in ["--help", "-h"]:
-        raise ValueError("Usage: python3 main.py <networks_path>")
-    base_dir = os.path.abspath(argv[1])
 
-    if not os.path.exists(base_dir):
-        raise ValueError(f"Path {base_dir} does not exist")
+def read_args(argv):
+    # TODO: standardize
+    if len(argv) != 3 or argv[1] in ["--help", "-h"]:
+        raise ValueError("Usage: python3 main.py <networks_path> <output_path>")
 
-    return base_dir
+    networks_dir = pathlib.Path(argv[1])
+    output_dir = pathlib.Path(argv[2])
+
+    if not networks_dir.exists():
+        raise ValueError(f"Path {networks_dir} does not exist")
+
+    if networks_dir.is_file():
+        raise ValueError(f"Path {networks_dir} is a file")
+
+    if output_dir.is_file():
+        raise ValueError(f"Path {output_dir} is a file")
+
+    return networks_dir, output_dir
 
 
 def indent(string, amount):

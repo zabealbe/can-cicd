@@ -37,8 +37,8 @@ Features:
 
 # How to Use
 1. Fork [this template repo](https://github.com/zabealbe/can-cicd-forkme)
-2. Commit your customized network config files under **:open_file_folder:** [networks](https://github.com/zabealbe/can-cicd-forkme/networks)
-3. Push your commits on GitHub, sit back, relax and [the actions](https://github.com/zabealbe/can-cicd-forkme/.github/workflows/) will do the rest!
+2. Commit your customized network config files under **:open_file_folder:** [networks](https://github.com/zabealbe/can-cicd-forkme/tree/main/networks)
+3. Push your commits on GitHub, sit back, relax and [the actions](https://github.com/zabealbe/can-cicd-forkme/tree/main/.github/workflows/) will do the rest!
 4. Once finished a release will be generated, and you will find your freshly baked assets as **release files**. For usability the same files will be present under the branch **build**
 
 ## How to configure your network(s)

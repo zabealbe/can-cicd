@@ -120,10 +120,8 @@ def main():
     print("Max messages per priority per topic: {0}".format(int(2 ** MESSAGE_BITS / (MAX_PRIORITY + 1))))
     print("")
 
-    networks_dir = utils.read_networks_arg(sys.argv)
+    networks_dir, output_dir = utils.read_args(sys.argv)
     networks = utils.load_networks(networks_dir, c.NETWORK_VALIDATION_SCHEMA)
-
-    print(f"{len(networks)} network(s) loaded\n")
 
     for n in networks:
         print(f"Generating ids for network {n.name}... ", end="")
@@ -142,10 +140,10 @@ def main():
             "topics": ids
         }
             
-        output_file = c.OUTPUT_DIR / n.name / "ids.json"
+        output_file = output_dir / n.name / "ids.json"
         print(f"done. Saving to {output_file}")
         
-        utils.create_subtree(c.OUTPUT_DIR.parent)
+        utils.create_subtree(output_file.parent)
         with open(output_file, "w+") as f:
             json.dump(output, f, indent=4)
 

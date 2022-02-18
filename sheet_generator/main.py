@@ -3,26 +3,48 @@ import re
 import csv
 import sys
 import shutil
+import pathlib
 
 from .config import config as c
 from .lib import utils
+
+
+def read_args(argv):
+    # TODO: standardize
+    if len(argv) != 4 or argv[1] in ["--help", "-h"]:
+        raise ValueError("Usage: python3 main.py <networks_path> <ids_path> <output_path>")
+
+    networks_dir = pathlib.Path(argv[1])
+    ids_dir = pathlib.Path(argv[2])
+    output_dir = pathlib.Path(argv[3])
+
+    if not networks_dir.exists() or not networks_dir.is_dir():
+        raise ValueError(f"Path {networks_dir} does not exist or it is not a directory")
+
+    if not ids_dir.exists() or not ids_dir.is_dir():
+        raise ValueError(f"Path {ids_dir} does not exist or it is not a directory")
+
+    if output_dir.is_file():
+        raise ValueError(f"Path {output_dir} is a file")
+
+    return networks_dir, ids_dir, output_dir
 
 
 def main():
     print("====== sheet-generator ======")
     print("")
 
-    networks_dir = utils.read_networks_arg(sys.argv)
-    networks = utils.load_networks(networks_dir, c.NETWORK_VALIDATION_SCHEMA, c.NETWORK_IDS_DIR, c.NETWORK_IDS_VALIDATION_SCHEMA)
+    networks_dir, ids_dir, output_dir = read_args(sys.argv)
+    networks = utils.load_networks(networks_dir, c.NETWORK_VALIDATION_SCHEMA, ids_dir, c.NETWORK_IDS_VALIDATION_SCHEMA)
 
     # Clean previous build
-    if c.OUTPUT_DIR.exists():
-        shutil.rmtree(c.OUTPUT_DIR)
-    os.mkdir(c.OUTPUT_DIR)
+    if output_dir.exists():
+        shutil.rmtree(output_dir)
+    utils.create_subtree(output_dir)
 
     columns = c.COLUMNS_ORDER
 
-    out_file = c.OUTPUT_DIR / "networks.csv"
+    out_file = output_dir / "networks.csv"
 
     tot = 0
     with open(out_file, "w+") as out:

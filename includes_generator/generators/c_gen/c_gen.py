@@ -1,6 +1,6 @@
 import os
 import jinja2 as j2
-from lib.network import Network
+from ...lib.network import Network
 
 __TEMPLATE_IDS_H = os.path.dirname(__file__) + "/ids.h.j2"
 __TEMPLATE_UTILS_H = os.path.dirname(__file__) + "/utils.h.j2"

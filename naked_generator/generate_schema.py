@@ -1,11 +1,8 @@
 import pathlib
+import json
 
 from .lib import utils
 from . import sanitized_config as c
-from .schema import Schema
-import json
-import sys
-import os
 
 
 def generate_schema_from_network(network):
@@ -24,7 +21,7 @@ def generate_schema_from_network(network):
                         field_name = field_name.split(":")[1].strip()
                     else:
                         enum_name = field_name.title()
-                    
+
                     schema["types"][enum_name] = {
                         "type": "enum",
                         "items": field
@@ -33,7 +30,7 @@ def generate_schema_from_network(network):
                 struct[field_name] = field
             if struct:  # Don't allow empty structs
                 schema["structs"][message_name] = struct
-        
+
     return schema
 
 
@@ -48,20 +45,17 @@ def generate_schema(network, output_path: pathlib.Path):
 
     return output_file_path
 
+# def main():
+#    print("====== Networks loading ======")
+#    networks_dir = utils.read_networks_arg(sys.argv)
+#    networks = utils.load_networks(networks_dir, c.NETWORK_VALIDATION_SCHEMA)
+#    print(f"{len(networks)} network(s) loaded\n")
 
-def main():
-    print("====== Networks loading ======")
-    networks_dir = utils.read_networks_arg(sys.argv)
-    networks = utils.load_networks(networks_dir, c.NETWORK_VALIDATION_SCHEMA)
-    print(f"{len(networks)} network(s) loaded\n")
-
-    print("====== Schemas generation ======")
-    for network in networks:
-        output_dir = c.OUTPUT_DIR / network.name
-        generate_schema(network, output_dir)
-
-
-if __name__ == "__main__":
-    main()
+#    print("====== Schemas generation ======")
+#    for network in networks:
+#        output_dir = c.OUTPUT_DIR / network.name
+#        generate_schema(network, output_dir)
 
 
+# if __name__ == "__main__":
+#    main()
