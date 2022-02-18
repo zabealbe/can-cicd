@@ -29,7 +29,8 @@ def create_subtree(path):
                 raise
 
 
-def load_networks(networks_path: pathlib.Path, validation_schema_path: pathlib.Path = None, ids_path: pathlib.Path = None, ids_validation_schema_path: pathlib.Path = None):
+def load_networks(networks_path: pathlib.Path, validation_schema_path: pathlib.Path = None,
+                  ids_path: pathlib.Path = None, ids_validation_schema_path: pathlib.Path = None):
     networks_path = pathlib.Path(networks_path)
 
     networks = []
@@ -67,17 +68,18 @@ def remove_trailing_slash(path: str):
         return path
 
 
-#def run_command(command, verbose=False):
-#    if verbose:
-#        print(f"running '{command}'")
-#    process = subprocess.run(
-#        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
-#    )
+def run_command(command, verbose=False):
+    if verbose:
+        print(f"running '{command}'")
+    process = subprocess.run(
+        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
+    )
 
-#    code = process.returncode
+    code = process.returncode
 
-#    out, out_err = (process.stdout, process.stderr)
-#    return out.decode("utf-8"), out_err.decode("utf-8"), code
+    out, out_err = (process.stdout, process.stderr)
+    return out.decode("utf-8"), out_err.decode("utf-8"), code
+
 
 def parse_network_multipath(multipath):
     paths = {}
@@ -86,7 +88,7 @@ def parse_network_multipath(multipath):
         for d in os.scandir(p[0]):
             path = f"{d.path}{p[1]}"
             if os.path.exists(path):
-                paths[d.name] = path
+                paths[d.name] = pathlib.Path(path)
     else:
         Exception()
 

@@ -1,8 +1,9 @@
+import pathlib
 import random
 import sys
 
-from lib.utils import *
-import sanitized_config as c
+from ..lib import utils
+from .. import sanitized_config as c
 from datetime import datetime
 
 random.seed(datetime.now())
@@ -24,9 +25,8 @@ puts("SUCCESS!\\n");
 """
 
 COMPILE_AND_RUN = """
-CURR_DIR=$(pwd)
 cd {output_dir}
-gcc -std=c11 -pedantic $CURR_DIR/{input_file} -o {output_file} {headers} -lm && \\
+gcc -std=c11 -pedantic -o {output_file} {input_file} {headers} -lm && \\
 chmod +x {output_file} && \\
 ./{output_file}
 """
@@ -136,31 +136,53 @@ def generate_struct_values(field_types):
     return values
 
 
+def read_args(argv):
+    # TODO: standardize
+    if len(argv) != 3 or argv[1] in ["--help", "-h"]:
+        raise ValueError("Usage: python3 main.py <naked_generator_output_dir> <output_path>")
+
+    naked_generator_output_dir = pathlib.Path(argv[1])
+    output_dir = pathlib.Path(argv[2])
+
+    if not naked_generator_output_dir.exists() or not naked_generator_output_dir.is_dir():
+        raise ValueError(f"Path {naked_generator_output_dir} does not exist or it is not a directory")
+
+    if output_dir.is_file():
+        raise ValueError(f"Path {output_dir} is a file")
+
+    return naked_generator_output_dir, output_dir
+
+
 def main():
-    with open("tests/skeleton.c", "r") as f:
-        skeleton_c = f.read()
-        
-    paths = parse_network_multipath(f"{c.OUTPUT_DIR}/[network]")
+    # TODO: use template
+    #with open("tests/skeleton.c", "r") as f:
+    #    skeleton_c = f.read()
+
+    naked_generator_output_dir, output_dir = read_args(sys.argv)
+
+    paths = utils.parse_network_multipath(f"{naked_generator_output_dir}/[network]")
     for network_name, network_path in paths.items():
         includes = ""
 
-        headers_dir = f"{network_path}/c"
+        headers_dir = network_path / "c"
         source_paths = ""
 
-        for header_name in [x for x in os.listdir(headers_dir) if ".h" in x]:
-            include_path = f"{header_name}"
-            
-            source_paths += include_path.replace(".h", ".c") + " "
+        for header_name in headers_dir.iterdir():
+            if header_name.suffix != ".h":
+                continue
+            include_path = header_name.name.replace(".h", ".c")
+
+            source_paths += include_path + " "
             includes += f"#include \"{include_path}\"\n"
-                        
-        output_dir = f"{c.OUTPUT_DIR}/{network_name}/c"
-        output_file_path = f"{output_dir}/test.c"
-        create_subtree(output_dir)
-        
+
+        output_dir = naked_generator_output_dir / network_name / "c"
+        output_file_name = "test.c"
+        utils.create_subtree(output_dir)
+
         print(f"====== RUNNING C TESTS FOR {network_name}  ======")
-        stdout, stderr, err_code = run_command(COMPILE_AND_RUN.format(
-            input_file=output_file_path,
-            output_dir=output_dir,
+        stdout, stderr, err_code = utils.run_command(COMPILE_AND_RUN.format(
+            input_file=output_file_name,
+            output_dir=output_dir.absolute(),
             output_file="test",
             headers=source_paths),
             verbose=True
@@ -171,7 +193,7 @@ def main():
         if err_code:
             exit(err_code)
         print(f"DONE\n\n")
-                
-                
+
+
 if __name__ == "__main__":
     main()

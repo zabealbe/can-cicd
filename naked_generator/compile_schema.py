@@ -12,7 +12,7 @@ def compile_schema(schema_path: pathlib.Path):
     # Load schema
     schema = Schema(schema_path, pack_structs=False)
 
-    file_name = schema_path.name.lower()
+    file_name = schema_path.parent.name.lower()
     output_path = schema_path.parent
 
     if True:  # Generate python
