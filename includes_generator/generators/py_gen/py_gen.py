@@ -1,5 +1,4 @@
 from lib.network import Network
-from config import config as c
 
 
 def generate_ids_include(network: Network):

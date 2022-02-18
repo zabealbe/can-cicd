@@ -1,15 +1,17 @@
+from pathlib import Path
+
+BASE_DIR = Path(__file__).parent.parent
+
 # INPUT FILES
-NETWORK_FILE = "../networks/[network]/network.json"
-NETWORK_FILE_VALIDATION_SCHEMA = "config/network_schema_sheetgenerator.json"
+NETWORK_VALIDATION_SCHEMA = BASE_DIR / "config/network_schema_sheetgenerator.json"
 
-NETWORK_IDS_FILE = "../id_generator/out/[network]/ids.json"
-NETWORK_IDS_FILE_VALIDATION_SCHEMA = "config/network_ids_schema_sheetgenerator.json"
+NETWORK_IDS_DIR = BASE_DIR / "../id_generator/out"
+NETWORK_IDS_VALIDATION_SCHEMA = BASE_DIR / "config/network_ids_schema_sheetgenerator.json"
 
-CANCONFIG_FILE = "../networks/[network]/canconfig.json"
-CANCONFIG_FILE_VALIDATION_SCHEMA = "config/canconfig_schema_includesgenerator.json"
+CANCONFIG_VALIDATION_SCHEMA = BASE_DIR / "config/canconfig_schema_includesgenerator.json"
 
 # OUTPUT FILES
-OUTPUT_DIR = "./out/[network]/"
+OUTPUT_DIR = BASE_DIR / "out"
 
 # IDS & masks
 C_IDS_INCLUDE = "ids.h"
@@ -23,4 +25,4 @@ PY_UTILS_INCLUDE = "utils.py"
 C_CANCONFIG_INCLUDE = "can_config.h"
 PY_CANCONFIG_INCLUDE = "can_config.py"
 
-MERGE_NETWORKS = False
+# CUSTOMIZATION SETTINGS

@@ -1,7 +1,7 @@
 #ifndef {{ network.name}}_IDS_H
 #define {{ network.name }}_IDS_H
 
-#define {{ network.name }}_VERSION {{ network.version }}f
+#define {{ network.name }}_IDS_VERSION {{ network.version }}f
 
 {%- for topic_name, topic_id in network.get_topics().items() %}
 {% set topic_messages = network.get_messages_by_topic(topic_name) %}

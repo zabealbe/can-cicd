@@ -1,49 +1,31 @@
 import os
 import re 
 import csv
+import sys
 import shutil
 
-from config import config as c
-from lib.utils import parse_network_multipath
-from lib.network import Network
+from .config import config as c
+from .lib import utils
 
 
 def main():
-    print("====== Networks + IDs loading ======")
-    network_paths = parse_network_multipath(c.NETWORK_FILE)
-    paths_ids = parse_network_multipath(c.NETWORK_IDS_FILE)
-    paths = [
-        (network_name, network_path, paths_ids[network_name]) for network_name, network_path in network_paths.items()
-    ]
+    print("====== sheet-generator ======")
+    print("")
 
-    merge_networks = c.MERGE_NETWORKS
-
-    networks = []
-    for network_name, network_path, ids_path in paths:
-        network = Network(name=network_name, 
-                          path=network_path, validation_schema=c.NETWORK_FILE_VALIDATION_SCHEMA,
-                          ids_path=ids_path, ids_validation_schema=c.NETWORK_IDS_FILE_VALIDATION_SCHEMA)
-
-        if merge_networks and networks:
-            networks[0].merge_with(network)
-        else:
-            networks.append(network)
-        print(f"Loaded {network_name}")
-
-    print(f"{len(networks)} network(s) loaded")
-
-    print("====== CSV generation ======")
+    networks_dir = utils.read_networks_arg(sys.argv)
+    networks = utils.load_networks(networks_dir, c.NETWORK_VALIDATION_SCHEMA, c.NETWORK_IDS_DIR, c.NETWORK_IDS_VALIDATION_SCHEMA)
 
     # Clean previous build
-    out_dir = os.path.dirname(c.OUTPUT_CSV)
-    if os.path.exists(out_dir):
-        shutil.rmtree(out_dir)
-    os.mkdir(out_dir)
+    if c.OUTPUT_DIR.exists():
+        shutil.rmtree(c.OUTPUT_DIR)
+    os.mkdir(c.OUTPUT_DIR)
 
     columns = c.COLUMNS_ORDER
 
+    out_file = c.OUTPUT_DIR / "networks.csv"
+
     tot = 0
-    with open(c.OUTPUT_CSV, "w+") as out:
+    with open(out_file, "w+") as out:
         writer = csv.writer(out)
         writer.writerow(columns)
         for network in networks:
@@ -58,6 +40,10 @@ def main():
                 for i, (key, value) in enumerate(message_contents.items()):
                     cols[columns.index(key)] = re.sub(r"\[|]|'|{|}|\"", "", str(value))
                 writer.writerow(cols)
+
+    print("Generated CSV containing the following network(s):")
+    for network in networks:
+        print(f"  - {network.name}")
 
     print(f"{tot} line(s) written")
 

@@ -1,9 +1,9 @@
 import os
 import copy
-import schema as s
+from ... import schema as s
 import jinja2 as j2
-from lib import utils
-import sanitized_config as c
+from ...lib import utils
+from ... import sanitized_config as c
 
 __TEST_TEMPLATE_PY = os.path.dirname(__file__) + "/template.py.j2"
 
@@ -12,7 +12,6 @@ def generate(schema, output_path: str, filename: str):
     structs, enums, bitsets = __parse_schema(schema)
 
     utils.create_subtree(output_path)
-    print(output_path)
     with open(f"{output_path}/{filename}.py", "w") as f:
         f.write(__generate_py(structs, enums, bitsets))
 

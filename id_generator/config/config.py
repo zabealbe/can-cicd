@@ -1,9 +1,11 @@
+from pathlib import Path
+
+BASE_DIR = Path(__file__).parent.parent
+
 # INPUT FILES
-NETWORK_FILE = "../networks/[network]/network.json"
-NETWORK_FILE_VALIDATION_SCHEMA = "config/network_schema_idgenerator.json"
+NETWORK_VALIDATION_SCHEMA = BASE_DIR / "config/network_schema_idgenerator.json"
 
 # OUTPUT FILES
-OUTPUT_FILE = "out/[network]/ids.json"
+OUTPUT_DIR = BASE_DIR / "out"
 
-# SETTINGS
-MERGE_NETWORKS = False
+# CUSTOMIZATION SETTINGS

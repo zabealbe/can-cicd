@@ -1,15 +1,17 @@
-# INPUT FILES
-NETWORK_FILE = "../networks/[network]/network.json"
-NETWORK_FILE_VALIDATION_SCHEMA = "config/network_schema_sheetgenerator.json"
+from pathlib import Path
 
-NETWORK_IDS_FILE = "../id_generator/out/[network]/ids.json"
-NETWORK_IDS_FILE_VALIDATION_SCHEMA = "config/network_ids_schema_sheetgenerator.json"
+BASE_DIR = Path(__file__).parent.parent
+
+# INPUT FILES
+NETWORK_VALIDATION_SCHEMA = BASE_DIR / "config/network_schema_sheetgenerator.json"
+
+NETWORK_IDS_DIR = BASE_DIR / "../id_generator/out"
+NETWORK_IDS_VALIDATION_SCHEMA = BASE_DIR / "config/network_ids_schema_sheetgenerator.json"
 
 # OUTPUT FILES
-OUTPUT_CSV = "./out/messages.csv"
+OUTPUT_DIR = BASE_DIR / "out"
 
-# SETTINGS
-MERGE_NETWORKS = False
+# CUSTOMIZATION SETTINGS
 COLUMNS_ORDER = [
     "name",
     "id",

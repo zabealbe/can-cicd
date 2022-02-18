@@ -1,10 +1,10 @@
 import os
 import copy
 import random as rd
-import schema as s
+from ... import schema as s
 import jinja2 as j2
-from lib import utils
-import sanitized_config as c
+from ...lib import utils
+from ... import sanitized_config as c
 
 rd.seed(441285359149401)
 
@@ -13,31 +13,30 @@ __TEMPLATE_H = os.path.dirname(__file__) + "/template.h.j2"
 __TEST_TEMPLATE_C = os.path.dirname(__file__) + "/test_template.c.j2"
 
 
-def generate(schema, network_name, output_path: str, filename: str):
+def generate(schema, output_path: str, filename: str):
     """
     Generates the source files in the specified output path
     
     Args:
         schema:
-        prefix:
         output_path:
         filename:
     """
-    structs, enums, bitsets = __parse_schema(copy.copy(schema), network_name)
-    
+    structs, enums, bitsets = __parse_schema(copy.copy(schema), prefix=filename)
+
     utils.create_subtree(output_path)
 
     with open(f"{output_path}/{filename}.h", "w") as f:
-        f.write(__generate_h(structs, enums, bitsets, network_name, filename))
+        f.write(__generate_h(structs, enums, bitsets, filename))
 
     with open(f"{output_path}/{filename}.c", "w") as f:
-        f.write(__generate_c(structs, enums, bitsets, network_name, filename))
-        
+        f.write(__generate_c(structs, enums, bitsets, filename))
+
     with open(f"{output_path}/test.c", "w") as f:
-        f.write(__generate_test_c(structs, enums, bitsets, network_name, filename))
+        f.write(__generate_test_c(structs, enums, bitsets, filename))
 
 
-def __generate_h(structs, enums, bitsets, network_name, filename):
+def __generate_h(structs, enums, bitsets, filename):
     """
     Generates C header file
     """
@@ -46,8 +45,6 @@ def __generate_h(structs, enums, bitsets, network_name, filename):
         template_h = f.read()
 
     code = j2.Template(template_h).render(
-        network_name=network_name,
-
         structs=structs,
         enums=enums,
         bitsets=bitsets,
@@ -62,7 +59,7 @@ def __generate_h(structs, enums, bitsets, network_name, filename):
     return code
 
 
-def __generate_c(structs, enums, bitsets, network_name, filename):
+def __generate_c(structs, enums, bitsets, filename):
     """
     Generates C source file
     """
@@ -70,13 +67,11 @@ def __generate_c(structs, enums, bitsets, network_name, filename):
         template_c = f.read()
 
     code = j2.Template(template_c).render(
-        network_name=network_name,
-
         structs=structs,
         enums=enums,
         bitsets=bitsets,
         filename=filename,
-        
+
         parameters=__parameters,
         fill_padding=__fill_padding,
     )
@@ -84,7 +79,7 @@ def __generate_c(structs, enums, bitsets, network_name, filename):
     return code
 
 
-def __generate_test_c(structs, enums, bitsets, network_name, filename):
+def __generate_test_c(structs, enums, bitsets, filename):
     """
     Generates C source file for tests
     """
@@ -92,13 +87,11 @@ def __generate_test_c(structs, enums, bitsets, network_name, filename):
         test_template_c = f.read()
 
     code = j2.Template(test_template_c).render(
-        network_name=network_name,
-        
         structs=structs,
         enums=enums,
         bitsets=bitsets,
         filename=filename,
-        
+
         read_struct=__read_struct,
         format_string=__format_string,
         random_values=__random_values,
@@ -111,6 +104,7 @@ def __generate_test_c(structs, enums, bitsets, network_name, filename):
 """
     Utility functions used for template rendering
 """
+
 
 def __parse_schema(schema, prefix):
     """
@@ -142,8 +136,9 @@ def __parse_schema(schema, prefix):
     for struct in schema.structs:
         struct.name = f"{prefix}_{struct.name}"
         structs.append(struct)
-            
+
     return structs, enums, bitsets
+
 
 def __fill_padding(struct):
     new_items = []
@@ -156,14 +151,17 @@ def __fill_padding(struct):
             new_items.append(item_name)
     return new_items
 
+
 def __fields(struct):
     return [field_name for field_name, field_type in struct.fields.items() if not isinstance(field_type, s.Padding)]
 
+
 def __parameters(struct):
-    return [f"{field_c_type} {field_name}" 
-            for (field_name, field_type), field_c_type 
-            in zip(struct.fields.items(), __c_types(struct)) 
+    return [f"{field_c_type} {field_name}"
+            for (field_name, field_type), field_c_type
+            in zip(struct.fields.items(), __c_types(struct))
             if not isinstance(field_type, s.Padding)]  # skip unused fields such as padding bytes
+
 
 def __random_values(struct):
     values = []
@@ -171,24 +169,27 @@ def __random_values(struct):
         if isinstance(field_type, s.Enum):
             values.append(str(rd.randrange(*field_type.range)))
         elif isinstance(field_type, s.BitSet):
-            values.append("{" + ", ".join([str(rd.randrange(0, 2**8)) for _ in range(0, field_type.size_bytes)]) + "}")
+            values.append(
+                "{" + ", ".join([str(rd.randrange(0, 2 ** 8)) for _ in range(0, field_type.size_bytes)]) + "}")
         elif isinstance(field_type, s.Padding):
             values.append("0")
         else:
             f = 1 / field_type.precision
             values.append(str(rd.randrange(
-                    field_type.range[0]*f, 
-                    field_type.range[1]*f, 
-                    field_type.precision*f)/f))
+                field_type.range[0] * f,
+                field_type.range[1] * f,
+                field_type.precision * f) / f))
     return values
+
 
 def __c_types(struct):
     return [__c_type_name(field_type) for field_name, field_type in struct.fields.items()]
-            
+
+
 def __c_type_name(item_type):
     if isinstance(item_type, s.Bool):
         return "bool"
-    
+
     elif isinstance(item_type, s.Number):
         size = item_type.size_bytes
         number_type = ""
@@ -209,15 +210,16 @@ def __c_type_name(item_type):
                 return "double"  # TODO
             else:
                 return "float"
-        
+
     elif isinstance(item_type, s.Enum):
         return item_type.name
-    
+
     elif isinstance(item_type, s.BitSet):
         return item_type.name
-    
+
     elif isinstance(item_type, s.Padding):
         return "uint8_t"
+
 
 def __format_string(struct):
     format_string = ""
@@ -243,8 +245,9 @@ def __format_string(struct):
             format_string += "%lld "
         elif isinstance(field_type, s.BitSet):
             format_string += ".".join(["%hhx"] * field_type.size_bytes) + " "
-            
+
     return format_string.strip()
+
 
 def __read_struct(struct, instance_name="{instance_name}", selector="{selector}", cast=True):
     read_fields = []
@@ -257,6 +260,7 @@ def __read_struct(struct, instance_name="{instance_name}", selector="{selector}"
         else:
             read_fields.append(f"{cast}{instance_name}{selector}{field_name}")
     return ", ".join(read_fields)
+
 
 def __printf_cast(struct):
     cast_fields = []
