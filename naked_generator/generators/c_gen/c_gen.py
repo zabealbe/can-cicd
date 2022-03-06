@@ -270,6 +270,10 @@ def __printf_cast(struct):
                 cast_fields.append("(long long int)")
             else:
                 cast_fields.append("(long long unsigned int)")
-        elif isinstance(item_type, s.BitSet):
+        elif isinstance(item_type, s.BitSet):  # TODO: support for bitsets longer than 1 byte
             cast_fields.append("(char)")
+        elif isinstance(item_type, s.Padding):
+            cast_fields.append("(void)")
+        else:
+            raise NotImplementedError(f"{item_type}")
     return cast_fields
