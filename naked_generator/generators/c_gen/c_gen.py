@@ -238,9 +238,8 @@ def __format_string(struct):
                 format_string += "%llu "
             elif "int" in field_c_type:
                 format_string += "%lld "
-            # Enum, Bool
-            else:
-                format_string += "%lld "
+        elif isinstance(field_type, s.Bool):
+            format_string += "%lld "
         elif isinstance(field_type, s.Enum):
             format_string += "%lld "
         elif isinstance(field_type, s.BitSet):
@@ -251,7 +250,8 @@ def __format_string(struct):
 
 def __read_struct(struct, instance_name="{instance_name}", selector="{selector}", cast=True):
     read_fields = []
-    for (field_name, field_type), cast in zip(struct.fields.items(), __printf_cast(struct)):
+    struct_fields = {k: v for k,v in struct.fields.items() if not isinstance(v,s.Padding)}
+    for (field_name, field_type), cast in zip(struct_fields.items(), __printf_cast(struct)):    
         if isinstance(field_type, s.Padding):
             continue
         if isinstance(field_type, s.BitSet):
